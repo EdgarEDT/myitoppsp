@@ -1,0 +1,19 @@
+<ContentMenu>
+    <popupmenu name="menu1" lable="menu1">
+        <menuitem name="operation" lable="操作" imageindex="" begingroup="false">
+            <item name="mSelect" lable="选择" imageindex="11" begingroup="false" />
+            <item name="mShapeTransform" lable="线形操作" imageindex="12" begingroup="false" />
+            <item name="mFreeTransform" lable="变换" imageindex="12" begingroup="false" />
+        </menuitem>
+        <menuitem name="mCut" lable="剪切(&amp;X)" imageindex="7" begingroup ="true"/>
+		<menuitem name="mCopy" lable="复制(&amp;C)" imageindex="8" begingroup ="false"/>
+		<menuitem name="mPaste" lable="粘贴(&amp;V)" imageindex="9" begingroup ="false"/>
+		<menuitem name="mDelete" lable="删除(&amp;D)" imageindex="10" begingroup ="false"/>
+		<menuitem name="mSelectAll" lable="选择全部(&amp;A)" imageindex="" begingroup ="true"/>
+		<menuitem name="mClearSelects" lable="取消选择" imageindex="" begingroup ="false"/>
+		<menuitem name="mGroup" lable="成组(&amp;G)" imageindex="48" begingroup ="true"/>
+		<menuitem name="mUnGroup" lable="解组(&amp;U)" imageindex="49" begingroup ="false"/>
+		<menuitem name="mIncreaseView" lable="放大(&amp;O)" imageindex="26" begingroup ="true"/>
+		<menuitem name="mDecreaseView" lable="缩小(&amp;I)" imageindex="27" begingroup ="false"/>			
+    </popupmenu>
+</ContentMenu>

@@ -1,0 +1,47 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItopVector2005", "ItopVector\ItopVector2005.csproj", "{A06A219A-2F80-4424-B635-00064AB166FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItopVectorDraw", "ItopVectorDraw\ItopVectorDraw.csproj", "{A9DF1E3C-FCF2-42AF-A18A-3D2BA2BEE5AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itop.CADConvert", "Itop.CADConvert\Itop.CADConvert.csproj", "{75C03B7C-5B51-4DB3-9903-A84F510999CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itop.MapView", "Itop.MapView\Itop.MapView.csproj", "{72F43542-1463-4C58-9B83-8D58B56EF756}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itop.MapView.Tables", "Itop.MapView.Tables\Itop.MapView.Tables.csproj", "{BC430345-8C4B-4EC0-8613-1E6A08543348}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A06A219A-2F80-4424-B635-00064AB166FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A06A219A-2F80-4424-B635-00064AB166FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A06A219A-2F80-4424-B635-00064AB166FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A06A219A-2F80-4424-B635-00064AB166FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9DF1E3C-FCF2-42AF-A18A-3D2BA2BEE5AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9DF1E3C-FCF2-42AF-A18A-3D2BA2BEE5AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9DF1E3C-FCF2-42AF-A18A-3D2BA2BEE5AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9DF1E3C-FCF2-42AF-A18A-3D2BA2BEE5AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C03B7C-5B51-4DB3-9903-A84F510999CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C03B7C-5B51-4DB3-9903-A84F510999CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C03B7C-5B51-4DB3-9903-A84F510999CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C03B7C-5B51-4DB3-9903-A84F510999CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F43542-1463-4C58-9B83-8D58B56EF756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F43542-1463-4C58-9B83-8D58B56EF756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F43542-1463-4C58-9B83-8D58B56EF756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F43542-1463-4C58-9B83-8D58B56EF756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC430345-8C4B-4EC0-8613-1E6A08543348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC430345-8C4B-4EC0-8613-1E6A08543348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC430345-8C4B-4EC0-8613-1E6A08543348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC430345-8C4B-4EC0-8613-1E6A08543348}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

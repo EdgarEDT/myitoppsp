@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<category>
+	<item name="general" label="常规" method="general">
+		<item name="animconfig" label="动画">
+			<item name="autorecordanim" label="自动记录动画"/>
+			<item name="autoexpandanims" label="自动展开动画"/>
+		</item>
+		
+		<item name="drawconfig" label="绘图">
+			<item name="highquality" label="高质量显示图象"/>
+			<item name="antialias" label="抗锯齿显示文本"/>
+		</item>		
+		<item name="environment" label="环境">
+			<item name="filesize" label="新建文件尺寸"/>
+			<item name="filewidth" label="宽"/>
+			<item name="fileheight" label="高"/>
+		</item>
+	</item>
+	
+	<item name="ruleandgrid" label="网格、辅助线" method="ruleandgrid">
+		<item name="ruleconfig" label="标尺">
+			<item name="showrule" label="显示标尺"/>
+		</item>
+		
+		<item name="gridconfig" label="网格">
+			<item name="showgrid" label="显示网格"/>
+			<item name="snaptogrid" label="对齐到网格"/>
+			<item name="gridwidth" label="宽"/>
+			<item name="gridheight" label="高"/>
+		</item>
+		
+		<item name="guideconfig" label="显示辅助线">
+			<item name="lockguide" label="锁定辅助线"/>
+		</item>
+	</item>
+	
+	<item name="code" label1="代码" method="code">
+		<item name="display" label="显示">
+			<item name="showlinenumber" label="显示行号"/>
+			<item name="showwhitespace" label="显示空白"/>
+		</item>
+		
+		<item name="font" label="字体">
+			<item name="font-family" label="字体"/>
+			<item name="font-size" label="尺寸"/>
+		</item>
+		
+		<item name="Syntax" label="上下文">
+			<item name="nodename" label="节点名称"/>
+			<item name="attributename" label="属性名称"/>
+			<item name="attributevalue" label="属 性 值"/>
+			<item name="declaration" label="文档声明"/>
+			<item name="script" label="程序脚本"/>
+			<item name="note" label="注释文本"/>
+			<item name="word" label="普通文本"/>
+			<item name="error" label="语法错误"/>
+			<item name="tag" label="语法标记"/>
+		</item>
+	</item>
+</category>

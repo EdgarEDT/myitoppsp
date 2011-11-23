@@ -1,0 +1,53 @@
+未实现的对象:
+
+connect 连接线
+arc 圆弧操作类
+数据库操作类
+箭头设计器
+图案设计器
+属性类设计器
+
+
+1	属性交互类	6	2006-1-13	2006-1-19
+2	图案属性设计器	6	2006-1-20	2006-1-27
+3	箭头属性设计器	6	2006-2-6	2006-2-12
+4	arc 圆弧操作类	6	2006-2-13	2006-2-19
+5	connect 连接线操作类	6	2006-2-20	2006-2-26
+6	数据库交互	15	2006-2-27	2006-3-14
+7	Dxf文件解析器	24		
+8	图层管理类	6		
+9	对齐操作	6		
+10	分布操作	6		
+11	图形打印类	6		
+12	将当前绘图内容或选区导出为图元或自定义形状类	6		
+
+2006.05.22更新
+增加了元件事件。包括（单击，双击，移入，移出）
+
+
+2007.08.24
+增加百度地图
+增加经纬度定位
+增加距离测量操作
+增加区域面积操作
+
+cin>>xs>>ys>>xe>>ye>>xleft>>ytop>>xr>>yb;
+int a=ys-ye, b=xe-xs, c=xs*ye-xe*ys;
+if( (a*xleft+b*ytop+c>=0 && a*xr+b*yb+c<=0)||
+    (a*xleft+b*ytop+c<=0 && a*xr+b*yb+c>=0)||
+    (a*xleft+b*yb+c>=0 && a*xr+b*ytop+c<=0)||
+    (a*xleft+b*yb+c<=0 && a*xr+b*ytop+c>=0) ){
+        if(xleft > xr)
+            swap(xleft,xr);
+        if(ytop < yb)
+            swap(ytop,yb);
+        if( (xs<xleft && xe<xleft) ||
+            (xs>xr && xe>xr) ||
+            (ys>ytop && ye>ytop) ||
+            (ys<yb && ye<yb) )
+            cout<<"F"<<endl;
+        else
+            cout<<"T"<<endl;
+}
+else
+    cout<<"F"<<endl;
