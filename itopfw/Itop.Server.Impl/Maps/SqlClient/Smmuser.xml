@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Smmuser' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Smmuser' assembly='Itop.Domain.RightManager.dll' type='Itop.Domain.RightManager.Smmuser' />
+</alias>
+	<resultMaps>
+		<resultMap id='SmmuserResult' class='Smmuser'>
+			<result property='Userid' column='Userid' />
+			<result property='UserName' column='UserName' />
+			<result property='Password' column='Password' />
+			<result property='ExpireDate' column='ExpireDate' />
+			<result property='Disableflg' column='Disableflg' />
+			<result property='Lastlogon' column='Lastlogon' />
+      <result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSmmuser' parameterClass='Smmuser'>
+		INSERT INTO Smmuser		(
+			"Userid",
+			"UserName",
+			"Password",
+			"ExpireDate",
+			"Disableflg",
+			"Lastlogon",
+      "Remark"
+		)
+		VALUES
+		(
+			#Userid#,
+			#UserName#,
+			#Password#,
+			#ExpireDate#,
+			#Disableflg#,
+			#Lastlogon#,
+      #Remark#
+		)
+	</insert>
+	<delete id='DeleteSmmuser' parameterClass='Smmuser'>
+		DELETE FROM Smmuser
+		WHERE
+			Userid = #Userid#
+	</delete>
+  <delete id='DeleteSmmuserByKey' parameterClass='string'>
+    DELETE FROM Smmuser
+    WHERE
+    Userid = #value#
+    DELETE FROM Smugroup
+    WHERE
+    Userid = #value#
+  </delete>
+	<update id='UpdateSmmuser' parameterClass='Smmuser'>
+		UPDATE Smmuser
+		SET
+			"UserName" = #UserName#,
+			"Password" = #Password#,
+			"ExpireDate" = #ExpireDate#,
+			"Disableflg" = #Disableflg#,
+			"Lastlogon" = #Lastlogon#,
+      "Remark"=#Remark#
+		WHERE
+			Userid = #Userid#
+	</update>
+	<select id='SelectSmmuserList' resultMap='SmmuserResult' parameterClass='Smmuser'>
+		SELECT
+			"Userid",
+			"UserName",
+			"Password",
+			"ExpireDate",
+			"Disableflg",
+			"Lastlogon",
+      "Remark"
+		FROM Smmuser
+	</select>
+	<select id='SelectSmmuserByKey' resultMap='SmmuserResult' parameterClass='Smmuser'>
+		SELECT
+			"Userid",
+			"UserName",
+			"Password",
+			"ExpireDate",
+			"Disableflg",
+			"Lastlogon",
+      "Remark"
+		FROM Smmuser
+		WHERE
+			Userid = #Userid#
+	</select>
+
+
+  <select id='SelectSmmuserByGroupID' resultMap='SmmuserResult' parameterClass='string'>
+    SELECT
+    t2.Userid as "Userid",
+    t2.UserName as "UserName",
+    t2.Password as "Password",
+    t2.ExpireDate as "ExpireDate",
+    t2.Disableflg as "Disableflg",
+    t2.Lastlogon as "Lastlogon",
+    t2.Remark as "Remark"
+    from  Smugroup t1,Smmuser t2
+    where t1.userid=t2.userid
+    and t1.groupno = #Userid#
+  </select>
+</statements>
+</sqlMap>

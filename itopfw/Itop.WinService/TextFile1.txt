@@ -1,0 +1,4 @@
+注册
+C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\InstallUtil.exe 文件名
+注销
+C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\InstallUtil.exe /u 文件名
