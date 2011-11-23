@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_GDPTypes' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_GDPTypes' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_GDPTypes' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_GDPTypesResult' class='PSP_GDPTypes'>
+      <result property='ID' column='ID' />
+      <result property='Title' column='Title' />
+      <result property='Flag' column='Flag' />
+      <result property='Flag2' column='Flag2' />
+      <result property='ParentID' column='ParentID' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_GDPTypes' parameterClass='PSP_GDPTypes'>
+      INSERT INTO PSP_GDPTypes		(
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID"
+      )
+      VALUES
+      (
+      #Title#,
+      #Flag#,
+      #Flag2#,
+      #ParentID#
+      )
+      <selectKey property="ID" resultClass="int" type="post">
+        SELECT @@IDENTITY AS value
+      </selectKey>
+    </insert>
+    <delete id='DeletePSP_GDPTypes' parameterClass='PSP_GDPTypes'>
+      DELETE FROM PSP_GDPTypes
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdatePSP_GDPTypes' parameterClass='PSP_GDPTypes'>
+      UPDATE PSP_GDPTypes
+      SET
+      "Title" = #Title#,
+      "Flag" = #Flag#,
+      "Flag2" = #Flag2#,
+      "ParentID" = #ParentID#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPSP_GDPTypesList' resultMap='PSP_GDPTypesResult' parameterClass='PSP_GDPTypes'>
+      SELECT
+      "ID",
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID"
+      FROM PSP_GDPTypes
+    </select>
+    <select id='SelectPSP_GDPTypes' resultMap='PSP_GDPTypesResult' parameterClass='PSP_GDPTypes'>
+      SELECT
+      "ID",
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID"
+      FROM PSP_GDPTypes
+    </select>
+    <select id='SelectPSP_GDPTypesByKey' resultMap='PSP_GDPTypesResult' parameterClass='PSP_GDPTypes'>
+      SELECT
+      "ID",
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID"
+      FROM PSP_GDPTypes
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPSP_GDPTypesByFlag2' resultMap='PSP_GDPTypesResult' parameterClass='PSP_GDPTypes'>
+      SELECT
+      "ID",
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID"
+      FROM PSP_GDPTypes
+      WHERE
+      Flag2 = #Flag2#
+      ORDER BY Flag,ID
+    </select>
+  </statements>
+</sqlMap>

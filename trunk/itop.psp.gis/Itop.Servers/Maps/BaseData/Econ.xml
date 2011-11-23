@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Econ' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Econ' assembly='Itop.Domain.BaseData.dll' type='Itop.Domain.BaseData.Econ' />
+</alias>
+	<resultMaps>
+		<resultMap id='EconResult' class='Econ'>
+			<result property='UID' column='UID' />
+			<result property='ExcelData' column='ExcelData' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertEcon' parameterClass='Econ'>
+    INSERT INTO PSP_Econ		(
+    "UID",
+    "ExcelData"
+    )
+    VALUES
+    (
+    #UID#,
+    #ExcelData#
+    )
+  </insert>
+
+  <update id='UpdateEcon' parameterClass='Econ'>
+    UPDATE PSP_Econ
+    SET
+    "ExcelData" = #ExcelData#
+    where UID=#UID#
+  </update>
+
+	<select id='SelectEconByKey' resultMap='EconResult' parameterClass='Econ'>
+		SELECT
+			"UID",
+			"ExcelData"
+		FROM PSP_Econ
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

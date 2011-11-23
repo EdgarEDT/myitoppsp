@@ -1,0 +1,115 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='UseRelating' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='UseRelating' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.UseRelating' />
+</alias>
+	<resultMaps>
+		<resultMap id='UseRelatingResult' class='UseRelating'>
+			<result property='UID' column='UID' />
+			<result property='UseID' column='UseID' />
+			<result property='LinkUID' column='LinkUID' />
+			<result property='UsePropertyUID' column='UsePropertyUID' />
+			<result property='SvgUid' column='SvgUid' />
+			<result property='MenuUID' column='MenuUID' />
+			<result property='Obligate1' column='Obligate1' />
+			<result property='Obligate2' column='Obligate2' />
+			<result property='Obligate3' column='Obligate3' />
+			<result property='Obligate4' column='Obligate4' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertUseRelating' parameterClass='UseRelating'>
+		INSERT INTO UseRelating		(
+			"UID",
+			"UseID",
+			"LinkUID",
+			"UsePropertyUID",
+			"SvgUid",
+			"MenuUID",
+			"Obligate1",
+			"Obligate2",
+			"Obligate3",
+			"Obligate4"
+		)
+		VALUES
+		(
+			#UID#,
+			#UseID#,
+			#LinkUID#,
+			#UsePropertyUID#,
+			#SvgUid#,
+			#MenuUID#,
+			#Obligate1#,
+			#Obligate2#,
+			#Obligate3#,
+			#Obligate4#
+		)
+	</insert>
+	<delete id='DeleteUseRelating' parameterClass='UseRelating'>
+		DELETE FROM UseRelating
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateUseRelating' parameterClass='UseRelating'>
+		UPDATE UseRelating
+		SET
+			"UseID" = #UseID#,
+			"LinkUID" = #LinkUID#,
+			"UsePropertyUID" = #UsePropertyUID#,
+			"SvgUid" = #SvgUid#,
+			"MenuUID" = #MenuUID#,
+			"Obligate1" = #Obligate1#,
+			"Obligate2" = #Obligate2#,
+			"Obligate3" = #Obligate3#,
+			"Obligate4" = #Obligate4#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectUseRelatingList' resultMap='UseRelatingResult' parameterClass='UseRelating'>
+		SELECT
+			"UID",
+			"UseID",
+			"LinkUID",
+			"UsePropertyUID",
+			"SvgUid",
+			"MenuUID",
+			"Obligate1",
+			"Obligate2",
+			"Obligate3",
+			"Obligate4"
+		FROM UseRelating
+	</select>
+	<select id='SelectUseRelatingByKey' resultMap='UseRelatingResult' parameterClass='UseRelating'>
+		SELECT
+			"UID",
+			"UseID",
+			"LinkUID",
+			"UsePropertyUID",
+			"SvgUid",
+			"MenuUID",
+			"Obligate1",
+			"Obligate2",
+			"Obligate3",
+			"Obligate4"
+		FROM UseRelating
+		WHERE
+			UID = #UID#
+	</select>
+	<select id='SelectUseRelatingByUseID' resultMap='UseRelatingResult' parameterClass='UseRelating'>
+		SELECT
+			"UID",
+			"UseID",
+			"LinkUID",
+			"UsePropertyUID",
+			"SvgUid",
+			"MenuUID",
+			"Obligate1",
+			"Obligate2",
+			"Obligate3",
+			"Obligate4"
+		FROM UseRelating
+		WHERE
+			UseID = #UseID# and SvgUid= #SvgUid# 
+	</select>
+</statements>
+</sqlMap>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Common_Type' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Common_Type' assembly='Itop.Domain.GM.dll' type='Itop.Domain.GM.Common_Type' />
+</alias>
+	<resultMaps>
+		<resultMap id='Common_TypeResult' class='Common_Type'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='Content' column='Content' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateTime' column='CreateTime' />
+			<result property='Type' column='Type' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertCommon_Type' parameterClass='Common_Type'>
+    INSERT INTO PSP_Common_Type		(
+    "ID",
+    "Title",
+    "Content",
+    "Remark",
+    "CreateTime",
+    "Type"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #Content#,
+    #Remark#,
+    GetDate(),
+    #Type#
+    )
+  </insert>
+	<delete id='DeleteCommon_Type' parameterClass='Common_Type'>
+    DELETE FROM PSP_Common_Type
+    WHERE
+    ID = #ID#
+  </delete>
+  <update id='UpdateCommon_Type' parameterClass='Common_Type'>
+    UPDATE PSP_Common_Type
+    SET
+    "Title" = #Title#,
+    "Content" = #Content#,
+    "Remark" = #Remark#,
+    "Type" = #Type#
+    WHERE
+    ID = #ID#
+  </update>
+  <select id='SelectCommon_TypeList' resultMap='Common_TypeResult' parameterClass='Common_Type'>
+    SELECT
+    "ID",
+    "Title",
+    "Content",
+    "Remark",
+    "CreateTime",
+    "Type"
+    FROM PSP_Common_Type
+  </select>
+  <select id='SelectCommon_TypeByKey' resultMap='Common_TypeResult' parameterClass='Common_Type'>
+    SELECT
+    "ID",
+    "Title",
+    "Content",
+    "Remark",
+    "CreateTime",
+    "Type"
+    FROM PSP_Common_Type
+    WHERE
+    ID = #ID#
+  </select>
+
+  <select id='SelectCommon_TypeByType' resultMap='Common_TypeResult' parameterClass='Common_Type'>
+    SELECT
+    "ID",
+    "Title",
+    "Content",
+    "Remark",
+    "CreateTime",
+    "Type"
+    FROM PSP_Common_Type
+    WHERE
+    Type = #Type# order by CreateTime
+  </select>
+</statements>
+</sqlMap>

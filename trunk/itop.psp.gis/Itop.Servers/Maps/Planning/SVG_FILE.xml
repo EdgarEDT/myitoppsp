@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SVG_FILE' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='SVG_FILE' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.SVG_FILE' />
+</alias>
+	<resultMaps>
+		<resultMap id='SVG_FILEResult' class='SVG_FILE'>
+			<result property='SUID' column='SUID' />
+			<result property='NAME' column='NAME' />
+			<result property='XML' column='XML' />
+			<result property='MDATE' column='MDATE' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSVG_FILE' parameterClass='SVG_FILE'>
+		INSERT INTO SVG_FILE		(
+			"SUID",
+			"NAME",
+			"XML",
+			"MDATE"
+		)
+		VALUES
+		(
+			#SUID#,
+			#NAME#,
+			#XML#,
+			#MDATE#
+		)
+	</insert>
+	<delete id='DeleteSVG_FILE' parameterClass='SVG_FILE'>
+		DELETE FROM SVG_FILE
+		WHERE
+			SUID = #SUID#
+	</delete>
+	<update id='UpdateSVG_FILE' parameterClass='SVG_FILE'>
+		UPDATE SVG_FILE
+		SET
+			"NAME" = #NAME#,
+			"XML" = #XML#,
+			"MDATE" = #MDATE#
+		WHERE
+			SUID = #SUID#
+	</update>
+	<select id='SelectSVG_FILEList' resultMap='SVG_FILEResult' parameterClass='SVG_FILE'>
+		SELECT
+			"SUID",
+			"NAME",
+			"XML",
+			"MDATE"
+		FROM SVG_FILE
+	</select>
+	<select id='SelectSVG_FILEByKey' resultMap='SVG_FILEResult' parameterClass='SVG_FILE'>
+		SELECT
+			"SUID",
+			"NAME",
+			"XML",
+			"MDATE"
+		FROM SVG_FILE
+		WHERE
+			SUID = #SUID#
+	</select>
+</statements>
+</sqlMap>

@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_SubstationUserNum' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_SubstationUserNum' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_SubstationUserNum' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_SubstationUserNumResult' class='PSP_SubstationUserNum'>
+			<result property='UID' column='UID' />
+			<result property='userID' column='userID' />
+			<result property='SubStationID' column='SubStationID' />
+			<result property='SubParID' column='SubParID' />
+			<result property='num' column='num' />
+			<result property='Remark' column='Remark' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+			<result property='col4' column='col4' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_SubstationUserNum' parameterClass='PSP_SubstationUserNum'>
+		INSERT INTO PSP_SubstationUserNum		(
+			"UID",
+			"userID",
+			"SubStationID",
+			"SubParID",
+			"num",
+			"Remark",
+			"col1",
+			"col2",
+			"col3",
+			"col4"
+		)
+		VALUES
+		(
+			#UID#,
+			#userID#,
+			#SubStationID#,
+			#SubParID#,
+			#num#,
+			#Remark#,
+			#col1#,
+			#col2#,
+			#col3#,
+			#col4#
+		)
+	</insert>
+	<delete id='DeletePSP_SubstationUserNum' parameterClass='PSP_SubstationUserNum'>
+		DELETE FROM PSP_SubstationUserNum
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_SubstationUserNum' parameterClass='PSP_SubstationUserNum'>
+		UPDATE PSP_SubstationUserNum
+		SET
+			"userID" = #userID#,
+			"SubStationID" = #SubStationID#,
+			"SubParID" = #SubParID#,
+			"num" = #num#,
+			"Remark" = #Remark#,
+			"col1" = #col1#,
+			"col2" = #col2#,
+			"col3" = #col3#,
+			"col4" = #col4#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPSP_SubstationUserNumList' resultMap='PSP_SubstationUserNumResult' parameterClass='PSP_SubstationUserNum'>
+		SELECT
+			"UID",
+			"userID",
+			"SubStationID",
+			"SubParID",
+			"num",
+			"Remark",
+			"col1",
+			"col2",
+			"col3",
+			"col4"
+		FROM PSP_SubstationUserNum
+	</select>
+	<select id='SelectPSP_SubstationUserNumByKey' resultMap='PSP_SubstationUserNumResult' parameterClass='PSP_SubstationUserNum'>
+		SELECT
+			"UID",
+			"userID",
+			"SubStationID",
+			"SubParID",
+			"num",
+			"Remark",
+			"col1",
+			"col2",
+			"col3",
+			"col4"
+		FROM PSP_SubstationUserNum
+		WHERE
+			UID = #UID#
+	</select>
+  <select id='SelectPSP_SubstationNum1' resultMap='PSP_SubstationUserNumResult' parameterClass='PSP_SubstationUserNum'>
+    select '' as "UID",
+    '' as "userID",
+    b.SubStationID,0 as "num",
+    '' as "SubParID",
+    '' as "Remark",
+    b.col1,
+    b.col2,
+    '' as "col3",
+    '' as "col4"
+    from
+    PSP_SubstationSelect a,
+    PSP_SubstationUserNum b,PSP_SubstationPar c,PSP_SubstationMng d 
+    where a.UID=b.SubStationID and c.UID=b.SubParID  and d.UID=a.col2 and c.type=1
+    and b.SubStationID= #SubStationID# and a.col2=#col2#
+  </select>
+  <select id='SelectPSP_SubstationNum2' resultMap='PSP_SubstationUserNumResult' parameterClass='PSP_SubstationUserNum'>
+    select '' as "UID",
+    a.EleID as "userID",
+    b.SubStationID,
+    0 as "num",
+    '' as "SubParID",
+    '' as "Remark",
+    cast(sum(cast(b.col1 as decimal(10,2))*b.num)  as nvarchar(50)) as "col1",
+    '' as "col2",
+    a.Remark as "col3",
+    a.SName as "col4"
+    from
+    PSP_SubstationSelect a,
+    PSP_SubstationUserNum b,PSP_SubstationPar c,PSP_SubstationMng d
+    where a.UID=b.SubStationID and c.UID=b.SubParID and d.UID=a.col2 and c.type=2 and a.col2=#col2# and b.col1!='' 
+    group by b.SubStationID,a.EleID,a.SName,a.Remark order by sum(cast(b.col1 as decimal(10,2))*b.num) desc
+
+  </select>
+  <select id='SelectPSP_SubstationUserNumByUser' resultMap='PSP_SubstationUserNumResult' parameterClass='PSP_SubstationUserNum'>
+    SELECT
+    a.UID,
+    a.userID,
+    a.SubStationID,
+    a.SubParID,
+    a.num,
+    b.InfoName as "Remark",
+    a.col1,
+    a.col2,
+    a.col3,
+    a.SubStationID as "col4"
+    FROM PSP_SubstationUserNum a, PSP_SubstationPar b
+    WHERE
+    a.SubParID=b.UID and
+    a.userID = #userID# and
+    a.SubStationID = #SubStationID#
+    and b.type=#num# order by a.SubParID
+  </select>
+</statements>
+</sqlMap>

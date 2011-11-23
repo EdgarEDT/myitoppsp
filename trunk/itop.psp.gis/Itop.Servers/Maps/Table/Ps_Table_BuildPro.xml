@@ -1,0 +1,193 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Table_BuildPro' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Ps_Table_BuildPro' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.Ps_Table_BuildPro' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Ps_Table_BuildProResult' class='Ps_Table_BuildPro'>
+      <result property='ID' column='ID' />
+      <result property='Title' column='Title' />
+      <result property='Sort' column='Sort' />
+      <result property='ProjectID' column='ProjectID' />
+      <result property='BuildYear' column='BuildYear' />
+      <result property='BuildEd' column='BuildEd' />
+      <result property='Length' column='Length' />
+      <result property='Volumn' column='Volumn' />
+      <result property='ParentID' column='ParentID' />
+      <result property='FromID' column='FromID' />
+      <result property='AllVolumn' column='AllVolumn' />
+      <result property='BefVolumn' column='BefVolumn' />
+      <result property='AftVolumn' column='AftVolumn' />
+      <result property='BianInfo' column='BianInfo' />
+      <result property='LineInfo' column='LineInfo' />
+      <result property='Flag' column='Flag' />
+      <result property='Col1' column='Col1' />
+      <result property='Col2' column='Col2' />
+      <result property='Col3' column='Col3' />
+      <result property='Col4' column='Col4' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPs_Table_BuildPro' parameterClass='Ps_Table_BuildPro'>
+      INSERT INTO Ps_Table_BuildPro		(
+      "ID",
+      "Title",
+      "Sort",
+      "ProjectID",
+      "BuildYear",
+      "BuildEd",
+      "Length",
+      "Volumn",
+      "ParentID",
+      "FromID",
+      "AllVolumn",
+      "BefVolumn",
+      "AftVolumn",
+      "BianInfo",
+      "LineInfo",
+      "Flag",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      )
+      VALUES
+      (
+      #ID#,
+      #Title#,
+      #Sort#,
+      #ProjectID#,
+      #BuildYear#,
+      #BuildEd#,
+      #Length#,
+      #Volumn#,
+      #ParentID#,
+      #FromID#,
+      #AllVolumn#,
+      #BefVolumn#,
+      #AftVolumn#,
+      #BianInfo#,
+      #LineInfo#,
+      #Flag#,
+      #Col1#,
+      #Col2#,
+      #Col3#,
+      #Col4#
+      )
+    </insert>
+    <delete id='DeletePs_Table_BuildPro' parameterClass='Ps_Table_BuildPro'>
+      DELETE FROM Ps_Table_BuildPro
+      WHERE
+      ID = #ID#
+    </delete>
+    <delete id='DeletePs_Table_BuildProByConn' parameterClass='string'>
+      DELETE FROM Ps_Table_BuildPro
+      WHERE
+      $value$
+    </delete>
+    <update id='UpdatePs_Table_BuildPro' parameterClass='Ps_Table_BuildPro'>
+      UPDATE Ps_Table_BuildPro
+      SET
+      "Title" = #Title#,
+      "Sort" = #Sort#,
+      "ProjectID" = #ProjectID#,
+      "BuildYear" = #BuildYear#,
+      "BuildEd" = #BuildEd#,
+      "Length" = #Length#,
+      "Volumn" = #Volumn#,
+      "ParentID" = #ParentID#,
+      "FromID" = #FromID#,
+      "AllVolumn" = #AllVolumn#,
+      "BefVolumn" = #BefVolumn#,
+      "AftVolumn" = #AftVolumn#,
+      "BianInfo" = #BianInfo#,
+      "LineInfo" = #LineInfo#,
+      "Flag" = #Flag#,
+      "Col1" = #Col1#,
+      "Col2" = #Col2#,
+      "Col3" = #Col3#,
+      "Col4" = #Col4#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPs_Table_BuildProList' resultMap='Ps_Table_BuildProResult' parameterClass='Ps_Table_BuildPro'>
+      SELECT
+      "ID",
+      "Title",
+      "Sort",
+      "ProjectID",
+      "BuildYear",
+      "BuildEd",
+      "Length",
+      "Volumn",
+      "ParentID",
+      "FromID",
+      "AllVolumn",
+      "BefVolumn",
+      "AftVolumn",
+      "BianInfo",
+      "LineInfo",
+      "Flag",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      FROM Ps_Table_BuildPro
+    </select>
+    <select id='SelectPs_Table_BuildProByKey' resultMap='Ps_Table_BuildProResult' parameterClass='Ps_Table_BuildPro'>
+      SELECT
+      "ID",
+      "Title",
+      "Sort",
+      "ProjectID",
+      "BuildYear",
+      "BuildEd",
+      "Length",
+      "Volumn",
+      "ParentID",
+      "FromID",
+      "AllVolumn",
+      "BefVolumn",
+      "AftVolumn",
+      "BianInfo",
+      "LineInfo",
+      "Flag",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      FROM Ps_Table_BuildPro
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPs_Table_BuildProByConn' resultMap='Ps_Table_BuildProResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "Title",
+      "Sort",
+      "ProjectID",
+      "BuildYear",
+      "BuildEd",
+      "Length",
+      "Volumn",
+      "ParentID",
+      "FromID",
+      "AllVolumn",
+      "BefVolumn",
+      "AftVolumn",
+      "BianInfo",
+      "LineInfo",
+      "Flag",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      FROM Ps_Table_BuildPro
+      WHERE
+      $value$
+    </select>
+    <select id='SelectBuildProMaxSort' resultClass='int' parameterClass='string'>
+      Select Max(Sort) FROM Ps_Table_BuildPro
+    </select>
+  </statements>
+</sqlMap>

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_ImgInfo' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_ImgInfo' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_ImgInfo' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_ImgInfoResult' class='PSP_ImgInfo'>
+      <result property='UID' column='UID' />
+      <result property='Name' column='Name' />
+      <result property='Remark' column='Remark' />
+      <result property='Image' column='Image' />
+      <result property='orderID' column='orderID' />
+      <result property='TreeID' column='TreeID' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_ImgInfo' parameterClass='PSP_ImgInfo'>
+      INSERT INTO PSP_ImgInfo		(
+      "UID",
+      "Name",
+      "Remark",
+      "Image",
+      "orderID",
+      "TreeID"
+      )
+      VALUES
+      (
+      #UID#,
+      #Name#,
+      #Remark#,
+      #Image#,
+      #orderID#,
+      #TreeID#
+      )
+    </insert>
+    <delete id='DeletePSP_ImgInfo' parameterClass='PSP_ImgInfo'>
+      DELETE FROM PSP_ImgInfo
+      WHERE
+      UID = #UID#
+    </delete>
+    <update id='UpdatePSP_ImgInfo' parameterClass='PSP_ImgInfo'>
+      UPDATE PSP_ImgInfo
+      SET
+      "Name" = #Name#,
+      "Remark" = #Remark#,
+      "Image" = #Image#,
+      "orderID" = #orderID#,
+      "TreeID" = #TreeID#
+      WHERE
+      UID = #UID#
+    </update>
+    <select id='SelectPSP_ImgInfoList' resultMap='PSP_ImgInfoResult' parameterClass='PSP_ImgInfo'>
+      SELECT
+      "UID",
+      "Name",
+      "Remark",
+      null as "Image",
+      "orderID",
+      "TreeID"
+      FROM PSP_ImgInfo where TreeID=#TreeID# order by Name
+    </select>
+    <select id='SelectPSP_ImgInfoByKey' resultMap='PSP_ImgInfoResult' parameterClass='PSP_ImgInfo'>
+      SELECT
+      "UID",
+      "Name",
+      "Remark",
+      "Image",
+      "orderID",
+      "TreeID"
+      FROM PSP_ImgInfo
+      WHERE
+      UID = #UID#
+    </select>
+  </statements>
+</sqlMap>

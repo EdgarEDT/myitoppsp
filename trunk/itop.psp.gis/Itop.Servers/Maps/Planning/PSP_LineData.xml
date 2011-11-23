@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_LineData' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_LineData' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_LineData' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_LineDataResult' class='PSP_LineData'>
+			<result property='UID' column='UID' />
+			<result property='q1' column='q1' />
+			<result property='q2' column='q2' />
+			<result property='q3' column='q3' />
+			<result property='q4' column='q4' />
+			<result property='q5' column='q5' />
+			<result property='q6' column='q6' />
+			<result property='q7' column='q7' />
+			<result property='q8' column='q8' />
+			<result property='q9' column='q9' />
+			<result property='q10' column='q10' />
+			<result property='q11' column='q11' />
+			<result property='q12' column='q12' />
+			<result property='q13' column='q13' />
+			<result property='q14' column='q14' />
+			<result property='q15' column='q15' />
+			<result property='q16' column='q16' />
+			<result property='q17' column='q17' />
+			<result property='q18' column='q18' />
+			<result property='q19' column='q19' />
+			<result property='q20' column='q20' />
+			<result property='q21' column='q21' />
+			<result property='q22' column='q22' />
+			<result property='q23' column='q23' />
+			<result property='q24' column='q24' />
+			<result property='q25' column='q25' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+			<result property='col4' column='col4' />
+			<result property='col5' column='col5' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_LineData' parameterClass='PSP_LineData'>
+		INSERT INTO PSP_LineData		(
+			"UID",
+			"q1",
+			"q2",
+			"q3",
+			"q4",
+			"q5",
+			"q6",
+			"q7",
+			"q8",
+			"q9",
+			"q10",
+			"q11",
+			"q12",
+			"q13",
+			"q14",
+			"q15",
+			"q16",
+			"q17",
+			"q18",
+			"q19",
+			"q20",
+			"q21",
+			"q22",
+			"q23",
+			"q24",
+			"q25",
+			"col1",
+			"col2",
+			"col3",
+			"col4",
+			"col5"
+		)
+		VALUES
+		(
+			#UID#,
+			#q1#,
+			#q2#,
+			#q3#,
+			#q4#,
+			#q5#,
+			#q6#,
+			#q7#,
+			#q8#,
+			#q9#,
+			#q10#,
+			#q11#,
+			#q12#,
+			#q13#,
+			#q14#,
+			#q15#,
+			#q16#,
+			#q17#,
+			#q18#,
+			#q19#,
+			#q20#,
+			#q21#,
+			#q22#,
+			#q23#,
+			#q24#,
+			#q25#,
+			#col1#,
+			#col2#,
+			#col3#,
+			#col4#,
+			#col5#
+		)
+	</insert>
+	<delete id='DeletePSP_LineData' parameterClass='PSP_LineData'>
+		DELETE FROM PSP_LineData
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_LineData' parameterClass='PSP_LineData'>
+		UPDATE PSP_LineData
+		SET
+			"q1" = #q1#,
+			"q2" = #q2#,
+			"q3" = #q3#,
+			"q4" = #q4#,
+			"q5" = #q5#,
+			"q6" = #q6#,
+			"q7" = #q7#,
+			"q8" = #q8#,
+			"q9" = #q9#,
+			"q10" = #q10#,
+			"q11" = #q11#,
+			"q12" = #q12#,
+			"q13" = #q13#,
+			"q14" = #q14#,
+			"q15" = #q15#,
+			"q16" = #q16#,
+			"q17" = #q17#,
+			"q18" = #q18#,
+			"q19" = #q19#,
+			"q20" = #q20#,
+			"q21" = #q21#,
+			"q22" = #q22#,
+			"q23" = #q23#,
+			"q24" = #q24#,
+			"q25" = #q25#,
+			"col1" = #col1#,
+			"col2" = #col2#,
+			"col3" = #col3#,
+			"col4" = #col4#,
+			"col5" = #col5#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPSP_LineDataList' resultMap='PSP_LineDataResult' parameterClass='PSP_LineData'>
+		SELECT
+			"UID",
+			"q1",
+			"q2",
+			"q3",
+			"q4",
+			"q5",
+			"q6",
+			"q7",
+			"q8",
+			"q9",
+			"q10",
+			"q11",
+			"q12",
+			"q13",
+			"q14",
+			"q15",
+			"q16",
+			"q17",
+			"q18",
+			"q19",
+			"q20",
+			"q21",
+			"q22",
+			"q23",
+			"q24",
+			"q25",
+			"col1",
+			"col2",
+			"col3",
+			"col4",
+			"col5"
+		FROM PSP_LineData
+	</select>
+	<select id='SelectPSP_LineDataByKey' resultMap='PSP_LineDataResult' parameterClass='PSP_LineData'>
+		SELECT
+			"UID",
+			"q1",
+			"q2",
+			"q3",
+			"q4",
+			"q5",
+			"q6",
+			"q7",
+			"q8",
+			"q9",
+			"q10",
+			"q11",
+			"q12",
+			"q13",
+			"q14",
+			"q15",
+			"q16",
+			"q17",
+			"q18",
+			"q19",
+			"q20",
+			"q21",
+			"q22",
+			"q23",
+			"q24",
+			"q25",
+			"col1",
+			"col2",
+			"col3",
+			"col4",
+			"col5"
+		FROM PSP_LineData
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

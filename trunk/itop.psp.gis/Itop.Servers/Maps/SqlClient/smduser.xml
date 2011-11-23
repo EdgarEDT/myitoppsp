@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Smduser' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Smduser' assembly='Itop.Domain.RightManager.dll' type='Itop.Domain.RightManager.Smduser' />
+</alias>
+	<resultMaps>
+		<resultMap id='SmduserResult' class='Smduser'>
+			<result property='Userid' column='Userid' />
+			<result property='Progid' column='Progid' />
+			<result property='run' column='run' />
+			<result property='ins' column='ins' />
+			<result property='upd' column='upd' />
+			<result property='del' column='del' />
+			<result property='qry' column='qry' />
+			<result property='pro' column='pro' />
+			<result property='prn' column='prn' />
+			<result property='filtersql' column='filtersql' />
+			<result property='hiddencols' column='hiddencols' />
+			<result property='spec1' column='spec1' />
+			<result property='spec2' column='spec2' />
+			<result property='spec3' column='spec3' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSmduser' parameterClass='Smduser'>
+		INSERT INTO Smduser		(
+			"Userid",
+			"Progid",
+			"run",
+			"ins",
+			"upd",
+			"del",
+			"qry",
+			"pro",
+			"prn",
+			"filtersql",
+			"hiddencols",
+			"spec1",
+			"spec2",
+			"spec3"
+		)
+		VALUES
+		(
+			#Userid#,
+			#Progid#,
+			#run#,
+			#ins#,
+			#upd#,
+			#del#,
+			#qry#,
+			#pro#,
+			#prn#,
+			#filtersql#,
+			#hiddencols#,
+			#spec1#,
+			#spec2#,
+			#spec3#
+		)
+	</insert>
+	<delete id='DeleteSmduser' parameterClass='Smduser'>
+		DELETE FROM Smduser
+		WHERE
+			Userid = #Userid#
+			AND Progid = #Progid#
+	</delete>
+	<update id='UpdateSmduser' parameterClass='Smduser'>
+		UPDATE Smduser
+		SET
+			"run" = #run#,
+			"ins" = #ins#,
+			"upd" = #upd#,
+			"del" = #del#,
+			"qry" = #qry#,
+			"pro" = #pro#,
+			"prn" = #prn#,
+			"filtersql" = #filtersql#,
+			"hiddencols" = #hiddencols#,
+			"spec1" = #spec1#,
+			"spec2" = #spec2#,
+			"spec3" = #spec3#
+		WHERE
+			Userid = #Userid#
+			AND Progid = #Progid#
+	</update>
+	<select id='SelectSmduserList' resultMap='SmduserResult' parameterClass='Smduser'>
+		SELECT
+			"Userid",
+			"Progid",
+			"run",
+			"ins",
+			"upd",
+			"del",
+			"qry",
+			"pro",
+			"prn",
+			"filtersql",
+			"hiddencols",
+			"spec1",
+			"spec2",
+			"spec3"
+		FROM Smduser
+	</select>
+	<select id='SelectSmduserByKey' resultMap='SmduserResult' parameterClass='Smduser'>
+		SELECT
+			"Userid",
+			"Progid",
+			"run",
+			"ins",
+			"upd",
+			"del",
+			"qry",
+			"pro",
+			"prn",
+			"filtersql",
+			"hiddencols",
+			"spec1",
+			"spec2",
+			"spec3"
+		FROM Smduser
+		WHERE
+			Userid = #Userid#
+			AND Progid = #Progid#
+	</select>
+</statements>
+</sqlMap>

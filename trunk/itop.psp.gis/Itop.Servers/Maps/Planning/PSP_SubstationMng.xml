@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_SubstationMng' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_SubstationMng' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_SubstationMng' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_SubstationMngResult' class='PSP_SubstationMng'>
+			<result property='UID' column='UID' />
+			<result property='SName' column='SName' />
+			<result property='type' column='type' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_SubstationMng' parameterClass='PSP_SubstationMng'>
+		INSERT INTO PSP_SubstationMng		(
+			"UID",
+			"SName",
+			"type",
+			"col1",
+			"col2",
+			"col3"
+		)
+		VALUES
+		(
+			#UID#,
+			#SName#,
+			#type#,
+			#col1#,
+			#col2#,
+			#col3#
+		)
+	</insert>
+	<delete id='DeletePSP_SubstationMng' parameterClass='PSP_SubstationMng'>
+		DELETE FROM PSP_SubstationMng
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_SubstationMng' parameterClass='PSP_SubstationMng'>
+		UPDATE PSP_SubstationMng
+		SET
+			"SName" = #SName#,
+			"type" = #type#,
+			"col1" = #col1#,
+			"col2" = #col2#,
+			"col3" = #col3#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPSP_SubstationMngList' resultMap='PSP_SubstationMngResult' parameterClass='PSP_SubstationMng'>
+		SELECT
+			"UID",
+			"SName",
+			"type",
+			"col1",
+			"col2",
+			"col3"
+		FROM PSP_SubstationMng order by SName
+	</select>
+	<select id='SelectPSP_SubstationMngByKey' resultMap='PSP_SubstationMngResult' parameterClass='PSP_SubstationMng'>
+		SELECT
+			"UID",
+			"SName",
+			"type",
+			"col1",
+			"col2",
+			"col3"
+		FROM PSP_SubstationMng
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_VolumeBalanceDataSource' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_VolumeBalanceDataSource' assembly='Itop.Domain.Chen.dll' type='Itop.Domain.Chen.PSP_VolumeBalanceDataSource' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_VolumeBalanceDataSourceResult' class='PSP_VolumeBalanceDataSource'>
+			<result property='UID' column='UID' />
+			<result property='Name' column='Name' />
+			<result property='Value' column='Value' />
+			<result property='TypeID' column='TypeID' />
+			<result property='Flag' column='Flag' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='S3' column='S3' />
+			<result property='S4' column='S4' />
+			<result property='S5' column='S5' />
+			<result property='S6' column='S6' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_VolumeBalanceDataSource' parameterClass='PSP_VolumeBalanceDataSource'>
+		INSERT INTO PSP_VolumeBalanceDataSource		(
+			"UID",
+			"Name",
+			"Value",
+			"TypeID",
+			"Flag",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"S6"
+		)
+		VALUES
+		(
+			#UID#,
+			#Name#,
+			#Value#,
+			#TypeID#,
+			#Flag#,
+			#S1#,
+			#S2#,
+			#S3#,
+			#S4#,
+			#S5#,
+			#S6#
+		)
+	</insert>
+	<delete id='DeletePSP_VolumeBalanceDataSource' parameterClass='PSP_VolumeBalanceDataSource'>
+    DELETE FROM PSP_VolumeBalanceDataSource
+    WHERE
+    UID = #UID# and  "TypeID" = #TypeID# and "Flag" = #Flag#
+  </delete>
+	<update id='UpdatePSP_VolumeBalanceDataSource' parameterClass='PSP_VolumeBalanceDataSource'>
+    UPDATE PSP_VolumeBalanceDataSource
+    SET
+    "Name" = #Name#,
+    "Value" = #Value#,
+    "TypeID" = #TypeID#,
+    "Flag" = #Flag#,
+    "S1" = #S1#,
+    "S2" = #S2#,
+    "S3" = #S3#,
+    "S4" = #S4#,
+    "S5" = #S5#,
+    "S6" = #S6#
+    WHERE
+    UID = #UID# and  "TypeID" = #TypeID# and "Flag" = #Flag#
+  </update>
+  <update id='UpdatePSP_VolumeBalanceDataSource2' parameterClass='PSP_VolumeBalanceDataSource' >
+    UPDATE PSP_VolumeBalanceDataSource
+    SET
+    "Value" = #Value#
+    WHERE
+    UID = #UID# and  "TypeID" = #TypeID# and "Flag" = #Flag#
+  </update>
+	<select id='SelectPSP_VolumeBalanceDataSourceList' resultMap='PSP_VolumeBalanceDataSourceResult' parameterClass='PSP_VolumeBalanceDataSource'>
+		SELECT
+			"UID",
+			"Name",
+			"Value",
+			"TypeID",
+			"Flag",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"S6"
+		FROM PSP_VolumeBalanceDataSource
+	</select>
+	<select id='SelectPSP_VolumeBalanceDataSourceByKey' resultMap='PSP_VolumeBalanceDataSourceResult' parameterClass='PSP_VolumeBalanceDataSource'>
+    SELECT
+    "UID",
+    "Name",
+    "Value",
+    "TypeID",
+    "Flag",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+    FROM PSP_VolumeBalanceDataSource
+    WHERE
+    UID = #UID# and  "TypeID" = #TypeID# and "Flag" = #Flag#
+  </select>
+  <select id='SelectPSP_VolumeBalanceDataSourceByTypeID' resultMap='PSP_VolumeBalanceDataSourceResult' parameterClass='PSP_VolumeBalanceDataSource'>
+    SELECT
+    "UID",
+    "Name",
+    "Value",
+    "TypeID",
+    "Flag",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+    FROM PSP_VolumeBalanceDataSource
+    WHERE
+    TypeID=#TypeID# and Flag = #Flag#
+  </select>
+  <select id='SelectPSP_VolumeBalanceDataSourceByKeyTypeID' resultMap='PSP_VolumeBalanceDataSourceResult' parameterClass='PSP_VolumeBalanceDataSource'>
+    SELECT
+    "UID",
+    "Name",
+    "Value",
+    "TypeID",
+    "Flag",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+    FROM PSP_VolumeBalanceDataSource
+    WHERE
+    TypeID=#TypeID# and 	UID = #UID# and Flag = #Flag#
+  </select>
+</statements>
+</sqlMap>

@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_GDPValues' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_GDPValues' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_GDPValues' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_GDPValuesResult' class='PSP_GDPValues'>
+      <result property='ID' column='ID' />
+      <result property='TypeID' column='TypeID' />
+      <result property='Year' column='Year' />
+      <result property='Value' column='Value' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_GDPValues' parameterClass='PSP_GDPValues'>
+      INSERT INTO PSP_GDPValues		(
+      "TypeID",
+      "Year",
+      "Value"
+      )
+      VALUES
+      (
+      #TypeID#,
+      #Year#,
+      #Value#
+      )
+    </insert>
+    <delete id='DeletePSP_GDPValues' parameterClass='PSP_GDPValues'>
+      DELETE FROM PSP_GDPValues
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='DeletePSP_GDPValuesByType' parameterClass='PSP_GDPValues'>
+      DELETE FROM PSP_GDPValues
+      WHERE
+      TypeID = #TypeID#
+
+      DELETE FROM PSP_GDPTypes
+      WHERE
+      ID = #TypeID#
+    </update>
+    <update id='DeletePSP_GDPValuesByYear' parameterClass='PSP_GDPValues'>
+      DELETE FROM PSP_GDPValues
+      WHERE
+      Year = #Year#
+      And TypeID in (Select ID from PSP_GDPTypes where Flag2=#ID#)
+      DELETE FROM PSP_GDPYeas
+      WHERE
+      Flag = #ID#
+      AND
+      Year = #Year#
+    </update>
+    <!--<update id='UpdatePSP_GDPValues' parameterClass='PSP_GDPValues'>
+      UPDATE PSP_GDPValues
+      SET
+      "TypeID" = #TypeID#,
+      "Year" = #Year#,
+      "Value" = #Value#
+      WHERE
+      ID = #ID#
+    </update>-->
+    <update id='UpdatePSP_GDPValues' parameterClass='PSP_GDPValues'>
+      If Exists(Select ID from PSP_GDPValues Where Year=#Year# And TypeID=#TypeID#)
+      UPDATE PSP_GDPValues
+      SET
+      "Value" = #Value#
+      WHERE
+      "TypeID" = #TypeID#
+      And
+      "Year" = #Year#
+      Else
+      INSERT INTO PSP_GDPValues		(
+      "TypeID",
+      "Year",
+      "Value"
+      )
+      VALUES
+      (
+      #TypeID#,
+      #Year#,
+      #Value#
+      )
+    </update>
+    <select id='SelectPSP_GDPValuesList' resultMap='PSP_GDPValuesResult' parameterClass='PSP_GDPValues'>
+      SELECT
+      "ID",
+      "TypeID",
+      "Year",
+      "Value"
+      FROM PSP_GDPValues
+    </select>
+    <select id='SelectPSP_GDPValuesByTypeID' resultMap='PSP_GDPValuesResult' parameterClass='PSP_GDPValues'>
+      SELECT
+      "ID",
+      "TypeID",
+      "Year",
+      "Value"
+      FROM PSP_GDPValues
+      Where
+      TypeID = #TypeID#
+    </select>
+    <select id='SelectPSP_GDPValuesByKey' resultMap='PSP_GDPValuesResult' parameterClass='PSP_GDPValues'>
+      SELECT
+      "ID",
+      "TypeID",
+      "Year",
+      "Value"
+      FROM PSP_GDPValues
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPSP_GDPValuesByFlag2' resultMap='PSP_GDPValuesResult' parameterClass='PSP_GDPValues'>
+      SELECT
+      "ID",
+      "TypeID",
+      "Year",
+      "Value"
+      FROM PSP_GDPValues
+      Where
+      TypeID in (Select ID from PSP_GDPTypes where Flag2=#ID#)
+    </select>
+    <select id='SelectPSP_GDPValuesByhash' resultMap='PSP_GDPValuesResult' parameterClass='hashtable'>
+      SELECT
+      "ID",
+      "TypeID",
+      "Year",
+      "Value"
+      FROM PSP_GDPValues
+      Where
+      TypeID in (Select ID from PSP_GDPTypes)
+      and Year >= #Year#
+    </select>
+
+
+    <select id='SelectPSP_GDPValuesByWhere' resultMap='PSP_GDPValuesResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "TypeID",
+      "Year",
+      "Value"
+      FROM PSP_GDPValues
+      Where
+      $Value$
+    </select>
+  </statements>
+</sqlMap>

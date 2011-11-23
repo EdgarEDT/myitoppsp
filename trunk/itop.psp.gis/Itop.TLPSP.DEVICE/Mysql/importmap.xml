@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tables>
+  <table id="cdb_bus" name="母线" select="">
+    <column id="" name="" property="" />
+  </table>
+</tables>

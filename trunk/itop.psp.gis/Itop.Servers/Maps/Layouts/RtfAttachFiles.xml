@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='RtfAttachFiles' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='RtfAttachFiles' assembly='Itop.Domain.Layouts.dll' type='Itop.Domain.Layouts.RtfAttachFiles' />
+</alias>
+	<resultMaps>
+		<resultMap id='RtfAttachFilesResult' class='RtfAttachFiles'>
+			<result property='UID' column='UID' />
+			<result property='C_UID' column='C_UID' />
+			<result property='Des' column='Des' />
+			<result property='FileType' column='FileType' />
+			<result property='FileSize' column='FileSize' />
+			<result property='FileByte' column='FileByte' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='FileName' column='FileName' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertRtfAttachFiles' parameterClass='RtfAttachFiles'>
+		INSERT INTO PSP_RtfAttachFiles		(
+			"UID",
+			"C_UID",
+                        "CreateDate",
+			"Des",
+			"FileType",
+			"FileSize",
+			"FileByte","FileName"
+		)
+		VALUES
+		(
+			#UID#,
+			#C_UID#,
+			#CreateDate#,
+			#Des#,
+			#FileType#,
+			#FileSize#,
+			#FileByte#,#FileName#
+		)
+	</insert>
+
+	<delete id='DeleteRtfAttachFiles' parameterClass='RtfAttachFiles'>
+		DELETE FROM PSP_RtfAttachFiles
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateRtfAttachFiles' parameterClass='RtfAttachFiles'>
+    UPDATE PSP_RtfAttachFiles
+    SET
+    "C_UID" = #C_UID#,
+    "Des" = #Des#,
+    "FileByte" = #FileByte#,
+    "FileType" = #FileType#,
+    "FileSize" = #FileSize#,
+    "FileName" = #FileName#
+    WHERE
+    UID = #UID#
+  </update>
+
+	<update id='UpdateRtfAttachFilesByDes' parameterClass='RtfAttachFiles'>
+		UPDATE PSP_RtfAttachFiles
+		SET
+			"Des" = #Des#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectRtfAttachFilesList' resultMap='RtfAttachFilesResult' parameterClass='RtfAttachFiles'>
+		SELECT
+			"UID",
+			"C_UID",
+			"Des",
+			"FileType",
+			"FileSize",
+			null as "FileByte",
+			"CreateDate","FileName"
+		FROM PSP_RtfAttachFiles
+	</select>
+	<select id='SelectRtfAttachFilesByKey' resultMap='RtfAttachFilesResult' parameterClass='RtfAttachFiles'>
+		SELECT
+			"UID",
+			"C_UID",
+			"Des",
+			"FileType",
+			"FileSize",
+			"FileByte",
+			"CreateDate","FileName"
+		FROM PSP_RtfAttachFiles
+		WHERE
+			UID = #UID#
+	</select>
+
+	<select id='SelectRtfAttachFilesByCategory' resultMap='RtfAttachFilesResult' parameterClass='string'>
+		SELECT
+			"UID",
+			"C_UID",
+			"Des",
+			"FileType",
+			"FileSize",
+			null as "FileByte",
+			"CreateDate","FileName"
+		FROM PSP_RtfAttachFiles
+		WHERE
+			C_UID = #C_UID#
+	</select>
+
+  <select id='SelectRtfAttachFilesByWhere' resultMap='RtfAttachFilesResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "C_UID",
+    "Des",
+    "FileType",
+    "FileSize",
+    null as "FileByte",
+    "CreateDate","FileName"
+    FROM PSP_RtfAttachFiles 
+    where 
+    $UID$
+  </select>
+
+</statements>
+</sqlMap>

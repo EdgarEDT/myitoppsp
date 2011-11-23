@@ -1,0 +1,1150 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{549F483D-6CDD-47E6-84A4-7B530EB67DC1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.TLPSP.DEVICE</RootNamespace>
+    <AssemblyName>Itop.TLPSP.DEVICE</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar, Version=5.9.0.0, Culture=neutral, PublicKeyToken=6d649f5e9b3afca5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevComponents.DotNetBar.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraScheduler.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="Interop.PQ_POWERFLOWLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Interop.PQ_POWERFLOWLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Servers, Version=1.0.4265.15098, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="N-1Test, Version=1.0.3769.26726, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\N-1Test.dll</HintPath>
+    </Reference>
+    <Reference Include="n1NL_DLL, Version=1.0.3713.24283, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\n1NL_DLL.dll</HintPath>
+    </Reference>
+    <Reference Include="NetronGraphLib, Version=2.2.3728.20148, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\NetronGraphLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NiuLa_IdleOptimize, Version=1.0.3685.16940, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\NiuLa_IdleOptimize.dll</HintPath>
+    </Reference>
+    <Reference Include="ShortBuscir_dll, Version=1.0.3806.16874, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\ShortBuscir_dll.dll</HintPath>
+    </Reference>
+    <Reference Include="shortcir_dll, Version=1.0.3671.27283, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\shortcir_dll.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TLPSP_Disflow, Version=1.0.3772.19074, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\TLPSP_Disflow.dll</HintPath>
+    </Reference>
+    <Reference Include="TlPsp_Gauss_Seidel, Version=1.0.3685.16883, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\TlPsp_Gauss_Seidel.dll</HintPath>
+    </Reference>
+    <Reference Include="TLPSP_IdleOptimize, Version=1.0.3667.28431, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\TLPSP_IdleOptimize.dll</HintPath>
+    </Reference>
+    <Reference Include="TlPsp_NiuLa, Version=1.0.3685.16857, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\TlPsp_NiuLa.dll</HintPath>
+    </Reference>
+    <Reference Include="TlPsp_N_RZYz, Version=1.0.3685.16916, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\TlPsp_N_RZYz.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutojxtLayout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Control\UCBDZsbtopo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCBDZsbtopo.Designer.cs">
+      <DependentUpon>UCBDZsbtopo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceDY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceDY.Designer.cs">
+      <DependentUpon>UCDeviceDY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCGraph.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCGraph.Designer.cs">
+      <DependentUpon>UCGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceDXXH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceDXXH.Designer.cs">
+      <DependentUpon>UCDeviceDXXH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDevicePWB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDevicePWB.Designer.cs">
+      <DependentUpon>UCDevicePWB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDevicePWKG.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDevicePWKG.Designer.cs">
+      <DependentUpon>UCDevicePWKG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceDRHXH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceDRHXH.Designer.cs">
+      <DependentUpon>UCDeviceDRHXH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceZX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceZX.Designer.cs">
+      <DependentUpon>UCDeviceZX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceRDQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceRDQ.Designer.cs">
+      <DependentUpon>UCDeviceRDQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceBYQTWO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceBYQTWO.Designer.cs">
+      <DependentUpon>UCDeviceBYQTWO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceDX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceDX.Designer.cs">
+      <DependentUpon>UCDeviceDX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceFZX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceFZX.Designer.cs">
+      <DependentUpon>UCDeviceFZX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceLUX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceLUX.Designer.cs">
+      <DependentUpon>UCDeviceLUX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceType.cs" />
+    <Compile Include="Control\UCDeviceBDZ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceBDZ.Designer.cs">
+      <DependentUpon>UCDeviceBDZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceFH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceFH.Designer.cs">
+      <DependentUpon>UCDeviceFH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceHG.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceHG.Designer.cs">
+      <DependentUpon>UCDeviceHG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceML.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceML.Designer.cs">
+      <DependentUpon>UCDeviceML.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceML2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceML2.Designer.cs">
+      <DependentUpon>UCDeviceML2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceMX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceMX.Designer.cs">
+      <DependentUpon>UCDeviceMX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceXL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceXL.Designer.cs">
+      <DependentUpon>UCDeviceXL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceBYQ2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceBYQ2.Designer.cs">
+      <DependentUpon>UCDeviceBYQ2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceBYQ3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceBYQ3.Designer.cs">
+      <DependentUpon>UCDeviceBYQ3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceFDJ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceFDJ.Designer.cs">
+      <DependentUpon>UCDeviceFDJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceDLQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceDLQ.Designer.cs">
+      <DependentUpon>UCDeviceDLQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceKG.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceKG.Designer.cs">
+      <DependentUpon>UCDeviceKG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceCLDR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceCLDR.Designer.cs">
+      <DependentUpon>UCDeviceCLDR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceBLDR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceBLDR.Designer.cs">
+      <DependentUpon>UCDeviceBLDR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceCLDK.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceCLDK.Designer.cs">
+      <DependentUpon>UCDeviceCLDK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\UCDeviceBLDK.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceBLDK.Designer.cs">
+      <DependentUpon>UCDeviceBLDK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceHelper.cs" />
+    <Compile Include="Dialog\AddDlqiform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\AddDlqiform.Designer.cs">
+      <DependentUpon>AddDlqiform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmBDZdlg2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmBDZdlg2.Designer.cs">
+      <DependentUpon>frmBDZdlg2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmBdzSb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmBdzSb.Designer.cs">
+      <DependentUpon>frmBdzSb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmDevicedlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmDevicedlg.Designer.cs">
+      <DependentUpon>frmDevicedlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmDHXdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmDHXdlg.Designer.cs">
+      <DependentUpon>frmDHXdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmFHdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmFHdlg.Designer.cs">
+      <DependentUpon>frmFHdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmHGdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmHGdlg.Designer.cs">
+      <DependentUpon>frmHGdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmImgAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmImgAdd.Designer.cs">
+      <DependentUpon>frmImgAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmML2dlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmML2dlg.Designer.cs">
+      <DependentUpon>frmML2dlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmMLdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmMLdlg.Designer.cs">
+      <DependentUpon>frmMLdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmXLdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmXLdlg.Designer.cs">
+      <DependentUpon>frmXLdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmBYQ2dlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmBYQ2dlg.Designer.cs">
+      <DependentUpon>frmBYQ2dlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmBYQ3dlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmBYQ3dlg.Designer.cs">
+      <DependentUpon>frmBYQ3dlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmFDJdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmFDJdlg.Designer.cs">
+      <DependentUpon>frmFDJdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmDLQdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmDLQdlg.Designer.cs">
+      <DependentUpon>frmDLQdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmKGdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmKGdlg.Designer.cs">
+      <DependentUpon>frmKGdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmCLDRdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmCLDRdlg.Designer.cs">
+      <DependentUpon>frmCLDRdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmBLDRdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmBLDRdlg.Designer.cs">
+      <DependentUpon>frmBLDRdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmCLDKdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmCLDKdlg.Designer.cs">
+      <DependentUpon>frmCLDKdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmBLDKdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmBLDKdlg.Designer.cs">
+      <DependentUpon>frmBLDKdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmBDZdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmBDZdlg.Designer.cs">
+      <DependentUpon>frmBDZdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmDYdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmDYdlg.Designer.cs">
+      <DependentUpon>frmDYdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmDXXHdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmDXXHdlg.Designer.cs">
+      <DependentUpon>frmDXXHdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmPWdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmPWdlg.Designer.cs">
+      <DependentUpon>frmPWdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmPWKGdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmPWKGdlg.Designer.cs">
+      <DependentUpon>frmPWKGdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmDRHXHdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmDRHXHdlg.Designer.cs">
+      <DependentUpon>frmDRHXHdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmZXdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmZXdlg.Designer.cs">
+      <DependentUpon>frmZXdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmRDQdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmRDQdlg.Designer.cs">
+      <DependentUpon>frmRDQdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmBYQTWOdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmBYQTWOdlg.Designer.cs">
+      <DependentUpon>frmBYQTWOdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmDXdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmDXdlg.Designer.cs">
+      <DependentUpon>frmDXdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmFZXdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmFZXdlg.Designer.cs">
+      <DependentUpon>frmFZXdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmLUXdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmLUXdlg.Designer.cs">
+      <DependentUpon>frmLUXdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\complex.cs" />
+    <Compile Include="ELC\CtrlDlqicheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELC\CtrlDlqicheck.Designer.cs">
+      <DependentUpon>CtrlDlqicheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\CtrlLayoutList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELC\CtrlLayoutList.designer.cs">
+      <DependentUpon>CtrlLayoutList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\CtrlSubstation_Info.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELC\CtrlSubstation_Info.designer.cs">
+      <DependentUpon>CtrlSubstation_Info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\DefineDelform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\DefineDelform.Designer.cs">
+      <DependentUpon>DefineDelform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\DlqiCheckform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\DlqiCheckform.Designer.cs">
+      <DependentUpon>DlqiCheckform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\ElcRel.cs" />
+    <Compile Include="ELC\ElectricLoadCal.cs" />
+    <Compile Include="ELC\ElectricRelcheck.cs" />
+    <Compile Include="ELC\ElectricShorti.cs" />
+    <Compile Include="ELC\ElectricWjgh.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ELC\FileReadDL.cs" />
+    <Compile Include="ELC\FileReadDV.cs" />
+    <Compile Include="ELC\FileReadV.cs" />
+    <Compile Include="ELC\FrmLayoutListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\FrmLayoutListDialog.designer.cs">
+      <DependentUpon>FrmLayoutListDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\FrmLayoutSubstationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\FrmLayoutSubstationInfo.designer.cs">
+      <DependentUpon>FrmLayoutSubstationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\frmNewProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\frmNewProject.Designer.cs">
+      <DependentUpon>frmNewProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\frmDeviceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\frmDeviceList.designer.cs">
+      <DependentUpon>frmDeviceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\FrmPicTreeSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\FrmPicTreeSelect.designer.cs">
+      <DependentUpon>FrmPicTreeSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\FrmPicTypeSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\FrmPicTypeSelect.designer.cs">
+      <DependentUpon>FrmPicTypeSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\FrmSubstation_InfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\FrmSubstation_InfoDialog.designer.cs">
+      <DependentUpon>FrmSubstation_InfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\PartRelform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\PartRelform.Designer.cs">
+      <DependentUpon>PartRelform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\RelFormdialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\RelFormdialog.Designer.cs">
+      <DependentUpon>RelFormdialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\SelshortbusForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\SelshortbusForm1.Designer.cs">
+      <DependentUpon>SelshortbusForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\ShortTform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\ShorttypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\WebN1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\WebN1.Designer.cs">
+      <DependentUpon>WebN1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\FileReadDLL.cs" />
+    <Compile Include="ELC\OuptResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\OuptResultForm.Designer.cs">
+      <DependentUpon>OuptResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileClass.cs" />
+    <Compile Include="frmAutojxt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAutojxt.Designer.cs">
+      <DependentUpon>frmAutojxt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeviceManagerView2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeviceManagerView2.Designer.cs">
+      <DependentUpon>frmDeviceManagerView2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeviceSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeviceList.Designer.cs">
+      <DependentUpon>frmDeviceSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeviceManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeviceManager.Designer.cs">
+      <DependentUpon>frmDeviceManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmMXdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmMXdlg.Designer.cs">
+      <DependentUpon>frmMXdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDS.Designer.cs">
+      <DependentUpon>frmDS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNodeTreedlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectSub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectSub.Designer.cs">
+      <DependentUpon>frmSelectSub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frnReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frnReport.Designer.cs">
+      <DependentUpon>frnReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mysql\frmImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mysql\frmImport.Designer.cs">
+      <DependentUpon>frmImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mysql\frmImport.funs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OddEven.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmDeviceManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDeviceManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceBase.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UCDeviceBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\itop.domain.graphics.pspdev.datasource" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Control\UCDeviceBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDeviceBase.Designer.cs">
+      <DependentUpon>UCDeviceBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProjectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProjectManager.Designer.cs">
+      <DependentUpon>frmProjectManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ShapeHelper.cs" />
+    <Compile Include="Control\UCGraph.Ex.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XtraSelectfrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeviceManagerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeviceManagerView.Designer.cs">
+      <DependentUpon>frmDeviceManagerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDevSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Control\UCBDZsbtopo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UCBDZsbtopo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceMX.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UCDeviceMX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceXL.resx">
+      <DependentUpon>UCDeviceXL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceBYQ2.resx">
+      <DependentUpon>UCDeviceBYQ2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceBYQ3.resx">
+      <DependentUpon>UCDeviceBYQ3.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceFDJ.resx">
+      <DependentUpon>UCDeviceFDJ.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceDLQ.resx">
+      <DependentUpon>UCDeviceDLQ.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceKG.resx">
+      <DependentUpon>UCDeviceKG.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceCLDR.resx">
+      <DependentUpon>UCDeviceCLDR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceBLDR.resx">
+      <DependentUpon>UCDeviceBLDR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceCLDK.resx">
+      <DependentUpon>UCDeviceCLDK.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceBLDK.resx">
+      <DependentUpon>UCDeviceBLDK.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCGraph.resx">
+      <DependentUpon>UCGraph.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDevicePWB.resx">
+      <DependentUpon>UCDevicePWB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDevicePWKG.resx">
+      <DependentUpon>UCDevicePWKG.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceZX.resx">
+      <DependentUpon>UCDeviceZX.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceRDQ.resx">
+      <DependentUpon>UCDeviceRDQ.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceBYQTWO.resx">
+      <DependentUpon>UCDeviceBYQTWO.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceDX.resx">
+      <DependentUpon>UCDeviceDX.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceFZX.resx">
+      <DependentUpon>UCDeviceFZX.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDeviceLUX.resx">
+      <DependentUpon>UCDeviceLUX.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devicetypes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\AddDlqiform.resx">
+      <DependentUpon>AddDlqiform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmBDZdlg2.resx">
+      <DependentUpon>frmBDZdlg2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmBdzSb.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmBdzSb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmDHXdlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDHXdlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmFHdlg.resx">
+      <DependentUpon>frmFHdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmHGdlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmHGdlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmImgAdd.resx">
+      <DependentUpon>frmImgAdd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmML2dlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmML2dlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmMLdlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMLdlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmMXdlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMXdlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmXLdlg.resx">
+      <DependentUpon>frmXLdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmBYQ2dlg.resx">
+      <DependentUpon>frmBYQ2dlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmBYQ3dlg.resx">
+      <DependentUpon>frmBYQ3dlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmFDJdlg.resx">
+      <DependentUpon>frmFDJdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmDLQdlg.resx">
+      <DependentUpon>frmDLQdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmKGdlg.resx">
+      <DependentUpon>frmKGdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmCLDRdlg.resx">
+      <DependentUpon>frmCLDRdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmBLDRdlg.resx">
+      <DependentUpon>frmBLDRdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmCLDKdlg.resx">
+      <DependentUpon>frmCLDKdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmBLDKdlg.resx">
+      <DependentUpon>frmBLDKdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmBDZdlg.resx">
+      <DependentUpon>frmBDZdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmDYdlg.resx">
+      <DependentUpon>frmDYdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmDXXHdlg.resx">
+      <DependentUpon>frmDXXHdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmPWdlg.resx">
+      <DependentUpon>frmPWdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmPWKGdlg.resx">
+      <DependentUpon>frmPWKGdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmDRHXHdlg.resx">
+      <DependentUpon>frmDRHXHdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmZXdlg.resx">
+      <DependentUpon>frmZXdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmRDQdlg.resx">
+      <DependentUpon>frmRDQdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmBYQTWOdlg.resx">
+      <DependentUpon>frmBYQTWOdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmDXdlg.resx">
+      <DependentUpon>frmDXdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmFZXdlg.resx">
+      <DependentUpon>frmFZXdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmLUXdlg.resx">
+      <DependentUpon>frmLUXdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\CtrlDlqicheck.resx">
+      <DependentUpon>CtrlDlqicheck.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\CtrlLayoutList.resx">
+      <DependentUpon>CtrlLayoutList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\CtrlSubstation_Info.resx">
+      <DependentUpon>CtrlSubstation_Info.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\DefineDelform.resx">
+      <DependentUpon>DefineDelform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\DlqiCheckform.resx">
+      <DependentUpon>DlqiCheckform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\FrmLayoutListDialog.resx">
+      <DependentUpon>FrmLayoutListDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\FrmLayoutSubstationInfo.resx">
+      <DependentUpon>FrmLayoutSubstationInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\frmNewProject.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmNewProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\frmDeviceList.resx">
+      <DependentUpon>frmDeviceList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\FrmPicTreeSelect.resx">
+      <DependentUpon>FrmPicTreeSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\FrmPicTypeSelect.resx">
+      <DependentUpon>FrmPicTypeSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\FrmSubstation_InfoDialog.resx">
+      <DependentUpon>FrmSubstation_InfoDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\PartRelform.resx">
+      <DependentUpon>PartRelform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\RelFormdialog.resx">
+      <DependentUpon>RelFormdialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\SelshortbusForm1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SelshortbusForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\ShortTform.resx">
+      <DependentUpon>ShortTform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\ShorttypeForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ShorttypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\WebN1.resx">
+      <DependentUpon>WebN1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\OuptResultForm.resx">
+      <DependentUpon>OuptResultForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAutojxt.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAutojxt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeviceManagerView2.resx">
+      <DependentUpon>frmDeviceManagerView2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeviceSelect.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDeviceSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDS.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNodeTreedlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmNodeTreedlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProjectManager.resx">
+      <DependentUpon>frmProjectManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectSub.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSelectSub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frnReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frnReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mysql\frmImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraSelectfrm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>XtraSelectfrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeviceManagerView.resx">
+      <DependentUpon>frmDeviceManagerView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDevSelect.resx">
+      <DependentUpon>frmDevSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PspShapesLib\PspShapesLib.csproj">
+      <Project>{A2A706EF-0A09-45A2-9199-9BD4844BE91E}</Project>
+      <Name>PspShapesLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mysql\importmap.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

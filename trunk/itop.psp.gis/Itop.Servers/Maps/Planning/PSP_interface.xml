@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_interface' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_interface' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_interface' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_interfaceResult' class='PSP_interface'>
+			<result property='UID' column='UID' />
+			<result property='UYear' column='UYear' />
+			<result property='UMonth' column='UMonth' />
+			<result property='BdzId' column='BdzId' />
+			<result property='FQId' column='FQId' />
+			<result property='FxtId' column='FxtId' />
+			<result property='Substation_Name' column='Substation_Name' />
+			<result property='Switch_Id' column='Switch_Id' />
+			<result property='Switch_Name' column='Switch_Name' />
+			<result property='LoadValue' column='LoadValue' />
+			<result property='Number' column='Number' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_interface' parameterClass='PSP_interface'>
+		INSERT INTO PSP_interface		(
+			"UID",
+			"UYear",
+			"UMonth",
+			"BdzId",
+			"FQId",
+			"FxtId",
+			"Substation_Name",
+			"Switch_Id",
+			"Switch_Name",
+			"LoadValue",
+			"Number",
+			"col1",
+			"col2",
+			"col3"
+		)
+		VALUES
+		(
+			#UID#,
+			#UYear#,
+			#UMonth#,
+			#BdzId#,
+			#FQId#,
+			#FxtId#,
+			#Substation_Name#,
+			#Switch_Id#,
+			#Switch_Name#,
+			#LoadValue#,
+			#Number#,
+			#col1#,
+			#col2#,
+			#col3#
+		)
+	</insert>
+	<delete id='DeletePSP_interface' parameterClass='PSP_interface'>
+    DELETE FROM PSP_interface
+    WHERE
+    UID = #UID#
+  </delete>
+	<update id='UpdatePSP_interface' parameterClass='PSP_interface'>
+    UPDATE PSP_interface
+    SET
+    "UID" = #UID#,
+    "UYear" = #UYear#,
+    "UMonth" = #UMonth#,
+    "BdzId" = #BdzId#,
+    "FQId" = #FQId#,
+    "FxtId" = #FxtId#,
+    "Substation_Name" = #Substation_Name#,
+    "Switch_Id" = #Switch_Id#,
+    "Switch_Name" = #Switch_Name#,
+    "LoadValue" = #LoadValue#,
+    "Number" = #Number#,
+    "col1" = #col1#,
+    "col2" = #col2#,
+    "col3" = #col3#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectPSP_interfaceList' resultMap='PSP_interfaceResult' parameterClass='PSP_interface'>
+		SELECT
+			"UID",
+			"UYear",
+			"UMonth",
+			"BdzId",
+			"FQId",
+			"FxtId",
+			"Substation_Name",
+			"Switch_Id",
+			"Switch_Name",
+			"LoadValue",
+			"Number",
+			"col1",
+			"col2",
+			"col3"
+		FROM PSP_interface
+	</select>
+	<select id='SelectPSP_interfaceByKey' resultMap='PSP_interfaceResult' parameterClass='PSP_interface'>
+    SELECT
+    "UID",
+    "UYear",
+    "UMonth",
+    "BdzId",
+    "FQId",
+    "FxtId",
+    "Substation_Name",
+    "Switch_Id",
+    "Switch_Name",
+    "LoadValue",
+    "Number",
+    "col1",
+    "col2",
+    "col3"
+    FROM PSP_interface
+    WHERE
+    UID = #UID#
+  </select>
+  <select id='SelectPSP_interfaceByWhere' resultMap='PSP_interfaceResult' parameterClass='PSP_interface'>
+    SELECT
+    "UID",
+    "UYear",
+    "UMonth",
+    "BdzId",
+    "FQId",
+    "FxtId",
+    "Substation_Name",
+    "Switch_Id",
+    "Switch_Name",
+    "LoadValue",
+    "Number",
+    "col1",
+    "col2",
+    "col3"
+    FROM PSP_interface
+    where $col1$
+  </select>
+</statements>
+</sqlMap>

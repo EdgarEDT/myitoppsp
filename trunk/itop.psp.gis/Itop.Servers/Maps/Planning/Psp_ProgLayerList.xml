@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Psp_ProgLayerList' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Psp_ProgLayerList' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.Psp_ProgLayerList' />
+</alias>
+	<resultMaps>
+		<resultMap id='Psp_ProgLayerListResult' class='Psp_ProgLayerList'>
+			<result property='UID' column='UID' />
+			<result property='ProgUID' column='ProgUID' />
+			<result property='LayerGradeID' column='LayerGradeID' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPsp_ProgLayerList' parameterClass='Psp_ProgLayerList'>
+		INSERT INTO Psp_ProgLayerList		(
+			"UID",
+			"ProgUID",
+			"LayerGradeID",
+			"col1",
+			"col2"
+		)
+		VALUES
+		(
+			#UID#,
+			#ProgUID#,
+			#LayerGradeID#,
+			#col1#,
+			#col2#
+		)
+	</insert>
+	<delete id='DeletePsp_ProgLayerList' parameterClass='Psp_ProgLayerList'>
+		DELETE FROM Psp_ProgLayerList
+		WHERE
+			UID = #UID#
+	</delete>
+  <update id='DeletePsp_ProgLayerListByPID' parameterClass='Psp_ProgLayerList'>
+    DELETE FROM Psp_ProgLayerList
+    WHERE
+    ProgUID = #ProgUID#
+  </update>
+	<update id='UpdatePsp_ProgLayerList' parameterClass='Psp_ProgLayerList'>
+		UPDATE Psp_ProgLayerList
+		SET
+			"ProgUID" = #ProgUID#,
+			"LayerGradeID" = #LayerGradeID#,
+			"col1" = #col1#,
+			"col2" = #col2#
+		WHERE
+			UID = #UID#
+	</update> 
+	<select id='SelectPsp_ProgLayerListList' resultMap='Psp_ProgLayerListResult' parameterClass='Psp_ProgLayerList'>
+		SELECT
+			"UID",
+			"ProgUID",
+			"LayerGradeID",
+			"col1",
+			"col2"
+		FROM Psp_ProgLayerList
+	</select>
+  <select id='SelectPsp_ProgLayerListListByProgUID' resultMap='Psp_ProgLayerListResult' parameterClass='Psp_ProgLayerList'>
+    SELECT
+    "UID",
+    "ProgUID",
+    "LayerGradeID",
+    "col1",
+    "col2"
+    FROM Psp_ProgLayerList 
+    where ProgUID= #ProgUID# order by col1
+  </select>
+	<select id='SelectPsp_ProgLayerListByKey' resultMap='Psp_ProgLayerListResult' parameterClass='Psp_ProgLayerList'>
+		SELECT
+			"UID",
+			"ProgUID",
+			"LayerGradeID",
+			"col1",
+			"col2"
+		FROM Psp_ProgLayerList
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

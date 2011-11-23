@@ -1,0 +1,151 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Table_GDP' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Ps_Table_GDP' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.Ps_Table_GDP' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Ps_Table_GDPResult' class='Ps_Table_GDP'>
+      <result property='ID' column='ID' />
+      <result property='Area' column='Area' />
+      <result property='ParentID' column='ParentID' />
+      <result property='ProjectID' column='ProjectID' />
+      <result property='SortID' column='SortID' />
+      <result property='Yearf' column='Yearf' />
+      <result property='Population' column='Population' />
+      <result property='GDP' column='GDP' />
+      <result property='GDPrate' column='GDPrate' />
+      <result property='GDPper' column='GDPper' />
+      <result property='Col1' column='Col1' />
+      <result property='Col2' column='Col2' />
+      <result property='Col3' column='Col3' />
+      <result property='Col4' column='Col4' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPs_Table_GDP' parameterClass='Ps_Table_GDP'>
+      INSERT INTO Ps_Table_GDP		(
+      "ID",
+      "Area",
+      "ParentID",
+      "ProjectID",
+      "SortID",
+      "Yearf",
+      "Population",
+      "GDP",
+      "GDPrate",
+      "GDPper",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      )
+      VALUES
+      (
+      #ID#,
+      #Area#,
+      #ParentID#,
+      #ProjectID#,
+      #SortID#,
+      #Yearf#,
+      #Population#,
+      #GDP#,
+      #GDPrate#,
+      #GDPper#,
+      #Col1#,
+      #Col2#,
+      #Col3#,
+      #Col4#
+      )
+    </insert>
+    <delete id='DeletePs_Table_GDP' parameterClass='Ps_Table_GDP'>
+      DELETE FROM Ps_Table_GDP
+      WHERE
+      ID = #ID#
+    </delete>
+    <delete id='DeletePs_Table_GDPByConn' parameterClass='string'>
+      DELETE FROM Ps_Table_GDP
+      WHERE
+      $value$
+    </delete>
+    <update id='UpdatePs_Table_GDP' parameterClass='Ps_Table_GDP'>
+      UPDATE Ps_Table_GDP
+      SET
+      "Area" = #Area#,
+      "ParentID" = #ParentID#,
+      "ProjectID" = #ProjectID#,
+      "SortID" = #SortID#,
+      "Yearf" = #Yearf#,
+      "Population" = #Population#,
+      "GDP" = #GDP#,
+      "GDPrate" = #GDPrate#,
+      "GDPper" = #GDPper#,
+      "Col1" = #Col1#,
+      "Col2" = #Col2#,
+      "Col3" = #Col3#,
+      "Col4" = #Col4#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPs_Table_GDPList' resultMap='Ps_Table_GDPResult' parameterClass='Ps_Table_GDP'>
+      SELECT
+      "ID",
+      "Area",
+      "ParentID",
+      "ProjectID",
+      "SortID",
+      "Yearf",
+      "Population",
+      "GDP",
+      "GDPrate",
+      "GDPper",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      FROM Ps_Table_GDP
+    </select>
+    <select id='SelectPs_Table_GDPByKey' resultMap='Ps_Table_GDPResult' parameterClass='Ps_Table_GDP'>
+      SELECT
+      "ID",
+      "Area",
+      "ParentID",
+      "ProjectID",
+      "SortID",
+      "Yearf",
+      "Population",
+      "GDP",
+      "GDPrate",
+      "GDPper",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      FROM Ps_Table_GDP
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPs_Table_GDPByConn' resultMap='Ps_Table_GDPResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "Area",
+      "ParentID",
+      "ProjectID",
+      "SortID",
+      "Yearf",
+      "Population",
+      "GDP",
+      "GDPrate",
+      "GDPper",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      FROM Ps_Table_GDP
+      WHERE
+      $value$
+    </select>
+    <select id='SelectGDPSort' resultClass='int' parameterClass='string'>
+      Select Max(SortID) FROM Ps_Table_GDP
+    </select>
+  </statements>
+</sqlMap>

@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_SubstationSelect' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_SubstationSelect' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_SubstationSelect' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_SubstationSelectResult' class='PSP_SubstationSelect'>
+			<result property='UID' column='UID' />
+			<result property='SName' column='SName' />
+			<result property='EleID' column='EleID' />
+			<result property='SvgID' column='SvgID' />
+			<result property='Remark' column='Remark' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+			<result property='col4' column='col4' />
+			<result property='col5' column='col5' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_SubstationSelect' parameterClass='PSP_SubstationSelect'>
+		INSERT INTO PSP_SubstationSelect		(
+			"UID",
+			"SName",
+			"EleID",
+			"SvgID",
+			"Remark",
+			"col1",
+			"col2",
+			"col3",
+			"col4",
+			"col5"
+		)
+		VALUES
+		(
+			#UID#,
+			#SName#,
+			#EleID#,
+			#SvgID#,
+			#Remark#,
+			#col1#,
+			#col2#,
+			#col3#,
+			#col4#,
+			#col5#
+		)
+	</insert>
+	<delete id='DeletePSP_SubstationSelect' parameterClass='PSP_SubstationSelect'>
+		DELETE FROM PSP_SubstationSelect
+		WHERE
+			UID = #UID#
+	</delete>
+  <delete id='DeletePSP_SubstationByEleID' parameterClass='PSP_SubstationSelect'>
+    DELETE FROM PSP_SubstationSelect
+    WHERE
+    EleID = #EleID# and SvgID= #SvgID#
+  </delete>
+	<update id='UpdatePSP_SubstationSelect' parameterClass='PSP_SubstationSelect'>
+		UPDATE PSP_SubstationSelect
+		SET
+			"SName" = #SName#,
+			"EleID" = #EleID#,
+			"SvgID" = #SvgID#,
+			"Remark" = #Remark#,
+			"col1" = #col1#,
+			"col2" = #col2#,
+			"col3" = #col3#,
+			"col4" = #col4#,
+			"col5" = #col5#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPSP_SubstationSelectList' resultMap='PSP_SubstationSelectResult' parameterClass='PSP_SubstationSelect'>
+    SELECT
+    "UID",
+    "SName",
+    "EleID",
+    "SvgID",
+    "Remark",
+    "col1",
+    "col2",
+    "col3",
+    "col4",
+    "col5"
+    FROM PSP_SubstationSelect where col2= #col2# order by SName
+  </select>
+	<select id='SelectPSP_SubstationSelectByKey' resultMap='PSP_SubstationSelectResult' parameterClass='PSP_SubstationSelect'>
+		SELECT
+			"UID",
+			"SName",
+			"EleID",
+			"SvgID",
+			"Remark",
+			"col1",
+			"col2",
+			"col3",
+			"col4",
+			"col5"
+		FROM PSP_SubstationSelect
+		WHERE
+			UID = #UID#
+	</select>
+  <select id='SelectPSP_SubstationSelectByName' resultMap='PSP_SubstationSelectResult' parameterClass='PSP_SubstationSelect'>
+    SELECT
+    "UID",
+    "SName",
+    "EleID",
+    "SvgID",
+    "Remark",
+    "col1",
+    "col2",
+    "col3",
+    "col4",
+    "col5"
+    FROM PSP_SubstationSelect
+    WHERE
+    SName = #SName# and 
+    SvgID= #SvgID#
+  </select>
+</statements>
+</sqlMap>

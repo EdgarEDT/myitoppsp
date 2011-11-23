@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SVG_IMAGE' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='SVG_IMAGE' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.SVG_IMAGE' />
+  </alias>
+  <resultMaps>
+    <resultMap id='SVG_IMAGEResult' class='SVG_IMAGE'>
+      <result property='SUID' column='SUID' />
+      <result property='svgID' column='svgID' />
+      <result property='NAME' column='NAME' />
+      <result property='XML' column='XML' />
+      <result property='MDATE' column='MDATE' />
+      <result property='layerID' column='layerID' />
+      <result property='image' column='image' />
+      <result property='col1' column='col1' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertSVG_IMAGE' parameterClass='SVG_IMAGE'>
+      INSERT INTO SVG_IMAGE		(
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "layerID",
+      "image",
+      "col1"
+      )
+      VALUES
+      (
+      #SUID#,
+      #svgID#,
+      #NAME#,
+      #XML#,
+      #MDATE#,
+      #layerID#,
+      #image#,
+      #col1#
+      )
+    </insert>
+    <delete id='DeleteSVG_IMAGE' parameterClass='SVG_IMAGE'>
+      DELETE FROM SVG_IMAGE
+      WHERE
+      SUID = #SUID#
+    </delete>
+    <update id='UpdateSVG_IMAGE' parameterClass='SVG_IMAGE'>
+      UPDATE SVG_IMAGE
+      SET
+      "svgID" = #svgID#,
+      "NAME" = #NAME#,
+      "XML" = #XML#,
+      "MDATE" = #MDATE#,
+      "layerID" = #layerID#,
+      "image" = #image#,
+      "col1" = #col1#
+      WHERE
+      SUID = #SUID#
+    </update>
+    <update id='UpdateSVG_IMAGEXML' parameterClass='SVG_IMAGE'>
+      UPDATE SVG_IMAGE
+      SET
+      "XML" = #XML#,
+      "layerID" = #layerID#
+      WHERE
+      SUID = #SUID#
+    </update>
+    <select id='SelectSVG_IMAGEList' resultMap='SVG_IMAGEResult' parameterClass='SVG_IMAGE'>
+      SELECT
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "layerID",
+      "image",
+      "col1"
+      FROM SVG_IMAGE
+    </select>
+    <select id='SelectSVG_IMAGEByKey' resultMap='SVG_IMAGEResult' parameterClass='SVG_IMAGE'>
+      SELECT
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "layerID",
+      "image",
+      "col1"
+      FROM SVG_IMAGE
+      WHERE
+      SUID = #SUID#
+    </select>
+    <select id='SelectSVG_IMAGEBySvgID' resultMap='SVG_IMAGEResult' parameterClass='SVG_IMAGE'>
+      SELECT
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "layerID",
+      "image",
+      "col1"
+      FROM SVG_IMAGE
+      WHERE
+      svgID = #svgID#
+    </select>
+  </statements>
+</sqlMap>

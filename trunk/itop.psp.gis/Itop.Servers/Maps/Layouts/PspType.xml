@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PspType' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PspType' assembly='Itop.Domain.Layouts.dll' type='Itop.Domain.Layouts.PspType' />
+</alias>
+	<resultMaps>
+		<resultMap id='PspTypeResult' class='PspType'>
+			<result property='UID' column='UID' />
+			<result property='Title' column='Title' />
+			<result property='ParentID' column='ParentID' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='Contents' column='Contents' />
+			<result property='Remark' column='Remark' />
+      <result property='Col1' column='Col1' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPspType' parameterClass='PspType'>
+    INSERT INTO PSP_Type		(
+    "UID",
+    "Title",
+    "ParentID",
+    "CreateDate",
+    "Contents",
+    "Remark","Col1"
+    )
+    VALUES
+    (
+    #UID#,
+    #Title#,
+    #ParentID#,
+    GetDate(),
+    #Contents#,
+    #Remark#,#Col1#
+    )
+  </insert>
+	<delete id='DeletePspType' parameterClass='PspType'>
+		DELETE FROM PSP_Type
+		WHERE
+			UID = #UID#
+	</delete>
+  <delete id='DeletePspTypeByKey' parameterClass='string'>
+    DELETE FROM PSP_Type
+    WHERE
+    UID = #UID#
+  </delete>
+	<update id='UpdatePspType' parameterClass='PspType'>
+    UPDATE PSP_Type
+    SET
+    "Title" = #Title#,
+    "Remark" = #Remark#
+    WHERE
+    UID = #UID#
+  </update>
+  <update id='UpdatePspTypeBy' parameterClass='PspType'>
+    UPDATE PSP_Type
+    SET
+    "Contents" = #Contents#
+    WHERE
+    UID = #UID#
+  </update>
+  <select id='SelectPspTypeList' resultMap='PspTypeResult' parameterClass='PspType'>
+    SELECT
+    "UID",
+    "Title",
+    "ParentID",
+    "CreateDate",
+    null as "Contents",
+    "Remark","Col1"
+    FROM PSP_Type where Col1=#Col1#
+  </select>
+  <select id='SelectPspTypeListByWhere' resultMap='PspTypeResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title",
+    "ParentID",
+    "CreateDate",
+    "Contents",
+    "Remark","Col1"
+    FROM PSP_Type where 
+    $value$
+  </select>
+
+  <select id='SelectPspTypeListByCol1' resultMap='PspTypeResult' parameterClass='PspType'>
+    SELECT
+    "UID",
+    "Title",
+    "ParentID",
+    "CreateDate",
+    "Contents",
+    "Remark","Col1"
+    FROM PSP_Type where Col1=#Col1#
+  </select>
+  <select id='SelectPspTypeByKey' resultMap='PspTypeResult' parameterClass='PspType'>
+    SELECT
+    "UID",
+    "Title",
+    "ParentID",
+    "CreateDate",
+    "Contents",
+    "Remark","Col1"
+    FROM PSP_Type
+    WHERE
+    UID = #UID#
+  </select>
+</statements>
+</sqlMap>

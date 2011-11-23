@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Project' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Project' assembly='Itop.Domain.dll' type='Itop.Domain.RightManager.Project' />
+</alias>
+	<resultMaps>
+		<resultMap id='ProjectResult' class='Project'>
+			<result property='UID' column='UID' />
+			<result property='SortID' column='SortID' />
+			<result property='ProjectCode' column='ProjectCode' />
+			<result property='ProjectName' column='ProjectName' />
+			<result property='ProjectManager' column='ProjectManager' />
+			<result property='Address' column='Address' />
+			<result property='ProjectState' column='ProjectState' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='StartDate' column='StartDate' />
+			<result property='PlanCompleteDate' column='PlanCompleteDate' />
+			<result property='CompleteDate' column='CompleteDate' />
+			<result property='QualityDate' column='QualityDate' />
+			<result property='BecomeEffective' column='BecomeEffective' />
+			<result property='CreateTime' column='CreateTime' />
+			<result property='CreateUserName' column='CreateUserName' />
+			<result property='UpdateTime' column='UpdateTime' />
+			<result property='UpdateUserName' column='UpdateUserName' />
+			<result property='IsGuiDang' column='IsGuiDang' />
+			<result property='GuiDangName' column='GuiDangName' />
+			<result property='GuiDangTime' column='GuiDangTime' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertProject' parameterClass='Project'>
+    INSERT INTO Smmproject		(
+    "UID",
+    "ProjectCode",
+    "ProjectName",
+    "SortID",
+    "ProjectManager",
+    "Address",
+    "ProjectState",
+    "CreateDate",
+    "StartDate",
+    "PlanCompleteDate",
+    "CompleteDate",
+    "QualityDate",
+    "BecomeEffective",
+    "CreateTime",
+    "CreateUserName",
+    "UpdateTime",
+    "UpdateUserName",
+    "IsGuiDang",
+    "GuiDangName",
+    "GuiDangTime"
+    )
+    VALUES
+    (
+    #UID#,
+    #ProjectCode#,
+    #ProjectName#,
+    #SortID#,
+    #ProjectManager#,
+    #Address#,
+    #ProjectState#,
+    #CreateDate#,
+    #StartDate#,
+    #PlanCompleteDate#,
+    #CompleteDate#,
+    #QualityDate#,
+    #BecomeEffective#,
+    GetDate(),
+    #CreateUserName#,
+    GetDate(),
+    #UpdateUserName#,
+    #IsGuiDang#,
+    #GuiDangName#,
+    #GuiDangTime#
+    )
+  </insert>
+	<delete id='DeleteProject' parameterClass='Project'>
+		DELETE FROM Smmproject
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateProject' parameterClass='Project'>
+    UPDATE Smmproject
+    SET
+    "ProjectCode" = #ProjectCode#,
+    "ProjectName" = #ProjectName#,
+    "ProjectManager" = #ProjectManager#,
+    "Address" = #Address#,
+    "ProjectState" = #ProjectState#,
+    "CreateDate" = #CreateDate#,
+    "StartDate" = #StartDate#,
+    "SortID" = #SortID#,
+    "PlanCompleteDate" = #PlanCompleteDate#,
+    "CompleteDate" = #CompleteDate#,
+    "QualityDate" = #QualityDate#,
+    "BecomeEffective" = #BecomeEffective#,
+    "UpdateTime" = GetDate(),
+    "UpdateUserName" = #UpdateUserName#,
+    "IsGuiDang" = #IsGuiDang#,
+    "GuiDangName" = #GuiDangName#,
+    "GuiDangTime" = #GuiDangTime#
+    WHERE
+    UID = #UID#
+  </update>
+
+  <update id='UpdateProjectByGuiDangName' parameterClass='string'>
+    UPDATE Smmproject
+    SET IsGuiDang='是'
+    WHERE
+    UID = #UID#
+  </update>
+  <update id='UpdateProjectByGuiDangNameNo' parameterClass='string'>
+    UPDATE Smmproject
+    SET IsGuiDang='否'
+    WHERE
+    UID = #UID#
+  </update>
+    <select id='SelectProjectList' resultMap='ProjectResult' parameterClass='Project'>
+		SELECT
+			"UID",
+			"SortID",
+			"ProjectCode",
+			"ProjectName",
+			"ProjectManager",
+			"Address",
+			"ProjectState",
+			"CreateDate",
+			"StartDate",
+			"PlanCompleteDate",
+			"CompleteDate",
+			"QualityDate",
+			"BecomeEffective",
+			"CreateTime",
+			"CreateUserName",
+			"UpdateTime",
+			"UpdateUserName",
+			"IsGuiDang",
+			"GuiDangName",
+			"GuiDangTime"
+		FROM Smmproject
+	</select>
+	<select id='SelectProjectByKey' resultMap='ProjectResult' parameterClass='Project'>
+		SELECT
+			"UID",
+			"SortID",
+			"ProjectCode",
+			"ProjectName",
+			"ProjectManager",
+			"Address",
+			"ProjectState",
+			"CreateDate",
+			"StartDate",
+			"PlanCompleteDate",
+			"CompleteDate",
+			"QualityDate",
+			"BecomeEffective",
+			"CreateTime",
+			"CreateUserName",
+			"UpdateTime",
+			"UpdateUserName",
+			"IsGuiDang",
+			"GuiDangName",
+			"GuiDangTime"
+		FROM Smmproject
+		WHERE
+			UID = #UID#
+	</select>
+
+  <select id='SelectProjectByWhere' resultMap='ProjectResult' parameterClass='string'>
+
+    SELECT
+    "UID",
+    "SortID",
+    "ProjectCode",
+    "ProjectName",
+    "ProjectManager",
+    "Address",
+    "ProjectState",
+    "CreateDate",
+    "StartDate",
+    "PlanCompleteDate",
+    "CompleteDate",
+    "QualityDate",
+    "BecomeEffective",
+    "CreateTime",
+    "CreateUserName",
+    "UpdateTime",
+    "UpdateUserName",
+    "IsGuiDang",
+    "GuiDangName",
+    "GuiDangTime"
+    FROM Smmproject
+    WHERE 
+    $GuiDangName$
+
+  </select>
+</statements>
+</sqlMap>

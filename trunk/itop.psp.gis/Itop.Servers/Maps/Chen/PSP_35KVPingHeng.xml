@@ -1,0 +1,442 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_35KVPingHeng' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_35KVPingHeng' assembly='Itop.Domain.Chen.dll' type='Itop.Domain.Chen.PSP_35KVPingHeng' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_35KVPingHengResult' class='PSP_35KVPingHeng'>
+			<result property='UID' column='UID' />
+			<result property='SortID1' column='SortID1' />
+			<result property='SortID2' column='SortID2' />
+			<result property='DiQu' column='DiQu' />
+			<result property='Title' column='Title' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Col3' column='Col3' />
+			<result property='Col4' column='Col4' />
+			<result property='Col5' column='Col5' />
+			<result property='L1' column='L1' />
+			<result property='L2' column='L2' />
+			<result property='L3' column='L3' />
+			<result property='L4' column='L4' />
+			<result property='L5' column='L5' />
+			<result property='L6' column='L6' />
+			<result property='L7' column='L7' />
+			<result property='L8' column='L8' />
+			<result property='L9' column='L9' />
+			<result property='L10' column='L10' />
+			<result property='L11' column='L11' />
+			<result property='L12' column='L12' />
+			<result property='L13' column='L13' />
+			<result property='L14' column='L14' />
+			<result property='L15' column='L15' />
+			<result property='L16' column='L16' />
+			<result property='L17' column='L17' />
+			<result property='L18' column='L18' />
+			<result property='L19' column='L19' />
+			<result property='L20' column='L20' />
+			<result property='L21' column='L21' />
+			<result property='L22' column='L22' />
+			<result property='L23' column='L23' />
+			<result property='L24' column='L24' />
+			<result property='L25' column='L25' />
+			<result property='L26' column='L26' />
+			<result property='L27' column='L27' />
+			<result property='L28' column='L28' />
+			<result property='L29' column='L29' />
+			<result property='L30' column='L30' />
+			<result property='L31' column='L31' />
+			<result property='L32' column='L32' />
+			<result property='L33' column='L33' />
+			<result property='L34' column='L34' />
+			<result property='L35' column='L35' />
+			<result property='L36' column='L36' />
+			<result property='L37' column='L37' />
+			<result property='L38' column='L38' />
+			<result property='L39' column='L39' />
+			<result property='L40' column='L40' />
+			<result property='Type' column='Type' />
+			<result property='Flag' column='Flag' />
+			<result property='CreateTime' column='CreateTime' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_35KVPingHeng' parameterClass='PSP_35KVPingHeng'>
+    INSERT INTO PSP_35KVPingHeng		(
+    "UID",
+    "SortID1",
+    "SortID2",
+    "DiQu",
+    "Title",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4",
+    "Col5",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "L20",
+    "L21",
+    "L22",
+    "L23",
+    "L24",
+    "L25",
+    "L26",
+    "L27",
+    "L28",
+    "L29",
+    "L30",
+    "L31",
+    "L32",
+    "L33",
+    "L34",
+    "L35",
+    "L36",
+    "L37",
+    "L38",
+    "L39",
+    "L40",
+    "Type",
+    "Flag",
+    "CreateTime"
+    )
+    VALUES
+    (
+    #UID#,
+    #SortID1#,
+    #SortID2#,
+    #DiQu#,
+    #Title#,
+    #Col1#,
+    #Col2#,
+    #Col3#,
+    #Col4#,
+    #Col5#,
+    #L1#,
+    #L2#,
+    #L3#,
+    #L4#,
+    #L5#,
+    #L6#,
+    #L7#,
+    #L8#,
+    #L9#,
+    #L10#,
+    #L11#,
+    #L12#,
+    #L13#,
+    #L14#,
+    #L15#,
+    #L16#,
+    #L17#,
+    #L18#,
+    #L19#,
+    #L20#,
+    #L21#,
+    #L22#,
+    #L23#,
+    #L24#,
+    #L25#,
+    #L26#,
+    #L27#,
+    #L28#,
+    #L29#,
+    #L30#,
+    #L31#,
+    #L32#,
+    #L33#,
+    #L34#,
+    #L35#,
+    #L36#,
+    #L37#,
+    #L38#,
+    #L39#,
+    #L40#,
+    #Type#,
+    #Flag#,
+    #CreateTime#
+    )
+  </insert>
+	<delete id='DeletePSP_35KVPingHeng' parameterClass='PSP_35KVPingHeng'>
+		DELETE FROM PSP_35KVPingHeng
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_35KVPingHeng' parameterClass='PSP_35KVPingHeng'>
+    UPDATE PSP_35KVPingHeng
+    SET
+    SortID1 = #SortID1#,
+    DiQu = #DiQu#,
+    "SortID2" = #SortID2#,
+    "Title" = #Title#,
+    "Col1" = #Col1#,
+    "Col2" = #Col2#,
+    "Col3" = #Col3#,
+    "Col4" = #Col4#,
+    "Col5" = #Col5#,
+    "L1" = #L1#,
+    "L2" = #L2#,
+    "L3" = #L3#,
+    "L4" = #L4#,
+    "L5" = #L5#,
+    "L6" = #L6#,
+    "L7" = #L7#,
+    "L8" = #L8#,
+    "L9" = #L9#,
+    "L10" = #L10#,
+    "L11" = #L11#,
+    "L12" = #L12#,
+    "L13" = #L13#,
+    "L14" = #L14#,
+    "L15" = #L15#,
+    "L16" = #L16#,
+    "L17" = #L17#,
+    "L18" = #L18#,
+    "L19" = #L19#,
+    "L20" = #L20#,
+    "L21" = #L21#,
+    "L22" = #L22#,
+    "L23" = #L23#,
+    "L24" = #L24#,
+    "L25" = #L25#,
+    "L26" = #L26#,
+    "L27" = #L27#,
+    "L28" = #L28#,
+    "L29" = #L29#,
+    "L30" = #L30#,
+    "L31" = #L31#,
+    "L32" = #L32#,
+    "L33" = #L33#,
+    "L34" = #L34#,
+    "L35" = #L35#,
+    "L36" = #L36#,
+    "L37" = #L37#,
+    "L38" = #L38#,
+    "L39" = #L39#,
+    "L40" = #L40#,
+    "Type" = #Type#,
+    "Flag" = #Flag#
+    WHERE
+    UID = #UID#
+  </update>
+
+
+  <update id='UpdatePSP_35KVPingHengByTypeAndTitle' parameterClass='PSP_35KVPingHeng'>
+    UPDATE PSP_35KVPingHeng
+    SET
+    SortID1 = #SortID1#,
+    DiQu = #DiQu#
+    WHERE
+    Type = #Type# and DiQu = #Title#
+  </update>
+
+  <update id='UpdatePSP_35KVPingHengByTypeAndTitleByDelete' parameterClass='PSP_35KVPingHeng'>
+    delete PSP_35KVPingHeng
+    WHERE
+    Type = #Type# and DiQu = #DiQu#
+  </update>
+  
+	<select id='SelectPSP_35KVPingHengList' resultMap='PSP_35KVPingHengResult' parameterClass='PSP_35KVPingHeng'>
+		SELECT
+			"UID",
+			"SortID1",
+			"SortID2",
+			"DiQu",
+			"Title",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"L1",
+			"L2",
+			"L3",
+			"L4",
+			"L5",
+			"L6",
+			"L7",
+			"L8",
+			"L9",
+			"L10",
+			"L11",
+			"L12",
+			"L13",
+			"L14",
+			"L15",
+			"L16",
+			"L17",
+			"L18",
+			"L19",
+			"L20",
+			"L21",
+			"L22",
+			"L23",
+			"L24",
+			"L25",
+			"L26",
+			"L27",
+			"L28",
+			"L29",
+			"L30",
+			"L31",
+			"L32",
+			"L33",
+			"L34",
+			"L35",
+			"L36",
+			"L37",
+			"L38",
+			"L39",
+			"L40",
+			"Type",
+			"Flag",
+			"CreateTime"
+		FROM PSP_35KVPingHeng
+	</select>
+	<select id='SelectPSP_35KVPingHengByKey' resultMap='PSP_35KVPingHengResult' parameterClass='PSP_35KVPingHeng'>
+		SELECT
+			"UID",
+			"SortID1",
+			"SortID2",
+			"DiQu",
+			"Title",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"L1",
+			"L2",
+			"L3",
+			"L4",
+			"L5",
+			"L6",
+			"L7",
+			"L8",
+			"L9",
+			"L10",
+			"L11",
+			"L12",
+			"L13",
+			"L14",
+			"L15",
+			"L16",
+			"L17",
+			"L18",
+			"L19",
+			"L20",
+			"L21",
+			"L22",
+			"L23",
+			"L24",
+			"L25",
+			"L26",
+			"L27",
+			"L28",
+			"L29",
+			"L30",
+			"L31",
+			"L32",
+			"L33",
+			"L34",
+			"L35",
+			"L36",
+			"L37",
+			"L38",
+			"L39",
+			"L40",
+			"Type",
+			"Flag",
+			"CreateTime"
+		FROM PSP_35KVPingHeng
+		WHERE
+			UID = #UID#
+	</select>
+
+  <select id='SelectPSP_35KVPingHengByType' resultMap='PSP_35KVPingHengResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "SortID1",
+    "SortID2",
+    "DiQu",
+    "Title",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4",
+    "Col5",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "L20",
+    "L21",
+    "L22",
+    "L23",
+    "L24",
+    "L25",
+    "L26",
+    "L27",
+    "L28",
+    "L29",
+    "L30",
+    "L31",
+    "L32",
+    "L33",
+    "L34",
+    "L35",
+    "L36",
+    "L37",
+    "L38",
+    "L39",
+    "L40",
+    "Type",
+    "Flag",
+    "CreateTime"
+    FROM PSP_35KVPingHeng
+    WHERE
+    Type = #Type# order by CreateTime,SortID2
+  </select>
+
+
+  <update id='UpdatePSP_35KVPingHengByTypeWhere' parameterClass='PSP_35KVPingHeng'>
+    UPDATE PSP_35KVPingHeng
+    SET
+    $Title$
+    WHERE
+    Type = #Type#
+  </update>
+</statements>
+</sqlMap>

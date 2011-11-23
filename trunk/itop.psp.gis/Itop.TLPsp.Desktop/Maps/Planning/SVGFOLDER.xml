@@ -1,0 +1,66 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SVGFOLDER' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='SVGFOLDER' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.SVGFOLDER' />
+</alias>
+	<resultMaps>
+		<resultMap id='SVGFOLDERResult' class='SVGFOLDER'>
+			<result property='SUID' column='SUID' />
+			<result property='FOLDERNAME' column='FOLDERNAME' />
+			<result property='PARENTID' column='PARENTID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSVGFOLDER' parameterClass='SVGFOLDER'>
+		INSERT INTO SVGFOLDER		(
+			"SUID",
+			"FOLDERNAME",
+			"PARENTID"
+		)
+		VALUES
+		(
+			#SUID#,
+			#FOLDERNAME#,
+			#PARENTID#
+		)
+	</insert>
+	<delete id='DeleteSVGFOLDER' parameterClass='SVGFOLDER'>
+		DELETE FROM SVGFOLDER
+		WHERE
+			SUID = #SUID#
+	</delete>
+	<update id='UpdateSVGFOLDER' parameterClass='SVGFOLDER'>
+		UPDATE SVGFOLDER
+		SET
+			"FOLDERNAME" = #FOLDERNAME#,
+			"PARENTID" = #PARENTID#
+		WHERE
+			SUID = #SUID#
+	</update>
+	<select id='SelectSVGFOLDERList' resultMap='SVGFOLDERResult' parameterClass='SVGFOLDER'>
+		SELECT
+			"SUID",
+			"FOLDERNAME",
+			"PARENTID"
+		FROM SVGFOLDER
+	</select>
+	<select id='SelectSVGFOLDERByKey' resultMap='SVGFOLDERResult' parameterClass='SVGFOLDER'>
+		SELECT
+			"SUID",
+			"FOLDERNAME",
+			"PARENTID"
+		FROM SVGFOLDER
+		WHERE
+			SUID = #SUID#
+	</select>
+	<select id='SelectSVGFOLDERByParent' resultMap='SVGFOLDERResult' parameterClass='SVGFOLDER'>
+		SELECT
+			"SUID",
+			"FOLDERNAME",
+			"PARENTID"
+		FROM SVGFOLDER
+		WHERE
+			PARENTID = #PARENTID# order by FOLDERNAME
+	</select>
+</statements>
+</sqlMap>

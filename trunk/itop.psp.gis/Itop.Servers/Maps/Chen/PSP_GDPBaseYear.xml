@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_GDPBaseYear' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_GDPBaseYear' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_GDPBaseYear' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_GDPBaseYearResult' class='PSP_GDPBaseYear'>
+      <result property='ID' column='ID' />
+      <result property='BaseYear' column='BaseYear' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_GDPBaseYear' parameterClass='PSP_GDPBaseYear'>
+      INSERT INTO PSP_GDPBaseYear		(
+      "BaseYear"
+      )
+      VALUES
+      (
+      #BaseYear#
+      )
+    </insert>
+    <delete id='DeletePSP_GDPBaseYear' parameterClass='PSP_GDPBaseYear'>
+      DELETE FROM PSP_GDPBaseYear
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdatePSP_GDPBaseYear' parameterClass='PSP_GDPBaseYear'>
+      UPDATE PSP_GDPBaseYear
+      SET
+      "BaseYear" = #BaseYear#
+      WHERE
+      ID = #ID#
+    </update>
+    <update id='UpdatePSP_GDPBaseYearbyid' parameterClass='PSP_GDPBaseYear'>
+      If Exists(Select ID from PSP_GDPBaseYear)
+      UPDATE PSP_GDPBaseYear
+      SET
+      "BaseYear" = #BaseYear#
+      WHERE
+      ID = (Select ID from PSP_GDPBaseYear)
+      Else
+      INSERT INTO PSP_GDPBaseYear		(
+      "BaseYear"
+      )
+      VALUES
+      (
+      #BaseYear#
+      )
+    </update>
+    <select id='SelectPSP_GDPBaseYearList' resultMap='PSP_GDPBaseYearResult' parameterClass='PSP_GDPBaseYear'>
+      SELECT
+      "ID",
+      "BaseYear"
+      FROM PSP_GDPBaseYear
+    </select>
+    <select id='SelectPSP_GDPBaseYearByKey' resultMap='PSP_GDPBaseYearResult' parameterClass='PSP_GDPBaseYear'>
+      SELECT
+      "ID",
+      "BaseYear"
+      FROM PSP_GDPBaseYear
+      WHERE
+      ID = #ID#
+    </select>
+  </statements>
+</sqlMap>

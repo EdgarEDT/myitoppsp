@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerEachList' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerEachList' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerEachList' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerEachListResult' class='PowerEachList'>
+			<result property='UID' column='UID' />
+			<result property='ListName' column='ListName' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='ParentID' column='ParentID' />
+      <result property='Types' column='Types' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerEachList' parameterClass='PowerEachList'>
+    INSERT INTO PSP_PowerEachList		(
+    "UID","ListName",
+    "Remark",
+    "CreateDate",
+    "ParentID","Types"
+    )
+    VALUES
+    (
+    #UID#,#ListName#,
+    #Remark#,
+    GetDate(),
+    #ParentID#,#Types#
+    )
+    <selectKey property="UID" resultClass="int" type="post">
+      SELECT @@IDENTITY AS value
+    </selectKey>
+  </insert>
+
+
+  <insert id='InsertPowerEachListBy' parameterClass='PowerEachList'>
+    INSERT INTO PSP_PowerEachList		(
+    "UID","ListName",
+    "Remark",
+    "CreateDate",
+    "ParentID","Types"
+    )
+    VALUES
+    (
+    #UID#,#ListName#,
+    #Remark#,
+    GetDate(),
+    #ParentID#,#Types#
+    )
+
+    INSERT INTO PSP_PowerProTypes	("ID","Title","Flag2","ParentID","CreateTime","UpdateTime","Code") VALUES('500', '500KV电网',#UID#,'0',GetDate(),GetDate(),'')
+    waitfor DELAY '00:00:00.050'
+    INSERT INTO PSP_PowerProTypes	("ID","Title","Flag2","ParentID","CreateTime","UpdateTime","Code") VALUES('220', '220KV电网',#UID#,'0',GetDate(),GetDate(),'')
+    waitfor DELAY '00:00:00.050'
+    INSERT INTO PSP_PowerProTypes	("ID","Title","Flag2","ParentID","CreateTime","UpdateTime","Code") VALUES('110', '110KV电网',#UID#,'0',GetDate(),GetDate(),'')
+    waitfor DELAY '00:00:00.050'
+    INSERT INTO PSP_PowerProTypes	("ID","Title","Flag2","ParentID","CreateTime","UpdateTime","Code") VALUES('35', '城市35KV电网',#UID#,'0',GetDate(),GetDate(),'')
+    waitfor DELAY '00:00:00.050'
+    INSERT INTO PSP_PowerProTypes	("ID","Title","Flag2","ParentID","CreateTime","UpdateTime","Code") VALUES('10', '城市10KV电网',#UID#,'0',GetDate(),GetDate(),'')
+    waitfor DELAY '00:00:00.050'
+    INSERT INTO PSP_PowerProTypes	("ID","Title","Flag2","ParentID","CreateTime","UpdateTime","Code") VALUES('3', '农村35KV电网',#UID#,'0',GetDate(),GetDate(),'')
+    waitfor DELAY '00:00:00.050'
+    INSERT INTO PSP_PowerProTypes	("ID","Title","Flag2","ParentID","CreateTime","UpdateTime","Code") VALUES('1', '农村10KV电网',#UID#,'0',GetDate(),GetDate(),'')
+
+  </insert>
+  <insert id='InsertPowerEachList_HuaiBei' parameterClass='PowerEachList'>
+    INSERT INTO PSP_PowerEachList		(
+    "UID","ListName",
+    "Remark",
+    "CreateDate",
+    "ParentID","Types"
+    )
+    VALUES
+    (
+    #UID#,#ListName#,
+    #Remark#,
+    GetDate(),
+    #ParentID#,#Types#
+    )
+
+  </insert>
+
+  <delete id='DeletePowerEachList' parameterClass='PowerEachList'>
+    DELETE FROM PSP_PowerEachList
+    WHERE
+    UID = #UID#
+  </delete>
+  <delete id='DeletePowerEachList_HuaiBei' parameterClass='PowerEachList'>
+    DELETE FROM PSP_PowerEachList
+    WHERE
+    UID = #UID#
+
+    DELETE FROM PSP_PlanTable_HuaiBei
+    WHERE
+    Flag2 = #UID#
+    
+  </delete>
+  <delete id='DeletePowerEachList_VolumeBalance' parameterClass='PowerEachList'>
+    DELETE FROM PSP_PowerEachList
+    WHERE
+    UID = #UID#
+
+    DELETE FROM PSP_VolumeBalance
+    WHERE
+    Flag = #UID#
+    DELETE FROM PSP_VolumeBalance_Calc
+    WHERE
+    Flag = #UID#
+    DELETE FROM PSP_VolumeBalanceDataSource
+    WHERE
+    Flag = #UID#
+  </delete>
+  <delete id='DeletePowerEachListByKey' parameterClass='string'>
+    DELETE FROM PSP_PowerEachList
+    WHERE
+    UID = #UID#
+  </delete>
+  <delete id='DeletePowerEachList_BigUser' parameterClass='PowerEachList'>
+    DELETE FROM PSP_PowerEachList
+    WHERE
+    UID = #UID#
+
+    DELETE FROM PSP_BigUser_Values
+    WHERE
+    Flag2 = #ListName#
+
+    DELETE FROM PSP_BigUser_Years
+    WHERE
+    Flag = #ListName#
+  </delete>
+	<update id='UpdatePowerEachList' parameterClass='PowerEachList'>
+    UPDATE PSP_PowerEachList
+    SET
+    "ListName" = #ListName#,
+    "Remark" = #Remark#,
+    "ParentID" = #ParentID#,"Types"=#Types#
+    WHERE
+    UID = #UID#
+  </update>
+  <select id='SelectPowerEachListList' resultMap='PowerEachListResult' parameterClass='PowerEachList'>
+    SELECT
+    "UID",
+    "ListName",
+    "Remark",
+    "CreateDate",
+    "ParentID","Types"
+    FROM PSP_PowerEachList where Types=#Types#
+    ORDER BY CreateDate ASC
+  </select>
+  <select id='SelectPowerEachListListByTypesAndListName' resultMap='PowerEachListResult' parameterClass='PowerEachList'>
+    SELECT
+    "UID",
+    "ListName",
+    "Remark",
+    "CreateDate",
+    "ParentID","Types"
+    FROM PSP_PowerEachList where Types=#Types# and ListName=#ListName#
+
+  </select>
+  <select id='SelectPowerEachListByKey' resultMap='PowerEachListResult' parameterClass='PowerEachList'>
+    SELECT
+    "UID",
+    "ListName",
+    "Remark",
+    "CreateDate",
+    "ParentID","Types"
+    FROM PSP_PowerEachList
+    WHERE
+    UID = #UID#
+  </select>
+</statements>
+</sqlMap>

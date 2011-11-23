@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Smmgroup' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Smmgroup' assembly='Itop.Domain.RightManager.dll' type='Itop.Domain.RightManager.Smmgroup' />
+</alias>
+	<resultMaps>
+		<resultMap id='SmmgroupResult' class='Smmgroup'>
+			<result property='Groupno' column='Groupno' />
+			<result property='Groupname' column='Groupname' />
+			<result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSmmgroup' parameterClass='Smmgroup'>
+		INSERT INTO Smmgroup		(
+			"Groupno",
+			"Groupname",
+			"Remark"
+		)
+		VALUES
+		(
+			#Groupno#,
+			#Groupname#,
+			#Remark#
+		)
+	</insert>
+  <delete id='DeleteSmmgroup' parameterClass='Smmgroup'>
+    DELETE FROM Smmgroup
+    WHERE
+    Groupno = #Groupno#
+  </delete>
+  <delete id='DeleteSmmgroupByKey' parameterClass='string'>
+    DELETE FROM Smmgroup
+    WHERE
+    Groupno = #value#
+
+    DELETE FROM Smugroup
+    WHERE
+    Groupno = #value#
+    
+    DELETE FROM Smdgroup
+    WHERE
+    Groupno = #value#
+  </delete>
+  <update id='UpdateSmmgroup' parameterClass='Smmgroup'>
+		UPDATE Smmgroup
+		SET
+			"Groupname" = #Groupname#,
+			"Remark" = #Remark#
+		WHERE
+			Groupno = #Groupno#
+	</update>
+	<select id='SelectSmmgroupList' resultMap='SmmgroupResult' parameterClass='Smmgroup'>
+		SELECT
+			"Groupno",
+			"Groupname",
+			"Remark"
+		FROM Smmgroup
+	</select>
+	<select id='SelectSmmgroupByKey' resultMap='SmmgroupResult' parameterClass='Smmgroup'>
+		SELECT
+			"Groupno",
+			"Groupname",
+			"Remark"
+		FROM Smmgroup
+		WHERE
+			Groupno = #Groupno#
+	</select>
+</statements>
+</sqlMap>

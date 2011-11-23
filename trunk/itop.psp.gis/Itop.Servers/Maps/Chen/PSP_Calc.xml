@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_Calc' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_Calc' assembly='Itop.Domain.Chen.dll' type='Itop.Domain.Chen.PSP_Calc' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_CalcResult' class='PSP_Calc'>
+			<result property='ID' column='ID' />
+			<result property='CalcName' column='CalcName' />
+			<result property='Flag' column='Flag' />
+			<result property='Value1' column='Value1' />
+			<result property='Value2' column='Value2' />
+			<result property='Value3' column='Value3' />
+			<result property='Value4' column='Value4' />
+			<result property='Value5' column='Value5' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Value6' column='Value6' />
+			<result property='Value7' column='Value7' />
+			<result property='Value8' column='Value8' />
+			<result property='Value9' column='Value9' />
+			<result property='Value10' column='Value10' />
+			<result property='Value11' column='Value11' />
+			<result property='Value12' column='Value12' />
+			<result property='Value13' column='Value13' />
+			<result property='Value14' column='Value14' />
+			<result property='Value15' column='Value15' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_Calc' parameterClass='PSP_Calc'>
+		INSERT INTO PSP_Calc		(
+			"ID",
+			"CalcName",
+			"Flag",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Col1",
+			"Col2",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Value11",
+			"Value12",
+			"Value13",
+			"Value14",
+			"Value15"
+		)
+		VALUES
+		(
+			#ID#,
+			#CalcName#,
+			#Flag#,
+			#Value1#,
+			#Value2#,
+			#Value3#,
+			#Value4#,
+			#Value5#,
+			#Col1#,
+			#Col2#,
+			#Value6#,
+			#Value7#,
+			#Value8#,
+			#Value9#,
+			#Value10#,
+			#Value11#,
+			#Value12#,
+			#Value13#,
+			#Value14#,
+			#Value15#
+		)
+	</insert>
+	<delete id='DeletePSP_Calc' parameterClass='PSP_Calc'>
+		DELETE FROM PSP_Calc
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePSP_Calc' parameterClass='PSP_Calc'>
+		UPDATE PSP_Calc
+		SET
+			"CalcName" = #CalcName#,
+			"Flag" = #Flag#,
+			"Value1" = #Value1#,
+			"Value2" = #Value2#,
+			"Value3" = #Value3#,
+			"Value4" = #Value4#,
+			"Value5" = #Value5#,
+			"Col1" = #Col1#,
+			"Col2" = #Col2#,
+			"Value6" = #Value6#,
+			"Value7" = #Value7#,
+			"Value8" = #Value8#,
+			"Value9" = #Value9#,
+			"Value10" = #Value10#,
+			"Value11" = #Value11#,
+			"Value12" = #Value12#,
+			"Value13" = #Value13#,
+			"Value14" = #Value14#,
+			"Value15" = #Value15#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPSP_CalcList' resultMap='PSP_CalcResult' parameterClass='PSP_Calc'>
+		SELECT
+			"ID",
+			"CalcName",
+			"Flag",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Col1",
+			"Col2",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Value11",
+			"Value12",
+			"Value13",
+			"Value14",
+			"Value15"
+		FROM PSP_Calc
+	</select>
+	<select id='SelectPSP_CalcByKey' resultMap='PSP_CalcResult' parameterClass='PSP_Calc'>
+		SELECT
+			"ID",
+			"CalcName",
+			"Flag",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Col1",
+			"Col2",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Value11",
+			"Value12",
+			"Value13",
+			"Value14",
+			"Value15"
+		FROM PSP_Calc
+		WHERE
+			ID = #ID#
+	</select>
+
+
+  <select id='SelectPSP_CalcByFlag' resultMap='PSP_CalcResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "CalcName",
+    "Flag",
+    "Value1",
+    "Value2",
+    "Value3",
+    "Value4",
+    "Value5",
+    "Col1",
+    "Col2",
+    "Value6",
+    "Value7",
+    "Value8",
+    "Value9",
+    "Value10",
+    "Value11",
+    "Value12",
+    "Value13",
+    "Value14",
+    "Value15"
+    FROM PSP_Calc
+    WHERE
+    Flag = #Flag# and col1=''
+  </select>
+
+  <select id='SelectPSP_CalcByFlag1' resultMap='PSP_CalcResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "CalcName",
+    "Flag",
+    "Value1",
+    "Value2",
+    "Value3",
+    "Value4",
+    "Value5",
+    "Col1",
+    "Col2",
+    "Value6",
+    "Value7",
+    "Value8",
+    "Value9",
+    "Value10",
+    "Value11",
+    "Value12",
+    "Value13",
+    "Value14",
+    "Value15"
+    FROM PSP_Calc
+    WHERE
+    Flag = #Flag# and col1='1'
+  </select>
+</statements>
+</sqlMap>

@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerYears' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerYears' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerYears' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerYearsResult' class='PowerYears'>
+			<result property='ID' column='ID' />
+			<result property='Year' column='Year' />
+			<result property='Flag' column='Flag' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerYears' parameterClass='PowerYears'>
+		INSERT INTO psp_PowerYears		(
+			"Year",
+			"Flag"
+		)
+		VALUES
+		(
+			#Year#,
+			#Flag#
+		)
+	</insert>
+	<delete id='DeletePowerYears' parameterClass='PowerYears'>
+		DELETE FROM psp_PowerYears
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePowerYears' parameterClass='PowerYears'>
+		UPDATE psp_PowerYears
+		SET
+			"Year" = #Year#,
+			"Flag" = #Flag#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPowerYearsList' resultMap='PowerYearsResult' parameterClass='PowerYears'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag"
+		FROM psp_PowerYears
+	</select>
+	<select id='SelectPowerYearsListByFlag' resultMap='PowerYearsResult' parameterClass='PowerYears'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag"
+		FROM psp_PowerYears
+		Where
+			Flag = #Flag#
+		Order by Year desc
+	</select>
+  <select id='SelectPowerYearsListByFlagSortYear' resultMap='PowerYearsResult' parameterClass='PowerYears'>
+    SELECT
+    "ID",
+    "Year",
+    "Flag"
+    FROM psp_PowerYears
+    Where
+    Flag = #Flag#
+    Order by Year 
+  </select>
+	<select id='SelectPowerYearsByKey' resultMap='PowerYearsResult' parameterClass='PowerYears'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag"
+		FROM psp_PowerYears
+		WHERE
+			ID = #ID#
+	</select>
+	<select id='SelectPowerYearsByYearFlag' resultMap='PowerYearsResult' parameterClass='PowerYears'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag"
+		FROM psp_PowerYears
+		WHERE
+			Year = #Year#
+			AND Flag = #Flag#
+	</select>
+  <select id='SelectPowerYearsByFlag' resultMap='PowerYearsResult' parameterClass='PowerYears'>
+    SELECT top 1
+    "ID",
+    "Year",
+    "Flag"
+    FROM psp_PowerYears
+    WHERE
+    Flag = #Flag#
+   order by Year desc
+  </select>
+</statements>
+</sqlMap>

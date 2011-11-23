@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_WGBCReports' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_WGBCReports' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_WGBCReports' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_WGBCReportsResult' class='PSP_WGBCReports'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_WGBCReports' parameterClass='PSP_WGBCReports'>
+		INSERT INTO PSP_WGBCReports		(
+			"Title"
+		)
+		VALUES
+		(
+			#Title#
+		)
+		<selectKey property="ID" resultClass="int" type="post">
+				SELECT @@IDENTITY AS value
+		</selectKey> 
+	</insert>
+	<delete id='DeletePSP_WGBCReports' parameterClass='PSP_WGBCReports'>
+		DELETE FROM PSP_WGBCReports
+		WHERE
+			ID = #ID#
+
+		DELETE FROM PSP_WGBCValues
+		WHERE
+			ReportID = #ID#
+	</delete>
+	<update id='UpdatePSP_WGBCReports' parameterClass='PSP_WGBCReports'>
+		UPDATE PSP_WGBCReports
+		SET
+			"Title" = #Title#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPSP_WGBCReportsList' resultMap='PSP_WGBCReportsResult' parameterClass='PSP_WGBCReports'>
+		SELECT
+			"ID",
+			"Title"
+		FROM PSP_WGBCReports
+	</select>
+	<select id='SelectPSP_WGBCReportsByKey' resultMap='PSP_WGBCReportsResult' parameterClass='PSP_WGBCReports'>
+		SELECT
+			"ID",
+			"Title"
+		FROM PSP_WGBCReports
+		WHERE
+			ID = #ID#
+	</select>
+</statements>
+</sqlMap>

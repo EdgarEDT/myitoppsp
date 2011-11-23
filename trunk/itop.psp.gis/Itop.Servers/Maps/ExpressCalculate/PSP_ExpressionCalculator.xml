@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_ExpressionCalculator' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_ExpressionCalculator' assembly='Itop.Domain.ExpressCalculate.dll' type='Itop.Domain.ExpressCalculate.PSP_ExpressionCalculator' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_ExpressionCalculatorResult' class='PSP_ExpressionCalculator'>
+			<result property='ID' column='ID' />
+			<result property='Expression' column='Expression' />
+			<result property='Flag' column='Flag' />
+			<result property='FiledName' column='FiledName' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='S3' column='S3' />
+			<result property='S4' column='S4' />
+			<result property='S5' column='S5' />
+			<result property='CreatTime' column='CreatTime' />
+			<result property='SaveDecimalPoint' column='SaveDecimalPoint' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_ExpressionCalculator' parameterClass='PSP_ExpressionCalculator'>
+		INSERT INTO PSP_ExpressionCalculator		(
+			"ID",
+			"Expression",
+			"Flag",
+			"FiledName",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"CreatTime",
+			"SaveDecimalPoint"
+		)
+		VALUES
+		(
+			newid(),
+			#Expression#,
+			#Flag#,
+			#FiledName#,
+			#S1#,
+			#S2#,
+			#S3#,
+			#S4#,
+			#S5#,
+			getdate(),
+			#SaveDecimalPoint#
+		)
+	</insert>
+	<delete id='DeletePSP_ExpressionCalculator' parameterClass='PSP_ExpressionCalculator'>
+		DELETE FROM PSP_ExpressionCalculator
+		WHERE
+			ID = #ID#
+	</delete>
+  <update id='DeletePSP_ExpressionCalculatorByFiledNameFlag' parameterClass='PSP_ExpressionCalculator'>
+    DELETE FROM PSP_ExpressionCalculator
+    WHERE
+    FiledName = #FiledName#
+    and
+    Flag = #Flag#
+    UPDATE PSP_ExpressionCalculator
+    SET Expression=replace(Expression,#S1#,'0')
+    WHERE
+    Flag = #Flag#
+  </update>
+  <update id='UpdatePSP_ExpressionCalculatorByCaption' parameterClass='PSP_ExpressionCalculator'>
+    UPDATE PSP_ExpressionCalculator
+    SET
+    "Expression" =replace(Expression,#FiledName#,#S1#)
+    WHERE
+    Flag = #Flag#
+  </update>
+	<update id='UpdatePSP_ExpressionCalculator' parameterClass='PSP_ExpressionCalculator'>
+		UPDATE PSP_ExpressionCalculator
+		SET
+			"Expression" = #Expression#,
+			"Flag" = #Flag#,
+			"FiledName" = #FiledName#,
+			"S1" = #S1#,
+			"S2" = #S2#,
+			"S3" = #S3#,
+			"S4" = #S4#,
+			"S5" = #S5#,
+			"CreatTime" =getdate(),
+			"SaveDecimalPoint" = #SaveDecimalPoint#
+		WHERE
+			ID = #ID#
+	</update>
+  <update id='UpdatePSP_ExpressionCalculatorByFiledNameFlag' parameterClass='PSP_ExpressionCalculator'>
+    If  Exists(Select ID from PSP_ExpressionCalculator Where FiledName = #FiledName# And Flag = #Flag#)
+    UPDATE PSP_ExpressionCalculator
+    SET
+    "Expression" = #Expression#,
+    "Flag" = #Flag#,
+    "S1" = #S1#,
+    "S2" = #S2#,
+    "S3" = #S3#,
+    "S4" = #S4#,
+    "S5" = #S5#,
+    "CreatTime" = getdate(),
+    "SaveDecimalPoint" = #SaveDecimalPoint#
+    WHERE
+    FiledName = #FiledName#
+    and
+    Flag = #Flag#
+    Else
+    INSERT INTO PSP_ExpressionCalculator		(
+    "ID",
+    "Expression",
+    "Flag",
+    "FiledName",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "CreatTime",
+    "SaveDecimalPoint"
+    )
+    VALUES
+    (
+    newid(),
+    #Expression#,
+    #Flag#,
+    #FiledName#,
+    #S1#,
+    #S2#,
+    #S3#,
+    #S4#,
+    #S5#,
+    getdate(),
+    #SaveDecimalPoint#
+    )
+  </update>
+	<select id='SelectPSP_ExpressionCalculatorList' resultMap='PSP_ExpressionCalculatorResult' parameterClass='PSP_ExpressionCalculator'>
+		SELECT
+			"ID",
+			"Expression",
+			"Flag",
+			"FiledName",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"CreatTime",
+			"SaveDecimalPoint"
+		FROM PSP_ExpressionCalculator
+	</select>
+	<select id='SelectPSP_ExpressionCalculatorByKey' resultMap='PSP_ExpressionCalculatorResult' parameterClass='PSP_ExpressionCalculator'>
+		SELECT
+			"ID",
+			"Expression",
+			"Flag",
+			"FiledName",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"CreatTime",
+			"SaveDecimalPoint"
+		FROM PSP_ExpressionCalculator
+		WHERE
+			ID = #ID#
+	</select>
+  <select id='SelectPSP_ExpressionCalculatorByFiledNameFlag' resultMap='PSP_ExpressionCalculatorResult' parameterClass='PSP_ExpressionCalculator'>
+    SELECT
+    "ID",
+    "Expression",
+    "Flag",
+    "FiledName",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "CreatTime",
+    "SaveDecimalPoint"
+    FROM PSP_ExpressionCalculator
+    WHERE
+    Flag = #Flag#
+    and
+    FiledName = #FiledName#
+  </select>
+</statements>
+</sqlMap>
