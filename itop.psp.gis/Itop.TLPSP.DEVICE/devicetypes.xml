@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<devicetype>
+  <device id="20" name="变电站" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBDZ" parentid=""></device>
+  <device id="30" name="电源" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDY" parentid=""></device>
+  <device id="01" name="母线" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceMX" parentid=""></device>  
+  <device id="02" name ="两绕组变压器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQ2" parentid=""></device>
+  <device id="03" name ="三绕组变压器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQ3" parentid=""></device>
+  <device id="04" name ="发电机" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFDJ" parentid=""></device>
+  <device id="05" name ="线路" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceXL" parentid=""></device>
+  <device id="06" name ="断路器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDLQ" parentid=""></device>
+  <device id="07" name ="开关" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceKG" parentid=""></device>
+  <device id="08" name ="串联电容器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceCLDR" parentid=""></device>
+  <device id="09" name ="并联电容器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBLDR" parentid=""></device>
+  <device id="10" name ="串联电抗器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceCLDK" parentid=""></device>
+  <device id="11" name ="并联电抗器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBLDK" parentid=""></device>
+  <device id="12" name ="负荷" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFH" parentid=""></device>
+  <device id="13" name ="1/2母联开关" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceML" parentid=""></device>
+  <device id="14" name ="3/2母联开关" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceML2" parentid=""></device>
+  <device id="15" name ="线路互感" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceHG" parentid=""></device>  
+  <device id="40" name ="导线型号" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDXXH" parentid=""></device>
+  <device id="100" name ="配电设备" visible="true" class="" parentid=""></device>
+  <device id="50" name ="配电室" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWB" parentid="100"></device>
+  <device id="51" name ="箱式变" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWB" parentid="100"></device>
+  <device id="52" name ="柱上变" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWB" parentid="100"></device>
+  <device id="54" name ="开闭所" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="55" name ="开关站" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="56" name ="环网柜" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="57" name ="柱上开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="58" name ="电缆分支箱" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="59" name ="负荷开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="61" name ="分段柜" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="62" name ="联络开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="63" name ="分段开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="64" name ="支线开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="65" name ="电容器型号" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDRHXH" parentid="100"></device>
+  <device id="70" name ="杆塔(节点)" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceZX" parentid="100"></device>
+  <device id="71" name ="跌落式熔断器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceRDQ" parentid="100"></device>
+  <device id="72" name ="两圈变压器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQTWO" parentid="100"></device>
+  <device id="73" name ="导线" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDX" parentid="100"></device>
+  <device id="74" name ="分支线" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFZX" parentid="100"></device>
+  <device id="75" name ="联络线" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceLUX" parentid="100"></device>
+ 
+</devicetype>

@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Forecast_Setup' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Ps_Forecast_Setup' assembly='Itop.Domain.Forecast.dll' type='Itop.Domain.Forecast.Ps_Forecast_Setup' />
+</alias>
+	<resultMaps>
+		<resultMap id='Ps_Forecast_SetupResult' class='Ps_Forecast_Setup'>
+			<result property='ID' column='ID' />
+			<result property='Forecast' column='Forecast' />
+			<result property='ForecastID' column='ForecastID' />
+			<result property='StartYear' column='StartYear' />
+			<result property='EndYear' column='EndYear' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPs_Forecast_Setup' parameterClass='Ps_Forecast_Setup'>
+		INSERT INTO Ps_Forecast_Setup		(
+			"ID",
+			"Forecast",
+			"ForecastID",
+			"StartYear",
+			"EndYear",
+			"Col1",
+			"Col2"
+		)
+		VALUES
+		(
+			#ID#,
+			#Forecast#,
+			#ForecastID#,
+			#StartYear#,
+			#EndYear#,
+			#Col1#,
+			#Col2#
+		)
+	</insert>
+	<delete id='DeletePs_Forecast_Setup' parameterClass='Ps_Forecast_Setup'>
+		DELETE FROM Ps_Forecast_Setup
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePs_Forecast_Setup' parameterClass='Ps_Forecast_Setup'>
+		UPDATE Ps_Forecast_Setup
+		SET
+			"Forecast" = #Forecast#,
+			"ForecastID" = #ForecastID#,
+			"StartYear" = #StartYear#,
+			"EndYear" = #EndYear#,
+			"Col1" = #Col1#,
+			"Col2" = #Col2#
+		WHERE
+			ID = #ID#
+	</update>
+
+  <update id='UpdatePs_Forecast_SetupByForecast' parameterClass='Ps_Forecast_Setup'>
+    UPDATE Ps_Forecast_Setup
+    SET
+    "StartYear" = #StartYear#,
+    "EndYear" = #EndYear#
+    WHERE
+    "Forecast" = #Forecast# and 
+    "ForecastID" = #ForecastID#
+  </update>
+	<select id='SelectPs_Forecast_SetupList' resultMap='Ps_Forecast_SetupResult' parameterClass='Ps_Forecast_Setup'>
+		SELECT
+			"ID",
+			"Forecast",
+			"ForecastID",
+			"StartYear",
+			"EndYear",
+			"Col1",
+			"Col2"
+		FROM Ps_Forecast_Setup
+	</select>
+	<select id='SelectPs_Forecast_SetupByKey' resultMap='Ps_Forecast_SetupResult' parameterClass='Ps_Forecast_Setup'>
+		SELECT
+			"ID",
+			"Forecast",
+			"ForecastID",
+			"StartYear",
+			"EndYear",
+			"Col1",
+			"Col2"
+		FROM Ps_Forecast_Setup
+		WHERE
+			ID = #ID#
+	</select>
+
+  <select id='SelectPs_Forecast_SetupByForecast' resultMap='Ps_Forecast_SetupResult' parameterClass='Ps_Forecast_Setup'>
+    SELECT
+    "ID",
+    "Forecast",
+    "ForecastID",
+    "StartYear",
+    "EndYear",
+    "Col1",
+    "Col2"
+    FROM Ps_Forecast_Setup
+    WHERE
+    Forecast = #Forecast# and ForecastID=#ForecastID#
+  </select>
+</statements>
+</sqlMap>

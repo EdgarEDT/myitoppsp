@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <ExAssembly>
+    Itop.DOMAIN.Update.dll,Itop.Domain.BaseData.dll,Itop.Domain.dll,Itop.Domain.Forecast.dll,Itop.Domain.Stutistics.dll,Itop.Domain.Graphics.dll,Itop.Domain.Layouts.dll,Itop.Domain.GM.dll,Itop.Domain.ExpressCalculate.dll,Itop.Domain.Chen.dll,Itop.Domain.Table.dll,Itop.Domain.PWTable.dll
+  </ExAssembly>
+</root>
+

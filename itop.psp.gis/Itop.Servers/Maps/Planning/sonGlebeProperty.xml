@@ -1,0 +1,46 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='glebeProperty' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='sonGlebeProperty' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.sonGlebeProperty' />
+  </alias>
+  <resultMaps>
+
+    <resultMap id='sonGlebePropertyResult' class='sonGlebeProperty'>
+      <result property='UID' column='UID' />
+      <result property='EleID' column='EleID' />
+      <result property='UseID' column='UseID' />
+      <result property='TypeUID' column='TypeUID' />
+      <result property='Area' column='Area' />
+      <result property='Burthen' column='Burthen' />
+      <result property='Number' column='Number' />
+      <result property='Remark' column='Remark' />
+      <result property='SonUid' column='SonUid' />
+      <result property='SelSonArea' column='SelSonArea' />
+      <result property='SvgUID' column='SvgUID' />
+      <result property='ParentEleID' column='ParentEleID' />
+
+    </resultMap>
+  </resultMaps>
+  <statements>
+
+    <select id='SelectglebePropertParentIDSub1' resultMap='sonGlebePropertyResult' parameterClass='Hashtable'>
+      SELECT
+      a.UID,
+      a.EleID,
+      a.UseID,
+      b.TypeName as "TypeUID",
+      a.Area,
+      a.Burthen,
+      a.Number,
+      a.Remark,
+      a.SonUid,
+      a.SelSonArea,
+      a.SvgUID,
+      a.ParentEleID
+      FROM glebeProperty a,glebeType b
+      WHERE
+      a.TypeUID=b.UID and a.ParentEleID !='0' and a.ParentEleID!='' and
+      a.SvgUID= #SvgUID# and a.LayerID in ($LayerID$) order by a.UseID
+    </select>
+  </statements>
+</sqlMap>

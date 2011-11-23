@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_GProg' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_GProg' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_GProg' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_GProgResult' class='PSP_GProg'>
+			<result property='UID' column='UID' />
+			<result property='ProgName' column='ProgName' />
+			<result property='Notes' column='Notes' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_GProg' parameterClass='PSP_GProg'>
+		INSERT INTO PSP_GProg		(
+			"UID",
+			"ProgName",
+			"Notes",
+			"col1",
+			"col2",
+			"col3"
+		)
+		VALUES
+		(
+			#UID#,
+			#ProgName#,
+			#Notes#,
+			#col1#,
+			#col2#,
+			#col3#
+		)
+	</insert>
+	<delete id='DeletePSP_GProg' parameterClass='PSP_GProg'>
+		DELETE FROM PSP_GProg
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_GProg' parameterClass='PSP_GProg'>
+		UPDATE PSP_GProg
+		SET
+			"ProgName" = #ProgName#,
+			"Notes" = #Notes#,
+			"col1" = #col1#,
+			"col2" = #col2#,
+			"col3" = #col3#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPSP_GProgList' resultMap='PSP_GProgResult' parameterClass='PSP_GProg'>
+		SELECT
+			"UID",
+			"ProgName",
+			"Notes",
+			"col1",
+			"col2",
+			"col3"
+		FROM PSP_GProg
+	</select>
+	<select id='SelectPSP_GProgByKey' resultMap='PSP_GProgResult' parameterClass='PSP_GProg'>
+		SELECT
+			"UID",
+			"ProgName",
+			"Notes",
+			"col1",
+			"col2",
+			"col3"
+		FROM PSP_GProg
+		WHERE
+			UID = #UID#
+	</select>
+  <select id='SelectPSP_GProgByprojectid' resultMap='PSP_GProgResult' parameterClass='PSP_GProg'>
+    SELECT
+    "UID",
+    "ProgName",
+    "Notes",
+    "col1",
+    "col2",
+    "col3"
+    FROM PSP_GProg
+    WHERE
+    col1 = #col1#
+  </select>
+</statements>
+</sqlMap>

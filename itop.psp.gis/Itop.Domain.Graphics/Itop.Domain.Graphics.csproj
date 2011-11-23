@@ -1,0 +1,114 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ED06E9A4-4FC9-4945-B8D6-88E25364A212}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Domain.Graphics</RootNamespace>
+    <AssemblyName>Itop.Domain.Graphics</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Server\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Server\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CanShu.cs" />
+    <Compile Include="DeviceCOL.cs" />
+    <Compile Include="eleclass.cs" />
+    <Compile Include="FenZhi.cs" />
+    <Compile Include="glebeProperty.cs" />
+    <Compile Include="glebeType.cs" />
+    <Compile Include="GraPowerRelation.cs" />
+    <Compile Include="LayerFile.cs" />
+    <Compile Include="LayerGrade.cs" />
+    <Compile Include="linedaixuan.cs" />
+    <Compile Include="LineInfo.cs" />
+    <Compile Include="LineList1.cs" />
+    <Compile Include="LineType.cs" />
+    <Compile Include="PrintInfo.cs" />
+    <Compile Include="PSP_ElcDevice.cs" />
+    <Compile Include="PSP_ELCPROJECT.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="property.cs" />
+    <Compile Include="PSPDEV.cs" />
+    <Compile Include="PSPDIR.cs" />
+    <Compile Include="PSP_bdz_type.cs" />
+    <Compile Include="PSP_fq_type.cs" />
+    <Compile Include="PSP_fx_type.cs" />
+    <Compile Include="PSP_GProg.cs" />
+    <Compile Include="PSP_GprogElevice.cs" />
+    <Compile Include="PSP_Gra_item.cs" />
+    <Compile Include="PSP_ImgInfo.cs" />
+    <Compile Include="PSP_ImgTree.cs" />
+    <Compile Include="PSP_interface.cs" />
+    <Compile Include="PSP_LineData.cs" />
+    <Compile Include="PSP_PlanList.cs" />
+    <Compile Include="Psp_ProgLayerList.cs" />
+    <Compile Include="PSP_SubstationMng.cs" />
+    <Compile Include="PSP_SubstationPar.cs" />
+    <Compile Include="PSP_SubstationSelect.cs" />
+    <Compile Include="PSP_SubstationUserNum.cs" />
+    <Compile Include="rightMenu.cs" />
+    <Compile Include="substation.cs" />
+    <Compile Include="SVGFILE.cs" />
+    <Compile Include="SVGFOLDER.cs" />
+    <Compile Include="SVG_ENTITY.cs" />
+    <Compile Include="SVG_FILE.cs" />
+    <Compile Include="SVG_IMAGE.cs" />
+    <Compile Include="SVG_LAYER.cs" />
+    <Compile Include="SVG_SYMBOL.cs" />
+    <Compile Include="UseGroup.cs" />
+    <Compile Include="UsepropertyType.cs" />
+    <Compile Include="UseRelating.cs" />
+    <Compile Include="sonGlebeProperty.cs" />
+    <Compile Include="Dlph.cs" />
+    <Compile Include="WireCategory.cs" />
+    <Compile Include="PSP_Substation_Info.cs" />
+    <Compile Include="PSP_Line_Info.cs" />
+    <Compile Include="PSP_PowerSubstationInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

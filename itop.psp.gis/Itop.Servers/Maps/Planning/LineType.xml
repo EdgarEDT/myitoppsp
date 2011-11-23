@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LineType' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='LineType' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.LineType' />
+</alias>
+	<resultMaps>
+		<resultMap id='LineTypeResult' class='LineType'>
+			<result property='UID' column='UID' />
+			<result property='TypeName' column='TypeName' />
+			<result property='Color' column='Color' />
+			<result property='ObligateField1' column='ObligateField1' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertLineType' parameterClass='LineType'>
+		INSERT INTO LineType		(
+			"UID",
+			"TypeName",
+			"Color",
+			"ObligateField1"
+		)
+		VALUES
+		(
+			#UID#,
+			#TypeName#,
+			#Color#,
+			#ObligateField1#
+		)
+	</insert>
+	<delete id='DeleteLineType' parameterClass='LineType'>
+		DELETE FROM LineType
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateLineType' parameterClass='LineType'>
+		UPDATE LineType
+		SET
+			"TypeName" = #TypeName#,
+			"Color" = #Color#,
+			"ObligateField1" = #ObligateField1#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectLineTypeList' resultMap='LineTypeResult' parameterClass='LineType'>
+		SELECT
+			"UID",
+			"TypeName",
+			"Color",
+			"ObligateField1"
+		FROM LineType order by TypeName
+	</select>
+	<select id='SelectLineTypeByKey' resultMap='LineTypeResult' parameterClass='LineType'>
+		SELECT
+			"UID",
+			"TypeName",
+			"Color",
+			"ObligateField1"
+		FROM LineType
+		WHERE
+			UID = #UID#
+	</select>
+  <select id='SelectLineTypeByTypeName' resultMap='LineTypeResult' parameterClass='LineType'>
+    SELECT
+    "UID",
+    "TypeName",
+    "Color",
+    "ObligateField1"
+    FROM LineType
+    WHERE
+    TypeName = #TypeName#
+  </select>
+</statements>
+</sqlMap>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Dlph' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Dlph' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.Dlph' />
+</alias>
+	<resultMaps>
+		<resultMap id='DlphResult' class='Dlph'>
+			<result property='UID' column='UID' />
+			<result property='EleID' column='EleID' />
+			<result property='Ydnumber' column='Ydnumber' />
+			<result property='Sdnumber' column='Sdnumber' />
+			<result property='Number1' column='Number1' />
+			<result property='Sdburthen' column='Sdburthen' />
+			<result property='Ydburthen' column='Ydburthen' />
+			<result property='Number2' column='Number2' />
+			<result property='SvgUID' column='SvgUID' />
+			<result property='Notes' column='Notes' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	
+	<select id='SelectglebePropertyReport' resultMap='DlphResult' parameterClass='Dlph'>
+	<![CDATA[
+		select ' ' as UID,b.UseID as EleID,' ' as SvgUID,
+		  convert(decimal(15,2),b.Burthen) as Ydburthen,
+		  convert(decimal(15,2),b.Number) as Ydnumber,
+		 isnull(sum(convert(decimal(15,2),  a.Burthen)),0) as Sdburthen,
+		 isnull(sum(convert(decimal(15,2), a.Number)),0) as Sdnumber,
+		 isnull(sum(convert(decimal(15,2),  a.Burthen)),0)-convert(decimal(10,2),b.Burthen) as Number1,
+		 isnull(sum(convert(decimal(15,2), a.Number)),0)-convert(decimal(10,2),b.Number) as Number2,
+		 case when (isnull(sum(convert(decimal(15,2), a.Number)),0)-convert(decimal(10,2),b.Number))>0 
+		 then '供电能力富余'+ str(isnull(sum(convert(decimal(15,2),a.Number)),0)-convert(decimal(10,2),b.Number))
+		 else '建议新建220KV(110KV)变电所,容量'+str(convert(decimal(10,2),b.Number-isnull(sum(convert(decimal(15,2), a.Number)),0))) end as Notes
+		from glebeProperty b   LEFT OUTER JOIN  substation a 
+		on a.glebeEleID=b.UID  where b.SvgUID= #SvgUID#
+		and b.ParentEleID='0' and b.LayerID in ($UID$) 
+		group by b.UseID,b.Burthen,b.Number
+		]]>
+	</select>
+	
+</statements>
+</sqlMap>

@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_Types' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_Types' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_Types' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_TypesResult' class='PSP_Types'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='Flag' column='Flag' />
+			<result property='Flag2' column='Flag2' />
+			<result property='ParentID' column='ParentID' />
+
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_Types' parameterClass='PSP_Types'>
+    INSERT INTO PSP_Types		(
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID"
+    )
+    VALUES
+    (
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#
+    )
+    <selectKey property="ID" resultClass="int" type="post">
+				SELECT @@IDENTITY AS value
+		</selectKey> 
+	</insert>
+	<delete id='DeletePSP_Types' parameterClass='PSP_Types'>
+		DELETE FROM PSP_Types
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePSP_Types' parameterClass='PSP_Types'>
+    UPDATE PSP_Types
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "Flag2" = #Flag2#,
+    "ParentID" = #ParentID#
+    WHERE
+    ID = #ID#
+  </update>
+	<select id='SelectPSP_TypesList' resultMap='PSP_TypesResult' parameterClass='PSP_Types'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID"
+    FROM PSP_Types
+  </select>
+  <select id='SelectPSP_TypesByKey' resultMap='PSP_TypesResult' parameterClass='PSP_Types'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID"
+    FROM PSP_Types
+    WHERE
+    ID = #ID#
+  </select>
+	<select id='SelectPSP_TypesByFlag2' resultMap='PSP_TypesResult' parameterClass='PSP_Types'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID"
+    FROM PSP_Types
+    WHERE
+    Flag2 = #Flag2#
+    ORDER BY ID
+  </select>
+	<select id='SelectPSP_TypesByFlag' resultMap='PSP_TypesResult' parameterClass='PSP_Types'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID"
+    FROM PSP_Types
+    WHERE
+    Flag = #Flag#
+    ORDER BY Flag,ID
+  </select>
+
+
+
+  <select id='SelectPSP_TypesByFlag3' resultMap='PSP_TypesResult' parameterClass='PSP_Types'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID"
+    FROM PSP_Types
+    WHERE
+    ID = #ID#
+    ORDER BY Flag,ID
+  </select>
+
+
+  <select id='SelectPSP_TypesByParentID' resultMap='PSP_TypesResult' parameterClass='PSP_Types'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID"
+    FROM PSP_Types
+    WHERE
+    ParentID = #ID# and Flag2=#Flag2#
+    ORDER BY Flag,ID
+  </select>
+</statements>
+</sqlMap>

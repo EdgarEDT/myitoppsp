@@ -1,0 +1,407 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerProTypes' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerProTypes' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerProTypes' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerProTypesResult' class='PowerProTypes'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='Flag' column='Flag' />
+			<result property='Flag2' column='Flag2' />
+			<result property='ParentID' column='ParentID' />
+      <result property='Code' column='Code' />
+      <result property='Remark' column='Remark' />
+      <result property='L1' column='L1' />
+      <result property='L2' column='L2' />
+      <result property='L3' column='L3' />
+      <result property='L4' column='L4' />
+      <result property='L5' column='L5' />
+      <result property='L6' column='L6' />
+      <result property='IsConn' column='IsConn' />
+      <result property='StartYear' column='StartYear' />
+      <result property='EndYear' column='EndYear' />
+      <result property='CreateTime' column='CreateTime' />
+      <result property='UpdateTime' column='UpdateTime' />   
+      
+    </resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerProTypes' parameterClass='PowerProTypes'>
+    INSERT INTO PSP_PowerProTypes		(
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","StartYear","EndYear","CreateTime","UpdateTime","L1","L2","L3","L4","L5","L6","IsConn"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#,#Code#,#Remark#,#StartYear#,#EndYear#,GetDate(),GetDate(),#L1#,#L2#,#L3#,#L4#,#L5#,#L6#,#IsConn#
+    )
+    <selectKey property="ID" resultClass="int" type="post">
+      SELECT @@IDENTITY AS value
+    </selectKey>
+  </insert>
+
+  <insert id='InsertPowerProTypesData' parameterClass='PowerProTypes'>
+    INSERT INTO PSP_PowerProTypes		(
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","CreateTime","UpdateTime"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#,GetDate(),GetDate()
+    )
+    <selectKey property="ID" resultClass="int" type="post">
+      SELECT @@IDENTITY AS value
+    </selectKey>
+  </insert>
+  <delete id='DeletePowerProTypes' parameterClass='PowerProTypes'>
+    DELETE FROM PSP_PowerProTypes
+    WHERE
+    ID = #ID# and Flag2 = #Flag2#
+
+
+  </delete>
+
+
+  <delete id='DeletePowerProTypesInFlag2' parameterClass='string'>
+    DELETE FROM PSP_PowerProTypes
+    WHERE
+    Flag2 = #Flag2#
+
+
+  </delete>
+  <update id='DeletePowerProTypesByFlag2' parameterClass='string'>
+    DELETE FROM psp_PowerProValues
+    WHERE
+    TypeID IN ( SELECT ID FROM PSP_PowerProTypes WHERE Flag2 = #Flag2#)
+
+    DELETE FROM PSP_PowerProTypes
+    WHERE
+    Flag2 = #Flag2#
+  </update>
+  
+  
+
+  <delete id='DeletePowerProTypesByCode' parameterClass='string'>
+    DELETE FROM PSP_PowerProTypes
+    WHERE
+    Code = #Code#
+  </delete>
+  <update id='UpdatePowerProTypes' parameterClass='PowerProTypes'>
+    UPDATE PSP_PowerProTypes
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "ParentID" = #ParentID#,"Code"=#Code#,"Remark"=#Remark#,"StartYear"=#StartYear#,"EndYear"=#EndYear#,"UpdateTime"=GetDate(),"L1"=#L1#,"L2"=#L2#,"L3"=#L3#,"L4"=#L4#,"L5"=#L5#,"L6"=#L6#,"IsConn"=#IsConn#
+    WHERE
+    ID = #ID# and Flag2 = #Flag2#
+  </update>
+
+  <update id='UpdatePowerProTypesByCodeAndTitle' parameterClass='PowerProTypes'>
+    If Exists(Select ID from PSP_PowerProTypes Where Title = #Title# and Flag2 = #Flag2# and Code = #Code#)
+    UPDATE PSP_PowerProTypes
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "ParentID" = #ParentID#,"Code"=#Code#,"Remark"=#Remark#,"StartYear"=#StartYear#,"EndYear"=#EndYear#,"UpdateTime"=GetDate(),"L1"=#L1#,"L2"=#L2#,"L3"=#L3#,"L4"=#L4#,"L5"=#L5#,"L6"=#L6#,"IsConn"=#IsConn#
+    WHERE
+    Title = #Title# and Flag2 = #Flag2# and Code = #Code#
+    Else
+    INSERT INTO PSP_PowerProTypes		(
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","StartYear","EndYear","CreateTime","UpdateTime","L1","L2","L3","L4","L5","L6","IsConn"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#,#Code#,#Remark#,#StartYear#,#EndYear#,GetDate(),GetDate(),#L1#,#L2#,#L3#,#L4#,#L5#,#L6#,#IsConn#
+    )
+    <selectKey property="ID" resultClass="int" type="post">
+      SELECT @@IDENTITY AS value
+    </selectKey>
+  </update>
+  <update id='UpdatePowerProTypesByCode' parameterClass='PowerProTypes'>
+    UPDATE PSP_PowerProTypes
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "ParentID" = #ParentID#,"Remark"=#Remark#,"StartYear"=#StartYear#,"EndYear"=#EndYear#,"UpdateTime"=GetDate(),"L1"=#L1#,"L2"=#L2#,"L3"=#L3#,"L4"=#L4#,"L5"=#L5#,"L6"=#L6#,"IsConn"=#IsConn#
+    WHERE
+    Code = #Code#
+  </update>
+
+  
+	<select id='SelectPowerProTypesList' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+  </select>
+
+  <select id='SelectPowerProTypesByCode' resultMap='PowerProTypesResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+    where Code=#Code#
+  </select>
+
+  <select id='SelectPowerProTypesByCodeAndTitle' resultMap='PowerProTypesResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+    where Code=#Code# and Title=#Title#
+  </select>
+  <select id='SelectPowerProTypesByKey' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+    WHERE
+    ID = #ID# and  Flag2=#Flag2#
+  </select>
+
+
+
+  <select id='SelectPowerProTypesByFlag2' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+    WHERE
+    Flag2 = #Flag2#
+    ORDER BY CreateTime asc
+  </select>
+
+  <select id='SelectPowerProTypesByTitleFlag2' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+    WHERE
+    Flag2 = #Flag2# and  Code = #Code#
+
+  </select>
+
+  <select id='SelectPowerProTypesByFlag2INParent' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+    WHERE
+    Flag2 = #Flag2# and ParentID!='0'
+    ORDER BY ID
+  </select>
+  
+  
+  <select id='SelectPowerProTypesByFlag' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+    WHERE
+    Flag = #Flag#
+    ORDER BY Flag,ID
+  </select>
+
+
+
+  <select id='SelectPowerProTypesByFlagFlag2' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+    WHERE
+    Flag2 = #Flag2# and Flag=#Flag# and Code='' and ParentID in($ParentID$)
+
+    union
+
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code",t1.remark as "Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    from PSP_PowerProTypes t1,lineinfo t2 where t1.code=t2.uid and t2.eleid='' AND t1.Flag2 = #Flag2# and t1.Flag=#Flag# and t1.ParentID in($ParentID$) 
+
+
+    union
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code",t1.remark as "Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    from PSP_PowerProTypes t1,substation t2 where t1.code=t2.uid and t2.eleid='' AND t1.Flag2 = #Flag2# and t1.Flag=#Flag# and t1.ParentID in($ParentID$) 
+
+
+  </select>
+
+  <select id='SelectPowerProTypesByFlagFlag3' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes
+    WHERE
+    Flag2 = #Flag2# and Flag=#Flag# and Code=''
+
+
+    union
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code",t1.remark as "Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    from PSP_PowerProTypes t1,lineinfo t2 where t1.code=t2.uid and t2.eleid='' AND t1.Flag2 = #Flag2# and t1.Flag=#Flag#
+
+
+    union
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code",t1.remark as "Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    from PSP_PowerProTypes t1,substation t2 where t1.code=t2.uid and t2.eleid='' AND t1.Flag2 = #Flag2# and t1.Flag=#Flag#
+
+
+
+  </select>
+
+
+  <select id='SelectPowerProTypesByFlagFlag21' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes t1,PSP_PowerPicSelect t2
+    WHERE
+    t1.flag2=t2.EachListID and
+    t2.PicSelectID = #Flag2# and t1.Flag=#Flag# and t1.Code='' and ParentID in($ParentID$)
+
+
+    union
+
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code",t1.remark as "Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes t1,PSP_PowerPicSelect t2,substation t3
+    WHERE
+    t1.flag2=t2.EachListID and t2.PicSelectID = #Flag2# and t1.Flag=#Flag# and t1.code=t3.uid and t3.eleid='' and t1.ParentID in($ParentID$)
+
+
+    union
+
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code",t1.remark as "Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes t1,PSP_PowerPicSelect t2,lineinfo t3
+    WHERE
+    t1.flag2=t2.EachListID and t2.PicSelectID = #Flag2# and t1.Flag=#Flag# and t1.code=t3.uid and t3.eleid='' and t1.ParentID in($ParentID$)
+
+
+
+
+  </select>
+
+  <select id='SelectPowerProTypesByFlagFlag31' resultMap='PowerProTypesResult' parameterClass='PowerProTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes t1,PSP_PowerPicSelect t2
+    WHERE
+    t1.flag2=t2.EachListID and
+    t2.PicSelectID = #Flag2# and t1.Flag=#Flag# and t1.Code=''
+
+
+    union
+
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code",t1.remark as "Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes t1,PSP_PowerPicSelect t2,substation t3
+    WHERE
+    t1.flag2=t2.EachListID and t2.PicSelectID = #Flag2# and t1.Flag=#Flag# and t1.code=t3.uid and t3.eleid=''
+
+
+    union
+
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code",t1.remark as "Remark","L1","L2","L3","L4","L5","L6","IsConn","StartYear","EndYear","CreateTime","UpdateTime"
+    FROM PSP_PowerProTypes t1,PSP_PowerPicSelect t2,lineinfo t3
+    WHERE
+    t1.flag2=t2.EachListID and t2.PicSelectID = #Flag2# and t1.Flag=#Flag# and t1.code=t3.uid and t3.eleid=''
+
+  </select>
+</statements>
+</sqlMap>

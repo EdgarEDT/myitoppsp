@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_CapBalance' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_CapBalance' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_CapBalance' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_CapBalanceResult' class='PSP_CapBalance'>
+			<result property='ID' column='ID' />
+			<result property='Flag' column='Flag' />
+			<result property='TypeID' column='TypeID' />
+			<result property='Year' column='Year' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Col3' column='Col3' />
+			<result property='Col4' column='Col4' />
+			<result property='Col5' column='Col5' />
+			<result property='Col6' column='Col6' />
+			<result property='Col7' column='Col7' />
+			<result property='Col8' column='Col8' />
+			<result property='Col9' column='Col9' />
+			<result property='Col10' column='Col10' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_CapBalance' parameterClass='PSP_CapBalance'>
+		INSERT INTO PSP_CapBalance		(
+			"Flag",
+			"TypeID",
+			"Year",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"Col6",
+			"Col7",
+			"Col8",
+			"Col9",
+			"Col10"
+		)
+		VALUES
+		(
+			#Flag#,
+			#TypeID#,
+			#Year#,
+			#Col1#,
+			#Col2#,
+			#Col3#,
+			#Col4#,
+			#Col5#,
+			#Col6#,
+			#Col7#,
+			#Col8#,
+			#Col9#,
+			#Col10#
+		)
+	</insert>
+	<delete id='DeletePSP_CapBalance' parameterClass='PSP_CapBalance'>
+		DELETE FROM PSP_CapBalance
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='DeletePSP_CapBalanceByYear' parameterClass='PSP_CapBalance'>
+		DELETE FROM PSP_CapBalance
+		WHERE
+			Year = #Year#
+			And
+			Flag = #Flag#
+	</update>
+	<update id='DeletePSP_CapBalanceByTypeID' parameterClass='PSP_CapBalance'>
+		DELETE FROM PSP_CapBalance
+		WHERE
+			TypeID = #TypeID#
+			And
+			Flag = #Flag#
+
+		DELETE FROM PSP_Types
+		WHERE
+			ID = #TypeID#
+	</update>
+	<update id='UpdatePSP_CapBalance' parameterClass='PSP_CapBalance'>
+		If Exists(Select ID from PSP_CapBalance Where Year=#Year# And TypeID=#TypeID# And Flag=#Flag#)
+			UPDATE PSP_CapBalance
+			SET
+				"Flag" = #Flag#,
+				"TypeID" = #TypeID#,
+				"Year" = #Year#,
+				"Col1" = #Col1#,
+				"Col2" = #Col2#,
+				"Col3" = #Col3#,
+				"Col4" = #Col4#,
+				"Col5" = #Col5#,
+				"Col6" = #Col6#,
+				"Col7" = #Col7#,
+				"Col8" = #Col8#,
+				"Col9" = #Col9#,
+				"Col10" = #Col10#
+			WHERE
+				Year=#Year# And TypeID=#TypeID# And Flag=#Flag#
+		Else
+			INSERT INTO PSP_CapBalance		(
+				"Flag",
+				"TypeID",
+				"Year",
+				"Col1",
+				"Col2",
+				"Col3",
+				"Col4",
+				"Col5",
+				"Col6",
+				"Col7",
+				"Col8",
+				"Col9",
+				"Col10"
+			)
+			VALUES
+			(
+				#Flag#,
+				#TypeID#,
+				#Year#,
+				#Col1#,
+				#Col2#,
+				#Col3#,
+				#Col4#,
+				#Col5#,
+				#Col6#,
+				#Col7#,
+				#Col8#,
+				#Col9#,
+				#Col10#
+			)
+	</update>
+	<select id='SelectPSP_CapBalanceList' resultMap='PSP_CapBalanceResult' parameterClass='PSP_CapBalance'>
+		SELECT
+			"ID",
+			"Flag",
+			"TypeID",
+			"Year",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"Col6",
+			"Col7",
+			"Col8",
+			"Col9",
+			"Col10"
+		FROM PSP_CapBalance
+	</select>
+	<select id='SelectPSP_CapBalanceByKey' resultMap='PSP_CapBalanceResult' parameterClass='PSP_CapBalance'>
+		SELECT
+			"ID",
+			"Flag",
+			"TypeID",
+			"Year",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"Col6",
+			"Col7",
+			"Col8",
+			"Col9",
+			"Col10"
+		FROM PSP_CapBalance
+		WHERE
+			ID = #ID#
+	</select>
+	<select id='SelectPSP_CapBalanceByFlag' resultMap='PSP_CapBalanceResult' parameterClass='PSP_CapBalance'>
+		SELECT
+			"ID",
+			"Flag",
+			"TypeID",
+			"Year",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"Col6",
+			"Col7",
+			"Col8",
+			"Col9",
+			"Col10"
+		FROM PSP_CapBalance
+		WHERE
+			Flag = #Flag#
+	</select>
+</statements>
+</sqlMap>

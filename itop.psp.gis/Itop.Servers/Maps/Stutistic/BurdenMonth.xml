@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='BurdenMonth' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='BurdenMonth' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.BurdenMonth' />
+</alias>
+	<resultMaps>
+		<resultMap id='BurdenMonthResult' class='BurdenMonth'>
+			<result property='UID' column='UID' />
+			<result property='BurdenYear' column='BurdenYear' />
+			<result property='Month1' column='Month1' />
+			<result property='Month2' column='Month2' />
+			<result property='Month3' column='Month3' />
+			<result property='Month4' column='Month4' />
+			<result property='Month5' column='Month5' />
+			<result property='Month6' column='Month6' />
+			<result property='Month7' column='Month7' />
+			<result property='Month8' column='Month8' />
+			<result property='Month9' column='Month9' />
+			<result property='Month10' column='Month10' />
+			<result property='Month11' column='Month11' />
+			<result property='Month12' column='Month12' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='UpdateDate' column='UpdateDate' />
+			<result property='Title' column='Title' />
+			<result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertBurdenMonth' parameterClass='BurdenMonth'>
+    INSERT INTO PSP_BurdenMonth		(
+    "UID",
+    "BurdenYear",
+    "Month1",
+    "Month2",
+    "Month3",
+    "Month4",
+    "Month5",
+    "Month6",
+    "Month7",
+    "Month8",
+    "Month9",
+    "Month10",
+    "Month11",
+    "Month12",
+    "CreateDate",
+    "UpdateDate",
+    "Title",
+    "Remark"
+    )
+    VALUES
+    (
+    #UID#,
+    #BurdenYear#,
+    #Month1#,
+    #Month2#,
+    #Month3#,
+    #Month4#,
+    #Month5#,
+    #Month6#,
+    #Month7#,
+    #Month8#,
+    #Month9#,
+    #Month10#,
+    #Month11#,
+    #Month12#,
+    GetDate(),
+    GetDate(),
+    #Title#,
+    #Remark#
+    )
+  </insert>
+	<delete id='DeleteBurdenMonth' parameterClass='BurdenMonth'>
+		DELETE FROM PSP_BurdenMonth
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateBurdenMonth' parameterClass='BurdenMonth'>
+    UPDATE PSP_BurdenMonth
+    SET
+    "BurdenYear" = #BurdenYear#,
+    "Month1" = #Month1#,
+    "Month2" = #Month2#,
+    "Month3" = #Month3#,
+    "Month4" = #Month4#,
+    "Month5" = #Month5#,
+    "Month6" = #Month6#,
+    "Month7" = #Month7#,
+    "Month8" = #Month8#,
+    "Month9" = #Month9#,
+    "Month10" = #Month10#,
+    "Month11" = #Month11#,
+    "Month12" = #Month12#,
+    "UpdateDate" = GetDate(),
+    "Title" = #Title#,
+    "Remark" = #Remark#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectBurdenMonthList' resultMap='BurdenMonthResult' parameterClass='BurdenMonth'>
+		SELECT
+			"UID",
+			"BurdenYear",
+			"Month1",
+			"Month2",
+			"Month3",
+			"Month4",
+			"Month5",
+			"Month6",
+			"Month7",
+			"Month8",
+			"Month9",
+			"Month10",
+			"Month11",
+			"Month12",
+			"CreateDate",
+			"UpdateDate",
+			"Title",
+			"Remark"
+		FROM PSP_BurdenMonth
+	</select>
+	<select id='SelectBurdenMonthByKey' resultMap='BurdenMonthResult' parameterClass='BurdenMonth'>
+		SELECT
+			"UID",
+			"BurdenYear",
+			"Month1",
+			"Month2",
+			"Month3",
+			"Month4",
+			"Month5",
+			"Month6",
+			"Month7",
+			"Month8",
+			"Month9",
+			"Month10",
+			"Month11",
+			"Month12",
+			"CreateDate",
+			"UpdateDate",
+			"Title",
+			"Remark"
+		FROM PSP_BurdenMonth
+		WHERE
+			UID = #UID#
+	</select>
+
+
+  <select id='SelectBurdenMonthByBurdenYear' resultMap='BurdenMonthResult' parameterClass='BurdenMonth'>
+    SELECT
+    "UID",
+    "BurdenYear",
+    "Month1",
+    "Month2",
+    "Month3",
+    "Month4",
+    "Month5",
+    "Month6",
+    "Month7",
+    "Month8",
+    "Month9",
+    "Month10",
+    "Month11",
+    "Month12",
+    "CreateDate",
+    "UpdateDate",
+    "Title",
+    "Remark"
+    FROM PSP_BurdenMonth
+    WHERE
+    BurdenYear = #BurdenYear#
+  </select>
+
+
+
+  <select id='SelectBurdenMonthByWhere' resultMap='BurdenMonthResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "BurdenYear",
+    "Month1",
+    "Month2",
+    "Month3",
+    "Month4",
+    "Month5",
+    "Month6",
+    "Month7",
+    "Month8",
+    "Month9",
+    "Month10",
+    "Month11",
+    "Month12",
+    "CreateDate",
+    "UpdateDate",
+    "Title",
+    "Remark"
+    FROM PSP_BurdenMonth
+    WHERE
+    $Title$
+  </select>
+</statements>
+</sqlMap>

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='rightMenu' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='rightMenu' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.rightMenu' />
+</alias>
+	<resultMaps>
+		<resultMap id='rightMenuResult' class='rightMenu'>
+			<result property='UID' column='UID' />
+			<result property='itemName' column='itemName' />
+			<result property='orderID' column='orderID' />
+			<result property='TypeUID' column='TypeUID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertrightMenu' parameterClass='rightMenu'>
+		INSERT INTO rightMenu		(
+			"UID",
+			"itemName",
+			"orderID",
+			"TypeUID"
+		)
+		VALUES
+		(
+			#UID#,
+			#itemName#,
+			#orderID#,
+			#TypeUID#
+		)
+	</insert>
+	<delete id='DeleterightMenu' parameterClass='rightMenu'>
+		DELETE FROM rightMenu
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdaterightMenu' parameterClass='rightMenu'>
+		UPDATE rightMenu
+		SET
+			"itemName" = #itemName#,
+			"orderID" = #orderID#,
+			"TypeUID" = #TypeUID#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectrightMenuList' resultMap='rightMenuResult' parameterClass='rightMenu'>
+		SELECT
+			"UID",
+			"itemName",
+			"orderID",
+			"TypeUID"
+		FROM rightMenu
+	</select>
+	<select id='SelectrightMenuByKey' resultMap='rightMenuResult' parameterClass='rightMenu'>
+		SELECT
+			"UID",
+			"itemName",
+			"orderID",
+			"TypeUID"
+		FROM rightMenu
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

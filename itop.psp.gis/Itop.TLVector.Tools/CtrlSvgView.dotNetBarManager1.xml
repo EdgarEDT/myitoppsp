@@ -1,0 +1,41 @@
+<dotnetbar fullmenus="false" fullmenushover="true" tooltips="true" scintooltip="false" animation="6">
+  <items />
+  <bars>
+    <bar name="bar1" candockleft="true" candockright="true" candocktop="true" candockbottom="true" candockdoc="false" candocktab="true" text="My Bar" dockline="0" dockoffset="0" grabhandle="0" menubar="false" stretch="true" style="2" wrapdock="false" wrapfloat="true" state="2" dockside="3" visible="true" custom="false" canhide="false" imagesize="0" itemsp="0" themes="false" layout="0" eqbutton="false" tabalign="0">
+      <items>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mOpen" text="抓图" iscontainer="false" visible="false" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="22" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mSelect" text="选择" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="选择" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="11" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mIncreaseView" text="放大" iscontainer="false" visible="false" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="放大" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="26" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mDecreaseView" text="缩小" iscontainer="false" visible="false" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="缩小" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="27" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mRoam" text="漫游" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="漫游" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="25" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mBack" text="返回上级" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="返回规划图" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="5" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mEdit" text="编辑" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="编辑" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="58" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAirscape" text="鸟瞰图" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="鸟瞰图" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="57" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="m_msel" text="区域选择" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="区域选择" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="61" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="btLar" text="" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="图层" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="59" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ComboBoxItem" name="ScaleBox" text="" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="2" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" ComboWidth="64" FontCombo="false" MenuVisibility="0" RecentlyUsed="false" DropDownStyle="1" CText="" ThemeAware="false" AlwaysShowCaption="false" ItemHeight="14" DisplayMember="Text" />
+      </items>
+    </bar>
+  </bars>
+  <popups />
+</dotnetbar>

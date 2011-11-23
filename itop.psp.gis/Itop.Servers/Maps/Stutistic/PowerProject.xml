@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerProject' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerProject' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerProject' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerProjectResult' class='PowerProject'>
+			<result property='UID' column='UID' />
+			<result property='StuffName' column='StuffName' />
+			<result property='Total' column='Total' />
+			<result property='Volume' column='Volume' />
+			<result property='Lengths' column='Lengths' />
+			<result property='Type' column='Type' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='PowerLineUID' column='PowerLineUID' />
+			<result property='PlanStartYear' column='PlanStartYear' />
+			<result property='PlanEndYear' column='PlanEndYear' />
+      <result property='ParentID' column='ParentID' />
+      <result property='SortID' column='SortID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerProject' parameterClass='PowerProject'>
+    INSERT INTO PSP_PowerProject		(
+    "UID",
+    "StuffName",
+    "Total",
+    "Volume",
+    "Lengths",
+    "Type",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID",
+    "PlanStartYear",
+    "PlanEndYear","ParentID","SortID"
+    )
+    VALUES
+    (
+    #UID#,
+    #StuffName#,
+    #Total#,
+    #Volume#,
+    #Lengths#,
+    #Type#,
+    #Remark#,
+    GetDate(),
+    #PowerLineUID#,
+    #PlanStartYear#,
+    #PlanEndYear#,#ParentID#,#SortID#
+    )
+  </insert>
+	<delete id='DeletePowerProject' parameterClass='PowerProject'>
+		DELETE FROM PSP_PowerProject
+		WHERE
+			UID = #UID#
+	</delete>
+  <delete id='DeletePowerProjectByKey' parameterClass='string'>
+    DELETE FROM PSP_PowerProject
+    WHERE
+    UID = #UID#
+  </delete>
+	<update id='UpdatePowerProject' parameterClass='PowerProject'>
+    UPDATE PSP_PowerProject
+    SET
+    "StuffName" = #StuffName#,
+    "Total" = #Total#,
+    "Volume" = #Volume#,
+    "Lengths" = #Lengths#,
+    "Type" = #Type#,
+    "Remark" = #Remark#,
+    "PowerLineUID" = #PowerLineUID#,
+    "PlanStartYear" = #PlanStartYear#,
+    "PlanEndYear" = #PlanEndYear#,"ParentID" = #ParentID#,"SortID"=#SortID#
+    WHERE
+    UID = #UID#
+  </update>
+
+
+  <update id='UpdatePowerProjectBySortID' parameterClass='PowerProject'>
+    UPDATE PSP_PowerProject
+    SET
+    SortID=SortID+1
+    WHERE
+    SortID >= #SortID# and ParentID=#ParentID#
+  </update>
+	<select id='SelectPowerProjectList' resultMap='PowerProjectResult' parameterClass='PowerProject'>
+    SELECT
+    "UID",
+    "StuffName",
+    "Total",
+    "Volume",
+    "Lengths",
+    "Type",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID",
+    "PlanStartYear",
+    "PlanEndYear","ParentID","SortID"
+    FROM PSP_PowerProject where PowerLineUID=#PowerLineUID#
+  </select>
+	<select id='SelectPowerProjectByKey' resultMap='PowerProjectResult' parameterClass='PowerProject'>
+    SELECT
+    "UID",
+    "StuffName",
+    "Total",
+    "Volume",
+    "Lengths",
+    "Type",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID",
+    "PlanStartYear",
+    "PlanEndYear","ParentID","SortID"
+    FROM PSP_PowerProject
+    WHERE
+    UID = #UID#
+  </select>
+
+  <select id='SelectPowerProjectBySortID' resultClass='int'>
+    SELECT
+    Max(SortID) as "SortID"
+    FROM PSP_PowerProject
+  </select>
+
+  <select id='SelectPowerProjectByParentID' resultClass='int'>
+    SELECT
+    count(*)
+    FROM PSP_PowerProject where PowerLineUID=#UID#
+  </select>
+
+
+  
+</statements> 
+</sqlMap>

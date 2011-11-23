@@ -1,0 +1,1442 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{570EFB4E-7965-4814-BDF2-DDB35DD002F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ItopVector.Tools</RootNamespace>
+    <AssemblyName>Itop.TLVector.Tools</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Client\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar, Version=5.9.0.0, Culture=neutral, PublicKeyToken=6d649f5e9b3afca5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevComponents.DotNetBar.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraPrinting.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common, Version=1.4.1.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.5.1.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.PJCALLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.CADConvert, Version=1.0.4269.23920, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Server\Itop.Domain.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.MapView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ItopVector, Version=3.0.1.23920, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MapLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\MapLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmAreaSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAreaSel.Designer.cs">
+      <DependentUpon>frmAreaSel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInJWD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInJWD.Designer.cs">
+      <DependentUpon>frmInJWD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelationDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelationDevice.Designer.cs">
+      <DependentUpon>frmRelationDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain_wj.ex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CtrlFileManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlFileManager.Designer.cs">
+      <DependentUpon>CtrlFileManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlglebeProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlglebeProperty.designer.cs">
+      <DependentUpon>CtrlglebeProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlglebeType1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlglebeType1.designer.cs">
+      <DependentUpon>CtrlglebeType1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPSP_GProg.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPSP_GProg.designer.cs">
+      <DependentUpon>CtrlPSP_GProg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPSP_PlanList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPSP_PlanList.Designer.cs">
+      <DependentUpon>CtrlPSP_PlanList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPSP_SubstationPar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPSP_SubstationPar.designer.cs">
+      <DependentUpon>CtrlPSP_SubstationPar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlSvgView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlSvgView.Designer.cs">
+      <DependentUpon>CtrlSvgView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlUseGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlUseGroup.designer.cs">
+      <DependentUpon>CtrlUseGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileClass.cs" />
+    <Compile Include="FlashWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGXXlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddLine.Designer.cs">
+      <DependentUpon>frmAddLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddLineSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddLineSel.Designer.cs">
+      <DependentUpon>frmAddLineSel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangeInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangeInput.Designer.cs">
+      <DependentUpon>frmChangeInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCS.Designer.cs">
+      <DependentUpon>frmCS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGHDeviceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGHDeviceList.designer.cs">
+      <DependentUpon>frmGHDeviceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGoLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGoLocation.Designer.cs">
+      <DependentUpon>frmGoLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGProList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGProList.Designer.cs">
+      <DependentUpon>frmGProList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImgAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImgAdd.Designer.cs">
+      <DependentUpon>frmImgAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImgInfoInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImgInfoInput.Designer.cs">
+      <DependentUpon>frmImgInfoInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImgManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImgManager.Designer.cs">
+      <DependentUpon>frmImgManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerGradeInPut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerGradeInPut.Designer.cs">
+      <DependentUpon>frmLayerGradeInPut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerInPut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerInPut.Designer.cs">
+      <DependentUpon>frmLayerInPut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerGrade.Designer.cs">
+      <DependentUpon>frmLayerGrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerManager2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerManager2.Designer.cs">
+      <DependentUpon>frmLayerManager2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerManagerYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerManagerYear.Designer.cs">
+      <DependentUpon>frmLayerManagerYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLineList1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLineList1.Designer.cs">
+      <DependentUpon>frmLineList1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLineList1Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLineList1Dialog.Designer.cs">
+      <DependentUpon>FrmLineList1Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLineList2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLineList2.Designer.cs">
+      <DependentUpon>frmLineList2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmList.Designer.cs">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain2.Designer.cs">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain_wj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain_wj.Designer.cs">
+      <DependentUpon>frmMain_wj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMapSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMapSetup.Designer.cs">
+      <DependentUpon>frmMapSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageBox.Designer.cs">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMove.Designer.cs">
+      <DependentUpon>frmMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOpenProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOpenProject.Designer.cs">
+      <DependentUpon>frmOpenProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPengFen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPengFen.Designer.cs">
+      <DependentUpon>frmPengFen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlanList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlanList.Designer.cs">
+      <DependentUpon>frmPlanList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPloyPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPloyPrint.Designer.cs">
+      <DependentUpon>frmPloyPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrinter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrinter.Designer.cs">
+      <DependentUpon>frmPrinter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrintF.Designer.cs">
+      <DependentUpon>frmPrintF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_GProgDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_GProgDialog.designer.cs">
+      <DependentUpon>FrmPSP_GProgDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_PlanListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_PlanListDialog.designer.cs">
+      <DependentUpon>FrmPSP_PlanListDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_SubstationParDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_SubstationParDialog.designer.cs">
+      <DependentUpon>FrmPSP_SubstationParDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSaveGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSaveGroup.Designer.cs">
+      <DependentUpon>frmSaveGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectLineByYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectLineByYear.Designer.cs">
+      <DependentUpon>frmSelectLineByYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectYear.Designer.cs">
+      <DependentUpon>frmSelectYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelLayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelLayer.Designer.cs">
+      <DependentUpon>frmSelLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSet.Designer.cs">
+      <DependentUpon>FrmSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubPrint.Designer.cs">
+      <DependentUpon>frmSubPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubSel.Designer.cs">
+      <DependentUpon>frmSubSel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAirscape.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAirscape.Designer.cs">
+      <DependentUpon>frmAirscape.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEachList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEachList.Designer.cs">
+      <DependentUpon>frmEachList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFileCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFileCopy.Designer.cs">
+      <DependentUpon>frmFileCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFileSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFileSelect.Designer.cs">
+      <DependentUpon>frmFileSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmglebePropertyList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmglebePropertyList.Designer.cs">
+      <DependentUpon>frmglebePropertyList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGlebeTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGlebeTypeList.Designer.cs">
+      <DependentUpon>frmGlebeTypeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInputDialog.Designer.cs">
+      <DependentUpon>frmInputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerList.Designer.cs">
+      <DependentUpon>frmLayerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerManager.Designer.cs">
+      <DependentUpon>frmLayerManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainProperty.Designer.cs">
+      <DependentUpon>frmMainProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProperty.Designer.cs">
+      <DependentUpon>frmProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPropertyClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPropertyClass.Designer.cs">
+      <DependentUpon>frmPropertyClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubstatinYXInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubstatinYXInfo.Designer.cs">
+      <DependentUpon>frmSubstatinYXInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubstationCodeSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubstationCodeSel.Designer.cs">
+      <DependentUpon>frmSubstationCodeSel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubstationManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubstationManager.Designer.cs">
+      <DependentUpon>frmSubstationManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubstationParMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubstationParMng.Designer.cs">
+      <DependentUpon>frmSubstationParMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTemp.Designer.cs">
+      <DependentUpon>frmTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTextInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTextInput.Designer.cs">
+      <DependentUpon>frmTextInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTongJi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTongJi.Designer.cs">
+      <DependentUpon>frmTongJi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUseGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUseGroup.Designer.cs">
+      <DependentUpon>frmUseGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUseProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUseProperty.Designer.cs">
+      <DependentUpon>frmUseProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsePropertySelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsePropertySelect.Designer.cs">
+      <DependentUpon>frmUsePropertySelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewScale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewScale.Designer.cs">
+      <DependentUpon>frmViewScale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaiting.Designer.cs">
+      <DependentUpon>frmWaiting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmXY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXY.Designer.cs">
+      <DependentUpon>frmXY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmYear.Designer.cs">
+      <DependentUpon>frmYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JorJform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenProject.Designer.cs">
+      <DependentUpon>OpenProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Psptypeform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelShowlineform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelShowlineform.Designer.cs">
+      <DependentUpon>SelShowlineform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TLMath.cs" />
+    <Compile Include="frmRatio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRatio.Designer.cs">
+      <DependentUpon>frmRatio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInfo.Designer.cs">
+      <DependentUpon>frmInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLineProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLineProperty.Designer.cs">
+      <DependentUpon>frmLineProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLinePropertyList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinePropertyList.Designer.cs">
+      <DependentUpon>frmLinePropertyList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlLineProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlLineProperty.designer.cs">
+      <DependentUpon>CtrlLineProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubstationProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubstationProperty.Designer.cs">
+      <DependentUpon>frmSubstationProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlSubStationProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlSubStationProperty.designer.cs">
+      <DependentUpon>CtrlSubStationProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubstationPropertyList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubstationPropertyList.Designer.cs">
+      <DependentUpon>frmSubstationPropertyList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmtempViewScale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtempViewScale.Designer.cs">
+      <DependentUpon>frmtempViewScale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlSubstationBurthen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlSubstationBurthen.designer.cs">
+      <DependentUpon>CtrlSubstationBurthen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmXYEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXYEdit.Designer.cs">
+      <DependentUpon>frmXYEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubSelS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubSelS.Designer.cs">
+      <DependentUpon>frmSubSelS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XLTProcessor.cs" />
+    <Compile Include="frmAddLine2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddLine2.Designer.cs">
+      <DependentUpon>frmAddLine2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmglebePropertyZHList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmglebePropertyZHList.Designer.cs">
+      <DependentUpon>frmglebePropertyZHList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlglebePropertyZH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlglebePropertyZH.designer.cs">
+      <DependentUpon>CtrlglebePropertyZH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectSubByYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectSubByYear.Designer.cs">
+      <DependentUpon>frmSelectSubByYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectSubAllByYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectSubAllByYear.Designer.cs">
+      <DependentUpon>frmSelectSubAllByYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerGradeSave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerGradeSave.Designer.cs">
+      <DependentUpon>frmLayerGradeSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputDialog2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInputDialog2.Designer.cs">
+      <DependentUpon>frmInputDialog2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerSel.Designer.cs">
+      <DependentUpon>frmLayerSel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubstationMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubstationMng.Designer.cs">
+      <DependentUpon>frmSubstationMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_SubstationMngDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_SubstationMngDialog.designer.cs">
+      <DependentUpon>FrmPSP_SubstationMngDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputNum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInputNum.Designer.cs">
+      <DependentUpon>frmInputNum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLineParMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLineParMng.Designer.cs">
+      <DependentUpon>frmLineParMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPengFenLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPengFenLine.Designer.cs">
+      <DependentUpon>frmPengFenLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTongJi2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTongJi2.Designer.cs">
+      <DependentUpon>frmTongJi2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGrade.Designer.cs">
+      <DependentUpon>frmGrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGProg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGProg.Designer.cs">
+      <DependentUpon>frmGProg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmkbsProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmkbsProperty.Designer.cs">
+      <DependentUpon>frmkbsProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmfjxProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmfjxProperty.Designer.cs">
+      <DependentUpon>frmfjxProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmbyqProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmbyqProperty.Designer.cs">
+      <DependentUpon>frmbyqProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain_wh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain_wh.Designer.cs">
+      <DependentUpon>frmMain_wh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubstationProperty_wh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubstationProperty_wh.Designer.cs">
+      <DependentUpon>frmSubstationProperty_wh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlSvgView_wh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlSvgView_wh.Designer.cs">
+      <DependentUpon>CtrlSvgView_wh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerGradeSave2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerGradeSave2.Designer.cs">
+      <DependentUpon>frmLayerGradeSave2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLayerSel2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerSel2.Designer.cs">
+      <DependentUpon>frmLayerSel2.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CtrlFileManager.resx">
+      <DependentUpon>CtrlFileManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAirscape.resx">
+      <DependentUpon>frmAirscape.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFileSelect.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFileSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputDialog.resx">
+      <DependentUpon>frmInputDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPropertyClass.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPropertyClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUseProperty.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmUseProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsePropertySelect.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmUsePropertySelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CtrlSvgView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlSvgView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Database.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CtrlSvgView.dotNetBarManager1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemp.resx">
+      <DependentUpon>frmTemp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TinVoronoi\TinVoronoi.csproj">
+      <Project>{194417E2-0B8E-45E0-80D6-4DD483E735D1}</Project>
+      <Name>TinVoronoi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.CADLib\Itop.CADLib.csproj">
+      <Project>{850816E0-DD57-44F4-9DB4-38764FCC1CDB}</Project>
+      <Name>Itop.CADLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.TLPSP.DEVICE\Itop.TLPSP.DEVICE.csproj">
+      <Project>{549F483D-6CDD-47E6-84A4-7B530EB67DC1}</Project>
+      <Name>Itop.TLPSP.DEVICE</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainProperty.resx">
+      <DependentUpon>frmMainProperty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProperty.resx">
+      <DependentUpon>frmProperty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaiting.resx">
+      <DependentUpon>frmWaiting.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolbarImages.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CtrlglebeProperty.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlglebeProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlglebeType1.resx">
+      <DependentUpon>CtrlglebeType1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlUseGroup.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlUseGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddLine.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAddLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddLineSel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAddLineSel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain2.resx">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessageBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMove.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPloyPrint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPloyPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrinter.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintF.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPrintF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSaveGroup.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSaveGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubPrint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSubPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubSel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSubSel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEachList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEachList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFileCopy.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFileCopy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmglebePropertyList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmglebePropertyList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGlebeTypeList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmGlebeTypeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInput.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLayerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLayerManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.dotNetBarManager1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTextInput.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTextInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUseGroup.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmUseGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewScale.resx">
+      <DependentUpon>frmViewScale.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRatio.resx">
+      <DependentUpon>frmRatio.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInfo.resx">
+      <DependentUpon>frmInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLineProperty.resx">
+      <DependentUpon>frmLineProperty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLinePropertyList.resx">
+      <DependentUpon>frmLinePropertyList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlLineProperty.resx">
+      <DependentUpon>CtrlLineProperty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubstationProperty.resx">
+      <DependentUpon>frmSubstationProperty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlSubStationProperty.resx">
+      <DependentUpon>CtrlSubStationProperty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubstationPropertyList.resx">
+      <DependentUpon>frmSubstationPropertyList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmtempViewScale.resx">
+      <DependentUpon>frmtempViewScale.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlSubstationBurthen.resx">
+      <DependentUpon>CtrlSubstationBurthen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXY.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmXY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXYEdit.resx">
+      <DependentUpon>frmXYEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubSelS.resx">
+      <DependentUpon>frmSubSelS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddLine2.resx">
+      <DependentUpon>frmAddLine2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CtrlPSP_GProg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlPSP_GProg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPSP_PlanList.resx">
+      <DependentUpon>CtrlPSP_PlanList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPSP_SubstationPar.resx">
+      <DependentUpon>CtrlPSP_SubstationPar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlashWindow.resx">
+      <DependentUpon>FlashWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangeInput.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmChangeInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGoLocation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmGoLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImgAdd.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmImgAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImgInfoInput.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmImgInfoInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImgManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmImgManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerGradeInPut.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLayerGradeInPut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerInPut.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLayerInPut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerGrade.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLayerGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerManager2.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLayerManager2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerManagerYear.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLayerManagerYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLineList1.resx">
+      <DependentUpon>frmLineList1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLineList1Dialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmLineList1Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLineList2.resx">
+      <DependentUpon>frmLineList2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain2.dotNetBarManager2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMapSetup.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMapSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPengFen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPengFen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlanList.resx">
+      <DependentUpon>frmPlanList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_GProgDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmPSP_GProgDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_PlanListDialog.resx">
+      <DependentUpon>FrmPSP_PlanListDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_SubstationParDialog.resx">
+      <DependentUpon>FrmPSP_SubstationParDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectLineByYear.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSelectLineByYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectYear.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSelectYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelLayer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSelLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmglebePropertyZHList.resx">
+      <DependentUpon>frmglebePropertyZHList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlglebePropertyZH.resx">
+      <DependentUpon>CtrlglebePropertyZH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectSubByYear.resx">
+      <DependentUpon>frmSelectSubByYear.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectSubAllByYear.resx">
+      <DependentUpon>frmSelectSubAllByYear.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubstatinYXInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSubstatinYXInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubstationCodeSel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSubstationCodeSel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubstationManager.resx">
+      <DependentUpon>frmSubstationManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubstationParMng.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSubstationParMng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerGradeSave.resx">
+      <DependentUpon>frmLayerGradeSave.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTongJi.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTongJi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputDialog2.resx">
+      <DependentUpon>frmInputDialog2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerSel.resx">
+      <DependentUpon>frmLayerSel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubstationMng.resx">
+      <DependentUpon>frmSubstationMng.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_SubstationMngDialog.resx">
+      <DependentUpon>FrmPSP_SubstationMngDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputNum.resx">
+      <DependentUpon>frmInputNum.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLineParMng.resx">
+      <DependentUpon>frmLineParMng.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPengFenLine.resx">
+      <DependentUpon>frmPengFenLine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTongJi2.resx">
+      <DependentUpon>frmTongJi2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGrade.resx">
+      <DependentUpon>frmGrade.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGProg.resx">
+      <DependentUpon>frmGProg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYear.resx">
+      <DependentUpon>frmYear.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmkbsProperty.resx">
+      <DependentUpon>frmkbsProperty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmfjxProperty.resx">
+      <DependentUpon>frmfjxProperty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmbyqProperty.resx">
+      <DependentUpon>frmbyqProperty.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain_wh.resx">
+      <DependentUpon>frmMain_wh.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubstationProperty_wh.resx">
+      <DependentUpon>frmSubstationProperty_wh.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenProject.resx">
+      <DependentUpon>OpenProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormGXXlist.resx">
+      <DependentUpon>FormGXXlist.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAreaSel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAreaSel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCS.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInJWD.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmInJWD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelationDevice.resx">
+      <DependentUpon>frmRelationDevice.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGHDeviceList.resx">
+      <DependentUpon>frmGHDeviceList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGProList.resx">
+      <DependentUpon>frmGProList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain_wj.resx">
+      <DependentUpon>frmMain_wj.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOpenProject.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmOpenProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSet.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JorJform.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>JorJform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Psptypeform.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Psptypeform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelShowlineform.resx">
+      <DependentUpon>SelShowlineform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolbarImages1.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlSvgView_wh.resx">
+      <DependentUpon>CtrlSvgView_wh.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain_wh.dotNetBarManager1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain_wj.dotNetBarManager1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerGradeSave2.resx">
+      <DependentUpon>frmLayerGradeSave2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerSel2.resx">
+      <DependentUpon>frmLayerSel2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="更新说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IasHelperLib">
+      <Guid>{6BC096BB-0CE6-11D1-BAAE-00C04FC2E20D}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

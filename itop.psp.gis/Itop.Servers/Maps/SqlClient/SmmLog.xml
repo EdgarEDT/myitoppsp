@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SMMLOG' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='SMMLOG' assembly='Itop.Domain.RightManager.dll' type='Itop.Domain.RightManager.SMMLOG' />
+</alias>
+	<resultMaps>
+		<resultMap id='SMMLOGResult' class='SMMLOG'>
+			<result property='UID' column='UID' />
+			<result property='RQ' column='RQ' />
+			<result property='USERID' column='USERID' />
+			<result property='CZPROG' column='CZPROG' />
+			<result property='CZNOTES' column='CZNOTES' />
+			<result property='CZSTATE' column='CZSTATE' />
+			<result property='CZCOMPUTE' column='CZCOMPUTE' />
+			<result property='CZIP' column='CZIP' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSMMLOG' parameterClass='SMMLOG'>
+		INSERT INTO SMMLOG		(
+			"UID",
+			"RQ",
+			"USERID",
+			"CZPROG",
+			"CZNOTES",
+			"CZSTATE",
+			"CZCOMPUTE",
+			"CZIP"
+		)
+		VALUES
+		(
+			#UID#,
+			#RQ#,
+			#USERID#,
+			#CZPROG#,
+			#CZNOTES#,
+			#CZSTATE#,
+			#CZCOMPUTE#,
+			#CZIP#
+		)
+	</insert>
+	<delete id='DeleteSMMLOG' parameterClass='SMMLOG'>
+		DELETE FROM SMMLOG
+
+	</delete>
+		<delete id='DeleteSMMLOGByKey' parameterClass='string'>
+		DELETE FROM SMMLOG
+		WHERE
+			UID = #UID#
+	</delete>
+
+
+
+	<update id='UpdateSMMLOG' parameterClass='SMMLOG'>
+		UPDATE SMMLOG
+		SET
+			"RQ" = #RQ#,
+			"USERID" = #USERID#,
+			"CZPROG" = #CZPROG#,
+			"CZNOTES" = #CZNOTES#,
+			"CZSTATE" = #CZSTATE#,
+			"CZCOMPUTE" = #CZCOMPUTE#,
+			"CZIP" = #CZIP#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectSMMLOGList' resultMap='SMMLOGResult' parameterClass='SMMLOG'>
+		SELECT
+			"UID",
+			"RQ",
+			"USERID",
+			"CZPROG",
+			"CZNOTES",
+			"CZSTATE",
+			"CZCOMPUTE",
+			"CZIP"
+		FROM SMMLOG order by rq desc
+	</select>
+	<select id='SelectSMMLOGByKey' resultMap='SMMLOGResult' parameterClass='SMMLOG'>
+		SELECT
+			"UID",
+			"RQ",
+			"USERID",
+			"CZPROG",
+			"CZNOTES",
+			"CZSTATE",
+			"CZCOMPUTE",
+			"CZIP"
+		FROM SMMLOG
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

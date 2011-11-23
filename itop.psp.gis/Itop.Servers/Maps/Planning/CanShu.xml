@@ -1,0 +1,57 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='CanShu' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='CanShu' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.CanShu' />
+  </alias>
+  <resultMaps>
+    <resultMap id='CanShuResult' class='CanShu'>
+      <result property='ID' column='ID' />
+      <result property='Title' column='Title' />
+      <result property='Value' column='Value' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertCanShu' parameterClass='CanShu'>
+      INSERT INTO PS_CanShu		(
+      "ID",
+      "Title",
+      "Value"
+      )
+      VALUES
+      (
+      #ID#,
+      #Title#,
+      #Value#
+      )
+    </insert>
+    <delete id='DeleteCanShu' parameterClass='CanShu'>
+      DELETE FROM PS_CanShu
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdateCanShu' parameterClass='CanShu'>
+      UPDATE PS_CanShu
+      SET
+      "Title" = #Title#,
+      "Value" = #Value#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectCanShuList' resultMap='CanShuResult' parameterClass='CanShu'>
+      SELECT
+      "ID",
+      "Title",
+      "Value"
+      FROM PS_CanShu
+    </select>
+    <select id='SelectCanShuByKey' resultMap='CanShuResult' parameterClass='CanShu'>
+      SELECT
+      "ID",
+      "Title",
+      "Value"
+      FROM PS_CanShu
+      WHERE
+      ID = #ID#
+    </select>
+  </statements>
+</sqlMap>

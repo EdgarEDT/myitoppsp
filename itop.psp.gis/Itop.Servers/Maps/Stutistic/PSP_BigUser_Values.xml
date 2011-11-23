@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_BigUser_Values' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_BigUser_Values' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PSP_BigUser_Values' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_BigUser_ValuesResult' class='PSP_BigUser_Values'>
+			<result property='ID' column='ID' />
+			<result property='TypeID' column='TypeID' />
+			<result property='Year' column='Year' />
+			<result property='Value' column='Value' />
+			<result property='Flag2' column='Flag2' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='S3' column='S3' />
+			<result property='S4' column='S4' />
+			<result property='S5' column='S5' />
+			<result property='ItemID' column='ItemID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_BigUser_Values' parameterClass='PSP_BigUser_Values'>
+		INSERT INTO PSP_BigUser_Values		(
+			"ID",
+			"TypeID",
+			"Year",
+			"Value",
+			"Flag2",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"ItemID"
+		)
+		VALUES
+		(
+			#ID#,
+			#TypeID#,
+			#Year#,
+			#Value#,
+			#Flag2#,
+			#S1#,
+			#S2#,
+			#S3#,
+			#S4#,
+			#S5#,
+			#ItemID#
+		)
+	</insert>
+	<delete id='DeletePSP_BigUser_Values' parameterClass='PSP_BigUser_Values'>
+    DELETE FROM PSP_BigUser_Values
+    where
+    ItemID=#ItemID#
+    and
+    TypeID=#TypeID#
+    and Flag2=#Flag2#
+  </delete>
+  <delete id='DeletePSP_BigUser_ValuesByType' parameterClass='PSP_BigUser_Values'>
+    DELETE FROM PSP_BigUser_Values
+    where
+    ItemID=#ItemID#
+    and
+    TypeID=#TypeID#
+    
+    DELETE FROM PSP_BigUser_Types
+    WHERE
+    ID = #TypeID#
+    and
+    ItemID=#ItemID#
+  </delete>
+  <delete id='DeletePSP_BigUser_ValuesByType2' parameterClass='PSP_BigUser_Values'>
+    DELETE FROM PSP_BigUser_Values
+    where
+    ItemID=#ItemID#
+    and
+    TypeID=#TypeID#
+    and
+    Flag2=#Flag2#
+  </delete>
+  <update id='UpdatePSP_BigUser_Values' parameterClass='PSP_BigUser_Values'>
+
+    If Exists(Select ID from PSP_BigUser_Values Where Year=#Year# And TypeID=#TypeID# and ItemID=#ItemID# and Flag2=#Flag2#  )
+    UPDATE PSP_BigUser_Values
+    SET
+    "Value" = #Value#
+    WHERE
+    "TypeID" = #TypeID#
+    And
+    "Year" = #Year#
+    And
+    "ItemID" = #ItemID#
+    And
+    "Flag2" = #Flag2#
+    Else
+    INSERT INTO PSP_BigUser_Values		(
+    "TypeID",
+    "Year",
+    "Value",
+    "ItemID",
+    "Flag2"
+    )
+    VALUES
+    (
+    #TypeID#,
+    #Year#,
+    #Value#,
+    #ItemID#,
+    #Flag2#
+    )
+  </update>
+  <update id='DeletePSP_BigUser_ValuesByYear' parameterClass='PSP_BigUser_Values'>
+    DELETE FROM PSP_BigUser_Values
+    WHERE
+    Year = #Year#
+    And TypeID in (Select ID from PSP_BigUser_Types where ItemID=#ItemID#)
+    and ItemID=#ItemID#
+    and Flag2=#Flag2#
+    DELETE FROM PSP_BigUser_Years
+    WHERE
+    Year = #Year#
+    and ItemID = #ItemID#
+    and Flag=#Flag2#
+  </update>
+	<select id='SelectPSP_BigUser_ValuesList' resultMap='PSP_BigUser_ValuesResult' parameterClass='PSP_BigUser_Values'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value",
+			"Flag2",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"ItemID"
+		FROM PSP_BigUser_Values
+	</select>
+	<select id='SelectPSP_BigUser_ValuesByKey' resultMap='PSP_BigUser_ValuesResult' parameterClass='PSP_BigUser_Values'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value",
+			"Flag2",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"ItemID"
+		FROM PSP_BigUser_Values
+	</select>
+  <select id='SelectPSP_BigUser_ValuesListByFlag2' resultMap='PSP_BigUser_ValuesResult' parameterClass='PSP_BigUser_Values'>
+    SELECT
+    "ID",
+    "TypeID",
+    "Year",
+    "Value",
+    "Flag2",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "ItemID"
+    FROM PSP_BigUser_Values
+    where
+    ItemID=#ItemID# and  Flag2=#Flag2# and TypeID in (Select ID from PSP_BigUser_Types where ItemID=#ItemID#) order by TypeID,convert(int,Year)
+  </select>
+</statements>
+</sqlMap>

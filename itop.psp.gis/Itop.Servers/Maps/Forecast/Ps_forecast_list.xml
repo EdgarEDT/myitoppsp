@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_forecast_list' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Ps_forecast_list' assembly='Itop.Domain.Forecast.dll' type='Itop.Domain.Forecast.Ps_forecast_list' />
+</alias>
+	<resultMaps>
+		<resultMap id='Ps_forecast_listResult' class='Ps_forecast_list'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='StartYear' column='StartYear' />
+			<result property='EndYear' column='EndYear' />
+			<result property='UserID' column='UserID' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPs_forecast_list' parameterClass='Ps_forecast_list'>
+		INSERT INTO Ps_forecast_list		(
+			"ID",
+			"Title",
+			"StartYear",
+			"EndYear",
+			"UserID",
+			"Col1",
+			"Col2"
+		)
+		VALUES
+		(
+			#ID#,
+			#Title#,
+			#StartYear#,
+			#EndYear#,
+			#UserID#,
+			#Col1#,
+			#Col2#
+		)
+	</insert>
+	<delete id='DeletePs_forecast_list' parameterClass='Ps_forecast_list'>
+    DELETE FROM Ps_forecast_list
+    WHERE
+    ID = #ID#
+
+    DELETE FROM Ps_Forecast_Math
+    WHERE
+    ForecastID = #ID#
+  </delete>
+	<update id='UpdatePs_forecast_list' parameterClass='Ps_forecast_list'>
+		UPDATE Ps_forecast_list
+		SET
+			"Title" = #Title#,
+			"StartYear" = #StartYear#,
+			"EndYear" = #EndYear#,
+			"UserID" = #UserID#,
+			"Col1" = #Col1#,
+			"Col2" = #Col2#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPs_forecast_listList' resultMap='Ps_forecast_listResult' parameterClass='Ps_forecast_list'>
+		SELECT
+			"ID",
+			"Title",
+			"StartYear",
+			"EndYear",
+			"UserID",
+			"Col1",
+			"Col2"
+		FROM Ps_forecast_list
+	</select>
+	<select id='SelectPs_forecast_listByKey' resultMap='Ps_forecast_listResult' parameterClass='Ps_forecast_list'>
+		SELECT
+			"ID",
+			"Title",
+			"StartYear",
+			"EndYear",
+			"UserID",
+			"Col1",
+			"Col2"
+		FROM Ps_forecast_list
+		WHERE
+			ID = #ID#
+	</select>
+  <select id='SelectPs_forecast_listByCOL1AndUserID' resultMap='Ps_forecast_listResult' parameterClass='Ps_forecast_list'>
+    SELECT
+    "ID",
+    "Title",
+    "StartYear",
+    "EndYear",
+    "UserID",
+    "Col1",
+    "Col2"
+    FROM Ps_forecast_list
+    WHERE
+    UserID = #UserID#
+    AND
+    Col1 = #Col1#
+  </select>
+
+  <select id='SelectPs_forecast_listByUserID' resultMap='Ps_forecast_listResult' parameterClass='Ps_forecast_list'>
+    SELECT
+    "ID",
+    "Title",
+    "StartYear",
+    "EndYear",
+    "UserID",
+    "Col1",
+    "Col2"
+    FROM Ps_forecast_list
+    WHERE
+    UserID = #UserID#
+  </select>
+</statements>
+</sqlMap>

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerStuffList' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerStuffList' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerStuffList' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerStuffListResult' class='PowerStuffList'>
+			<result property='UID' column='UID' />
+			<result property='ListName' column='ListName' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='ParentID' column='ParentID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerStuffList' parameterClass='PowerStuffList'>
+		INSERT INTO PSP_PowerStuffList		(
+			"UID",
+			"ListName",
+			"Remark",
+			"CreateDate",
+			"ParentID"
+		)
+		VALUES
+		(
+			#UID#,
+			#ListName#,
+			#Remark#,
+			GetDate(),
+			#ParentID#
+		)
+	</insert>
+	<delete id='DeletePowerStuffList' parameterClass='PowerStuffList'>
+		DELETE FROM PSP_PowerStuffList
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePowerStuffList' parameterClass='PowerStuffList'>
+		UPDATE PSP_PowerStuffList
+		SET
+			"ListName" = #ListName#,
+			"Remark" = #Remark#,
+			"ParentID" = #ParentID#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPowerStuffListList' resultMap='PowerStuffListResult' parameterClass='PowerStuffList'>
+		SELECT
+			"UID",
+			"ListName",
+			"Remark",
+			"CreateDate",
+			"ParentID"
+		FROM PSP_PowerStuffList
+	</select>
+	<select id='SelectPowerStuffListByKey' resultMap='PowerStuffListResult' parameterClass='PowerStuffList'>
+		SELECT
+			"UID",
+			"ListName",
+			"Remark",
+			"CreateDate",
+			"ParentID"
+		FROM PSP_PowerStuffList
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

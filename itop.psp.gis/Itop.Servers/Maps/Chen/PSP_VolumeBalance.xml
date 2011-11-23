@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_VolumeBalance' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_VolumeBalance' assembly='Itop.Domain.Chen.dll' type='Itop.Domain.Chen.PSP_VolumeBalance' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_VolumeBalanceResult' class='PSP_VolumeBalance'>
+			<result property='UID' column='UID' />
+			<result property='L1' column='L1' />
+			<result property='L2' column='L2' />
+			<result property='L3' column='L3' />
+			<result property='L4' column='L4' />
+			<result property='L5' column='L5' />
+			<result property='L6' column='L6' />
+			<result property='L7' column='L7' />
+			<result property='L8' column='L8' />
+			<result property='L9' column='L9' />
+			<result property='L10' column='L10' />
+			<result property='L11' column='L11' />
+			<result property='L12' column='L12' />
+			<result property='L13' column='L13' />
+			<result property='L14' column='L14' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='S3' column='S3' />
+			<result property='S4' column='S4' />
+			<result property='S5' column='S5' />
+			<result property='S6' column='S6' />
+			<result property='TypeID' column='TypeID' />
+			<result property='Flag' column='Flag' />
+			<result property='CreatTime' column='CreatTime' />
+			<result property='Sort' column='Sort' />
+			<result property='Year' column='Year' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_VolumeBalance' parameterClass='PSP_VolumeBalance'>
+		INSERT INTO PSP_VolumeBalance		(
+			"UID",
+			"L1",
+			"L2",
+			"L3",
+			"L4",
+			"L5",
+			"L6",
+			"L7",
+			"L8",
+			"L9",
+			"L10",
+			"L11",
+			"L12",
+			"L13",
+			"L14",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"S6",
+			"TypeID",
+			"Flag",
+			"CreatTime",
+			"Sort",
+			"Year"
+		)
+		VALUES
+		(
+			#UID#,
+			#L1#,
+			#L2#,
+			#L3#,
+			#L4#,
+			#L5#,
+			#L6#,
+			#L7#,
+			#L8#,
+			#L9#,
+			#L10#,
+			#L11#,
+			#L12#,
+			#L13#,
+			#L14#,
+			#S1#,
+			#S2#,
+			#S3#,
+			#S4#,
+			#S5#,
+			#S6#,
+			#TypeID#,
+			#Flag#,
+			getdate(),
+			#Sort#,
+			#Year#
+		)
+	</insert>
+	<delete id='DeletePSP_VolumeBalance' parameterClass='PSP_VolumeBalance'>
+    DELETE FROM PSP_VolumeBalance
+    WHERE
+    UID = #UID#
+    DELETE FROM PSP_VolumeBalance_Calc
+    WHERE
+    Flag = #UID#
+  </delete>
+  <delete id='DeletePSP_VolumeBalance2' parameterClass='PSP_VolumeBalance'>
+    DELETE FROM PSP_VolumeBalance_Calc
+    WHERE
+    Flag = #UID#
+  </delete>
+	<update id='UpdatePSP_VolumeBalance' parameterClass='PSP_VolumeBalance'>
+		UPDATE PSP_VolumeBalance
+		SET
+			"L1" = #L1#,
+			"L2" = #L2#,
+			"L3" = #L3#,
+			"L4" = #L4#,
+			"L5" = #L5#,
+			"L6" = #L6#,
+			"L7" = #L7#,
+			"L8" = #L8#,
+			"L9" = #L9#,
+			"L10" = #L10#,
+			"L11" = #L11#,
+			"L12" = #L12#,
+			"L13" = #L13#,
+			"L14" = #L14#,
+			"S1" = #S1#,
+			"S2" = #S2#,
+			"S3" = #S3#,
+			"S4" = #S4#,
+			"S5" = #S5#,
+			"S6" = #S6#,
+			"TypeID" = #TypeID#,
+			"Flag" = #Flag#,
+			"Sort" = #Sort#,
+			"Year" = #Year#
+		WHERE
+			UID = #UID#
+	</update>
+  <update id='UpdatePSP_VolumeBalance2' parameterClass='PSP_VolumeBalance'>
+    UPDATE PSP_VolumeBalance
+    SET
+    "L1" = #L1#,
+    "L3" = #L3#,
+    "L4" = #L4#,
+    "L5" = #L5#,
+    "L6" = #L6#,
+    "L7" = #L7#,
+    "L8" = #L8#,
+    "L9" = #L9#,
+    "L12" = #L12#,
+    "L13" = #L13#,
+    "L14" = #L14#,
+    "S1" = #S1#,
+    "S2" = #S2#,
+    "S3" = #S3#,
+    "S4" = #S4#,
+    "S5" = #S5#,
+    "S6" = #S6#,
+    "TypeID" = #TypeID#,
+    "Flag" = #Flag#,
+    "Sort" = #Sort#,
+    "Year" = #Year#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectPSP_VolumeBalanceList' resultMap='PSP_VolumeBalanceResult' parameterClass='PSP_VolumeBalance'>
+		SELECT
+			"UID",
+			"L1",
+			"L2",
+			"L3",
+			"L4",
+			"L5",
+			"L6",
+			"L7",
+			"L8",
+			"L9",
+			"L10",
+			"L11",
+			"L12",
+			"L13",
+			"L14",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"S6",
+			"TypeID",
+			"Flag",
+			"CreatTime",
+			"Sort",
+			"Year"
+		FROM PSP_VolumeBalance
+	</select>
+	<select id='SelectPSP_VolumeBalanceByKey' resultMap='PSP_VolumeBalanceResult' parameterClass='PSP_VolumeBalance'>
+		SELECT
+			"UID",
+			"L1",
+			"L2",
+			"L3",
+			"L4",
+			"L5",
+			"L6",
+			"L7",
+			"L8",
+			"L9",
+			"L10",
+			"L11",
+			"L12",
+			"L13",
+			"L14",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5",
+			"S6",
+			"TypeID",
+			"Flag",
+			"CreatTime",
+			"Sort",
+			"Year"
+		FROM PSP_VolumeBalance
+		WHERE
+			UID = #UID#
+	</select>
+  <select id='SelectPSP_VolumeBalanceByTypeID' resultMap='PSP_VolumeBalanceResult' parameterClass='PSP_VolumeBalance'>
+    SELECT
+    "UID",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "TypeID",
+    "Flag",
+    "CreatTime",
+    "Sort",
+    "Year"
+    FROM PSP_VolumeBalance
+    WHERE
+    TypeID = #TypeID# and Flag = #Flag# order by Year
+  </select>
+  <select id='SelectPSP_VolumeBalanceByTypeIDLessYear' resultMap='PSP_VolumeBalanceResult' parameterClass='PSP_VolumeBalance'>
+    SELECT
+    "UID",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "TypeID",
+    "Flag",
+    "CreatTime",
+    "Sort",
+    "Year"
+    FROM PSP_VolumeBalance
+    WHERE
+    TypeID = #TypeID# and Flag = #Flag# and #Year#>Year order by Year
+  </select>
+  <select id='SelectPSP_VolumeBalanceByTypeIDAboveYear' resultMap='PSP_VolumeBalanceResult' parameterClass='PSP_VolumeBalance'>
+    SELECT
+    "UID",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "TypeID",
+    "Flag",
+    "CreatTime",
+    "Sort",
+    "Year"
+    FROM PSP_VolumeBalance
+    WHERE
+    TypeID = #TypeID# and Flag = #Flag# and Year>#Year# order by Year
+
+  </select>
+  <select id='SelectPSP_VolumeBalanceByTypeIDAndYear' resultMap='PSP_VolumeBalanceResult' parameterClass='PSP_VolumeBalance'>
+    SELECT
+    "UID",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "TypeID",
+    "Flag",
+    "CreatTime",
+    "Sort",
+    "Year"
+    FROM PSP_VolumeBalance
+    WHERE
+    TypeID = #TypeID# and Flag = #Flag# and Year=#Year# order by Year
+
+  </select>
+</statements>
+</sqlMap>

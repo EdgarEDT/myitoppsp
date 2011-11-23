@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_BaseYearRate' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_BaseYearRate' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_BaseYearRate' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_BaseYearRateResult' class='PSP_BaseYearRate'>
+			<result property='UID' column='UID' />
+			<result property='BaseYear' column='BaseYear' />
+			<result property='YearRate' column='YearRate' />
+      <result property='TypeID' column='TypeID' />
+      <result property='S1' column='S1' />
+      <result property='S2' column='S2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_BaseYearRate' parameterClass='PSP_BaseYearRate'>
+    INSERT INTO PSP_BaseYearRate		(
+    "UID",
+    "BaseYear",
+    "YearRate",
+    "TypeID",
+    "S1",
+    "S2"
+    )
+    VALUES
+    (
+    #UID#,
+    #BaseYear#,
+    #YearRate#,
+    #TypeID#,
+    #S1#,
+    #S2#
+    )
+  </insert>
+	<delete id='DeletePSP_BaseYearRate' parameterClass='PSP_BaseYearRate'>
+		DELETE FROM PSP_BaseYearRate
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_BaseYear' parameterClass='PSP_BaseYearRate'>
+    UPDATE PSP_BaseYearRate
+    SET
+    "BaseYear" = #BaseYear#
+    WHERE
+    UID = #UID#
+  </update>
+  <update id='UpdatePSP_BaseYearRate' parameterClass='PSP_BaseYearRate'>
+    UPDATE PSP_BaseYearRate
+    SET
+    "YearRate" = #YearRate#
+    WHERE
+    UID = #UID#
+    AND
+    TypeID=#TypeID#
+  </update>
+  <update id='UpdatePSP_BaseYearRateByYear' parameterClass='PSP_BaseYearRate'>
+    UPDATE PSP_BaseYearRate
+    SET
+    "YearRate" = #YearRate#
+    WHERE
+    BaseYear = #BaseYear#
+    AND
+    TypeID=#TypeID#
+  </update>
+	<select id='SelectPSP_BaseYearRateList' resultMap='PSP_BaseYearRateResult' parameterClass='PSP_BaseYearRate'>
+    SELECT
+    "UID",
+    "BaseYear",
+    "YearRate",
+    "TypeID",
+    "S1",
+    "S2"
+    FROM PSP_BaseYearRate
+  </select>
+	<select id='SelectPSP_BaseYearRateByKey' resultMap='PSP_BaseYearRateResult' parameterClass='PSP_BaseYearRate'>
+    SELECT
+    "UID",
+    "BaseYear",
+    "YearRate",
+    "TypeID",
+    "S1",
+    "S2"
+    FROM PSP_BaseYearRate
+    WHERE
+    UID = #UID#
+  </select>
+  <select id='SelectPSP_BaseYearRateByYear' resultMap='PSP_BaseYearRateResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "BaseYear",
+    "YearRate",
+    "TypeID",
+    "S1",
+    "S2"
+    FROM PSP_BaseYearRate
+    WHERE
+    BaseYear = #BaseYear#
+    AND
+    TypeID=#TypeID#
+  </select>
+</statements>
+</sqlMap>

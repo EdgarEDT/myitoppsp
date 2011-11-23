@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerStuff' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerStuff' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerStuff' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerStuffResult' class='PowerStuff'>
+			<result property='UID' column='UID' />
+			<result property='StuffName' column='StuffName' />
+			<result property='Volume' column='Volume' />
+			<result property='Total' column='Total' />
+			<result property='Type' column='Type' />
+			<result property='Lengths' column='Lengths' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='PowerLineUID' column='PowerLineUID' />
+      <result property='ParentID' column='ParentID' />
+      <result property='SortID' column='SortID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerStuff' parameterClass='PowerStuff'>
+    INSERT INTO PSP_PowerStuff		(
+    "UID",
+    "StuffName",
+    "Volume",
+    "Total",
+    "Type",
+    "Lengths",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID","ParentID","SortID"
+    )
+    VALUES
+    (
+    #UID#,
+    #StuffName#,
+    #Volume#,
+    #Total#,
+    #Type#,
+    #Lengths#,
+    #Remark#,
+    GetDate(),
+    #PowerLineUID#,#ParentID#,#SortID#
+    )
+  </insert>
+	<delete id='DeletePowerStuff' parameterClass='PowerStuff'>
+		DELETE FROM PSP_PowerStuff
+		WHERE
+			UID = #UID#
+	</delete>
+  <delete id='DeletePowerStuffByKey' parameterClass='string'>
+    DELETE FROM PSP_PowerStuff
+    WHERE
+    UID = #UID#
+  </delete>
+	<update id='UpdatePowerStuff' parameterClass='PowerStuff'>
+    UPDATE PSP_PowerStuff
+    SET
+    "StuffName" = #StuffName#,
+    "Volume" = #Volume#,
+    "Total" = #Total#,
+    "Type" = #Type#,
+    "Lengths" = #Lengths#,
+    "Remark" = #Remark#,
+    "PowerLineUID" = #PowerLineUID#,"ParentID"=#ParentID#,"SortID"=#SortID#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectPowerStuffList' resultMap='PowerStuffResult' parameterClass='PowerStuff'>
+    SELECT
+    "UID",
+    "StuffName",
+    "Volume",
+    "Total",
+    "Type",
+    "Lengths",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID","ParentID","SortID"
+    FROM PSP_PowerStuff
+    WHERE
+    PowerLineUID = #PowerLineUID#
+  </select>
+	<select id='SelectPowerStuffByKey' resultMap='PowerStuffResult' parameterClass='PowerStuff'>
+    SELECT
+    "UID",
+    "StuffName",
+    "Volume",
+    "Total",
+    "Type",
+    "Lengths",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID","ParentID","SortID"
+    FROM PSP_PowerStuff
+    WHERE
+    UID = #UID#
+  </select>
+
+
+  <select id='SelectPowerStuffBySortID' resultClass='int'>
+    SELECT
+    Max(SortID) as "SortID"
+    FROM PSP_PowerStuff
+  </select>
+
+  <select id='SelectPowerStuffByParentID' resultClass='int'>
+    SELECT
+    count(*)
+    FROM PSP_PowerStuff where PowerLineUID=#UID#
+  </select>
+
+
+
+  <select id='SelectPowerStuffBySortNo' resultClass='decimal' parameterClass='string'>
+    SELECT Max(SortNo) as  "SortNo"
+    FROM PSP_PowerStuff
+    WHERE
+    ParentID = #ParentID#
+  </select>
+
+  <update id='UpdatePowerStuffBySortID' parameterClass='PowerStuff'>
+    UPDATE PSP_PowerProject
+    SET
+    SortID=SortID+1
+    WHERE
+    SortID >= #SortID# and ParentID=#ParentID#
+  </update>
+</statements>
+</sqlMap>

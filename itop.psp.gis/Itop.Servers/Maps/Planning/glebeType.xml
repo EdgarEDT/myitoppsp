@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='glebeType' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='glebeType' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.glebeType' />
+  </alias>
+  <resultMaps>
+    <resultMap id='glebeTypeResult' class='glebeType'>
+      <result property='UID' column='UID' />
+      <result property='TypeID' column='TypeID' />
+      <result property='TypeName' column='TypeName' />
+      <result property='TypeStyle' column='TypeStyle' />
+      <result property='ObligateField1' column='ObligateField1' />
+      <result property='ObligateField2' column='ObligateField2' />
+      <result property='ObligateField3' column='ObligateField3' />
+      <result property='ObligateField4' column='ObligateField4' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertglebeType' parameterClass='glebeType'>
+      INSERT INTO glebeType		(
+      "UID",
+      "TypeID",
+      "TypeName",
+      "TypeStyle",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4"
+      )
+      VALUES
+      (
+      #UID#,
+      #TypeID#,
+      #TypeName#,
+      #TypeStyle#,
+      #ObligateField1#,
+      #ObligateField2#,
+      #ObligateField3#,
+      #ObligateField4#
+      )
+    </insert>
+    <delete id='DeleteglebeType' parameterClass='glebeType'>
+      DELETE FROM glebeType
+      WHERE
+      UID = #UID#
+    </delete>
+    <update id='UpdateglebeType' parameterClass='glebeType'>
+      UPDATE glebeType
+      SET
+      "TypeID" = #TypeID#,
+      "TypeName" = #TypeName#,
+      "TypeStyle" = #TypeStyle#,
+      "ObligateField1"= #ObligateField1#,
+      "ObligateField2"= #ObligateField2#,
+      "ObligateField3"= #ObligateField3#,
+      "ObligateField4"= #ObligateField4#
+      WHERE
+      UID = #UID#
+    </update>
+    <select id='SelectglebeTypeList' resultMap='glebeTypeResult' parameterClass='glebeType'>
+      SELECT
+      "UID",
+      "TypeID",
+      "TypeName",
+      "TypeStyle",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4"
+      FROM glebeType
+    </select>
+    <select id='SelectglebeTypeByKey' resultMap='glebeTypeResult' parameterClass='glebeType'>
+      SELECT
+      "UID",
+      "TypeID",
+      "TypeName",
+      "TypeStyle",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4"
+      FROM glebeType
+      WHERE
+      UID = #UID#
+    </select>
+  </statements>
+</sqlMap>

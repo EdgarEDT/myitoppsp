@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Layout' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Layout' assembly='Itop.Domain.Layouts.dll' type='Itop.Domain.Layouts.Layout' />
+</alias>
+	<resultMaps>
+		<resultMap id='LayoutResult' class='Layout'>
+			<result property='UID' column='UID' />
+			<result property='LayoutName' column='LayoutName' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='Creater' column='Creater' />
+			<result property='CreaterName' column='CreaterName' />
+			<result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertLayout' parameterClass='Layout'>
+		INSERT INTO PSP_Layout		(
+			"UID",
+			"LayoutName",
+			"CreateDate",
+			"Creater",
+			"Remark"
+		)
+		VALUES
+		(
+			#UID#,
+			#LayoutName#,
+			GetDate(),
+			#Creater#,
+			#Remark#
+		)
+	</insert>
+	<delete id='DeleteLayout' parameterClass='Layout'>
+		DELETE FROM PSP_Layout where uid=#UID#
+	</delete>
+
+
+	<update id='UpdateLayout' parameterClass='Layout'>
+    UPDATE PSP_Layout
+    SET
+    "LayoutName" = #LayoutName#,
+    "Remark" = #Remark# where uid=#UID#
+  </update>
+	<select id='SelectLayoutList' resultMap='LayoutResult' parameterClass='Layout'>
+		SELECT
+			t1.uid as "UID",
+			t1.LayoutName as "LayoutName",
+			t1.CreateDate as "CreateDate",
+			t1.Creater as "Creater", t2.UserName as "CreaterName",
+			t1.Remark as "Remark"
+		FROM PSP_Layout t1,smmuser t2 where t1.Creater*=t2.Userid
+	</select>
+
+  <select id='SelectLayoutListByCreater' resultMap='LayoutResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutName",
+    "CreateDate",
+    "Creater",'' as CreaterName,
+    "Remark"
+    FROM PSP_Layout where Creater=#Creater# order by CreateDate
+  </select>
+  
+  
+	<select id='SelectLayoutByKey' resultMap='LayoutResult' parameterClass='Layout'>
+		SELECT
+			t1.uid as "UID",
+			t1.LayoutName as "LayoutName",
+			t1.CreateDate as "CreateDate",
+			t1.Creater as "Creater", t2.UserName as "CreaterName",
+			t1.Remark as "Remark"
+		FROM PSP_Layout t1,smmuser t2 where t1.Creater*=t2.Userid and t1.uid=#UID#
+	</select>
+</statements>
+</sqlMap>

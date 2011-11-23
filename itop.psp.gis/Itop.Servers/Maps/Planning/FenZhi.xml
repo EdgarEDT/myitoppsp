@@ -1,0 +1,63 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='FenZhi' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='FenZhi' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.FenZhi' />
+  </alias>
+  <resultMaps>
+    <resultMap id='FenZhiResult' class='FenZhi'>
+      <result property='ID' column='ID' />
+      <result property='Title' column='Title' />
+      <result property='Value' column='Value' />
+      <result property='ParentID' column='ParentID' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertFenZhi' parameterClass='FenZhi'>
+      INSERT INTO PS_FenZhi		(
+      "ID",
+      "Title",
+      "Value",
+      "ParentID"
+      )
+      VALUES
+      (
+      #ID#,
+      #Title#,
+      #Value#,
+      #ParentID#
+      )
+    </insert>
+    <delete id='DeleteFenZhi' parameterClass='FenZhi'>
+      DELETE FROM PS_FenZhi
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdateFenZhi' parameterClass='FenZhi'>
+      UPDATE PS_FenZhi
+      SET
+      "Title" = #Title#,
+      "Value" = #Value#,
+      "ParentID" = #ParentID#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectFenZhiList' resultMap='FenZhiResult' parameterClass='FenZhi'>
+      SELECT
+      "ID",
+      "Title",
+      "Value",
+      "ParentID"
+      FROM PS_FenZhi
+    </select>
+    <select id='SelectFenZhiByKey' resultMap='FenZhiResult' parameterClass='FenZhi'>
+      SELECT
+      "ID",
+      "Title",
+      "Value",
+      "ParentID"
+      FROM PS_FenZhi
+      WHERE
+      ID = #ID#
+    </select>
+  </statements>
+</sqlMap>

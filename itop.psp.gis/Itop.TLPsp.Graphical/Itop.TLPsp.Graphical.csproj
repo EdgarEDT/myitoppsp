@@ -1,0 +1,275 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0D19E762-7F50-4765-AE33-681E95703FCA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.TLPsp.Graphical</RootNamespace>
+    <AssemblyName>Itop.TLPsp.Graphical</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar, Version=5.9.0.0, Culture=neutral, PublicKeyToken=6d649f5e9b3afca5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\DevComponents.DotNetBar.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.MapView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ItopVector, Version=3.0.1.23920, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="ShortBuscir_dll, Version=1.0.3806.18023, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\ShortBuscir_dll.dll</HintPath>
+    </Reference>
+    <Reference Include="shortcir_dll, Version=1.0.3670.16807, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\shortcir_dll.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CtrlDlqicheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlDlqicheck.Designer.cs">
+      <DependentUpon>CtrlDlqicheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DlqiCheckform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DlqiCheckform.Designer.cs">
+      <DependentUpon>DlqiCheckform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeviceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeviceList.designer.cs">
+      <DependentUpon>frmDeviceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDuanlu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDuanlu.Designer.cs">
+      <DependentUpon>frmDuanlu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetPower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetPower.Designer.cs">
+      <DependentUpon>frmSetPower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubstation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubstation.Designer.cs">
+      <DependentUpon>frmSubstation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTLpspGraphical.p1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTLpspShortGraphical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTLpspShortGraphical.Designer.cs">
+      <DependentUpon>frmTLpspShortGraphical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTLpspGraphical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTLpspGraphical.Designer.cs">
+      <DependentUpon>frmTLpspGraphical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportJxt2.cs" />
+    <Compile Include="OddEven.cs" />
+    <Compile Include="OpenProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenProject.Designer.cs">
+      <DependentUpon>OpenProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPowerAndLineList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPowerAndLineList.designer.cs">
+      <DependentUpon>frmPowerAndLineList.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmTLpspGraphical.resx">
+      <DependentUpon>frmTLpspGraphical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmTLpspGraphical.dotNetBarManager1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmSubstation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSubstation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTLpspShortGraphical.resx">
+      <DependentUpon>frmTLpspShortGraphical.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenProject.resx">
+      <DependentUpon>OpenProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolbarImages1.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itop.Domain.Graphics\Itop.Domain.Graphics.csproj">
+      <Project>{ED06E9A4-4FC9-4945-B8D6-88E25364A212}</Project>
+      <Name>Itop.Domain.Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.TLPSP.DEVICE\Itop.TLPSP.DEVICE.csproj">
+      <Project>{549F483D-6CDD-47E6-84A4-7B530EB67DC1}</Project>
+      <Name>Itop.TLPSP.DEVICE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.TLVector.Tools\Itop.TLVector.Tools.csproj">
+      <Project>{570EFB4E-7965-4814-BDF2-DDB35DD002F4}</Project>
+      <Name>Itop.TLVector.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CtrlDlqicheck.resx">
+      <DependentUpon>CtrlDlqicheck.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DlqiCheckform.resx">
+      <DependentUpon>DlqiCheckform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeviceList.resx">
+      <DependentUpon>frmDeviceList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDuanlu.resx">
+      <DependentUpon>frmDuanlu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetPower.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSetPower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTLpspShortGraphical.dotNetBarManager1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPowerAndLineList.resx">
+      <DependentUpon>frmPowerAndLineList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,260 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Smmprog' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Smmprog' assembly='Itop.Domain.dll' type='Itop.Domain.RightManager.Smmprog' />
+  </alias>
+  <resultMaps>
+    <resultMap id='SmmprogResult' class='Smmprog'>
+      <result property='ProgId' column='ProgId' />
+      <result property='ProgName' column='ProgName' />
+      <result property='Remark' column='Remark' />
+      <result property='ProgLevel' column='ProgLevel' />
+      <result property='AssemblyName' column='AssemblyName' />
+      <result property='ClassName' column='ClassName' />
+      <result property='MethodName' column='MethodName' /> 
+      <result property='ParentId' column='ParentId' />
+      <result property='Index' column='SeqNo' />
+      <result property='ProgType' column='ProgType' />
+      <result property='ProgModuleType' column='ProgModuleType' />
+      <result property='UserID' column='UserID' />
+      <result property='ProjectUID' column='ProjectUID' />
+      <result property='ProgIco' column='ProgIco' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertSmmprog' parameterClass='Smmprog'>
+      INSERT INTO Smmprog		(
+      "ProgId",
+      "ProgName",
+      "Remark",
+      "ProgLevel",
+      "AssemblyName",
+      "ClassName",
+      "MethodName",
+      "ParentId",
+      "SeqNo",
+      "ProgType",
+      "ProgModuleType","ProgIco"
+      )
+      VALUES
+      (
+      #ProgId#,
+      #ProgName#,
+      #Remark#,
+      #ProgLevel#,
+      #AssemblyName#,
+      #ClassName#,
+      #MethodName#,
+      #ParentId#,
+      #Index#,
+      #ProgType#,
+      #ProgModuleType#,#ProgIco#
+      )
+    </insert>
+    
+    <delete id='DeleteSmmprog' parameterClass='Smmprog'>
+      DELETE FROM Smmprog
+      WHERE
+      ProgId = #ProgId#
+    </delete>
+    <delete id='DeleteSmmprogByKey' parameterClass='string'>
+      DELETE FROM Smmprog
+      WHERE
+      ProgId = #value#
+    </delete>
+
+    <update id='UpdateSmmprog' parameterClass='Smmprog'>
+      UPDATE Smmprog
+      SET
+      "ProgName" = #ProgName#,
+      "Remark" = #Remark#,
+      "ProgLevel" = #ProgLevel#,
+      "AssemblyName" = #AssemblyName#,
+      "ClassName" = #ClassName#,
+      "MethodName" = #MethodName#,
+      "ParentId" = #ParentId#,
+      "SeqNo" = #Index#,
+      "ProgType" = #ProgType#,
+      "ProgModuleType"=#ProgModuleType#,"ProgIco"=#ProgIco#
+      WHERE
+      ProgId = #ProgId#
+    </update>
+    <select id='SelectSmmprogList' resultMap='SmmprogResult' parameterClass='Smmprog'>
+      SELECT
+      '' as "UserID",
+      '' as "ProjectUID",
+      "ProgId",
+      "ProgName",
+      "Remark",
+      "ProgLevel",
+      "AssemblyName",
+      "ClassName",
+      "MethodName",
+      "ParentId",
+      "SeqNo",
+      "ProgType",
+      "ProgModuleType","ProgIco"
+      FROM Smmprog
+      order by SeqNo
+    </select>
+
+    <select id='SelectSmmprogByProjectListUser' resultMap='SmmprogResult' parameterClass='Smmprog'>
+      SELECT distinct
+      t3.userid as "UserID",
+      t2.projectuid as "ProjectUID",
+      t1.progid as "ProgId",
+      "ProgName",
+      "Remark",
+      "ProgLevel",
+      "AssemblyName",
+      "ClassName",
+      "MethodName",
+      "ParentId",
+      "SeqNo",
+      "ProgType",
+      "ProgModuleType","ProgIco"
+      FROM Smmprog t1,smdgroup t2,smugroup t3
+      where
+      t1.progid=t2.progid and
+      t2.groupno=t3.groupno and
+      t2.run='1' and
+      t2.projectuid=#ProjectUID# and
+      t3.userid=#UserID# and
+      t1.ParentId=#ParentId# and
+      t1.ProgType='f'
+      order by SeqNo
+    </select> 
+    
+    
+
+
+    <select id='SelectSmmprogByModuleType' resultMap='SmmprogResult' parameterClass='string'>
+      SELECT
+      '' as "UserID",
+      '' as "ProjectUID",
+      "ProgId",
+      "ProgName",
+      "Remark",
+      "ProgLevel",
+      "AssemblyName",
+      "ClassName",
+      "MethodName",
+      "ParentId",
+      "SeqNo",
+      "ProgType",
+      "ProgModuleType","ProgIco"
+      FROM Smmprog
+      where
+      ProgModuleType=#ProgModuleType#
+      order by SeqNo
+    </select>
+    <!--取图标-->
+    <select id='SelectSmmprogByMeIco' resultMap='SmmprogResult' parameterClass='Smmprog'>
+      SELECT
+      distinct
+      '' as "UserID",
+      '' as "ProjectUID",
+      '' ProgId,
+      '' ProgName,
+      '' Remark,
+      '' ProgLevel,
+      '' AssemblyName,
+      '' ClassName,
+      '' MethodName,
+      '' ParentId,
+      0 SeqNo,
+      ProgType,
+      '' ProgModuleType,
+      ProgIco
+      FROM Smmprog where ProgType='m' order by SeqNo
+    </select>
+    <select id='SelectSmmprogByFormIco' resultMap='SmmprogResult' parameterClass='Smmprog'>
+      SELECT
+      distinct
+      '' as "UserID",
+      '' as "ProjectUID",
+      '' ProgId,
+      '' ProgName,
+      '' Remark,
+      '' ProgLevel,
+      '' AssemblyName,
+      '' ClassName,
+      '' MethodName,
+      '' ParentId,
+      0 SeqNo,
+      ProgType,
+      '' ProgModuleType,
+      ProgIco
+      FROM Smmprog where ProgType='f' order by SeqNo
+    </select>
+    <!--************-->
+    <select id='SelectSmmprogByKey' resultMap='SmmprogResult' parameterClass='Smmprog'>
+      SELECT
+      '' as "UserID",
+      '' as "ProjectUID",
+      "ProgId",
+      "ProgName",
+      "Remark",
+      "ProgLevel",
+      "AssemblyName",
+      "ClassName",
+      "MethodName",
+      "ParentId",
+      "SeqNo",
+      "ProgType",
+      "ProgModuleType",
+      ProgIco
+      FROM Smmprog
+      WHERE
+      ProgId = #ProgId#
+      order by SeqNo
+    </select>
+    
+
+    
+    
+    
+    <select id='SelectSmmprogCount' resultClass='int' parameterClass='string'>
+      SELECT
+      count(*) as nums
+      FROM Smmprog
+      WHERE parentid = #value#
+    </select>
+    <select id='SelectSmmprogCountByObject' resultClass='int' parameterClass='Smmprog'>
+      SELECT
+      count(*) as num1
+      FROM Smmprog
+      WHERE 
+      Parentid = #ProgId#
+    </select>
+
+
+
+
+
+    <!--=返回有浏览权限的记录=-->
+
+    <select id='SelectSmmprogByRun' resultMap='SmmprogResult' parameterClass='string'>
+      SELECT
+      t3.userid as "UserID",
+      t2.projectuid as "ProjectUID",
+      t1.ProgId as "ProgId",
+      "ProgName",
+      "Remark",
+      "ProgLevel",
+      "AssemblyName",
+      "ClassName",
+      "MethodName",
+      "ParentId",
+      "SeqNo",
+      "ProgType",
+      "ProgModuleType"
+      FROM Smmprog t1,Smdgroup t2,Smugroup t3
+      where
+      t1.progid=t2.progid and
+      t2.groupno=t3.groupno and
+      t3.userid=#UserId# and
+      t2.run='1' order by t1.SeqNo
+    </select>
+  </statements>
+</sqlMap>

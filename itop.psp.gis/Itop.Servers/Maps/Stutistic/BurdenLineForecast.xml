@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='BurdenLineForecast' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='BurdenLineForecast' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.BurdenLineForecast' />
+</alias>
+	<resultMaps>
+		<resultMap id='BurdenLineForecastResult' class='BurdenLineForecast'>
+			<result property='UID' column='UID' />
+			<result property='BurdenYear' column='BurdenYear' />
+			<result property='SummerDayAverage' column='SummerDayAverage' />
+			<result property='SummerMinAverage' column='SummerMinAverage' />
+			<result property='WinterDayAverage' column='WinterDayAverage' />
+			<result property='WinterMinAverage' column='WinterMinAverage' />
+      <result property='SummerData' column='SummerData' />
+      <result property='WinterData' column='WinterData' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertBurdenLineForecast' parameterClass='BurdenLineForecast'>
+    INSERT INTO PSP_BurdenLineForecast		(
+    "UID",
+    "BurdenYear",
+    "SummerDayAverage",
+    "SummerMinAverage",
+    "WinterDayAverage",
+    "WinterMinAverage","SummerData","WinterData"
+    )
+    VALUES
+    (
+    #UID#,
+    #BurdenYear#,
+    #SummerDayAverage#,
+    #SummerMinAverage#,
+    #WinterDayAverage#,
+    #WinterMinAverage#,#SummerData#,#WinterData#
+    )
+  </insert>
+  <delete id='DeleteBurdenLineForecast' parameterClass='BurdenLineForecast'>
+    DELETE FROM PSP_BurdenLineForecast
+    WHERE
+    UID = #UID#
+  </delete>
+  <update id='UpdateBurdenLineForecast' parameterClass='BurdenLineForecast'>
+    UPDATE PSP_BurdenLineForecast
+    SET
+    "BurdenYear" = #BurdenYear#,
+    "SummerDayAverage" = #SummerDayAverage#,
+    "SummerMinAverage" = #SummerMinAverage#,
+    "WinterDayAverage" = #WinterDayAverage#,
+    "WinterMinAverage" = #WinterMinAverage#,
+    "SummerData" = #SummerData#,
+    "WinterData" = #WinterData#
+    WHERE
+    UID = #UID#
+  </update>
+  <select id='SelectBurdenLineForecastList' resultMap='BurdenLineForecastResult' parameterClass='BurdenLineForecast'>
+    SELECT
+    "UID",
+    "BurdenYear",
+    "SummerDayAverage",
+    "SummerMinAverage",
+    "WinterDayAverage",
+    "WinterMinAverage","SummerData","WinterData"
+    FROM PSP_BurdenLineForecast order by BurdenYear
+  </select>
+	<select id='SelectBurdenLineForecastByKey' resultMap='BurdenLineForecastResult' parameterClass='BurdenLineForecast'>
+    SELECT
+    "UID",
+    "BurdenYear",
+    "SummerDayAverage",
+    "SummerMinAverage",
+    "WinterDayAverage",
+    "WinterMinAverage","SummerData","WinterData"
+    FROM PSP_BurdenLineForecast
+    WHERE
+    UID = #UID#
+  </select>
+
+
+  <select id='SelectBurdenLineForecastByYear' resultClass='int'  parameterClass='BurdenLineForecast'>
+    SELECT
+    count(*)
+    FROM PSP_BurdenLineForecast
+    WHERE
+    BurdenYear = #BurdenYear#
+  </select>
+</statements>
+</sqlMap>

@@ -1,0 +1,142 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Table_Yd' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Ps_Table_Yd' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.Ps_Table_Yd' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Ps_Table_YdResult' class='Ps_Table_Yd'>
+      <result property='Suid' column='Suid' />
+      <result property='ParentId' column='ParentId' />
+      <result property='CompName' column='CompName' />
+      <result property='BuildSize' column='BuildSize' />
+      <result property='PlanYear' column='PlanYear' />
+      <result property='Progress' column='Progress' />
+      <result property='Power' column='Power' />
+      <result property='Weight' column='Weight' />
+      <result property='SortId' column='SortId' />
+      <result property='Col1' column='Col1' />
+      <result property='Col2' column='Col2' />
+      <result property='Col3' column='Col3' />
+      <result property='Col4' column='Col4' />
+      <result property='Col5' column='Col5' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPs_Table_Yd' parameterClass='Ps_Table_Yd'>
+      INSERT INTO Ps_Table_Yd		(
+      "Suid",
+      "ParentId",
+      "CompName",
+      "BuildSize",
+      "PlanYear",
+      "Progress",
+      "Power",
+      "Weight",
+      "SortId",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      )
+      VALUES
+      (
+      #Suid#,
+      #ParentId#,
+      #CompName#,
+      #BuildSize#,
+      #PlanYear#,
+      #Progress#,
+      #Power#,
+      #Weight#,
+      #SortId#,
+      #Col1#,
+      #Col2#,
+      #Col3#,
+      #Col4#,
+      #Col5#
+      )
+    </insert>
+    <delete id='DeletePs_Table_Yd' parameterClass='Ps_Table_Yd'>
+      DELETE FROM Ps_Table_Yd
+      WHERE
+      Suid = #Suid#
+    </delete>
+    <update id='UpdatePs_Table_Yd' parameterClass='Ps_Table_Yd'>
+      UPDATE Ps_Table_Yd
+      SET
+      "ParentId" = #ParentId#,
+      "CompName" = #CompName#,
+      "BuildSize" = #BuildSize#,
+      "PlanYear" = #PlanYear#,
+      "Progress" = #Progress#,
+      "Power" = #Power#,
+      "Weight" = #Weight#,
+      "SortId" = #SortId#,
+      "Col1" = #Col1#,
+      "Col2" = #Col2#,
+      "Col3" = #Col3#,
+      "Col4" = #Col4#,
+      "Col5" = #Col5#
+      WHERE
+      Suid = #Suid#
+    </update>
+    <select id='SelectPs_Table_YdList' resultMap='Ps_Table_YdResult' parameterClass='Ps_Table_Yd'>
+      SELECT
+      "Suid",
+      "ParentId",
+      "CompName",
+      "BuildSize",
+      "PlanYear",
+      "Progress",
+      "Power",
+      "Weight",
+      "SortId",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_Table_Yd ORDER BY Col1
+    </select>
+    <select id='SelectPs_Table_YdByKey' resultMap='Ps_Table_YdResult' parameterClass='Ps_Table_Yd'>
+      SELECT
+      "Suid",
+      "ParentId",
+      "CompName",
+      "BuildSize",
+      "PlanYear",
+      "Progress",
+      "Power",
+      "Weight",
+      "SortId",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_Table_Yd
+      WHERE
+      Suid = #Suid#
+    </select>
+    <select id='SelectPs_Table_YdListByConn' resultMap='Ps_Table_YdResult' parameterClass='string'>
+      SELECT
+      "Suid",
+      "ParentId",
+      "CompName",
+      "BuildSize",
+      "PlanYear",
+      "Progress",
+      "Power",
+      "Weight",
+      "SortId",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_Table_Yd
+      WHERE $value$
+    </select>
+  </statements>
+</sqlMap>

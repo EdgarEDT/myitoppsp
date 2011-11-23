@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_ForecastValues' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_ForecastValues' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_ForecastValues' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_ForecastValuesResult' class='PSP_ForecastValues'>
+			<result property='ID' column='ID' />
+			<result property='ForecastID' column='ForecastID' />
+			<result property='TypeID' column='TypeID' />
+			<result property='Year' column='Year' />
+			<result property='Value' column='Value' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_ForecastValues' parameterClass='PSP_ForecastValues'>
+		INSERT INTO PSP_ForecastValues		(
+			"ForecastID",
+			"TypeID",
+			"Year",
+			"Value"
+		)
+		VALUES
+		(
+			#ForecastID#,
+			#TypeID#,
+			#Year#,
+			#Value#
+		)
+	</insert>
+	<delete id='DeletePSP_ForecastValues' parameterClass='PSP_ForecastValues'>
+		DELETE FROM PSP_ForecastValues
+		WHERE
+			ID = #ID#
+	</delete>
+	<delete id='DeletePSP_ForecastValuesByForecastID' parameterClass='PSP_ForecastValues'>
+		DELETE FROM PSP_ForecastValues
+		WHERE
+			ForecastID = #ForecastID#
+	</delete>
+
+	<delete id='DeletePSP_ForecastValuesByTypeID' parameterClass='PSP_ForecastValues'>
+		DELETE FROM PSP_ForecastValues
+		WHERE
+			ForecastID = #ForecastID#
+			AND 
+			TypeID = #TypeID#
+	</delete>
+
+	<update id='UpdatePSP_ForecastValues' parameterClass='PSP_ForecastValues'>
+		If Exists(Select ID from PSP_ForecastValues Where Year=#Year# And TypeID=#TypeID# And ForecastID=#ForecastID#)
+			UPDATE PSP_ForecastValues
+			SET
+				"Value" = #Value#
+			WHERE
+				Year=#Year# And TypeID=#TypeID# And ForecastID=#ForecastID#
+		Else
+			INSERT INTO PSP_ForecastValues		(
+				"ForecastID",
+				"TypeID",
+				"Year",
+				"Value"
+			)
+			VALUES
+			(
+				#ForecastID#,
+				#TypeID#,
+				#Year#,
+				#Value#
+			)
+	</update>
+
+	<select id='SelectPSP_ForecastValuesList' resultMap='PSP_ForecastValuesResult' parameterClass='PSP_ForecastValues'>
+		SELECT
+			"ID",
+			"ForecastID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM PSP_ForecastValues
+	</select>
+
+	<select id='SelectPSP_ForecastValuesByKey' resultMap='PSP_ForecastValuesResult' parameterClass='PSP_ForecastValues'>
+		SELECT
+			"ID",
+			"ForecastID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM PSP_ForecastValues
+		WHERE
+			ID = #ID#
+	</select>
+
+	<select id='SelectPSP_ForecastValuesByForecastID' resultMap='PSP_ForecastValuesResult' parameterClass='PSP_ForecastValues'>
+		SELECT
+			"ID",
+			"ForecastID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM PSP_ForecastValues
+		WHERE
+			ForecastID = #ForecastID#
+	</select>
+
+  <select id='SelectPSP_ForecastValuesByForecastID2' resultMap='PSP_ForecastValuesResult' parameterClass='PSP_ForecastValues'>
+    SELECT
+    "ID",
+    "ForecastID",
+    "TypeID",
+    "Year",
+    "Value"
+    FROM PSP_ForecastValues
+    WHERE
+    ForecastID = #ForecastID# and typeid not in(80001,80002,80003,80004,80005,80006)
+  </select>
+
+
+  <select id='SelectPSP_ForecastValuesByForecastID3' resultMap='PSP_ForecastValuesResult' parameterClass='PSP_ForecastValues'>
+    SELECT
+    "ID",
+    "ForecastID",
+    "TypeID",
+    "Year",
+    "Value"
+    FROM PSP_ForecastValues
+    WHERE
+    ForecastID = #ForecastID# and typeid in(80001,80002,80003,80004,80005,80006)
+  </select>
+  
+
+  <select id='SelectPSP_ForecastValuesByForecastID1' resultMap='PSP_ForecastValuesResult' parameterClass='PSP_ForecastValues'>
+    SELECT
+    "ID",
+    "ForecastID",
+    "TypeID",
+    "Year",
+    "Value"
+    FROM PSP_ForecastValues
+    WHERE
+    ForecastID = #ForecastID# and TypeID=#TypeID#
+  </select>
+</statements>
+</sqlMap>

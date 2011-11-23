@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LayoutType' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='LayoutType' assembly='Itop.Domain.Layouts.dll' type='Itop.Domain.Layouts.LayoutType' />
+</alias>
+	<resultMaps>
+		<resultMap id='LayoutTypeResult' class='LayoutType'>
+			<result property='UID' column='UID' />
+			<result property='ExcelData' column='ExcelData' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertLayoutType' parameterClass='LayoutType'>
+    INSERT INTO PSP_LayoutType		(
+    "UID",
+    "ExcelData"
+    )
+    VALUES
+    (
+    #UID#,
+    #ExcelData#
+    )
+  </insert>
+
+  <update id='UpdateLayoutType' parameterClass='LayoutType'>
+    UPDATE PSP_LayoutType
+    SET
+    "ExcelData" = #ExcelData#
+    where UID=#UID#
+  </update>
+
+  <update id='DeleteLayoutType' parameterClass='string'>
+    delete PSP_LayoutType
+    where UID=#UID#
+  </update>
+
+	<select id='SelectLayoutTypeByKey' resultMap='LayoutTypeResult' parameterClass='LayoutType'>
+    SELECT
+    "UID",
+    "ExcelData"
+    FROM PSP_LayoutType
+    WHERE
+    UID = #UID#
+  </select>
+
+
+  <select id='SelectLayoutTypeByWhere' resultMap='LayoutTypeResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "ExcelData"
+    FROM PSP_LayoutType
+    WHERE 
+    $LayoutType$
+  </select>
+</statements>
+</sqlMap>

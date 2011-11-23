@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LayoutContent' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='LayoutContent' assembly='Itop.Domain.Layouts.dll' type='Itop.Domain.Layouts.LayoutContent' />
+</alias>
+	<resultMaps>
+		<resultMap id='LayoutContentResult' class='LayoutContent'>
+			<result property='UID' column='UID' />
+			<result property='LayoutID' column='LayoutID' />
+			<result property='ChapterName' column='ChapterName' />
+			<result property='ParentID' column='ParentID' />
+			<result property='Contents' column='Contents' />
+			<result property='ContentType' column='ContentType' />
+      <result property='Remark' column='Remark' />
+      <result property='CreateDate' column='CreateDate' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertLayoutContent' parameterClass='LayoutContent'>
+		INSERT INTO PSP_LayoutContents		(
+			"UID",
+			"LayoutID",
+			"ChapterName",
+			"ParentID",
+			"ContentType","CreateDate",
+			"Remark"
+		)
+		VALUES
+		(
+			#UID#,
+			#LayoutID#,
+			#ChapterName#,
+			#ParentID#,
+			#ContentType#,GetDate(),
+			#Remark#
+		)
+	</insert>
+
+
+
+  <update id='InsertLayoutContentBy' parameterClass='LayoutContent'>
+    INSERT INTO PSP_LayoutContents		(
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    )
+    VALUES
+    (
+    #UID#,
+    #LayoutID#,
+    #ChapterName#,
+    #ParentID#,
+    #Contents#,
+    #ContentType#,GetDate(),
+    #Remark#
+    )
+  </update>
+
+
+	<delete id='DeleteLayoutContent' parameterClass='LayoutContent'>
+		DELETE FROM PSP_LayoutContents where uid=#UID#
+	</delete>
+
+	<delete id='DeleteLayoutContentByKey' parameterClass='string'>
+		DELETE FROM PSP_LayoutContents where uid=#UID#
+	</delete>
+
+	<update id='UpdateLayoutContent' parameterClass='LayoutContent'>
+		UPDATE PSP_LayoutContents
+		SET
+			"ChapterName" = #ChapterName#,
+			"Remark" = #Remark# 
+                where UID = #UID#
+	</update>
+
+	<update id='UpdateLayoutContentByte' parameterClass='LayoutContent'>
+		UPDATE PSP_LayoutContents
+		SET
+			"Contents" = #Contents#
+		where UID = #UID#
+	</update>
+
+
+	<select id='SelectLayoutContentList' resultMap='LayoutContentResult' parameterClass='LayoutContent'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    null as "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    FROM PSP_LayoutContents 　order by CreateDate
+  </select>
+  
+  
+  <select id='SelectLayoutContentByKey' resultMap='LayoutContentResult' parameterClass='LayoutContent'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    FROM PSP_LayoutContents where uid=#UID#
+  </select>
+
+	<select id='SelectLayoutContentByLayoutID' resultMap='LayoutContentResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    null as "Contents","CreateDate",
+    "ContentType",
+    "Remark"
+    FROM PSP_LayoutContents where LayoutID=#LayoutID#
+  </select>
+
+
+  <select id='SelectLayoutContentByLayoutIDBlogData' resultMap='LayoutContentResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    FROM PSP_LayoutContents where LayoutID=#LayoutID# order by CreateDate asc
+  </select>
+
+  <select id='SelectLayoutContentByWhere' resultMap='LayoutContentResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    FROM PSP_LayoutContents where $LayoutID$
+  </select>
+
+
+</statements>
+</sqlMap>

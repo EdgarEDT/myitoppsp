@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerEachTotal' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerEachTotal' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerEachTotal' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerEachTotalResult' class='PowerEachTotal'>
+			<result property='UID' column='UID' />
+			<result property='StuffName' column='StuffName' />
+			<result property='Lengths' column='Lengths' />
+			<result property='LCount' column='LCount' />
+			<result property='Total' column='Total' />
+			<result property='Volume' column='Volume' />
+			<result property='Type' column='Type' />
+			<result property='IsSum' column='IsSum' />
+			<result property='ItSum' column='ItSum' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='PowerLineUID' column='PowerLineUID' />
+      <result property='ParentID' column='ParentID' />
+			<result property='SortID' column='SortID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerEachTotal' parameterClass='PowerEachTotal'>
+    INSERT INTO PSP_PowerEachTotal		(
+    "UID",
+    "StuffName",
+    "Lengths",
+    "LCount",
+    "Total",
+    "Volume",
+    "Type",
+    "IsSum",
+    "ItSum",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID","ParentID",
+    "SortID"
+    )
+    VALUES
+    (
+    #UID#,
+    #StuffName#,
+    #Lengths#,
+    #LCount#,
+    #Total#,
+    #Volume#,
+    #Type#,
+    #IsSum#,
+    #ItSum#,
+    #Remark#,
+    GetDate(),
+    #PowerLineUID#,#ParentID#,
+    #SortID#
+    )
+  </insert>
+	<delete id='DeletePowerEachTotal' parameterClass='PowerEachTotal'>
+		DELETE FROM PSP_PowerEachTotal
+		WHERE
+			UID = #UID#
+	</delete>
+
+  <delete id='DeletePowerEachTotalByKey' parameterClass='string'>
+    DELETE FROM PSP_PowerEachTotal
+    WHERE
+    UID = #UID#
+  </delete>
+
+  <update id='DeletePowerEachTotalByUID' parameterClass='string'>
+    DELETE FROM PSP_PowerEachTotal
+    WHERE
+    PowerLineUID = #PowerLineUID#
+  </update>
+	<update id='UpdatePowerEachTotal' parameterClass='PowerEachTotal'>
+    UPDATE PSP_PowerEachTotal
+    SET
+    "StuffName" = #StuffName#,
+    "Lengths" = #Lengths#,
+    "LCount" = #LCount#,
+    "Total" = #Total#,
+    "Volume" = #Volume#,
+    "Type" = #Type#,
+    "IsSum" = #IsSum#,
+    "ItSum" = #ItSum#,
+    "Remark" = #Remark#,
+    "PowerLineUID" = #PowerLineUID#,"ParentID"=#ParentID#,
+    "SortID" = #SortID#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectPowerEachTotalList' resultMap='PowerEachTotalResult' parameterClass='PowerEachTotal'>
+    SELECT
+    "UID",
+    "StuffName",
+    "Lengths",
+    "LCount",
+    "Total",
+    "Volume",
+    "Type",
+    "IsSum",
+    "ItSum",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID","ParentID",
+    "SortID"
+    FROM PSP_PowerEachTotal 		
+    WHERE
+    PowerLineUID = #PowerLineUID#
+  </select>
+	<select id='SelectPowerEachTotalByKey' resultMap='PowerEachTotalResult' parameterClass='PowerEachTotal'>
+    SELECT
+    "UID",
+    "StuffName",
+    "Lengths",
+    "LCount",
+    "Total",
+    "Volume",
+    "Type",
+    "IsSum",
+    "ItSum",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID","ParentID",
+    "SortID"
+    FROM PSP_PowerEachTotal
+    WHERE
+    UID = #UID#
+  </select>
+
+
+
+  <select id='SelectPowerEachTotalBySortID' resultClass='int'>
+    SELECT
+    Max(SortID) as "SortID"
+    FROM PSP_PowerEachTotal
+  </select>
+
+  <select id='SelectPowerEachTotalByParentID' resultClass='int'>
+    SELECT
+    count(*)
+    FROM PSP_PowerEachTotal where PowerLineUID=#UID#
+  </select>
+
+  <update id='UpdatePowerEachTotalBySortID' parameterClass='PowerEachTotal'>
+    UPDATE PSP_PowerEachTotal
+    SET
+    SortID=SortID+1
+    WHERE
+    SortID >= #SortID# and ParentID=#ParentID#
+  </update>
+  <select id='SelectPowerEachTotalList1' resultMap='PowerEachTotalResult' parameterClass='PowerEachTotal'>
+    SELECT
+    "UID",
+    "StuffName",
+    "Lengths",
+    "LCount",
+    "Total",
+    "Volume",
+    "Type",
+    "IsSum",
+    "ItSum",
+    "Remark",
+    "CreateDate",
+    "PowerLineUID","ParentID",
+    "SortID"
+    FROM PSP_PowerEachTotal    
+  </select>
+</statements>
+</sqlMap>

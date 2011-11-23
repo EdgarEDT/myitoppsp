@@ -1,0 +1,357 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{23B52AE4-BC1C-40A1-8C94-4F1417F715AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.DLGH</RootNamespace>
+    <AssemblyName>Itop.DLGH</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar, Version=5.9.0.0, Culture=neutral, PublicKeyToken=6d649f5e9b3afca5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\DevComponents.DotNetBar.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraScheduler.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Resources, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MapLib, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TLVector, Version=3.0.1.27653, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\TLVector.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CtrlglebeType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlglebeType.designer.cs">
+      <DependentUpon>CtrlglebeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlashWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FomInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FomInput.Designer.cs">
+      <DependentUpon>FomInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmglebeType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmglebeType.Designer.cs">
+      <DependentUpon>frmglebeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmglebeTypeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmglebeTypeDialog.designer.cs">
+      <DependentUpon>FrmglebeTypeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSvgView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSvgView.Designer.cs">
+      <DependentUpon>frmSvgView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTemp.Designer.cs">
+      <DependentUpon>frmTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTopView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTopView.Designer.cs">
+      <DependentUpon>frmTopView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewMain.Designer.cs">
+      <DependentUpon>frmViewMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Itop.exe.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="CtrlLineType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlLineType.designer.cs">
+      <DependentUpon>CtrlLineType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLineTypeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLineTypeDialog.designer.cs">
+      <DependentUpon>FrmLineTypeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLineType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLineType.Designer.cs">
+      <DependentUpon>frmLineType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="CtrlbdzType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlbdzType.designer.cs">
+      <DependentUpon>CtrlbdzType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmbdzType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmbdzType.Designer.cs">
+      <DependentUpon>frmbdzType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmbdzTypeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmbdzTypeDialog.designer.cs">
+      <DependentUpon>FrmbdzTypeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlInterface.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlInterface.designer.cs">
+      <DependentUpon>CtrlInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInterFace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInterFace.Designer.cs">
+      <DependentUpon>frmInterFace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInterFaceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInterFaceDialog.designer.cs">
+      <DependentUpon>FrmInterFaceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTopView_wh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTopView_wh.Designer.cs">
+      <DependentUpon>frmTopView_wh.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itop.ORAInterFace\Itop.ORAInterFace.csproj">
+      <Project>{0B535A2D-0D98-476B-840A-B27DD12E3E6F}</Project>
+      <Name>Itop.ORAInterFace</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.TLVector.Tools\Itop.TLVector.Tools.csproj">
+      <Project>{570EFB4E-7965-4814-BDF2-DDB35DD002F4}</Project>
+      <Name>Itop.TLVector.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CtrlglebeType.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlglebeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Database.bmp" />
+    <Content Include="Folder.bmp" />
+    <EmbeddedResource Include="FlashWindow.resx">
+      <DependentUpon>FlashWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FomInput.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FomInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmglebeType.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmglebeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmglebeTypeDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmglebeTypeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSvgView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSvgView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemp.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTopView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTopView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmViewMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolbarImages.bmp" />
+    <EmbeddedResource Include="frmMain.dotNetBarManager1.xml" />
+    <EmbeddedResource Include="CtrlLineType.resx">
+      <DependentUpon>CtrlLineType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLineTypeDialog.resx">
+      <DependentUpon>FrmLineTypeDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLineType.resx">
+      <DependentUpon>frmLineType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlbdzType.resx">
+      <DependentUpon>CtrlbdzType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmbdzType.resx">
+      <DependentUpon>frmbdzType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmbdzTypeDialog.resx">
+      <DependentUpon>FrmbdzTypeDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlInterface.resx">
+      <DependentUpon>CtrlInterface.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInterFace.resx">
+      <DependentUpon>frmInterFace.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInterFaceDialog.resx">
+      <DependentUpon>FrmInterFaceDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTopView_wh.resx">
+      <DependentUpon>frmTopView_wh.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
