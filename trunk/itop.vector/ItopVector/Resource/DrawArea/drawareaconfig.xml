@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<drawarea>
+	<item name="drawoperation" label="绘图">
+		<item name="startrect" label="点按鼠标开始构造矩形"/>
+		<item name="shiftdragrect" label="拖动鼠标构造正方形"/>
+		<item name="dragrect" label="拖动鼠标构造举行，按住Shift键以构造正方形"/>
+		<item name="startellipse" label="点按鼠标以开始构造椭圆"/>
+		<item name="shiftdragellipse" label="拖动鼠标以构造圆形，按住Ctrl键以更改圆心位置"/>
+		<item name="dragellipse" label="拖动鼠标以构造椭圆，按住Ctrl键以更改圆形位置，按住Shift键以构造圆形"/>
+		<item name="ctrldragellipse" label="以起始点为圆心，拖动鼠标以构造椭圆，按住Shift键以构造圆形"/>
+		<item name="ctrlshiftdragellipse" label="以起始点为圆心，拖动鼠标以构造圆形"/>
+		<item name="startimage" label="点按鼠标以确定图片位置"/>
+		<item name="shiftdragimage" label="拖动鼠标以构造正方形图片区域"/>
+		<item name="dragimage" label="拖动鼠标以构造举行图片区域，按住Shift以构造正方形区域"/>
+		<item name="startline" label="点按鼠标以确定直线起始点"/>
+		<item name="shiftdragline" label="拖动鼠标沿45度增量方向构造直线"/>
+		<item name="dragline" label="拖动鼠标以构造直线，按住Shift键以限制直线延伸方向"/>
+		<item name="startequalpolygon" label="点按鼠标以开始构造正多边形"/>
+		<item name="dragequalpolygon" label="拖动鼠标以构造正多边形"/>
+	</item>
+	
+	<item name="polyoperation" label="绘制折线和多边形">
+		<item name="polydraw" label="点按鼠标以添加角点"/>
+		<item name="polydel" label="点按鼠标删除角点"/>
+		<item name="polyadd" label="点按鼠标在该位置插入角点"/>
+		<item name="polymovepoint" label="拖动鼠标改变角点位置"/>
+		<item name="polymovepath" label="拖动鼠标移动路径"/>
+		<item name="ctrlpoly" label="，按住Ctrl键以获取控制选项"/>
+	</item>
+	
+	<item name="coloroperation" label="Color">
+		<item name="gradienttransform" label="单击选择渐变或图案"/>
+		<item name="colorpicker" label="单击选择画笔"/>
+	</item>
+	
+	<item name="selectoperation" label="选择操作">
+		<item name="centerpoint" label="拖动鼠标改变中心点位置"/>
+		<item name="translate" label="拖动鼠标移动选择对象"/>
+		<item name="horiscale" label="拖动鼠标沿中心点进行水平缩放，按住Ctrl,Shift键以获取控制选项"/>
+		<item name="shifthoriscale" label="拖动鼠标沿中心点进行水平等比率缩放，按住Ctrl键以获取控制选项"/>
+		<item name="ctrlshifthoriscale" label="拖动鼠标沿对称点进行水平等比率缩放"/>
+		<item name="ctrlhoriscale" label="拖动鼠标沿对称点进行水平缩放，按住Shift键以获取控制选项"/>
+		<item name="vertscale" label="拖动鼠标沿中心点进行竖直缩放，按住Ctrl,Shift键以获取控制选项"/>
+		<item name="shiftvertscale" label="拖动鼠标沿中心点进行竖直等比率缩放，按住Ctrl键以获取控制选项"/>
+		<item name="ctrlshiftvertscale" label="拖动鼠标沿对称点进行竖直等比率缩放"/>
+		<item name="ctrlvertscale" label="拖动鼠标沿对称点进行竖直缩放，按住Shift键以获取控制选项"/>
+		<item name="anglescale" label="拖动鼠标沿中心点进行对角缩放，按住Ctrl,Shift键以获取控制选项"/>
+		<item name="shiftanglescale" label="拖动鼠标沿中心点进行对角等比率缩放，按住Ctrl键以获取控制选项"/>
+		<item name="ctrlshiftanglescale" label="拖动鼠标沿对称点进行对角等比率缩放"/>
+		<item name="ctrlanglescale" label="拖动鼠标沿对称点进行对角缩放，按住Shift键以获取控制选项"/>
+		<item name="skew" label="拖动鼠标沿中心点扭曲选中对象，按住Ctrl键以获取控制选项"/>
+		<item name="ctrlskew" label="拖动鼠标沿对称点扭曲选中对象"/>
+		<item name="rotate" label="拖动鼠标沿中心点进行旋转，按住Ctrl，Shift键以获取控制选项"/>
+		<item name="shiftrotate" label="拖动鼠标沿中心点进行45度倍比旋转，按住Ctrl键以获取控制选项"/>
+		<item name="ctrlrotate" label="拖动鼠标沿对称点进行旋转，按住Shift键以获取控制选项"/>
+		<item name="ctrlshiftrotate" label="拖动鼠标沿对称点进行45度倍比旋转"/>
+		<item name="select" label="拖动鼠标构造选择区域"/>
+	</item>
+	
+	<item name="viewoperation" label="视图">
+		<item name="roam" label="拖动鼠标改变视图位置"/>
+		<item name="zoomin" label="单击鼠标放大视图比率"/>
+		<item name="zoomout" label="单击鼠标缩小视图比率"/>
+	</item>
+	
+	<item name="bezieroperation" label="钢笔">
+		<item name="bezierdraw" label="单击以添加锚点"/>
+		<item name="beziercenterpoint" label="拖动鼠标以移动运动中心点"/>
+		<item name="bezierselectcenterpoint" label="单击选择运动中心点"/>
+		<item name="delanchor" label="单击删除该节点"/>
+		<item name="addanchor" label="单击在该位置插入锚点"/>
+		<item name="movepath" label="拖动鼠标以移动路径"/>
+		<item name="moveanchor" label="拖动鼠标以移动选定锚点"/>
+		<item name="changeendanchor" label="单击以继续路径"/>
+		<item name="closefigure" label="单击闭合当前子路径"/>
+		<item name="convertanchor" label="单击鼠标以转换锚点，拖动则平滑锚点"/>
+		<item name="bezierselect" label="单击选择路径"/>
+		<item name="bezierctrl" label="，按住Shift,Alt键以获取附加选项"/>
+		<item name="bezieralt" label="，按住 Shift,Ctrl键以获取附加选项"/>
+		<item name="beziershift" label="，按住Ctrl,Alt键以获取附加选项"/>
+		<item name="beziernokeys" label="，按住Shift,Ctrl,Alt键以获取附加选项"/>
+		<item name="beziermotionkey" label="，同时按住Ctrl,Shift以选择并移动运动中心点"/>
+	</item>
+	
+	<item name="imagedialog" label="选择文件">
+		<item name="filefilter" label="jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|svg files (*.svg)|*.svg|png files(*.png)|*.png"/>
+	</item>
+	
+	<item name="addelement" label="不能添加子对象到当前根对象"/>
+	<item name="notinsamelayer" label="不在同一层的对象不能进行此项操作"/>
+	<item name="linkdialog" label="超链接属性">
+		<item name="link" label="链接"/>
+		<item name="target" label="目标"/>
+	</item>
+</drawarea>

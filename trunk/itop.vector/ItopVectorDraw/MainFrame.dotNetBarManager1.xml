@@ -1,0 +1,474 @@
+<dotnetbar fullmenus="false" fullmenushover="true" tooltips="true" scintooltip="false" animation="6">
+  <items>
+    <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem11" text="ButtonItem11" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="(Untitled)" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+    <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem8" text="ButtonItem8" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="(Untitled)" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+  </items>
+  <bars>
+    <bar name="mainmenu" candockleft="true" candockright="true" candocktop="true" candockbottom="true" candockdoc="false" candocktab="true" text="主菜单" dockline="0" dockoffset="0" grabhandle="0" menubar="true" stretch="true" style="0" wrapdock="false" wrapfloat="true" state="2" dockside="3" visible="true" custom="false" canhide="false" imagesize="0" itemsp="0" themes="true" layout="0" eqbutton="false">
+      <items>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mFile" text="文件(&amp;F)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mNewFile" text="新建(&amp;N)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="新建(&amp;N)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131150" PopupType="1" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="0" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mOpen" text="打开(&amp;O)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="打开(&amp;O)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131151" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="1" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mSave" text="保存(&amp;S)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="保存(&amp;S)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131155" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="3" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mSaveAs" text="另存为...(&amp;A)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mSaveAll" text="全部保存" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="全部保存" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="4" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem10" text="读入文件" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <subitems>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mInDxf" text="Dxf文件" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+              </subitems>
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem12" text="输出文件" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <subitems>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mOutImage" text="图片" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mOutSymbol" text="图元" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+              </subitems>
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mClose" text="关闭(&amp;C)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="关闭(&amp;C)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="2" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mCloseAll" text="全部关闭" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mSetup" text="页面设置(&amp;U)..." iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mPrint" text="打印(&amp;P)..." iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem17" text="最近打开的文件" iscontainer="false" visible="false" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mExit" text="退出(&amp;X)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+          </subitems>
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem1" text="编辑(&amp;E)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mUndo" text="撤消(&amp;Z)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="撤消(&amp;Z)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131162" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="5" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mRedo" text="重做(&amp;Y)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="重做(&amp;Y)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131161" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="6" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mCopy" text="复制(&amp;C)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="复制(&amp;C)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131139" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="8" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mCut" text="剪切(&amp;X)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="剪切(&amp;X)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131160" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="7" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mPaste" text="粘贴(&amp;V)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="粘贴(&amp;V)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131158" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="9" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mDelete" text="删除(&amp;D)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="删除(&amp;D)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="10" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mSelectAll" text="全选(&amp;A)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131137" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mClearSelects" text="消除全选" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mLink" text="超级连接" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+          </subitems>
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem4" text="视图(&amp;V)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mShowRule" text="标尺" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mShowGrid" text="网格" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mLayerManager" text="图层..." iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem19" text="鸟瞰图" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+          </subitems>
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem31" text="形状(&amp;S)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem32" text="组合" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <subitems>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mGroup" text="组合" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="131143" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="48" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mUnGroup" text="取消组合" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="196679" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="49" />
+                </item>
+              </subitems>
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem33" text="顺序" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <subitems>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mGoTop" text="置于顶层" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="44" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mGoUp" text="上移一层" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="46" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mGoDown" text="下移一层" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="47" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mGoBottom" text="置于底层" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="45" />
+                </item>
+              </subitems>
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem34" text="旋转或翻转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <subitems>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mToH" text="水平翻转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="39" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mToV" text="垂直翻转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="40" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mToLeft" text="向左旋转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="42" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mToRight" text="向右旋转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="41" />
+                </item>
+              </subitems>
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem2" text="形状" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <subitems>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mLine" text="直线" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="直线" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="15" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mPolyline" text="折线" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="折线" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="16" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mRect" text="矩形" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="13" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mEllipse" text="椭圆" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="椭圆" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="14" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mPolygon" text="多边形" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="多边形" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="17" />
+                </item>
+              </subitems>
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem3" text="对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <subitems>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignLeft" text="左对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="50" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignVerticalCenter" text="垂直居中" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="51" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignRight" text="右对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="52" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignTop" text="上对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="53" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignHorizontalCenter" text="水平居中" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="54" />
+                </item>
+                <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignBottom" text="下对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+                  <images imageindex="55" />
+                </item>
+              </subitems>
+            </item>
+          </subitems>
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem5" text="工具(&amp;T)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mShapeManager" text="形状管理(&amp;S)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mOption" text="选项(&amp;O)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+          </subitems>
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem6" text="窗口(&amp;W)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mFormManager" text="窗口..." iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.MdiWindowListItem" name="MdiWindowListItem1" text="窗口列表" iscontainer="false" visible="false" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" />
+          </subitems>
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem7" text="帮助(&amp;H)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem9" text="帮助目录" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" shortcuts="112" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAbout" text="关于(&amp;A)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+          </subitems>
+        </item>
+      </items>
+    </bar>
+    <bar name="bar2" candockleft="true" candockright="true" candocktop="true" candockbottom="true" candockdoc="false" candocktab="true" text="常用" dockline="1" dockoffset="0" grabhandle="10" menubar="false" stretch="false" style="0" wrapdock="false" wrapfloat="true" state="2" dockside="3" visible="true" custom="false" canhide="false" imagesize="0" itemsp="0" themes="true" layout="0" eqbutton="false">
+      <items>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mNewFile" text="新建(&amp;N)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="新建(&amp;N)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="1" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="0" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mOpen" text="打开(&amp;O)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="打开(&amp;O)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="1" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mSave" text="保存(&amp;S)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="保存(&amp;S)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="3" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mSaveAll" text="全部保存" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="全部保存" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="4" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mClose" text="关闭(&amp;C)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="关闭(&amp;C)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="2" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mUndo" text="撤消(&amp;Z)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="撤消(&amp;Z)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="5" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mRedo" text="重做(&amp;Y)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="重做(&amp;Y)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="6" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mCopy" text="复制(&amp;C)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="复制(&amp;C)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="8" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mCut" text="剪切(&amp;X)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="剪切(&amp;X)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="7" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mPaste" text="粘贴(&amp;V)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="粘贴(&amp;V)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="9" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mDelete" text="删除(&amp;D)" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="删除(&amp;D)" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="10" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ComboBoxItem" name="ScaleBox" text="缩放大小" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="缩放大小" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" ComboWidth="64" FontCombo="false" MenuVisibility="0" RecentlyUsed="false" DropDownStyle="1" CText="" ThemeAware="false" AlwaysShowCaption="false" ItemHeight="14" />
+      </items>
+    </bar>
+    <bar name="barStyle" candockleft="true" candockright="true" candocktop="true" candockbottom="true" candockdoc="false" candocktab="true" text="格式" dockline="2" dockoffset="0" grabhandle="10" menubar="false" stretch="false" style="0" wrapdock="false" wrapfloat="true" state="2" dockside="3" visible="true" custom="false" canhide="false" imagesize="0" itemsp="0" themes="true" layout="0" eqbutton="false">
+      <items>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ComboBoxItem" name="FontFamily" text="字体" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="字体" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" ComboWidth="140" FontCombo="false" MenuVisibility="0" RecentlyUsed="false" DropDownStyle="2" CText="" ThemeAware="false" AlwaysShowCaption="false" ItemHeight="14">
+          <cbitems>
+            <ci fn="Arial" fs="12" fy="0" text="Arial" ta="0" tla="0" />
+            <ci fn="Arial Black" fs="12" fy="0" text="Arial Black" ta="0" tla="0" />
+            <ci fn="Arial Narrow" fs="12" fy="0" text="Arial Narrow" ta="0" tla="0" />
+            <ci fn="Batang" fs="12" fy="0" text="Batang" ta="0" tla="0" />
+            <ci fn="BatangChe" fs="12" fy="0" text="BatangChe" ta="0" tla="0" />
+            <ci fn="Book Antiqua" fs="12" fy="0" text="Book Antiqua" ta="0" tla="0" />
+            <ci fn="Bookman Old Style" fs="12" fy="0" text="Bookman Old Style" ta="0" tla="0" />
+            <ci fn="Bookshelf Symbol 7" fs="12" fy="0" text="Bookshelf Symbol 7" ta="0" tla="0" />
+            <ci fn="Century Gothic" fs="12" fy="0" text="Century Gothic" ta="0" tla="0" />
+            <ci fn="Comic Sans MS" fs="12" fy="0" text="Comic Sans MS" ta="0" tla="0" />
+            <ci fn="Courier New" fs="12" fy="0" text="Courier New" ta="0" tla="0" />
+            <ci fn="Dotum" fs="12" fy="0" text="Dotum" ta="0" tla="0" />
+            <ci fn="DotumChe" fs="12" fy="0" text="DotumChe" ta="0" tla="0" />
+            <ci fn="Estrangelo Edessa" fs="12" fy="0" text="Estrangelo Edessa" ta="0" tla="0" />
+            <ci fn="Franklin Gothic Medium" fs="12" fy="0" text="Franklin Gothic Medium" ta="0" tla="0" />
+            <ci fn="Garamond" fs="12" fy="0" text="Garamond" ta="0" tla="0" />
+            <ci fn="Gautami" fs="12" fy="0" text="Gautami" ta="0" tla="0" />
+            <ci fn="Georgia" fs="12" fy="0" text="Georgia" ta="0" tla="0" />
+            <ci fn="Gulim" fs="12" fy="0" text="Gulim" ta="0" tla="0" />
+            <ci fn="GulimChe" fs="12" fy="0" text="GulimChe" ta="0" tla="0" />
+            <ci fn="Gungsuh" fs="12" fy="0" text="Gungsuh" ta="0" tla="0" />
+            <ci fn="GungsuhChe" fs="12" fy="0" text="GungsuhChe" ta="0" tla="0" />
+            <ci fn="Haettenschweiler" fs="12" fy="0" text="Haettenschweiler" ta="0" tla="0" />
+            <ci fn="Impact" fs="12" fy="0" text="Impact" ta="0" tla="0" />
+            <ci fn="Latha" fs="12" fy="0" text="Latha" ta="0" tla="0" />
+            <ci fn="Lucida Console" fs="12" fy="0" text="Lucida Console" ta="0" tla="0" />
+            <ci fn="Lucida Sans Unicode" fs="12" fy="0" text="Lucida Sans Unicode" ta="0" tla="0" />
+            <ci fn="Mangal" fs="12" fy="0" text="Mangal" ta="0" tla="0" />
+            <ci fn="Marlett" fs="12" fy="0" text="Marlett" ta="0" tla="0" />
+            <ci fn="Microsoft Sans Serif" fs="12" fy="0" text="Microsoft Sans Serif" ta="0" tla="0" />
+            <ci fn="MingLiU" fs="12" fy="0" text="MingLiU" ta="0" tla="0" />
+            <ci fn="Monotype Corsiva" fs="12" fy="0" text="Monotype Corsiva" ta="0" tla="0" />
+            <ci fn="MS Gothic" fs="12" fy="0" text="MS Gothic" ta="0" tla="0" />
+            <ci fn="MS Mincho" fs="12" fy="0" text="MS Mincho" ta="0" tla="0" />
+            <ci fn="MS PGothic" fs="12" fy="0" text="MS PGothic" ta="0" tla="0" />
+            <ci fn="MS PMincho" fs="12" fy="0" text="MS PMincho" ta="0" tla="0" />
+            <ci fn="MS Reference Sans Serif" fs="12" fy="0" text="MS Reference Sans Serif" ta="0" tla="0" />
+            <ci fn="MS Reference Specialty" fs="12" fy="0" text="MS Reference Specialty" ta="0" tla="0" />
+            <ci fn="MS UI Gothic" fs="12" fy="0" text="MS UI Gothic" ta="0" tla="0" />
+            <ci fn="MV Boli" fs="12" fy="0" text="MV Boli" ta="0" tla="0" />
+            <ci fn="Palatino Linotype" fs="12" fy="0" text="Palatino Linotype" ta="0" tla="0" />
+            <ci fn="PMingLiU" fs="12" fy="0" text="PMingLiU" ta="0" tla="0" />
+            <ci fn="Raavi" fs="12" fy="0" text="Raavi" ta="0" tla="0" />
+            <ci fn="Shruti" fs="12" fy="0" text="Shruti" ta="0" tla="0" />
+            <ci fn="Sylfaen" fs="12" fy="0" text="Sylfaen" ta="0" tla="0" />
+            <ci fn="Symbol" fs="12" fy="0" text="Symbol" ta="0" tla="0" />
+            <ci fn="Tahoma" fs="12" fy="0" text="Tahoma" ta="0" tla="0" />
+            <ci fn="Times New Roman" fs="12" fy="0" text="Times New Roman" ta="0" tla="0" />
+            <ci fn="Trebuchet MS" fs="12" fy="0" text="Trebuchet MS" ta="0" tla="0" />
+            <ci fn="Tunga" fs="12" fy="0" text="Tunga" ta="0" tla="0" />
+            <ci fn="Verdana" fs="12" fy="0" text="Verdana" ta="0" tla="0" />
+            <ci fn="Webdings" fs="12" fy="0" text="Webdings" ta="0" tla="0" />
+            <ci fn="Wingdings" fs="12" fy="0" text="Wingdings" ta="0" tla="0" />
+            <ci fn="Wingdings 2" fs="12" fy="0" text="Wingdings 2" ta="0" tla="0" />
+            <ci fn="Wingdings 3" fs="12" fy="0" text="Wingdings 3" ta="0" tla="0" />
+            <ci fn="ZWAdobeF" fs="12" fy="0" text="ZWAdobeF" ta="0" tla="0" />
+            <ci fn="仿宋_GB2312" fs="12" fy="0" text="仿宋_GB2312" ta="0" tla="0" />
+            <ci fn="华文中宋" fs="12" fy="0" text="华文中宋" ta="0" tla="0" />
+            <ci fn="华文仿宋" fs="12" fy="0" text="华文仿宋" ta="0" tla="0" />
+            <ci fn="华文彩云" fs="12" fy="0" text="华文彩云" ta="0" tla="0" />
+            <ci fn="华文新魏" fs="12" fy="0" text="华文新魏" ta="0" tla="0" />
+            <ci fn="华文细黑" fs="12" fy="0" text="华文细黑" ta="0" tla="0" />
+            <ci fn="华文行楷" fs="12" fy="0" text="华文行楷" ta="0" tla="0" />
+            <ci fn="宋体" fs="12" fy="0" text="宋体" ta="0" tla="0" />
+            <ci fn="宋体-方正超大字符集" fs="12" fy="0" text="宋体-方正超大字符集" ta="0" tla="0" />
+            <ci fn="幼圆" fs="12" fy="0" text="幼圆" ta="0" tla="0" />
+            <ci fn="新宋体" fs="12" fy="0" text="新宋体" ta="0" tla="0" />
+            <ci fn="方正姚体" fs="12" fy="0" text="方正姚体" ta="0" tla="0" />
+            <ci fn="方正舒体" fs="12" fy="0" text="方正舒体" ta="0" tla="0" />
+            <ci fn="楷体_GB2312" fs="12" fy="0" text="楷体_GB2312" ta="0" tla="0" />
+            <ci fn="隶书" fs="12" fy="0" text="隶书" ta="0" tla="0" />
+            <ci fn="黑体" fs="12" fy="0" text="黑体" ta="0" tla="0" />
+          </cbitems>
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ComboBoxItem" name="FontSize" text="字号" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="字号" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" ComboWidth="64" FontCombo="false" MenuVisibility="0" RecentlyUsed="false" DropDownStyle="1" CText="" ThemeAware="false" AlwaysShowCaption="false" ItemHeight="14" />
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mBold" text="粗体" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="粗体" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="34" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mItalic" text="斜体" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="斜体" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="35" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mUnderline" text="下划线" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="下划线" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="36" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mTextcolor" text="文字颜色" iscontainer="false" visible="false" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="文字颜色" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="2" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="38" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mForecolor" text="画笔颜色" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="画笔颜色" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="2" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="29" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mBackcolor" text="填充色" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="填充色" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="2" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="28" />
+        </item>
+      </items>
+    </bar>
+    <bar name="barLayout" candockleft="true" candockright="true" candocktop="true" candockbottom="true" candockdoc="false" candocktab="true" text="布局" dockline="3" dockoffset="0" grabhandle="10" menubar="false" stretch="false" style="0" wrapdock="false" wrapfloat="true" state="2" dockside="3" visible="true" custom="false" canhide="false" imagesize="0" itemsp="0" themes="true" layout="0" eqbutton="false">
+      <items>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlign" text="对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="对齐" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignLeft" text="左对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="50" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignVerticalCenter" text="垂直居中" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="51" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignRight" text="右对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="52" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignTop" text="上对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="53" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignHorizontalCenter" text="水平居中" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="54" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAlignBottom" text="下对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="55" />
+            </item>
+          </subitems>
+          <images imageindex="50" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mOrder" text="顺序" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="顺序" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mGoTop" text="置于顶层" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="44" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mGoUp" text="上移一层" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="46" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mGoDown" text="下移一层" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="47" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mGoBottom" text="置于底层" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="45" />
+            </item>
+          </subitems>
+          <images imageindex="44" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mRotate" text="旋转或翻转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="旋转或翻转" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <subitems>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mToH" text="水平翻转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="39" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mToV" text="垂直翻转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="40" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mToLeft" text="向左旋转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="42" />
+            </item>
+            <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mToRight" text="向右旋转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+              <images imageindex="41" />
+            </item>
+          </subitems>
+          <images imageindex="39" />
+        </item>
+      </items>
+    </bar>
+    <bar name="barShape" candockleft="true" candockright="true" candocktop="true" candockbottom="true" candockdoc="false" candocktab="true" text="形状操作" dockline="3" dockoffset="174" grabhandle="10" menubar="false" stretch="false" style="0" wrapdock="false" wrapfloat="true" state="2" dockside="3" visible="true" custom="false" canhide="false" imagesize="0" itemsp="0" themes="true" layout="0" eqbutton="false">
+      <items>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mSelect" text="选择" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="选择操作" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="11" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mFreeTransform" text="变换" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="变换操作" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="11" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mShapeTransform" text="节点" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="节点操作（只有线形状可以）" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="12" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mIncreaseView" text="放大" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="放大" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="26" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mDecreaseView" text="缩小" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="缩小" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="27" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mRoam" text="漫游" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="漫游" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="25" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mAngleRectangle" text="矩形" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="true" style="0" desc="" tooltip="矩形" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="13" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mEllipse" text="椭圆" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="椭圆" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="14" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mPie" text="圆角" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="圆角" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="19" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mArc" text="圆弧" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="圆弧" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="20" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mStar" text="等边形" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="等边形" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="2" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="18" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mLine" text="直线" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="直线" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="15" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mConnectLine" text="连接线" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="连接线" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="57" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mPolyline" text="折线" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="折线" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="16" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mPolygon" text="多边形" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="多边形" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="17" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mBezier" text="曲线" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="曲线" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="21" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mImage" text="图片" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="图片" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="22" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mText" text="文字" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="文字" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="23" />
+        </item>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="mEnclosure" text="围栏" iscontainer="false" visible="false" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="围栏" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+          <images imageindex="56" />
+        </item>
+      </items>
+    </bar>
+    <bar name="statusBar4" candockleft="true" candockright="true" candocktop="true" candockbottom="true" candockdoc="false" candocktab="true" text="状态栏" dockline="0" dockoffset="0" grabhandle="9" menubar="false" stretch="true" style="0" wrapdock="false" wrapfloat="true" state="2" dockside="4" visible="true" custom="false" canhide="false" imagesize="0" itemsp="2" themes="true" layout="0" eqbutton="false">
+      <items>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.LabelItem" name="plTip" text="就绪... " iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="false" showsubitems="true" itemalignment="0" stretch="true" global="true" themes="true" bt="1" fc=".ControlText" ta="0" tla="1" ds="false" pl="0" pr="0" pt="0" pb="0" w="230" h="0" />
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.LabelItem" name="plCoord" text="" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="false" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" bt="1" fc=".ControlText" ta="0" tla="1" ds="false" pl="0" pr="0" pt="0" pb="0" w="100" h="0" />
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.LabelItem" name="plColumn" text="" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="false" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="true" bt="1" fc=".ControlText" ta="0" tla="1" ds="false" pl="0" pr="0" pt="0" pb="0" w="200" h="0" />
+      </items>
+    </bar>
+    <bar name="DockContainerFile" candockleft="true" candockright="true" candocktop="true" candockbottom="true" candockdoc="false" candocktab="true" text="文件管理" dockline="0" dockoffset="0" grabhandle="8" menubar="false" stretch="true" style="0" wrapdock="false" wrapfloat="true" state="2" dockside="1" visible="true" custom="false" canhide="false" imagesize="0" itemsp="0" themes="false" layout="2" eqbutton="false" dockwidth="188" seldocktab="0">
+      <items>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.DockContainerItem" name="DockContainerShape" text="形状" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="false" showsubitems="true" itemalignment="0" stretch="true" global="true" themes="false" minw="150" minh="200" defw="150" defh="200" />
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.DockContainerItem" name="DockContainerFile" text="文件管理" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="false" showsubitems="true" itemalignment="0" stretch="true" global="true" themes="false" minw="150" minh="200" defw="150" defh="200" />
+      </items>
+    </bar>
+    <bar name="dockwindow5" candockleft="true" candockright="true" candocktop="true" candockbottom="true" candockdoc="false" candocktab="true" text="属性" dockline="0" dockoffset="249" grabhandle="8" menubar="false" stretch="true" style="0" wrapdock="false" wrapfloat="true" state="2" dockside="1" visible="true" custom="false" canhide="false" imagesize="0" itemsp="0" themes="false" layout="2" eqbutton="false" dockwidth="188" seldocktab="1">
+      <items>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.DockContainerItem" name="DockContainerItem1" text="鸟瞰图" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="false" showsubitems="true" itemalignment="0" stretch="true" global="true" themes="false" />
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.DockContainerItem" name="DockContainerProperty" text="属性a" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="false" showsubitems="true" itemalignment="0" stretch="true" global="true" themes="false" minw="150" minh="200" defw="150" defh="200" />
+      </items>
+    </bar>
+  </bars>
+  <popups>
+    <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem18" text="" iscontainer="false" visible="false" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false">
+      <subitems>
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem13" text="操作" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem14" text="对齐" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem15" text="顺序" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+        <item assembly="DevComponents.DotNetBar" class="DevComponents.DotNetBar.ButtonItem" name="ButtonItem16" text="旋转或翻转" iscontainer="false" visible="true" itemdata="" enabled="true" begingroup="false" style="0" desc="" tooltip="" category="" cancustomize="true" showsubitems="true" itemalignment="0" stretch="false" global="true" themes="false" PopupType="0" PopupWidth="200" PersonalizedMenus="0" panim="1" ImagePosition="0" ButtonStyle="0" Checked="false" VerticalPadding="0" HorizontalPadding="0" MenuVisibility="0" RecentlyUsed="false" />
+      </subitems>
+    </item>
+  </popups>
+</dotnetbar>

@@ -1,0 +1,1108 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A06A219A-2F80-4424-B635-00064AB166FD}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>ItopVector</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ItopVector</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <SccAuxPath>
+    </SccAuxPath>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.QuartzTypeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\Interop.QuartzTypeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\MoveEventArgs.cs" />
+    <Compile Include="Resource\DomIcon.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resource\DrawAreaConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resource\Files.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resource\Images.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resource\LayoutManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resource\Preference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resource\ResourceHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resource\SpecialCursors.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Animate\Animate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Animate\AnimateInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Animate\AudioAnimate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Animate\ColorAnimate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Animate\MotionAnimate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Animate\SetAnimate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Animate\TransformAnimate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\CharInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Circle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\ConnectLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Defs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\DelegateDeclarations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Ellips.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Graph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\GraphPath.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Group.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Image.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Line.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Link.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Marker.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Polygon.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Polyline.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\RectangleElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\State.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\SVG.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Symbol.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Text.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\TRef.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\TSpan.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BasicShapes\Use.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\BreakElementEventArgs.cs" />
+    <Compile Include="ItopVector\Core\ClipAndMask\ClipPath.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\CollectionChangedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Config\Config.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\ContainerElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\CssStyleSheetType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\parAlign.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\parMeetOrSlice.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\PointInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\PointInfoCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\PreserveAspectRatio.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\SvgLengthDirection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\SvgNumber.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\SvgTime.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\Transf.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\TransfList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DataTypes\ViewBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\DelegateDeclarations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Document\ChangeAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Document\DelegateDeclarations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Document\DocumentChangedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Document\LocalDtdXmlUrlResolver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Document\SerializeDocument.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Document\SvgDocument.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Document\SvgDocumentFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\ElementExpandChangedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\Accumulate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\Additive.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\AlignType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\AttributeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\BlendMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\CalcMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\ClipRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\CodeStructure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\ColorChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\ComponentTransferType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\CompositeOperator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\ControlType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\DisplayMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\DistributeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\DomType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\DrawModeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\EdgeModes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\ElementType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\ExportType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\FeFuncType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\FilterIn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\KeyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\KeyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\LevelType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\MarkerUnits.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\MatrixType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\MorphologyOperator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\MousePoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\Msgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\Restart.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\SizeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\SpreadMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\stitchTile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\StrokeLinecap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\StrokeLinejoin.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\ToolOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\ToolOperation2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\TurbulenceType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Enum\Units.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\ExpandAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\AnimFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\AttributeFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\BezierFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\BrushManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\CodeFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\ColorFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\DomTypeFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\ExtendedGraphicsPath.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\ImageFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\NodeFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\Number.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\OperationFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\PathFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\PointsFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\ResourceHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\StringListFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\SvgLengthDirection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\TextFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\ToHexNumber.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\TransformFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Funcs\TypeFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\GradientsAndPatterns\GradientStop.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\GradientsAndPatterns\ISvgBrush.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\GradientsAndPatterns\LinearGradient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\GradientsAndPatterns\Pattern.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\GradientsAndPatterns\RadialGradients.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\GradientsAndPatterns\RatHatchBrush.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\GradientsAndPatterns\SolidColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\GradientsAndPatterns\Stroke.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\DataTypes\ISvgLength.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\DataTypes\ISvgNumber.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\DataTypes\ISvgTime.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\DataTypes\SvgLengthType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\DataTypes\SvgTimeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\DelegateDeclarations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\Figure\IGraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\Figure\IGraphPath.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\Figure\ILayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\Figure\IText.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\Figure\IViewportElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\IContainer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\IControl.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\IPath.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\ISvgElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\ITransf.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\Paint\IGradientBrush.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\Paint\ITransformBrush.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Interface\TipType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\PaintMapEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\ScreenCapturing.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\SvgElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\SvgElementCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\SvgException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\SVGTextNode\SvgScript.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Undo\IUndoOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Undo\KeyAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Undo\KeyUndoOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Undo\StackUndoOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Undo\UnDoOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Undo\UndoStack.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\BLENDFUNCTION.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\COLOR.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\Enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\Gdi32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\LOGBRUSH.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\LOGPEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\MSG.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\PAINTSTRUCT.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\POINT.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\RECT.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\RopDraw.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\SIZE.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\TRACKMOUSEEVENTS.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Core\Win32\User32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\ArrowEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\BaseEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\ColorPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\DropDownEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\FontEdit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\HatchEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\LabelTextEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\LayerEdit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\ListFontSize.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\ListHatchStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\ModalEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\Number180Editor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\NumberEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\StrokeStyleEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\StrokeWidthEditor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Desiger\SymbleEditor.cs" />
+    <Compile Include="ItopVector\Dialog\AerialView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\ExportImageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\ExportSymbolDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\GridWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\InputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\LayerManagerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\LinkDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\NormalDesign.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\PaperSetup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\picForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\PreferenceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\PrinterSetup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\PrintSetupDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\RuleAndGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\SymbolGroupDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Dialog\SymbolManagerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\CharInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\CopyData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\DelegateDeclarations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\DrawArea.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\IMouseEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\MouseArea.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\RefLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\SvgElementSelectedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\TextAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\ViewChangedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\Viewer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ItopVector\DrawArea\Win32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\ITLVector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\MiniatureView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\BezierOperate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\BezierOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\ColorOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\DistanceOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\DrawOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\FlipOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\IOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\LineOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\PolyOperate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\PolyOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\SelectOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\SubOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\SymbolOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\TextOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\TextUndoOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Operation\ViewOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Print\PrintDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\Enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyFill.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyImage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyLineMarker.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyPath.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyRoundRect.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyText.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyUse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\Struct.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Property\PropertyPolyline.cs" />
+    <Compile Include="ItopVector\Selector\Arrow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\ArrowSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\ConnectShape.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\DisposeBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\FontFamilySelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\ISymbol.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\ListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\OutlookBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\OutlookBarItemCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\Shape.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\ShapeGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\ShapeSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\StrokeStyleSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\StrokeWidthSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\Symbol.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\SymbolGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ItopVector\Selector\SymbolSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItopVector\TLVectorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="Bitmap11.bmp" />
+    <EmbeddedResource Include="Resource\Cursors\AddControl.cur" />
+    <EmbeddedResource Include="Resource\Cursors\AnchorCursor.cur" />
+    <EmbeddedResource Include="Resource\Cursors\AnchorMoveCursor.cur" />
+    <EmbeddedResource Include="Resource\Cursors\AreaSelect.cur" />
+    <EmbeddedResource Include="Resource\Cursors\CCWCornerScale.cur" />
+    <EmbeddedResource Include="Resource\Cursors\CenterPoint.cur" />
+    <EmbeddedResource Include="Resource\Cursors\ChangeR.cur" />
+    <EmbeddedResource Include="Resource\Cursors\ColorPicker.cur" />
+    <EmbeddedResource Include="Resource\Cursors\ColorTranslate.cur" />
+    <EmbeddedResource Include="Resource\Cursors\CWCornerScale.cur" />
+    <EmbeddedResource Include="Resource\Cursors\DecreaseView.cur" />
+    <EmbeddedResource Include="Resource\Cursors\Drag.cur" />
+    <EmbeddedResource Include="Resource\Cursors\DragInfo.cur" />
+    <EmbeddedResource Include="Resource\Cursors\GradientTransform.cur" />
+    <EmbeddedResource Include="Resource\Cursors\HGuide.cur" />
+    <EmbeddedResource Include="Resource\Cursors\HScale.cur" />
+    <EmbeddedResource Include="Resource\Cursors\IncreaseView.cur" />
+    <EmbeddedResource Include="Resource\Cursors\measure.cur" />
+    <EmbeddedResource Include="Resource\Cursors\movepath.cur" />
+    <EmbeddedResource Include="Resource\Cursors\MoveRect.cur" />
+    <EmbeddedResource Include="Resource\Cursors\MoveRoam.cur" />
+    <EmbeddedResource Include="Resource\Cursors\NoView.cur" />
+    <EmbeddedResource Include="Resource\Cursors\Pen.cur" />
+    <EmbeddedResource Include="Resource\Cursors\PenAdd.cur" />
+    <EmbeddedResource Include="Resource\Cursors\Pencil.cur" />
+    <EmbeddedResource Include="Resource\Cursors\PenClose.cur" />
+    <EmbeddedResource Include="Resource\Cursors\PenDel.cur" />
+    <EmbeddedResource Include="Resource\Cursors\PenDraw.cur" />
+    <EmbeddedResource Include="Resource\Cursors\PenEnd.cur" />
+    <EmbeddedResource Include="Resource\Cursors\polyaddDraw.cur" />
+    <EmbeddedResource Include="Resource\Cursors\polybreakDraw.cur" />
+    <EmbeddedResource Include="Resource\Cursors\polydelDraw.cur" />
+    <EmbeddedResource Include="Resource\Cursors\polydraw.cur" />
+    <EmbeddedResource Include="Resource\Cursors\Roam.cur" />
+    <EmbeddedResource Include="Resource\Cursors\Rotate.cur" />
+    <EmbeddedResource Include="Resource\Cursors\RotateColor.cur" />
+    <EmbeddedResource Include="Resource\Cursors\Select.cur" />
+    <EmbeddedResource Include="Resource\Cursors\ShapeDraw.cur" />
+    <EmbeddedResource Include="Resource\Cursors\SkewX.cur" />
+    <EmbeddedResource Include="Resource\Cursors\SkewxAngle.cur" />
+    <EmbeddedResource Include="Resource\Cursors\SkewY.cur" />
+    <EmbeddedResource Include="Resource\Cursors\SkewYAngle.cur" />
+    <EmbeddedResource Include="Resource\Cursors\Subpath.cur" />
+    <EmbeddedResource Include="Resource\Cursors\SubpathDrag.cur" />
+    <EmbeddedResource Include="Resource\Cursors\TextDraw.cur" />
+    <EmbeddedResource Include="Resource\Cursors\VGuide.cur" />
+    <EmbeddedResource Include="Resource\Cursors\VScale.cur" />
+    <EmbeddedResource Include="Resource\Database.bmp" />
+    <EmbeddedResource Include="Resource\DrawArea\drawareaconfig.xml">
+      <SubType>Code</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\Folder.bmp" />
+    <EmbeddedResource Include="Resource\Main.bmp" />
+    <EmbeddedResource Include="Resource\MenuImages.bmp" />
+    <EmbeddedResource Include="Resource\PanelImages.bmp" />
+    <EmbeddedResource Include="Resource\Preference\Config.xml">
+      <SubType>Code</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Bitmap1.bmp" />
+    <EmbeddedResource Include="ItopVector\Desiger\ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\AerialView.resx">
+      <DependentUpon>AerialView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\ExportImageDialog.resx">
+      <DependentUpon>ExportImageDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\ExportSymbolDialog.resx">
+      <DependentUpon>ExportSymbolDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\GridWindow.resx">
+      <DependentUpon>GridWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\InputDialog.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\LayerManagerDialog.resx">
+      <DependentUpon>LayerManagerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\LinkDialog.resx">
+      <DependentUpon>LinkDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\NormalDesign.resx">
+      <DependentUpon>NormalDesign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\PaperSetup.resx">
+      <DependentUpon>PaperSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\picForm.resx">
+      <DependentUpon>picForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\PreferenceWindow.resx">
+      <DependentUpon>PreferenceWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\PrinterSetup.resx">
+      <DependentUpon>PrinterSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\PrintSetupDialog.resx">
+      <DependentUpon>PrintSetupDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\RuleAndGrid.resx">
+      <DependentUpon>RuleAndGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\SymbolGroupDialog.resx">
+      <DependentUpon>SymbolGroupDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Dialog\SymbolManagerDialog.resx">
+      <DependentUpon>SymbolManagerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\DrawArea\DrawArea.resx">
+      <DependentUpon>DrawArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\DrawArea\MouseArea.resx">
+      <DependentUpon>MouseArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\DrawArea\Viewer.resx">
+      <DependentUpon>Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\MiniatureView.resx">
+      <DependentUpon>MiniatureView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Print\PrintDialog.resx">
+      <DependentUpon>PrintDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\ArrowSelector.resx">
+      <DependentUpon>ArrowSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\DisposeBase.resx">
+      <DependentUpon>DisposeBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\ISymbol.resx">
+      <DependentUpon>ISymbol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\ListViewEx.resx">
+      <DependentUpon>ListViewEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\OutlookBar.resx">
+      <DependentUpon>OutlookBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\OutlookBarItemCollection.resx">
+      <DependentUpon>OutlookBarItemCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\Shape.resx">
+      <DependentUpon>Shape.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\ShapeGroup.resx">
+      <DependentUpon>ShapeGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\ShapeSelector.resx">
+      <DependentUpon>ShapeSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\StrokeStyleSelector.resx">
+      <DependentUpon>StrokeStyleSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\StrokeWidthSelector.resx">
+      <DependentUpon>StrokeWidthSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\Symbol.resx">
+      <DependentUpon>Symbol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\SymbolGroup.resx">
+      <DependentUpon>SymbolGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\Selector\SymbolSelector.resx">
+      <DependentUpon>SymbolSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItopVector\TLVectorControl.resX">
+      <DependentUpon>TLVectorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Resource\Cursors\inkbottle.cur" />
+    <Content Include="Resource\Cursors\paintbottle.cur" />
+    <Content Include="ItopVector\Desiger\说明.txt" />
+    <Content Include="ItopVector\Dialog\说明.txt" />
+    <Content Include="ItopVector\Operation\说明.txt" />
+    <Content Include="ItopVector\Property\说明.txt" />
+    <Content Include="ItopVector\Selector\说明.txt" />
+    <Content Include="ItopVector\说明.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
