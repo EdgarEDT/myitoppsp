@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SAppProps' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='SAppProps' assembly='Itop.Domain.dll' type='Itop.Domain.SAppProps' />
+</alias>
+	<resultMaps>
+		<resultMap id='SAppPropsResult' class='SAppProps'>
+			<result property='PropId' column='PropId' />
+			<result property='PropName' column='PropName' />
+			<result property='PropValue' column='PropValue' />
+			<result property='PropType' column='PropType' />
+			<result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSAppProps' parameterClass='SAppProps'>
+    <selectKey property="PropId" type="post" resultClass="int">
+      ${selectKey}
+    </selectKey>
+		INSERT INTO SAppProps		(
+			"PropName",
+			"PropValue",
+			"PropType",
+			"Remark"
+		)
+		VALUES
+		(
+			#PropName#,
+			#PropValue#,
+			#PropType#,
+			#Remark#
+		)
+	</insert>
+	<delete id='DeleteSAppProps' parameterClass='SAppProps'>
+		DELETE FROM SAppProps
+		WHERE
+			PropId = #PropId#
+	</delete>
+  <delete id='DeleteSAppPropsByKey' parameterClass='int'>
+    DELETE FROM SAppProps
+    WHERE
+    PropId = #value#
+  </delete>
+	<update id='UpdateSAppProps' parameterClass='SAppProps'>
+		UPDATE SAppProps
+		SET
+			"PropName" = #PropName#,
+			"PropValue" = #PropValue#,
+			"PropType" = #PropType#,
+			"Remark" = #Remark#
+		WHERE
+			PropId = #PropId#
+	</update>
+	<select id='SelectSAppPropsList' resultMap='SAppPropsResult' parameterClass='SAppProps'>
+		SELECT
+			"PropId",
+			"PropName",
+			"PropValue",
+			"PropType",
+			"Remark"
+		FROM SAppProps
+	</select>
+  <select id='SelectSAppPropsByKey' resultMap='SAppPropsResult' parameterClass='int'>
+    SELECT
+    "PropId",
+    "PropName",
+    "PropValue",
+    "PropType",
+    "Remark"
+    FROM SAppProps
+    WHERE
+    PropId = #value#
+  </select>
+  <select id='SelectSAppPropsByPropName' resultMap='SAppPropsResult' parameterClass='string'>
+    SELECT
+    "PropId",
+    "PropName",
+    "PropValue",
+    "PropType",
+    "Remark"
+    FROM SAppProps
+    WHERE
+    PropName = #value#
+  </select>
+</statements>
+</sqlMap>

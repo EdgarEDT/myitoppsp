@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Smdgroup' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Smdgroup' assembly='Itop.Domain.RightManager.dll' type='Itop.Domain.RightManager.Smdgroup' />
+</alias>
+	<resultMaps>
+		<resultMap id='SmdgroupResult' class='Smdgroup'>
+			<result property='Groupno' column='Groupno' />
+			<result property='Progid' column='Progid' />
+			<result property='run' column='run' />
+			<result property='ins' column='ins' />
+			<result property='upd' column='upd' />
+			<result property='del' column='del' />
+			<result property='qry' column='qry' />
+			<result property='pro' column='pro' />
+			<result property='prn' column='prn' />
+			<result property='filterstring' column='filterstring' />
+			<result property='hiddencols' column='hiddencols' />
+			<result property='spec1' column='spec1' />
+			<result property='spec2' column='spec2' />
+			<result property='spec3' column='spec3' />
+      <result property='UserId' column='UserId' />
+      <result property='ProjectUID' column='ProjectUID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSmdgroup' parameterClass='Smdgroup'>
+		INSERT INTO Smdgroup		(
+			"Groupno",
+			"Progid",
+			"run",
+			"ins",
+			"upd",
+			"del",
+			"qry",
+			"pro",
+			"prn",
+			"filterstring",
+			"hiddencols",
+			"spec1",
+			"spec2",
+			"spec3" 
+		)
+		VALUES
+		(
+			#Groupno#,
+			#Progid#,
+			#run#,
+			#ins#,
+			#upd#,
+			#del#,
+			#qry#,
+			#pro#,
+			#prn#,
+			#filterstring#,
+			#hiddencols#,
+			#spec1#,
+			#spec2#,
+			#spec3#
+		)
+	</insert>
+	<delete id='DeleteSmdgroup' parameterClass='Smdgroup'>
+		DELETE FROM Smdgroup
+		WHERE
+			Groupno = #Groupno#
+			AND Progid = #Progid#
+	</delete>
+	<update id='UpdateSmdgroup' parameterClass='Smdgroup'>
+		UPDATE Smdgroup
+		SET
+			"run" = #run#,
+			"ins" = #ins#,
+			"upd" = #upd#,
+			"del" = #del#,
+			"qry" = #qry#,
+			"pro" = #pro#,
+			"prn" = #prn#,
+			"filterstring" = #filterstring#,
+			"hiddencols" = #hiddencols#,
+			"spec1" = #spec1#,
+			"spec2" = #spec2#,
+			"spec3" = #spec3#
+		WHERE
+			Groupno = #Groupno#
+			AND Progid = #Progid#
+	</update>
+	<select id='SelectSmdgroupList1' resultMap='SmdgroupResult' parameterClass='Smdgroup'>
+		SELECT
+			"Groupno",
+			"Progid",
+			"run",
+			"ins",
+			"upd",
+			"del",
+			"qry",
+			"pro",
+			"prn",
+			"filterstring",
+			"hiddencols",
+			"spec1",
+			"spec2",
+			"spec3"
+		FROM Smdgroup
+	</select>
+	<select id='SelectSmdgroupByKey' resultMap='SmdgroupResult' parameterClass='Smdgroup'>
+    SELECT
+    t1.Groupno as "Groupno",
+    t1.Progid as "Progid",
+    "run",
+    "ins",
+    "upd",
+    "del",
+    "qry",
+    "pro",
+    "prn",
+    "filterstring",
+    "hiddencols",
+    "spec1",
+    "spec2",
+    "spec3",
+    "ProjectUID",
+    "UserID"
+    FROM Smdgroup t1,Smugroup t2
+    WHERE
+    t1.groupno=t2.groupno and
+    t2.userid=#UserId# and
+    t1.ProgId=#Progid# and
+    t1.ProjectUID=#ProjectUID#
+  </select>
+
+
+
+  <select id='SelectSmdgroupList2' resultMap='SmdgroupResult' parameterClass='Smdgroup'>
+    SELECT
+    '' as "groupno",
+    t1.Progid as "Progid",
+    convert(varchar,sum(convert(integer,run))) as "run",
+    convert(varchar,sum(convert(integer,ins))) as "ins",
+    convert(varchar,sum(convert(integer,upd))) as "upd",
+    convert(varchar,sum(convert(integer,del))) as "del",
+    convert(varchar,sum(convert(integer,qry))) as "qry",
+    convert(varchar,sum(convert(integer,pro))) as "pro",
+    convert(varchar,sum(convert(integer,prn))) as "prn",
+    "filterstring",
+    "hiddencols",
+    "spec1",
+    "spec2",
+    "spec3",
+    "ProjectUID",
+    "UserID"
+    FROM Smdgroup t1,Smugroup t2
+    WHERE
+    t1.groupno=t2.groupno and
+    t2.userid=#UserId# and
+    t1.ProgId=#Progid# and
+    t1.ProjectUID=#ProjectUID#
+    group by t1.Progid,filterstring,
+    hiddencols,
+    spec1,
+    spec2,
+    spec3,
+    ProjectUID,
+    UserID
+  </select>
+</statements>
+</sqlMap>

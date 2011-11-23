@@ -1,0 +1,150 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SAppUpdate' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='SAppUpdate' assembly='Itop.Domain.Update.dll' type='Itop.Domain.Update.SAppUpdate' />
+  </alias>
+  <resultMaps>
+    <resultMap id='SAppUpdateResult' class='SAppUpdate'>
+      <result property='UID' column='UID' />
+      <result property='FILENAME' column='FILENAME' />
+      <result property='FILEPATH' column='FILEPATH' />
+      <result property='FILESIZE' column='FILESIZE' />
+      <result property='RQ' column='RQ' />
+      <result property='SYSID' column='SYSID' />
+      <result property='SYSVER' column='SYSVER' />
+      <result property='ISZIP' column='ISZIP' />
+    </resultMap>
+    <resultMap id='SAppUpdateResultBlob' class='SAppUpdate'>
+      <result property='UID' column='UID' />
+      <result property='FILENAME' column='FILENAME' />
+      <result property='FILEPATH' column='FILEPATH' />
+      <result property='FILESIZE' column='FILESIZE' />
+      <result property='FILEBLOB' column='FILEBLOB'/>
+      <result property='RQ' column='RQ' />
+      <result property='SYSID' column='SYSID' />
+      <result property='SYSVER' column='SYSVER' />
+      <result property='ISZIP' column='ISZIP' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertSAppUpdate' parameterClass='SAppUpdate'>
+      INSERT INTO SAppUpdate		(
+      "UID",
+      "FILENAME",
+      "FILEPATH",
+      "FILESIZE",
+      "FILEBLOB",
+      "RQ",
+      "SYSID",
+      "SYSVER",
+      "ISZIP"
+      )
+      VALUES
+      (
+      #UID#,
+      #FILENAME#,
+      #FILEPATH#,
+      #FILESIZE#,
+      #FILEBLOB#,
+      #RQ#,
+      #SYSID#,
+      #SYSVER#,
+      #ISZIP#
+      )
+    </insert>
+    <delete id='DeleteSAppUpdate' parameterClass='SAppUpdate'>
+      DELETE FROM SAppUpdate
+      WHERE
+      UID = #UID#
+    </delete>
+    <delete id='DeleteSAppUpdateByKey' parameterClass='SAppUpdate'>
+      DELETE FROM SAppUpdate
+      WHERE
+      UID = #UID#
+    </delete>
+    <update id='UpdateSAppUpdate' parameterClass='SAppUpdate'>
+      UPDATE SAppUpdate
+      SET
+      "FILENAME" = #FILENAME#,
+      "FILEPATH" = #FILEPATH#,
+      "FILESIZE" = #FILESIZE#,
+      "FILEBLOB" = #FILEBLOB#,
+      "RQ" = #RQ#,
+      "SYSID" = #SYSID#,
+      "SYSVER" = #SYSVER#,
+      "ISZIP" = #ISZIP#
+      WHERE
+      UID = #UID#
+    </update>
+    <update id='UpdateSAppLastDate' parameterClass='SAppUpdate'>
+      update sappprops
+      set propvalue=(select max(rq) from sappupdate)
+      where propname='applastdate';
+    </update>
+    <select id='SelectSAppUpdateList' resultMap='SAppUpdateResult' parameterClass='SAppUpdate'>
+      SELECT
+      "UID",
+      "FILENAME",
+      "FILEPATH",
+      "FILESIZE",
+      "RQ",
+      "SYSID",
+      "SYSVER",
+      "ISZIP"
+      FROM SAppUpdate order by RQ desc
+    </select>
+    <select id='SelectSAppUpdateByKey' resultMap='SAppUpdateResultBlob' parameterClass='SAppUpdate'>
+      SELECT
+      "UID",
+      "FILENAME",
+      "FILEPATH",
+      "FILESIZE",
+      "FILEBLOB",
+      "RQ",
+      "SYSID",
+      "SYSVER",
+      "ISZIP"
+      FROM SAppUpdate
+      WHERE
+      UID = #UID#
+    </select>
+    <select id='SelectSAppUpdateCountByPath' resultMap='SAppUpdateResult' parameterClass='SAppUpdate'>
+      SELECT
+      "UID",
+      "FILENAME",
+      "FILEPATH",
+      "FILESIZE",
+      "RQ",
+      "SYSID",
+      "SYSVER",
+      "ISZIP"
+      FROM SAppUpdate
+      WHERE
+      FILEPATH = #FILEPATH#
+    </select>
+    <select id='SelectSAppUpdateOutBlobByKey' resultMap='SAppUpdateResult' parameterClass='SAppUpdate'>
+      SELECT
+      "UID",
+      "FILENAME",
+      "FILEPATH",
+      "FILESIZE",
+      "RQ",
+      "SYSID",
+      "SYSVER",
+      "ISZIP"
+      FROM SAppUpdate
+      WHERE
+      UID = #UID#
+    </select>
+    <select id='SelectSAppUpdateFileLength' resultclass='int' parameterClass='SAppUpdate'>
+      SELECT
+      sum("FILESIZE") 
+      FROM SAppUpdate
+    </select>
+    <select id='SelectBzhAppValue' resultclass='string' parameterClass='string'>
+      SELECT propvalue
+      FROM SAppProps
+      where propname =#value#
+    </select>
+  </statements>
+</sqlMap>

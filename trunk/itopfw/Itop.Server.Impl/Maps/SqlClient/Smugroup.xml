@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Smugroup' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Smugroup' assembly='Itop.Domain.RightManager.dll' type='Itop.Domain.RightManager.Smugroup' />
+</alias>
+	<resultMaps>
+		<resultMap id='SmugroupResult' class='Smugroup'>
+			<result property='Suid' column='Suid' />
+			<result property='Groupno' column='Groupno' />
+      <result property='Groupname' column='Groupname' />
+			<result property='Userid' column='Userid' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSmugroup' parameterClass='Smugroup'>
+		INSERT INTO Smugroup		(
+			"Suid",
+			"Groupno",
+			"Userid"
+		)
+		VALUES
+		(
+			#Suid#,
+			#Groupno#,
+			#Userid#
+		)
+	</insert>
+	<delete id='DeleteSmugroup' parameterClass='Smugroup'>
+		DELETE FROM Smugroup
+		WHERE
+			Suid = #Suid#
+	</delete>
+	<update id='UpdateSmugroup' parameterClass='Smugroup'>
+		UPDATE Smugroup
+		SET
+			"Groupno" = #Groupno#,
+			"Userid" = #Userid#
+		WHERE
+			Suid = #Suid#
+	</update>
+	<select id='SelectSmugroupList' resultMap='SmugroupResult' parameterClass='Smugroup'>
+		SELECT
+			"Suid",
+			"Groupno",
+			"Userid"
+		FROM Smugroup
+	</select>
+  
+	<select id='SelectSmugroupByKey' resultMap='SmugroupResult' parameterClass='Smugroup'>
+		SELECT
+			"Suid",
+			"Groupno",
+			"Userid"
+		FROM Smugroup
+		WHERE
+			Suid = #Suid#
+	</select>
+
+  <select id='SelectSmugroupByUserid' resultMap='SmugroupResult' parameterClass='string'>
+    SELECT 
+    t1.Groupno as "Groupno",
+    "Suid",
+    "Userid",
+    "Groupname"
+    FROM Smugroup t1,smmgroup t2
+    WHERE
+    t1.Groupno=t2.groupno and
+    t1.userid = #Suid#
+  </select>
+  <select id='SelectSmugroupByWhere' resultMap='SmugroupResult' parameterClass='string'>
+    SELECT
+    "Suid",
+    "Groupno",
+    "Userid",
+    Groupno as "Groupname"
+    FROM Smugroup
+    WHERE
+    $value$
+
+  </select>
+</statements>
+</sqlMap>

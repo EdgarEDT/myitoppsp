@@ -1,0 +1,669 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E10E96E6-C4FF-4AC0-B700-BB0A5AD1E17E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Client.Resources</RootNamespace>
+    <AssemblyName>Itop.Client.Resources</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageListRes.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\110千伏变电容量平衡表0.png" />
+    <None Include="Resources\110千伏变电容量平衡表.png" />
+    <None Include="Resources\220千伏变电容量平衡表0.png" />
+    <None Include="Resources\220千伏变电容量平衡表.png" />
+    <None Include="Resources\bottom.jpg" />
+    <None Include="Resources\dl1.png" />
+    <None Include="Resources\dl2.png" />
+    <None Include="Resources\dl3.png" />
+    <None Include="Resources\dlph1.png" />
+    <None Include="Resources\dlph2.png" />
+    <None Include="Resources\dlph3.png" />
+    <None Include="Resources\dlyc1.png" />
+    <None Include="Resources\dlyc2.png" />
+    <None Include="Resources\dlyc3.png" />
+    <None Include="Resources\dqjs1.png" />
+    <None Include="Resources\dqjs2.png" />
+    <None Include="Resources\dqjs3.png" />
+    <None Include="Resources\dwgh1.png" />
+    <None Include="Resources\dwgh2.png" />
+    <None Include="Resources\dwgh3.png" />
+    <None Include="Resources\ghbz1.png" />
+    <None Include="Resources\ghbz2.png" />
+    <None Include="Resources\ghbz3.png" />
+    <None Include="Resources\jjpg1.png" />
+    <None Include="Resources\jjpg2.png" />
+    <None Include="Resources\jjpg3.png" />
+    <None Include="Resources\lb1.png" />
+    <None Include="Resources\left21.png" />
+    <None Include="Resources\leftb1.jpg" />
+    <None Include="Resources\sz1.png" />
+    <None Include="Resources\sz2.png" />
+    <None Include="Resources\sz3.png" />
+    <None Include="Resources\top1.jpg" />
+    <None Include="Resources\tzgs1.png" />
+    <None Include="Resources\tzgs2.png" />
+    <None Include="Resources\tzgs3.png" />
+    <None Include="Resources\wdgj1.png" />
+    <None Include="Resources\wdgj2.png" />
+    <None Include="Resources\wdgj3.png" />
+    <None Include="Resources\wydl.jpg" />
+    <None Include="Resources\wydlbj1.jpg" />
+    <None Include="Resources\xtgl1.png" />
+    <None Include="Resources\xtgl2.png" />
+    <None Include="Resources\xtgl3.png" />
+    <None Include="Resources\xzzl1.png" />
+    <None Include="Resources\xzzl2.png" />
+    <None Include="Resources\xzzl3.png" />
+    <None Include="Resources\banner.jpg" />
+    <None Include="Resources\a0.jpg" />
+    <None Include="Resources\a1.jpg" />
+    <None Include="Resources\a2.jpg" />
+    <None Include="Resources\a3.jpg" />
+    <None Include="Resources\3D-Studio-Max.png" />
+    <None Include="Resources\58.png" />
+    <None Include="Resources\0.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\3.png" />
+    <None Include="Resources\004.png" />
+    <None Include="Resources\4t3.png" />
+    <None Include="Resources\7.png" />
+    <None Include="Resources\08.png" />
+    <None Include="Resources\8.png" />
+    <None Include="Resources\9.png" />
+    <None Include="Resources\010.png" />
+    <None Include="Resources\10.png" />
+    <None Include="Resources\11.png" />
+    <None Include="Resources\11d.png" />
+    <None Include="Resources\11fsd.png" />
+    <None Include="Resources\12.png" />
+    <None Include="Resources\12a.png" />
+    <None Include="Resources\13.png" />
+    <None Include="Resources\13s.png" />
+    <None Include="Resources\14.png" />
+    <None Include="Resources\14s.png" />
+    <None Include="Resources\15.png" />
+    <None Include="Resources\21.png" />
+    <None Include="Resources\22.png" />
+    <None Include="Resources\23.png" />
+    <None Include="Resources\25a.png" />
+    <None Include="Resources\26.png" />
+    <None Include="Resources\027.png" />
+    <None Include="Resources\27.png" />
+    <None Include="Resources\27a.png" />
+    <None Include="Resources\29.png" />
+    <None Include="Resources\52.png" />
+    <None Include="Resources\512.png" />
+    <None Include="Resources\23501.png" />
+    <None Include="Resources\23533.png" />
+    <None Include="Resources\4636257.png" />
+    <None Include="Resources\4636258.png" />
+    <None Include="Resources\4636259.png" />
+    <None Include="Resources\4636260.png" />
+    <None Include="Resources\4636265.png" />
+    <None Include="Resources\4636266.png" />
+    <None Include="Resources\4636267.png" />
+    <None Include="Resources\4636268.png" />
+    <None Include="Resources\4636269.png" />
+    <None Include="Resources\4636270.png" />
+    <None Include="Resources\4636271.png" />
+    <None Include="Resources\28.png" />
+    <None Include="Resources\a11.jpg" />
+    <None Include="Resources\a33.jpg" />
+    <Content Include="Resources\a4.jpg" />
+    <None Include="Resources\ACDSee-Classic.png" />
+    <None Include="Resources\Ad-Aware-SE.png" />
+    <None Include="Resources\Adobe-Photoshop.png" />
+    <None Include="Resources\AIM-Express.png" />
+    <None Include="Resources\AOL-Instant-Messenger.png" />
+    <None Include="Resources\arrow.png" />
+    <None Include="Resources\Axialis-Icon-Workshop.png" />
+    <None Include="Resources\Bittorrent-Plu1s.png" />
+    <None Include="Resources\Bittorrent-Plus.png" />
+    <None Include="Resources\Bluetooth.png" />
+    <None Include="Resources\build.png" />
+    <None Include="Resources\Creative-MediaSource.png" />
+    <None Include="Resources\Download.png" />
+    <None Include="Resources\Help-And-Support.png" />
+    <None Include="Resources\Icon003.png" />
+    <None Include="Resources\Icon004.png" />
+    <None Include="Resources\Icon006.png" />
+    <None Include="Resources\Icon010.png" />
+    <None Include="Resources\Icon011.png" />
+    <None Include="Resources\Icon014.png" />
+    <None Include="Resources\Icon028.png" />
+    <None Include="Resources\Icon029.png" />
+    <None Include="Resources\Icon030.png" />
+    <None Include="Resources\Icon031.png" />
+    <None Include="Resources\Icon032.png" />
+    <None Include="Resources\Icon_AviIcon.png" />
+    <None Include="Resources\interact.png" />
+    <None Include="Resources\Internet-Explorer.png" />
+    <None Include="Resources\MAME.png" />
+    <None Include="Resources\McAfee-Scan.png" />
+    <None Include="Resources\Microsoft-Office-Excel.png" />
+    <None Include="Resources\MP3-Tag.png" />
+    <None Include="Resources\pathing.png" />
+    <None Include="Resources\people.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\Quicktime.png" />
+    <None Include="Resources\report.png" />
+    <None Include="Resources\Skype.png" />
+    <None Include="Resources\Skype-Classic.png" />
+    <None Include="Resources\smashing.png" />
+    <None Include="Resources\vault.png" />
+    <None Include="Resources\VideoLAN.png" />
+    <None Include="Resources\Wacom-Intuos-3.png" />
+    <None Include="Resources\Winamp.png" />
+    <None Include="Resources\Windows-Log-Off.png" />
+    <None Include="Resources\Windows-Messenger.png" />
+    <None Include="Resources\world.png" />
+    <None Include="Resources\Yahoo-Messenger.png" />
+    <None Include="Resources\Yahoo-Messenger-Alternate.png" />
+    <None Include="Resources\Yahoo-Widgets.png" />
+    <None Include="Resources\alarm.png" />
+    <None Include="Resources\alarmgfg.png" />
+    <None Include="Resources\clock.png" />
+    <None Include="Resources\Company_256.png" />
+    <None Include="Resources\Factory_256.png" />
+    <None Include="Resources\green.png" />
+    <None Include="Resources\Home_256.png" />
+    <None Include="Resources\Ishidourou-%28garden-lantern%29.png" />
+    <None Include="Resources\Kanban-%28sign%29.png" />
+    <None Include="Resources\Kokedama-%28moss-ball%29.png" />
+    <None Include="Resources\maintenance64.png" />
+    <None Include="Resources\objectdock.png" />
+    <None Include="Resources\options64.png" />
+    <None Include="Resources\organization256.png" />
+    <None Include="Resources\recycle_bin_blue.png" />
+    <None Include="Resources\recycle_bin_full.png" />
+    <None Include="Resources\recycle_bin_green.png" />
+    <None Include="Resources\rules128.png" />
+    <None Include="Resources\School_256.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\semi_success256.png" />
+    <None Include="Resources\ship64.png" />
+    <None Include="Resources\Takezake-%28sake虂-in-a-bambo.png" />
+    <None Include="Resources\tests128.png" />
+    <None Include="Resources\themes128.png" />
+    <None Include="Resources\world2.png" />
+    <None Include="Resources\Yagura2-%28hot-spring-tower%29.png" />
+    <None Include="Resources\zone.png" />
+    <None Include="Resources\ma.jpg" />
+    <None Include="Resources\login.ico" />
+    <None Include="Resources\about.jpg" />
+    <None Include="Resources\loginwait.jpg" />
+    <None Include="Resources\maintop.jpg" />
+    <None Include="Resources\address-book-icon.png" />
+    <None Include="Resources\adobecs3_020.png" />
+    <None Include="Resources\afsg.bmp" />
+    <None Include="Resources\android_128x128-32.png" />
+    <None Include="Resources\app-store-icon.png" />
+    <None Include="Resources\as.bmp" />
+    <None Include="Resources\Astarte.png" />
+    <None Include="Resources\attach_image.png" />
+    <None Include="Resources\Billings.png" />
+    <None Include="Resources\blue2.png" />
+    <None Include="Resources\blue.png" />
+    <None Include="Resources\bluetooth_128x128-32.png" />
+    <None Include="Resources\bluewhales0046.png" />
+    <None Include="Resources\browser_128x128-32.png" />
+    <None Include="Resources\camera_128x128-32.png" />
+    <None Include="Resources\camera-icon.png" />
+    <None Include="Resources\chat.png" />
+    <None Include="Resources\chinaz1aaf.png" />
+    <None Include="Resources\chinaz1o.png" />
+    <None Include="Resources\chinaz2o.png" />
+    <None Include="Resources\chinaz2r.png" />
+    <None Include="Resources\chinaz3o.png" />
+    <None Include="Resources\chinaz3x.png" />
+    <None Include="Resources\chinaz4.png" />
+    <None Include="Resources\chinaz4i.png" />
+    <None Include="Resources\chinaz4l.png" />
+    <None Include="Resources\chinaz4tr.png" />
+    <None Include="Resources\chinaz4u.png" />
+    <None Include="Resources\chinaz5.png" />
+    <None Include="Resources\chinaz5o.png" />
+    <None Include="Resources\chinaz6.png" />
+    <None Include="Resources\chinaz6p.png" />
+    <None Include="Resources\chinaz6ty.png" />
+    <None Include="Resources\chinaz6x.png" />
+    <None Include="Resources\chinaz7hh.png" />
+    <None Include="Resources\chinaz7i.png" />
+    <None Include="Resources\chinaz7yt.png" />
+    <None Include="Resources\chinaz8a.png" />
+    <None Include="Resources\chinaz8l.png" />
+    <None Include="Resources\chinaz8u.png" />
+    <None Include="Resources\chinaz8x.png" />
+    <None Include="Resources\chinaz9afg.png" />
+    <None Include="Resources\chinaz9r.png" />
+    <None Include="Resources\chinaz9t.png" />
+    <None Include="Resources\chinaz10.png" />
+    <None Include="Resources\chinaz10afs.png" />
+    <None Include="Resources\chinaz10u.png" />
+    <None Include="Resources\chinaz10x.png" />
+    <None Include="Resources\chinaz11.png" />
+    <None Include="Resources\chinaz11af.png" />
+    <None Include="Resources\chinaz11h.png" />
+    <None Include="Resources\chinaz11l.png" />
+    <None Include="Resources\chinaz11p.png" />
+    <None Include="Resources\chinaz11x.png" />
+    <None Include="Resources\chinaz12g.png" />
+    <None Include="Resources\chinaz12p.png" />
+    <None Include="Resources\chinaz12x.png" />
+    <None Include="Resources\chinaz13.png" />
+    <None Include="Resources\chinaz18.png" />
+    <None Include="Resources\chinaz18x.png" />
+    <None Include="Resources\chinaz23k.png" />
+    <None Include="Resources\chinaz24x.png" />
+    <None Include="Resources\Cryo6420Ageo20002.png" />
+    <None Include="Resources\Cryo6420Corinthia0Lit20016.png" />
+    <None Include="Resources\document.png" />
+    <None Include="Resources\dropbox_128x128-32.png" />
+    <None Include="Resources\Dropf.png" />
+    <None Include="Resources\dsagaA_PNG38.png" />
+    <None Include="Resources\dsfAork.png" />
+    <None Include="Resources\dsga20%282%29.png" />
+    <None Include="Resources\DSGeo.png" />
+    <None Include="Resources\EARST_20070730A_PNG00.png" />
+    <None Include="Resources\EARST_20070730A_PNG02.png" />
+    <None Include="Resources\EARST_20070730A_PNG04.png" />
+    <None Include="Resources\EARST_20070730A_PNG05.png" />
+    <None Include="Resources\EARST_20070730A_PNG09.png" />
+    <None Include="Resources\EARST_20070730A_PNG10.png" />
+    <None Include="Resources\EARST_20070730A_PNG13.png" />
+    <None Include="Resources\EARST_20070730A_PNG16.png" />
+    <None Include="Resources\EARST_20070730A_PNG43.png" />
+    <None Include="Resources\EARST_20070730A_PNG46.png" />
+    <None Include="Resources\EARST_20070730A_PNG47.png" />
+    <None Include="Resources\EARST_20070730A_PNG54.png" />
+    <None Include="Resources\filer_128x128-32.png" />
+    <None Include="Resources\flickr_128x128-32.png" />
+    <None Include="Resources\gasd.png" />
+    <None Include="Resources\gasMy-Downloads.png" />
+    <None Include="Resources\gear_fold.png" />
+    <None Include="Resources\Glazed.png" />
+    <None Include="Resources\google10.png" />
+    <None Include="Resources\h1qe.bmp" />
+    <None Include="Resources\iLeopard_Icons_Pack1_004.png" />
+    <None Include="Resources\iLeopard_Icons_Pack1_055.png" />
+    <None Include="Resources\Jove.png" />
+    <None Include="Resources\Leopard20Ico2023.png" />
+    <None Include="Resources\Leopard0Icon2038.png" />
+    <None Include="Resources\miso_128x128-32.png" />
+    <None Include="Resources\msnc.png" />
+    <None Include="Resources\my_pc.png" />
+    <None Include="Resources\Picturesf.png" />
+    <None Include="Resources\search_web.png" />
+    <None Include="Resources\settings_128x128-32.png" />
+    <None Include="Resources\settings-icon.png" />
+    <None Include="Resources\simple-light-blue4.png" />
+    <None Include="Resources\simple-red4.png" />
+    <None Include="Resources\sky_map_128x128-32.png" />
+    <None Include="Resources\untitledafs.bmp" />
+    <None Include="Resources\wlm.png" />
+    <None Include="Resources\xcons20011.png" />
+    <None Include="Resources\bluewhales20046.png" />
+    <None Include="Resources\bluewhales20047.png" />
+    <None Include="Resources\bluewhales20049.png" />
+    <None Include="Resources\butterfly20003.png" />
+    <None Include="Resources\chinaz420.png" />
+    <None Include="Resources\chinaz520.png" />
+    <None Include="Resources\chinaz720.png" />
+    <None Include="Resources\chinaz920.png" />
+    <None Include="Resources\chinaz1020.png" />
+    <None Include="Resources\chinaz1120.png" />
+    <None Include="Resources\chinaz1520.png" />
+    <None Include="Resources\chinaz1720.png" />
+    <None Include="Resources\Cryo640Ageo20002.png" />
+    <None Include="Resources\Cryo6420Ageo20006.png" />
+    <None Include="Resources\Cryo6420Ageo20030.png" />
+    <None Include="Resources\Cryo6420Corinthia20Lite20015.png" />
+    <None Include="Resources\Cryo6420Corinthia20Lite20016.png" />
+    <None Include="Resources\dsga_20%282%29.png" />
+    <None Include="Resources\dsga_20%284%29.png" />
+    <None Include="Resources\dsga_20%286%29.png" />
+    <None Include="Resources\dsga_20%2810%29.png" />
+    <None Include="Resources\Floppy20Disk.png" />
+    <None Include="Resources\Leopard0Icon2023.png" />
+    <None Include="Resources\Leopard20Icon2038.png" />
+    <None Include="Resources\Leopard20Icon2047.png" />
+    <None Include="Resources\xcons20003.png" />
+    <None Include="Resources\excdel文档.png" />
+    <None Include="Resources\maintop1.jpg" />
+    <Content Include="Resources\作废.ico" />
+    <None Include="Resources\供电范围与负荷平衡0.png" />
+    <None Include="Resources\供电范围与负荷平衡.png" />
+    <None Include="Resources\供电可靠性.png" />
+    <None Include="Resources\供电企业明细.png" />
+    <Content Include="Resources\保存.ico" />
+    <Content Include="Resources\修改.ico" />
+    <None Include="Resources\关于.gif" />
+    <Content Include="Resources\关闭.ico" />
+    <None Include="Resources\典型最大日负荷数据0.png" />
+    <None Include="Resources\典型最大日负荷数据.png" />
+    <None Include="Resources\冬日典型日负荷曲线预测0.png" />
+    <None Include="Resources\冬日典型日负荷曲线预测.png" />
+    <None Include="Resources\分年度投资估算表0.png" />
+    <None Include="Resources\分年度投资估算表.png" />
+    <None Include="Resources\分区供电实绩0.png" />
+    <None Include="Resources\分区供电实绩.png" />
+    <Content Include="Resources\关闭1.png" />
+    <None Include="Resources\典型年.png" />
+    <None Include="Resources\典型日最大.png" />
+    <None Include="Resources\典型月.png" />
+    <None Include="Resources\分区县供电.png" />
+    <None Include="Resources\分区县用电.png" />
+    <Content Include="Resources\删除.ico" />
+    <Content Include="Resources\删除2.ico" />
+    <Content Include="Resources\刷新.ico" />
+    <None Include="Resources\参数设置.png" />
+    <Content Include="Resources\发送.ico" />
+    <None Include="Resources\变电站情况表0.png" />
+    <None Include="Resources\变电站情况表.png" />
+    <None Include="Resources\变电站情况规划0.bmp" />
+    <None Include="Resources\变电站情况规划.bmp" />
+    <None Include="Resources\城市规划0.bmp" />
+    <None Include="Resources\城市规划.bmp" />
+    <None Include="Resources\地块负荷密度维护0.png" />
+    <None Include="Resources\地块负荷密度维护.png" />
+    <None Include="Resources\地理信息0.png" />
+    <None Include="Resources\地理信息2-.png" />
+    <None Include="Resources\地理信息3.png" />
+    <None Include="Resources\地理信息4.png" />
+    <None Include="Resources\变电站数据.png" />
+    <None Include="Resources\变电站选址.png" />
+    <None Include="Resources\变电站选址优化.png" />
+    <None Include="Resources\城市地图.png" />
+    <None Include="Resources\城市规划.png" />
+    <None Include="Resources\地块负荷密度.png" />
+    <None Include="Resources\地理信息1.png" />
+    <None Include="Resources\地理信息2.png" />
+    <None Include="Resources\地理信息.png" />
+    <None Include="Resources\地区维护.png" />
+    <None Include="Resources\基础数据1.png" />
+    <None Include="Resources\基础数据.png" />
+    <None Include="Resources\实际类别.png" />
+    <Content Include="Resources\审批.ico" />
+    <Content Include="Resources\审核.ico" />
+    <Content Include="Resources\布局.ico" />
+    <None Include="Resources\帮助.gif" />
+    <None Include="Resources\年电量预测0.png" />
+    <None Include="Resources\年电量预测.png" />
+    <None Include="Resources\年最大负荷数据0.png" />
+    <None Include="Resources\年最大负荷数据.png" />
+    <None Include="Resources\年最大负荷数据预测0.png" />
+    <None Include="Resources\年最大负荷数据预测.png" />
+    <None Include="Resources\志日管理2.png" />
+    <None Include="Resources\建设项目表.png" />
+    <Content Include="Resources\打印.ico" />
+    <Content Include="Resources\打回重新编.ico" />
+    <None Include="Resources\投资估算0.png" />
+    <None Include="Resources\投资估算3.png" />
+    <None Include="Resources\投资估算4.png" />
+    <None Include="Resources\投资估算6.png" />
+    <None Include="Resources\投资估算5.png" />
+    <None Include="Resources\报表内部.png" />
+    <None Include="Resources\报表信息1.png" />
+    <None Include="Resources\报表信息.png" />
+    <None Include="Resources\报表信息怒.png" />
+    <None Include="Resources\报告编制.png" />
+    <None Include="Resources\投资估算1.png" />
+    <None Include="Resources\投资估算2.png" />
+    <None Include="Resources\投资估算.png" />
+    <Content Include="Resources\授权.ico" />
+    <None Include="Resources\授权管理0.png" />
+    <None Include="Resources\文字资料0.png" />
+    <None Include="Resources\断路器校核.png" />
+    <None Include="Resources\授权管理1.png" />
+    <None Include="Resources\授权管理2.png" />
+    <None Include="Resources\授权管理.png" />
+    <None Include="Resources\文字资料.png" />
+    <Content Include="Resources\新建.ico" />
+    <None Include="Resources\本地区电力平衡表0.png" />
+    <None Include="Resources\本地区电力平衡表.png" />
+    <None Include="Resources\本地区电量平衡表0.png" />
+    <None Include="Resources\本地区电量平衡表.png" />
+    <None Include="Resources\本地区无功平衡表0.png" />
+    <None Include="Resources\本地区无功平衡表.png" />
+    <None Include="Resources\日志管理0.png" />
+    <None Include="Resources\无标题.bmp" />
+    <None Include="Resources\无功补偿配置表0.png" />
+    <None Include="Resources\无功补偿配置表.png" />
+    <None Include="Resources\月最大负荷数据0.png" />
+    <None Include="Resources\月最大负荷数据.png" />
+    <None Include="Resources\日志管理1.png" />
+    <None Include="Resources\日志管理2.png" />
+    <None Include="Resources\日志管理.png" />
+    <None Include="Resources\无功优化.png" />
+    <Content Include="Resources\权限.ico" />
+    <None Include="Resources\权限管理0.png" />
+    <Content Include="Resources\查询.ico" />
+    <None Include="Resources\模块管理0.png" />
+    <None Include="Resources\模块管理1.png" />
+    <None Include="Resources\模块管理.png" />
+    <Content Include="Resources\添加下级.ico" />
+    <Content Include="Resources\添加同级.ico" />
+    <None Include="Resources\电气计算0.png" />
+    <None Include="Resources\电网规划0.bmp" />
+    <None Include="Resources\电网规划.bmp" />
+    <None Include="Resources\电网规划管理表0.png" />
+    <None Include="Resources\电网规划管理表.png" />
+    <None Include="Resources\电网基础数据0.png" />
+    <None Include="Resources\电网基础数据.png" />
+    <None Include="Resources\电源资料0.png" />
+    <None Include="Resources\电源资料.png" />
+    <None Include="Resources\规划管理0.png" />
+    <None Include="Resources\规划管理.png" />
+    <None Include="Resources\经济发展目标0.png" />
+    <None Include="Resources\经济发展目标.png" />
+    <None Include="Resources\经济分析0.png" />
+    <None Include="Resources\经济分析.png" />
+    <None Include="Resources\经济和电力发展实绩0.png" />
+    <None Include="Resources\经济和电力发展实绩.png" />
+    <None Include="Resources\联系我们.gif" />
+    <None Include="Resources\网页登陆效果图.jpg" />
+    <None Include="Resources\线路参数维护0.png" />
+    <None Include="Resources\规划编制.png" />
+    <None Include="Resources\经济评价.png" />
+    <None Include="Resources\现状资料.png" />
+    <None Include="Resources\电网规划.png" />
+    <None Include="Resources\电力预测.png" />
+    <None Include="Resources\电力平衡0.png" />
+    <None Include="Resources\规划报告.png" />
+    <None Include="Resources\登录.jpg" />
+    <None Include="Resources\潮流图形1.png" />
+    <None Include="Resources\潮流图形.png" />
+    <None Include="Resources\窗口样式.png" />
+    <None Include="Resources\电力电量.png" />
+    <None Include="Resources\电力发展实绩.png" />
+    <None Include="Resources\电力平衡.png" />
+    <None Include="Resources\电力平衡表1.png" />
+    <None Include="Resources\电力平衡表.png" />
+    <None Include="Resources\电气计算.png" />
+    <None Include="Resources\电网类型.png" />
+    <None Include="Resources\电网评估.png" />
+    <None Include="Resources\电网拓扑1.png" />
+    <None Include="Resources\电网拓扑.png" />
+    <None Include="Resources\电网优化.png" />
+    <None Include="Resources\电压质量.png" />
+    <None Include="Resources\短路图形.png" />
+    <None Include="Resources\规划报告0.png" />
+    <None Include="Resources\规划报告模板1.png" />
+    <None Include="Resources\规划报各模板1.png" />
+    <None Include="Resources\规划技术指标.png" />
+    <None Include="Resources\规划项目.png" />
+    <None Include="Resources\清空系统数据库.png" />
+    <None Include="Resources\网架优化1.png" />
+    <None Include="Resources\网架优化.png" />
+    <None Include="Resources\系统管理.png" />
+    <None Include="Resources\线路参数维护.png" />
+    <None Include="Resources\线路走廊优化.png" />
+    <None Include="Resources\线损分析.png" />
+    <Content Include="Resources\角色.ico" />
+    <None Include="Resources\负荷预测.png" />
+    <None Include="Resources\项目明细.png" />
+    <None Include="Resources\输电线路数据.png" />
+    <None Include="Resources\设备查询.png" />
+    <None Include="Resources\设备参数.png" />
+    <None Include="Resources\计算方案.png" />
+    <None Include="Resources\负荷预测1.png" />
+    <None Include="Resources\长规增长率加大用户.png" />
+    <None Include="Resources\项目规划.png" />
+    <None Include="Resources\退出.gif" />
+    <None Include="Resources\输电线路情况表.png" />
+    <None Include="Resources\输电线路情况表0.png" />
+    <None Include="Resources\输电线路规划.png" />
+    <None Include="Resources\输电线路规划0.png" />
+    <None Include="Resources\输变建设项目表.png" />
+    <None Include="Resources\输变建设项目表0.png" />
+    <None Include="Resources\输变电资金汇总表.png" />
+    <None Include="Resources\输变电资金汇总表0.png" />
+    <None Include="Resources\输变电项目分年度资金需求表.png" />
+    <None Include="Resources\输变电项目分年度资金需求表0.png" />
+    <None Include="Resources\输变电建设项目表.png" />
+    <None Include="Resources\输变电建设项目表0.png" />
+    <None Include="Resources\负荷预测基础库.png" />
+    <None Include="Resources\负荷预测基础库0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ICO\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
