@@ -1,0 +1,129 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LayerGrade' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='LayerGrade' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.LayerGrade' />
+  </alias>
+  <resultMaps>
+    <resultMap id='LayerGradeResult' class='LayerGrade'>
+      <result property='SUID' column='SUID' />
+      <result property='Name' column='Name' />
+      <result property='SvgDataUid' column='SvgDataUid' />
+      <result property='ParentID' column='ParentID' />
+      <result property='Type' column='Type' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertLayerGrade' parameterClass='LayerGrade'>
+      INSERT INTO LayerGrade		(
+      "SUID",
+      "Name",
+      "SvgDataUid",
+      "ParentID"
+      )
+      VALUES
+      (
+      #SUID#,
+      #Name#,
+      #SvgDataUid#,
+      #ParentID#
+      )
+    </insert>
+    <delete id='DeleteLayerGrade' parameterClass='LayerGrade'>
+      DELETE FROM LayerGrade
+      WHERE
+      SUID = #SUID#
+    </delete>
+    <delete id='DeleteLayerGradeByKey' parameterClass='LayerGrade'>
+      DELETE FROM LayerGrade
+      WHERE
+      SUID = #SUID#
+    </delete>
+    <update id='UpdateLayerGrade' parameterClass='LayerGrade'>
+      UPDATE LayerGrade
+      SET
+      "Name" = #Name#,
+      "SvgDataUid" = #SvgDataUid#,
+      "ParentID" = #ParentID#,
+      "Type" = #Type#
+      WHERE
+      SUID = #SUID#
+    </update>
+    <select id='SelectLayerGradeList' resultMap='LayerGradeResult' parameterClass='LayerGrade'>
+      SELECT
+      "SUID",
+      "Name",
+      "SvgDataUid",
+      "ParentID",
+      "Type"
+      FROM LayerGrade
+    </select>
+    <select id='SelectLayerGradeListBySvgDataUid' resultMap='LayerGradeResult' parameterClass='LayerGrade'>
+      SELECT
+      "SUID",
+      "Name",
+      "SvgDataUid",
+      "ParentID",
+      "Type"
+      FROM LayerGrade
+      WHERE
+      SvgDataUid = #SvgDataUid#
+    </select>
+    <select id='SelectLayerGradeList5' resultMap='LayerGradeResult' parameterClass='LayerGrade'>
+      SELECT
+      "SUID",
+      "Name",
+      "SvgDataUid",
+      "ParentID",
+      "Type"
+      FROM LayerGrade
+      WHERE
+      SvgDataUid = #SvgDataUid# and 
+      Type= #Type#
+    </select>
+    <select id='SelectLayerGradeListBySvgDataUid2' resultMap='LayerGradeResult' parameterClass='LayerGrade'>
+      SELECT
+      "SUID",
+      "Name",
+      "SvgDataUid",
+      "ParentID",
+      "Type"
+      FROM LayerGrade
+      WHERE
+      SvgDataUid = #SvgDataUid#
+      and ParentID= #ParentID# order by Name
+    </select>
+    <select id='SelectLayerGradeByKey' resultMap='LayerGradeResult' parameterClass='LayerGrade'>
+      SELECT
+      "SUID",
+      "Name",
+      "SvgDataUid",
+      "ParentID",
+      "Type"
+      FROM LayerGrade
+      WHERE
+      SUID = #SUID#
+    </select>
+    <select id='SelectLayerGradeByType' resultMap='LayerGradeResult' parameterClass='LayerGrade'>
+      SELECT
+      "SUID",
+      "Name",
+      "SvgDataUid",
+      "ParentID",
+      "Type"
+      FROM LayerGrade
+      WHERE
+      SUID = #SUID# and Type= #Type#
+    </select>
+    <select id='SelectLayerGradeByYear' resultMap='LayerGradeResult' parameterClass='LayerGrade'>
+      SELECT
+      "SUID",
+      "Name",
+      "SvgDataUid",
+      "ParentID",
+      "Type"
+      FROM LayerGrade
+      WHERE
+      Name like '$Name$'
+    </select>
+  </statements>
+</sqlMap>

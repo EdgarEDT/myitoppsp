@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PW_tb3c' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PW_tb3c' assembly='Itop.Domain.PWTable.dll' type='Itop.Domain.PWTable.PW_tb3c' />
+</alias>
+	<resultMaps>
+		<resultMap id='PW_tb3cResult' class='PW_tb3c'>
+			<result property='UID' column='UID' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+			<result property='col4' column='col4' />
+			<result property='col5' column='col5' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPW_tb3c' parameterClass='PW_tb3c'>
+		INSERT INTO PW_tb3c		(
+			"UID",
+			"col1",
+			"col2",
+			"col3",
+			"col4",
+			"col5"
+		)
+		VALUES
+		(
+			#UID#,
+			#col1#,
+			#col2#,
+			#col3#,
+			#col4#,
+			#col5#
+		)
+	</insert>
+	<delete id='DeletePW_tb3c' parameterClass='PW_tb3c'>
+		DELETE FROM PW_tb3c
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePW_tb3c' parameterClass='PW_tb3c'>
+		UPDATE PW_tb3c
+		SET
+			"col1" = #col1#,
+			"col2" = #col2#,
+			"col3" = #col3#,
+			"col4" = #col4#,
+			"col5" = #col5#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPW_tb3cList' resultMap='PW_tb3cResult' parameterClass='PW_tb3c'>
+		SELECT
+			"UID",
+			"col1",
+			"col2",
+			"col3",
+			"col4",
+			"col5"
+		FROM PW_tb3c where col4= #col4# order by col1
+	</select>
+	<select id='SelectPW_tb3cByKey' resultMap='PW_tb3cResult' parameterClass='PW_tb3c'>
+		SELECT
+			"UID",
+			"col1",
+			"col2",
+			"col3",
+			"col4",
+			"col5"
+		FROM PW_tb3c
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

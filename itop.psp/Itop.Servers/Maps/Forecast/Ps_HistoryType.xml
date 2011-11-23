@@ -1,0 +1,156 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_HistoryType' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Ps_HistoryType' assembly='Itop.Domain.Forecast.dll' type='Itop.Domain.Forecast.Ps_HistoryType'  />
+  </alias>
+  <resultMaps>
+    <resultMap id='Ps_HistoryTypeResult' class='Ps_HistoryType'>
+      <result property='ID' column='ID' />
+      <result property='TypeName' column='TypeName' />
+      <result property='Sort' column='Sort' />
+      <result property='ParentID' column='ParentID' />
+      <result property='Units' column='Units' />
+      <result property='Flag' column='Flag' />
+      <result property='Remark' column='Remark' />
+      <result property='Num1' column='Num1' />
+      <result property='Num2' column='Num2' />
+      <result property='Col1' column='Col1' />
+      <result property='Col2' column='Col2' />
+      <result property='Col3' column='Col3' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPs_HistoryType' parameterClass='Ps_HistoryType'>
+      INSERT INTO Ps_HistoryType		(
+      "ID",
+      "TypeName",
+      "Sort",
+      "ParentID",
+      "Units",
+      "Flag",
+      "Remark",
+      "Num1",
+      "Num2",
+      "Col1",
+      "Col2",
+      "Col3"
+      )
+      VALUES
+      (
+      #ID#,
+      #TypeName#,
+      #Sort#,
+      #ParentID#,
+      #Units#,
+      #Flag#,
+      #Remark#,
+      #Num1#,
+      #Num2#,
+      #Col1#,
+      #Col2#,
+      #Col3#
+      )
+    </insert>
+    <delete id='DeletePs_HistoryType' parameterClass='Ps_HistoryType'>
+      DELETE FROM Ps_HistoryType
+      where
+      ID = #ID#
+    </delete>
+    <update id='DeleteSystemDeleteByconn' parameterClass='string'>
+      DELETE FROM [$value$]
+
+    </update>
+    
+    <update id='UpdatePs_HistoryType' parameterClass='Ps_HistoryType'>
+      UPDATE Ps_HistoryType
+      SET
+
+      "TypeName" = #TypeName#,
+      "Sort" = #Sort#,
+      "ParentID" = #ParentID#,
+      "Units" = #Units#,
+      "Flag" = #Flag#,
+      "Remark" = #Remark#,
+      "Num1" = #Num1#,
+      "Num2" = #Num2#,
+      "Col1" = #Col1#,
+      "Col2" = #Col2#,
+      "Col3" = #Col3#
+      where
+      ID = #ID#
+    </update>
+    <select id='SelectPs_HistoryTypeByKey' resultMap='Ps_HistoryTypeResult' parameterClass='Ps_HistoryType'>
+      SELECT
+      "ID",
+      "TypeName",
+      "Sort",
+      "ParentID",
+      "Units",
+      "Flag",
+      "Remark",
+      "Num1",
+      "Num2",
+      "Col1",
+      "Col2",
+      "Col3"
+      FROM Ps_HistoryType
+      where
+      "ID" = #ID#
+    </select>
+    <select id='SelectByKeyPs_HistoryType' resultMap='Ps_HistoryTypeResult' parameterClass='Ps_HistoryType'>
+      SELECT
+      "ID",
+      "TypeName",
+      "Sort",
+      "ParentID",
+      "Units",
+      "Flag",
+      "Remark",
+      "Num1",
+      "Num2",
+      "Col1",
+      "Col2",
+      "Col3"
+      FROM Ps_HistoryType
+    </select>
+    <select id='SelectPs_HistoryTypeBYconn' resultMap='Ps_HistoryTypeResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "TypeName",
+      "Sort",
+      "ParentID",
+      "Units",
+      "Flag",
+      "Remark",
+      "Num1",
+      "Num2",
+      "Col1",
+      "Col2",
+      "Col3"
+      FROM Ps_HistoryType
+      where
+      $value$
+    </select>
+    <select id='SelectPs_HistoryTypeMaxsort' resultClass='int' parameterClass='string'>
+      SELECT
+      count(*)
+      FROM Ps_HistoryType
+    </select>
+    <select id='SelectPs_HistoryTypeCountBycon' resultClass='int' parameterClass='string'>
+      SELECT
+      count(*)
+      FROM Ps_HistoryType
+      where
+      $value$
+    </select>
+    <select id='SelectSystemDeleteByconn' resultClass='string' parameterClass='string'>
+      select name as tablename from sysobjects where  type = 'U'
+    </select>
+    <select id='SelectSystemDeleteCountbycon' resultClass='int' parameterClass='string'>
+      select 
+      count(*)
+      FROM 
+      [$value$]
+    </select>
+  </statements>
+</sqlMap>

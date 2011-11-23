@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PrintInfo' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PrintInfo' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PrintInfo' />
+</alias>
+	<resultMaps>
+		<resultMap id='PrintInfoResult' class='PrintInfo'>
+			<result property='UID' column='UID' />
+      <result property='SvgUID' column='SvgUID' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Col3' column='Col3' />
+			<result property='Col4' column='Col4' />
+			<result property='Col5' column='Col5' />
+			<result property='Col6' column='Col6' />
+			<result property='Col7' column='Col7' />
+			<result property='Col8' column='Col8' />
+			<result property='Col9' column='Col9' />
+			<result property='Col10' column='Col10' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPrintInfo' parameterClass='PrintInfo'>
+    INSERT INTO PrintInfo		(
+    "UID",
+    "SvgUID",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4",
+    "Col5",
+    "Col6",
+    "Col7",
+    "Col8",
+    "Col9",
+    "Col10"
+    )
+    VALUES
+    (
+    #UID#,
+    #Col1#,
+    #Col2#,
+    #Col3#,
+    #Col4#,
+    #Col5#,
+    #Col6#,
+    #Col7#,
+    #Col8#,
+    #Col9#,
+    #Col10#
+    )
+  </insert>
+	<delete id='DeletePrintInfo' parameterClass='PrintInfo'>
+		DELETE FROM PrintInfo
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePrintInfo' parameterClass='PrintInfo'>
+		UPDATE PrintInfo
+		SET
+			"Col1" = #Col1#,
+			"Col2" = #Col2#,
+			"Col3" = #Col3#,
+			"Col4" = #Col4#,
+			"Col5" = #Col5#,
+			"Col6" = #Col6#,
+			"Col7" = #Col7#,
+			"Col8" = #Col8#,
+			"Col9" = #Col9#,
+			"Col10" = #Col10#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPrintInfoList' resultMap='PrintInfoResult' parameterClass='PrintInfo'>
+    SELECT
+    "UID",
+    "SvgUID",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4",
+    "Col5",
+    "Col6",
+    "Col7",
+    "Col8",
+    "Col9",
+    "Col10"
+    FROM PrintInfo
+  </select>
+	<select id='SelectPrintInfoByKey' resultMap='PrintInfoResult' parameterClass='PrintInfo'>
+    SELECT
+    "UID",
+    "SvgUID",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4",
+    "Col5",
+    "Col6",
+    "Col7",
+    "Col8",
+    "Col9",
+    "Col10"
+    FROM PrintInfo
+    WHERE
+    UID = #UID# and SvgUID = #SvgUID# 
+  </select>
+</statements>
+</sqlMap>

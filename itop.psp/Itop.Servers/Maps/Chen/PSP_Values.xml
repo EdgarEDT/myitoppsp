@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_Values' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_Values' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_Values' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_ValuesResult' class='PSP_Values'>
+			<result property='ID' column='ID' />
+			<result property='TypeID' column='TypeID' />
+			<result property='Year' column='Year' />
+			<result property='Value' column='Value' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_Values' parameterClass='PSP_Values'>
+		INSERT INTO PSP_Values		(
+			"TypeID",
+			"Year",
+			"Value"
+		)
+		VALUES
+		(
+			#TypeID#,
+			#Year#,
+			#Value#
+		)
+	</insert>
+	<delete id='DeletePSP_Values' parameterClass='PSP_Values'>
+		DELETE FROM PSP_Values
+		WHERE
+			ID = #ID#
+	</delete>
+
+	<update id='DeletePSP_ValuesByType' parameterClass='PSP_Values'>
+    DELETE FROM PSP_Values
+    WHERE
+    TypeID = #TypeID#
+
+    DELETE FROM PSP_Types
+    WHERE
+    ID = #TypeID#
+    DELETE FROM PSP_BaseYearRate
+    WHERE
+    TypeID = #TypeID#
+  </update>
+
+	<update id='DeletePSP_ValuesByYear' parameterClass='PSP_Values'>
+    DELETE FROM PSP_Values
+    WHERE
+    Year = #Year#
+    And TypeID in (Select ID from PSP_Types where Flag2=#ID#)
+    DELETE FROM PSP_Years
+    WHERE
+    Flag = #ID#
+    AND
+    Year = #Year#
+    DELETE FROM PSP_BaseYearRate
+    WHERE
+    BaseYear = #Year#
+  </update>
+
+	<update id='UpdatePSP_Values' parameterClass='PSP_Values'>
+		If Exists(Select ID from PSP_Values Where Year=#Year# And TypeID=#TypeID#)
+			UPDATE PSP_Values
+			SET
+				"Value" = #Value#
+			WHERE
+				"TypeID" = #TypeID#
+				And
+				"Year" = #Year#
+		Else
+			INSERT INTO PSP_Values		(
+				"TypeID",
+				"Year",
+				"Value"
+			)
+			VALUES
+			(
+				#TypeID#,
+				#Year#,
+				#Value#
+			)
+	</update>
+	<select id='SelectPSP_ValuesList' resultMap='PSP_ValuesResult' parameterClass='PSP_Values'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM PSP_Values
+			Where
+				TypeID = #TypeID#
+	</select>
+  <select id='SelectPSP_ValuesListByFlag2AndYear' resultMap='PSP_ValuesResult' parameterClass='hashtable'>
+    SELECT
+    "ID",
+    "TypeID",
+    "Year",
+    "Value"
+    FROM PSP_Values
+    Where
+    TypeID in (Select ID from PSP_Types where Flag2=#ID#)
+    And
+    Year>=#Year#
+  </select>
+  <select id='SelectPSP_ValuesListByFlag2Year' resultMap='PSP_ValuesResult' parameterClass='hashtable'>
+    SELECT
+    "ID",
+    "TypeID",
+    "Year",
+    "Value"
+    FROM PSP_Values
+    Where
+    TypeID in (Select ID from PSP_Types where Flag2=#ID#)
+    And
+    Year=#Year#
+  </select>
+	<select id='SelectPSP_ValuesListByFlag2' resultMap='PSP_ValuesResult' parameterClass='PSP_Values'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM PSP_Values
+			Where
+				TypeID in (Select ID from PSP_Types where Flag2=#ID#)
+	</select>
+	<select id='SelectPSP_ValuesByKey' resultMap='PSP_ValuesResult' parameterClass='PSP_Values'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM PSP_Values
+		WHERE
+			ID = #ID#
+	</select>
+
+
+  <select id='SelectPSP_ValuesByWhere' resultMap='PSP_ValuesResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "TypeID",
+    "Year",
+    "Value"
+    FROM PSP_Values
+    WHERE
+    $value$
+  </select>
+  <!--返回一个确定的值-->
+  <select id='SelectPSP_ValuesOfValueByWhere' resultClass='double' parameterClass='string'>
+    SELECT
+    Value
+    FROM PSP_Values
+    WHERE
+    $value$
+  </select>
+</statements>
+</sqlMap>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='BurdenByte' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='BurdenByte' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.BurdenByte' />
+</alias>
+	<resultMaps>
+		<resultMap id='BurdenByteResult' class='BurdenByte'>
+			<result property='BurdenYear' column='BurdenYear' />
+			<result property='Season' column='Season' />
+			<result property='BurdenDate' column='BurdenDate' />
+      <result property='AreaID' column='AreaID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+
+  <select id='SelectBurdenByteByYear' resultMap='BurdenByteResult' parameterClass='string'>
+    SELECT
+    year(BurdenDate) as "BurdenYear",null as "BurdenDate",'' as "Season" , '' as "AreaID"
+    FROM PSP_BurdenLine
+    WHERE
+    $Season$
+  </select>
+
+  <select id='SelectBurdenByteByIsType' resultMap='BurdenByteResult' parameterClass='string'>
+    SELECT
+    year(BurdenDate) as "BurdenYear",burdendate as "BurdenDate",Season as "Season",AreaID as "AreaID"
+    FROM PSP_BurdenLine
+    WHERE
+    $Season$
+  </select>
+</statements>
+</sqlMap>

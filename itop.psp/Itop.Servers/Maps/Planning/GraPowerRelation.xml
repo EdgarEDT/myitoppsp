@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='GraPowerRelation' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='GraPowerRelation' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.GraPowerRelation' />
+</alias>
+	<resultMaps>
+		<resultMap id='GraPowerRelationResult' class='GraPowerRelation'>
+			<result property='UID' column='UID' />
+			<result property='PowerEachID' column='PowerEachID' />
+			<result property='LayerID' column='LayerID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertGraPowerRelation' parameterClass='GraPowerRelation'>
+		INSERT INTO PSP_PowerRelation		(
+			"UID",
+			"PowerEachID",
+			"LayerID"
+		)
+		VALUES
+		(
+			#UID#,
+			#PowerEachID#,
+			#LayerID#
+		)
+	</insert>
+	<delete id='DeleteGraPowerRelation' parameterClass='GraPowerRelation'>
+		DELETE FROM PSP_PowerRelation
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateGraPowerRelation' parameterClass='GraPowerRelation'>
+		UPDATE PSP_PowerRelation
+		SET
+			"PowerEachID" = #PowerEachID#,
+			"LayerID" = #LayerID#
+		WHERE
+			UID = #UID#
+	</update>
+	<update id='UpdateGraPowerRelationByLayerID' parameterClass='string'>
+    delete from PSP_PowerRelation where LayerID=#LayerID#
+  </update>
+	<select id='SelectGraPowerRelationList' resultMap='GraPowerRelationResult' parameterClass='GraPowerRelation'>
+		SELECT
+			"UID",
+			"PowerEachID",
+			"LayerID"
+		FROM PSP_PowerRelation
+	</select>
+	<select id='SelectGraPowerRelationByKey' resultMap='GraPowerRelationResult' parameterClass='GraPowerRelation'>
+		SELECT
+			"UID",
+			"PowerEachID",
+			"LayerID"
+		FROM PSP_PowerRelation
+		WHERE
+			UID = #UID#
+	</select>
+	<select id='SelectGraPowerRelationByLayerID' resultMap='GraPowerRelationResult' parameterClass='string'>
+		SELECT
+			"UID",
+			"PowerEachID",
+			"LayerID"
+		FROM PSP_PowerRelation
+		WHERE
+			LayerID = #LayerID#
+	</select>
+</statements>
+</sqlMap>

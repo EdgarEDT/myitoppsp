@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerStuffTypes' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerStuffTypes' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerStuffTypes' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerStuffTypesResult' class='PowerStuffTypes'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='Flag' column='Flag' />
+			<result property='Flag2' column='Flag2' />
+			<result property='ParentID' column='ParentID' />
+      <result property='Code' column='Code' />
+      <result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerStuffTypes' parameterClass='PowerStuffTypes'>
+    INSERT INTO PSP_PowerStuffTypes		(
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark"
+    )
+    VALUES
+    (
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#,#Code#,#Remark#
+    )
+    <selectKey property="ID" resultClass="int" type="post">
+				SELECT @@IDENTITY AS value
+		</selectKey> 
+	</insert>
+	<delete id='DeletePowerStuffTypes' parameterClass='PowerStuffTypes'>
+    DELETE FROM PSP_PowerStuffTypes
+    WHERE
+    ID = #ID#
+  </delete>
+	<update id='UpdatePowerStuffTypes' parameterClass='PowerStuffTypes'>
+    UPDATE PSP_PowerStuffTypes
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "Flag2" = #Flag2#,
+    "ParentID" = #ParentID#,"Code"=#Code#,"Remark"=#Remark#
+    WHERE
+    ID = #ID#
+  </update>
+	<select id='SelectPowerStuffTypesList' resultMap='PowerStuffTypesResult' parameterClass='PowerStuffTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark"
+    FROM PSP_PowerStuffTypes
+  </select>
+  <select id='SelectPowerStuffTypesByKey' resultMap='PowerStuffTypesResult' parameterClass='PowerStuffTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark"
+    FROM PSP_PowerStuffTypes
+    WHERE
+    ID = #ID#
+  </select>
+  <select id='SelectPowerStuffTypesByFlag2' resultMap='PowerStuffTypesResult' parameterClass='PowerStuffTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark"
+    FROM PSP_PowerStuffTypes
+    WHERE
+    Flag2 = #Flag2#
+    ORDER BY ID
+  </select>
+	<select id='SelectPowerStuffTypesByFlag' resultMap='PowerStuffTypesResult' parameterClass='PowerStuffTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Code","Remark"
+    FROM PSP_PowerStuffTypes
+    WHERE
+    Flag = #Flag#
+    ORDER BY Flag,ID
+  </select>
+</statements>
+</sqlMap>

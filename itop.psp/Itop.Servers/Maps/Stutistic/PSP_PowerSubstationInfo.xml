@@ -1,0 +1,585 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_PowerSubstationInfo' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_PowerSubstationInfo' assembly='Itop.Client.Stutistics.dll' type='Itop.Client.Stutistics.PSP_PowerSubstationInfo' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_PowerSubstationInfoResult' class='PSP_PowerSubstationInfo'>
+      <result property='UID' column='UID' />
+      <result property='AreaID' column='AreaID' />
+      <result property='AreaName' column='AreaName' />
+      <result property='PowerID' column='PowerID' />
+      <result property='PowerName' column='PowerName' />
+      <result property='Title' column='Title' />
+      <result property='S1' column='S1' />
+      <result property='S2' column='S2' />
+      <result property='S3' column='S3' />
+      <result property='S4' column='S4' />
+      <result property='S5' column='S5' />
+      <result property='S6' column='S6' />
+      <result property='S7' column='S7' />
+      <result property='S8' column='S8' />
+      <result property='S9' column='S9' />
+      <result property='S10' column='S10' />
+      <result property='S11' column='S11' />
+      <result property='S12' column='S12' />
+      <result property='S13' column='S13' />
+      <result property='S14' column='S14' />
+      <result property='S15' column='S15' />
+      <result property='S16' column='S16' />
+      <result property='S17' column='S17' />
+      <result property='S18' column='S18' />
+      <result property='S19' column='S19' />
+      <result property='S20' column='S20' />
+      <result property='S21' column='S21' />
+      <result property='S22' column='S22' />
+      <result property='S23' column='S23' />
+      <result property='S24' column='S24' />
+      <result property='S25' column='S25' />
+      <result property='S26' column='S26' />
+      <result property='S27' column='S27' />
+      <result property='S28' column='S28' />
+      <result property='S29' column='S29' />
+      <result property='S30' column='S30' />
+      <result property='Flag' column='Flag' />
+      <result property='Code' column='Code' />
+      <result property='IsConn' column='IsConn' />
+      <result property='CreateDate' column='CreateDate' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_PowerSubstationInfo' parameterClass='PSP_PowerSubstationInfo'>
+      INSERT INTO PSP_PowerSubstationInfo		(
+      "UID",
+      "AreaID",
+      "AreaName",
+      "PowerID",
+      "PowerName",
+      "Title",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "S21",
+      "S22",
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27",
+      "S28",
+      "S29",
+      "S30",
+      "Flag",
+      "Code",
+      "IsConn",
+      "CreateDate"
+      )
+      VALUES
+      (
+      #UID#,
+      #AreaID#,
+      #AreaName#,
+      #PowerID#,
+      #PowerName#,
+      #Title#,
+      #S1#,
+      #S2#,
+      #S3#,
+      #S4#,
+      #S5#,
+      #S6#,
+      #S7#,
+      #S8#,
+      #S9#,
+      #S10#,
+      #S11#,
+      #S12#,
+      #S13#,
+      #S14#,
+      #S15#,
+      #S16#,
+      #S17#,
+      #S18#,
+      #S19#,
+      #S20#,
+      #S21#,
+      #S22#,
+      #S23#,
+      #S24#,
+      #S25#,
+      #S26#,
+      #S27#,
+      #S28#,
+      #S29#,
+      #S30#,
+      #Flag#,
+      #Code#,
+      #IsConn#,
+      #CreateDate#
+      )
+    </insert>
+    
+    <delete id='DeletePSP_PowerSubstationInfoByUID' parameterClass='string'>
+      DELETE FROM PSP_PowerSubstationInfo
+      WHERE
+      UID=#deleteUID#
+    </delete>
+    <delete id='DeletePSP_PowerSubstationInfoByFlag' parameterClass='PSP_PowerSubstationInfo'>
+      DELETE FROM PSP_PowerSubstationInfo
+      WHERE
+      Flag = '1'
+    </delete>
+    <delete id='DeletePSP_PowerSubstationInfoByFlags' parameterClass='string'>
+      DELETE FROM PSP_PowerSubstationInfo
+      WHERE
+      Flag = #Flag#
+    </delete>
+    <delete id='DeletePSP_PowerSubstationInfoByFlag_2' parameterClass='PSP_PowerSubstationInfo'>
+      DELETE FROM PSP_PowerSubstationInfo
+      WHERE
+      Flag = '2'
+    </delete>
+    <delete id='DeletePSP_PowerSubstationInfoByConn' parameterClass='string'>
+      DELETE FROM PSP_PowerSubstationInfo
+      WHERE
+      $value$
+    </delete>
+    <update id='UpdatePSP_PowerSubstationInfo' parameterClass='PSP_PowerSubstationInfo'>
+      If Exists(Select UID from PSP_PowerSubstationInfo Where UID = #UID#)
+      UPDATE PSP_PowerSubstationInfo
+      SET
+      "Title" = #Title#,
+      "PowerName" = #PowerName#,
+      "S1" = #S1#,
+      "S2" = #S2#,
+      "S3" = #S3#,
+      "S4" = #S4#,
+      "S5" = #S5#,
+      "S6" = #S6#,
+      "S7" = #S7#,
+      "S8" = #S8#,
+      "S9" = #S9#,
+      "S10" = #S10#,
+      "S11" = #S11#,
+      "S12" = #S12#,
+      "S13" = #S13#,
+      "S14" = #S14#,
+      "S15" = #S15#,
+      "S16" = #S16#,
+      "S17" = #S17#,
+      "S18" = #S18#,
+      "S19" = #S19#,
+      "S20" = #S20#,
+      "S21" = #S21#,
+      "S22" = #S22#,
+      "S23" = #S23#,
+      "S24" = #S24#,
+      "S25" = #S25#,
+      "S26" = #S26#,
+      "S27" = #S27#,
+      "S28" = #S28#,
+      "S29" = #S29#,
+      "S30" = #S30#,
+      "Flag" = #Flag#,
+      "CreateDate" = #CreateDate#
+      where
+      UID = #UID# 
+      Else
+      INSERT INTO PSP_PowerSubstationInfo		(
+      "UID",
+      "Title",
+      "PowerName",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "S21",
+      "S22",
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27",
+      "S28",
+      "S29",
+      "S30",
+      "Flag",
+      "CreateDate"
+      )
+      VALUES
+      (
+      #UID#,
+      #Title#,
+      #PowerName#,
+      #S1#,
+      #S2#,
+      #S3#,
+      #S4#,
+      #S5#,
+      #S6#,
+      #S7#,
+      #S8#,
+      #S9#,
+      #S10#,
+      #S11#,
+      #S12#,
+      #S13#,
+      #S14#,
+      #S15#,
+      #S16#,
+      #S17#,
+      #S18#,
+      #S19#,
+      #S20#,
+      #S21#,
+      #S22#,
+      #S23#,
+      #S24#,
+      #S25#,
+      #S26#,
+      #S27#,
+      #S28#,
+      #S29#,
+      #S30#,
+      #Flag#,
+      #CreateDate#
+      )
+    </update>
+    <update id='UpdatePSP_PowerSubstationInfoByFlag' parameterClass='PSP_PowerSubstationInfo'>
+      UPDATE PSP_PowerSubstationInfo
+      SET
+      $Title$
+      WHERE
+      Flag = #Flag#
+    </update>
+    <select id='SelectPSP_PowerSubstationInfoList' resultMap='PSP_PowerSubstationInfoResult' parameterClass='PSP_PowerSubstationInfo'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "PowerID",
+      "PowerName",
+      "Title",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "S21",
+      "S22",
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27",
+      "S28",
+      "S29",
+      "S30",
+      "Flag",
+      "Code",
+      "IsConn",
+      "CreateDate"
+      FROM PSP_PowerSubstationInfo
+    </select>
+    <select id='SelectPSP_PowerSubstationInfoByKey' resultMap='PSP_PowerSubstationInfoResult' parameterClass='PSP_PowerSubstationInfo'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "PowerID",
+      "PowerName",
+      "Title",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "S21",
+      "S22",
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27",
+      "S28",
+      "S29",
+      "S30",
+      "Flag",
+      "Code",
+      "IsConn",
+      "CreateDate"
+      FROM PSP_PowerSubstationInfo
+    </select>
+    <select id='SelectPSP_PowerSubstationInfoByNameFlag' resultMap='PSP_PowerSubstationInfoResult' parameterClass='PSP_PowerSubstationInfo'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "PowerID",
+      "PowerName",
+      "Title",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "S21",
+      "S22",
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27",
+      "S28",
+      "S29",
+      "S30",
+      "Flag",
+      "Code",
+      "IsConn",
+      "CreateDate"
+      FROM PSP_PowerSubstationInfo
+      WHERE
+      Title = #Title# and Flag = #Flag#
+    </select>
+    <select id='SelectPSP_PowerSubstationInfoByFlag' resultMap='PSP_PowerSubstationInfoResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "PowerID",
+      "PowerName",
+      "Title",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "S21",
+      "S22",
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27",
+      "S28",
+      "S29",
+      "S30",
+      "Flag",
+      "Code",
+      "IsConn",
+      "CreateDate"
+      FROM PSP_PowerSubstationInfo
+      WHERE
+      Flag = #Flag#
+      order by CreateDate
+    </select>
+    <select id='SelectPSP_PowerSubstationInfoByCreatdate' resultMap='PSP_PowerSubstationInfoResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "PowerID",
+      "PowerName",
+      "Title",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "S21",
+      "S22",
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27",
+      "S28",
+      "S29",
+      "S30",
+      "Flag",
+      "Code",
+      "IsConn",
+      "CreateDate"
+      FROM PSP_PowerSubstationInfo
+      order by CreateDate
+    </select>
+    <select id='SelectPSP_PowerSubstationInfoByConn' resultMap='PSP_PowerSubstationInfoResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "PowerID",
+      "PowerName",
+      "Title",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "S21",
+      "S22",
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27",
+      "S28",
+      "S29",
+      "S30",
+      "Flag",
+      "Code",
+      "IsConn",
+      "CreateDate"
+      FROM PSP_PowerSubstationInfo
+      Where
+      $value$
+    </select>
+    <select id='SelectPSP_PowerSubstation_InfoCountByObject' resultClass='int' parameterClass='string'>
+      SELECT count(*)
+      FROM PSP_PowerSubstationInfo
+      WHERE $value$
+    </select>
+    <!--查询装机容量和-->
+    <select id='SelectPSP_PowerSubstation_Info_S2' resultClass='double' parameterClass='string'>
+      SELECT SUM(CAST(S2 as float))
+      FROM PSP_PowerSubstationInfo
+      WHERE $value$
+    </select>
+    <!--查询地区名称分组-->
+    <select id='SelectPSP_PowerSubstation_Info_GroupS9' resultClass='string' parameterClass='string'>
+      SELECT S9
+      FROM PSP_PowerSubstationInfo
+      WHERE $value$
+    </select>
+    <!--查询电厂名称-->
+    <select id='SelectPSP_PowerSubstation_Info_Title' resultClass='string' parameterClass='string'>
+      SELECT Title
+      FROM PSP_PowerSubstationInfo
+      WHERE $value$
+    </select>
+    
+  </statements>
+</sqlMap>

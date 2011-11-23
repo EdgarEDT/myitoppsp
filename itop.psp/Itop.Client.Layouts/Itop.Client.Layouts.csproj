@@ -1,0 +1,630 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BF53CD10-A3F0-4C7A-A409-978A6F4ED860}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Client.Layouts</RootNamespace>
+    <AssemblyName>Itop.Client.Layouts</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="AxInterop.DSOFramer, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DundasWinChart, Version=5.5.0.1697, Culture=neutral, PublicKeyToken=a4c03dce5db22406, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.CalcEngine, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="Interop.DSOFramer, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.DLGH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Itop.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.TLVector.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="office, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\office.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TONLI.BZH.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CtrlLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlLayout.Designer.cs">
+      <DependentUpon>CtrlLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlRtfAttachFiles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlRtfAttachFiles.Designer.cs">
+      <DependentUpon>CtrlRtfAttachFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DSOExcelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DSOExcelControl.Designer.cs">
+      <DependentUpon>DSOExcelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1Print.Designer.cs">
+      <DependentUpon>Form1Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1_Fs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1_Fs.Designer.cs">
+      <DependentUpon>Form1_Fs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExcel.Designer.cs">
+      <DependentUpon>FormExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastData.Designer.cs">
+      <DependentUpon>FormForecastData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLayoutType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLayoutType.Designer.cs">
+      <DependentUpon>FormLayoutType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddBookMark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddBookMark.Designer.cs">
+      <DependentUpon>FrmAddBookMark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBookMark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBookMark.Designer.cs">
+      <DependentUpon>FrmBookMark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCommon.cs" />
+    <Compile Include="FrmEconomyAnalysisDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEconomyAnalysisDialog.Designer.cs">
+      <DependentUpon>FrmEconomyAnalysisDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEconomyAnalysisWH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEconomyAnalysisWH.Designer.cs">
+      <DependentUpon>FrmEconomyAnalysisWH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEconomyDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEconomyDialog.Designer.cs">
+      <DependentUpon>FrmEconomyDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEconomyGuide1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEconomyGuide1.Designer.cs">
+      <DependentUpon>FrmEconomyGuide1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEconomyGuide1WH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEconomyGuide1WH.Designer.cs">
+      <DependentUpon>FrmEconomyGuide1WH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGHBGdata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGHBGdata.Designer.cs">
+      <DependentUpon>FrmGHBGdata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayoutContentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayoutContentDialog.Designer.cs">
+      <DependentUpon>FrmLayoutContentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayoutContents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayoutContents.Designer.cs">
+      <DependentUpon>FrmLayoutContents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayoutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayoutDialog.Designer.cs">
+      <DependentUpon>FrmLayoutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayouts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayouts.Designer.cs">
+      <DependentUpon>FrmLayouts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPicData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPicData.Designer.cs">
+      <DependentUpon>FrmPicData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPspTypeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPspTypeDialog.Designer.cs">
+      <DependentUpon>FrmPspTypeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRtfAttachFilesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRtfAttachFilesDialog.Designer.cs">
+      <DependentUpon>FrmRtfAttachFilesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRtfCategoryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRtfCategoryDialog.Designer.cs">
+      <DependentUpon>FrmRtfCategoryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelect.Designer.cs">
+      <DependentUpon>FrmSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTypes.Designer.cs">
+      <DependentUpon>FrmTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_FindandChangeTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_FindandChangeTL.Designer.cs">
+      <DependentUpon>Frm_FindandChangeTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutsClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRtfCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRtfCategory.Designer.cs">
+      <DependentUpon>FrmRtfCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEconomyAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEconomyAnalysis.Designer.cs">
+      <DependentUpon>FrmEconomyAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTypes_Excel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTypes_Excel.Designer.cs">
+      <DependentUpon>FrmTypes_Excel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTypes_Langfang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTypes_Langfang.Designer.cs">
+      <DependentUpon>FrmTypes_Langfang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1_Fs_Tongling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1_Fs_Tongling.Designer.cs">
+      <DependentUpon>Form1_Fs_Tongling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlFiles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlFiles.Designer.cs">
+      <DependentUpon>CtrlFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGHBZTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGHBZTL.Designer.cs">
+      <DependentUpon>FrmGHBZTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGHBZTLContents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGHBZTLContents.Designer.cs">
+      <DependentUpon>FrmGHBZTLContents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlLayoutAHTL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlLayoutAHTL.Designer.cs">
+      <DependentUpon>CtrlLayoutAHTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayoutDialogANTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayoutDialogANTL.Designer.cs">
+      <DependentUpon>FrmLayoutDialogANTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayoutContentDialogANTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayoutContentDialogANTL.Designer.cs">
+      <DependentUpon>FrmLayoutContentDialogANTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLayoutTypeANTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLayoutTypeANTL.Designer.cs">
+      <DependentUpon>FormLayoutTypeANTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditBookMark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditBookMark.Designer.cs">
+      <DependentUpon>FrmEditBookMark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlRtfAttachFilesTR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlRtfAttachFilesTR.Designer.cs">
+      <DependentUpon>CtrlRtfAttachFilesTR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRtfAttachFilesDialogTR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRtfAttachFilesDialogTR.Designer.cs">
+      <DependentUpon>FrmRtfAttachFilesDialogTR.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itop.Client.Chen\Itop.Client.Chen.csproj">
+      <Project>{D3B9A125-1621-410E-92BC-69DF3A3B91C5}</Project>
+      <Name>Itop.Client.Chen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Client.Forecast\Itop.Client.Forecast.csproj">
+      <Project>{10DB99AD-605C-4D45-8611-159245BDF1EF}</Project>
+      <Name>Itop.Client.Forecast</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Client.Stutistics\Itop.Client.Stutistics.csproj">
+      <Project>{5A70D460-17C4-4EAD-A79C-0BEA14A0936B}</Project>
+      <Name>Itop.Client.Stutistics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Client.Table\Itop.Client.Table.csproj">
+      <Project>{709D3AB7-8052-4031-AB6E-A25544CD7264}</Project>
+      <Name>Itop.Client.Table</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Chen\Itop.Domain.Chen.csproj">
+      <Project>{47ADAEF0-17F1-4E68-B1C2-2B690C6CA920}</Project>
+      <Name>Itop.Domain.Chen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Forecast\Itop.Domain.Forecast.csproj">
+      <Project>{028877BB-F597-40C7-8E0C-2DADF4196778}</Project>
+      <Name>Itop.Domain.Forecast</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Layouts\Itop.Domain.Layouts.csproj">
+      <Project>{61AF2640-7A90-4D1D-86CC-4ADD3348141E}</Project>
+      <Name>Itop.Domain.Layouts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Stutistics\Itop.Domain.Stutistics.csproj">
+      <Project>{FBDFCD20-106B-424D-8988-729C9D228A99}</Project>
+      <Name>Itop.Domain.Stutistics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CtrlLayout.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlRtfAttachFiles.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlRtfAttachFiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DSOExcelControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DSOExcelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1Print.resx">
+      <DependentUpon>Form1Print.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1_Fs.resx">
+      <DependentUpon>Form1_Fs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastData.resx">
+      <DependentUpon>FormForecastData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLayoutType.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormLayoutType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddBookMark.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmAddBookMark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBookMark.resx">
+      <DependentUpon>FrmBookMark.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEconomyAnalysisDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmEconomyAnalysisDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEconomyAnalysisWH.resx">
+      <DependentUpon>FrmEconomyAnalysisWH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEconomyDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmEconomyDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEconomyGuide1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmEconomyGuide1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEconomyGuide1WH.resx">
+      <DependentUpon>FrmEconomyGuide1WH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFiles.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmFiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGHBGdata.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmGHBGdata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayoutContentDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmLayoutContentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayoutContents.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmLayoutContents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayoutDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmLayoutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayouts.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmLayouts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPicData.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmPicData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPspTypeDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmPspTypeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRtfAttachFilesDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmRtfAttachFilesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRtfCategoryDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmRtfCategoryDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelect.resx">
+      <DependentUpon>FrmSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTypes.resx">
+      <DependentUpon>FrmTypes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_FindandChangeTL.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Frm_FindandChangeTL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRtfCategory.resx">
+      <DependentUpon>FrmRtfCategory.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEconomyAnalysis.resx">
+      <DependentUpon>FrmEconomyAnalysis.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTypes_Excel.resx">
+      <DependentUpon>FrmTypes_Excel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTypes_Langfang.resx">
+      <DependentUpon>FrmTypes_Langfang.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1_Fs_Tongling.resx">
+      <DependentUpon>Form1_Fs_Tongling.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlFiles.resx">
+      <DependentUpon>CtrlFiles.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGHBZTL.resx">
+      <DependentUpon>FrmGHBZTL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGHBZTLContents.resx">
+      <DependentUpon>FrmGHBZTLContents.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlLayoutAHTL.resx">
+      <DependentUpon>CtrlLayoutAHTL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayoutDialogANTL.resx">
+      <DependentUpon>FrmLayoutDialogANTL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayoutContentDialogANTL.resx">
+      <DependentUpon>FrmLayoutContentDialogANTL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLayoutTypeANTL.resx">
+      <DependentUpon>FormLayoutTypeANTL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditBookMark.resx">
+      <DependentUpon>FrmEditBookMark.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlRtfAttachFilesTR.resx">
+      <DependentUpon>CtrlRtfAttachFilesTR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRtfAttachFilesDialogTR.resx">
+      <DependentUpon>FrmRtfAttachFilesDialogTR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Database.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='FORBaseColor' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='FORBaseColor' assembly='Itop.Domain.Forecast.dll' type='Itop.Domain.Forecast.FORBaseColor' />
+</alias>
+	<resultMaps>
+		<resultMap id='FORBaseColorResult' class='FORBaseColor'>
+			<result property='UID' column='UID' />
+			<result property='Title' column='Title' />
+			<result property='Color' column='Color' />
+			<result property='MaxValue' column='MaxValue' />
+			<result property='MinValue' column='MinValue' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateTime' column='CreateTime' />
+			<result property='UpdateTime' column='UpdateTime' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertFORBaseColor' parameterClass='FORBaseColor'>
+    INSERT INTO Ps_Base_Color		(
+    "UID",
+    "Title",
+    "Color",
+    "MaxValue",
+    "MinValue",
+    "Remark",
+    "CreateTime",
+    "UpdateTime"
+    )
+    VALUES
+    (
+    #UID#,
+    #Title#,
+    #Color#,
+    #MaxValue#,
+    #MinValue#,
+    #Remark#,
+    GetDate(),
+    GetDate()
+    )
+  </insert>
+	<delete id='DeleteFORBaseColor' parameterClass='FORBaseColor'>
+		DELETE FROM Ps_Base_Color
+		WHERE
+			UID = #UID#
+	</delete>
+  <delete id='DeleteFORBaseColorByTitleRemark' parameterClass='FORBaseColor'>
+    DELETE FROM Ps_Base_Color
+    WHERE
+    Title = #Title#
+    and
+    Remark = #Remark#
+  </delete>
+	<update id='UpdateFORBaseColor' parameterClass='FORBaseColor'>
+    UPDATE Ps_Base_Color
+    SET
+    "Title" = #Title#,
+    "Color" = #Color#,
+    "MaxValue" = #MaxValue#,
+    "MinValue" = #MinValue#,
+    "Remark" = #Remark#,
+    "UpdateTime" = GetDate()
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectFORBaseColorList' resultMap='FORBaseColorResult' parameterClass='FORBaseColor'>
+		SELECT
+			"UID",
+			"Title",
+			"Color",
+			"MaxValue",
+			"MinValue",
+			"Remark",
+			"CreateTime",
+			"UpdateTime"
+		FROM Ps_Base_Color
+	</select>
+	<select id='SelectFORBaseColorByKey' resultMap='FORBaseColorResult' parameterClass='FORBaseColor'>
+		SELECT
+			"UID",
+			"Title",
+			"Color",
+			"MaxValue",
+			"MinValue",
+			"Remark",
+			"CreateTime",
+			"UpdateTime"
+		FROM Ps_Base_Color
+		WHERE
+			UID = #UID#
+	</select>
+
+  <select id='SelectFORBaseColorByWhere' resultMap='FORBaseColorResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title",
+    "Color",
+    "MaxValue",
+    "MinValue",
+    "Remark",
+    "CreateTime",
+    "UpdateTime"
+    FROM Ps_Base_Color
+    WHERE 1=1 and 
+    $UID$
+  </select>
+
+
+  <select id='SelectFORBaseColorByColor' resultMap='FORBaseColorResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title",
+    "Color",
+    "MaxValue",
+    "MinValue",
+    "Remark",
+    "CreateTime",
+    "UpdateTime"
+    FROM Ps_Base_Color
+    WHERE
+    MaxValue >= #value# And  #value# > MinValue
+  </select>
+
+  <select id='SelectFORBaseColorByConn' resultMap='FORBaseColorResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title",
+    "Color",
+    "MaxValue",
+    "MinValue",
+    "Remark",
+    "CreateTime",
+    "UpdateTime"
+    FROM Ps_Base_Color
+    WHERE
+    $Value$
+  </select>
+</statements>
+</sqlMap>

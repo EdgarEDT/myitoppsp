@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerPicSelect' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerPicSelect' assembly='Itop.Domain.Stutistics.dll' type='Itop.Domain.Stutistics.PowerPicSelect' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerPicSelectResult' class='PowerPicSelect'>
+			<result property='UID' column='UID' />
+			<result property='EachListID' column='EachListID' />
+			<result property='PicSelectID' column='PicSelectID' />
+			<result property='PicSelectName' column='PicSelectName' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerPicSelect' parameterClass='PowerPicSelect'>
+		INSERT INTO PSP_PowerPicSelect		(
+			"UID",
+			"EachListID",
+			"PicSelectID",
+			"PicSelectName"
+		)
+		VALUES
+		(
+			#UID#,
+			#EachListID#,
+			#PicSelectID#,
+			#PicSelectName#
+		)
+	</insert>
+	<delete id='DeletePowerPicSelect' parameterClass='PowerPicSelect'>
+		DELETE FROM PSP_PowerPicSelect
+		WHERE
+			UID = #UID#
+	</delete>
+
+
+  <update id='DeletePowerPicSelect1' parameterClass='string'>
+    DELETE FROM PSP_PowerPicSelect
+    WHERE
+    EachListID = #EachListID#
+  </update>
+  
+  
+	<update id='UpdatePowerPicSelect' parameterClass='PowerPicSelect'>
+		UPDATE PSP_PowerPicSelect
+		SET
+			"EachListID" = #EachListID#,
+			"PicSelectID" = #PicSelectID#,
+			"PicSelectName" = #PicSelectName#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPowerPicSelectList' resultMap='PowerPicSelectResult' parameterClass='PowerPicSelect'>
+    SELECT
+    "UID",
+    "EachListID",
+    "PicSelectID",
+    "PicSelectName"
+    FROM PSP_PowerPicSelect  where "EachListID" = #EachListID#
+  </select>
+	<select id='SelectPowerPicSelectByKey' resultMap='PowerPicSelectResult' parameterClass='PowerPicSelect'>
+    SELECT
+    "UID",
+    "EachListID",
+    "PicSelectID",
+    "PicSelectName"
+    FROM PSP_PowerPicSelect
+    WHERE
+    UID = #UID#
+  </select>
+</statements>
+</sqlMap>

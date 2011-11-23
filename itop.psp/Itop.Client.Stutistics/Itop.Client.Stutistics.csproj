@@ -1,0 +1,1735 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5A70D460-17C4-4EAD-A79C-0BEA14A0936B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Client.Stutistics</RootNamespace>
+    <AssemblyName>Itop.Client.Stutistics</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v10.1.Core, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Charts.v10.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Design.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Design.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraNavBar.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraReports.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DundasWinChart, Version=5.5.0.1697, Culture=neutral, PublicKeyToken=a4c03dce5db22406, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.CalcEngine, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Using, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Layouts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChooseYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseYears.Designer.cs">
+      <DependentUpon>ChooseYears.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="CtrlBurdenLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlBurdenLine.Designer.cs">
+      <DependentUpon>CtrlBurdenLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlBurdenLineForecast.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlBurdenLineForecast.Designer.cs">
+      <DependentUpon>CtrlBurdenLineForecast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlBurdenMonth.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlBurdenMonth.Designer.cs">
+      <DependentUpon>CtrlBurdenMonth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlItemPlanTable_HuaiBei.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlItemPlanTable_HuaiBei.Designer.cs">
+      <DependentUpon>CtrlItemPlanTable_HuaiBei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlLayoutList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlLayoutList.Designer.cs">
+      <DependentUpon>CtrlLayoutList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlLine_beizhu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlLine_beizhu.Designer.cs">
+      <DependentUpon>CtrlLine_beizhu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlLine_Info.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlLine_Info.Designer.cs">
+      <DependentUpon>CtrlLine_Info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerEachList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerEachList.Designer.cs">
+      <DependentUpon>CtrlPowerEachList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerEachList1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerEachList1.Designer.cs">
+      <DependentUpon>CtrlPowerEachList1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerEachList2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerEachList2.Designer.cs">
+      <DependentUpon>CtrlPowerEachList2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerEachTotal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerEachTotal.Designer.cs">
+      <DependentUpon>CtrlPowerEachTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerEachTotalList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerEachTotalList.Designer.cs">
+      <DependentUpon>CtrlPowerEachTotalList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerLine.Designer.cs">
+      <DependentUpon>CtrlPowerLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerProject.Designer.cs">
+      <DependentUpon>CtrlPowerProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerProjectList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerProjectList.Designer.cs">
+      <DependentUpon>CtrlPowerProjectList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerProTypes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerProTypes.Designer.cs">
+      <DependentUpon>CtrlPowerProTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerStuff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerStuff.Designer.cs">
+      <DependentUpon>CtrlPowerStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerStuffList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerStuffList.Designer.cs">
+      <DependentUpon>CtrlPowerStuffList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPowerSubstation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPowerSubstation.Designer.cs">
+      <DependentUpon>CtrlPowerSubstation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlProject_Sum.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlProject_Sum.designer.cs">
+      <DependentUpon>CtrlProject_Sum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPSP_EachList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPSP_EachList.Designer.cs">
+      <DependentUpon>CtrlPSP_EachList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPSP_Project_List.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPSP_Project_List.Designer.cs">
+      <DependentUpon>CtrlPSP_Project_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPs_Power.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPs_Power.Designer.cs">
+      <DependentUpon>CtrlPs_Power.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPs_Substation_As.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPs_Substation_As.Designer.cs">
+      <DependentUpon>CtrlPs_Substation_As.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlSubstation_Info.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlSubstation_Info.Designer.cs">
+      <DependentUpon>CtrlSubstation_Info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlSubstation_Info_LangFang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlSubstation_Info_LangFang.Designer.cs">
+      <DependentUpon>CtrlSubstation_Info_LangFang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlSubstation_Info_TongLing.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlSubstation_Info_TongLing.Designer.cs">
+      <DependentUpon>CtrlSubstation_Info_TongLing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileClass.cs" />
+    <Compile Include="ForecastCalculator.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form10.Designer.cs">
+      <DependentUpon>Form10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form10Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form10Print.Designer.cs">
+      <DependentUpon>Form10Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1Print.Designer.cs">
+      <DependentUpon>Form1Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1Print_Liao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1Print_Liao.Designer.cs">
+      <DependentUpon>Form1Print_Liao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1Result.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1Result.Designer.cs">
+      <DependentUpon>Form1Result.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1_Liao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1_Liao.Designer.cs">
+      <DependentUpon>Form1_Liao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2Print.Designer.cs">
+      <DependentUpon>Form2Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3Print.Designer.cs">
+      <DependentUpon>Form3Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form4Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4Print.Designer.cs">
+      <DependentUpon>Form4Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form5Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5Print.Designer.cs">
+      <DependentUpon>Form5Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form6.Designer.cs">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form7.designer.cs">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form9.Designer.cs">
+      <DependentUpon>Form9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form9Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form9Print.Designer.cs">
+      <DependentUpon>Form9Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form9Print_LangFang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form9Print_LangFang.Designer.cs">
+      <DependentUpon>Form9Print_LangFang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form9Print_Liao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form9Print_Liao.Designer.cs">
+      <DependentUpon>Form9Print_Liao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form9_LangFang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form9_LangFang.Designer.cs">
+      <DependentUpon>Form9_LangFang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form9_Liao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form9_Liao.Designer.cs">
+      <DependentUpon>Form9_Liao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form9_TouZiGuSuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form9_TouZiGuSuan.Designer.cs">
+      <DependentUpon>Form9_TouZiGuSuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddInfo_LangFang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddInfo_LangFang.Designer.cs">
+      <DependentUpon>FormAddInfo_LangFang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddInfo_TouZiGuSuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddInfo_TouZiGuSuan.Designer.cs">
+      <DependentUpon>FormAddInfo_TouZiGuSuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddInfo_TouZiGuSuan2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddInfo_TouZiGuSuan2.Designer.cs">
+      <DependentUpon>FormAddInfo_TouZiGuSuan2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdd_LangFang_Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdd_LangFang_Info.Designer.cs">
+      <DependentUpon>FormAdd_LangFang_Info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClass.cs" />
+    <Compile Include="FormElectricPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormElectricPrint.Designer.cs">
+      <DependentUpon>FormElectricPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastReport_BigUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewMonth.Designer.cs">
+      <DependentUpon>FormNewMonth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewProjectYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewProjectYear.Designer.cs">
+      <DependentUpon>FormNewProjectYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewType.Designer.cs">
+      <DependentUpon>FormNewType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewType2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewType2.Designer.cs">
+      <DependentUpon>FormNewType2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewType3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewType3.Designer.cs">
+      <DependentUpon>FormNewType3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewType4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewType4.Designer.cs">
+      <DependentUpon>FormNewType4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewType4_LangFang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewType4_LangFang.Designer.cs">
+      <DependentUpon>FormNewType4_LangFang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewYear.Designer.cs">
+      <DependentUpon>FormNewYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewYear1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewYear1.Designer.cs">
+      <DependentUpon>FormNewYear1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNewYear2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewYear2.Designer.cs">
+      <DependentUpon>FormNewYear2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPlanTable_BigUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPlanTable_BigUser.designer.cs">
+      <DependentUpon>FormPlanTable_BigUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPlanTable_HuanBei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPlanTable_HuanBei.designer.cs">
+      <DependentUpon>FormPlanTable_HuanBei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTitleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTitleEdit.Designer.cs">
+      <DependentUpon>FormTitleEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTypeTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTypeTitle.Designer.cs">
+      <DependentUpon>FormTypeTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTypeTitle1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTypeTitle1.Designer.cs">
+      <DependentUpon>FormTypeTitle1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTypeTitleRemark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTypeTitleRemark.Designer.cs">
+      <DependentUpon>FormTypeTitleRemark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ElectricData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ElectricData.Designer.cs">
+      <DependentUpon>Form_ElectricData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBDZAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBDZAdd.Designer.cs">
+      <DependentUpon>FrmBDZAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBigUserCurrentMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBigUserCurrentMonth.Designer.cs">
+      <DependentUpon>FrmBigUserCurrentMonth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBigUserCurrentMonthPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBigUserCurrentMonthPrint.Designer.cs">
+      <DependentUpon>FrmBigUserCurrentMonthPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBigUserMonthAnalysePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBigUserMonthAnalysePrint.Designer.cs">
+      <DependentUpon>FrmBigUserMonthAnalysePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBigUserPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBigUserPrint.Designer.cs">
+      <DependentUpon>FrmBigUserPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenLine.Designer.cs">
+      <DependentUpon>FrmBurdenLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenLineDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenLineDialog.Designer.cs">
+      <DependentUpon>FrmBurdenLineDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenLineForecast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenLineForecast.Designer.cs">
+      <DependentUpon>FrmBurdenLineForecast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenLineForecastDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenLineForecastDialog.Designer.cs">
+      <DependentUpon>FrmBurdenLineForecastDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenLineForecastType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenLineForecastType.Designer.cs">
+      <DependentUpon>FrmBurdenLineForecastType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenLineMaxDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenLineMaxDate.Designer.cs">
+      <DependentUpon>FrmBurdenLineMaxDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenLineType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenLineType.Designer.cs">
+      <DependentUpon>FrmBurdenLineType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenMaxYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenMaxYear.Designer.cs">
+      <DependentUpon>FrmBurdenMaxYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenMaxYear1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenMaxYear1.Designer.cs">
+      <DependentUpon>FrmBurdenMaxYear1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenMonth.Designer.cs">
+      <DependentUpon>FrmBurdenMonth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBurdenMonthDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBurdenMonthDialog.Designer.cs">
+      <DependentUpon>FrmBurdenMonthDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChooseYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChooseYears.Designer.cs">
+      <DependentUpon>FrmChooseYears.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEachListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEachListDialog.Designer.cs">
+      <DependentUpon>FrmEachListDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditProject.Designer.cs">
+      <DependentUpon>FrmEditProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditProject1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditProject1.Designer.cs">
+      <DependentUpon>FrmEditProject1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditProject2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditProject2.Designer.cs">
+      <DependentUpon>FrmEditProject2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditProject3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditProject3.Designer.cs">
+      <DependentUpon>FrmEditProject3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditProject4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditProject4.Designer.cs">
+      <DependentUpon>FrmEditProject4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditProject5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditProject5.Designer.cs">
+      <DependentUpon>FrmEditProject5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditProject_LangFang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditProject_LangFang.Designer.cs">
+      <DependentUpon>FrmEditProject_LangFang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditStuff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditStuff.Designer.cs">
+      <DependentUpon>FrmEditStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmExpressCalNewTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmExpressCalNewTitle.Designer.cs">
+      <DependentUpon>FrmExpressCalNewTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFQ.Designer.cs">
+      <DependentUpon>FrmFQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFX.Designer.cs">
+      <DependentUpon>FrmFX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayoutLineInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayoutLineInfo.Designer.cs">
+      <DependentUpon>FrmLayoutLineInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayoutListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayoutListDialog.Designer.cs">
+      <DependentUpon>FrmLayoutListDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayoutSubstationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayoutSubstationInfo.Designer.cs">
+      <DependentUpon>FrmLayoutSubstationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLineInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLineInfo.Designer.cs">
+      <DependentUpon>FrmLineInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLineInfo_beizhu1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLineInfo_beizhu1.Designer.cs">
+      <DependentUpon>FrmLineInfo_beizhu1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLineInfo_beizhu2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLineInfo_beizhu2.Designer.cs">
+      <DependentUpon>FrmLineInfo_beizhu2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLineInfo_beizhu3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLineInfo_beizhu3.Designer.cs">
+      <DependentUpon>FrmLineInfo_beizhu3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLine_InfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLine_InfoDialog.Designer.cs">
+      <DependentUpon>FrmLine_InfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLine_InfoDialog_beizhu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLine_InfoDialog_beizhu.Designer.cs">
+      <DependentUpon>FrmLine_InfoDialog_beizhu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewClass.Designer.cs">
+      <DependentUpon>FrmNewClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewClass_beizhu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewClass_beizhu.Designer.cs">
+      <DependentUpon>FrmNewClass_beizhu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPicTypeSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPicTypeSelect.Designer.cs">
+      <DependentUpon>FrmPicTypeSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPlanTableInfo_HuanBei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPlanTableInfo_HuanBei.Designer.cs">
+      <DependentUpon>FrmPlanTableInfo_HuanBei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPlanTable_AddBands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPlanTable_AddBands.Designer.cs">
+      <DependentUpon>FrmPlanTable_AddBands.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerEachListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerEachListDialog.Designer.cs">
+      <DependentUpon>FrmPowerEachListDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerEachListDialog2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerEachListDialog2.Designer.cs">
+      <DependentUpon>FrmPowerEachListDialog2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerEachTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerEachTotal.Designer.cs">
+      <DependentUpon>FrmPowerEachTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerEachTotalDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerEachTotalDialog.Designer.cs">
+      <DependentUpon>FrmPowerEachTotalDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerEachTotalListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerEachTotalListDialog.Designer.cs">
+      <DependentUpon>FrmPowerEachTotalListDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerLine.Designer.cs">
+      <DependentUpon>FrmPowerLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerLineDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerLineDialog.Designer.cs">
+      <DependentUpon>FrmPowerLineDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerProject.Designer.cs">
+      <DependentUpon>FrmPowerProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerProjectDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerProjectDialog.Designer.cs">
+      <DependentUpon>FrmPowerProjectDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerProjectListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerProjectListDialog.Designer.cs">
+      <DependentUpon>FrmPowerProjectListDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerStuff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerStuff.Designer.cs">
+      <DependentUpon>FrmPowerStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerStuffDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerStuffDialog.Designer.cs">
+      <DependentUpon>FrmPowerStuffDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerStuffListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerStuffListDialog.Designer.cs">
+      <DependentUpon>FrmPowerStuffListDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerSubstationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerSubstationInfo.Designer.cs">
+      <DependentUpon>FrmPowerSubstationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPower_AddBands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPower_AddBands.Designer.cs">
+      <DependentUpon>FrmPower_AddBands.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProject_Sum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProject_Sum.Designer.cs">
+      <DependentUpon>FrmProject_Sum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProject_SumDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProject_SumDialog.Designer.cs">
+      <DependentUpon>FrmProject_SumDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_PlanTable_HuaiBeiDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_PlanTable_HuaiBeiDialog.Designer.cs">
+      <DependentUpon>FrmPSP_PlanTable_HuaiBeiDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_PowerSubstationInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_PowerSubstationInfoDialog.Designer.cs">
+      <DependentUpon>FrmPSP_PowerSubstationInfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_Project_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_Project_List.Designer.cs">
+      <DependentUpon>FrmPSP_Project_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_Project_ListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_Project_ListDialog.Designer.cs">
+      <DependentUpon>FrmPSP_Project_ListDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_Project_ListPrint_TouZiGuSuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_Project_ListPrint_TouZiGuSuan.Designer.cs">
+      <DependentUpon>FrmPSP_Project_ListPrint_TouZiGuSuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPs_PowerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPs_PowerDialog.Designer.cs">
+      <DependentUpon>FrmPs_PowerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPs_Substation_AsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPs_Substation_AsDialog.Designer.cs">
+      <DependentUpon>FrmPs_Substation_AsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frmstuffview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmstuffview.Designer.cs">
+      <DependentUpon>Frmstuffview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubstationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSubstationInfo.Designer.cs">
+      <DependentUpon>FrmSubstationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubstationInfo_Biao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSubstationInfo_Biao.Designer.cs">
+      <DependentUpon>FrmSubstationInfo_Biao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubstationInfo_LangFang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSubstationInfo_LangFang.Designer.cs">
+      <DependentUpon>FrmSubstationInfo_LangFang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubstation_As.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSubstation_As.Designer.cs">
+      <DependentUpon>FrmSubstation_As.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubstation_InfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSubstation_InfoDialog.Designer.cs">
+      <DependentUpon>FrmSubstation_InfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubstation_InfoDialog_TongLing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSubstation_InfoDialog_TongLing.Designer.cs">
+      <DependentUpon>FrmSubstation_InfoDialog_TongLing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubstation_Info_LangFangDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSubstation_Info_LangFangDialog.Designer.cs">
+      <DependentUpon>FrmSubstation_Info_LangFangDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubstation_Line.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSubstation_Line.Designer.cs">
+      <DependentUpon>FrmSubstation_Line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Power.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Power.Designer.cs">
+      <DependentUpon>Frm_Power.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPower.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPower.Designer.cs">
+      <DependentUpon>CtrlPower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPSP_PowerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPSP_PowerDialog.Designer.cs">
+      <DependentUpon>FrmPSP_PowerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPower.Designer.cs">
+      <DependentUpon>FrmPower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPicTreeSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPicTreeSelect.Designer.cs">
+      <DependentUpon>FrmPicTreeSelect.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ChooseYears.resx">
+      <DependentUpon>ChooseYears.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlBurdenLine.resx">
+      <DependentUpon>CtrlBurdenLine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlBurdenLineForecast.resx">
+      <DependentUpon>CtrlBurdenLineForecast.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlBurdenMonth.resx">
+      <DependentUpon>CtrlBurdenMonth.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlItemPlanTable_HuaiBei.resx">
+      <DependentUpon>CtrlItemPlanTable_HuaiBei.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlLayoutList.resx">
+      <DependentUpon>CtrlLayoutList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlLine_beizhu.resx">
+      <DependentUpon>CtrlLine_beizhu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlLine_Info.resx">
+      <DependentUpon>CtrlLine_Info.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerEachList.resx">
+      <DependentUpon>CtrlPowerEachList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerEachList1.resx">
+      <DependentUpon>CtrlPowerEachList1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerEachList2.resx">
+      <DependentUpon>CtrlPowerEachList2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerEachTotal.resx">
+      <DependentUpon>CtrlPowerEachTotal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerEachTotalList.resx">
+      <DependentUpon>CtrlPowerEachTotalList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerLine.resx">
+      <DependentUpon>CtrlPowerLine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerProject.resx">
+      <DependentUpon>CtrlPowerProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerProjectList.resx">
+      <DependentUpon>CtrlPowerProjectList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerProTypes.resx">
+      <DependentUpon>CtrlPowerProTypes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerStuff.resx">
+      <DependentUpon>CtrlPowerStuff.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerStuffList.resx">
+      <DependentUpon>CtrlPowerStuffList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPowerSubstation.resx">
+      <DependentUpon>CtrlPowerSubstation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlProject_Sum.resx">
+      <DependentUpon>CtrlProject_Sum.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPSP_EachList.resx">
+      <DependentUpon>CtrlPSP_EachList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPSP_Project_List.resx">
+      <DependentUpon>CtrlPSP_Project_List.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPs_Substation_As.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CtrlPs_Substation_As.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlSubstation_Info.resx">
+      <DependentUpon>CtrlSubstation_Info.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlSubstation_Info_LangFang.resx">
+      <DependentUpon>CtrlSubstation_Info_LangFang.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlSubstation_Info_TongLing.resx">
+      <DependentUpon>CtrlSubstation_Info_TongLing.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form10.resx">
+      <DependentUpon>Form10.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form10Print.resx">
+      <DependentUpon>Form10Print.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1Print.resx">
+      <DependentUpon>Form1Print.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1Print_Liao.resx">
+      <DependentUpon>Form1Print_Liao.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1Result.resx">
+      <DependentUpon>Form1Result.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1_Liao.resx">
+      <DependentUpon>Form1_Liao.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2Print.resx">
+      <DependentUpon>Form2Print.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3Print.resx">
+      <DependentUpon>Form3Print.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form4Print.resx">
+      <DependentUpon>Form4Print.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form5Print.resx">
+      <DependentUpon>Form5Print.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form6.resx">
+      <DependentUpon>Form6.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form7.resx">
+      <DependentUpon>Form7.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form9.resx">
+      <DependentUpon>Form9.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form9Print.resx">
+      <DependentUpon>Form9Print.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form9Print_LangFang.resx">
+      <DependentUpon>Form9Print_LangFang.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form9Print_Liao.resx">
+      <DependentUpon>Form9Print_Liao.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form9_LangFang.resx">
+      <DependentUpon>Form9_LangFang.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form9_Liao.resx">
+      <DependentUpon>Form9_Liao.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form9_TouZiGuSuan.resx">
+      <DependentUpon>Form9_TouZiGuSuan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddInfo_LangFang.resx">
+      <DependentUpon>FormAddInfo_LangFang.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddInfo_TouZiGuSuan.resx">
+      <DependentUpon>FormAddInfo_TouZiGuSuan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddInfo_TouZiGuSuan2.resx">
+      <DependentUpon>FormAddInfo_TouZiGuSuan2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdd_LangFang_Info.resx">
+      <DependentUpon>FormAdd_LangFang_Info.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormElectricPrint.resx">
+      <DependentUpon>FormElectricPrint.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastReport.resx">
+      <DependentUpon>FormForecastReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastReport_BigUser.resx">
+      <DependentUpon>FormForecastReport_BigUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewMonth.resx">
+      <DependentUpon>FormNewMonth.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewProjectYear.resx">
+      <DependentUpon>FormNewProjectYear.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewType.resx">
+      <DependentUpon>FormNewType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewType2.resx">
+      <DependentUpon>FormNewType2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewType3.resx">
+      <DependentUpon>FormNewType3.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewType4.resx">
+      <DependentUpon>FormNewType4.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewType4_LangFang.resx">
+      <DependentUpon>FormNewType4_LangFang.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewYear.resx">
+      <DependentUpon>FormNewYear.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewYear1.resx">
+      <DependentUpon>FormNewYear1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewYear2.resx">
+      <DependentUpon>FormNewYear2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPlanTable_BigUser.resx">
+      <DependentUpon>FormPlanTable_BigUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPlanTable_HuanBei.resx">
+      <DependentUpon>FormPlanTable_HuanBei.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTitleEdit.resx">
+      <DependentUpon>FormTitleEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTypeTitle.resx">
+      <DependentUpon>FormTypeTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTypeTitle1.resx">
+      <DependentUpon>FormTypeTitle1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTypeTitleRemark.resx">
+      <DependentUpon>FormTypeTitleRemark.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ElectricData.resx">
+      <DependentUpon>Form_ElectricData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBDZAdd.resx">
+      <DependentUpon>FrmBDZAdd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBigUserCurrentMonth.resx">
+      <DependentUpon>FrmBigUserCurrentMonth.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBigUserCurrentMonthPrint.resx">
+      <DependentUpon>FrmBigUserCurrentMonthPrint.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBigUserMonthAnalysePrint.resx">
+      <DependentUpon>FrmBigUserMonthAnalysePrint.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBigUserPrint.resx">
+      <DependentUpon>FrmBigUserPrint.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenLine.resx">
+      <DependentUpon>FrmBurdenLine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenLineDialog.resx">
+      <DependentUpon>FrmBurdenLineDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenLineForecast.resx">
+      <DependentUpon>FrmBurdenLineForecast.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenLineForecastDialog.resx">
+      <DependentUpon>FrmBurdenLineForecastDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenLineForecastType.resx">
+      <DependentUpon>FrmBurdenLineForecastType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenLineMaxDate.resx">
+      <DependentUpon>FrmBurdenLineMaxDate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenLineType.resx">
+      <DependentUpon>FrmBurdenLineType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenMaxYear.resx">
+      <DependentUpon>FrmBurdenMaxYear.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenMaxYear1.resx">
+      <DependentUpon>FrmBurdenMaxYear1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenMonth.resx">
+      <DependentUpon>FrmBurdenMonth.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBurdenMonthDialog.resx">
+      <DependentUpon>FrmBurdenMonthDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChooseYears.resx">
+      <DependentUpon>FrmChooseYears.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEachListDialog.resx">
+      <DependentUpon>FrmEachListDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditProject.resx">
+      <DependentUpon>FrmEditProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditProject1.resx">
+      <DependentUpon>FrmEditProject1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditProject2.resx">
+      <DependentUpon>FrmEditProject2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditProject3.resx">
+      <DependentUpon>FrmEditProject3.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditProject4.resx">
+      <DependentUpon>FrmEditProject4.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditProject5.resx">
+      <DependentUpon>FrmEditProject5.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditProject_LangFang.resx">
+      <DependentUpon>FrmEditProject_LangFang.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditStuff.resx">
+      <DependentUpon>FrmEditStuff.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmExpressCalNewTitle.resx">
+      <DependentUpon>FrmExpressCalNewTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFQ.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmFQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFX.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmFX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayoutLineInfo.resx">
+      <DependentUpon>FrmLayoutLineInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayoutListDialog.resx">
+      <DependentUpon>FrmLayoutListDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayoutSubstationInfo.resx">
+      <DependentUpon>FrmLayoutSubstationInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLineInfo.resx">
+      <DependentUpon>FrmLineInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLineInfo_beizhu1.resx">
+      <DependentUpon>FrmLineInfo_beizhu1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLineInfo_beizhu2.resx">
+      <DependentUpon>FrmLineInfo_beizhu2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLineInfo_beizhu3.resx">
+      <DependentUpon>FrmLineInfo_beizhu3.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLine_InfoDialog.resx">
+      <DependentUpon>FrmLine_InfoDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLine_InfoDialog_beizhu.resx">
+      <DependentUpon>FrmLine_InfoDialog_beizhu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewClass.resx">
+      <DependentUpon>FrmNewClass.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewClass_beizhu.resx">
+      <DependentUpon>FrmNewClass_beizhu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPicTypeSelect.resx">
+      <DependentUpon>FrmPicTypeSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPlanTableInfo_HuanBei.resx">
+      <DependentUpon>FrmPlanTableInfo_HuanBei.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPlanTable_AddBands.resx">
+      <DependentUpon>FrmPlanTable_AddBands.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerEachListDialog.resx">
+      <DependentUpon>FrmPowerEachListDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerEachListDialog2.resx">
+      <DependentUpon>FrmPowerEachListDialog2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerEachTotal.resx">
+      <DependentUpon>FrmPowerEachTotal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerEachTotalDialog.resx">
+      <DependentUpon>FrmPowerEachTotalDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerEachTotalListDialog.resx">
+      <DependentUpon>FrmPowerEachTotalListDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerLine.resx">
+      <DependentUpon>FrmPowerLine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerLineDialog.resx">
+      <DependentUpon>FrmPowerLineDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerProject.resx">
+      <DependentUpon>FrmPowerProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerProjectDialog.resx">
+      <DependentUpon>FrmPowerProjectDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerProjectListDialog.resx">
+      <DependentUpon>FrmPowerProjectListDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerStuff.resx">
+      <DependentUpon>FrmPowerStuff.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerStuffDialog.resx">
+      <DependentUpon>FrmPowerStuffDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerStuffListDialog.resx">
+      <DependentUpon>FrmPowerStuffListDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerSubstationInfo.resx">
+      <DependentUpon>FrmPowerSubstationInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPower_AddBands.resx">
+      <DependentUpon>FrmPower_AddBands.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProject_Sum.resx">
+      <DependentUpon>FrmProject_Sum.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProject_SumDialog.resx">
+      <DependentUpon>FrmProject_SumDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_PlanTable_HuaiBeiDialog.resx">
+      <DependentUpon>FrmPSP_PlanTable_HuaiBeiDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_PowerSubstationInfoDialog.resx">
+      <DependentUpon>FrmPSP_PowerSubstationInfoDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_Project_List.resx">
+      <DependentUpon>FrmPSP_Project_List.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_Project_ListDialog.resx">
+      <DependentUpon>FrmPSP_Project_ListDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_Project_ListPrint_TouZiGuSuan.resx">
+      <DependentUpon>FrmPSP_Project_ListPrint_TouZiGuSuan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPs_PowerDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmPs_PowerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPs_Substation_AsDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmPs_Substation_AsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmstuffview.resx">
+      <DependentUpon>Frmstuffview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSubstationInfo.resx">
+      <DependentUpon>FrmSubstationInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSubstationInfo_Biao.resx">
+      <DependentUpon>FrmSubstationInfo_Biao.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSubstationInfo_LangFang.resx">
+      <DependentUpon>FrmSubstationInfo_LangFang.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSubstation_As.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSubstation_As.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSubstation_InfoDialog.resx">
+      <DependentUpon>FrmSubstation_InfoDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSubstation_InfoDialog_TongLing.resx">
+      <DependentUpon>FrmSubstation_InfoDialog_TongLing.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSubstation_Info_LangFangDialog.resx">
+      <DependentUpon>FrmSubstation_Info_LangFangDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSubstation_Line.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSubstation_Line.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Power.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Frm_Power.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPower.resx">
+      <DependentUpon>CtrlPower.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPSP_PowerDialog.resx">
+      <DependentUpon>FrmPSP_PowerDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPower.resx">
+      <DependentUpon>FrmPower.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPicTreeSelect.resx">
+      <DependentUpon>FrmPicTreeSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itop.Client.Chen\Itop.Client.Chen.csproj">
+      <Project>{D3B9A125-1621-410E-92BC-69DF3A3B91C5}</Project>
+      <Name>Itop.Client.Chen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Client.ExpressCalculate\Itop.Client.ExpressCalculate.csproj">
+      <Project>{3850C013-73AA-4C2A-8C2C-16D75DB6494F}</Project>
+      <Name>Itop.Client.ExpressCalculate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Client.Report\Itop.Client.Report.csproj">
+      <Project>{6454A15F-AE53-49DB-B429-2703D01FAB6A}</Project>
+      <Name>Itop.Client.Report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.BaseData\Itop.Domain.BaseData.csproj">
+      <Project>{13F135BE-773E-49A1-94D8-0E99FCCF92DE}</Project>
+      <Name>Itop.Domain.BaseData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Chen\Itop.Domain.Chen.csproj">
+      <Project>{47ADAEF0-17F1-4E68-B1C2-2B690C6CA920}</Project>
+      <Name>Itop.Domain.Chen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.ExpressCalculate\Itop.Domain.ExpressCalculate.csproj">
+      <Project>{69DDF42A-8C51-4DBB-9998-EDDF382CF0DD}</Project>
+      <Name>Itop.Domain.ExpressCalculate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Stutistics\Itop.Domain.Stutistics.csproj">
+      <Project>{FBDFCD20-106B-424D-8988-729C9D228A99}</Project>
+      <Name>Itop.Domain.Stutistics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\恢复.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

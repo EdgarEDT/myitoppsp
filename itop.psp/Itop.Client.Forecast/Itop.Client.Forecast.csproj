@@ -1,0 +1,692 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{10DB99AD-605C-4D45-8611-159245BDF1EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Client.Forecast</RootNamespace>
+    <AssemblyName>Itop.Client.Forecast</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Tutorials.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Tutorials.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DundasWinChart, Version=5.5.0.1697, Culture=neutral, PublicKeyToken=a4c03dce5db22406, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="FarPoint.Excel, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="IBatisNet.Common, Version=1.4.1.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.5.1.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.History, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Using, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Server.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FileClass.cs" />
+    <Compile Include="ForecastCalculator.cs" />
+    <Compile Include="ForecastClass.cs" />
+    <Compile Include="ForecastClass1.cs" />
+    <Compile Include="ForecastFileClass.cs" />
+    <Compile Include="ForecastList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastList.Designer.cs">
+      <DependentUpon>ForecastList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForecastList2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastList2.Designer.cs">
+      <DependentUpon>ForecastList2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormArgumentSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArgumentSet.Designer.cs">
+      <DependentUpon>FormArgumentSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormAverageGrowthRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormAverageGrowthRate.designer.cs">
+      <DependentUpon>FormAverageGrowthRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormCoefficientOfElasticity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormCoefficientOfElasticity.designer.cs">
+      <DependentUpon>FormCoefficientOfElasticity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormCorrelationMethod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormCorrelationMethod.designer.cs">
+      <DependentUpon>FormCorrelationMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExpert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExpert.designer.cs">
+      <DependentUpon>FormExpert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExponentialSmoothing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExponentialSmoothing.designer.cs">
+      <DependentUpon>FormExponentialSmoothing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExtrapolationMethod .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExtrapolationMethod .designer.cs">
+      <DependentUpon>FormExtrapolationMethod .cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDyhptl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDyhptl.Designer.cs">
+      <DependentUpon>FormDyhptl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast11.designer.cs">
+      <DependentUpon>FormForecast11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast11_hc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast11_hc.Designer.cs">
+      <DependentUpon>FormForecast11_hc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastCalc1Third.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastCalc1Third.Designer.cs">
+      <DependentUpon>FormForecastCalc1Third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastCalc9Third.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastCalc9Third.Designer.cs">
+      <DependentUpon>FormForecastCalc9Third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastWDXS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastWDXS.Designer.cs">
+      <DependentUpon>FormForecastWDXS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormGrayModel .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormGrayModel .designer.cs">
+      <DependentUpon>FormGrayModel .cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResult.Designer.cs">
+      <DependentUpon>FormResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastEdit.Designer.cs">
+      <DependentUpon>FormForecastEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastJG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastJG.Designer.cs">
+      <DependentUpon>FormForecastJG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormXuanZhe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormXuanZhe.Designer.cs">
+      <DependentUpon>FormXuanZhe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast1.designer.cs">
+      <DependentUpon>FormForecast1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastCalc1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastCalc1.Designer.cs">
+      <DependentUpon>FormForecastCalc1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastLoadData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastLoadData.Designer.cs">
+      <DependentUpon>FormForecastLoadData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast.designer.cs">
+      <DependentUpon>FormForecast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast7.Designer.cs">
+      <DependentUpon>FormForecast7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoadForecastData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoadForecastData.Designer.cs">
+      <DependentUpon>FormLoadForecastData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTypeTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTypeTitle.Designer.cs">
+      <DependentUpon>FormTypeTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBaseColorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBaseColorDialog.Designer.cs">
+      <DependentUpon>FrmBaseColorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainDelete.Designer.cs">
+      <DependentUpon>frmMainDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridTreePrint.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormForecast2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast2.designer.cs">
+      <DependentUpon>FormForecast2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast6.designer.cs">
+      <DependentUpon>FormForecast6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast5.designer.cs">
+      <DependentUpon>FormForecast5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastCalc4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastCalc4.Designer.cs">
+      <DependentUpon>FormForecastCalc4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast4.designer.cs">
+      <DependentUpon>FormForecast4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast3.designer.cs">
+      <DependentUpon>FormForecast3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast9.designer.cs">
+      <DependentUpon>FormForecast9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastCalc9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastCalc9.Designer.cs">
+      <DependentUpon>FormForecastCalc9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast10.designer.cs">
+      <DependentUpon>FormForecast10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastCalc10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastCalc10.Designer.cs">
+      <DependentUpon>FormForecastCalc10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastMaxOrBad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastMaxOrBad.Designer.cs">
+      <DependentUpon>FormForecastMaxOrBad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTypeTitleSort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTypeTitleSort.Designer.cs">
+      <DependentUpon>FormTypeTitleSort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast71.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast71.Designer.cs">
+      <DependentUpon>FormForecast71.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForecastListC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastListC.Designer.cs">
+      <DependentUpon>ForecastListC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastEditC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastEditC.Designer.cs">
+      <DependentUpon>FormForecastEditC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastC.designer.cs">
+      <DependentUpon>FormForecastC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForecastListAHTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastListAHTL.Designer.cs">
+      <DependentUpon>ForecastListAHTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastAHTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastAHTL.designer.cs">
+      <DependentUpon>FormForecastAHTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PublicFunction.cs" />
+    <Compile Include="FormForecastMaxOrBad_new.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastMaxOrBad_new.Designer.cs">
+      <DependentUpon>FormForecastMaxOrBad_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormArgumentSetNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArgumentSetNew.Designer.cs">
+      <DependentUpon>FormArgumentSetNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastCalcTX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastCalcTX.Designer.cs">
+      <DependentUpon>FormForecastCalcTX.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ForecastList.resx">
+      <DependentUpon>ForecastList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForecastList2.resx">
+      <DependentUpon>ForecastList2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArgumentSet.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormArgumentSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormAverageGrowthRate.resx">
+      <DependentUpon>FormAverageGrowthRate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormCoefficientOfElasticity.resx">
+      <DependentUpon>FormCoefficientOfElasticity.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormCorrelationMethod.resx">
+      <DependentUpon>FormCorrelationMethod.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormExpert.resx">
+      <DependentUpon>FormExpert.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormExponentialSmoothing.resx">
+      <DependentUpon>FormExponentialSmoothing.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormExtrapolationMethod .resx">
+      <DependentUpon>FormExtrapolationMethod .cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDyhptl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormDyhptl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast11.resx">
+      <DependentUpon>FormForecast11.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast11_hc.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormForecast11_hc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastCalc1Third.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormForecastCalc1Third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastCalc9Third.resx">
+      <DependentUpon>FormForecastCalc9Third.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastWDXS.resx">
+      <DependentUpon>FormForecastWDXS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormGrayModel .resx">
+      <DependentUpon>FormGrayModel .cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResult.resx">
+      <DependentUpon>FormResult.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormForecastEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastJG.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormForecastJG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormXuanZhe.resx">
+      <DependentUpon>FormXuanZhe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast1.resx">
+      <DependentUpon>FormForecast1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastCalc1.resx">
+      <DependentUpon>FormForecastCalc1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastLoadData.resx">
+      <DependentUpon>FormForecastLoadData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast.resx">
+      <DependentUpon>FormForecast.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastReport.resx">
+      <DependentUpon>FormForecastReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast7.resx">
+      <DependentUpon>FormForecast7.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoadForecastData.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormLoadForecastData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTypeTitle.resx">
+      <DependentUpon>FormTypeTitle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBaseColorDialog.resx">
+      <DependentUpon>FrmBaseColorDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainDelete.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMainDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="FormForecast2.resx">
+      <DependentUpon>FormForecast2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast6.resx">
+      <DependentUpon>FormForecast6.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast5.resx">
+      <DependentUpon>FormForecast5.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastCalc4.resx">
+      <DependentUpon>FormForecastCalc4.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast4.resx">
+      <DependentUpon>FormForecast4.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast3.resx">
+      <DependentUpon>FormForecast3.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast9.resx">
+      <DependentUpon>FormForecast9.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastCalc9.resx">
+      <DependentUpon>FormForecastCalc9.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast10.resx">
+      <DependentUpon>FormForecast10.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastCalc10.resx">
+      <DependentUpon>FormForecastCalc10.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastMaxOrBad.resx">
+      <DependentUpon>FormForecastMaxOrBad.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTypeTitleSort.resx">
+      <DependentUpon>FormTypeTitleSort.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast71.resx">
+      <DependentUpon>FormForecast71.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForecastListC.resx">
+      <DependentUpon>ForecastListC.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastEditC.resx">
+      <DependentUpon>FormForecastEditC.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastC.resx">
+      <DependentUpon>FormForecastC.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForecastListAHTL.resx">
+      <DependentUpon>ForecastListAHTL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastAHTL.resx">
+      <DependentUpon>FormForecastAHTL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastMaxOrBad_new.resx">
+      <DependentUpon>FormForecastMaxOrBad_new.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArgumentSetNew.resx">
+      <DependentUpon>FormArgumentSetNew.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastCalcTX.resx">
+      <DependentUpon>FormForecastCalcTX.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itop.Domain.Chen\Itop.Domain.Chen.csproj">
+      <Project>{47ADAEF0-17F1-4E68-B1C2-2B690C6CA920}</Project>
+      <Name>Itop.Domain.Chen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Forecast\Itop.Domain.Forecast.csproj">
+      <Project>{028877BB-F597-40C7-8E0C-2DADF4196778}</Project>
+      <Name>Itop.Domain.Forecast</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Table\Itop.Domain.Table.csproj">
+      <Project>{F575DDFF-4B24-4DDA-AE88-CB3B558C7C3E}</Project>
+      <Name>Itop.Domain.Table</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.ICON\Itop.ICON.csproj">
+      <Project>{D4165A76-37B8-45F3-9F78-5A3516562F8E}</Project>
+      <Name>Itop.ICON</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="系统流程图\TonliSystemPic\SystemPic.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\地理信息.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\基础数据.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\投资估算.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\报告编制.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\报表信息.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\电力平衡.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\电气计算.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\电网优化.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\电网评估.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\系统管理.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\规划项目.jpg" />
+    <Content Include="系统流程图\TonliSystemPic\负荷预测.jpg" />
+    <Content Include="系统流程图\说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="系统流程图\系统流程图.ppt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

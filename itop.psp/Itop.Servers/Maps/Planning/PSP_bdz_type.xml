@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_bdz_type' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_bdz_type' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_bdz_type' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_bdz_typeResult' class='PSP_bdz_type'>
+			<result property='id' column='id' />
+			<result property='Name' column='Name' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+      <result property='col2' column='col2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_bdz_type' parameterClass='PSP_bdz_type'>
+    INSERT INTO PSP_bdz_type		(
+    "id",
+    "Name",
+    "col1",
+    "col2",
+    "col3"
+    )
+    VALUES
+    (
+    #id#,
+    #Name#,
+    #col1#,
+    #col2#,
+    #col3#
+    )
+  </insert>
+	<delete id='DeletePSP_bdz_type' parameterClass='PSP_bdz_type'>
+		DELETE FROM PSP_bdz_type
+		WHERE
+			id = #id#
+	</delete>
+	<update id='UpdatePSP_bdz_type' parameterClass='PSP_bdz_type'>
+    UPDATE PSP_bdz_type
+    SET
+    "Name" = #Name#,
+    "col1" = #col1#,
+    "col2" = #col2#,
+    "col3" = #col3#
+    WHERE
+    id = #id#
+  </update>
+  <update id='UpdatePSP_bdz_typeNM' parameterClass='PSP_bdz_type'>
+    UPDATE PSP_bdz_type
+    SET
+    "Name" = #Name#
+    WHERE
+    id = #id#
+  </update>
+	<select id='SelectPSP_bdz_typeListbyCol1' resultMap='PSP_bdz_typeResult' parameterClass='PSP_bdz_type'>
+    SELECT
+    "id",
+    "Name",
+    "col1",
+    "col2",
+    "col3"
+    FROM PSP_bdz_type
+    WHERE
+    col1 = #col1# order by Name
+  </select>
+	<select id='SelectPSP_bdz_typeByKey' resultMap='PSP_bdz_typeResult' parameterClass='PSP_bdz_type'>
+    SELECT
+    id,
+    Name,
+    col1,
+    col2,
+    col3
+    FROM PSP_bdz_type
+    WHERE
+    id = #id#
+  </select>
+  <select id='SelectPSP_bdz_typeByWhere' resultMap='PSP_bdz_typeResult' parameterClass='PSP_bdz_type'>
+    SELECT
+    "id",
+    "Name",
+    "col1",
+    "col2",
+    "col3"
+    FROM PSP_bdz_type
+    WHERE
+    $col1$
+  </select>
+  
+</statements>
+</sqlMap>

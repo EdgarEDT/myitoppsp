@@ -1,0 +1,134 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_YearRange' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Ps_YearRange' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.Ps_YearRange' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Ps_YearRangeResult' class='Ps_YearRange'>
+      <result property='ID' column='ID' />
+      <result property='BeginYear' column='BeginYear' />
+      <result property='StartYear' column='StartYear' />
+      <result property='FinishYear' column='FinishYear' />
+      <result property='EndYear' column='EndYear' />
+      <result property='Col1' column='Col1' />
+      <result property='Col2' column='Col2' />
+      <result property='Col3' column='Col3' />
+      <result property='Col4' column='Col4' />
+      <result property='Col5' column='Col5' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPs_YearRange' parameterClass='Ps_YearRange'>
+      INSERT INTO Ps_YearRange		(
+      "ID",
+      "BeginYear",
+      "StartYear",
+      "FinishYear",
+      "EndYear",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      )
+      VALUES
+      (
+      #ID#,
+      #BeginYear#,
+      #StartYear#,
+      #FinishYear#,
+      #EndYear#,
+      #Col1#,
+      #Col2#,
+      #Col3#,
+      #Col4#,
+      #Col5#
+      )
+    </insert>
+    <delete id='DeletePs_YearRange' parameterClass='Ps_YearRange'>
+      DELETE FROM Ps_YearRange
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdatePs_YearRange' parameterClass='Ps_YearRange'>
+      UPDATE Ps_YearRange
+      SET
+      "BeginYear" = #BeginYear#,
+      "StartYear" = #StartYear#,
+      "FinishYear" = #FinishYear#,
+      "EndYear" = #EndYear#,
+      "Col1" = #Col1#,
+      "Col2" = #Col2#,
+      "Col3" = #Col3#,
+      "Col4" = #Col4#,
+      "Col5" = #Col5#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPs_YearRangeList' resultMap='Ps_YearRangeResult' parameterClass='Ps_YearRange'>
+      SELECT
+      "ID",
+      "BeginYear",
+      "StartYear",
+      "FinishYear",
+      "EndYear",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_YearRange
+    </select>
+    <select id='SelectPs_YearRangeByKey' resultMap='Ps_YearRangeResult' parameterClass='Ps_YearRange'>
+      SELECT
+      "ID",
+      "BeginYear",
+      "StartYear",
+      "FinishYear",
+      "EndYear",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_YearRange
+      WHERE
+      ID = #ID#
+    </select>
+
+    <select id='SelectPs_YearRangeByCol5andCol4' resultMap='Ps_YearRangeResult' parameterClass='Ps_YearRange'>
+      SELECT
+      "ID",
+      "BeginYear",
+      "StartYear",
+      "FinishYear",
+      "EndYear",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_YearRange
+      WHERE
+      Col4 = #Col4#
+      and
+      Col5 = #Col5#
+    </select>
+    <select id='SelectPs_YearRangeByCondition' resultMap='Ps_YearRangeResult' parameterClass='Ps_YearRange'>
+      SELECT
+      "ID",
+      "BeginYear",
+      "StartYear",
+      "FinishYear",
+      "EndYear",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_YearRange
+      WHERE
+      $value$
+    </select>
+  </statements>
+</sqlMap>

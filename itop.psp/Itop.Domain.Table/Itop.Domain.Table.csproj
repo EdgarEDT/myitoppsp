@@ -1,0 +1,85 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F575DDFF-4B24-4DDA-AE88-CB3B558C7C3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Domain.Table</RootNamespace>
+    <AssemblyName>Itop.Domain.Table</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Server\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Server\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ps_PowerBuild.cs" />
+    <Compile Include="Ps_Table_100PH.cs" />
+    <Compile Include="Ps_Table_110Result.cs" />
+    <Compile Include="Ps_Table_200PH.cs" />
+    <Compile Include="Ps_Table_220Resuslt.cs" />
+    <Compile Include="Ps_Table_35PH.cs" />
+    <Compile Include="Ps_Table_35Result.cs" />
+    <Compile Include="Ps_Table_500PH.cs" />
+    <Compile Include="Ps_Table_500Result.cs" />
+    <Compile Include="Ps_Table_AreaData.cs" />
+    <Compile Include="PS_Table_AreaWH.cs" />
+    <Compile Include="Ps_Table_BuildPro.cs" />
+    <Compile Include="Ps_Table_Edit.cs" />
+    <Compile Include="Ps_Table_ElecPH.cs" />
+    <Compile Include="Ps_Table_Enterprise.cs" />
+    <Compile Include="Ps_Table_GDP.cs" />
+    <Compile Include="Ps_Table_Report.cs" />
+    <Compile Include="Ps_Table_TZGS.cs" />
+    <Compile Include="Ps_Table_TZMX.cs" />
+    <Compile Include="Ps_Table_Yd.cs" />
+    <Compile Include="Ps_YearRange.cs" />
+    <Compile Include="Ps_Table_WG.cs" />
+    <Compile Include="PS_Table_Area_TYPE.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

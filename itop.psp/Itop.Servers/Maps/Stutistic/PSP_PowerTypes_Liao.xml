@@ -1,0 +1,432 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_PowerTypes_Liao' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_PowerTypes_Liao' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PSP_PowerTypes_Liao' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_PowerTypes_LiaoResult' class='PSP_PowerTypes_Liao'>
+      <result property='ID' column='ID' />
+      <result property='Title' column='Title' />
+      <result property='Flag' column='Flag' />
+      <result property='Flag2' column='Flag2' />
+      <result property='ParentID' column='ParentID' />
+      <result property='JianSheXingZhi' column='JianSheXingZhi' />
+      <result property='RongLiang' column='RongLiang' />
+      <result property='ChangDu' column='ChangDu' />
+      <result property='TouZiZongEr' column='TouZiZongEr' />
+      <result property='S1' column='S1' />
+      <result property='S2' column='S2' />
+      <result property='S3' column='S3' />
+      <result property='S4' column='S4' />
+      <result property='S5' column='S5' />
+      <result property='S6' column='S6' />
+      <result property='S7' column='S7' />
+      <result property='S8' column='S8' />
+      <result property='S9' column='S9' />
+      <result property='S10' column='S10' />
+      <result property='S11' column='S11' />
+      <result property='S12' column='S12' />
+      <result property='S13' column='S13' />
+      <result property='S14' column='S14' />
+      <result property='S15' column='S15' />
+      <result property='S16' column='S16' />
+      <result property='S17' column='S17' />
+      <result property='S18' column='S18' />
+      <result property='S19' column='S19' />
+      <result property='S20' column='S20' />
+      <result property='CreatTime' column='CreatTime' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_PowerTypes_Liao' parameterClass='PSP_PowerTypes_Liao'>
+      INSERT INTO PSP_PowerTypes_Liao		(
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID",
+      "JianSheXingZhi",
+      "RongLiang",
+      "ChangDu",
+      "TouZiZongEr",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "CreatTime"
+      )
+      VALUES
+      (
+      #Title#,
+      #Flag#,
+      #Flag2#,
+      #ParentID#,
+      #JianSheXingZhi#,
+      #RongLiang#,
+      #ChangDu#,
+      #TouZiZongEr#,
+      #S1#,
+      #S2#,
+      #S3#,
+      #S4#,
+      #S5#,
+      #S6#,
+      #S7#,
+      #S8#,
+      #S9#,
+      #S10#,
+      #S11#,
+      #S12#,
+      #S13#,
+      #S14#,
+      #S15#,
+      #S16#,
+      #S17#,
+      #S18#,
+      #S19#,
+      #S20#,
+      #CreatTime#
+      )
+
+      <selectKey property="ID" resultClass="int" type="post">
+      SELECT @@IDENTITY AS value
+    </selectKey>
+  </insert>
+    <delete id='DeletePSP_PowerTypes_Liao' parameterClass='PSP_PowerTypes_Liao'>
+      DELETE FROM PSP_PowerTypes_Liao
+      WHERE
+      ID = #ID#
+    </delete>
+
+    <update id='DeletePSP_PowerTypes_LiaoByTitleFlag2' parameterClass='PSP_PowerTypes_Liao'>
+      DELETE FROM PSP_PowerTypes_Liao
+      WHERE
+      Title = #Title# And Flag2 = #Flag2#
+    </update>
+    <update id='UpdatePSP_PowerTypes_LiaoByFlag2' parameterClass='hashtable'>
+      UPDATE PSP_PowerTypes_Liao
+      SET
+      $Title$  
+      WHERE
+      [ID] IN ( SELECT "ID"   FROM PSP_PowerTypes_Liao where  Flag2 = #Flag2#)
+
+
+
+
+    </update>
+    <update id='DeletePSP_PowerTypes_LiaoByFlag2' parameterClass='string'>
+
+      DELETE FROM psp_PowerValues
+      WHERE
+      TypeID IN ( SELECT "ID"   FROM PSP_PowerTypes_Liao where  Flag2 = #Flag2#)
+
+      DELETE FROM PSP_PowerTypes_Liao
+      WHERE
+      Flag2 = #Flag2#
+
+
+    </update>
+    <update id='UpdatePSP_PowerTypes_Liao' parameterClass='PSP_PowerTypes_Liao'>
+      UPDATE PSP_PowerTypes_Liao
+      SET
+      "Title" = #Title#,
+      "Flag" = #Flag#,
+      "Flag2" = #Flag2#,
+      "ParentID" = #ParentID#,
+      "JianSheXingZhi" = #JianSheXingZhi#,
+      "RongLiang" = #RongLiang#,
+      "ChangDu" = #ChangDu#,
+      "TouZiZongEr" = #TouZiZongEr#,
+      "S1" = #S1#,
+      "S2" = #S2#,
+      "S3" = #S3#,
+      "S4" = #S4#,
+      "S5" = #S5#,
+      "S6" = #S6#,
+      "S7" = #S7#,
+      "S8" = #S8#,
+      "S9" = #S9#,
+      "S10" = #S10#,
+      "S11" = #S11#,
+      "S12" = #S12#,
+      "S13" = #S13#,
+      "S14" = #S14#,
+      "S15" = #S15#,
+      "S16" = #S16#,
+      "S17" = #S17#,
+      "S18" = #S18#,
+      "S19" = #S19#,
+      "S20" = #S20#,
+      "CreatTime"= #CreatTime#
+      WHERE
+      ID = #ID#
+    </update>
+
+    <update id='UpdatePSP_PowerTypes_LiaoByIDflag' parameterClass='PSP_PowerTypes_Liao'>
+      If Exists(Select ID from PSP_PowerTypes_Liao Where  ID = #ID# And Flag2 = #Flag2#)
+      UPDATE PSP_PowerTypes_Liao
+      SET
+      "Title" = #Title#,
+      "Flag" = #Flag#,
+      "Flag2" = #Flag2#,
+      "ParentID" = #ParentID#,
+      "JianSheXingZhi" = #JianSheXingZhi#,
+      "RongLiang" = #RongLiang#,
+      "ChangDu" = #ChangDu#,
+      "TouZiZongEr" = #TouZiZongEr#,
+      "S1" = #S1#,
+      "S2" = #S2#,
+      "S3" = #S3#,
+      "S4" = #S4#,
+      "S5" = #S5#,
+      "S6" = #S6#,
+      "S7" = #S7#,
+      "S8" = #S8#,
+      "S9" = #S9#,
+      "S10" = #S10#,
+      "S11" = #S11#,
+      "S12" = #S12#,
+      "S13" = #S13#,
+      "S14" = #S14#,
+      "S15" = #S15#,
+      "S16" = #S16#,
+      "S17" = #S17#,
+      "S18" = #S18#,
+      "S19" = #S19#,
+      "S20" = #S20#,
+      "CreatTime"= #CreatTime#
+      WHERE
+      ID = #ID#
+      And
+      Flag2 = #Flag2#
+      Else
+
+      INSERT INTO PSP_PowerTypes_Liao		(
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID",
+      "JianSheXingZhi",
+      "RongLiang",
+      "ChangDu",
+      "TouZiZongEr",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "CreatTime"
+      )
+      VALUES
+      (
+      #Title#,
+      #Flag#,
+      #Flag2#,
+      #ParentID#,
+      #JianSheXingZhi#,
+      #RongLiang#,
+      #ChangDu#,
+      #TouZiZongEr#,
+      #S1#,
+      #S2#,
+      #S3#,
+      #S4#,
+      #S5#,
+      #S6#,
+      #S7#,
+      #S8#,
+      #S9#,
+      #S10#,
+      #S11#,
+      #S12#,
+      #S13#,
+      #S14#,
+      #S15#,
+      #S16#,
+      #S17#,
+      #S18#,
+      #S19#,
+      #S20#,
+      #CreatTime#
+      )
+
+
+    </update>
+    <select id='SelectPSP_PowerTypes_LiaoList' resultMap='PSP_PowerTypes_LiaoResult' parameterClass='PSP_PowerTypes_Liao'>
+      SELECT
+      "ID",
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID",
+      "JianSheXingZhi",
+      "RongLiang",
+      "ChangDu",
+      "TouZiZongEr",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "CreatTime"
+
+      FROM PSP_PowerTypes_Liao
+    </select>
+    <select id='SelectPSP_PowerTypes_LiaoByKey' resultMap='PSP_PowerTypes_LiaoResult' parameterClass='PSP_PowerTypes_Liao'>
+      SELECT
+      "ID",
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID",
+      "JianSheXingZhi",
+      "RongLiang",
+      "ChangDu",
+      "TouZiZongEr",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "CreatTime"
+      FROM PSP_PowerTypes_Liao
+      WHERE
+      ID = #ID#
+    </select>
+
+    <select id='SelectPSP_PowerTypes_LiaoByFlag2' resultMap='PSP_PowerTypes_LiaoResult' parameterClass='PSP_PowerTypes_Liao'>
+      SELECT
+      "ID",
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID",
+      "JianSheXingZhi",
+      "RongLiang",
+      "ChangDu",
+      "TouZiZongEr",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "CreatTime"
+      FROM PSP_PowerTypes_Liao
+      WHERE
+      Flag2 = #Flag2#
+      ORDER BY Flag,ID
+    </select>
+    <select id='SelectPSP_PowerTypes_LiaoByTitleFlag2' resultMap='PSP_PowerTypes_LiaoResult' parameterClass='PSP_PowerTypes_Liao'>
+      SELECT
+      "ID",
+      "Title",
+      "Flag",
+      "Flag2",
+      "ParentID",
+      "JianSheXingZhi",
+      "RongLiang",
+      "ChangDu",
+      "TouZiZongEr",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "CreatTime"
+      FROM PSP_PowerTypes_Liao
+      WHERE
+      Flag2 = #Flag2# and  Title = #Title#
+      ORDER BY Flag,ID
+    </select>
+  </statements>
+</sqlMap>

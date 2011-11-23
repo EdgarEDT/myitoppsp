@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='VsmdgroupProg' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='VsmdgroupProg' assembly='Itop.Domain.RightManager.dll' type='Itop.Domain.RightManager.VsmdgroupProg' />
+  </alias>
+  <resultMaps>
+    <resultMap id='VsmdgroupProgResult' class='VsmdgroupProg'>
+      <result property='Groupno' column='Groupno' />
+      <result property='Progid' column='Progid' />
+      <result property='ProgName' column='ProgName' />
+      <result property='run' column='run' />
+      <result property='ins' column='ins' />
+      <result property='upd' column='upd' />
+      <result property='del' column='del' />
+      <result property='qry' column='qry' />
+      <result property='pro' column='pro' />
+      <result property='prn' column='prn' />
+      <result property='exam' column='exam' />
+      <result property='send' column='send' />
+      <result property='pass' column='pass' />
+      <result property='Parentid' column='Parentid' />
+      <result property='Index' column='SeqNo' />
+      <result property='ProgModuleType' column='ProgModuleType' />
+      <result property='ProjectUID' column='ProjectUID' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertVsmdgroupProgByModuleType' parameterClass='VsmdgroupProg'>
+      INSERT INTO Smdgroup		(
+      "Groupno",
+      "Progid"
+      )
+      select #Groupno#,progid from smmprog
+    </insert>
+
+    <insert id='InsertVsmdgroupProg' parameterClass='VsmdgroupProg'>
+      INSERT INTO Smdgroup		(
+      "Groupno",
+      "Progid",
+      "ProjectUID","run","ins","upd","del","qry","pro","prn","exam","send","pass"
+      )
+      select #Groupno#,progid,#ProjectUID#,'0','0','0','0','0','0','0','0','0','0' from smmprog where ProgModuleType=#ProgModuleType#
+      and progid not in(select progid from smdgroup where projectuid=#ProjectUID# and groupno=#Groupno#)
+    </insert>
+    <!--插入数据-->
+    <!--插入值-->
+    <insert id='InsertVsmdgroupProgwithvalue' parameterClass='VsmdgroupProg'>
+      INSERT INTO Smdgroup		(
+      "Groupno",
+      "Progid",
+      "run",
+      "ins",
+      "upd",
+      "del",
+      "qry",
+      "pro",
+      "prn",
+      "filterstring",
+      "hiddencols",
+      "spec1",
+      "spec2",
+      "spec3",
+      "ProjectUID"
+      )
+      VALUES
+      (
+      #Groupno#,
+      #Progid#,
+      #run#,
+      #ins#,
+      #upd#,
+      #del#,
+      #qry#,
+      #pro#,
+      #prn#,
+      #filterstring#,
+      #hiddencols#,
+      #spec1#,
+      #spec2#,
+      #spec3#,
+      #ProjectUID#
+      )
+    </insert>
+
+    <delete id='DeleteVsmdgroupProg' parameterClass='VsmdgroupProg'>
+      DELETE FROM Smdgroup
+      WHERE
+      Groupno = #Groupno#
+      AND Progid = #Progid#
+    </delete>
+    <update id='UpdateVsmdgroupProg' parameterClass='VsmdgroupProg'>
+      UPDATE Smdgroup
+      SET
+      "run" = #run#,
+      "ins" = #ins#,
+      "upd" = #upd#,
+      "del" = #del#,
+      "qry" = #qry#,
+      "pro" = #pro#,
+      "prn" = #prn#,
+      "send" = #send#,
+      "exam" = #exam#,
+      "pass" = #pass#
+      WHERE
+      Groupno = #Groupno#
+      AND Progid = #Progid#
+      and ProjectUID=#ProjectUID#
+    </update>
+
+
+
+    <select id='SelectVsmdgroupProgList' resultMap='VsmdgroupProgResult' parameterClass='string'>
+      SELECT
+      "Progid",
+      "Groupno",
+      "ProgName"
+      ,"run"
+      ,"ins"
+      ,"upd"
+      ,"del"
+      ,"qry"
+      ,"pro"
+      ,"prn"
+      ,"send"
+      ,"exam"
+      ,"pass"
+      ,"ProgLevel"
+      ,"ParentId"
+      ,"SeqNo"
+      FROM VsmdgroupProg
+      where
+      progtype='f' and
+      groupno=#Groupno#  order by SeqNo
+    </select>
+    <select id='SelectVsmdgroupProgByKey' resultMap='VsmdgroupProgResult' parameterClass='VsmdgroupProg'>
+      SELECT "Groupno"
+      ,"Progid"
+      ,"ProgName"
+      ,"run"
+      ,"ins"
+      ,"upd"
+      ,"del"
+      ,"qry"
+      ,"pro"
+      ,"prn"
+      ,"send"
+      ,"exam"
+      ,"pass"
+      ,"ProgLevel"
+      ,"ParentId"
+      ,"SeqNo"
+      FROM VsmdgroupProg
+      WHERE
+      Groupno = #Groupno#
+      AND Progid = #Progid#  order by SeqNo
+    </select>
+ 
+    <select id='SelectVsmdgroupProgByModuleType' resultMap='VsmdgroupProgResult' parameterClass='VsmdgroupProg'>
+      SELECT
+      "Progid",
+      "Groupno",
+      "ProgName"
+      ,"run"
+      ,"ins"
+      ,"upd"
+      ,"del"
+      ,"qry"
+      ,"pro"
+      ,"prn"
+      ,"send"
+      ,"exam"
+      ,"pass"
+      ,"ProgLevel"
+      ,"ParentId"
+      ,"SeqNo"
+      ,"ProjectUID"
+      ,"ProgModuleType"
+      FROM VsmdgroupProg
+      where
+      progtype='f' and
+      groupno=#Groupno# and
+      ProgModuleType=#ProgModuleType#  order by SeqNo
+    </select>
+    <select id='SelectVsmdgroupProgByWhere' resultMap='VsmdgroupProgResult' parameterClass='string'>
+      SELECT
+      "Progid",
+      "Groupno",
+      "ProgName"
+      ,"run"
+      ,"ins"
+      ,"upd"
+      ,"del"
+      ,"qry"
+      ,"pro"
+      ,"prn"
+      ,"send"
+      ,"exam"
+      ,"pass"
+      ,"ProgLevel"
+      ,"ParentId"
+      ,"SeqNo"
+      ,"ProjectUID"
+      ,"ProgModuleType"
+      FROM VsmdgroupProg
+      where
+      $value$
+    </select>
+
+    <select id='SelectVsmdgroupProgByProject' resultMap='VsmdgroupProgResult' parameterClass='VsmdgroupProg'>
+      SELECT
+      "Progid",
+      "Groupno",
+      "ProgName"
+      ,"run"
+      ,"ins"
+      ,"upd"
+      ,"del"
+      ,"qry"
+      ,"pro"
+      ,"prn"
+      ,"send"
+      ,"exam"
+      ,"pass"
+      ,"ProgLevel"
+      ,"ParentId"
+      ,"SeqNo",
+      "ProjectUID"
+      ,"ProgModuleType"
+      FROM VsmdgroupProg
+      where
+      progtype='f' and
+      groupno=#Groupno# and
+      ProjectUID=#ProjectUID#  order by SeqNo
+    </select>
+
+    <select id='SelectSmdgroupList' resultMap='VsmdgroupProgResult' parameterClass='VsmdgroupProg'>
+      SELECT
+      '' as "groupno",
+      '' as "ProgName",
+      ''  as "ProgLevel",
+      0 as "SeqNo",
+      '' as "ProgModuleType",
+      t1.Progid as "Progid",
+      '' as "ParentId",
+      convert(varchar,sum(convert(integer,run))) as "run",
+      convert(varchar,sum(convert(integer,ins))) as "ins",
+      convert(varchar,sum(convert(integer,upd))) as "upd",
+      convert(varchar,sum(convert(integer,del))) as "del",
+      convert(varchar,sum(convert(integer,qry))) as "qry",
+      convert(varchar,sum(convert(integer,pro))) as "pro",
+      convert(varchar,sum(convert(integer,prn))) as "prn",
+      convert(varchar,sum(convert(integer,send))) as "send",
+      convert(varchar,sum(convert(integer,pass))) as "pass",
+      convert(varchar,sum(convert(integer,exam))) as "exam",
+      "ProjectUID"
+
+
+      FROM VsmdgroupProg t1,Smugroup t2
+      WHERE
+      t1.groupno=t2.groupno and
+      t2.userid=#Groupno# and
+      t1.ProgId=#Progid# and
+      t1.ProjectUID=#ProjectUID#
+      group by t1.Progid,
+      ProjectUID,
+      UserID
+    </select>
+
+  </statements>
+</sqlMap>

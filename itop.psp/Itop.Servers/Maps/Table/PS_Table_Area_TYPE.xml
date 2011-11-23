@@ -1,0 +1,144 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PS_Table_Area_TYPE' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PS_Table_Area_TYPE' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.PS_Table_Area_TYPE' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PS_Table_Area_TYPEResult' class='PS_Table_Area_TYPE'>
+      <result property='ID' column='ID' />
+      <result property='ParentID' column='ParentID' />
+      <result property='ProjectID' column='ProjectID' />
+      <result property='Sort' column='Sort' />
+      <result property='Title' column='Title' />
+      <result property='Voltage' column='Voltage' />
+      <result property='Volumn' column='Volumn' />
+      <result property='Col1' column='Col1' />
+      <result property='Col2' column='Col2' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPS_Table_Area_TYPE' parameterClass='PS_Table_Area_TYPE'>
+      INSERT INTO PS_Table_Area_TYPE		(
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      )
+      VALUES
+      (
+      #ID#,
+      #ParentID#,
+      #ProjectID#,
+      #Title#,
+      #Voltage#,
+      #Volumn#,
+      #Col1#,
+      #Col2#
+      )
+    </insert>
+    <delete id='DeletePS_Table_Area_TYPE' parameterClass='PS_Table_Area_TYPE'>
+      DELETE FROM PS_Table_Area_TYPE
+      WHERE
+      ID = #ID#
+    </delete>
+    <delete id='DeletePS_Table_Area_TYPEByConn' parameterClass='PS_Table_Area_TYPE'>
+      DELETE FROM PS_Table_Area_TYPE
+      WHERE
+      $value$
+    </delete>
+    <update id='UpdatePS_Table_Area_TYPE' parameterClass='PS_Table_Area_TYPE'>
+      UPDATE PS_Table_Area_TYPE
+      SET
+      "ParentID" = #ParentID#,
+      "ProjectID" = #ProjectID#,
+      "Title" = #Title#,
+      "Voltage" = #Voltage#,
+      "Volumn" = #Volumn#,
+      "Col1" = #Col1#,
+      "Col2" = #Col2#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPS_Table_Area_TYPEList' resultMap='PS_Table_Area_TYPEResult' parameterClass='PS_Table_Area_TYPE'>
+      SELECT
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Sort",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      FROM PS_Table_Area_TYPE
+    </select>
+    <select id='SelectPS_Table_Area_TYPEByKey' resultMap='PS_Table_Area_TYPEResult' parameterClass='PS_Table_Area_TYPE'>
+      SELECT
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Sort",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      FROM PS_Table_Area_TYPE
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPS_Table_Area_TYPEByConn' resultMap='PS_Table_Area_TYPEResult' parameterClass='PS_Table_Area_TYPE'>
+      SELECT
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Sort",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      FROM PS_Table_Area_TYPE
+      WHERE
+      $value$
+    </select>
+    <select id='SelectPS_Table_Area_TYPECopyByProj' resultMap='PS_Table_Area_TYPEResult' parameterClass='PS_Table_Area_TYPE'>
+      SELECT
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Sort",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      FROM PS_Table_Area_TYPE
+      WHERE
+      ProjectID=#ProjectID#
+    </select>
+    <select id='SelectPS_Table_Area_TYPEOfTitle' resultClass='string' parameterClass='PS_Table_Area_TYPE'>
+      select Title   FROM   PS_Table_Area_TYPE  WHERE  $value$
+    </select>
+    <!--查分区名称-->
+    <select id='SelectPS_Table_Area_TYPE_Title' resultClass='string' parameterClass='PS_Table_Area_TYPE'>
+      SELECT
+      Title
+      FROM PS_Table_Area_TYPE
+      WHERE
+      $value$
+    </select>
+    <!--查分区ID-->
+    <select id='SelectPS_Table_Area_TYPE_ID' resultClass='string' parameterClass='PS_Table_Area_TYPE'>
+      SELECT
+      ID
+      FROM PS_Table_Area_TYPE
+      WHERE
+      $value$
+    </select>
+  </statements>
+</sqlMap>

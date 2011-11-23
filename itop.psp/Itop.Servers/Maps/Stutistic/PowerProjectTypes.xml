@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerProjectTypes' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerProjectTypes' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerProjectTypes' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerProjectTypesResult' class='PowerProjectTypes'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='Flag' column='Flag' />
+			<result property='Flag2' column='Flag2' />
+			<result property='ParentID' column='ParentID' />
+      <result property='Dy' column='Dy' />
+      <result property='Jsxz' column='Jsxz' />
+      <result property='Gznr' column='Gznr' />
+      <result property='Gm' column='Gm' />
+      <result property='Gcfl' column='Gcfl' />
+      <result property='Remark' column='Remark' />
+      <result property='TypeName' column='TypeName' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerProjectTypes' parameterClass='PowerProjectTypes'>
+    INSERT INTO PSP_PowerProjectTypes		(
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Dy","Jsxz","Gznr","Gm","Gcfl","Remark","TypeName"
+    )
+    VALUES
+    (
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#,#Dy#,#Jsxz#,#Gznr#,#Gm#,#Gcfl#,#Remark#,#TypeName#
+    )
+    <selectKey property="ID" resultClass="int" type="post">
+				SELECT @@IDENTITY AS value
+		</selectKey> 
+	</insert>
+	<delete id='DeletePowerProjectTypes' parameterClass='PowerProjectTypes'>
+    DELETE FROM PSP_PowerProjectTypes
+    WHERE
+    ID = #ID#
+  </delete>
+	<update id='UpdatePowerProjectTypes' parameterClass='PowerProjectTypes'>
+    UPDATE PSP_PowerProjectTypes
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "Flag2" = #Flag2#,
+    "ParentID" = #ParentID#,"Dy"=#Dy#,"Jsxz"=#Jsxz#,"Gznr"=#Gznr#,"Gm"=#Gm#,"Gcfl"=#Gcfl#,"Remark"=#Remark#,"TypeName"=#TypeName#
+    WHERE
+    ID = #ID#
+  </update>
+  <select id='SelectPowerProjectTypesList' resultMap='PowerProjectTypesResult' parameterClass='PowerProjectTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Dy","Jsxz","Gznr","Gm","Gcfl","Remark","TypeName"
+    FROM PSP_PowerProjectTypes
+  </select>
+  <select id='SelectPowerProjectTypesByKey' resultMap='PowerProjectTypesResult' parameterClass='PowerProjectTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Dy","Jsxz","Gznr","Gm","Gcfl","Remark","TypeName"
+    FROM PSP_PowerProjectTypes
+    WHERE
+    ID = #ID#
+  </select>
+  <select id='SelectPowerProjectTypesByFlag2' resultMap='PowerProjectTypesResult' parameterClass='PowerProjectTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Dy","Jsxz","Gznr","Gm","Gcfl","Remark","TypeName"
+    FROM PSP_PowerProjectTypes
+    WHERE
+    Flag2 = #Flag2#
+    ORDER BY Flag,ID
+  </select>
+	<select id='SelectPowerProjectTypesByFlag' resultMap='PowerProjectTypesResult' parameterClass='PowerProjectTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Dy","Jsxz","Gznr","Gm","Gcfl","Remark","TypeName"
+    FROM PSP_PowerProjectTypes
+    WHERE
+    Flag = #Flag#
+    ORDER BY Flag,ID
+  </select>
+</statements>
+</sqlMap>

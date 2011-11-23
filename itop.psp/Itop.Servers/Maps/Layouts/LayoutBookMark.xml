@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LayoutBookMark' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='LayoutBookMark' assembly='Itop.Domain.Layouts.dll' type='Itop.Domain.Layouts.LayoutBookMark' />
+</alias>
+	<resultMaps>
+		<resultMap id='LayoutBookMarkResult' class='LayoutBookMark'>
+			<result property='UID' column='UID' />
+			<result property='LayoutID' column='LayoutID' />
+			<result property='MarkName' column='MarkName' />
+			<result property='MarkDisc' column='MarkDisc' />
+			<result property='MarkText' column='MarkText' />
+			<result property='MarkType' column='MarkType' />
+      <result property='StartP' column='StartP' />
+      <result property='CreateDate' column='CreateDate' />
+		</resultMap>
+  </resultMaps>
+<statements>
+	<insert id='InsertLayoutBookMark' parameterClass='LayoutBookMark'>
+    INSERT INTO PSP_LayoutBookMark		(
+    "UID",
+    "LayoutID",
+    "MarkName",
+    "MarkDisc",
+    "MarkText",
+    "MarkType",
+    "CreateDate",
+    "StartP"
+    )
+    VALUES
+    (
+    #UID#,
+    #LayoutID#,
+    #MarkName#,
+    #MarkDisc#,
+    #MarkText#,
+    #MarkType#,
+    GetDate(),
+    #StartP#
+    )
+  </insert>
+
+
+
+  <update id='InsertLayoutBookMarkBy' parameterClass='LayoutBookMark'>
+    INSERT INTO PSP_LayoutBookMark		(
+    "UID",
+    "LayoutID",
+    "MarkName",
+    "MarkDisc",
+    "MarkText",
+    "MarkType","CreateDate",
+    "StartP"
+    )
+    VALUES
+    (
+    #UID#,
+    #LayoutID#,
+    #MarkName#,
+    #MarkDisc#,
+    #MarkType#,GetDate(),
+    #StartP#
+    )
+  </update>
+
+
+	<delete id='DeleteLayoutBookMark' parameterClass='LayoutBookMark'>
+		DELETE FROM PSP_LayoutBookMark where uid=#UID#
+	</delete>
+
+	<delete id='DeleteLayoutBookMarkByKey' parameterClass='string'>
+		DELETE FROM PSP_LayoutBookMark where uid=#UID#
+	</delete>
+
+	<update id='UpdateLayoutBookMark' parameterClass='LayoutBookMark'>
+		UPDATE PSP_LayoutBookMark
+		SET
+			"MarkName" = #MarkName#,
+			"StartP" = #StartP# 
+                where UID = #UID#
+	</update>
+
+	<update id='UpdateLayoutBookMarkByte' parameterClass='LayoutBookMark'>
+		UPDATE PSP_LayoutBookMark
+		SET
+			"MarkText" = #MarkText#
+		where UID = #UID#
+	</update>
+
+
+	<select id='SelectLayoutBookMarkList' resultMap='LayoutBookMarkResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "MarkName",
+    "MarkDisc",
+    "MarkText",
+    "MarkType",
+    "CreateDate",
+    "StartP"
+    FROM PSP_LayoutBookMark 
+    Where $Value$
+  </select>
+  
+  
+  <select id='SelectLayoutBookMarkByKey' resultMap='LayoutBookMarkResult' parameterClass='LayoutBookMark'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "MarkName",
+    "MarkDisc",
+    "MarkText",
+    "MarkType","CreateDate",
+    "StartP"
+    FROM PSP_LayoutBookMark where uid=#UID#
+  </select>
+
+	<select id='SelectLayoutBookMarkByLayoutID' resultMap='LayoutBookMarkResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "MarkName",
+    "MarkDisc",
+    null as "MarkText","CreateDate",
+    "MarkType",
+    "StartP"
+    FROM PSP_LayoutBookMark where LayoutID=#LayoutID#
+  </select>
+
+
+  <select id='SelectLayoutBookMarkByLayoutIDBlogData' resultMap='LayoutBookMarkResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "MarkName",
+    "MarkDisc",
+    "MarkText",
+    "MarkType","CreateDate",
+    "StartP"
+    FROM PSP_LayoutBookMark where LayoutID=#LayoutID# order by CreateDate asc
+  </select>
+
+  <select id='SelectLayoutBookMarkByWhere' resultMap='LayoutBookMarkResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "MarkName",
+    "MarkDisc",
+    "MarkText",
+    "MarkType","CreateDate",
+    "StartP"
+    FROM PSP_LayoutBookMark where $LayoutID$
+  </select>
+
+
+</statements>
+</sqlMap>

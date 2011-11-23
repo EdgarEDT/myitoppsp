@@ -1,0 +1,167 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Table_Edit' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Ps_Table_Edit' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.Ps_Table_Edit' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Ps_Table_EditResult' class='Ps_Table_Edit'>
+      <result property='ID' column='ID' />
+      <result property='ProjectID' column='ProjectID' />
+      <result property='ParentID' column='ParentID' />
+      <result property='Sort' column='Sort' />
+      <result property='Status' column='Status' />
+      <result property='StartYear' column='StartYear' />
+      <result property='FinishYear' column='FinishYear' />
+      <result property='Volume' column='Volume' />
+      <result property='Col1' column='Col1' />
+      <result property='Col2' column='Col2' />
+      <result property='Col3' column='Col3' />
+      <result property='Col4' column='Col4' />
+      <result property='Col5' column='Col5' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPs_Table_Edit' parameterClass='Ps_Table_Edit'>
+      INSERT INTO Ps_Table_Edit		(
+      "ID",
+      "ProjectID",
+      "ParentID",
+      "Sort",
+      "Status",
+      "StartYear",
+      "FinishYear",
+      "Volume",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      )
+      VALUES
+      (
+      #ID#,
+      #ProjectID#,
+      #ParentID#,
+      #Sort#,
+      #Status#,
+      #StartYear#,
+      #FinishYear#,
+      #Volume#,
+      #Col1#,
+      #Col2#,
+      #Col3#,
+      #Col4#,
+      #Col5#
+      )
+    </insert>
+    <delete id='DeletePs_Table_Edit' parameterClass='Ps_Table_Edit'>
+      DELETE FROM Ps_Table_Edit
+      WHERE
+      ID = #ID#
+    </delete>
+    <delete id='DeletePs_Table_EditByConn' parameterClass='string'>
+      DELETE FROM Ps_Table_Edit
+      WHERE
+      $value$
+    </delete>
+    <update id='UpdatePs_Table_Edit' parameterClass='Ps_Table_Edit'>
+      UPDATE Ps_Table_Edit
+      SET
+      "ProjectID" = #ProjectID#,
+      "ParentID" = #ParentID#,
+      "Sort" = #Sort#,
+      "Status" = #Status#,
+      "StartYear" = #StartYear#,
+      "FinishYear" = #FinishYear#,
+      "Volume" = #Volume#,
+      "Col1" = #Col1#,
+      "Col2" = #Col2#,
+      "Col3" = #Col3#,
+      "Col4" = #Col4#,
+      "Col5" = #Col5#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPs_Table_EditList' resultMap='Ps_Table_EditResult' parameterClass='Ps_Table_Edit'>
+      SELECT
+      "ID",
+      "ProjectID",
+      "ParentID",
+      "Sort",
+      "Status",
+      "StartYear",
+      "FinishYear",
+      "Volume",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_Table_Edit
+    </select>
+    <select id='SelectPs_Table_EditListByConn' resultMap='Ps_Table_EditResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "ProjectID",
+      "ParentID",
+      "Sort",
+      "Status",
+      "StartYear",
+      "FinishYear",
+      "Volume",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_Table_Edit
+      WHERE $value$ ORDER BY Sort
+    </select>
+    <select id='SelectPs_Table_EditListByConn1' resultMap='Ps_Table_EditResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "ProjectID",
+      "ParentID",
+      "Sort",
+      "Status",
+      "StartYear",
+      "FinishYear",
+      "Volume",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_Table_Edit
+      WHERE $value$ ORDER BY Sort desc
+    </select>
+    <select id='SelectMaxYear' resultClass='int' parameterClass='string'>
+      SELECT
+      Max(FinishYear)
+      FROM Ps_Table_Edit
+      WHERE $value$ 
+    </select>
+    <select id='SelectPs_Table_EditByKey' resultMap='Ps_Table_EditResult' parameterClass='Ps_Table_Edit'>
+      SELECT
+      "ID",
+      "ProjectID",
+      "ParentID",
+      "Sort",
+      "Status",
+      "StartYear",
+      "FinishYear",
+      "Volume",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4",
+      "Col5"
+      FROM Ps_Table_Edit
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectChildMaxSort' resultClass='int' parameterClass='string'>
+      Select Max(Cast(Sort as int)) FROM Ps_Table_Edit
+    </select>
+  </statements>
+</sqlMap>

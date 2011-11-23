@@ -1,0 +1,258 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Foretime_Elect' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Foretime_Elect' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.Foretime_Elect' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Foretime_ElectResult' class='Foretime_Elect'>
+      <result property='ID' column='ID' />
+      <result property='Type' column='Type' />
+      <result property='City' column='City' />
+      <result property='Title' column='Title' />
+      <result property='Y2001' column='Y2001' />
+      <result property='M2001' column='M2001' />
+      <result property='Y2002' column='Y2002' />
+      <result property='M2002' column='M2002' />
+      <result property='Y2003' column='Y2003' />
+      <result property='M2003' column='M2003' />
+      <result property='Y2004' column='Y2004' />
+      <result property='M2004' column='M2004' />
+      <result property='Y2005' column='Y2005' />
+      <result property='M2005' column='M2005' />
+      <result property='Y2006' column='Y2006' />
+      <result property='M2006' column='M2006' />
+      <result property='Y2007' column='Y2007' />
+      <result property='M2007' column='M2007' />
+      <result property='Y2008' column='Y2008' />
+      <result property='M2008' column='M2008' />
+      <result property='Growth_rate' column='Growth_rate' />
+      <result property='ProjectUID' column='ProjectUID' />
+      <result property='COL1' column='COL1' />
+      <result property='COL2' column='COL2' />
+      <result property='COL3' column='COL3' />
+      <result property='COL4' column='COL4' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertForetime_Elect' parameterClass='Foretime_Elect'>
+      INSERT INTO Ps_Foretime_Elect		(
+      "ID",
+      "Type",
+      "City",
+      "Title",
+      "Y2001",
+      "M2001",
+      "Y2002",
+      "M2002",
+      "Y2003",
+      "M2003",
+      "Y2004",
+      "M2004",
+      "Y2005",
+      "M2005",
+      "Y2006",
+      "M2006",
+      "Y2007",
+      "M2007",
+      "Y2008",
+      "M2008",
+      "Growth_rate",
+      "ProjectUID",
+      "COL1",
+      "COL2",
+      "COL3",
+      "COL4"
+      )
+      VALUES
+      (
+      #ID#,
+      #Type#,
+      #City#,
+      #Title#,
+      #Y2001#,
+      #M2001#,
+      #Y2002#,
+      #M2002#,
+      #Y2003#,
+      #M2003#,
+      #Y2004#,
+      #M2004#,
+      #Y2005#,
+      #M2005#,
+      #Y2006#,
+      #M2006#,
+      #Y2007#,
+      #M2007#,
+      #Y2008#,
+      #M2008#,
+      #Growth_rate#,
+      #ProjectUID#,
+      #COL1#,
+      #COL2#,
+      #COL3#,
+      #COL4#
+      )
+    </insert>
+    <delete id='DeleteForetime_Elect' parameterClass='Foretime_Elect'>
+      DELETE FROM Ps_Foretime_Elect
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdateForetime_Elect' parameterClass='Foretime_Elect'>
+      UPDATE Ps_Foretime_Elect
+      SET
+      "Type" = #Type#,
+      "City" = #City#,
+      "Title" = #Title#,
+      "Y2001" = #Y2001#,
+      "M2001" = #M2001#,
+      "Y2002" = #Y2002#,
+      "M2002" = #M2002#,
+      "Y2003" = #Y2003#,
+      "M2003" = #M2003#,
+      "Y2004" = #Y2004#,
+      "M2004" = #M2004#,
+      "Y2005" = #Y2005#,
+      "M2005" = #M2005#,
+      "Y2006" = #Y2006#,
+      "M2006" = #M2006#,
+      "Y2007" = #Y2007#,
+      "M2007" = #M2007#,
+      "Y2008" = #Y2008#,
+      "M2008" = #M2008#,
+      "Growth_rate" = #Growth_rate#,
+      "ProjectUID" = #ProjectUID#,
+      "COL1" = #COL1#,
+      "COL2" = #COL2#,
+      "COL3" = #COL3#,
+      "COL4" = #COL4#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectForetime_ElectList' resultMap='Foretime_ElectResult' parameterClass='Foretime_Elect'>
+      SELECT
+      "ID",
+      "Type",
+      "City",
+      "Title",
+      "Y2001",
+      "M2001",
+      "Y2002",
+      "M2002",
+      "Y2003",
+      "M2003",
+      "Y2004",
+      "M2004",
+      "Y2005",
+      "M2005",
+      "Y2006",
+      "M2006",
+      "Y2007",
+      "M2007",
+      "Y2008",
+      "M2008",
+      "Growth_rate",
+      "ProjectUID",
+      "COL1",
+      "COL2",
+      "COL3",
+      "COL4"
+      FROM Ps_Foretime_Elect
+    </select>
+    <select id='SelectForetime_ElectListDesc' resultMap='Foretime_ElectResult' parameterClass='Foretime_Elect'>
+      SELECT
+      "ID",
+      "Type",
+      "City",
+      "Title",
+      "Y2001",
+      "M2001",
+      "Y2002",
+      "M2002",
+      "Y2003",
+      "M2003",
+      "Y2004",
+      "M2004",
+      "Y2005",
+      "M2005",
+      "Y2006",
+      "M2006",
+      "Y2007",
+      "M2007",
+      "Y2008",
+      "M2008",
+      "Growth_rate",
+      "ProjectUID",
+      "COL1",
+      "COL2",
+      "COL3",
+      "COL4"
+      FROM Ps_Foretime_Elect
+      order by ID desc
+    </select>
+    <select id='SelectForetime_ElectByKey' resultMap='Foretime_ElectResult' parameterClass='Foretime_Elect'>
+      SELECT
+      "ID",
+      "Type",
+      "City",
+      "Title",
+      "Y2001",
+      "M2001",
+      "Y2002",
+      "M2002",
+      "Y2003",
+      "M2003",
+      "Y2004",
+      "M2004",
+      "Y2005",
+      "M2005",
+      "Y2006",
+      "M2006",
+      "Y2007",
+      "M2007",
+      "Y2008",
+      "M2008",
+      "Growth_rate",
+      "ProjectUID",
+      "COL1",
+      "COL2",
+      "COL3",
+      "COL4"
+      FROM Ps_Foretime_Elect
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectForetime_ElectByType' resultMap='Foretime_ElectResult' parameterClass='Foretime_Elect'>
+      SELECT
+      "ID",
+      "Type",
+      "City",
+      "Title",
+      "Y2001",
+      "M2001",
+      "Y2002",
+      "M2002",
+      "Y2003",
+      "M2003",
+      "Y2004",
+      "M2004",
+      "Y2005",
+      "M2005",
+      "Y2006",
+      "M2006",
+      "Y2007",
+      "M2007",
+      "Y2008",
+      "M2008",
+      "Growth_rate",
+      "ProjectUID",
+      "COL1",
+      "COL2",
+      "COL3",
+      "COL4"
+      FROM Ps_Foretime_Elect
+      WHERE
+      Type = #Type#
+    </select>
+  </statements>
+</sqlMap>

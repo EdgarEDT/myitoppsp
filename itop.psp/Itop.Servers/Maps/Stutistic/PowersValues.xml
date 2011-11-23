@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowersValues' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowersValues' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowersValues' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowersValuesResult' class='PowersValues'>
+			<result property='ID' column='ID' />
+			<result property='TypeID' column='TypeID' />
+			<result property='Year' column='Year' />
+			<result property='Value' column='Value' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowersValues' parameterClass='PowersValues'>
+		INSERT INTO psp_PowersValues		(
+			"TypeID",
+			"Year",
+			"Value"
+		)
+		VALUES
+		(
+			#TypeID#,
+			#Year#,
+			#Value#
+		)
+	</insert>
+	<delete id='DeletePowersValues' parameterClass='PowersValues'>
+		DELETE FROM psp_PowersValues
+		WHERE
+			ID = #ID#
+	</delete>
+
+	<update id='DeletePowersValuesByType' parameterClass='PowersValues'>
+		DELETE FROM psp_PowersValues
+		WHERE
+			TypeID = #TypeID#
+
+		DELETE FROM PSP_powersTypes
+		WHERE
+			ID = #TypeID#
+	</update>
+
+	<update id='DeletePowersValuesByYear' parameterClass='Hashtable'>
+		DELETE FROM psp_PowersValues
+		WHERE
+			Year = #Year#
+			And TypeID in (Select ID from PSP_powersTypes where Flag2=#ID#)
+		DELETE FROM PSP_powersYears
+		WHERE
+			Flag = #ID#
+			AND
+			Year = #Year#
+	</update>
+
+	<update id='UpdatePowersValues' parameterClass='PowersValues'>
+		If Exists(Select ID from psp_PowersValues Where Year=#Year# And TypeID=#TypeID#)
+			UPDATE psp_PowersValues
+			SET
+				"Value" = #Value#
+			WHERE
+				"TypeID" = #TypeID#
+				And
+				"Year" = #Year#
+		Else
+			INSERT INTO psp_PowersValues		(
+				"TypeID",
+				"Year",
+				"Value"
+			)
+			VALUES
+			(
+				#TypeID#,
+				#Year#,
+				#Value#
+			)
+	</update>
+	<select id='SelectPowersValuesList' resultMap='PowersValuesResult' parameterClass='PowersValues'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM psp_PowersValues
+			Where
+				TypeID = #TypeID#
+	</select>
+	<select id='SelectPowersValuesListByFlag2' resultMap='PowersValuesResult' parameterClass='PowersValues'>
+    SELECT
+    "ID",
+    "TypeID",
+    "Year",
+    "Value"
+    FROM psp_PowersValues
+    Where
+    TypeID in (Select ID from PSP_powersTypes where Flag2=#Value#)
+  </select>
+	<select id='SelectPowersValuesByKey' resultMap='PowersValuesResult' parameterClass='PowersValues'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM psp_PowersValues
+		WHERE
+			ID = #ID#
+	</select>
+</statements>
+</sqlMap>

@@ -1,0 +1,172 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Table_AreaData' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Ps_Table_AreaData' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.Ps_Table_AreaData' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Ps_Table_AreaDataResult' class='Ps_Table_AreaData'>
+      <result property='ID' column='ID' />
+      <result property='Area' column='Area' />
+      <result property='ParentID' column='ParentID' />
+      <result property='ProjectID' column='ProjectID' />
+      <result property='SortID' column='SortID' />
+      <result property='Yearf' column='Yearf' />
+      <result property='Population' column='Population' />
+      <result property='TotalArea' column='TotalArea' />
+      <result property='CityArea' column='CityArea' />
+      <result property='Col1' column='Col1' />
+      <result property='Col2' column='Col2' />
+      <result property='Col3' column='Col3' />
+      <result property='Col4' column='Col4' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPs_Table_AreaData' parameterClass='Ps_Table_AreaData'>
+      INSERT INTO Ps_Table_AreaData		(
+      "ID",
+      "Area",
+      "ParentID",
+      "ProjectID",
+      "SortID",
+      "Yearf",
+      "Population",
+      "TotalArea",
+      "CityArea",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      )
+      VALUES
+      (
+      #ID#,
+      #Area#,
+      #ParentID#,
+      #ProjectID#,
+      #SortID#,
+      #Yearf#,
+      #Population#,
+      #TotalArea#,
+      #CityArea#,
+      #Col1#,
+      #Col2#,
+      #Col3#,
+      #Col4#
+      )
+    </insert>
+    <delete id='DeletePs_Table_AreaData' parameterClass='Ps_Table_AreaData'>
+      DELETE FROM Ps_Table_AreaData
+      WHERE
+      ID = #ID#
+    </delete>
+    <delete id='DeletePs_Table_AreaDataByConn' parameterClass='string'>
+      DELETE FROM Ps_Table_AreaData
+      WHERE
+      $value$
+    </delete>
+    <update id='UpdatePs_Table_AreaData' parameterClass='Ps_Table_AreaData'>
+      UPDATE Ps_Table_AreaData
+      SET
+      "Area" = #Area#,
+      "ParentID" = #ParentID#,
+      "ProjectID" = #ProjectID#,
+      "SortID" = #SortID#,
+      "Yearf" = #Yearf#,
+      "Population" = #Population#,
+      "TotalArea" = #TotalArea#,
+      "CityArea" = #CityArea#,
+      "Col1" = #Col1#,
+      "Col2" = #Col2#,
+      "Col3" = #Col3#,
+      "Col4" = #Col4#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPs_Table_AreaDataList' resultMap='Ps_Table_AreaDataResult' parameterClass='Ps_Table_AreaData'>
+      SELECT
+      "ID",
+      "Area",
+      "ParentID",
+      "ProjectID",
+      "SortID",
+      "Yearf",
+      "Population",
+      "TotalArea",
+      "CityArea",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      FROM Ps_Table_AreaData
+    </select>
+    <select id='SelectPs_Table_AreaDataByKey' resultMap='Ps_Table_AreaDataResult' parameterClass='Ps_Table_AreaData'>
+      SELECT
+      "ID",
+      "Area",
+      "ParentID",
+      "ProjectID",
+      "SortID",
+      "Yearf",
+      "Population",
+      "TotalArea",
+      "CityArea",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      FROM Ps_Table_AreaData
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPs_Table_AreaDataByConn' resultMap='Ps_Table_AreaDataResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "Area",
+      "ParentID",
+      "ProjectID",
+      "SortID",
+      "Yearf",
+      "Population",
+      "TotalArea",
+      "CityArea",
+      "Col1",
+      "Col2",
+      "Col3",
+      "Col4"
+      FROM Ps_Table_AreaData
+      WHERE
+      $value$
+    </select>
+    <select id='SelectAreaDataSort' resultClass='int' parameterClass='string'>
+      Select Max(SortID) FROM Ps_Table_AreaData
+    </select>
+    <!--返回id号 -->
+    <select id='SelectAreaDataOfID' resultClass='string' parameterClass='string'>
+      Select ID FROM Ps_Table_AreaData WHERE  $value$
+    </select>
+    <!--返回当前数据 -->
+    <select id='SelectAreaDataOfCurrent' resultClass='double' parameterClass='string'>
+      $value$
+    </select>
+    <!--查城区面积 -->
+    <select id='SelectAreaDataCityArea_ByArea' resultClass='double' parameterClass='string'>
+      Select b.CityArea FROM Ps_Table_AreaData as a,Ps_Table_AreaData as b
+      Where a.ID=b.ParentID and $Value$
+    </select>
+    <!--查城区人口 -->
+    <select id='SelectAreaDataPopulation_ByArea' resultClass='double' parameterClass='string'>
+      Select b.Population FROM Ps_Table_AreaData as a,Ps_Table_AreaData as b
+      Where a.ID=b.ParentID and $Value$
+    </select>
+    <!--查县级人口 -->
+    <select id='SelectAreaDataPopulation_notcity_ByArea' resultClass='double' parameterClass='string'>
+      Select SUM(b.Population) FROM Ps_Table_AreaData as a,Ps_Table_AreaData as b
+      Where a.ID=b.ParentID and $Value$
+    </select>
+    <!--查县级面积 -->
+    <select id='SelectAreaData_TotalArea_SUM' resultClass='double' parameterClass='string'>
+      Select SUM(b.TotalArea) FROM Ps_Table_AreaData as a,Ps_Table_AreaData as b
+      Where a.ID=b.ParentID and $Value$
+    </select>
+  </statements>
+</sqlMap>

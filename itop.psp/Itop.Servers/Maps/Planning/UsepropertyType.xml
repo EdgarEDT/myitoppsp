@@ -1,0 +1,57 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='UsepropertyType' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='UsepropertyType' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.UsepropertyType' />
+</alias>
+	<resultMaps>
+		<resultMap id='UsepropertyTypeResult' class='UsepropertyType'>
+			<result property='UID' column='UID' />
+			<result property='TypeName' column='TypeName' />
+			<result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertUsepropertyType' parameterClass='UsepropertyType'>
+		INSERT INTO UsepropertyType		(
+			"UID",
+			"TypeName",
+			"Remark"
+		)
+		VALUES
+		(
+			#UID#,
+			#TypeName#,
+			#Remark#
+		)
+	</insert>
+	<delete id='DeleteUsepropertyType' parameterClass='UsepropertyType'>
+		DELETE FROM UsepropertyType
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateUsepropertyType' parameterClass='UsepropertyType'>
+		UPDATE UsepropertyType
+		SET
+			"TypeName" = #TypeName#,
+			"Remark" = #Remark#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectUsepropertyTypeList' resultMap='UsepropertyTypeResult' parameterClass='UsepropertyType'>
+		SELECT
+			"UID",
+			"TypeName",
+			"Remark"
+		FROM UsepropertyType order by TypeName
+	</select>
+	<select id='SelectUsepropertyTypeByKey' resultMap='UsepropertyTypeResult' parameterClass='UsepropertyType'>
+		SELECT
+			"UID",
+			"TypeName",
+			"Remark"
+		FROM UsepropertyType
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

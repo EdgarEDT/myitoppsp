@@ -1,0 +1,96 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SVGFILE' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='SVGFILE' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.SVGFILE' />
+</alias>
+	<resultMaps>
+		<resultMap id='SVGFILEResult' class='SVGFILE'>
+			<result property='SUID' column='SUID' />
+			<result property='FILENAME' column='FILENAME' />
+			<result property='PARENTID' column='PARENTID' />
+			<result property='SVGDATA' column='SVGDATA' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSVGFILE' parameterClass='SVGFILE'>
+		INSERT INTO SVGFILE		(
+			"SUID",
+			"FILENAME",
+			"PARENTID",
+			"SVGDATA"
+		)
+		VALUES
+		(
+			#SUID#,
+			#FILENAME#,
+			#PARENTID#,
+			#SVGDATA#
+		)
+	</insert>
+	<delete id='DeleteSVGFILE' parameterClass='SVGFILE'>
+		DELETE FROM SVGFILE
+		WHERE
+			SUID = #SUID#
+	</delete>
+  <delete id='DeleteSVGFILEByKey' parameterClass='SVGFILE'>
+    DELETE FROM SVGFILE
+    WHERE
+    SUID = #SUID#
+  </delete>
+	<update id='UpdateSVGFILE' parameterClass='SVGFILE'>
+		UPDATE SVGFILE
+		SET
+			"FILENAME" = #FILENAME#,
+			"PARENTID" = #PARENTID#,
+			"SVGDATA" = #SVGDATA#
+		WHERE
+			SUID = #SUID#
+	</update>
+	<select id='SelectSVGFILEList' resultMap='SVGFILEResult' parameterClass='SVGFILE'>
+    SELECT
+    "SUID",
+    "FILENAME",
+    "PARENTID",
+    "SVGDATA"
+    FROM SVGFILE
+  </select>
+    <select id='SelectSVGFILEListNOTNULL' resultMap='SVGFILEResult' parameterClass='SVGFILE'>
+      SELECT
+      "SUID",
+      "FILENAME",
+      "PARENTID",
+      "SVGDATA"
+      FROM SVGFILE  WHERE FILENAME  NOT IN ('')
+    </select>
+	<select id='SelectSVGFILEByKey' resultMap='SVGFILEResult' parameterClass='SVGFILE'>
+		SELECT
+			"SUID",
+			"FILENAME",
+			"PARENTID",
+			"SVGDATA"
+		FROM SVGFILE
+		WHERE
+			SUID = #SUID#
+	</select>
+  <select id='SelectSVGFILEByWhere' resultMap='SVGFILEResult' string='swhere'>
+    SELECT
+    "SUID",
+    "FILENAME",
+    "PARENTID",
+    "SVGDATA"
+    FROM SVGFILE
+    WHERE $value$
+    
+  </select>
+	<select id='SelectSVGFILEByParent' resultMap='SVGFILEResult' parameterClass='SVGFILE'>
+		SELECT
+			"SUID",
+			"FILENAME",
+			"PARENTID",
+			"SVGDATA"
+		FROM SVGFILE
+		WHERE
+			PARENTID = #PARENTID# order by FILENAME
+	</select>
+</statements>
+</sqlMap>

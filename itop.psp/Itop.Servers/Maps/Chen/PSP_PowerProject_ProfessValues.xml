@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_PowerProject_ProfessValues' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_PowerProject_ProfessValues' assembly='Itop.Domain.Chen.dll' type='Itop.Domain.Chen.PSP_PowerProject_ProfessValues' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_PowerProject_ProfessValuesResult' class='PSP_PowerProject_ProfessValues'>
+			<result property='ID' column='ID' />
+			<result property='TypeID' column='TypeID' />
+			<result property='Year' column='Year' />
+			<result property='Value' column='Value' />
+			<result property='Flag2' column='Flag2' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_PowerProject_ProfessValues' parameterClass='PSP_PowerProject_ProfessValues'>
+		INSERT INTO PSP_PowerProject_ProfessValues		(
+			"ID",
+			"TypeID",
+			"Year",
+			"Value",
+			"Flag2",
+			"S1",
+			"S2"
+		)
+		VALUES
+		(
+			#ID#,
+			#TypeID#,
+			#Year#,
+			#Value#,
+			#Flag2#,
+			#S1#,
+			#S2#
+		)
+	</insert>
+	<delete id='DeletePSP_PowerProject_ProfessValues' parameterClass='PSP_PowerProject_ProfessValues'>
+		DELETE FROM PSP_PowerProject_ProfessValues
+	</delete>
+	<update id='UpdatePSP_PowerProject_ProfessValues' parameterClass='PSP_PowerProject_ProfessValues'>
+    UPDATE PSP_PowerProject_ProfessValues
+    SET
+    "Value" = #Value#
+    WHERE
+    "TypeID" = #TypeID#
+    And
+    "Year" = #Year#
+    And
+    "Flag2" = #Flag2#
+  </update>
+  <update id='CreatPSP_PowerProject_ProfessValues' parameterClass='PSP_PowerProject_ProfessValues'>
+    If not Exists(Select ID from PSP_PowerProject_ProfessValues Where Year=#Year# And TypeID=#TypeID# And Flag2=#Flag2#)
+    INSERT INTO PSP_PowerProject_ProfessValues		(
+    "TypeID",
+    "Year","Flag2",
+    "Value"
+    )
+    VALUES
+    (
+    #TypeID#,
+    #Year#,#Flag2#,
+    #Value#
+    )
+  </update>
+  <select id='SelectPSP_PowerProject_ProfessValuesList' resultMap='PSP_PowerProject_ProfessValuesResult' parameterClass='PSP_PowerProject_ProfessValues'>
+    SELECT
+    "ID",
+    "TypeID",
+    "Year",
+    "Value",
+    "Flag2",
+    "S1",
+    "S2"
+    FROM PSP_PowerProject_ProfessValues
+  </select>
+
+
+  <select id='SelectPSP_PowerProject_ProfessValuesByFlag2' resultMap='PSP_PowerProject_ProfessValuesResult' parameterClass='int'>
+    SELECT
+    "ID",
+    "TypeID",
+    "Year",
+    "Value",
+    "Flag2",
+    "S1",
+    "S2"
+    FROM PSP_PowerProject_ProfessValues where Flag2=#Flag2#
+  </select>
+  <select id='SelectPSP_PowerProject_ProfessValuesByFlag2TypeID' resultMap='PSP_PowerProject_ProfessValuesResult' parameterClass='int'>
+    SELECT
+    "ID",
+    "TypeID",
+    "Year",
+    "Value",
+    "Flag2",
+    "S1",
+    "S2"
+    FROM PSP_PowerProject_ProfessValues
+    where
+    Flag2=#Flag2#
+    And
+    TypeID=#TypeID#
+    Order by Year
+  </select>
+  
+	<select id='SelectPSP_PowerProject_ProfessValuesByKey' resultMap='PSP_PowerProject_ProfessValuesResult' parameterClass='PSP_PowerProject_ProfessValues'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value",
+			"Flag2",
+			"S1",
+			"S2"
+		FROM PSP_PowerProject_ProfessValues
+	</select>
+</statements>
+</sqlMap>

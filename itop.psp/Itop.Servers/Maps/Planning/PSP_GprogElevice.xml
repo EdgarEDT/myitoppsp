@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_GprogElevice' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_GprogElevice' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_GprogElevice' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_GprogEleviceResult' class='PSP_GprogElevice'>
+			<result property='GprogUID' column='GprogUID' />
+			<result property='DeviceSUID' column='DeviceSUID' />
+			<result property='Type' column='Type' />
+			<result property='ZTstatus' column='ZTstatus' />
+			<result property='JQstatus' column='JQstatus' />
+			<result property='ZQstatus' column='ZQstatus' />
+			<result property='YQstatus' column='YQstatus' />
+			<result property='L1' column='L1' />
+			<result property='L2' column='L2' />
+			<result property='L3' column='L3' />
+			<result property='L4' column='L4' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_GprogElevice' parameterClass='PSP_GprogElevice'>
+		INSERT INTO PSP_GprogElevice		(
+			"GprogUID",
+			"DeviceSUID",
+			"Type",
+			"ZTstatus",
+			"JQstatus",
+			"ZQstatus",
+			"YQstatus",
+			"L1",
+			"L2",
+			"L3",
+			"L4"
+		)
+		VALUES
+		(
+			#GprogUID#,
+			#DeviceSUID#,
+			#Type#,
+			#ZTstatus#,
+			#JQstatus#,
+			#ZQstatus#,
+			#YQstatus#,
+			#L1#,
+			#L2#,
+			#L3#,
+			#L4#
+		)
+	</insert>
+	<delete id='DeletePSP_GprogElevice' parameterClass='PSP_GprogElevice'>
+		DELETE FROM PSP_GprogElevice
+		WHERE
+			GprogUID = #GprogUID#
+			AND DeviceSUID = #DeviceSUID#
+	</delete>
+	<update id='UpdatePSP_GprogElevice' parameterClass='PSP_GprogElevice'>
+		UPDATE PSP_GprogElevice
+		SET
+			"Type" = #Type#,
+			"ZTstatus" = #ZTstatus#,
+			"JQstatus" = #JQstatus#,
+			"ZQstatus" = #ZQstatus#,
+			"YQstatus" = #YQstatus#,
+			"L1" = #L1#,
+			"L2" = #L2#,
+			"L3" = #L3#,
+			"L4" = #L4#
+		WHERE
+			GprogUID = #GprogUID#
+			AND DeviceSUID = #DeviceSUID#
+	</update>
+	<select id='SelectPSP_GprogEleviceList' resultMap='PSP_GprogEleviceResult' parameterClass='PSP_GprogElevice'>
+		SELECT
+			"GprogUID",
+			"DeviceSUID",
+			"Type",
+			"ZTstatus",
+			"JQstatus",
+			"ZQstatus",
+			"YQstatus",
+			"L1",
+			"L2",
+			"L3",
+			"L4"
+		FROM PSP_GprogElevice
+	</select>
+	<select id='SelectPSP_GprogEleviceByKey' resultMap='PSP_GprogEleviceResult' parameterClass='PSP_GprogElevice'>
+		SELECT
+			"GprogUID",
+			"DeviceSUID",
+			"Type",
+			"ZTstatus",
+			"JQstatus",
+			"ZQstatus",
+			"YQstatus",
+			"L1",
+			"L2",
+			"L3",
+			"L4"
+		FROM PSP_GprogElevice
+		WHERE
+			GprogUID = #GprogUID#
+			AND DeviceSUID = #DeviceSUID#
+	</select>
+  <select id='SelectPSP_GprogEleviceByCondition' resultMap='PSP_GprogEleviceResult' parameterClass='string'>
+    SELECT
+    "GprogUID",
+    "DeviceSUID",
+    "Type",
+    "ZTstatus",
+    "JQstatus",
+    "ZQstatus",
+    "YQstatus",
+    "L1",
+    "L2",
+    "L3",
+    "L4"
+    FROM PSP_GprogElevice
+    WHERE
+    $value$
+  </select>
+</statements>
+</sqlMap>

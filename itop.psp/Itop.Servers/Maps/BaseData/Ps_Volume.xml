@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Volume' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Ps_Volume' assembly='Itop.Domain.BaseData.dll' type='Itop.Domain.BaseData.Ps_Volume' />
+</alias>
+	<resultMaps>
+		<resultMap id='Ps_VolumeResult' class='Ps_Volume'>
+			<result property='ID' column='ID' />
+			<result property='Years' column='Years' />
+			<result property='MaxPw' column='MaxPw' />
+			<result property='YearEndVolume' column='YearEndVolume' />
+			<result property='WaterVolume' column='WaterVolume' />
+			<result property='FireVolume' column='FireVolume' />
+			<result property='BackupVolume' column='BackupVolume' />
+			<result property='ToolsVolume' column='ToolsVolume' />
+			<result property='MaxVolume' column='MaxVolume' />
+			<result property='balkVolume' column='balkVolume' />
+			<result property='balkWaterVolume' column='balkWaterVolume' />
+			<result property='balkFireVolume' column='balkFireVolume' />
+			<result property='BalanceVolume' column='BalanceVolume' />
+			<result property='FeedPw' column='FeedPw' />
+			<result property='GetPw' column='GetPw' />
+			<result property='BreakPw' column='BreakPw' />
+			<result property='GetPs' column='GetPs' />
+			<result property='IsWaterFire' column='IsWaterFire' />
+			<result property='IsWaterFirePst' column='IsWaterFirePst' />
+			<result property='IsGetPwPst' column='IsGetPwPst' />
+			<result property='CreateTime' column='CreateTime' />
+			<result property='CreateUser' column='CreateUser' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Col3' column='Col3' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPs_Volume' parameterClass='Ps_Volume'>
+		INSERT INTO Ps_Volume		(
+			"ID",
+			"Years",
+			"MaxPw",
+			"YearEndVolume",
+			"WaterVolume",
+			"FireVolume",
+			"BackupVolume",
+			"ToolsVolume",
+			"MaxVolume",
+			"balkVolume",
+			"balkWaterVolume",
+			"balkFireVolume",
+			"BalanceVolume",
+			"FeedPw",
+			"GetPw",
+			"BreakPw",
+			"GetPs",
+			"IsWaterFire",
+			"IsWaterFirePst",
+			"IsGetPwPst",
+			"CreateTime",
+			"CreateUser",
+			"Col1",
+			"Col2",
+			"Col3"
+		)
+		VALUES
+		(
+			#ID#,
+			#Years#,
+			#MaxPw#,
+			#YearEndVolume#,
+			#WaterVolume#,
+			#FireVolume#,
+			#BackupVolume#,
+			#ToolsVolume#,
+			#MaxVolume#,
+			#balkVolume#,
+			#balkWaterVolume#,
+			#balkFireVolume#,
+			#BalanceVolume#,
+			#FeedPw#,
+			#GetPw#,
+			#BreakPw#,
+			#GetPs#,
+			#IsWaterFire#,
+			#IsWaterFirePst#,
+			#IsGetPwPst#,
+			GetDate(),
+			#CreateUser#,
+			#Col1#,
+			#Col2#,
+			#Col3#
+		)
+	</insert>
+	<delete id='DeletePs_Volume' parameterClass='Ps_Volume'>
+		DELETE FROM Ps_Volume
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePs_Volume' parameterClass='Ps_Volume'>
+		UPDATE Ps_Volume
+		SET
+			"Years" = #Years#,
+			"MaxPw" = #MaxPw#,
+			"YearEndVolume" = #YearEndVolume#,
+			"WaterVolume" = #WaterVolume#,
+			"FireVolume" = #FireVolume#,
+			"BackupVolume" = #BackupVolume#,
+			"ToolsVolume" = #ToolsVolume#,
+			"MaxVolume" = #MaxVolume#,
+			"balkVolume" = #balkVolume#,
+			"balkWaterVolume" = #balkWaterVolume#,
+			"balkFireVolume" = #balkFireVolume#,
+			"BalanceVolume" = #BalanceVolume#,
+			"FeedPw" = #FeedPw#,
+			"GetPw" = #GetPw#,
+			"BreakPw" = #BreakPw#,
+			"GetPs" = #GetPs#,
+			"IsWaterFire" = #IsWaterFire#,
+			"IsWaterFirePst" = #IsWaterFirePst#,
+			"IsGetPwPst" = #IsGetPwPst#,
+			"Col1" = #Col1#,
+			"Col2" = #Col2#,
+			"Col3" = #Col3#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPs_VolumeList' resultMap='Ps_VolumeResult' parameterClass='Ps_Volume'>
+    SELECT
+    "ID",
+    "Years",
+    "MaxPw",
+    "YearEndVolume",
+    "WaterVolume",
+    "FireVolume",
+    "BackupVolume",
+    "ToolsVolume",
+    "MaxVolume",
+    "balkVolume",
+    "balkWaterVolume",
+    "balkFireVolume",
+    "BalanceVolume",
+    "FeedPw",
+    "GetPw",
+    "BreakPw",
+    "GetPs",
+    "IsWaterFire",
+    "IsWaterFirePst",
+    "IsGetPwPst",
+    "CreateTime",
+    "CreateUser",
+    "Col1",
+    "Col2",
+    "Col3"
+    FROM Ps_Volume order by Years
+  </select>
+	<select id='SelectPs_VolumeByKey' resultMap='Ps_VolumeResult' parameterClass='Ps_Volume'>
+		SELECT
+			"ID",
+			"Years",
+			"MaxPw",
+			"YearEndVolume",
+			"WaterVolume",
+			"FireVolume",
+			"BackupVolume",
+			"ToolsVolume",
+			"MaxVolume",
+			"balkVolume",
+			"balkWaterVolume",
+			"balkFireVolume",
+			"BalanceVolume",
+			"FeedPw",
+			"GetPw",
+			"BreakPw",
+			"GetPs",
+			"IsWaterFire",
+			"IsWaterFirePst",
+			"IsGetPwPst",
+			"CreateTime",
+			"CreateUser",
+			"Col1",
+			"Col2",
+			"Col3"
+		FROM Ps_Volume
+		WHERE
+			ID = #ID#
+	</select>
+
+  <select id='SelectPs_VolumeByYears' resultMap='Ps_VolumeResult' parameterClass='int'>
+    SELECT
+    "ID",
+    "Years",
+    "MaxPw",
+    "YearEndVolume",
+    "WaterVolume",
+    "FireVolume",
+    "BackupVolume",
+    "ToolsVolume",
+    "MaxVolume",
+    "balkVolume",
+    "balkWaterVolume",
+    "balkFireVolume",
+    "BalanceVolume",
+    "FeedPw",
+    "GetPw",
+    "BreakPw",
+    "GetPs",
+    "IsWaterFire",
+    "IsWaterFirePst",
+    "IsGetPwPst",
+    "CreateTime",
+    "CreateUser",
+    "Col1",
+    "Col2",
+    "Col3"
+    FROM Ps_Volume
+    WHERE
+    Years = #Years#
+  </select>
+</statements>
+</sqlMap>

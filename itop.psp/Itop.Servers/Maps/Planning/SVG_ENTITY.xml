@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SVG_ENTITY' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='SVG_ENTITY' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.SVG_ENTITY' />
+</alias>
+	<resultMaps>
+		<resultMap id='SVG_ENTITYResult' class='SVG_ENTITY'>
+			<result property='SUID' column='SUID' />
+			<result property='EleID' column='EleID' />
+			<result property='svgID' column='svgID' />
+			<result property='NAME' column='NAME' />
+			<result property='XML' column='XML' />
+			<result property='MDATE' column='MDATE' />
+			<result property='layerID' column='layerID' />
+			<result property='TYPE' column='TYPE' />
+			<result property='voltage' column='voltage' />
+			<result property='RecordID' column='RecordID' />
+			<result property='col1' column='col1' />
+			<result property='col3' column='col3' />
+			<result property='col2' column='col2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertSVG_ENTITY' parameterClass='SVG_ENTITY'>
+		INSERT INTO SVG_ENTITY		(
+			"SUID",
+			"EleID",
+			"svgID",
+			"NAME",
+			"XML",
+			"MDATE",
+			"layerID",
+			"TYPE",
+			"voltage",
+			"RecordID",
+			"col1",
+			"col3",
+			"col2"
+		)
+		VALUES
+		(
+			#SUID#,
+			#EleID#,
+			#svgID#,
+			#NAME#,
+			#XML#,
+			#MDATE#,
+			#layerID#,
+			#TYPE#,
+			#voltage#,
+			#RecordID#,
+			#col1#,
+			#col3#,
+			#col2#
+		)
+	</insert>
+	<delete id='DeleteSVG_ENTITY' parameterClass='SVG_ENTITY'>
+		DELETE FROM SVG_ENTITY
+		WHERE
+			SUID = #SUID#
+	</delete>
+  <delete id='DeleteSVG_ENTITYAll' parameterClass='SVG_ENTITY'>
+    DELETE FROM SVG_ENTITY
+  </delete>
+  <delete id='DeleteSVG_ENTITYByEleID' parameterClass='SVG_ENTITY'>
+    DELETE FROM SVG_ENTITY
+    WHERE
+    EleID = #EleID# and
+    svgID = #svgID#
+  </delete>
+	<update id='UpdateSVG_ENTITY' parameterClass='SVG_ENTITY'>
+		UPDATE SVG_ENTITY
+		SET
+			"EleID" = #EleID#,
+			"svgID" = #svgID#,
+			"NAME" = #NAME#,
+			"XML" = #XML#,
+			"MDATE" = #MDATE#,
+			"layerID" = #layerID#,
+			"TYPE" = #TYPE#,
+			"voltage" = #voltage#,
+			"RecordID" = #RecordID#,
+			"col1" = #col1#,
+			"col3" = #col3#,
+			"col2" = #col2#
+		WHERE
+			SUID = #SUID#
+	</update>
+	<select id='SelectSVG_ENTITYList' resultMap='SVG_ENTITYResult' parameterClass='SVG_ENTITY'>
+		SELECT
+			"SUID",
+			"EleID",
+			"svgID",
+			"NAME",
+			"XML",
+			"MDATE",
+			"layerID",
+			"TYPE",
+			"voltage",
+			"RecordID",
+			"col1",
+			"col3",
+			"col2"
+		FROM SVG_ENTITY
+	</select>
+	<select id='SelectSVG_ENTITYByKey' resultMap='SVG_ENTITYResult' parameterClass='SVG_ENTITY'>
+		SELECT
+			"SUID",
+			"EleID",
+			"svgID",
+			"NAME",
+			"XML",
+			"MDATE",
+			"layerID",
+			"TYPE",
+			"voltage",
+			"RecordID",
+			"col1",
+			"col3",
+			"col2"
+		FROM SVG_ENTITY
+		WHERE
+			SUID = #SUID#
+	</select>
+  <select id='SelectSVG_ENTITYByEleID' resultMap='SVG_ENTITYResult' parameterClass='SVG_ENTITY'>
+    SELECT
+    "SUID",
+    "EleID",
+    "svgID",
+    "NAME",
+    "XML",
+    "MDATE",
+    "layerID",
+    "TYPE",
+    "voltage",
+    "RecordID",
+    "col1",
+    "col3",
+    "col2"
+    FROM SVG_ENTITY
+    WHERE
+    EleID = #EleID# and
+    svgID = #svgID#
+  </select>
+</statements>
+</sqlMap>

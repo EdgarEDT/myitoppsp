@@ -1,0 +1,121 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_ELCPROJECT' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_ELCPROJECT' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_ELCPROJECT' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_ELCPROJECTResult' class='PSP_ELCPROJECT'>
+      <result property='ID' column='ID' />
+      <result property='Name' column='Name' />
+      <result property='Class' column='Class' />
+      <result property='ProjectID' column='ProjectID' />
+      <result property='FileType' column='FileType'/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_ELCPROJECT' parameterClass='PSP_ELCPROJECT'>
+      INSERT INTO PSP_ELCPROJECT		(
+      "ID",
+      "Name",
+      "Class",
+      "ProjectID",
+      "FileType"
+      )
+      VALUES
+      (
+      #ID#,
+      #Name#,
+      #Class#,
+      #ProjectID#,
+      #FileType#
+      )
+    </insert>
+    <delete id='DeletePSP_ELCPROJECT' parameterClass='PSP_ELCPROJECT'>
+      DELETE FROM PSP_ELCPROJECT
+      WHERE
+      ID = #ID#
+      DELETE FROM PSP_ELCDEVICE
+      WHERE 
+      ProjectSUID = #ID#
+      DELETE FROM SVGFILE
+      WHERE
+      SUID = #ID#
+    </delete>
+    <update id='UpdatePSP_ELCPROJECT' parameterClass='PSP_ELCPROJECT'>
+      UPDATE PSP_ELCPROJECT
+      SET
+      "Name" = #Name#,
+      "Class" = #Class#,
+      "ProjectID" = #ProjectID#,
+      "FileType"=#FileType#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPSP_ELCPROJECTList' resultMap='PSP_ELCPROJECTResult' parameterClass='PSP_ELCPROJECT'>
+      SELECT
+      "ID",
+      "Name",
+      "Class",
+      "ProjectID",
+      "FileType"
+      FROM PSP_ELCPROJECT
+      WHERE
+      ProjectID = #ProjectID#
+    </select>
+    <select id='SelectPSP_ELCPROJECTListByFileType' resultMap='PSP_ELCPROJECTResult' parameterClass='PSP_ELCPROJECT'>
+      SELECT
+      "ID",
+      "Name",
+      "Class",
+      "ProjectID",
+      "FileType"
+      FROM PSP_ELCPROJECT
+      WHERE
+      FileType=#FileType#
+    </select>
+    <select id='SelectPSP_ELCPROJECTByKey' resultMap='PSP_ELCPROJECTResult' parameterClass='PSP_ELCPROJECT'>
+      SELECT
+      "ID",
+      "Name",
+      "Class",
+      "ProjectID",
+      "FileType"
+      FROM PSP_ELCPROJECT
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPSP_ELCPROJECTByWhere' resultMap='PSP_ELCPROJECTResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "Name",
+      "Class",
+      "ProjectID",
+      "FileType"
+      FROM PSP_ELCPROJECT
+      WHERE
+      $Value$
+    </select>
+    <select id='SelectPSP_ELCPROJECTByKeyandfiletype' resultMap='PSP_ELCPROJECTResult' parameterClass='PSP_ELCPROJECT'>
+      SELECT
+      "ID",
+      "Name",
+      "Class",
+      "ProjectID",
+      "FileType"
+      FROM PSP_ELCPROJECT
+      WHERE
+      ID = #ID# AND FileType=#FileType#
+    </select>
+    <select id='SelectPSP_ELCPROJECTByProjectIDandfiletype' resultMap='PSP_ELCPROJECTResult' parameterClass='PSP_ELCPROJECT'>
+      SELECT
+      "ID",
+      "Name",
+      "Class",
+      "ProjectID",
+      "FileType"
+      FROM PSP_ELCPROJECT
+      WHERE
+      ProjectID = #ProjectID# AND FileType=#FileType#
+    </select>
+  </statements>
+</sqlMap>

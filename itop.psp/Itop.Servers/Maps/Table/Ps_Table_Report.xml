@@ -1,0 +1,165 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Table_Report' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Ps_Table_Report' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.Ps_Table_Report' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Ps_Table_ReportResult' class='Ps_Table_Report'>
+      <result property='ID' column='ID' />
+      <result property='TableID' column='TableID' />
+      <result property='TableOldName' column='TableOldName' />
+      <result property='TableNewName' column='TableNewName' />
+      <result property='Years' column='Years' />
+      <result property='Num1' column='Num1' />
+      <result property='Num2' column='Num2' />
+      <result property='Num3' column='Num3' />
+      <result property='Num4' column='Num4' />
+      <result property='ProjectID' column='ProjectID' />
+      <result property='BC2' column='BC2' />
+      <result property='BC3' column='BC3' />
+      <result property='Remark' column='Remark' />
+      <result property='Remark2' column='Remark2' />
+      <result property='image1' column='image1' />
+      <result property='image2' column='image2' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPs_Table_Report' parameterClass='Ps_Table_Report'>
+      INSERT INTO Ps_Table_Report		(
+      "ID",
+      "TableID",
+      "TableOldName",
+      "TableNewName",
+      "Years",
+      "Num1",
+      "Num2",
+      "Num3",
+      "Num4",
+      "ProjectID",
+      "BC2",
+      "BC3",
+      "Remark",
+      "Remark2",
+      "image1",
+      "image2"
+      )
+      VALUES
+      (
+      #ID#,
+      #TableID#,
+      #TableOldName#,
+      #TableNewName#,
+      #Years#,
+      #Num1#,
+      #Num2#,
+      #Num3#,
+      #Num4#,
+      #ProjectID#,
+      #BC2#,
+      #BC3#,
+      #Remark#,
+      #Remark2#,
+      #image1#,
+      #image2#
+      )
+    </insert>
+    <delete id='DeletePs_Table_Report' parameterClass='Ps_Table_Report'>
+      DELETE FROM Ps_Table_Report
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdatePs_Table_Report' parameterClass='Ps_Table_Report'>
+      UPDATE Ps_Table_Report
+      SET
+      "TableID" = #TableID#,
+      "TableOldName" = #TableOldName#,
+      "TableNewName" = #TableNewName#,
+      "Years" = #Years#,
+      "Num1" = #Num1#,
+      "Num2" = #Num2#,
+      "Num3" = #Num3#,
+      "Num4" = #Num4#,
+      "ProjectID" = #ProjectID#,
+      "BC2" = #BC2#,
+      "BC3" = #BC3#,
+      "Remark" = #Remark#,
+      "Remark2" = #Remark2#,
+      "image1" = #image1#,
+      "image2" = #image2#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPs_Table_ReportList' resultMap='Ps_Table_ReportResult' parameterClass='Ps_Table_Report'>
+      SELECT
+      "ID",
+      "TableID",
+      "TableOldName",
+      "TableNewName",
+      "Years",
+      "Num1",
+      "Num2",
+      "Num3",
+      "Num4",
+      "ProjectID",
+      "BC2",
+      "BC3",
+      "Remark",
+      "Remark2",
+      "image1",
+      "image2"
+      FROM Ps_Table_Report
+    </select>
+    <select id='SelectPs_Table_ReportByKey' resultMap='Ps_Table_ReportResult' parameterClass='Ps_Table_Report'>
+      SELECT
+      "ID",
+      "TableID",
+      "TableOldName",
+      "TableNewName",
+      "Years",
+      "Num1",
+      "Num2",
+      "Num3",
+      "Num4",
+      "ProjectID",
+      "BC2",
+      "BC3",
+      "Remark",
+      "Remark2",
+      "image1",
+      "image2"
+      FROM Ps_Table_Report
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPs_Table_ReportListByConn' resultMap='Ps_Table_ReportResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "TableID",
+      "TableOldName",
+      "TableNewName",
+      "Years",
+      "Num1",
+      "Num2",
+      "Num3",
+      "Num4",
+      "ProjectID",
+      "BC2",
+      "BC3",
+      "Remark",
+      "Remark2",
+      "image1",
+      "image2"
+      FROM Ps_Table_Report
+      WHERE
+      $value$
+      </select>
+    <select id='SelectPs_Table_ReportMaxNum1' resultClass='int' parameterClass='string'>
+      SELECT
+      max(Num1)
+      FROM Ps_Table_Report
+      WHERE
+      
+      $value$
+    </select>
+    </statements>
+</sqlMap>

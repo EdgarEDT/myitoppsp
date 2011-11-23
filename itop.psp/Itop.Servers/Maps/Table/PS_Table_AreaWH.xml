@@ -1,0 +1,144 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PS_Table_AreaWH' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PS_Table_AreaWH' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.PS_Table_AreaWH' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PS_Table_AreaWHResult' class='PS_Table_AreaWH'>
+      <result property='ID' column='ID' />
+      <result property='ParentID' column='ParentID' />
+      <result property='ProjectID' column='ProjectID' />
+      <result property='Sort' column='Sort' />
+      <result property='Title' column='Title' />
+      <result property='Voltage' column='Voltage' />
+      <result property='Volumn' column='Volumn' />
+      <result property='Col1' column='Col1' />
+      <result property='Col2' column='Col2' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPS_Table_AreaWH' parameterClass='PS_Table_AreaWH'>
+      INSERT INTO PS_Table_AreaWH		(
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      )
+      VALUES
+      (
+      #ID#,
+      #ParentID#,
+      #ProjectID#,
+      #Title#,
+      #Voltage#,
+      #Volumn#,
+      #Col1#,
+      #Col2#
+      )
+    </insert>
+    <delete id='DeletePS_Table_AreaWH' parameterClass='PS_Table_AreaWH'>
+      DELETE FROM PS_Table_AreaWH
+      WHERE
+      ID = #ID#
+    </delete>
+    <delete id='DeletePS_Table_AreaWHByConn' parameterClass='PS_Table_AreaWH'>
+      DELETE FROM PS_Table_AreaWH
+      WHERE
+      $value$
+    </delete>
+    <update id='UpdatePS_Table_AreaWH' parameterClass='PS_Table_AreaWH'>
+      UPDATE PS_Table_AreaWH
+      SET
+      "ParentID" = #ParentID#,
+      "ProjectID" = #ProjectID#,
+      "Title" = #Title#,
+      "Voltage" = #Voltage#,
+      "Volumn" = #Volumn#,
+      "Col1" = #Col1#,
+      "Col2" = #Col2#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPS_Table_AreaWHList' resultMap='PS_Table_AreaWHResult' parameterClass='PS_Table_AreaWH'>
+      SELECT
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Sort",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      FROM PS_Table_AreaWH
+    </select>
+    <select id='SelectPS_Table_AreaWHByKey' resultMap='PS_Table_AreaWHResult' parameterClass='PS_Table_AreaWH'>
+      SELECT
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Sort",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      FROM PS_Table_AreaWH
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPS_Table_AreaWHByConn' resultMap='PS_Table_AreaWHResult' parameterClass='PS_Table_AreaWH'>
+      SELECT
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Sort",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      FROM PS_Table_AreaWH
+      WHERE
+      $value$
+    </select>
+    <select id='SelectPS_Table_AreaWHCopyByProj' resultMap='PS_Table_AreaWHResult' parameterClass='PS_Table_AreaWH'>
+      SELECT
+      "ID",
+      "ParentID",
+      "ProjectID",
+      "Sort",
+      "Title",
+      "Voltage",
+      "Volumn",
+      "Col1",
+      "Col2"
+      FROM PS_Table_AreaWH
+      WHERE
+      ProjectID=#ProjectID#
+    </select>
+    <select id='SelectPS_Table_AreaWHOfTitle' resultClass='string' parameterClass='PS_Table_AreaWH'>
+      select Title   FROM   PS_Table_AreaWH  WHERE  $value$
+    </select>
+    <!--查分区名称-->
+    <select id='SelectPS_Table_AreaWH_Title' resultClass='string' parameterClass='PS_Table_AreaWH'>
+      SELECT
+      Title
+      FROM PS_Table_AreaWH
+      WHERE
+      $value$
+    </select>
+    <!--查分区ID-->
+    <select id='SelectPS_Table_AreaWH_ID' resultClass='string' parameterClass='PS_Table_AreaWH'>
+      SELECT
+      ID
+      FROM PS_Table_AreaWH
+      WHERE
+      $value$
+    </select>
+  </statements>
+</sqlMap>

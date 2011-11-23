@@ -1,0 +1,652 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_Project_List' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_Project_List' assembly='Itop.Domain.Stutistics.dll' type='Itop.Domain.Stutistics.PSP_Project_List' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_Project_ListResult' class='PSP_Project_List'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='Flag' column='Flag' />
+			<result property='Flag2' column='Flag2' />
+			<result property='ParentID' column='ParentID' />
+			<result property='Code' column='Code' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateTime' column='CreateTime' />
+			<result property='UpdateTime' column='UpdateTime' />
+			<result property='L1' column='L1' />
+			<result property='L2' column='L2' />
+			<result property='L3' column='L3' />
+			<result property='L4' column='L4' />
+			<result property='L5' column='L5' />
+			<result property='L6' column='L6' />
+			<result property='L7' column='L7' />
+			<result property='L8' column='L8' />
+			<result property='L9' column='L9' />
+			<result property='L10' column='L10' />
+			<result property='L11' column='L11' />
+			<result property='L12' column='L12' />
+			<result property='L13' column='L13' />
+			<result property='L14' column='L14' />
+			<result property='IsConn' column='IsConn' />
+			<result property='L15' column='L15' />
+			<result property='L16' column='L16' />
+			<result property='L17' column='L17' />
+			<result property='L18' column='L18' />
+			<result property='L19' column='L19' />
+		</resultMap>
+    <resultMap id='Project_ListResult' class='PSP_Project_List'>
+     <result property='L1' column='L1' />
+    </resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_Project_List' parameterClass='PSP_Project_List'>
+    INSERT INTO PSP_Project_List		(
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID",
+    "Code",
+    "Remark",
+    "CreateTime",
+    "UpdateTime",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "IsConn",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#,
+    #Code#,
+    #Remark#,
+    GetDate(),
+    GetDate(),
+    #L1#,
+    #L2#,
+    #L3#,
+    #L4#,
+    #L5#,
+    #L6#,
+    #L7#,
+    #L8#,
+    #L9#,
+    #L10#,
+    #L11#,
+    #L12#,
+    #L13#,
+    #L14#,
+    #IsConn#,
+    #L15#,
+    #L16#,
+    #L17#,
+    #L18#,
+    #L19#
+    )
+  </insert>
+	<delete id='DeletePSP_Project_List' parameterClass='PSP_Project_List'>
+		DELETE FROM PSP_Project_List
+		WHERE
+			ID = #ID#
+	</delete>
+  <update id='DeletePSP_Project_ListByIDFlag2' parameterClass='PSP_Project_List'>
+    DELETE FROM PSP_Project_List
+    WHERE
+    ID = #ID#
+    AND Flag2 = #Flag2#
+  </update>
+	<update id='UpdatePSP_Project_List' parameterClass='PSP_Project_List'>
+    UPDATE PSP_Project_List
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "Flag2" = #Flag2#,
+    "ParentID" = #ParentID#,
+    "Code" = #Code#,
+    "Remark" = #Remark#,
+    "CreateTime" = #CreateTime#,
+    "UpdateTime" = #UpdateTime#,
+    "L1" = #L1#,
+    "L2" = #L2#,
+    "L3" = #L3#,
+    "L4" = #L4#,
+    "L5" = #L5#,
+    "L6" = #L6#,
+    "L7" = #L7#,
+    "L8" = #L8#,
+    "L9" = #L9#,
+    "L10" = #L10#,
+    "L11" = #L11#,
+    "L12" = #L12#,
+    "L13" = #L13#,
+    "L14" = #L14#,
+    "IsConn" = #IsConn#,
+    "L15" = #L15#,
+    "L16" = #L16#,
+    "L17" = #L17#,
+    "L18" = #L18#,
+    "L19" = #L19#
+    WHERE
+    ID = #ID#
+  </update>
+  <update id='UpdatePSP_Project_ListByCode' parameterClass='PSP_Project_List'>
+    UPDATE PSP_Project_List
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "ParentID" = #ParentID#,
+    "Code" = #Code#,
+    "Remark" = #Remark#,
+    "L1" = #L1#,
+    "L2" = #L2#,
+    "L3" = #L3#,
+    "L4" = #L4#,
+    "L5" = #L5#,
+    "L6" = #L6#,
+    "L7" = #L7#,
+    "L8" = #L8#,
+    "L9" = #L9#,
+    "L10" = #L10#,
+    "L11" = #L11#,
+    "L12" = #L12#,
+    "L13" = #L13#,
+    "L14" = #L14#,
+    "L15" = #L15#,
+    "L16" = #L16#,
+    "L17" = #L17#,
+    "L18" = #L18#,
+    "L19" = #L19#,
+    "IsConn" = #IsConn#
+    WHERE
+    Flag2 =#Flag2#
+    AND
+    Code = #Code#
+  </update>
+
+  <update id='UpdatePSP_Project_ListByFlag' parameterClass='PSP_Project_List'>
+    UPDATE PSP_Project_List
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "Flag2" = #Flag2#,
+    "ParentID" = #ParentID#,
+    "Code" = #Code#,
+    "Remark" = #Remark#,
+    "UpdateTime" = GetDate(),
+    "L1" = #L1#,
+    "L2" = #L2#,
+    "L3" = #L3#,
+    "L4" = #L4#,
+    "L5" = #L5#,
+    "L6" = #L6#,
+    "L7" = #L7#,
+    "L8" = #L8#,
+    "L9" = #L9#,
+    "L10" = #L10#,
+    "L11" = #L11#,
+    "L12" = #L12#,
+    "L13" = #L13#,
+    "L14" = #L14#,
+    "IsConn" = #IsConn#,
+    "L15" = #L15#,
+    "L16" = #L16#,
+    "L17" = #L17#,
+    "L18" = #L18#,
+    "L19" = #L19#
+    WHERE
+    ID = #ID#
+    AND Flag2 = #Flag2#
+  </update>
+
+
+
+  <update id='UpdatePSP_Project_ListBy' parameterClass='PSP_Project_List'>
+    If Exists(Select ID from PSP_Project_List Where ID = #ID#)
+    UPDATE PSP_Project_List
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "ParentID" = #ParentID#,
+    "Code" = #Code#,
+    "Remark" = #Remark#,
+    "L1" = #L1#,
+    "L2" = #L2#,
+    "L3" = #L3#,
+    "L4" = #L4#,
+    "L5" = #L5#,
+    "L6" = #L6#,
+    "L7" = #L7#,
+    "L8" = #L8#,
+    "L9" = #L9#,
+    "L10" = #L10#,
+    "L11" = #L11#,
+    "L12" = #L12#,
+    "L13" = #L13#,
+    "L14" = #L14#,
+    "L15" = #L15#,
+    "L16" = #L16#,
+    "L17" = #L17#,
+    "L18" = #L18#,
+    "L19" = #L19#,
+    "IsConn" = #IsConn#
+    WHERE
+    ID = #ID#
+    Else
+    INSERT INTO PSP_Project_List		(
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID",
+    "Code",
+    "Remark",
+    "CreateTime",
+    "UpdateTime",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "IsConn"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#,
+    #Code#,
+    #Remark#,
+    GetDate(),
+    GetDate(),
+    #L1#,
+    #L2#,
+    #L3#,
+    #L4#,
+    #L5#,
+    #L6#,
+    #L7#,
+    #L8#,
+    #L9#,
+    #L10#,
+    #L11#,
+    #L12#,
+    #L13#,
+    #L14#,
+    #L15#,
+    #L16#,
+    #L17#,
+    #L18#,
+    #L19#,
+    #IsConn#
+    )
+  </update>
+  <update id='UpdatePSP_Project_ListByFlag2' parameterClass='PSP_Project_List'>
+    If Exists(Select ID from PSP_Project_List Where ID = #ID#)
+    UPDATE PSP_Project_List
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "ParentID" = #ParentID#,
+    "Code" = #Code#,
+    "Remark" = #Remark#,
+    "L1" = #L1#,
+    "L2" = #L2#,
+    "L3" = #L3#,
+    "L4" = #L4#,
+    "L5" = #L5#,
+    "L6" = #L6#,
+    "L7" = #L7#,
+    "L8" = #L8#,
+    "L9" = #L9#,
+    "L10" = #L10#,
+    "L11" = #L11#,
+    "L12" = #L12#,
+    "L13" = #L13#,
+    "L14" = #L14#,
+    "L15" = #L15#,
+    "L16" = #L16#,
+    "L17" = #L17#,
+    "L18" = #L18#,
+    "L19" = #L19#,
+    "IsConn" = #IsConn#
+    WHERE
+    ID = #ID#
+    AND Flag2 = #Flag2#
+    Else
+    INSERT INTO PSP_Project_List		(
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID",
+    "Code",
+    "Remark",
+    "CreateTime",
+    "UpdateTime",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "IsConn"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#,
+    #Code#,
+    #Remark#,
+    GetDate(),
+    GetDate(),
+    #L1#,
+    #L2#,
+    #L3#,
+    #L4#,
+    #L5#,
+    #L6#,
+    #L7#,
+    #L8#,
+    #L9#,
+    #L10#,
+    #L11#,
+    #L12#,
+    #L13#,
+    #L14#,
+    #L15#,
+    #L16#,
+    #L17#,
+    #L18#,
+    #L19#,
+    #IsConn#
+    )
+  </update>
+  <update id='UpdatePSP_Project_ListBytable' parameterClass='PSP_Project_List'>
+    UPDATE PSP_Project_List
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "ParentID" = #ParentID#,
+    "Code" = #Code#,
+    "Remark" = #Remark#,
+    "L1" = #L1#,
+    "L2" = #L2#,
+    "L3" = #L3#,
+    "L4" = #L4#,
+    "L5" = #L5#,
+    "L6" = #L6#,
+    "L7" = #L7#,
+    "L8" = #L8#,
+    "L9" = #L9#,
+    "L10" = #L10#,
+    "L11" = #L11#,
+    "L12" = #L12#,
+    "L13" = #L13#,
+    "L14" = #L14#,
+    "L15" = #L15#,
+    "L16" = #L16#,
+    "L17" = #L17#,
+    "L18" = #L18#,
+    "L19" = #L19#,
+    "IsConn" = #IsConn#
+    WHERE
+    L3 = #L3# and L4 = #L4# and Flag2 = #Flag2#
+
+  </update>
+  <update id='DeletePSP_Project_ListByFlag2' parameterClass='string'>
+
+    DELETE FROM psp_PowerProValues
+    WHERE
+    TypeID IN ( SELECT ID FROM PSP_Project_List WHERE Flag2 = #Flag2#)
+
+    DELETE FROM PSP_Project_List
+    WHERE
+    Flag2 = #Flag2#
+  </update>
+  <select id='selectPag2' resultMap='Project_ListResult' parameterClass='PSP_Project_List'>
+    SELECT DISTINCT  L1 FROM PSP_Project_List 
+  </select> 
+     
+  <select id='SelectPSP_Project_ListByObject' resultMap='PSP_Project_ListResult' parameterClass='PSP_Project_List'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID",
+    "Code",
+    "Remark",
+    "CreateTime",
+    "UpdateTime",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "IsConn"
+    FROM PSP_Project_List
+    WHERE
+    Flag2 =#Flag2#
+    AND
+    Code = #Code#
+  </select>
+  
+	<select id='SelectPSP_Project_ListList' resultMap='PSP_Project_ListResult' parameterClass='PSP_Project_List'>
+		SELECT
+			"ID",
+			"Title",
+			"Flag",
+			"Flag2",
+			"ParentID",
+			"Code",
+			"Remark",
+			"CreateTime",
+			"UpdateTime",
+			"L1",
+			"L2",
+			"L3",
+			"L4",
+			"L5",
+			"L6",
+			"L7",
+			"L8",
+			"L9",
+			"L10",
+			"L11",
+			"L12",
+			"L13",
+			"L14",
+			"IsConn",
+			"L15",
+			"L16",
+			"L17",
+			"L18",
+			"L19"
+		FROM PSP_Project_List
+	</select>
+	<select id='SelectPSP_Project_ListByKey' resultMap='PSP_Project_ListResult' parameterClass='PSP_Project_List'>
+		SELECT
+			"ID",
+			"Title",
+			"Flag",
+			"Flag2",
+			"ParentID",
+			"Code",
+			"Remark",
+			"CreateTime",
+			"UpdateTime",
+			"L1",
+			"L2",
+			"L3",
+			"L4",
+			"L5",
+			"L6",
+			"L7",
+			"L8",
+			"L9",
+			"L10",
+			"L11",
+			"L12",
+			"L13",
+			"L14",
+			"IsConn",
+			"L15",
+			"L16",
+			"L17",
+			"L18",
+			"L19"
+		FROM PSP_Project_List
+		WHERE
+			ID = #ID#
+	</select>
+
+  <select id='SelectPSP_Project_ListByFlag2' resultMap='PSP_Project_ListResult' parameterClass='PSP_Project_List'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID",
+    "Code",
+    "Remark",
+    "CreateTime",
+    "UpdateTime",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "IsConn"
+    FROM PSP_Project_List
+    WHERE
+    Flag2 = #Flag2#
+    ORDER BY convert(int,L4) desc, L3 asc,  CreateTime desc
+  </select>
+  <select id='SelectPSP_Project_ListByID' resultMap='PSP_Project_ListResult' parameterClass='PSP_Project_List'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID",
+    "Code",
+    "Remark",
+    "CreateTime",
+    "UpdateTime",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8",
+    "L9",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "IsConn"
+    FROM PSP_Project_List
+    WHERE
+    ID = #ID#
+  </select>
+  <select id='SelectPSP_Project_ListByMaxCreateTime' resultMap='PSP_Project_ListResult' parameterClass='PSP_Project_List'>
+    SELECT
+    *
+    FROM PSP_Project_List
+    where CreateTime=( SELECT
+    max(CreateTime) as CreateTime
+    FROM PSP_Project_List)
+  </select>
+
+
+</statements>
+</sqlMap>

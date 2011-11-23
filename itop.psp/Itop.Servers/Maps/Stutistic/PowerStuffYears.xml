@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerStuffYears' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerStuffYears' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerStuffYears' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerStuffYearsResult' class='PowerStuffYears'>
+			<result property='ID' column='ID' />
+			<result property='Year' column='Year' />
+			<result property='Flag' column='Flag' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerStuffYears' parameterClass='PowerStuffYears'>
+		INSERT INTO psp_PowerStuffYears		(
+			"Year",
+			"Flag"
+		)
+		VALUES
+		(
+			#Year#,
+			#Flag#
+		)
+	</insert>
+	<delete id='DeletePowerStuffYears' parameterClass='PowerStuffYears'>
+		DELETE FROM psp_PowerStuffYears
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePowerStuffYears' parameterClass='PowerStuffYears'>
+		UPDATE psp_PowerStuffYears
+		SET
+			"Year" = #Year#,
+			"Flag" = #Flag#
+		WHERE
+			ID = #ID#
+	</update>
+
+  
+	<select id='SelectPowerStuffYearsList' resultMap='PowerStuffYearsResult' parameterClass='PowerStuffYears'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag"
+		FROM psp_PowerStuffYears
+	</select>
+	<select id='SelectPowerStuffYearsListByFlag' resultMap='PowerStuffYearsResult' parameterClass='PowerStuffYears'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag"
+		FROM psp_PowerStuffYears
+		Where
+			Flag = #Flag#
+		Order by Year
+	</select>
+	<select id='SelectPowerStuffYearsByKey' resultMap='PowerStuffYearsResult' parameterClass='PowerStuffYears'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag"
+		FROM psp_PowerStuffYears
+		WHERE
+			ID = #ID#
+	</select>
+	<select id='SelectPowerStuffYearsByYearFlag' resultMap='PowerStuffYearsResult' parameterClass='PowerStuffYears'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag"
+		FROM psp_PowerStuffYears
+		WHERE
+			Year = #Year#
+			AND Flag = #Flag#
+	</select>
+</statements>
+</sqlMap>

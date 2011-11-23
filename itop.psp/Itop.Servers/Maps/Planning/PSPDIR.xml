@@ -1,0 +1,87 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSPDIR' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSPDIR' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSPDIR' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSPDIRResult' class='PSPDIR'>
+      <result property='FileGUID' column='FileGUID' />
+      <result property='FileName' column='FileName' />
+      <result property='FileType' column='FileType' />
+      <result property='CreateTime' column='CreateTime' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSPDIR' parameterClass='PSPDIR'>
+      INSERT INTO PSPDIR		(
+      "FileGUID",
+      "FileName",
+      "FileType",
+      "CreateTime"
+      )
+      VALUES
+      (
+      #FileGUID#,
+      #FileName#,
+      #FileType#,
+      #CreateTime#
+      )
+    </insert>
+    <delete id='DeletePSPDIR' parameterClass='PSPDIR'>
+      DELETE FROM PSPDIR
+      WHERE
+      FileGUID = #FileGUID#
+    </delete>
+    <delete id='DeletePSPDIRByKey' parameterClass='PSPDIR'>
+      DELETE FROM PSPDIR
+      WHERE
+      FileGUID = #FileGUID#
+    </delete>
+    <update id='UpdatePSPDIR' parameterClass='PSPDIR'>
+      UPDATE PSPDIR
+      SET
+      "FileName" = #FileName#,
+      "FileType" = #FileType#    
+      WHERE
+      FileGUID = #FileGUID#
+    </update>
+    <select id='SelectPSPDIRList' resultMap='PSPDIRResult' parameterClass='PSPDIR'>
+      SELECT
+      "FileGUID",
+      "FileName",
+      "FileType",
+      "CreateTime"
+      FROM PSPDIR
+    </select>
+    <select id='SelectPSPDIRByKey' resultMap='PSPDIRResult' parameterClass='PSPDIR'>
+      SELECT
+      "FileGUID",
+      "FileName",
+      "FileType",
+      "CreateTime"
+      FROM PSPDIR
+      WHERE
+      FileGUID = #FileGUID#
+    </select>
+    <select id='SelectPSPDIRByFileType' resultMap='PSPDIRResult' parameterClass='PSPDIR'>
+      SELECT
+      "FileGUID",
+      "FileName",
+      "FileType",
+      "CreateTime"
+      FROM PSPDIR
+      WHERE
+      FileType=#FileType# order by FileName,CreateTime
+    </select>
+    <select id='SelectPSPDIRByFileName' resultMap='PSPDIRResult' parameterClass='PSPDIR'>
+      SELECT
+      "FileGUID",
+      "FileName",
+      "FileType",
+      "CreateTime"
+      FROM PSPDIR
+      WHERE
+      FileName=#FileName#
+    </select>
+    </statements>
+</sqlMap>

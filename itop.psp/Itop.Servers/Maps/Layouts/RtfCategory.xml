@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='RtfCategory' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='RtfCategory' assembly='Itop.Domain.Layouts.dll' type='Itop.Domain.Layouts.RtfCategory' />
+</alias>
+	<resultMaps>
+		<resultMap id='RtfCategoryResult' class='RtfCategory'>
+			<result property='UID' column='UID' />
+			<result property='Title' column='Title' />
+			<result property='ParentID' column='ParentID' />
+			<result property='SortNo' column='SortNo' />
+			<result property='RtfContents' column='RtfContents' />
+			<result property='IfParent' column='IfParent' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertRtfCategory' parameterClass='RtfCategory'>
+		INSERT INTO PSP_RtfCategory		(
+			"UID",
+			"Title",
+			"ParentID",
+			"SortNo",
+			"IfParent"
+		)
+		VALUES
+		(
+			#UID#,
+			#Title#,
+			#ParentID#,
+			#SortNo#,
+			#IfParent#
+		)
+	</insert>
+	<delete id='DeleteRtfCategory' parameterClass='RtfCategory'>
+		DELETE FROM PSP_RtfCategory
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateRtfCategory' parameterClass='RtfCategory'>
+		UPDATE PSP_RtfCategory
+		SET
+			"Title" = #Title#,
+			"SortNo" = #SortNo#,
+			"IfParent" = #IfParent#
+		WHERE
+			UID = #UID#
+	</update>
+
+	<update id='UpdateRtfCategoryByte' parameterClass='RtfCategory'>
+		UPDATE PSP_RtfCategory
+		SET
+			"RtfContents" = #RtfContents#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectRtfCategoryList' resultMap='RtfCategoryResult' parameterClass='RtfCategory'>
+		SELECT
+			"UID",
+			"Title",
+			"ParentID",
+			"SortNo",
+			null as "RtfContents",
+			"IfParent"
+		FROM PSP_RtfCategory
+	</select>
+	<select id='SelectRtfCategoryByKey' resultMap='RtfCategoryResult' parameterClass='RtfCategory'>
+		SELECT
+			"UID",
+			"Title",
+			"ParentID",
+			"SortNo",
+			"RtfContents",
+			"IfParent"
+		FROM PSP_RtfCategory
+		WHERE
+			UID = #UID#
+	</select>
+
+  <select id='SelectRtfCategoryByIfParent' resultMap='RtfCategoryResult' parameterClass='int'>
+    SELECT
+    "UID",
+    "Title",
+    "ParentID",
+    "SortNo",
+    "RtfContents",
+    "IfParent"
+    FROM PSP_RtfCategory
+    WHERE
+    IfParent = #IfParent#
+  </select>
+
+
+  <select id='SelectRtfCategoryByWhere' resultMap='RtfCategoryResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title",
+    "ParentID",
+    "SortNo",
+    "RtfContents",
+    "IfParent"
+    FROM PSP_RtfCategory
+    WHERE 
+    $value$
+  </select>
+
+  <delete id='DeleteRtfCategoryByKey' parameterClass='string'>
+    Delete
+    FROM PSP_RtfCategory
+    WHERE
+    UID = #UID#
+  </delete>
+
+
+     <select id='SelectRtfCategorySortNo' resultClass='decimal' parameterClass='string'>
+		SELECT Max(SortNo) as  "SortNo"	
+		FROM PSP_RtfCategory
+		WHERE
+			ParentID = #ParentID#
+	</select>
+</statements>
+</sqlMap>

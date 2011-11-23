@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LayoutContentANTL' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='LayoutContentANTL' assembly='Itop.Domain.Layouts.dll' type='Itop.Domain.Layouts.LayoutContentANTL' />
+</alias>
+	<resultMaps>
+		<resultMap id='LayoutContentANTLResult' class='LayoutContentANTL'>
+			<result property='UID' column='UID' />
+			<result property='LayoutID' column='LayoutID' />
+			<result property='ChapterName' column='ChapterName' />
+			<result property='ParentID' column='ParentID' />
+			<result property='Contents' column='Contents' dbType='image' />
+			<result property='ContentType' column='ContentType' />
+      <result property='Remark' column='Remark' />
+      <result property='CreateDate' column='CreateDate' />
+		</resultMap>
+  </resultMaps>
+<statements>
+	<insert id='InsertLayoutContentANTL' parameterClass='LayoutContentANTL'>
+		INSERT INTO PSP_LayoutContentsANTL		(
+			"UID",
+			"LayoutID",
+			"ChapterName",
+			"ParentID",
+			"ContentType","CreateDate",
+			"Remark"
+		)
+		VALUES
+		(
+			#UID#,
+			#LayoutID#,
+			#ChapterName#,
+			#ParentID#,
+			#ContentType#,GetDate(),
+			#Remark#
+		)
+	</insert>
+
+
+
+  <update id='InsertLayoutContentANTLBy' parameterClass='LayoutContentANTL'>
+    INSERT INTO PSP_LayoutContentsANTL		(
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    )
+    VALUES
+    (
+    #UID#,
+    #LayoutID#,
+    #ChapterName#,
+    #ParentID#,
+    #ContentType#,GetDate(),
+    #Remark#
+    )
+  </update>
+
+
+	<delete id='DeleteLayoutContentANTL' parameterClass='LayoutContentANTL'>
+		DELETE FROM PSP_LayoutContentsANTL where uid=#UID#
+	</delete>
+
+	<delete id='DeleteLayoutContentANTLByKey' parameterClass='string'>
+		DELETE FROM PSP_LayoutContentsANTL where uid=#UID#
+	</delete>
+
+	<update id='UpdateLayoutContentANTL' parameterClass='LayoutContentANTL'>
+		UPDATE PSP_LayoutContentsANTL
+		SET
+			"ChapterName" = #ChapterName#,
+			"Remark" = #Remark# 
+                where UID = #UID#
+	</update>
+
+	<update id='UpdateLayoutContentANTLByte' parameterClass='LayoutContentANTL'>
+		UPDATE PSP_LayoutContentsANTL
+		SET
+			"Contents" = #Contents#
+		where UID = #UID#
+	</update>
+
+
+	<select id='SelectLayoutContentANTLList' resultMap='LayoutContentANTLResult' parameterClass='LayoutContentANTL'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    null as "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    FROM PSP_LayoutContentsANTL 　order by CreateDate
+  </select>
+  
+  
+  <select id='SelectLayoutContentANTLByKey' resultMap='LayoutContentANTLResult' parameterClass='LayoutContentANTL'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    FROM PSP_LayoutContentsANTL where uid=#UID#
+  </select>
+
+	<select id='SelectLayoutContentANTLByLayoutID' resultMap='LayoutContentANTLResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    null as "Contents","CreateDate",
+    "ContentType",
+    "Remark"
+    FROM PSP_LayoutContentsANTL where LayoutID=#LayoutID#
+  </select>
+
+
+  <select id='SelectLayoutContentANTLByLayoutIDBlogData' resultMap='LayoutContentANTLResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    FROM PSP_LayoutContentsANTL where LayoutID=#LayoutID# order by CreateDate asc
+  </select>
+
+  <select id='SelectLayoutContentANTLByWhere' resultMap='LayoutContentANTLResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "LayoutID",
+    "ChapterName",
+    "ParentID",
+    "Contents",
+    "ContentType","CreateDate",
+    "Remark"
+    FROM PSP_LayoutContentsANTL where $LayoutID$
+  </select>
+
+
+</statements>
+</sqlMap>

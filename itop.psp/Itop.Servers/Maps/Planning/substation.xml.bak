@@ -1,0 +1,468 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='substation' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='substation' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.substation' />
+</alias>
+	<resultMaps>
+		<resultMap id='substationResult' class='substation'>
+			<result property='UID' column='UID' />
+			<result property='EleID' column='EleID' />
+			<result property='EleName' column='EleName' />
+			<result property='Burthen' column='Burthen' />
+			<result property='Number' column='Number' />
+			<result property='glebeEleID' column='glebeEleID' />
+			<result property='SvgUID' column='SvgUID' />
+			<result property='Remark' column='Remark' />
+			<result property='LayerID' column='LayerID' />
+			<result property='ObligateField1' column='ObligateField1' />
+			<result property='ObligateField2' column='ObligateField2' />
+			<result property='ObligateField3' column='ObligateField3' />
+      <result property='ObligateField4' column='ObligateField4' />
+      <result property='ObligateField5' column='ObligateField5' />
+      <result property='ObligateField6' column='ObligateField6' />
+      <result property='ObligateField7' column='ObligateField7' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='Insertsubstation' parameterClass='substation'>
+    INSERT INTO substation		(
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    )
+    VALUES
+    (
+    #UID#,
+    #EleID#,
+    #EleName#,
+    #Burthen#,
+    #Number#,
+    #glebeEleID#,
+    #SvgUID#,
+    #Remark#,
+    #LayerID#,
+    #ObligateField1#,
+    #ObligateField2#,
+    #ObligateField3#,
+    #ObligateField4#,
+    #ObligateField5#,
+    #ObligateField6#,
+    #ObligateField7#
+    )
+
+    insert into PSP_Substation_Info
+    (
+    "UID",
+    "Title",
+    "L9",
+    "L2",
+    "L1",
+    "L10",
+    "S2",
+    "AreaName",
+    "L3"
+    )
+    values
+    (
+    #UID#,
+    #EleName#,
+    #Burthen#,
+    #Number#,
+    #ObligateField1#,
+    #ObligateField2#,
+    #ObligateField5#,
+    #ObligateField6#,
+    #ObligateField7#
+    )
+  </insert>
+	<delete id='Deletesubstation' parameterClass='substation'>
+		DELETE FROM substation
+		WHERE
+			UID = #UID#
+	</delete>
+  <delete id='DeletesubstationByLayerID' parameterClass='substation'>
+    DELETE FROM substation
+    WHERE
+    LayerID = #LayerID#
+  </delete>
+	<delete id='DeletesubstationByEleID' parameterClass='substation'>
+		DELETE FROM substation
+		WHERE
+			EleID = #EleID# and 
+			SvgUID = #SvgUID#
+	</delete>
+  <update id='UpdateSQL' parameterClass='string'>
+    $value$
+    </update>
+	<update id='Updatesubstation' parameterClass='substation'>
+    UPDATE substation
+    SET
+    "EleID" = #EleID#,
+    "EleName" = #EleName#,
+    "Burthen" = #Burthen#,
+    "Number" = #Number#,
+    "glebeEleID" = #glebeEleID#,
+    "SvgUID" = #SvgUID#,
+    "Remark" = #Remark#,
+    "LayerID" = #LayerID#,
+    "ObligateField1" = #ObligateField1#,
+    "ObligateField2" = #ObligateField2#,
+    "ObligateField3" = #ObligateField3#,
+    "ObligateField4" = #ObligateField4#,
+    "ObligateField5" = #ObligateField5#,
+    "ObligateField6" = #ObligateField6#,
+    "ObligateField7" = #ObligateField7#
+    WHERE
+    UID = #UID#
+    if exists (select 1 from  PSP_Substation_Info where UID=#UID#)
+    UPDATE PSP_Substation_Info
+    SET
+    "Title" = #EleName#,
+    "L9" = #Burthen#,
+    "L2" = #Number#,
+    "L1" = #ObligateField1#,
+    "L10" = #ObligateField2#,
+    "S2" = #ObligateField5#,
+    "AreaName" = #ObligateField6#,
+    "L3" = #ObligateField7#
+    WHERE
+    UID = #UID#
+    if exists (select 1 from PSP_PowerSubstationInfo where UID=#UID#)
+    UPDATE PSP_PowerSubstationInfo
+    SET
+    "Title" = #EleName#,
+    "S2" = #Number#,
+    "S3" = #ObligateField5#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectsubstationList' resultMap='substationResult' parameterClass='substation'>
+    SELECT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+  </select>
+	<select id='SelectsubstationByKey' resultMap='substationResult' parameterClass='substation'>
+    SELECT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+    WHERE
+    UID = #UID#
+  </select>
+	<select id='SelectsubstationByEleID' resultMap='substationResult' parameterClass='substation'>
+    SELECT
+    cast(1.0 as decimal(12,1)),
+    "UID",
+    "EleID",
+    "EleName",
+    cast("Burthen" as decimal(12,2)) as Burthen,
+    cast("Number" as decimal(12,2)) as Number,
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+    WHERE
+    EleID = #EleID# and
+    SvgUID = #SvgUID#
+  </select>
+	<select id='SelectsubstationBySvgUID' resultMap='substationResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+    WHERE
+    SvgUID = #SvgUID#
+  </select>
+  <select id='SelectsubstationByMainGlebe' resultMap='substationResult' parameterClass='substation'>
+    SELECT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+    WHERE
+    SvgUID = #SvgUID#
+    and glebeEleID= #glebeEleID#
+    and ObligateField1= #ObligateField1#
+  </select>
+	<select id='SelectsubstationByEleNameCK' resultMap='substationResult' parameterClass='substation'>
+    SELECT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+    WHERE
+    SvgUID = #SvgUID#
+    and EleName= #EleName#
+  </select>
+  <select id='SelectsubstationByWhere' resultMap='substationResult' parameterClass='substation'>
+    SELECT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+    WHERE
+    $EleName$
+  </select>
+  <select id='SelectsubstationByMainGlebeByLike' resultMap='substationResult' parameterClass='substation'>
+    SELECT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+    WHERE
+    SvgUID = #SvgUID#
+    and EleID in ( $EleID$ )
+    and ObligateField1= #ObligateField1#
+  </select>
+  <select id='SelectsubstationByLayerIDandObligateField1' resultMap='substationResult' parameterClass='substation'>
+    SELECT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+    WHERE
+    LayerID = #LayerID#
+    and ObligateField1= #ObligateField1#
+  </select>
+  <select id='SelectsubstationByPowerID' resultMap='substationResult' parameterClass='string'>
+    SELECT
+    t1.uid as "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation t1,PSP_PowerPicSelect t2 where t1.LayerID=t2.PicSelectID and t2.EachListID=#UID# and t1.ObligateField3='规划'
+  </select>
+
+  <select id='SelectsubstationByPowerID1' resultMap='substationResult' parameterClass='string'>
+    SELECT
+    t1.uid as "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation t1,PSP_PowerPicSelect t2 where t1.LayerID=t2.PicSelectID and t2.EachListID=#UID# and t1.ObligateField3='运行'
+  </select>
+  <select id='SelectsubstationByPowerIDStuff' resultMap='substationResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation  where ObligateField3='运行'
+  </select>
+  <select id='Selectsubstation_Number' resultMap='substationResult' parameterClass=''>
+    SELECT
+    DISTINCT
+    "UID",
+    "EleID",
+    "EleName",
+    "Burthen",
+    "Number",
+    "glebeEleID",
+    "SvgUID",
+    "Remark",
+    "LayerID",
+    "ObligateField1",
+    "ObligateField2",
+    "ObligateField3",
+    "ObligateField4",
+    "ObligateField5",
+    "ObligateField6",
+    "ObligateField7"
+    FROM substation
+    WHERE Number NOT IN (0) and UID in (SELECT
+    min(UID)
+    FROM substation
+    group by Number) ORDER BY Number ASC
+  </select>
+  
+  <select id='SelectSubInfoByPowerKvAndYear' resultMap='substationResult' parameterClass='substation'>
+    <![CDATA[
+      SELECT
+       "UID",
+      "EleID",
+      "EleName",
+      "Burthen",
+      "Number",
+      "glebeEleID",
+      "SvgUID",
+      "Remark",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM substation  where 
+      ObligateField1=#ObligateField1#  and LayerID in
+      (select SUID from SVG_LAYER where yearid=#UID#) order by EleName
+      ]]>
+  </select>
+</statements>
+</sqlMap>

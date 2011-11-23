@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='BaseColor' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='BaseColor' assembly='Itop.Domain.BaseDatas.dll' type='Itop.Domain.BaseDatas.BaseColor' />
+</alias>
+	<resultMaps>
+		<resultMap id='BaseColorResult' class='BaseColor'>
+			<result property='UID' column='UID' />
+			<result property='Title' column='Title' />
+			<result property='Color' column='Color' />
+			<result property='MaxValue' column='MaxValue' />
+			<result property='MinValue' column='MinValue' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateTime' column='CreateTime' />
+			<result property='UpdateTime' column='UpdateTime' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertBaseColor' parameterClass='BaseColor'>
+    INSERT INTO PSP_Base_Color		(
+    "UID",
+    "Title",
+    "Color",
+    "MaxValue",
+    "MinValue",
+    "Remark",
+    "CreateTime",
+    "UpdateTime"
+    )
+    VALUES
+    (
+    #UID#,
+    #Title#,
+    #Color#,
+    #MaxValue#,
+    #MinValue#,
+    #Remark#,
+    GetDate(),
+    GetDate()
+    )
+  </insert>
+	<delete id='DeleteBaseColor' parameterClass='BaseColor'>
+		DELETE FROM PSP_Base_Color
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateBaseColor' parameterClass='BaseColor'>
+    UPDATE PSP_Base_Color
+    SET
+    "Title" = #Title#,
+    "Color" = #Color#,
+    "MaxValue" = #MaxValue#,
+    "MinValue" = #MinValue#,
+    "Remark" = #Remark#,
+    "UpdateTime" = GetDate()
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectBaseColorList' resultMap='BaseColorResult' parameterClass='BaseColor'>
+		SELECT
+			"UID",
+			"Title",
+			"Color",
+			"MaxValue",
+			"MinValue",
+			"Remark",
+			"CreateTime",
+			"UpdateTime"
+		FROM PSP_Base_Color
+	</select>
+	<select id='SelectBaseColorByKey' resultMap='BaseColorResult' parameterClass='BaseColor'>
+		SELECT
+			"UID",
+			"Title",
+			"Color",
+			"MaxValue",
+			"MinValue",
+			"Remark",
+			"CreateTime",
+			"UpdateTime"
+		FROM PSP_Base_Color
+		WHERE
+			UID = #UID#
+	</select>
+
+  <select id='SelectBaseColorByWhere' resultMap='BaseColorResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title",
+    "Color",
+    "MaxValue",
+    "MinValue",
+    "Remark",
+    "CreateTime",
+    "UpdateTime"
+    FROM PSP_Base_Color
+    WHERE 1=1 and 
+    $UID$
+  </select>
+
+
+  <select id='SelectBaseColorByColor' resultMap='BaseColorResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title",
+    "Color",
+    "MaxValue",
+    "MinValue",
+    "Remark",
+    "CreateTime",
+    "UpdateTime"
+    FROM PSP_Base_Color
+    WHERE
+    MaxValue >= #value# And  #value# > MinValue
+  </select>
+</statements>
+</sqlMap>

@@ -1,0 +1,147 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='WireCategory' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='WireCategory' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.WireCategory' />
+  </alias>
+  <resultMaps>
+    <resultMap id='WireCategoryResult' class='WireCategory'>
+      <result property ='SUID'  column='SUID' />
+      <result property='WireType' column='WireType' />
+      <result property='WireR' column='WireR' />
+      <result property='WireTQ' column='WireTQ' />
+      <result property='WireGNDC' column='WireGNDC' />
+      <result property='WireChange' column='WireChange' />
+      <result property='WireLevel' column='WireLevel' />
+      <result property='ZeroR' column='ZeroR' />
+      <result property='ZeroTQ' column='ZeroTQ' />
+      <result property='ZeroGNDC' column='ZeroGNDC' />
+      <result property='WireLead' column='WireLead'/>
+      <result property='Type' column='Type' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertWireCategory' parameterClass='WireCategory'>
+      INSERT INTO WireCategory		(
+      "SUID",
+      "WireType",
+      "WireR",
+      "WireTQ",
+      "WireGNDC",
+      "WireChange",
+      "WireLevel",
+      "ZeroR",
+      "ZeroTQ",
+      "ZeroGNDC",
+      "WireLead",
+      "Type"
+      )
+      VALUES
+      (
+      #SUID#,
+      #WireType#,
+      #WireR#,
+      #WireTQ#,
+      #WireGNDC#,
+      #WireChange#,
+      #WireLevel#,
+      #ZeroR#,
+      #ZeroTQ#,
+      #ZeroGNDC#,
+      #WireLead#,
+      #Type#
+      )
+    </insert>
+    <delete id='DeleteWireCategory' parameterClass='WireCategory'>
+      DELETE FROM WireCategory
+      WHERE
+      SUID = #SUID#
+    </delete>
+    <update id='UpdateWireCategory' parameterClass='WireCategory'>
+      UPDATE WireCategory
+      SET
+      "SUID"=#SUID#,
+      "WireR" = #WireR#,
+      "WireTQ" = #WireTQ#,
+      "WireGNDC" = #WireGNDC#,
+      "WireChange" = #WireChange#,
+      "WireLevel"=#WireLevel#,
+      "ZeroR" = #ZeroR#,
+      "ZeroTQ" = #ZeroTQ#,
+      "ZeroGNDC" = #ZeroGNDC#,
+      "WireLead"  = #WireLead#,
+      "Type" = #Type#
+      WHERE
+      SUID = #SUID#
+    </update>
+    <select id='SelectWireCategoryList' resultMap='WireCategoryResult' parameterClass='WireCategory'>
+      SELECT
+      "SUID",
+      "WireType",
+      "WireR",
+      "WireTQ",
+      "WireGNDC",
+      "WireChange",
+      "WireLevel",
+      "ZeroR",
+      "ZeroTQ",
+      "ZeroGNDC",
+      "WireLead",
+      "Type"
+      FROM WireCategory WHERE Type = #Type# order by WireLevel,WireType
+    </select>
+    <select id='SelectWireCategoryListBYWireLevel' resultMap='WireCategoryResult' parameterClass='WireCategory'>
+      SELECT
+      "SUID",
+      "WireType",
+      "WireR",
+      "WireTQ",
+      "WireGNDC",
+      "WireChange",
+      "WireLevel",
+      "ZeroR",
+      "ZeroTQ",
+      "ZeroGNDC",
+      "WireLead",
+      "Type"
+      FROM WireCategory
+      WHERE
+      WireLevel=#WireLevel# and Type = #Type#
+    </select>
+    <select id='SelectWireCategoryByKey' resultMap='WireCategoryResult' parameterClass='WireCategory'>
+      SELECT
+      "SUID",
+      "WireType",
+      "WireR",
+      "WireTQ",
+      "WireGNDC",
+      "WireChange",
+      "WireLevel",
+      "ZeroR",
+      "ZeroTQ",
+      "ZeroGNDC",
+      "WireLead",
+      "Type"
+      FROM WireCategory
+      WHERE
+      WireType = #WireType# and Type = #Type#
+    </select>
+    <select id='SelectWireCategoryByKeyANDWireLevel' resultMap='WireCategoryResult' parameterClass='WireCategory'>
+      SELECT
+      "SUID",
+      "WireType",
+      "WireR",
+      "WireTQ",
+      "WireGNDC",
+      "WireChange",
+      "WireLevel",
+      "ZeroR",
+      "ZeroTQ",
+      "ZeroGNDC",
+      "WireLead",
+      "Type"
+      FROM WireCategory
+      WHERE
+      WireType = #WireType# AND WireLevel=#WireLevel# and Type = #Type#
+    </select>
+  </statements>
+</sqlMap>

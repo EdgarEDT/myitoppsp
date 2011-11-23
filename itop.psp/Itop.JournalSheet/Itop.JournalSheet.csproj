@@ -1,0 +1,263 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE5BF47A-2AA1-488C-94C8-62C2C3A5EED9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.JournalSheet</RootNamespace>
+    <AssemblyName>Itop.JournalSheet</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Excel, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ctrl\ctrlFrmsheet4_1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ctrl\ctrlFrmsheet4_1.Designer.cs">
+      <DependentUpon>ctrlFrmsheet4_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="From\FormWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="From\FormWait.Designer.cs">
+      <DependentUpon>FormWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="From\FrmSheet10_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="From\FrmSheet10_1.Designer.cs">
+      <DependentUpon>FrmSheet10_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="From\FrmSheet11_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="From\FrmSheet11_1.Designer.cs">
+      <DependentUpon>FrmSheet11_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="From\FrmSheet2_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="From\FrmSheet2_1.Designer.cs">
+      <DependentUpon>FrmSheet2_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="From\FrmSheet4_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="From\FrmSheet4_1.Designer.cs">
+      <DependentUpon>FrmSheet4_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="From\FrmSupplement .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="From\FrmSupplement .Designer.cs">
+      <DependentUpon>FrmSupplement .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Function10\Sheet10_1.cs" />
+    <Compile Include="Function10\Sheet10_10.cs" />
+    <Compile Include="Function10\Sheet10_11.cs" />
+    <Compile Include="Function10\Sheet10_1_1.cs" />
+    <Compile Include="Function10\Sheet10_2.cs" />
+    <Compile Include="Function10\Sheet10_3.cs">
+    </Compile>
+    <Compile Include="Function10\Sheet10_3_1.cs" />
+    <Compile Include="Function10\Sheet10_4.cs" />
+    <Compile Include="Function10\Sheet10_4_1.cs" />
+    <Compile Include="Function10\Sheet10_5.cs" />
+    <Compile Include="Function10\Sheet10_6.cs" />
+    <Compile Include="Function10\Sheet10_7.cs" />
+    <Compile Include="Function10\Sheet10_8.cs" />
+    <Compile Include="Function10\Sheet10_9.cs" />
+    <Compile Include="Function11\Sheet11_1.cs" />
+    <Compile Include="Function11\Sheet11_2.cs" />
+    <Compile Include="Function4\Sheet4_1.cs" />
+    <Compile Include="Function4\Sheet4_1_1.cs" />
+    <Compile Include="Function4\Sheet4_2.cs" />
+    <Compile Include="Function4\Sheet4_2_1.cs" />
+    <Compile Include="Function4\Sheet4_3.cs" />
+    <Compile Include="Function4\Sheet4_4.cs" />
+    <Compile Include="Function4\Sheet4_4_1.cs" />
+    <Compile Include="Function4\Sheet4_5.cs" />
+    <Compile Include="FunctionSupplement\Sheet_1.cs" />
+    <Compile Include="FunctionSupplement\Sheet_10.cs" />
+    <Compile Include="FunctionSupplement\Sheet_11.cs" />
+    <Compile Include="FunctionSupplement\Sheet_12.cs" />
+    <Compile Include="FunctionSupplement\Sheet_13.cs" />
+    <Compile Include="FunctionSupplement\Sheet_14.cs" />
+    <Compile Include="FunctionSupplement\Sheet_15.cs" />
+    <Compile Include="FunctionSupplement\Sheet_16.cs" />
+    <Compile Include="FunctionSupplement\Sheet_6.cs" />
+    <Compile Include="FunctionSupplement\Sheet_2.cs" />
+    <Compile Include="FunctionSupplement\Sheet_3.cs" />
+    <Compile Include="FunctionSupplement\Sheet_4.cs" />
+    <Compile Include="FunctionSupplement\Sheet_5.cs" />
+    <Compile Include="FunctionSupplement\Sheet_7.cs" />
+    <Compile Include="FunctionSupplement\Sheet_8.cs" />
+    <Compile Include="FunctionSupplement\Sheet_9.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ctrl\ctrlFrmsheet4_1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ctrlFrmsheet4_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="From\FormWait.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="From\FrmSheet10_1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSheet10_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="From\FrmSheet11_1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSheet11_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="From\FrmSheet2_1.resx">
+      <DependentUpon>FrmSheet2_1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="From\FrmSheet4_1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSheet4_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="From\FrmSupplement .resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSupplement .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Function\PublicFunction.cs" />
+    <Compile Include="Function\Sheet2_2.cs" />
+    <Compile Include="Function\Sheet2_3.cs" />
+    <Compile Include="Function\Sheet2_N.cs" />
+    <Compile Include="Function\Sheet2_4.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itop.Client.BaseData\Itop.Client.BaseData.csproj">
+      <Project>{75AED747-4ADC-4468-B65D-BC4A7BF898C3}</Project>
+      <Name>Itop.Client.BaseData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Client.History\Itop.Client.History.csproj">
+      <Project>{56542638-B605-40D1-95EE-9544AC3F7CB7}</Project>
+      <Name>Itop.Client.History</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Chen\Itop.Domain.Chen.csproj">
+      <Project>{47ADAEF0-17F1-4E68-B1C2-2B690C6CA920}</Project>
+      <Name>Itop.Domain.Chen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Forecast\Itop.Domain.Forecast.csproj">
+      <Project>{028877BB-F597-40C7-8E0C-2DADF4196778}</Project>
+      <Name>Itop.Domain.Forecast</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Layouts\Itop.Domain.Layouts.csproj">
+      <Project>{61AF2640-7A90-4D1D-86CC-4ADD3348141E}</Project>
+      <Name>Itop.Domain.Layouts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Stutistics\Itop.Domain.Stutistics.csproj">
+      <Project>{FBDFCD20-106B-424D-8988-729C9D228A99}</Project>
+      <Name>Itop.Domain.Stutistics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Table\Itop.Domain.Table.csproj">
+      <Project>{F575DDFF-4B24-4DDA-AE88-CB3B558C7C3E}</Project>
+      <Name>Itop.Domain.Table</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
