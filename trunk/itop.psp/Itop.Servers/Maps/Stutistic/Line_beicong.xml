@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Line_beicong' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Line_beicong' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.Line_beicong' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Line_beicongResult' class='Line_beicong'>
+      <result property='UID' column='UID' />
+      <result property='Title' column='Title' />
+      <result property='Type' column='Type' />
+      <result property='Type2' column='Type2' />
+      <result property='CreateTime' column='CreateTime' />
+      <result property='ClassType' column='ClassType' />
+      <result property='Flag' column='Flag' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertLine_beicong' parameterClass='Line_beicong'>
+      INSERT INTO PSP_Line_beicong		(
+      "UID",
+      "Title",
+      "Type",
+      "Type2",
+      "CreateTime",
+      "ClassType",
+      "Flag"
+      )
+      VALUES
+      (
+      #UID#,
+      #Title#,
+      #Type#,
+      #Type2#,
+      #CreateTime#,
+      #ClassType#,
+      #Flag#
+      )
+    </insert>
+    <delete id='DeleteLine_beicong' parameterClass='Line_beicong'>
+      DELETE FROM PSP_Line_beicong 
+      WHERE
+      UID = #UID#
+    </delete>
+    <update id='UpdateLine_beicong' parameterClass='Line_beicong'>
+      UPDATE PSP_Line_beicong
+      SET
+      "UID" = #UID#,
+      "Title" = #Title#,
+      "Type" = #Type#,
+      "Type2" = #Type2#,
+      "CreateTime" = #CreateTime#,
+      "ClassType" = #ClassType#,
+      "Flag" = #Flag#
+      WHERE
+      UID = #UID#
+    </update>
+    <select id='SelectLine_beicongList' resultMap='Line_beicongResult' parameterClass='Line_beicong'>
+      SELECT
+      "UID",
+      "Title",
+      "Type",
+      "Type2",
+      "CreateTime",
+      "ClassType",
+      "Flag"
+      FROM PSP_Line_beicong
+    </select>
+    <!--<select id='SelectLine_beicongByKey' resultMap='Line_beicongResult' parameterClass='Line_beicong'>
+      SELECT
+      "UID",
+      "Title",
+      "Type",
+      "Type2",
+      "CreateTime",
+      "ClassType",
+      "Flag"
+      FROM PSP_Line_beicong
+    </select>-->
+
+    <select id='SelectLine_beicongByKey' resultMap='Line_beicongResult' parameterClass='Line_beicong'>
+      SELECT
+      "UID",
+      "Title",
+      "Type",
+      "Type2",
+      "CreateTime",
+      "ClassType",
+      "Flag"
+      FROM PSP_Line_beicong
+      WHERE
+      UID = #UID#
+    </select>
+
+    <select id='SelectLine_beicongByFlagType' resultMap='Line_beicongResult' parameterClass='Line_beicong'>
+      SELECT
+      "UID",
+      "Title",
+      "Type",
+      "Type2",
+      "CreateTime",
+      "ClassType",
+      "Flag"
+      FROM PSP_Line_beicong
+      WHERE
+      Type2 = #Type2#  and Type = #Type# and Flag = #Flag#
+    </select>
+
+    <select id='SelectLine_beicongByTitleTypeClass' resultMap='Line_beicongResult' parameterClass='Line_beicong'>
+      SELECT
+      "UID",
+      "Title",
+      "Type",
+      "Type2",
+      "CreateTime",
+      "ClassType",
+      "Flag"
+      FROM PSP_Line_beicong
+      WHERE
+      Title = #Title# and  Type2 = #Type2# and Type = #Type# and Flag = #Flag#
+    </select>
+
+    <select id='SelectLine_beicongByTitleTypeClass1' resultMap='Line_beicongResult' parameterClass='Line_beicong'>
+      SELECT
+      "UID",
+      "Title",
+      "Type",
+      "Type2",
+      "CreateTime",
+      "ClassType",
+      "Flag"
+      FROM PSP_Line_beicong
+      WHERE
+      ClassType = #ClassType# and  Type2 = #Type2# and Type = #Type# and Flag = #Flag#
+    </select>
+
+
+    <select id='SelectLine_beicongByAll' resultMap='Line_beicongResult' parameterClass='Line_beicong'>
+      SELECT
+      "UID",
+      "Title",
+      "Type",
+      "Type2",
+      "CreateTime",
+      "ClassType",
+      "Flag"
+      FROM PSP_Line_beicong
+      WHERE
+      Title = #Title# and  ClassType = #ClassType# and Type = #Type# and Type2 = #Type2# and Flag = #Flag#
+    </select>
+
+    <delete id='DeleteLine_beicongByAll' parameterClass='Line_beicong'>
+      DELETE FROM PSP_Line_beicong
+      WHERE
+      Title = #Title# and  ClassType = #ClassType# and Type = #Type# and Type2 = #Type2# and Flag = #Flag#
+    </delete>
+    
+  </statements>
+</sqlMap>

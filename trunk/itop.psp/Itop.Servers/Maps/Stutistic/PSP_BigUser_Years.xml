@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_BigUser_Years' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_BigUser_Years' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PSP_BigUser_Years' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_BigUser_YearsResult' class='PSP_BigUser_Years'>
+			<result property='ID' column='ID' />
+			<result property='Year' column='Year' />
+			<result property='Flag' column='Flag' />
+			<result property='Flag2' column='Flag2' />
+			<result property='ItemID' column='ItemID' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='S3' column='S3' />
+			<result property='S4' column='S4' />
+			<result property='S5' column='S5' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_BigUser_Years' parameterClass='PSP_BigUser_Years'>
+		INSERT INTO PSP_BigUser_Years		(
+			"Year",
+			"Flag",
+			"Flag2",
+			"ItemID",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5"
+		)
+		VALUES
+		(
+			#Year#,
+			#Flag#,
+			#Flag2#,
+			#ItemID#,
+			#S1#,
+			#S2#,
+			#S3#,
+			#S4#,
+			#S5#
+		)
+	</insert>
+	<delete id='DeletePSP_BigUser_Years' parameterClass='PSP_BigUser_Years'>
+		DELETE FROM PSP_BigUser_Years
+	</delete>
+	<update id='UpdatePSP_BigUser_Years' parameterClass='PSP_BigUser_Years'>
+		UPDATE PSP_BigUser_Years
+		SET
+			"Year" = #Year#,
+			"Flag" = #Flag#,
+			"Flag2" = #Flag2#,
+			"ItemID" = #ItemID#,
+			"S1" = #S1#,
+			"S2" = #S2#,
+			"S3" = #S3#,
+			"S4" = #S4#,
+			"S5" = #S5#
+	</update>
+	<select id='SelectPSP_BigUser_YearsList' resultMap='PSP_BigUser_YearsResult' parameterClass='PSP_BigUser_Years'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag",
+			"Flag2",
+			"ItemID",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5"
+		FROM PSP_BigUser_Years
+	</select>
+	<select id='SelectPSP_BigUser_YearsByKey' resultMap='PSP_BigUser_YearsResult' parameterClass='PSP_BigUser_Years'>
+		SELECT
+			"ID",
+			"Year",
+			"Flag",
+			"Flag2",
+			"ItemID",
+			"S1",
+			"S2",
+			"S3",
+			"S4",
+			"S5"
+		FROM PSP_BigUser_Years
+	</select>
+  <select id='SelectPSP_BigUser_YearsListByFlag' resultMap='PSP_BigUser_YearsResult' parameterClass='PSP_BigUser_Years'>
+    SELECT
+    "ID",
+    "Year",
+    "Flag",
+    "Flag2",
+    "ItemID",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_BigUser_Years
+    where
+    Flag=#Flag# and ItemID=#ItemID#
+  </select>
+  <select id='SelectPSP_BigUser_YearsByYearFlag' resultMap='PSP_BigUser_YearsResult' parameterClass='PSP_BigUser_Years'>
+    SELECT
+    "ID",
+    "Year",
+    "Flag",
+    "Flag2",
+    "ItemID",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_BigUser_Years
+    where
+    Flag=#Flag# and ItemID=#ItemID# and Year=#Year#
+  </select>
+</statements>
+</sqlMap>

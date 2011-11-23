@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Base_Data' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Base_Data' assembly='Itop.Domain.Forecast.dll' type='Itop.Domain.Forecast.Base_Data' />
+</alias>
+	<resultMaps>
+		<resultMap id='Base_DataResult' class='Base_Data'>
+			<result property='UID' column='UID' />
+			<result property='Title' column='Title' />
+			<result property='Remark' column='Remark' />
+			<result property='Sort' column='Sort' />
+			<result property='CreateTime' column='CreateTime' />
+			<result property='UpdateTime' column='UpdateTime' />
+			<result property='ProjectUID' column='ProjectUID' />
+			<result property='Type' column='Type' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertBase_Data' parameterClass='Base_Data'>
+		INSERT INTO Ps_Base_Data		(
+			"UID",
+			"Title",
+			"Remark",
+			"Sort",
+			"CreateTime",
+			"UpdateTime",
+			"ProjectUID",
+			"Type"
+		)
+		VALUES
+		(
+			#UID#,
+			#Title#,
+			#Remark#,
+			#Sort#,
+			#CreateTime#,
+			#UpdateTime#,
+			#ProjectUID#,
+			#Type#
+		)
+	</insert>
+	<delete id='DeleteBase_Data' parameterClass='Base_Data'>
+		DELETE FROM Ps_Base_Data
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateBase_Data' parameterClass='Base_Data'>
+		UPDATE Ps_Base_Data
+		SET
+			"Title" = #Title#,
+			"Remark" = #Remark#,
+			"Sort" = #Sort#,
+			"CreateTime" = #CreateTime#,
+			"UpdateTime" = #UpdateTime#,
+			"ProjectUID" = #ProjectUID#,
+			"Type" = #Type#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectBase_DataList' resultMap='Base_DataResult' parameterClass='Base_Data'>
+		SELECT
+			"UID",
+			"Title",
+			"Remark",
+			"Sort",
+			"CreateTime",
+			"UpdateTime",
+			"ProjectUID",
+			"Type"
+		FROM Ps_Base_Data order by Sort
+	</select>
+	<select id='SelectBase_DataByKey' resultMap='Base_DataResult' parameterClass='Base_Data'>
+		SELECT
+			"UID",
+			"Title",
+			"Remark",
+			"Sort",
+			"CreateTime",
+			"UpdateTime",
+			"ProjectUID",
+			"Type"
+		FROM Ps_Base_Data
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

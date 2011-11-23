@@ -1,0 +1,680 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='glebeProperty' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='glebeProperty' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.glebeProperty' />
+  </alias>
+  <resultMaps>
+    <resultMap id='glebePropertyResult' class='glebeProperty'>
+      <result property='UID' column='UID' />
+      <result property='EleID' column='EleID' />
+      <result property='UseID' column='UseID' />
+      <result property='TypeUID' column='TypeUID' />
+      <result property='Area' column='Area' />
+      <result property='Burthen' column='Burthen' />
+      <result property='Number' column='Number' />
+      <result property='Remark' column='Remark' />
+      <result property='SonUid' column='SonUid' />
+      <result property='SelSonArea' column='SelSonArea' />
+      <result property='SvgUID' column='SvgUID' />
+      <result property='ParentEleID' column='ParentEleID' />
+      <result property='LayerID' column='LayerID' />
+      <result property='ObligateField1' column='ObligateField1' />
+      <result property='ObligateField2' column='ObligateField2' />
+      <result property='ObligateField3' column='ObligateField3' />
+      <result property='ObligateField4' column='ObligateField4' />
+      <result property='ObligateField5' column='ObligateField5' />
+      <result property='ObligateField6' column='ObligateField6' />
+      <result property='ObligateField7' column='ObligateField7' />
+      <result property='ObligateField8' column='ObligateField8' />
+      <result property='ObligateField9' column='ObligateField9' />
+      <result property='ObligateField10' column='ObligateField10' />
+      <result property='ObligateField11' column='ObligateField11' />
+      <result property='ObligateField12' column='ObligateField12' />
+      <result property='ObligateField13' column='ObligateField13' />
+      <result property='ObligateField14' column='ObligateField14' />
+      <result property='ObligateField15' column='ObligateField15' /> 
+    </resultMap>
+
+  </resultMaps>
+  <parameterMaps>
+    <parameterMap id="UpdateGlebePropertyParam" class='hashtable'>
+      <parameter property="SUID" column="" dbType="VarChar"/>
+    </parameterMap>
+  </parameterMaps>
+  <statements>
+    <insert id='InsertglebeProperty' parameterClass='glebeProperty'>
+      INSERT INTO glebeProperty		(
+      "UID",
+      "EleID",
+      "UseID",
+      "TypeUID",
+      "Area",
+      "Burthen",
+      "Number",
+      "Remark",
+      "SonUid",
+      "SelSonArea",
+      "SvgUID",
+      "ParentEleID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7",
+      "ObligateField8",
+      "ObligateField9",
+      "ObligateField10",
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15"
+      )
+      VALUES
+      (
+      #UID#,
+      #EleID#,
+      #UseID#,
+      #TypeUID#,
+      #Area#,
+      #Burthen#,
+      #Number#,
+      #Remark#,
+      #SonUid#,
+      #SelSonArea#,
+      #SvgUID#,
+      #ParentEleID#,
+      #LayerID#,
+      #ObligateField1#,
+      #ObligateField2#,
+      #ObligateField3#,
+      #ObligateField4#,
+      #ObligateField5#,
+      #ObligateField6#,
+      #ObligateField7#,
+      #ObligateField8#,
+      #ObligateField9#,
+      #ObligateField10#,
+      #ObligateField11#,
+      #ObligateField12#,
+      #ObligateField13#,
+      #ObligateField14#,
+      #ObligateField15#
+      )
+    </insert>
+    <delete id='DeleteglebeProperty' parameterClass='glebeProperty'>
+      DELETE FROM glebeProperty
+      WHERE
+      UID = #UID#
+    </delete>
+    <delete id='DeleteglebePropertyByLayerID' parameterClass='glebeProperty'>
+      DELETE FROM glebeProperty
+      WHERE
+      LayerID = #LayerID#
+    </delete>
+    <delete id='DeleteglebePropertyByEleID' parameterClass='glebeProperty'>
+      DELETE FROM glebeProperty
+      WHERE
+      EleID = #EleID# and SvgUID= #SvgUID#
+    </delete>
+    <update id='UpdateglebeProperty' parameterClass='glebeProperty'>
+      UPDATE glebeProperty
+      SET
+      "EleID"= #EleID#,
+      "UseID" = #UseID#,
+      "TypeUID" = #TypeUID#,
+      "Area" = #Area#,
+      "Burthen" = #Burthen#,
+      "Number" = #Number#,
+      "Remark" = #Remark#,
+      "SonUid"= #SonUid#,
+      "SelSonArea"=#SelSonArea#,
+      "SvgUID" = #SvgUID#,
+      "ParentEleID"= #ParentEleID#,
+      "LayerID"= #LayerID#,
+      "ObligateField1"= #ObligateField1#,
+      "ObligateField2"= #ObligateField2#,
+      "ObligateField3"= #ObligateField3#,
+      "ObligateField4"= #ObligateField4#,
+      "ObligateField5"= #ObligateField5#,
+      "ObligateField6"= #ObligateField6#,
+      "ObligateField7"= #ObligateField7#,
+      "ObligateField8"= #ObligateField8#,
+      "ObligateField9"= #ObligateField9#,
+      "ObligateField10"= #ObligateField10#,
+      "ObligateField11"= #ObligateField11#,
+      "ObligateField12"= #ObligateField12#,
+      "ObligateField13"= #ObligateField13#,
+      "ObligateField14"= #ObligateField14#,
+      "ObligateField15"= #ObligateField15#
+      WHERE
+      UID = #UID#
+    </update>
+    <update id='UpdateglebePropertyBatch' parameterClass='glebeProperty'>
+      UPDATE glebeProperty
+      SET
+      "Area" = #Area#,
+      "Burthen" = #Burthen#,
+      "Number" = #Number#
+
+      WHERE
+      UID = #UID#
+    </update>
+    <update id='UpdateglebePropertySelArea' parameterClass='glebeProperty'>
+      UPDATE glebeProperty
+      SET
+
+      "ParentEleID"= #ParentEleID#
+
+      WHERE
+      EleID = #EleID# and SvgUID= #SvgUID#
+    </update>
+    <update id='UpdateglebePropertyAreaAll' parameterClass='glebeProperty'>
+      UPDATE glebeProperty
+      SET
+
+      "ParentEleID"= #ParentEleID#
+
+      WHERE
+      EleID = #EleID# and SvgUID= #SvgUID#
+    </update>
+    <select id='SelectglebePropertyList' resultMap='glebePropertyResult' parameterClass='glebeProperty'>
+      SELECT
+      "UID",
+      "EleID",
+      "UseID",
+      "TypeUID",
+      "Area",
+      "Burthen",
+      "Number",
+      "Remark",
+      "SonUid",
+      "SelSonArea",
+      "SvgUID",
+      "ParentEleID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7",
+      "ObligateField8",
+      "ObligateField9",
+      "ObligateField10",
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15"
+      FROM glebeProperty
+    </select>
+    <select id='SelectglebePropertyByKey' resultMap='glebePropertyResult' parameterClass='glebeProperty'>
+      SELECT
+      "UID",
+      "EleID",
+      "UseID",
+      "TypeUID",
+      "Area",
+      "Burthen",
+      "Number",
+      "Remark",
+      "SonUid",
+      "SelSonArea",
+      "SvgUID",
+      "ParentEleID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7",
+      "ObligateField8",
+      "ObligateField9",
+      "ObligateField10",
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15"
+      FROM glebeProperty
+      WHERE
+      UID = #UID#
+    </select>
+    <select id='SelectglebePropertyByEleID' resultMap='glebePropertyResult' parameterClass='glebeProperty'>
+      SELECT
+      "UID",
+      "EleID",
+      "UseID",
+      "TypeUID",
+      "Area",
+      "Burthen",
+      "Number",
+      "Remark",
+      "SonUid",
+      "SelSonArea",
+      "SvgUID",
+      "ParentEleID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7",
+      "ObligateField8",
+      "ObligateField9",
+      "ObligateField10",
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15"
+      FROM glebeProperty
+      WHERE
+      EleID= #EleID# and SvgUID= #SvgUID#
+    </select>
+    <select id='SelectglebePropertyBySvgUID' resultMap='glebePropertyResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "EleID",
+      "UseID",
+      "TypeUID",
+      "Area",
+      "Burthen",
+      "Number",
+      "Remark",
+      "SonUid",
+      "SelSonArea",
+      "SvgUID",
+      "ParentEleID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7",
+      "ObligateField8",
+      "ObligateField9",
+      "ObligateField10",
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15"
+      FROM glebeProperty
+      WHERE
+      SvgUID= #SvgUID#
+    </select>
+    <select id='SelectglebePropertyByUseIDCK' resultMap='glebePropertyResult' parameterClass='glebeProperty'>
+      SELECT
+      "UID",
+      "EleID",
+      "UseID",
+      "TypeUID",
+      "Area",
+      "Burthen",
+      "Number",
+      "Remark",
+      "SonUid",
+      "SelSonArea",
+      "SvgUID",
+      "ParentEleID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7",
+      "ObligateField8",
+      "ObligateField9",
+      "ObligateField10",
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15"
+      FROM glebeProperty
+      WHERE
+      SvgUID= #SvgUID# and
+      UseID= #UseID#
+    </select>
+    <select id='SelectglebePropertParentIDTop' resultMap='glebePropertyResult' parameterClass='Hashtable'>
+      SELECT
+      a.UID,
+      a.EleID,
+      a.UseID,
+      '组合地块' as "TypeUID",
+      a.Area,
+      a.Burthen,
+      a.Number,
+      a.Remark,
+      a.SonUid,
+      a.SelSonArea,
+      a.SvgUID,
+      a.ParentEleID,
+      a.LayerID,
+      a.ObligateField1,
+      a.ObligateField2,
+      a.ObligateField3,
+      a.ObligateField4,
+      a.ObligateField5,
+      a.ObligateField6,
+      a.ObligateField7,
+      a.ObligateField8,
+      a.ObligateField9,
+      a.ObligateField10,
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15
+      FROM glebeProperty a
+      WHERE
+      a.ParentEleID = #ParentEleID# and
+      a.SvgUID= #SvgUID# and a.LayerID in ($LayerID$)
+      order by a.UseID
+    </select>
+    <select id='SelectglebePropertParentIDTopAll' resultMap='glebePropertyResult' parameterClass='Hashtable'>
+      SELECT
+      a.UID,
+      a.EleID,
+      a.UseID,
+      '组合地块' as "TypeUID",
+      a.Area,
+      a.Burthen,
+      a.Number,
+      a.Remark,
+      a.SonUid,
+      a.SelSonArea,
+      a.SvgUID,
+      a.ParentEleID,
+      a.LayerID,
+      a.ObligateField1,
+      a.ObligateField2,
+      a.ObligateField3,
+      a.ObligateField4,
+      a.ObligateField5,
+      a.ObligateField6,
+      a.ObligateField7,
+      a.ObligateField8,
+      a.ObligateField9,
+      a.ObligateField10,
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15
+      FROM glebeProperty a
+      WHERE
+      a.ParentEleID = #ParentEleID# and
+      a.SvgUID= #SvgUID#
+      order by a.UseID
+    </select>
+    <select id='SelectglebePropertParentID' resultMap='glebePropertyResult' parameterClass='Hashtable'>
+      SELECT
+      a.UID,
+      a.EleID,
+      a.UseID,
+      b.TypeName as "TypeUID",
+      a.Area,
+      a.Burthen,
+      a.Number,
+      a.Remark,
+      a.SonUid,
+      a.SelSonArea,
+      a.SvgUID,
+      a.ParentEleID,
+      a.LayerID,
+      a.ObligateField1,
+      a.ObligateField2,
+      a.ObligateField3,
+      a.ObligateField4,
+      a.ObligateField5,
+      a.ObligateField6,
+      a.ObligateField7,
+      a.ObligateField8,
+      a.ObligateField9,
+      b.ObligateField1 as ObligateField10,
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15
+      FROM glebeProperty a,glebeType b
+      WHERE
+      a.TypeUID=b.UID and a.ParentEleID = #ParentEleID# and
+      a.SvgUID= #SvgUID# order by a.UseID
+    </select>
+    <select id='SelectglebePropertParentIDSub' resultMap='glebePropertyResult' parameterClass='Hashtable'>
+      SELECT
+      a.UID,
+      a.EleID,
+      a.UseID,
+      b.TypeName as "TypeUID",
+      a.Area,
+      a.Burthen,
+      a.Number,
+      a.Remark,
+      a.SonUid,
+      a.SelSonArea,
+      a.SvgUID,
+      a.ParentEleID,
+      a.LayerID,
+      a.ObligateField1,
+      a.ObligateField2,
+      a.ObligateField3,
+      a.ObligateField4,
+      a.ObligateField5,
+      a.ObligateField6,
+      a.ObligateField7,
+      a.ObligateField8,
+      a.ObligateField9,
+      a.ObligateField10,
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15
+      FROM glebeProperty a,glebeType b
+      WHERE
+      a.TypeUID=b.UID and a.ParentEleID !='0' and a.ParentEleID!='' and
+      a.SvgUID= #SvgUID# and a.LayerID in ( $LayerID$ ) order by a.UseID
+    </select>
+    <select id='SelectglebePropertParentIDSubZH' resultMap='glebePropertyResult' parameterClass='Hashtable'>
+      SELECT
+      '' as "UID",
+      '' as "EleID",
+      '' as "UseID",
+      b.TypeName as "TypeUID",
+      sum(a.Area) as "Area",
+      sum(a.Burthen) as "Burthen",
+      sum(a.Burthen)/sum(a.Area) as "Number",
+      '' as "Remark",
+      '' as "SonUid",
+      '' as "SelSonArea",
+      '' as "SvgUID",
+      '' as "ParentEleID",
+      '' as "LayerID",
+      '' as "ObligateField1",
+      '' as "ObligateField2",
+      '' as "ObligateField3",
+      '' as "ObligateField4",
+      '' as "ObligateField5",
+      '' as "ObligateField6",
+      '' as "ObligateField7",
+      '' as "ObligateField8",
+      '' as "ObligateField9",
+      '' as "ObligateField10",
+      '' as "ObligateField11",
+      '' as "ObligateField12",
+      '' as "ObligateField13",
+      '' as "ObligateField14",
+      '' as "ObligateField15"
+
+      FROM glebeProperty a,glebeType b
+      WHERE
+      a.TypeUID=b.UID and a.ParentEleID !='0' and a.ParentEleID!='' and
+      a.SvgUID= #SvgUID# and a.LayerID in ( $LayerID$ )  group by b.TypeName
+    </select>
+    <select id='SelectglebePropertParentIDSubAll' resultMap='glebePropertyResult' parameterClass='Hashtable'>
+      SELECT
+      a.UID,
+      a.EleID,
+      a.UseID,
+      b.TypeName as "TypeUID",
+      a.Area,
+      a.Burthen,
+      a.Number,
+      a.Remark,
+      a.SonUid,
+      a.SelSonArea,
+      a.SvgUID,
+      a.ParentEleID,
+      a.LayerID,
+      a.ObligateField1,
+      a.ObligateField2,
+      a.ObligateField3,
+      a.ObligateField4,
+      a.ObligateField5,
+      a.ObligateField6,
+      a.ObligateField7,
+      a.ObligateField8,
+      a.ObligateField9,
+      b.ObligateField1 as ObligateField10,
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15
+      FROM glebeProperty a,glebeType b
+      WHERE
+      a.TypeUID=b.UID and a.ParentEleID !='0' and a.ParentEleID!='' and
+      a.SvgUID= #SvgUID# order by a.UseID
+    </select>
+    <select id='SelectglebePropertParentIDSubForBatchUpdate' resultMap='glebePropertyResult' parameterClass='string'>
+      SELECT
+      a.UID,
+      a.EleID,
+      a.UseID,
+      b.TypeStyle as "TypeUID",
+      a.Area,
+      a.Burthen,
+      a.Number,
+      a.Remark,
+      bak.SonUid,
+      a.SelSonArea,
+      a.SvgUID,
+      a.ParentEleID,
+      a.LayerID,
+      a.ObligateField1,
+      a.ObligateField2,
+      a.ObligateField3,
+      a.ObligateField4,
+      a.ObligateField5,
+      a.ObligateField6,
+      a.ObligateField7,
+      a.ObligateField8,
+      a.ObligateField9,
+      a.ObligateField10,
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15
+      FROM glebeProperty a,glebeType b ,glebeProperty bak
+      WHERE
+      a.TypeUID=b.UID and a.ParentEleID !='0'
+      and a.ParentEleID!=''
+      and a.SvgUID= #SvgUID# and a.ParentEleID=bak.EleID
+      order by a.UseID
+    </select>
+    <select id='SelectglebePropertParentIDSubForBatchUpdate2' resultMap='glebePropertyResult' parameterClass='string'>
+      SELECT
+      a.UID,
+      a.EleID,
+      a.UseID,
+      b.TypeStyle as "TypeUID",
+      a.Area,
+      a.Burthen,
+      a.Number,
+      a.Remark,
+      a.SonUid,
+      a.SelSonArea,
+      a.SvgUID,
+      a.ParentEleID,
+      a.LayerID,
+      a.ObligateField1,
+      a.ObligateField2,
+      a.ObligateField3,
+      a.ObligateField4,
+      a.ObligateField5,
+      a.ObligateField6,
+      a.ObligateField7,
+      a.ObligateField8,
+      a.ObligateField9,
+      a.ObligateField10,
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15
+      FROM glebeProperty a,glebeType b
+      WHERE
+      a.TypeUID=b.UID and
+      a.ParentEleID ='1'
+      and a.SvgUID= #SvgUID#
+    </select>
+    <select id='SelectglebeTypeValueByEleID' resultMap='glebePropertyResult' parameterClass='Hashtable'>
+      SELECT
+      a.UID,
+      a.EleID,
+      a.UseID,
+      b.TypeStyle as "TypeUID",
+      a.Area,
+      a.Burthen,
+      a.Number,
+      a.Remark,
+      a.SonUid,
+      a.SelSonArea,
+      a.SvgUID,
+      a.ParentEleID,
+      a.LayerID,
+      a.ObligateField1,
+      a.ObligateField2,
+      a.ObligateField3,
+      a.ObligateField4,
+      a.ObligateField5,
+      a.ObligateField6,
+      a.ObligateField7,
+      a.ObligateField8,
+      a.ObligateField9,
+      a.ObligateField10,
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15
+      FROM glebeProperty a,glebeType b
+      WHERE
+      a.TypeUID=b.UID and
+      a.ParentEleID !='0' and
+      a.EleID=#EleID#
+      and a.SvgUID= #SvgUID#
+    </select>
+    <procedure id='UpdateGlebePropertyAll' resultClass="int" parameterMap='UpdateGlebePropertyParam'>
+      proc_UpdateGlebeProperty
+    </procedure>
+  </statements>
+</sqlMap>

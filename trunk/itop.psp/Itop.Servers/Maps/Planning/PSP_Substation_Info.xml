@@ -1,0 +1,592 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_Substation_Info' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_Substation_Info' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_Substation_Info' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_Substation_InfoResult' class='PSP_Substation_Info'>
+      <result property='UID' column='UID' />
+      <result property='AreaID' column='AreaID' />
+      <result property='AreaName' column='AreaName' />
+      <result property='Title' column='Title' />
+      <result property='L1' column='L1' />
+      <result property='L2' column='L2' />
+      <result property='L3' column='L3' />
+      <result property='L4' column='L4' />
+      <result property='L5' column='L5' />
+      <result property='L6' column='L6' />
+      <result property='L7' column='L7' />
+      <result property='L8' column='L8' />
+      <result property='L9' column='L9' />
+      <result property='L10' column='L10' />
+      <result property='S1' column='S1' />
+      <result property='S2' column='S2' />
+      <result property='S3' column='S3' />
+      <result property='S4' column='S4' />
+      <result property='S5' column='S5' />
+      <result property='S6' column='S6' />
+      <result property='S7' column='S7' />
+      <result property='S8' column='S8' />
+      <result property='S9' column='S9' />
+      <result property='S10' column='S10' />
+      <result property='Flag' column='Flag' />
+      <result property='Code' column='Code' />
+      <result property='IsConn' column='IsConn' />
+      <result property='L11' column='L11' />
+      <result property='L12' column='L12' />
+      <result property='L13' column='L13' />
+      <result property='L14' column='L14' />
+      <result property='CreateDate' column='CreateDate' />
+      <result property='L15' column='L15' />
+      <result property='L16' column='L16' />
+      <result property='L17' column='L17' />
+      <result property='L18' column='L18' />
+      <result property='L19' column='L19' />
+      <result property='L20' column='L20' />
+      <result property='L21' column='L21' />
+      <result property='L22' column='L22' />
+      <result property='L23' column='L23' />
+      <result property='L24' column='L24' />
+      <result property='L25' column='L25' />
+      <result property='L26' column='L26' />
+      <result property='L27' column='L27' />
+      <result property='L28' column='L28' />
+      <result property='L29' column='L29' />
+      <result property='LayerID' column='LayerID' />
+      <result property='EleID' column='EleID' />
+      <result property='DQ' column='DQ' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_Substation_Info' parameterClass='PSP_Substation_Info'>
+      INSERT INTO PSP_Substation_Info		(
+      "UID",
+      "AreaID",
+      "AreaName",
+      "Title",
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "L6",
+      "L7",
+      "L8",
+      "L9",
+      "L10",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "Flag",
+      "Code",
+      "IsConn",
+      "L11",
+      "L12",
+      "L13",
+      "L14",
+      "CreateDate",
+      "L15",
+      "L16",
+      "L17",
+      "L18",
+      "L19",
+      "L20",
+      "L21",
+      "L22",
+      "L23",
+      "L24",
+      "L25",
+      "L26",
+      "L27",
+      "L28",
+      "L29",
+      "LayerID",
+      "EleID",
+      "DQ"
+      )
+      VALUES
+      (
+      #UID#,
+      #AreaID#,
+      #AreaName#,
+      #Title#,
+      #L1#,
+      #L2#,
+      #L3#,
+      #L4#,
+      #L5#,
+      #L6#,
+      #L7#,
+      #L8#,
+      #L9#,
+      #L10#,
+      #S1#,
+      #S2#,
+      #S3#,
+      #S4#,
+      #S5#,
+      #S6#,
+      #S7#,
+      #S8#,
+      #S9#,
+      #S10#,
+      #Flag#,
+      #Code#,
+      #IsConn#,
+      #L11#,
+      #L12#,
+      #L13#,
+      #L14#,
+      #CreateDate#,
+      #L15#,
+      #L16#,
+      #L17#,
+      #L18#,
+      #L19#,
+      #L20#,
+      #L21#,
+      #L22#,
+      #L23#,
+      #L24#,
+      #L25#,
+      #L26#,
+      #L27#,
+      #L28#,
+      #L29#,
+      #LayerID#,
+      #EleID#,
+      #DQ#
+      )
+   
+    </insert>
+    <delete id='DeletePSP_Substation_Info' parameterClass='PSP_Substation_Info'>
+      DELETE FROM PSP_Substation_Info
+      WHERE
+      UID = #UID#
+    </delete>
+    <delete id='DeletePSP_Substation_InfoByLayerID' parameterClass='PSP_Substation_Info'>
+      DELETE FROM PSP_Substation_Info
+      WHERE
+      LayerID = #LayerID#
+    </delete>
+    <delete id='DeletePSP_Substation_InfoByELeID2' parameterClass='PSP_Substation_Info'>
+      DELETE FROM PSP_Substation_Info
+      WHERE
+      EleID = #EleID# 
+    </delete>
+    <update id='UpdatePSP_Substation_Info' parameterClass='PSP_Substation_Info'>
+      UPDATE PSP_Substation_Info
+      SET
+      "AreaID" = #AreaID#,
+      "AreaName" = #AreaName#,
+      "Title" = #Title#,
+      "L1" = #L1#,
+      "L2" = #L2#,
+      "L3" = #L3#,
+      "L4" = #L4#,
+      "L5" = #L5#,
+      "L6" = #L6#,
+      "L7" = #L7#,
+      "L8" = #L8#,
+      "L9" = #L9#,
+      "L10" = #L10#,
+      "S1" = #S1#,
+      "S2" = #S2#,
+      "S3" = #S3#,
+      "S4" = #S4#,
+      "S5" = #S5#,
+      "S6" = #S6#,
+      "S7" = #S7#,
+      "S8" = #S8#,
+      "S9" = #S9#,
+      "S10" = #S10#,
+      "Flag" = #Flag#,
+      "Code" = #Code#,
+      "IsConn" = #IsConn#,
+      "L11" = #L11#,
+      "L12" = #L12#,
+      "L13" = #L13#,
+      "L14" = #L14#,
+      "CreateDate" = #CreateDate#,
+      "L15" = #L15#,
+      "L16" = #L16#,
+      "L17" = #L17#,
+      "L18" = #L18#,
+      "L19" = #L19#,
+      "L20" = #L20#,
+      "L21" = #L21#,
+      "L22" = #L22#,
+      "L23" = #L23#,
+      "L24" = #L24#,
+      "L25" = #L25#,
+      "L26" = #L26#,
+      "L27" = #L27#,
+      "L28" = #L28#,
+      "L29" = #L29#,
+      "LayerID" = #LayerID#,
+      "EleID"=#EleID#,
+      "DQ"=#DQ#
+      WHERE
+      UID = #UID#
+
+    </update>
+    <select id='SelectPSP_Substation_InfoList' resultMap='PSP_Substation_InfoResult' parameterClass='PSP_Substation_Info'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "Title",
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "L6",
+      "L7",
+      "L8",
+      "L9",
+      "L10",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "Flag",
+      "Code",
+      "IsConn",
+      "L11",
+      "L12",
+      "L13",
+      "L14",
+      "CreateDate",
+      "L15",
+      "L16",
+      "L17",
+      "L18",
+      "L19",
+      "L20",
+      "L21",
+      "L22",
+      "L23",
+      "L24",
+      "L25",
+      "L26",
+      "L27",
+      "L28",
+      "L29",
+      "LayerID",
+      "EleID",
+      "DQ"
+      FROM PSP_Substation_Info
+    </select>
+    <select id='SelectPSP_Substation_InfoByKey' resultMap='PSP_Substation_InfoResult' parameterClass='PSP_Substation_Info'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "Title",
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "L6",
+      "L7",
+      "L8",
+      "L9",
+      "L10",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "Flag",
+      "Code",
+      "IsConn",
+      "L11",
+      "L12",
+      "L13",
+      "L14",
+      "CreateDate",
+      "L15",
+      "L16",
+      "L17",
+      "L18",
+      "L19",
+      "L20",
+      "L21",
+      "L22",
+      "L23",
+      "L24",
+      "L25",
+      "L26",
+      "L27",
+      "L28",
+      "L29",
+      "LayerID",
+      "EleID",
+      "DQ"
+      FROM PSP_Substation_Info
+      WHERE
+      UID = #UID#
+    </select>
+    <select id='SelectPSP_Substation_InfoListByWhere' resultMap='PSP_Substation_InfoResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "Title",
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "L6",
+      "L7",
+      "L8",
+      "L9",
+      "L10",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "Flag",
+      "Code",
+      "IsConn",
+      "L11",
+      "L12",
+      "L13",
+      "L14",
+      "CreateDate",
+      "L15",
+      "L16",
+      "L17",
+      "L18",
+      "L19",
+      "L20",
+      "L21",
+      "L22",
+      "L23",
+      "L24",
+      "L25",
+      "L26",
+      "L27",
+      "L28",
+      "L29",
+      "LayerID",
+      "EleID",
+      "DQ"
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <select id='SelectPSP_Substation_InfoListByParentid' resultMap='PSP_Substation_InfoResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "Title",
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "L6",
+      "L7",
+      "L8",
+      "L9",
+      "L10",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "Flag",
+      "Code",
+      "IsConn",
+      "L11",
+      "L12",
+      "L13",
+      "L14",
+      "CreateDate",
+      "L15",
+      "L16",
+      "L17",
+      "L18",
+      "L19",
+      "L20",
+      "L21",
+      "L22",
+      "L23",
+      "L24",
+      "L25",
+      "L26",
+      "L27",
+      "L28",
+      "L29",
+      "LayerID",
+      "EleID",
+      "DQ"
+      FROM PSP_Substation_Info
+      WHERE AreaID=#value#
+    </select>
+    <select id='SelectPSP_Substation_InfoListByEleID' resultMap='PSP_Substation_InfoResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "AreaID",
+      "AreaName",
+      "Title",
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "L6",
+      "L7",
+      "L8",
+      "L9",
+      "L10",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "Flag",
+      "Code",
+      "IsConn",
+      "L11",
+      "L12",
+      "L13",
+      "L14",
+      "CreateDate",
+      "L15",
+      "L16",
+      "L17",
+      "L18",
+      "L19",
+      "L20",
+      "L21",
+      "L22",
+      "L23",
+      "L24",
+      "L25",
+      "L26",
+      "L27",
+      "L28",
+      "L29",
+      "LayerID",
+      "EleID",
+      "DQ"
+      FROM PSP_Substation_Info
+      WHERE  EleID=#EleID#
+    </select>
+    <select id='SelectPSP_Substation_InfoCountByObject' resultMap='PSP_Substation_InfoResult' parameterClass='string'>
+      SELECT count(*)
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <!--卷复制时用-->
+    <select id='SelectPSP_Substation_InfoCopy_byProj' resultMap='PSP_Substation_InfoResult' parameterClass='PSP_Substation_Info'>
+      SELECT
+      *
+      FROM PSP_Substation_Info
+      WHERE 
+      AreaID=#AreaID#
+    </select>
+
+    <!--计算分组分区-->
+    <select id='SelectPSP_Substation_InfoGroupAreaName'   parameterClass='string'>
+      SELECT AreaName
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <!--变电站电压等级-->
+    <select id='SelectPSP_Substation_InfoGroupL1'   parameterClass='string'>
+      SELECT L1
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+   
+    <!--计算统计值-->
+    
+    <select id='SelectPSP_Substation_InfoCountall' resultClass='int' parameterClass='string'>
+      SELECT count(*)
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <!--计算变电容量和-->
+    <select id='SelectPSP_Substation_InfoSUML2' resultClass='double' parameterClass='string'>
+      SELECT Sum(L2)
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <!--计算主变台数和-->
+    <select id='SelectPSP_Substation_InfoSUML3' resultClass='int' parameterClass='string'>
+      SELECT Sum(L3)
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <!--计算负荷总和-->
+    <select id='SelectPSP_Substation_InfoSUML9' resultClass='int' parameterClass='string'>
+      SELECT Sum(L9)
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <!--计算10KV出线间隔总数-->
+    <select id='SelectPSP_Substation_InfoSUML13' resultClass='int' parameterClass='string'>
+      SELECT Sum(CAST(L13 as int))
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <!--计算10KV出现间隔已用个数-->
+    <select id='SelectPSP_Substation_InfoSUML14' resultClass='int' parameterClass='string'>
+      SELECT Sum(CAST(L14 as int))
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <!--计算无功补偿容量-->
+    <select id='SelectPSP_Substation_InfoSUML5' resultClass='double' parameterClass='string'>
+      SELECT Sum(CAST(L5 as float))
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+    <!--查询变电站名称-->
+    <select id='SelectPSP_Substation_InfoOFName' resultClass='string' parameterClass='string'>
+      SELECT Title
+      FROM PSP_Substation_Info
+      WHERE $value$
+    </select>
+  </statements>
+</sqlMap>

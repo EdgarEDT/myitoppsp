@@ -1,0 +1,450 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{41A81A91-F952-4F07-9FB6-8F1E24A3FEE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Client.PWTable</RootNamespace>
+    <AssemblyName>Itop.Client.PWTable</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraReports.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\FarPoint.CalcEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Excel, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\FarPoint.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\FarPoint.PluginCalendar.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\FarPoint.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\FarPoint.Win.Spread.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Microsoft.Office.Core, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.BZH.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Itop.BZH.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.BaseData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.BaseData.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Chen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.Chen.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.ExpressCalculate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.ExpressCalculate.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Forecast, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.Forecast.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.GM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.GM.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.JournalSheet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.JournalSheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Layouts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.Layouts.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.Stutistics.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.Table.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.MapView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ItopVector, Version=3.0.1.23696, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CtrlPW3b.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPW3b.designer.cs">
+      <DependentUpon>CtrlPW3b.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrlPW_Sum.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPW_Sum.designer.cs">
+      <DependentUpon>CtrlPW_Sum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileClass.cs" />
+    <Compile Include="FrmLineSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLineSel.Designer.cs">
+      <DependentUpon>FrmLineSel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPDWXZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPDWXZ.designer.cs">
+      <DependentUpon>FrmPDWXZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW3b.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW3b.Designer.cs">
+      <DependentUpon>FrmPW3b.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW3bDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW3bDialog.Designer.cs">
+      <DependentUpon>FrmPW3bDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW_Sum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW_Sum.Designer.cs">
+      <DependentUpon>FrmPW_Sum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW_SumDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW_SumDialog.Designer.cs">
+      <DependentUpon>FrmPW_SumDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CtrlPW3c.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlPW3c.designer.cs">
+      <DependentUpon>CtrlPW3c.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW3c.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW3c.Designer.cs">
+      <DependentUpon>FrmPW3c.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW3cDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW3cDialog.Designer.cs">
+      <DependentUpon>FrmPW3cDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW321.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW321.Designer.cs">
+      <DependentUpon>FrmPW321.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW322.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW322.Designer.cs">
+      <DependentUpon>FrmPW322.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW323.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW323.Designer.cs">
+      <DependentUpon>FrmPW323.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW324.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW324.Designer.cs">
+      <DependentUpon>FrmPW324.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW326.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW326.Designer.cs">
+      <DependentUpon>FrmPW326.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW328.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW328.Designer.cs">
+      <DependentUpon>FrmPW328.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW329.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW329.Designer.cs">
+      <DependentUpon>FrmPW329.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW3210.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW3210.Designer.cs">
+      <DependentUpon>FrmPW3210.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW327.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW327.Designer.cs">
+      <DependentUpon>FrmPW327.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW3211.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW3211.Designer.cs">
+      <DependentUpon>FrmPW3211.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW3212.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW3212.Designer.cs">
+      <DependentUpon>FrmPW3212.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW332.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW332.Designer.cs">
+      <DependentUpon>FrmPW332.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW333.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW333.Designer.cs">
+      <DependentUpon>FrmPW333.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW334.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW334.Designer.cs">
+      <DependentUpon>FrmPW334.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW341.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW341.Designer.cs">
+      <DependentUpon>FrmPW341.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPW342.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPW342.Designer.cs">
+      <DependentUpon>FrmPW342.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SheetClass\Sheet2251.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CtrlPW3b.resx">
+      <DependentUpon>CtrlPW3b.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrlPW_Sum.resx">
+      <DependentUpon>CtrlPW_Sum.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLineSel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmLineSel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPDWXZ.resx">
+      <DependentUpon>FrmPDWXZ.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW3b.resx">
+      <DependentUpon>FrmPW3b.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW3bDialog.resx">
+      <DependentUpon>FrmPW3bDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW_Sum.resx">
+      <DependentUpon>FrmPW_Sum.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW_SumDialog.resx">
+      <DependentUpon>FrmPW_SumDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="CtrlPW3c.resx">
+      <DependentUpon>CtrlPW3c.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW3c.resx">
+      <DependentUpon>FrmPW3c.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW3cDialog.resx">
+      <DependentUpon>FrmPW3cDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW321.resx">
+      <DependentUpon>FrmPW321.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW322.resx">
+      <DependentUpon>FrmPW322.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW323.resx">
+      <DependentUpon>FrmPW323.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW324.resx">
+      <DependentUpon>FrmPW324.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW326.resx">
+      <DependentUpon>FrmPW326.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW328.resx">
+      <DependentUpon>FrmPW328.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW329.resx">
+      <DependentUpon>FrmPW329.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW3210.resx">
+      <DependentUpon>FrmPW3210.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW327.resx">
+      <DependentUpon>FrmPW327.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW3211.resx">
+      <DependentUpon>FrmPW3211.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW3212.resx">
+      <DependentUpon>FrmPW3212.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW332.resx">
+      <DependentUpon>FrmPW332.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW333.resx">
+      <DependentUpon>FrmPW333.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW334.resx">
+      <DependentUpon>FrmPW334.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW341.resx">
+      <DependentUpon>FrmPW341.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPW342.resx">
+      <DependentUpon>FrmPW342.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itop.Client.GYGH\Itop.Client.GYGH.csproj">
+      <Project>{0B545F48-9BF0-45CA-8244-8AAE10F3A563}</Project>
+      <Name>Itop.Client.GYGH</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.PWTable\Itop.Domain.PWTable.csproj">
+      <Project>{C823FDCE-4340-4E02-A128-6BBDDA466DA8}</Project>
+      <Name>Itop.Domain.PWTable</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

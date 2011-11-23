@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SystemData' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <statements>
+    <select id='SelectSysData' resultClass='datetime'>
+      select getDate()
+    </select>
+  </statements>
+</sqlMap>

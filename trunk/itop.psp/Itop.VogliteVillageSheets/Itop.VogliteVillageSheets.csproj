@@ -1,0 +1,224 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A68488B9-8769-43D8-8572-FFEE148A89C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.VogliteVillageSheets</RootNamespace>
+    <AssemblyName>Itop.VogliteVillageSheets</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Server.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DemandForecast\Sheet14.cs" />
+    <Compile Include="DemandForecast\Sheet15.cs" />
+    <Compile Include="DemandForecast\Sheet16.cs" />
+    <Compile Include="DemandForecast\Sheet17.cs" />
+    <Compile Include="DemandForecast\Sheet18.cs" />
+    <Compile Include="DemandForecast\Sheet19.cs" />
+    <Compile Include="DemandForecast\Sheet20.cs" />
+    <Compile Include="EvolutionOutlineFunction\Sheet1.cs" />
+    <Compile Include="EvolutionOutlineFunction\Sheet2.cs" />
+    <Compile Include="FrmInvestmentAppraisal\Sheet23.cs" />
+    <Compile Include="FrmInvestmentAppraisal\Sheet24.cs" />
+    <Compile Include="FrmInvestmentAppraisal\Sheet25.cs" />
+    <Compile Include="HighDistributionNetworkParsing\Sheet3.cs" />
+    <Compile Include="HighDistributionNetworkParsing\Sheet4.cs" />
+    <Compile Include="HighDistributionNetworkParsing\Sheet5.cs" />
+    <Compile Include="MediumVoltageDistributionNetworkParsing\Sheet10.cs" />
+    <Compile Include="MediumVoltageDistributionNetworkParsing\Sheet11.cs" />
+    <Compile Include="MediumVoltageDistributionNetworkParsing\Sheet12.cs" />
+    <Compile Include="MediumVoltageDistributionNetworkParsing\Sheet13.cs" />
+    <Compile Include="MediumVoltageDistributionNetworkParsing\Sheet6.cs" />
+    <Compile Include="MediumVoltageDistributionNetworkParsing\Sheet7.cs" />
+    <Compile Include="MediumVoltageDistributionNetworkParsing\Sheet8.cs" />
+    <Compile Include="MediumVoltageDistributionNetworkParsing\Sheet9.cs" />
+    <Compile Include="PlannedProjectAmount\Sheet30.cs" />
+    <Compile Include="winForm\FrmDemandForecast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winForm\FrmDemandForecast.Designer.cs">
+      <DependentUpon>FrmDemandForecast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="winForm\FrmEvolutionOutline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winForm\FrmEvolutionOutline.Designer.cs">
+      <DependentUpon>FrmEvolutionOutline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Function\PublicFunction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="winForm\FrmDemandForecast.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmDemandForecast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="winForm\FrmEvolutionOutline.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmEvolutionOutline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="winForm\FrmHighDistributionNetworkParsing.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmHighDistributionNetworkParsing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="winForm\FrmInvestmentAppraisal.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmInvestmentAppraisal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="winForm\FrmMediumVoltageDistributionNetworkParsing.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmMediumVoltageDistributionNetworkParsing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="winForm\FrmPlannedProjectAmount.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmPlannedProjectAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="winForm\FrmHighDistributionNetworkParsing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winForm\FrmHighDistributionNetworkParsing.Designer.cs">
+      <DependentUpon>FrmHighDistributionNetworkParsing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="winForm\FrmMediumVoltageDistributionNetworkParsing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winForm\FrmMediumVoltageDistributionNetworkParsing.Designer.cs">
+      <DependentUpon>FrmMediumVoltageDistributionNetworkParsing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="winForm\FrmInvestmentAppraisal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winForm\FrmInvestmentAppraisal.Designer.cs">
+      <DependentUpon>FrmInvestmentAppraisal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="winForm\FrmPlannedProjectAmount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winForm\FrmPlannedProjectAmount.Designer.cs">
+      <DependentUpon>FrmPlannedProjectAmount.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itop.Client.BaseData\Itop.Client.BaseData.csproj">
+      <Project>{75AED747-4ADC-4468-B65D-BC4A7BF898C3}</Project>
+      <Name>Itop.Client.BaseData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Forecast\Itop.Domain.Forecast.csproj">
+      <Project>{028877BB-F597-40C7-8E0C-2DADF4196778}</Project>
+      <Name>Itop.Domain.Forecast</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Stutistics\Itop.Domain.Stutistics.csproj">
+      <Project>{FBDFCD20-106B-424D-8988-729C9D228A99}</Project>
+      <Name>Itop.Domain.Stutistics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Table\Itop.Domain.Table.csproj">
+      <Project>{F575DDFF-4B24-4DDA-AE88-CB3B558C7C3E}</Project>
+      <Name>Itop.Domain.Table</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.JournalSheet\Itop.JournalSheet.csproj">
+      <Project>{DE5BF47A-2AA1-488C-94C8-62C2C3A5EED9}</Project>
+      <Name>Itop.JournalSheet</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

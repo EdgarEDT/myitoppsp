@@ -1,0 +1,328 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B545F48-9BF0-45CA-8244-8AAE10F3A563}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Client.GYGH</RootNamespace>
+    <AssemblyName>Itop.Client.GYGH</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="AxInterop.DSOFramer, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\AxInterop.DSOFramer.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Excel, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.PluginCalendar.WinForms, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\output\Client\Itop.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\output\Client\Itop.Client.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Client.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\output\Client\Itop.Client.Table.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\output\Client\Itop.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\output\Client\Itop.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Forecast, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\output\Client\Itop.Domain.Forecast.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\output\Client\Itop.Domain.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Layouts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.Layouts.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\output\Client\Itop.Domain.Stutistics.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Domain.Table.dll</HintPath>
+    </Reference>
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\output\Client\Itop.Server.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BDZGH\Sheet91.cs" />
+    <Compile Include="BDZGH\Sheet91_52.cs" />
+    <Compile Include="ChooseYears1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseYears1.Designer.cs">
+      <DependentUpon>ChooseYears1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DYGH\Sheet51_32.cs" />
+    <Compile Include="DYGH\Sheet51.cs" />
+    <Compile Include="DYGH\Sheet52.cs" />
+    <Compile Include="fpcommon.cs" />
+    <Compile Include="FrmGYDWGH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGYDWGH.designer.cs">
+      <DependentUpon>FrmGYDWGH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPDWXZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPDWXZ.designer.cs">
+      <DependentUpon>FrmPDWXZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelforcast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelforcast.Designer.cs">
+      <DependentUpon>FrmSelforcast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmXMQC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmXMQC.designer.cs">
+      <DependentUpon>FrmXMQC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmZDYGH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmZDYGH.designer.cs">
+      <DependentUpon>FrmZDYGH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDWXZ\Sheet316.cs" />
+    <Compile Include="PDWXZ\Sheet316_16.cs" />
+    <Compile Include="PDWXZ\Sheet315.cs" />
+    <Compile Include="PDWXZ\Sheet315_14.cs" />
+    <Compile Include="PDWXZ\Sheet313_11.cs" />
+    <Compile Include="PDWXZ\Sheet附表.cs" />
+    <Compile Include="PDWXZ\Sheet主表.cs" />
+    <Compile Include="PDWXZ\Sheet313.cs" />
+    <Compile Include="PDWXZ\Sheet312_10.cs" />
+    <Compile Include="PDWXZ\Sheet312.cs" />
+    <Compile Include="PDWXZ\Sheet311_9.cs" />
+    <Compile Include="PDWXZ\Sheet311.cs" />
+    <Compile Include="PDWXZ\Sheet310_5.cs" />
+    <Compile Include="PDWXZ\Sheet310.cs" />
+    <Compile Include="PDWXZ\Sheet39_6.cs" />
+    <Compile Include="PDWXZ\Sheet39.cs" />
+    <Compile Include="PDWXZ\Sheet38_8.cs" />
+    <Compile Include="PDWXZ\Sheet38.cs" />
+    <Compile Include="PDWXZ\Sheet37_3.cs" />
+    <Compile Include="PDWXZ\Sheet37.cs" />
+    <Compile Include="PDWXZ\Sheet36.cs" />
+    <Compile Include="PDWXZ\Sheet35.cs" />
+    <Compile Include="PDWXZ\Sheet31.cs" />
+    <Compile Include="PDWXZ\Sheet32.cs" />
+    <Compile Include="PDWXZ\Sheet33.cs" />
+    <Compile Include="PDWXZ\Sheet34.cs" />
+    <Compile Include="PDWXZ\Sheet33_1.cs" />
+    <Compile Include="PDWXZ\Sheet34_2.cs" />
+    <Compile Include="PDWXZ\Sheet314.cs" />
+    <Compile Include="PDWXZ\Sheet314_12.cs" />
+    <Compile Include="PDWXZ\Sheet317.cs" />
+    <Compile Include="PDWXZ\Sheet317_17.cs" />
+    <Compile Include="PDWXZ\Sheet318.cs" />
+    <Compile Include="PDWXZ\Sheet318_19.cs" />
+    <Compile Include="PDWXZ\Sheet319.cs" />
+    <Compile Include="PDWXZ\Sheet319_20.cs" />
+    <Compile Include="PDWXZ\Sheet320.cs" />
+    <Compile Include="PDWXZ\Sheet320_21.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChooseYears1.resx">
+      <DependentUpon>ChooseYears1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGYDWGH.resx">
+      <DependentUpon>FrmGYDWGH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPDWXZ.resx">
+      <DependentUpon>FrmPDWXZ.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelforcast.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSelforcast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmXMQC.resx">
+      <DependentUpon>FrmXMQC.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmZDYGH.resx">
+      <DependentUpon>FrmZDYGH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDYGH.resx">
+      <DependentUpon>FrmDYGH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBDZGH.resx">
+      <DependentUpon>FrmBDZGH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReport.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmForcastReport.resx">
+      <DependentUpon>FrmForcastReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPHReport.resx">
+      <DependentUpon>FrmPHReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="FrmDYGH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDYGH.designer.cs">
+      <DependentUpon>FrmDYGH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBDZGH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBDZGH.designer.cs">
+      <DependentUpon>FrmBDZGH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReport.designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmForcastReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmForcastReport.designer.cs">
+      <DependentUpon>FrmForcastReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPHReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPHReport.designer.cs">
+      <DependentUpon>FrmPHReport.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

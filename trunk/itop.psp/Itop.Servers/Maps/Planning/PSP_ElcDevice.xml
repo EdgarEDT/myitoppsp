@@ -1,0 +1,620 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_ElcDevice' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_ElcDevice' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_ElcDevice' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_ElcDeviceResult' class='PSP_ElcDevice'>
+      <result property='ProjectSUID' column='ProjectSUID' />
+      <result property='DeviceSUID' column='DeviceSUID' />
+      <result property='COL1' column='COL1' />
+      <result property='COL2' column='COL2' />
+      <result property='COL3' column='COL3' />
+      <result property='COL4' column='COL4' />
+      <result property='COL5' column='COL5' />
+      <result property='COL6' column='COL6' />
+      <result property='COL7' column='COL7' />
+      <result property='COL8' column='COL8' />
+      <result property='COL9' column='COL9' />
+      <result property='COL10' column='COL10' />
+      <result property='COL11' column='COL11' />
+      <result property='COL12' column='COL12' />
+      <result property='COL13' column='COL13' />
+      <result property='COL14' column='COL14' />
+      <result property='COL15' column='COL15' />
+      <result property='COL16' column='COL16' />
+      <result property='COL17' column='COL17' />
+      <result property='COL18' column='COL18' />
+      <result property='COL19' column='COL19' />
+      <result property='COL20' column='COL20' />
+      <result property='COL21' column='COL21' />
+      <result property='COL22' column='COL22' />
+      <result property='COL23' column='COL23' />
+      <result property='COL24' column='COL24' />
+      <result property='COL25' column='COL25' />
+      <result property='COL26' column='COL26' />
+      <result property='COL27' column='COL27' />
+      <result property='COL28' column='COL28' />
+      <result property='COL29' column='COL29' />
+      <result property='COL30' column='COL30' />
+      <result property='COL31' column='COL31' />
+      <result property='COL32' column='COL32' />
+      <result property='COL33' column='COL33' />
+      <result property='COL34' column='COL34' />
+      <result property='COL35' column='COL35' />
+      <result property='COL36' column='COL36' />
+      <result property='COL37' column='COL37' />
+      <result property='COL38' column='COL38' />
+      <result property='COL39' column='COL39' />
+      <result property='COL40' column='COL40' />
+      <result property='COL41' column='COL41' />
+      <result property='COL42' column='COL42' />
+      <result property='COL43' column='COL43' />
+      <result property='COL44' column='COL44' />
+      <result property='COL45' column='COL45' />
+      <result property='COL46' column='COL46' />
+      <result property='COL47' column='COL47' />
+      <result property='COL48' column='COL48' />
+      <result property='COL49' column='COL49' />
+      <result property='COL50' column='COL50' />
+      <result property='COL51' column='COL51' />
+      <result property='COL52' column='COL52' />
+      <result property='COL53' column='COL53' />
+      <result property='COL54' column='COL54' />
+      <result property='COL55' column='COL55' />
+      <result property='COL56' column='COL56' />
+      <result property='COL57' column='COL57' />
+      <result property='COL58' column='COL58' />
+      <result property='COL59' column='COL59' />
+      <result property='COL60' column='COL60' />
+      <result property='COL61' column='COL61' />
+      <result property='COL62' column='COL62' />
+      <result property='COL63' column='COL63' />
+      <result property='COL64' column='COL64' />
+      <result property='COL65' column='COL65' />
+      <result property='COL66' column='COL66' />
+      <result property='COL67' column='COL67' />
+      <result property='COL68' column='COL68' />
+      <result property='COL69' column='COL69' />
+      <result property='COL70' column='COL70' />
+      <result property='COL71' column='COL71' />
+      <result property='COL72' column='COL72' />
+      <result property='COL73' column='COL73' />
+      <result property='COL74' column='COL74' />
+      <result property='COL75' column='COL75' />
+      <result property='COL76' column='COL76' />
+      <result property='COL77' column='COL77' />
+      <result property='COL78' column='COL78' />
+      <result property='COL79' column='COL79' />
+      <result property='COL80' column='COL80' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_ElcDevice' parameterClass='PSP_ElcDevice'>
+      INSERT INTO PSP_ELCDEVICE		(
+      "ProjectSUID",
+      "DeviceSUID",
+      "COL1",
+      "COL2",
+      "COL3",
+      "COL4",
+      "COL5",
+      "COL6",
+      "COL7",
+      "COL8",
+      "COL9",
+      "COL10",
+      "COL11",
+      "COL12",
+      "COL13",
+      "COL14",
+      "COL15",
+      "COL16",
+      "COL17",
+      "COL18",
+      "COL19",
+      "COL20",
+      "COL21",
+      "COL22",
+      "COL23",
+      "COL24",
+      "COL25",
+      "COL26",
+      "COL27",
+      "COL28",
+      "COL29",
+      "COL30",
+      "COL31",
+      "COL32",
+      "COL33",
+      "COL34",
+      "COL35",
+      "COL36",
+      "COL37",
+      "COL38",
+      "COL39",
+      "COL40",
+      "COL41",
+      "COL42",
+      "COL43",
+      "COL44",
+      "COL45",
+      "COL46",
+      "COL47",
+      "COL48",
+      "COL49",
+      "COL50",
+      "COL51",
+      "COL52",
+      "COL53",
+      "COL54",
+      "COL55",
+      "COL56",
+      "COL57",
+      "COL58",
+      "COL59",
+      "COL60",
+      "COL61",
+      "COL62",
+      "COL63",
+      "COL64",
+      "COL65",
+      "COL66",
+      "COL67",
+      "COL68",
+      "COL69",
+      "COL70",
+      "COL71",
+      "COL72",
+      "COL73",
+      "COL74",
+      "COL75",
+      "COL76",
+      "COL77",
+      "COL78",
+      "COL79",
+      "COL80"
+      )
+      VALUES
+      (
+      #ProjectSUID#,
+      #DeviceSUID#,
+      #COL1#,
+      #COL2#,
+      #COL3#,
+      #COL4#,
+      #COL5#,
+      #COL6#,
+      #COL7#,
+      #COL8#,
+      #COL9#,
+      #COL10#,
+      #COL11#,
+      #COL12#,
+      #COL13#,
+      #COL14#,
+      #COL15#,
+      #COL16#,
+      #COL17#,
+      #COL18#,
+      #COL19#,
+      #COL20#,
+      #COL21#,
+      #COL22#,
+      #COL23#,
+      #COL24#,
+      #COL25#,
+      #COL26#,
+      #COL27#,
+      #COL28#,
+      #COL29#,
+      #COL30#,
+      #COL31#,
+      #COL32#,
+      #COL33#,
+      #COL34#,
+      #COL35#,
+      #COL36#,
+      #COL37#,
+      #COL38#,
+      #COL39#,
+      #COL40#,
+      #COL41#,
+      #COL42#,
+      #COL43#,
+      #COL44#,
+      #COL45#,
+      #COL46#,
+      #COL47#,
+      #COL48#,
+      #COL49#,
+      #COL50#,
+      #COL51#,
+      #COL52#,
+      #COL53#,
+      #COL54#,
+      #COL55#,
+      #COL56#,
+      #COL57#,
+      #COL58#,
+      #COL59#,
+      #COL60#,
+      #COL61#,
+      #COL62#,
+      #COL63#,
+      #COL64#,
+      #COL65#,
+      #COL66#,
+      #COL67#,
+      #COL68#,
+      #COL69#,
+      #COL70#,
+      #COL71#,
+      #COL72#,
+      #COL73#,
+      #COL74#,
+      #COL75#,
+      #COL76#,
+      #COL77#,
+      #COL78#,
+      #COL79#,
+      #COL80#
+      )
+    </insert>
+    <delete id='DeletePSP_ElcDevice' parameterClass='PSP_ElcDevice'>
+      DELETE FROM PSP_ELCDEVICE
+      WHERE
+      ProjectSUID = #ProjectSUID#
+      AND DeviceSUID = #DeviceSUID#
+    </delete>
+    <update id='UpdatePSP_ElcDevice' parameterClass='PSP_ElcDevice'>
+      UPDATE PSP_ELCDEVICE
+      SET
+      "COL1" = #COL1#,
+      "COL2" = #COL2#,
+      "COL3" = #COL3#,
+      "COL4" = #COL4#,
+      "COL5" = #COL5#,
+      "COL6" = #COL6#,
+      "COL7" = #COL7#,
+      "COL8" = #COL8#,
+      "COL9" = #COL9#,
+      "COL10" = #COL10#,
+      "COL11" = #COL11#,
+      "COL12" = #COL12#,
+      "COL13" = #COL13#,
+      "COL14" = #COL14#,
+      "COL15" = #COL15#,
+      "COL16" = #COL16#,
+      "COL17" = #COL17#,
+      "COL18" = #COL18#,
+      "COL19" = #COL19#,
+      "COL20" = #COL20#,
+      "COL21" = #COL21#,
+      "COL22" = #COL22#,
+      "COL23" = #COL23#,
+      "COL24" = #COL24#,
+      "COL25" = #COL25#,
+      "COL26" = #COL26#,
+      "COL27" = #COL27#,
+      "COL28" = #COL28#,
+      "COL29" = #COL29#,
+      "COL30" = #COL30#,
+      "COL31" = #COL31#,
+      "COL32" = #COL32#,
+      "COL33" = #COL33#,
+      "COL34" = #COL34#,
+      "COL35" = #COL35#,
+      "COL36" = #COL36#,
+      "COL37" = #COL37#,
+      "COL38" = #COL38#,
+      "COL39" = #COL39#,
+      "COL40" = #COL40#,
+      "COL41" = #COL41#,
+      "COL42" = #COL42#,
+      "COL43" = #COL43#,
+      "COL44" = #COL44#,
+      "COL45" = #COL45#,
+      "COL46" = #COL46#,
+      "COL47" = #COL47#,
+      "COL48" = #COL48#,
+      "COL49" = #COL49#,
+      "COL50" = #COL50#,
+      "COL51" = #COL51#,
+      "COL52" = #COL52#,
+      "COL53" = #COL53#,
+      "COL54" = #COL54#,
+      "COL55" = #COL55#,
+      "COL56" = #COL56#,
+      "COL57" = #COL57#,
+      "COL58" = #COL58#,
+      "COL59" = #COL59#,
+      "COL60" = #COL60#,
+      "COL61" = #COL61#,
+      "COL62" = #COL62#,
+      "COL63" = #COL63#,
+      "COL64" = #COL64#,
+      "COL65" = #COL65#,
+      "COL66" = #COL66#,
+      "COL67" = #COL67#,
+      "COL68" = #COL68#,
+      "COL69" = #COL69#,
+      "COL70" = #COL70#,
+      "COL71" = #COL71#,
+      "COL72" = #COL72#,
+      "COL73" = #COL73#,
+      "COL74" = #COL74#,
+      "COL75" = #COL75#,
+      "COL76" = #COL76#,
+      "COL77" = #COL77#,
+      "COL78" = #COL78#,
+      "COL79" = #COL79#,
+      "COL80" = #COL80#
+      WHERE
+      ProjectSUID = #ProjectSUID#
+      AND DeviceSUID = #DeviceSUID#
+    </update>
+    <select id='SelectPSP_ElcDeviceList' resultMap='PSP_ElcDeviceResult' parameterClass='PSP_ElcDevice'>
+      SELECT
+      "ProjectSUID",
+      "DeviceSUID",
+      "COL1",
+      "COL2",
+      "COL3",
+      "COL4",
+      "COL5",
+      "COL6",
+      "COL7",
+      "COL8",
+      "COL9",
+      "COL10",
+      "COL11",
+      "COL12",
+      "COL13",
+      "COL14",
+      "COL15",
+      "COL16",
+      "COL17",
+      "COL18",
+      "COL19",
+      "COL20",
+      "COL21",
+      "COL22",
+      "COL23",
+      "COL24",
+      "COL25",
+      "COL26",
+      "COL27",
+      "COL28",
+      "COL29",
+      "COL30",
+      "COL31",
+      "COL32",
+      "COL33",
+      "COL34",
+      "COL35",
+      "COL36",
+      "COL37",
+      "COL38",
+      "COL39",
+      "COL40",
+      "COL41",
+      "COL42",
+      "COL43",
+      "COL44",
+      "COL45",
+      "COL46",
+      "COL47",
+      "COL48",
+      "COL49",
+      "COL50",
+      "COL51",
+      "COL52",
+      "COL53",
+      "COL54",
+      "COL55",
+      "COL56",
+      "COL57",
+      "COL58",
+      "COL59",
+      "COL60",
+      "COL61",
+      "COL62",
+      "COL63",
+      "COL64",
+      "COL65",
+      "COL66",
+      "COL67",
+      "COL68",
+      "COL69",
+      "COL70",
+      "COL71",
+      "COL72",
+      "COL73",
+      "COL74",
+      "COL75",
+      "COL76",
+      "COL77",
+      "COL78",
+      "COL79",
+      "COL80"
+      FROM PSP_ELCDEVICE
+    </select>
+    <select id='SelectPSP_ElcDeviceByCondition' resultMap='PSP_ElcDeviceResult' parameterClass='string'>
+      SELECT
+      "ProjectSUID",
+      "DeviceSUID",
+      "COL1",
+      "COL2",
+      "COL3",
+      "COL4",
+      "COL5",
+      "COL6",
+      "COL7",
+      "COL8",
+      "COL9",
+      "COL10",
+      "COL11",
+      "COL12",
+      "COL13",
+      "COL14",
+      "COL15",
+      "COL16",
+      "COL17",
+      "COL18",
+      "COL19",
+      "COL20",
+      "COL21",
+      "COL22",
+      "COL23",
+      "COL24",
+      "COL25",
+      "COL26",
+      "COL27",
+      "COL28",
+      "COL29",
+      "COL30",
+      "COL31",
+      "COL32",
+      "COL33",
+      "COL34",
+      "COL35",
+      "COL36",
+      "COL37",
+      "COL38",
+      "COL39",
+      "COL40",
+      "COL41",
+      "COL42",
+      "COL43",
+      "COL44",
+      "COL45",
+      "COL46",
+      "COL47",
+      "COL48",
+      "COL49",
+      "COL50",
+      "COL51",
+      "COL52",
+      "COL53",
+      "COL54",
+      "COL55",
+      "COL56",
+      "COL57",
+      "COL58",
+      "COL59",
+      "COL60",
+      "COL61",
+      "COL62",
+      "COL63",
+      "COL64",
+      "COL65",
+      "COL66",
+      "COL67",
+      "COL68",
+      "COL69",
+      "COL70",
+      "COL71",
+      "COL72",
+      "COL73",
+      "COL74",
+      "COL75",
+      "COL76",
+      "COL77",
+      "COL78",
+      "COL79",
+      "COL80"
+      FROM PSP_ELCDEVICE
+      $value$
+    </select>
+    <select id='SelectPSP_ElcDeviceByKey' resultMap='PSP_ElcDeviceResult' parameterClass='PSP_ElcDevice'>
+      SELECT
+      "ProjectSUID",
+      "DeviceSUID",
+      "COL1",
+      "COL2",
+      "COL3",
+      "COL4",
+      "COL5",
+      "COL6",
+      "COL7",
+      "COL8",
+      "COL9",
+      "COL10",
+      "COL11",
+      "COL12",
+      "COL13",
+      "COL14",
+      "COL15",
+      "COL16",
+      "COL17",
+      "COL18",
+      "COL19",
+      "COL20",
+      "COL21",
+      "COL22",
+      "COL23",
+      "COL24",
+      "COL25",
+      "COL26",
+      "COL27",
+      "COL28",
+      "COL29",
+      "COL30",
+      "COL31",
+      "COL32",
+      "COL33",
+      "COL34",
+      "COL35",
+      "COL36",
+      "COL37",
+      "COL38",
+      "COL39",
+      "COL40",
+      "COL41",
+      "COL42",
+      "COL43",
+      "COL44",
+      "COL45",
+      "COL46",
+      "COL47",
+      "COL48",
+      "COL49",
+      "COL50",
+      "COL51",
+      "COL52",
+      "COL53",
+      "COL54",
+      "COL55",
+      "COL56",
+      "COL57",
+      "COL58",
+      "COL59",
+      "COL60",
+      "COL61",
+      "COL62",
+      "COL63",
+      "COL64",
+      "COL65",
+      "COL66",
+      "COL67",
+      "COL68",
+      "COL69",
+      "COL70",
+      "COL71",
+      "COL72",
+      "COL73",
+      "COL74",
+      "COL75",
+      "COL76",
+      "COL77",
+      "COL78",
+      "COL79",
+      "COL80"
+      FROM PSP_ELCDEVICE
+      WHERE
+      ProjectSUID = #ProjectSUID#
+      AND DeviceSUID = #DeviceSUID#
+    </select>
+  </statements>
+</sqlMap>

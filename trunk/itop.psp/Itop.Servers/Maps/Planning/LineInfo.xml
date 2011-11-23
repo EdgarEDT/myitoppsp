@@ -1,0 +1,465 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LineInfo' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='LineInfo' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.LineInfo' />
+  </alias>
+  <resultMaps>
+    <resultMap id='LineInfoResult' class='LineInfo'>
+      <result property='UID' column='UID' />
+      <result property='EleID' column='EleID' />
+      <result property='LineName' column='LineName' />
+      <result property='Length' column='Length' />
+      <result property='LineType' column='LineType' />
+      <result property='Voltage' column='Voltage' />
+      <result property='SvgUID' column='SvgUID' />
+      <result property='LayerID' column='LayerID' />
+      <result property='ObligateField1' column='ObligateField1' />
+      <result property='ObligateField2' column='ObligateField2' />
+      <result property='ObligateField3' column='ObligateField3' />
+      <result property='ObligateField4' column='ObligateField4' />
+      <result property='ObligateField5' column='ObligateField5' />
+      <result property='ObligateField6' column='ObligateField6' />
+      <result property='ObligateField7' column='ObligateField7' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertLineInfo' parameterClass='LineInfo'>
+      INSERT INTO LineInfo		(
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      )
+      VALUES
+      (
+      #UID#,
+      #EleID#,
+      #LineName#,
+      #Length#,
+      #LineType#,
+      #Voltage#,
+      #SvgUID#,
+      #LayerID#,
+      #ObligateField1#,
+      #ObligateField2#,
+      #ObligateField3#,
+      #ObligateField4#,
+      #ObligateField5#,
+      #ObligateField6#,
+      #ObligateField7#
+      )
+    </insert>
+    <delete id='DeleteLineInfo' parameterClass='LineInfo'>
+      DELETE FROM LineInfo
+      WHERE
+      UID = #UID#
+    </delete>
+    <delete id='DeleteLineInfoByLayerID' parameterClass='LineInfo'>
+      DELETE FROM LineInfo
+      WHERE
+      LayerID = #LayerID#
+    </delete>
+    <delete id='DeleteLinePropertyByEleID' parameterClass='LineInfo'>
+      DELETE FROM LineInfo
+      WHERE
+      EleID = #EleID# and SvgUID = #SvgUID#
+    </delete>
+    <update id='UpdateLineInfo' parameterClass='LineInfo'>
+      UPDATE LineInfo
+      SET
+      "EleID" = #EleID#,
+      "LineName" = #LineName#,
+      "Length" = #Length#,
+      "LineType" = #LineType#,
+      "Voltage" = #Voltage#,
+      "SvgUID" = #SvgUID#,
+      "LayerID" = #LayerID#,
+      "ObligateField1" = #ObligateField1#,
+      "ObligateField2" = #ObligateField2#,
+      "ObligateField3" = #ObligateField3#,
+      "ObligateField4" = #ObligateField4#,
+      "ObligateField5" = #ObligateField5#,
+      "ObligateField6" = #ObligateField6#,
+      "ObligateField7" = #ObligateField7#
+      WHERE
+      UID = #UID#
+    </update>
+    <select id='SelectLineInfoList' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+    </select>
+    <select id='SelectLineInfoByKey' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE
+      UID = #UID#
+    </select>
+    <select id='SelectLineInfoByEleID' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE
+      EleID= #EleID# and SvgUID= #SvgUID#
+    </select>
+    <select id='SelectLineInfoBySvgIDAll' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE
+      SvgUID= #SvgUID# order by LineName
+    </select>
+    <select id='SelectLineInfoBySvgIDAll2' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      a.UID as "UID",
+      a.EleID as "EleID",
+      a.LineName as "LineName",
+      a.Length as "Length",
+      b.TypeName as "LineType",
+      a.Voltage as "Voltage",
+      a.SvgUID as "SvgUID",
+      a.LayerID as "LayerID",
+      a.ObligateField1 as "ObligateField1",
+      a.ObligateField2 as "ObligateField2",
+      a.ObligateField3 as "ObligateField3",
+      a.ObligateField4 as "ObligateField4",
+      a.ObligateField5 as "ObligateField5",
+      a.ObligateField6 as "ObligateField6",
+      a.ObligateField7 as "ObligateField7"
+      FROM LineInfo a,LineType b
+      WHERE a.Voltage=b.TypeName and
+      a.SvgUID= #SvgUID# order by a.LineName
+    </select>
+    <select id='SelectLineInfoBySvgUID' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE
+      SvgUID= #SvgUID# and LayerID in ($LayerID$)
+      order by LineName
+    </select>
+    <select id='SelectLineInfoByEleIDList' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE
+      SvgUID= #SvgUID# and EleID in ($EleID$)
+      order by LineName
+    </select>
+    <select id='SelectLineInfoByLineNameCK' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE
+      SvgUID= #SvgUID# and LineName = #LineName#
+      order by LineName
+    </select>
+    <select id='SelectLineInfoBySvgUIDAndLayer' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE
+      SvgUID= #SvgUID# and LayerID in ($LayerID$)
+      order by LineName
+    </select>
+    <select id='SelectLineInfoLineType' resultMap='LineInfoResult' parameterClass=''>
+
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE LineType not in ('') and UID in (SELECT
+      min(UID)
+      FROM LineInfo
+      group by linetype)  ORDER BY LineType ASC
+    </select>
+    <select id='SelectLineInfoLineTypeObj5' resultMap='LineInfoResult' parameterClass=''>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE ObligateField5 not in ('') and UID in (SELECT
+      min(UID)
+      FROM LineInfo
+      group by ObligateField5)  ORDER BY ObligateField5 ASC
+    </select>
+    <select id='SelectLineInfoByLayerID' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE
+      LayerID = #LayerID#
+      order by LineName
+    </select>
+    <select id='SelectLineInfoByWhere' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo
+      WHERE
+      $LineName$
+    </select>
+    <select id='SelectLineInfoByPowerID' resultMap='LineInfoResult' parameterClass='string'>
+      SELECT
+      t1.uid as "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo t1,PSP_PowerPicSelect t2 where t1.LayerID=t2.PicSelectID and t2.EachListID=#UID# and t1.ObligateField1='规划'
+    </select>
+
+
+    <select id='SelectLineInfoByPowerIDStuff' resultMap='LineInfoResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo  where ObligateField1='运行'
+    </select>
+    <select id='SelectLineInfoByPowerKvAndYear' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      <![CDATA[
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+       "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo  where 
+      Voltage=#EleID# and length<>'' and LayerID in
+      (select SUID from SVG_LAYER where yearid=#UID#) order by LineName
+      ]]>
+    </select>
+    <select id='SelectLineInfoBySubName' resultMap='LineInfoResult' parameterClass='LineInfo'>
+      <![CDATA[
+      SELECT
+      "UID",
+      "EleID",
+      "LineName",
+      "Length",
+      "LineType",
+      "Voltage",
+      "SvgUID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+       "ObligateField5",
+      "ObligateField6",
+      "ObligateField7"
+      FROM LineInfo   
+      
+      ]]>
+    </select>
+  </statements>
+</sqlMap>

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_SubstationPar' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_SubstationPar' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_SubstationPar' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_SubstationParResult' class='PSP_SubstationPar'>
+			<result property='UID' column='UID' />
+			<result property='InfoName' column='InfoName' />
+			<result property='type' column='type' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_SubstationPar' parameterClass='PSP_SubstationPar'>
+		INSERT INTO PSP_SubstationPar		(
+			"UID",
+			"InfoName",
+			"type",
+			"col1",
+			"col2",
+			"col3"
+		)
+		VALUES
+		(
+			#UID#,
+			#InfoName#,
+			#type#,
+			#col1#,
+			#col2#,
+			#col3#
+		)
+	</insert>
+	<delete id='DeletePSP_SubstationPar' parameterClass='PSP_SubstationPar'>
+		DELETE FROM PSP_SubstationPar
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_SubstationPar' parameterClass='PSP_SubstationPar'>
+		UPDATE PSP_SubstationPar
+		SET
+			"InfoName" = #InfoName#,
+			"type" = #type#,
+			"col1" = #col1#,
+			"col2" = #col2#,
+			"col3" = #col3#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPSP_SubstationParList' resultMap='PSP_SubstationParResult' parameterClass='PSP_SubstationPar'>
+		SELECT
+			"UID",
+			"InfoName",
+			"type",
+			"col1",
+			"col2",
+			"col3"
+		FROM PSP_SubstationPar
+	</select>
+	<select id='SelectPSP_SubstationParByKey' resultMap='PSP_SubstationParResult' parameterClass='PSP_SubstationPar'>
+		SELECT
+			"UID",
+			"InfoName",
+			"type",
+			"col1",
+			"col2",
+			"col3"
+		FROM PSP_SubstationPar
+		WHERE
+			UID = #UID#
+	</select>
+  <select id='SelectPSP_SubstationParByType' resultMap='PSP_SubstationParResult' parameterClass='PSP_SubstationPar'>
+    SELECT
+    "UID",
+    "InfoName",
+    "type",
+    "col1",
+    "col2",
+    "col3"
+    FROM PSP_SubstationPar
+    WHERE
+    type = #type#
+    order by UID
+  </select>
+</statements>
+</sqlMap>

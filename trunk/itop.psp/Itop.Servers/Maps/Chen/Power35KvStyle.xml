@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_35KVStyle' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_35KVStyle' assembly='Itop.Domain.Chen.dll' type='Itop.Domain.Chen.PSP_35KVStyle' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_35KVStyleResult' class='PSP_35KVStyle'>
+			<result property='UID' column='UID' />
+			<result property='Title' column='Title' />
+      <result property='ClassType' column='ClassType' />
+			<result property='Type' column='Type' />
+      <result property='Type2' column='Type2' />
+			<result property='Flag' column='Flag' />
+			<result property='CreateTime' column='CreateTime' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_35KVStyle' parameterClass='PSP_35KVStyle'>
+    INSERT INTO PSP_35KvStyle		(
+    "UID",
+    "Title","ClassType",
+    "Type","Type2",
+    "Flag",
+    "CreateTime"
+    )
+    VALUES
+    (
+    #UID#,
+    #Title#,#ClassType#,
+    #Type#,#Type2#,
+    #Flag#,
+    GetDate()
+    )
+  </insert>
+  <delete id='DeletePSP_35KVStyle' parameterClass='PSP_35KVStyle'>
+    DELETE FROM PSP_35KVStyle
+    WHERE
+    UID = #UID#
+  </delete>
+  <update id='UpdatePSP_35KVStyle' parameterClass='PSP_35KVStyle'>
+    UPDATE PSP_35KVStyle
+    SET
+    "Title" = #Title#,"ClassType" = #ClassType#,
+    "Type" = #Type#,"Type2" = #Type2#,
+    "Flag" = #Flag#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectPSP_35KVStyleList' resultMap='PSP_35KVStyleResult' parameterClass='PSP_35KVStyle'>
+    SELECT
+    "UID",
+    "Title","ClassType",
+    "Type","Type2",
+    "Flag",
+    "CreateTime"
+    FROM PSP_35KVStyle
+  </select>
+  <select id='SelectPSP_35KVStyleByKey' resultMap='PSP_35KVStyleResult' parameterClass='PSP_35KVStyle'>
+    SELECT
+    "UID",
+    "Title","ClassType",
+    "Type","Type2",
+    "Flag",
+    "CreateTime"
+    FROM PSP_35KVStyle
+    WHERE
+    UID = #UID#
+  </select>
+
+
+  <select id='SelectPSP_35KVStyleByType' resultMap='PSP_35KVStyleResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title","ClassType",
+    "Type","Type2",
+    "Flag",
+    "CreateTime"
+    FROM PSP_35KVStyle
+    WHERE
+    Type = #Type#
+  </select>
+
+  <select id='SelectPSP_35KVStyleByFlagType' resultMap='PSP_35KVStyleResult' parameterClass='PSP_35KVStyle'>
+    SELECT
+    "UID",
+    "Title","ClassType",
+    "Type","Type2",
+    "Flag",
+    "CreateTime"
+    FROM PSP_35KVStyle
+    WHERE
+    Type2 = #Type2#  and Type = #Type# and Flag = #Flag#
+    order by CreateTime 
+  </select>
+
+
+  <select id='SelectPSP_35KVStyleByTitleTypeClass' resultMap='PSP_35KVStyleResult' parameterClass='PSP_35KVStyle'>
+    SELECT
+    "UID",
+    "Title","ClassType",
+    "Type","Type2",
+    "Flag",
+    "CreateTime"
+    FROM PSP_35KVStyle
+    WHERE
+    Title = #Title# and Type = #Type#
+  </select>
+  <select id='SelectPSP_35KVStyleByTitleTypeFlag' resultMap='PSP_35KVStyleResult' parameterClass='PSP_35KVStyle'>
+    SELECT
+    "UID",
+    "Title","ClassType",
+    "Type","Type2",
+    "Flag",
+    "CreateTime"
+    FROM PSP_35KVStyle
+    WHERE
+    Title = #Title# and  Type2 = #Type2# and Flag = #Flag# and Type = #Type#
+  </select>
+
+  <select id='SelectPSP_35KVStyleByTitleTypeClass1' resultMap='PSP_35KVStyleResult' parameterClass='PSP_35KVStyle'>
+    SELECT
+    "UID",
+    "Title","ClassType",
+    "Type","Type2",
+    "Flag",
+    "CreateTime"
+    FROM PSP_35KVStyle
+    WHERE
+    ClassType = #ClassType# and Type = #Type#
+  </select>
+
+
+  <select id='SelectPSP_35KVStyleByAll' resultMap='PSP_35KVStyleResult' parameterClass='PSP_35KVStyle'>
+    SELECT
+    "UID",
+    "Title","ClassType",
+    "Type","Type2",
+    "Flag",
+    "CreateTime"
+    FROM PSP_35KVStyle
+    WHERE
+    Title = #Title# and Type = #Type# and  ClassType = #ClassType#
+  </select>
+
+
+
+  <delete id='DeletePSP_35KVStyleByAll' parameterClass='PSP_35KVStyle'>
+    DELETE FROM PSP_35KVStyle
+    WHERE
+    Title = #Title# and  ClassType = #ClassType# and Type = #Type#
+  </delete>
+
+</statements>
+</sqlMap>

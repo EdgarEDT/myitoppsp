@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerProjectEachList' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerProjectEachList' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerProjectEachList' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerProjectEachListResult' class='PowerProjectEachList'>
+			<result property='UID' column='UID' />
+			<result property='ListName' column='ListName' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='ParentID' column='ParentID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerProjectEachList' parameterClass='PowerProjectEachList'>
+		INSERT INTO PSP_PowerProjectEachList		(
+			"UID",
+			"ListName",
+			"Remark",
+			"CreateDate",
+			"ParentID"
+		)
+		VALUES
+		(
+			#UID#,
+			#ListName#,
+			#Remark#,
+			GetDate(),
+			#ParentID#
+		)
+	</insert>
+	<delete id='DeletePowerProjectEachList' parameterClass='PowerProjectEachList'>
+		DELETE FROM PSP_PowerProjectEachList
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePowerProjectEachList' parameterClass='PowerProjectEachList'>
+		UPDATE PSP_PowerProjectEachList
+		SET
+			"ListName" = #ListName#,
+			"Remark" = #Remark#,
+			"ParentID" = #ParentID#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPowerProjectEachListList' resultMap='PowerProjectEachListResult' parameterClass='PowerProjectEachList'>
+		SELECT
+			"UID",
+			"ListName",
+			"Remark",
+			"CreateDate",
+			"ParentID"
+		FROM PSP_PowerProjectEachList
+	</select>
+	<select id='SelectPowerProjectEachListByKey' resultMap='PowerProjectEachListResult' parameterClass='PowerProjectEachList'>
+		SELECT
+			"UID",
+			"ListName",
+			"Remark",
+			"CreateDate",
+			"ParentID"
+		FROM PSP_PowerProjectEachList
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

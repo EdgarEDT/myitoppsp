@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_ImgTree' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_ImgTree' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_ImgTree' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_ImgTreeResult' class='PSP_ImgTree'>
+			<result property='UID' column='UID' />
+			<result property='Name' column='Name' />
+			<result property='PID' column='PID' />
+			<result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_ImgTree' parameterClass='PSP_ImgTree'>
+		INSERT INTO PSP_ImgTree		(
+			"UID",
+			"Name",
+			"PID",
+			"Remark"
+		)
+		VALUES
+		(
+			#UID#,
+			#Name#,
+			#PID#,
+			#Remark#
+		)
+	</insert>
+	<delete id='DeletePSP_ImgTreeByKey' parameterClass='PSP_ImgTree'>
+		DELETE FROM PSP_ImgTree
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_ImgTree' parameterClass='PSP_ImgTree'>
+		UPDATE PSP_ImgTree
+		SET
+			"Name" = #Name#,
+			"PID" = #PID#,
+			"Remark" = #Remark#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPSP_ImgTreeList' resultMap='PSP_ImgTreeResult' parameterClass='PSP_ImgTree'>
+		SELECT
+			"UID",
+			"Name",
+			"PID",
+			"Remark"
+		FROM PSP_ImgTree
+	</select>
+  <select id='SelectPSP_ImgTreeListByPID' resultMap='PSP_ImgTreeResult' parameterClass='PSP_ImgTree'>
+    SELECT
+    "UID",
+    "Name",
+    "PID",
+    "Remark"
+    FROM PSP_ImgTree where PID=#PID#
+  </select>
+	<select id='SelectPSP_ImgTreeByKey' resultMap='PSP_ImgTreeResult' parameterClass='PSP_ImgTree'>
+		SELECT
+			"UID",
+			"Name",
+			"PID",
+			"Remark"
+		FROM PSP_ImgTree
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

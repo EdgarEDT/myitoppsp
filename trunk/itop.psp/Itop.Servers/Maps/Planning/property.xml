@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='property' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='property' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.property' />
+</alias>
+	<resultMaps>
+		<resultMap id='propertyResult' class='property'>
+			<result property='UID' column='UID' />
+			<result property='propertyName' column='propertyName' />
+			<result property='propertyValue' column='propertyValue' />
+			<result property='orderID' column='orderID' />
+			<result property='TypeUID' column='TypeUID' />
+			<result property='UseUID' column='UseUID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='Insertproperty' parameterClass='property'>
+		INSERT INTO property		(
+			"UID",
+			"propertyName",
+			"propertyValue",
+			"orderID",
+			"TypeUID",
+			"UseUID"
+		)
+		VALUES
+		(
+			#UID#,
+			#propertyName#,
+			#propertyValue#,
+			#orderID#,
+			#TypeUID#,
+			#UseUID#
+		)
+	</insert>
+	<delete id='Deleteproperty' parameterClass='property'>
+		DELETE FROM property
+		WHERE
+			UID = #UID#
+	</delete>
+	<delete id='DeletepropertyByTypeAndUseUID' resultMap='propertyResult' parameterClass='property'>
+		Delete FROM property
+		WHERE
+			 TypeUID=#TypeUID# and UseUID=#UseUID# 
+	</delete>
+	<update id='Updateproperty' parameterClass='property'>
+		UPDATE property
+		SET
+			"propertyName" = #propertyName#,
+			"propertyValue" = #propertyValue#,
+			"orderID" = #orderID#,
+			"TypeUID" = #TypeUID#,
+			"UseUID" = #UseUID#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectpropertyList' resultMap='propertyResult' parameterClass='property'>
+		SELECT
+			"UID",
+			"propertyName",
+			"propertyValue",
+			"orderID",
+			"TypeUID",
+			"UseUID"
+		FROM property
+	</select>
+	<select id='SelectpropertyByKey' resultMap='propertyResult' parameterClass='property'>
+		SELECT
+			"UID",
+			"propertyName",
+			"propertyValue",
+			"orderID",
+			"TypeUID",
+			"UseUID"
+		FROM property
+		WHERE
+			UID = #UID#
+	</select>
+	<select id='SelectpropertyByTypeUID' resultMap='propertyResult' parameterClass='property'>
+		SELECT
+			"UID",
+			"propertyName",
+			"propertyValue",
+			"orderID",
+			"TypeUID",
+			"UseUID"
+		FROM property
+		WHERE
+			TypeUID = #TypeUID# and UseUID='0' order by orderID 
+	</select>
+	<select id='SelectpropertyByTypeAndUseUID' resultMap='propertyResult' parameterClass='property'>
+		SELECT
+			"UID",
+			"propertyName",
+			"propertyValue",
+			"orderID",
+			"TypeUID",
+			"UseUID"
+		FROM property
+		WHERE
+			 TypeUID=#TypeUID# and UseUID=#UseUID# order by orderID 
+	</select>
+	
+</statements>
+</sqlMap>

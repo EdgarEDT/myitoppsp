@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Table_Enterprise' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Ps_Table_Enterprise' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.Ps_Table_Enterprise' />
+</alias>
+	<resultMaps>
+		<resultMap id='Ps_Table_EnterpriseResult' class='Ps_Table_Enterprise'>
+			<result property='UID' column='UID' />
+			<result property='SName' column='SName' />
+			<result property='SType' column='SType' />
+			<result property='DQ' column='DQ' />
+			<result property='col1' column='col1' />
+      <result property='ProjectID' column='ProjectID' />
+		</resultMap>
+  </resultMaps>
+<statements>
+	<insert id='InsertPs_Table_Enterprise' parameterClass='Ps_Table_Enterprise'>
+    INSERT INTO Ps_Table_Enterprise		(
+    "UID",
+    "SName",
+    "SType",
+    "DQ",
+    "col1",
+    "ProjectID"
+    )
+    VALUES
+    (
+    #UID#,
+    #SName#,
+    #SType#,
+    #DQ#,
+    #col1#,
+    #ProjectID#
+    )
+  </insert>
+	<delete id='DeletePs_Table_Enterprise' parameterClass='Ps_Table_Enterprise'>
+		DELETE FROM Ps_Table_Enterprise
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePs_Table_Enterprise' parameterClass='Ps_Table_Enterprise'>
+    UPDATE Ps_Table_Enterprise
+    SET
+    "SName" = #SName#,
+    "SType" = #SType#,
+    "DQ" = #DQ#,
+    "col1" = #col1#,
+    "ProjectID"= #ProjectID#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectPs_Table_EnterpriseList' resultMap='Ps_Table_EnterpriseResult' parameterClass='Ps_Table_Enterprise'>
+    SELECT
+    "UID",
+    "SName",
+    "SType",
+    "DQ",
+    "col1",
+    "ProjectID"
+    FROM Ps_Table_Enterprise
+  </select>
+	<select id='SelectPs_Table_EnterpriseByKey' resultMap='Ps_Table_EnterpriseResult' parameterClass='Ps_Table_Enterprise'>
+    SELECT
+    "UID",
+    "SName",
+    "SType",
+    "DQ",
+    "col1",
+    "ProjectID"
+    FROM Ps_Table_Enterprise
+    WHERE
+    UID = #UID#
+  </select>
+  <select id='SelectPs_Table_EnterpriseCopyByProj' resultMap='Ps_Table_EnterpriseResult' parameterClass='Ps_Table_Enterprise'>
+    SELECT
+    "UID",
+    "SName",
+    "SType",
+    "DQ",
+    "col1",
+    "ProjectID"
+    FROM Ps_Table_Enterprise
+    WHERE
+    ProjectID = #ProjectID#
+  </select>
+  <!--查统计值-->
+  <select id='SelectPs_Table_Enterprise_CountAll' resultClass='int' parameterClass='Ps_Table_Enterprise'>
+    SELECT
+    COUNT(*)
+    FROM Ps_Table_Enterprise
+    WHERE
+    $VALUE$
+  </select>
+  <select id='SelectPs_Table_EnterpriseBYcon' resultMap='Ps_Table_EnterpriseResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "SName",
+    "SType",
+    "DQ",
+    "col1",
+    "ProjectID"
+    FROM Ps_Table_Enterprise
+    WHERE
+    $Value$
+  </select>
+</statements>
+</sqlMap>

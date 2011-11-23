@@ -1,0 +1,792 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_PlanTable_HuaiBei' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_PlanTable_HuaiBei' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PSP_PlanTable_HuaiBei' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_PlanTable_HuaiBeiResult' class='PSP_PlanTable_HuaiBei'>
+      <result property='UID' column='UID' />
+      <result property='XuHao' column='XuHao' />
+      <result property='Title' column='Title' />
+      <result property='Contents' column='Contents' />
+      <result property='Line220' column='Line220' />
+      <result property='Line110' column='Line110' />
+      <result property='BD220' column='BD220' />
+      <result property='BD110' column='BD110' />
+      <result property='DeptName' column='DeptName' />
+      <result property='DY' column='DY' />
+      <result property='TZGM' column='TZGM' />
+      <result property='ItemSB' column='ItemSB' />
+      <result property='ItemPF' column='ItemPF' />
+      <result property='KYWC' column='KYWC' />
+      <result property='KYPS' column='KYPS' />
+      <result property='PSYJ' column='PSYJ' />
+      <result property='CSSC' column='CSSC' />
+      <result property='JSGFSSB' column='JSGFSSB' />
+      <result property='ZBSB' column='ZBSB' />
+      <result property='ZBSHDateTime' column='ZBSHDateTime' />
+      <result property='XZYJS' column='XZYJS' />
+      <result property='HPPF' column='HPPF' />
+      <result property='TDYS' column='TDYS' />
+      <result property='SBHZSQ' column='SBHZSQ' />
+      <result property='XMHZ' column='XMHZ' />
+      <result property='JHKSDateTime' column='JHKSDateTime' />
+      <result property='JHTCDateTime' column='JHTCDateTime' />
+      <result property='JHTCDateTime_GuiHua' column='JHTCDateTime_GuiHua' />
+      <result property='ReMark' column='ReMark' />
+      <result property='S1' column='S1' />
+      <result property='S2' column='S2' />
+      <result property='S3' column='S3' />
+      <result property='S4' column='S4' />
+      <result property='S5' column='S5' />
+      <result property='S6' column='S6' />
+      <result property='S7' column='S7' />
+      <result property='S8' column='S8' />
+      <result property='S9' column='S9' />
+      <result property='S10' column='S10' />
+      <result property='S11' column='S11' />
+      <result property='S12' column='S12' />
+      <result property='S13' column='S13' />
+      <result property='S14' column='S14' />
+      <result property='S15' column='S15' />
+      <result property='S16' column='S16' />
+      <result property='S17' column='S17' />
+      <result property='S18' column='S18' />
+      <result property='S19' column='S19' />
+      <result property='S20' column='S20' />
+      <result property='Flag2' column='Flag2' />
+      <result property='Flag' column='Flag' />
+      <result property='ParentID' column='ParentID' />
+      <result property='KeyFlag' column='KeyFlag' />
+      <result property='CreateDate' column='CreateDate' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_PlanTable_HuaiBei' parameterClass='PSP_PlanTable_HuaiBei'>
+      INSERT INTO PSP_PlanTable_HuaiBei		(
+      "UID",
+      "XuHao",
+      "Title",
+      "Contents",
+      "Line220",
+      "Line110",
+      "BD220",
+      "BD110",
+      "DeptName",
+      "DY",
+      "TZGM",
+      "ItemSB",
+      "ItemPF",
+      "KYWC",
+      "KYPS",
+      "PSYJ",
+      "CSSC",
+      "JSGFSSB",
+      "ZBSB",
+      "ZBSHDateTime",
+      "XZYJS",
+      "HPPF",
+      "TDYS",
+      "SBHZSQ",
+      "XMHZ",
+      "JHKSDateTime",
+      "JHTCDateTime",
+      "JHTCDateTime_GuiHua",
+      "ReMark",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "Flag2",
+      "Flag",
+      "ParentID",
+      "KeyFlag",
+      "CreateDate"
+      )
+      VALUES
+      (
+      #UID#,
+      #XuHao#,
+      #Title#,
+      #Contents#,
+      #Line220#,
+      #Line110#,
+      #BD220#,
+      #BD110#,
+      #DeptName#,
+      #DY#,
+      #TZGM#,
+      #ItemSB#,
+      #ItemPF#,
+      #KYWC#,
+      #KYPS#,
+      #PSYJ#,
+      #CSSC#,
+      #JSGFSSB#,
+      #ZBSB#,
+      #ZBSHDateTime#,
+      #XZYJS#,
+      #HPPF#,
+      #TDYS#,
+      #SBHZSQ#,
+      #XMHZ#,
+      #JHKSDateTime#,
+      #JHTCDateTime#,
+      #JHTCDateTime_GuiHua#,
+      #ReMark#,
+      #S1#,
+      #S2#,
+      #S3#,
+      #S4#,
+      #S5#,
+      #S6#,
+      #S7#,
+      #S8#,
+      #S9#,
+      #S10#,
+      #S11#,
+      #S12#,
+      #S13#,
+      #S14#,
+      #S15#,
+      #S16#,
+      #S17#,
+      #S18#,
+      #S19#,
+      #S20#,
+      #Flag2#,
+      #Flag#,
+      #ParentID#,
+      #KeyFlag#,
+      #CreateDate#
+      )
+    </insert>
+    <delete id='DeletePSP_PlanTable_HuaiBei' parameterClass='PSP_PlanTable_HuaiBei'>
+      DELETE FROM PSP_PlanTable_HuaiBei
+      WHERE
+      UID = #UID#
+    </delete>
+    <update id='DeletePSP_PlanTable_HuaiBeiByFlag2AndParentID' parameterClass='PSP_PlanTable_HuaiBei'>
+      DELETE PSP_PlanTable_HuaiBei
+      WHERE
+      Flag2 = #Flag2# and (ParentID = '220'or ParentID='110')
+    </update>
+    <update id='UpdatePSP_PlanTable_HuaiBeiByFlag' parameterClass='PSP_PlanTable_HuaiBei'>
+      UPDATE PSP_PlanTable_HuaiBei
+      SET
+      $Title$
+      WHERE
+      Flag2 = #Flag2#
+    </update>
+    <update id='UpdatePSP_PlanTable_HuaiBeiByUID' parameterClass='PSP_PlanTable_HuaiBei'>
+      If Exists(Select UID from PSP_PlanTable_HuaiBei Where UID = #UID#)
+      UPDATE PSP_PlanTable_HuaiBei
+      SET
+      "XuHao" = #XuHao#,
+      "Title" = #Title#,
+      "Contents" = #Contents#,
+      "Line220" = #Line220#,
+      "Line110" = #Line110#,
+      "BD220" = #BD220#,
+      "BD110" = #BD110#,
+      "DeptName" = #DeptName#,
+      "DY" = #DY#,
+      "TZGM" = #TZGM#,
+      "ItemSB" = #ItemSB#,
+      "ItemPF" = #ItemPF#,
+      "KYWC" = #KYWC#,
+      "KYPS" = #KYPS#,
+      "PSYJ" = #PSYJ#,
+      "CSSC" = #CSSC#,
+      "JSGFSSB" = #JSGFSSB#,
+      "ZBSB" = #ZBSB#,
+      "ZBSHDateTime" = #ZBSHDateTime#,
+      "XZYJS" = #XZYJS#,
+      "HPPF" = #HPPF#,
+      "TDYS" = #TDYS#,
+      "SBHZSQ" = #SBHZSQ#,
+      "XMHZ" = #XMHZ#,
+      "JHKSDateTime" = #JHKSDateTime#,
+      "JHTCDateTime" = #JHTCDateTime#,
+      "JHTCDateTime_GuiHua" = #JHTCDateTime_GuiHua#,
+      "ReMark" = #ReMark#,
+      "S1" = #S1#,
+      "S2" = #S2#,
+      "S3" = #S3#,
+      "S4" = #S4#,
+      "S5" = #S5#,
+      "S6" = #S6#,
+      "S7" = #S7#,
+      "S8" = #S8#,
+      "S9" = #S9#,
+      "S10" = #S10#,
+      "S11" = #S11#,
+      "S12" = #S12#,
+      "S13" = #S13#,
+      "S14" = #S14#,
+      "S15" = #S15#,
+      "S16" = #S16#,
+      "S17" = #S17#,
+      "S18" = #S18#,
+      "S19" = #S19#,
+      "S20" = #S20#,
+      "Flag2" = #Flag2#,
+      "Flag" = #Flag#,
+      "ParentID" = #ParentID#,
+      "KeyFlag" = #KeyFlag#,
+      "CreateDate" = #CreateDate#
+      WHERE
+      UID = #UID#
+      Else
+      INSERT INTO PSP_PlanTable_HuaiBei		(
+      "UID",
+      "XuHao",
+      "Title",
+      "Contents",
+      "Line220",
+      "Line110",
+      "BD220",
+      "BD110",
+      "DeptName",
+      "DY",
+      "TZGM",
+      "ItemSB",
+      "ItemPF",
+      "KYWC",
+      "KYPS",
+      "PSYJ",
+      "CSSC",
+      "JSGFSSB",
+      "ZBSB",
+      "ZBSHDateTime",
+      "XZYJS",
+      "HPPF",
+      "TDYS",
+      "SBHZSQ",
+      "XMHZ",
+      "JHKSDateTime",
+      "JHTCDateTime",
+      "JHTCDateTime_GuiHua",
+      "ReMark",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "Flag2",
+      "Flag",
+      "ParentID",
+      "KeyFlag",
+      "CreateDate"
+      )
+      VALUES
+      (
+      #UID#,
+      #XuHao#,
+      #Title#,
+      #Contents#,
+      #Line220#,
+      #Line110#,
+      #BD220#,
+      #BD110#,
+      #DeptName#,
+      #DY#,
+      #TZGM#,
+      #ItemSB#,
+      #ItemPF#,
+      #KYWC#,
+      #KYPS#,
+      #PSYJ#,
+      #CSSC#,
+      #JSGFSSB#,
+      #ZBSB#,
+      #ZBSHDateTime#,
+      #XZYJS#,
+      #HPPF#,
+      #TDYS#,
+      #SBHZSQ#,
+      #XMHZ#,
+      #JHKSDateTime#,
+      #JHTCDateTime#,
+      #JHTCDateTime_GuiHua#,
+      #ReMark#,
+      #S1#,
+      #S2#,
+      #S3#,
+      #S4#,
+      #S5#,
+      #S6#,
+      #S7#,
+      #S8#,
+      #S9#,
+      #S10#,
+      #S11#,
+      #S12#,
+      #S13#,
+      #S14#,
+      #S15#,
+      #S16#,
+      #S17#,
+      #S18#,
+      #S19#,
+      #S20#,
+      #Flag2#,
+      #Flag#,
+      #ParentID#,
+      #KeyFlag#,
+      #CreateDate#
+      )
+    </update>
+    <update id='UpdatePSP_PlanTable_HuaiBei' parameterClass='PSP_PlanTable_HuaiBei'>
+      UPDATE PSP_PlanTable_HuaiBei
+      SET
+      "XuHao" = #XuHao#,
+      "Title" = #Title#,
+      "Contents" = #Contents#,
+      "Line220" = #Line220#,
+      "Line110" = #Line110#,
+      "BD220" = #BD220#,
+      "BD110" = #BD110#,
+      "DeptName" = #DeptName#,
+      "DY" = #DY#,
+      "TZGM" = #TZGM#,
+      "ItemSB" = #ItemSB#,
+      "ItemPF" = #ItemPF#,
+      "KYWC" = #KYWC#,
+      "KYPS" = #KYPS#,
+      "PSYJ" = #PSYJ#,
+      "CSSC" = #CSSC#,
+      "JSGFSSB" = #JSGFSSB#,
+      "ZBSB" = #ZBSB#,
+      "ZBSHDateTime" = #ZBSHDateTime#,
+      "XZYJS" = #XZYJS#,
+      "HPPF" = #HPPF#,
+      "TDYS" = #TDYS#,
+      "SBHZSQ" = #SBHZSQ#,
+      "XMHZ" = #XMHZ#,
+      "JHKSDateTime" = #JHKSDateTime#,
+      "JHTCDateTime" = #JHTCDateTime#,
+      "JHTCDateTime_GuiHua" = #JHTCDateTime_GuiHua#,
+      "ReMark" = #ReMark#,
+      "S1" = #S1#,
+      "S2" = #S2#,
+      "S3" = #S3#,
+      "S4" = #S4#,
+      "S5" = #S5#,
+      "S6" = #S6#,
+      "S7" = #S7#,
+      "S8" = #S8#,
+      "S9" = #S9#,
+      "S10" = #S10#,
+      "S11" = #S11#,
+      "S12" = #S12#,
+      "S13" = #S13#,
+      "S14" = #S14#,
+      "S15" = #S15#,
+      "S16" = #S16#,
+      "S17" = #S17#,
+      "S18" = #S18#,
+      "S19" = #S19#,
+      "S20" = #S20#,
+      "Flag2" = #Flag2#,
+      "Flag" = #Flag#,
+      "ParentID" = #ParentID#,
+      "KeyFlag" = #KeyFlag#,
+      "CreateDate" = #CreateDate#
+      WHERE
+      UID = #UID#
+    </update>
+    <select id='SelectPSP_PlanTable_HuaiBeiList' resultMap='PSP_PlanTable_HuaiBeiResult' parameterClass='PSP_PlanTable_HuaiBei'>
+      SELECT
+      "UID",
+      "XuHao",
+      "Title",
+      "Contents",
+      "Line220",
+      "Line110",
+      "BD220",
+      "BD110",
+      "DeptName",
+      "DY",
+      "TZGM",
+      "ItemSB",
+      "ItemPF",
+      "KYWC",
+      "KYPS",
+      "PSYJ",
+      "CSSC",
+      "JSGFSSB",
+      "ZBSB",
+      "ZBSHDateTime",
+      "XZYJS",
+      "HPPF",
+      "TDYS",
+      "SBHZSQ",
+      "XMHZ",
+      "JHKSDateTime",
+      "JHTCDateTime",
+      "JHTCDateTime_GuiHua",
+      "ReMark",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "Flag2",
+      "Flag",
+      "ParentID",
+      "KeyFlag",
+      "CreateDate"
+      FROM PSP_PlanTable_HuaiBei
+    </select>
+    <select id='SelectPSP_PlanTable_HuaiBeiByKey' resultMap='PSP_PlanTable_HuaiBeiResult' parameterClass='PSP_PlanTable_HuaiBei'>
+      SELECT
+      "UID",
+      "XuHao",
+      "Title",
+      "Contents",
+      "Line220",
+      "Line110",
+      "BD220",
+      "BD110",
+      "DeptName",
+      "DY",
+      "TZGM",
+      "ItemSB",
+      "ItemPF",
+      "KYWC",
+      "KYPS",
+      "PSYJ",
+      "CSSC",
+      "JSGFSSB",
+      "ZBSB",
+      "ZBSHDateTime",
+      "XZYJS",
+      "HPPF",
+      "TDYS",
+      "SBHZSQ",
+      "XMHZ",
+      "JHKSDateTime",
+      "JHTCDateTime",
+      "JHTCDateTime_GuiHua",
+      "ReMark",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "Flag2",
+      "Flag",
+      "ParentID",
+      "KeyFlag",
+      "CreateDate"
+      FROM PSP_PlanTable_HuaiBei
+      WHERE
+      UID = #UID#
+    </select>
+    <select id='SelectPSP_PlanTable_HuaiBeiByFlag2' resultMap='PSP_PlanTable_HuaiBeiResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "XuHao",
+      "Title",
+      "Contents",
+      "Line220",
+      "Line110",
+      "BD220",
+      "BD110",
+      "DeptName",
+      "DY",
+      "TZGM",
+      "ItemSB",
+      "ItemPF",
+      "KYWC",
+      "KYPS",
+      "PSYJ",
+      "CSSC",
+      "JSGFSSB",
+      "ZBSB",
+      "ZBSHDateTime",
+      "XZYJS",
+      "HPPF",
+      "TDYS",
+      "SBHZSQ",
+      "XMHZ",
+      "JHKSDateTime",
+      "JHTCDateTime",
+      "JHTCDateTime_GuiHua",
+      "ReMark",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "Flag2",
+      "Flag",
+      "ParentID",
+      "KeyFlag",
+      "CreateDate"
+      FROM PSP_PlanTable_HuaiBei
+      WHERE
+      Flag2 = #Flag2# and ParentID = '0'
+      order by CreateDate
+    </select>
+    <select id='SelectPSP_PlanTable_HuaiBeiByFlag2AND220' resultMap='PSP_PlanTable_HuaiBeiResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "XuHao",
+      "Title",
+      "Contents",
+      "Line220",
+      "Line110",
+      "BD220",
+      "BD110",
+      "DeptName",
+      "DY",
+      "TZGM",
+      "ItemSB",
+      "ItemPF",
+      "KYWC",
+      "KYPS",
+      "PSYJ",
+      "CSSC",
+      "JSGFSSB",
+      "ZBSB",
+      "ZBSHDateTime",
+      "XZYJS",
+      "HPPF",
+      "TDYS",
+      "SBHZSQ",
+      "XMHZ",
+      "JHKSDateTime",
+      "JHTCDateTime",
+      "JHTCDateTime_GuiHua",
+      "ReMark",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "Flag2",
+      "Flag",
+      "ParentID",
+      "KeyFlag",
+      "CreateDate"
+      FROM PSP_PlanTable_HuaiBei
+      WHERE
+      Flag2 = #Flag2# and ParentID = '220'
+      order by CreateDate
+    </select>
+    <select id='SelectPSP_PlanTable_HuaiBeiByFlag2AND110' resultMap='PSP_PlanTable_HuaiBeiResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "XuHao",
+      "Title",
+      "Contents",
+      "Line220",
+      "Line110",
+      "BD220",
+      "BD110",
+      "DeptName",
+      "DY",
+      "TZGM",
+      "ItemSB",
+      "ItemPF",
+      "KYWC",
+      "KYPS",
+      "PSYJ",
+      "CSSC",
+      "JSGFSSB",
+      "ZBSB",
+      "ZBSHDateTime",
+      "XZYJS",
+      "HPPF",
+      "TDYS",
+      "SBHZSQ",
+      "XMHZ",
+      "JHKSDateTime",
+      "JHTCDateTime",
+      "JHTCDateTime_GuiHua",
+      "ReMark",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "Flag2",
+      "Flag",
+      "ParentID",
+      "KeyFlag",
+      "CreateDate"
+      FROM PSP_PlanTable_HuaiBei
+      WHERE
+      Flag2 = #Flag2# and ParentID = '110'
+      order by CreateDate
+    </select>
+    <select id='SelectPSP_PlanTable_HuaiBeiByFlag2ANDKeyFlag' resultMap='PSP_PlanTable_HuaiBeiResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "XuHao",
+      "Title",
+      "Contents",
+      "Line220",
+      "Line110",
+      "BD220",
+      "BD110",
+      "DeptName",
+      "DY",
+      "TZGM",
+      "ItemSB",
+      "ItemPF",
+      "KYWC",
+      "KYPS",
+      "PSYJ",
+      "CSSC",
+      "JSGFSSB",
+      "ZBSB",
+      "ZBSHDateTime",
+      "XZYJS",
+      "HPPF",
+      "TDYS",
+      "SBHZSQ",
+      "XMHZ",
+      "JHKSDateTime",
+      "JHTCDateTime",
+      "JHTCDateTime_GuiHua",
+      "ReMark",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "S20",
+      "Flag2",
+      "Flag",
+      "ParentID",
+      "KeyFlag",
+      "CreateDate"
+      FROM PSP_PlanTable_HuaiBei
+      WHERE
+      Flag2 = #Flag2# and KeyFlag = '110千伏'
+    </select>
+  </statements>
+</sqlMap>

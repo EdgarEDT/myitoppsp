@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LayoutList' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='LayoutList' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.LayoutList' />
+</alias>
+	<resultMaps>
+		<resultMap id='LayoutListResult' class='LayoutList'>
+			<result property='UID' column='UID' />
+			<result property='ListName' column='ListName' />
+			<result property='Remark' column='Remark' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='ParentID' column='ParentID' />
+			<result property='Types' column='Types' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertLayoutList' parameterClass='LayoutList'>
+		INSERT INTO PSP_LayoutList		(
+			"UID",
+			"ListName",
+			"Remark",
+			"CreateDate",
+			"ParentID",
+			"Types"
+		)
+		VALUES
+		(
+			#UID#,
+			#ListName#,
+			#Remark#,
+			GetDate(),
+			#ParentID#,
+			#Types#
+		)
+	</insert>
+	<delete id='DeleteLayoutList' parameterClass='LayoutList'>
+		DELETE FROM PSP_LayoutList
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateLayoutList' parameterClass='LayoutList'>
+		UPDATE PSP_LayoutList
+		SET
+			"ListName" = #ListName#,
+			"Remark" = #Remark#,
+			"ParentID" = #ParentID#,
+			"Types" = #Types#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectLayoutListList' resultMap='LayoutListResult' parameterClass='LayoutList'>
+		SELECT
+			"UID",
+			"ListName",
+			"Remark",
+			"CreateDate",
+			"ParentID",
+			"Types"
+		FROM PSP_LayoutList
+	</select>
+	<select id='SelectLayoutListByKey' resultMap='LayoutListResult' parameterClass='LayoutList'>
+		SELECT
+			"UID",
+			"ListName",
+			"Remark",
+			"CreateDate",
+			"ParentID",
+			"Types"
+		FROM PSP_LayoutList
+		WHERE
+			UID = #UID#
+	</select>
+
+
+  <select id='SelectLayoutListByTypes' resultMap='LayoutListResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "ListName",
+    "Remark",
+    "CreateDate",
+    "ParentID",
+    "Types"
+    FROM PSP_LayoutList
+    WHERE
+    Types = #Types# order by ListName
+  </select>
+</statements>
+</sqlMap>

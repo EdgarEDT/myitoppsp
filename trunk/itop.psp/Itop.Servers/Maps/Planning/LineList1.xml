@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LineList1' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='LineList1' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.LineList1' />
+</alias>
+	<resultMaps>
+		<resultMap id='LineList1Result' class='LineList1'>
+			<result property='UID' column='UID' />
+			<result property='LineEleID' column='LineEleID' />
+			<result property='LineName' column='LineName' />
+			<result property='Length' column='Length' />
+			<result property='PointNum' column='PointNum' />
+			<result property='TurnAngle' column='TurnAngle' />
+			<result property='Coefficient' column='Coefficient' />
+			<result property='Length2' column='Length2' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+			<result property='col4' column='col4' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertLineList1' parameterClass='LineList1'>
+		INSERT INTO LineList1		(
+			"UID",
+			"LineEleID",
+			"LineName",
+			"Length",
+			"PointNum",
+			"TurnAngle",
+			"Coefficient",
+			"Length2",
+			"col1",
+			"col2",
+			"col3",
+			"col4"
+		)
+		VALUES
+		(
+			#UID#,
+			#LineEleID#,
+			#LineName#,
+			#Length#,
+			#PointNum#,
+			#TurnAngle#,
+			#Coefficient#,
+			#Length2#,
+			#col1#,
+			#col2#,
+			#col3#,
+			#col4#
+		)
+	</insert>
+	<delete id='DeleteLineList1' parameterClass='LineList1'>
+		DELETE FROM LineList1
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateLineList1' parameterClass='LineList1'>
+		UPDATE LineList1
+		SET
+			"LineEleID" = #LineEleID#,
+			"LineName" = #LineName#,
+			"Length" = #Length#,
+			"PointNum" = #PointNum#,
+			"TurnAngle" = #TurnAngle#,
+			"Coefficient" = #Coefficient#,
+			"Length2" = #Length2#,
+			"col1" = #col1#,
+			"col2" = #col2#,
+			"col3" = #col3#,
+			"col4" = #col4#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectLineList1List' resultMap='LineList1Result' parameterClass='LineList1'>
+		SELECT
+			"UID",
+			"LineEleID",
+			"LineName",
+			"Length",
+			"PointNum",
+			"TurnAngle",
+			"Coefficient",
+			"Length2",
+			"col1",
+			"col2",
+			"col3",
+			"col4"
+		FROM LineList1
+	</select>
+	<select id='SelectLineList1ByKey' resultMap='LineList1Result' parameterClass='LineList1'>
+		SELECT
+			"UID",
+			"LineEleID",
+			"LineName",
+			"Length",
+			"PointNum",
+			"TurnAngle",
+			"Coefficient",
+			"Length2",
+			"col1",
+			"col2",
+			"col3",
+			"col4"
+		FROM LineList1
+		WHERE
+			UID = #UID#
+	</select>
+  <select id='SelectLineList1ByLineEleID' resultMap='LineList1Result' parameterClass='LineList1'>
+    SELECT
+    "UID",
+    "LineEleID",
+    "LineName",
+    "Length",
+    "PointNum",
+    "TurnAngle",
+    "Coefficient",
+    "Length2",
+    "col1",
+    "col2",
+    "col3",
+    "col4"
+    FROM LineList1
+    WHERE
+    LineEleID = #LineEleID# order by LineName
+  </select>
+  <select id='SelectLineList1ByRefLineEleID' resultMap='LineList1Result' parameterClass='LineList1'>
+    SELECT
+    "UID",
+    "LineEleID",
+    "LineName",
+    "Length",
+    "PointNum",
+    "TurnAngle",
+    "Coefficient",
+    "Length2",
+    "col1",
+    "col2",
+    "col3",
+    "col4"
+    FROM LineList1
+    WHERE
+    col1 = #col1# order by LineName
+  </select>
+  <select id='SelectLineList1ByEleIDToTal' resultMap='LineList1Result' parameterClass='LineList1'>
+    SELECT distinct
+    a.UID,
+    "LineEleID",
+    "LineName",
+    "Length",
+    "PointNum",
+    "TurnAngle",
+    (SELECT
+    sum(case when col2='很好' then CAST(col1 AS decimal(18,2))*9
+    when col2='好' then CAST(col1 AS decimal(18,2))*7
+    when col2='一般' then CAST(col1 AS decimal(18,2))*5
+    when col2='差' then CAST(col1 AS decimal(18,2))*3
+    when col2='很差' then CAST(col1 AS decimal(18,2))*1
+    when col2='极差' then 0
+    when col2='' then 0
+    else col2 end)
+
+    FROM PSP_SubstationUserNum
+    where SubStationID=a.UID) as "Coefficient",
+
+    "Length2",
+    ' ' as "col1",
+    a.col2,
+    a.col3,
+    a.col4
+    FROM LineList1 a,PSP_SubstationUserNum b
+    WHERE a.UID=b.SubStationID and a.col1=#col1#
+    order by Coefficient desc
+
+
+  </select>
+</statements>
+</sqlMap>

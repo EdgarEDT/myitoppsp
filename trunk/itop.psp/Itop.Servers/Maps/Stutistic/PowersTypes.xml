@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowersTypes' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowersTypes' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowersTypes' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowersTypesResult' class='PowersTypes'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='Flag' column='Flag' />
+			<result property='Flag2' column='Flag2' />
+			<result property='ParentID' column='ParentID' />
+      <result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowersTypes' parameterClass='PowersTypes'>
+    INSERT INTO PSP_PowersTypes		(
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Remark"
+    )
+    VALUES
+    (
+    #Title#,
+    #Flag#,
+    #Flag2#,
+    #ParentID#,#Remark#
+    )
+    <selectKey property="ID" resultClass="int" type="post">
+				SELECT @@IDENTITY AS value
+		</selectKey> 
+	</insert>
+	<delete id='DeletePowersTypes' parameterClass='PowersTypes'>
+    DELETE FROM PSP_PowersTypes
+    WHERE
+    ID = #ID#
+  </delete>
+	<update id='UpdatePowersTypes' parameterClass='PowersTypes'>
+    UPDATE PSP_PowersTypes
+    SET
+    "Title" = #Title#,
+    "Flag" = #Flag#,
+    "Flag2" = #Flag2#,
+    "ParentID" = #ParentID#,"Remark"=#Remark#
+    WHERE
+    ID = #ID#
+  </update>
+  <select id='SelectPowersTypesList' resultMap='PowersTypesResult' parameterClass='PowersTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Remark"
+    FROM PSP_PowersTypes
+  </select>
+  <select id='SelectPowersTypesByKey' resultMap='PowersTypesResult' parameterClass='PowersTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Remark"
+    FROM PSP_PowersTypes
+    WHERE
+    ID = #ID#
+  </select>
+  <select id='SelectPowersTypesByFlag2' resultMap='PowersTypesResult' parameterClass='PowersTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Remark"
+    FROM PSP_PowersTypes
+    WHERE
+    Flag2 = #Flag2#
+    ORDER BY Flag,ID
+  </select>
+  <select id='SelectPowersTypesByFlag' resultMap='PowersTypesResult' parameterClass='PowersTypes'>
+    SELECT
+    "ID",
+    "Title",
+    "Flag",
+    "Flag2",
+    "ParentID","Remark"
+    FROM PSP_PowersTypes
+    WHERE
+    Flag = #Flag#
+    ORDER BY Flag,ID
+  </select>
+</statements>
+</sqlMap>

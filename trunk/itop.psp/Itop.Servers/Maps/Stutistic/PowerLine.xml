@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerLine' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerLine' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerLine' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerLineResult' class='PowerLine'>
+			<result property='UID' column='UID' />
+			<result property='PowerName' column='PowerName' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='Remark' column='Remark' />
+			<result property='ParentID' column='ParentID' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerLine' parameterClass='PowerLine'>
+		INSERT INTO PSP_PowerLine		(
+			"UID",
+			"PowerName",
+			"CreateDate",
+			"Remark",
+			"ParentID",
+			"Col1",
+			"Col2"
+		)
+		VALUES
+		(
+			#UID#,
+			#PowerName#,
+			GetDate(),
+			#Remark#,
+			#ParentID#,
+			#Col1#,
+			#Col2#
+		)
+	</insert>
+	<delete id='DeletePowerLine' parameterClass='PowerLine'>
+		DELETE FROM PSP_PowerLine
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePowerLine' parameterClass='PowerLine'>
+		UPDATE PSP_PowerLine
+		SET
+			"PowerName" = #PowerName#,
+			"Remark" = #Remark#,
+			"ParentID" = #ParentID#,
+			"Col1" = #Col1#,
+			"Col2" = #Col2#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPowerLineList' resultMap='PowerLineResult' parameterClass='PowerLine'>
+		SELECT
+			"UID",
+			"PowerName",
+			"CreateDate",
+			"Remark",
+			"ParentID",
+			"Col1",
+			"Col2"
+		FROM PSP_PowerLine
+	</select>
+	<select id='SelectPowerLineByKey' resultMap='PowerLineResult' parameterClass='PowerLine'>
+		SELECT
+			"UID",
+			"PowerName",
+			"CreateDate",
+			"Remark",
+			"ParentID",
+			"Col1",
+			"Col2"
+		FROM PSP_PowerLine
+		WHERE
+			UID = #UID#
+	</select>
+
+  <select id='SelectPowerLineByParentID' resultClass='int'>
+    SELECT
+    count(*)
+    FROM PSP_Powerline where uid=#UID#
+  </select>
+</statements>
+</sqlMap>

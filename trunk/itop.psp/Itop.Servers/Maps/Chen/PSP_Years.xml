@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_Years' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_Years' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_Years' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_YearsResult' class='PSP_Years'>
+      <result property='ID' column='ID' />
+      <result property='Year' column='Year' />
+      <result property='Flag' column='Flag' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_Years' parameterClass='PSP_Years'>
+      INSERT INTO PSP_Years		(
+      "Year",
+      "Flag"
+      )
+      VALUES
+      (
+      #Year#,
+      #Flag#
+      )
+    </insert>
+    <delete id='DeletePSP_Years' parameterClass='PSP_Years'>
+      DELETE FROM PSP_Years
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdatePSP_Years' parameterClass='PSP_Years'>
+      UPDATE PSP_Years
+      SET
+      "Year" = #Year#,
+      "Flag" = #Flag#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPSP_YearsList' resultMap='PSP_YearsResult' parameterClass='PSP_Years'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_Years
+    </select>
+    <select id='SelectPSP_YearsListByFlag' resultMap='PSP_YearsResult' parameterClass='PSP_Years'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_Years
+      Where
+      Flag = #Flag#
+      Order by Year
+    </select>
+    <select id='SelectPSP_YearsListByFlagAndYear' resultMap='PSP_YearsResult' parameterClass='hashtable'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_Years
+      Where
+      Flag = #Flag# and Year>=#Year#
+      Order by Year
+    </select>
+    <select id='SelectPSP_YearsByKey' resultMap='PSP_YearsResult' parameterClass='PSP_Years'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_Years
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPSP_YearsByYearFlag' resultMap='PSP_YearsResult' parameterClass='PSP_Years'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_Years
+      WHERE
+      Year = #Year#
+      AND Flag = #Flag#
+    </select>
+  </statements>
+</sqlMap>

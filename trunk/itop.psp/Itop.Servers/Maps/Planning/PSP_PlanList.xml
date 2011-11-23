@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_PlanList' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_PlanList' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PSP_PlanList' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_PlanListResult' class='PSP_PlanList'>
+			<result property='UID' column='UID' />
+			<result property='LineName' column='LineName' />
+			<result property='Remark' column='Remark' />
+			<result property='col1' column='col1' />
+			<result property='col2' column='col2' />
+			<result property='col3' column='col3' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_PlanList' parameterClass='PSP_PlanList'>
+		INSERT INTO PSP_PlanList		(
+			"UID",
+			"LineName",
+			"Remark",
+			"col1",
+			"col2",
+			"col3"
+		)
+		VALUES
+		(
+			#UID#,
+			#LineName#,
+			#Remark#,
+			#col1#,
+			#col2#,
+			#col3#
+		)
+	</insert>
+	<delete id='DeletePSP_PlanList' parameterClass='PSP_PlanList'>
+		DELETE FROM PSP_PlanList
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_PlanList' parameterClass='PSP_PlanList'>
+		UPDATE PSP_PlanList
+		SET
+			"LineName" = #LineName#,
+			"Remark" = #Remark#,
+			"col1" = #col1#,
+			"col2" = #col2#,
+			"col3" = #col3#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectPSP_PlanListList' resultMap='PSP_PlanListResult' parameterClass='PSP_PlanList'>
+		SELECT
+			"UID",
+			"LineName",
+			"Remark",
+			"col1",
+			"col2",
+			"col3"
+		FROM PSP_PlanList
+	</select>
+	<select id='SelectPSP_PlanListByKey' resultMap='PSP_PlanListResult' parameterClass='PSP_PlanList'>
+		SELECT
+			"UID",
+			"LineName",
+			"Remark",
+			"col1",
+			"col2",
+			"col3"
+		FROM PSP_PlanList
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

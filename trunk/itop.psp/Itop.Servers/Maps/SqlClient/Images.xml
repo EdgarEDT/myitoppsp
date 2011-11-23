@@ -1,0 +1,126 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Images' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='Images' assembly='Itop.Domain.dll' type='Itop.Domain.Test.Images' />
+  </alias>
+  <resultMaps>
+    <resultMap id='ImagesResult' class='Images'>
+      <result property='ID' column='ID' />
+      <result property='Type' column='Type' />
+      <result property='Name' column='Name' />
+      <result property='Length' column='Length' />
+      <result property='Content' column='Content' />
+      <result property='Thumb' column='Thumb' />
+      <result property='UserIP' column='UserIP' />
+      <result property='Title' column='Title' />
+      <result property='Details' column='Details' />
+      <result property='width' column='width' />
+      <result property='height' column='height' />
+      <result property='awidth' column='awidth' />
+      <result property='aheight' column='aheight' />
+    </resultMap>
+    <resultMap id='ImagesListResult' class='Images'>
+      <result property='ID' column='ID' />
+      <result property='Type' column='Type' />
+      <result property='Name' column='Name' />
+      <result property='Length' column='Length' />
+      <result property='UserIP' column='UserIP' />
+      <result property='Title' column='Title' />
+      <result property='Details' column='Details' />
+      <result property='width' column='width' />
+      <result property='height' column='height' />
+      <result property='awidth' column='awidth' />
+      <result property='aheight' column='aheight' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertImages' parameterClass='Images'>
+      INSERT INTO Images		(
+      "Type",
+      "Name",
+      "Length",
+      "Content",
+      "Thumb",
+      "UserIP",
+      "Title",
+      "Details",
+      "width",
+      "height",
+      "awidth",
+      "aheight"
+      )
+      VALUES
+      (
+      #Type#,
+      #Name#,
+      #Length#,
+      #Content#,
+      #Thumb#,
+      #UserIP#,
+      #Title#,
+      #Details#,
+      #width#,
+      #height#,
+      #awidth#,
+      #aheight#
+      )
+    </insert>
+    <delete id='DeleteImages' parameterClass='Images'>
+      DELETE FROM Images
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdateImages' parameterClass='Images'>
+      UPDATE Images
+      SET
+      "Type" = #Type#,
+      "Name" = #Name#,
+      "Length" = #Length#,
+      "Content" = #Content#,
+      "Thumb" = #Thumb#,
+      "UserIP" = #UserIP#,
+      "Title" = #Title#,
+      "Details" = #Details#,
+      "width" = #width#,
+      "height" = #height#,
+      "awidth" = #awidth#,
+      "aheight" = #aheight#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectImagesList' resultMap='ImagesListResult' parameterClass='Images'>
+      SELECT
+      "ID",
+      "Type",
+      "Name",
+      "Length",
+      "UserIP",
+      "Title",
+      "Details",
+      "width",
+      "height",
+      "awidth",
+      "aheight"
+      FROM Images
+    </select>
+    <select id='SelectImagesByKey' resultMap='ImagesResult' parameterClass='int'>
+      SELECT
+      "ID",
+      "Type",
+      "Name",
+      "Length",
+      "Content",
+      "Thumb",
+      "UserIP",
+      "Title",
+      "Details",
+      "width",
+      "height",
+      "awidth",
+      "aheight"
+      FROM Images
+      WHERE
+      ID = #value#
+    </select>
+  </statements>
+</sqlMap>

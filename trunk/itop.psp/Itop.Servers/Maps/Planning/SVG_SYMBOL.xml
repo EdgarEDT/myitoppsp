@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SVG_SYMBOL' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='SVG_SYMBOL' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.SVG_SYMBOL' />
+  </alias>
+  <resultMaps>
+    <resultMap id='SVG_SYMBOLResult' class='SVG_SYMBOL'>
+      <result property='SUID' column='SUID' />
+      <result property='EleID' column='EleID' />
+      <result property='svgID' column='svgID' />
+      <result property='NAME' column='NAME' />
+      <result property='XML' column='XML' />
+      <result property='MDATE' column='MDATE' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertSVG_SYMBOL' parameterClass='SVG_SYMBOL'>
+      INSERT INTO SVG_SYMBOL		(
+      "SUID",
+      "EleID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE"
+      )
+      VALUES
+      (
+      #SUID#,
+      #EleID#,
+      #svgID#,
+      #NAME#,
+      #XML#,
+      #MDATE#
+      )
+    </insert>
+    <delete id='DeleteSVG_SYMBOL' parameterClass='SVG_SYMBOL'>
+      DELETE FROM SVG_SYMBOL
+      WHERE
+      SUID = #SUID#
+    </delete>
+    <update id='UpdateSVG_SYMBOL' parameterClass='SVG_SYMBOL'>
+      UPDATE SVG_SYMBOL
+      SET
+      "EleID" = #EleID#,
+      "svgID" = #svgID#,
+      "NAME" = #NAME#,
+      "XML" = #XML#,
+      "MDATE" = #MDATE#
+      WHERE
+      SUID = #SUID#
+    </update>
+    <select id='SelectSVG_SYMBOLList' resultMap='SVG_SYMBOLResult' parameterClass='SVG_SYMBOL'>
+      SELECT
+      "SUID",
+      "EleID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE"
+      FROM SVG_SYMBOL
+    </select>
+    <select id='SelectSVG_SYMBOLByKey' resultMap='SVG_SYMBOLResult' parameterClass='SVG_SYMBOL'>
+      SELECT
+      "SUID",
+      "EleID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE"
+      FROM SVG_SYMBOL
+      WHERE
+      SUID = #SUID#
+    </select>
+    <select id='SelectSVG_SYMBOLByEleID' resultMap='SVG_SYMBOLResult' parameterClass='SVG_SYMBOL'>
+      SELECT
+      "SUID",
+      "EleID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE"
+      FROM SVG_SYMBOL
+      WHERE
+      EleID = #EleID# and
+      svgID =#svgID#
+    </select>
+    <select id='SelectSVG_SYMBOLBySvgID' resultMap='SVG_SYMBOLResult' parameterClass='SVG_SYMBOL'>
+      SELECT
+      "SUID",
+      "EleID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE"
+      FROM SVG_SYMBOL
+      WHERE
+      svgID = #svgID#
+    </select>
+  </statements>
+</sqlMap>

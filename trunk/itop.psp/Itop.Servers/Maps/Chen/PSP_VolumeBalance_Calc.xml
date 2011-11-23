@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_VolumeBalance_Calc' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_VolumeBalance_Calc' assembly='Itop.Domain.Chen.dll' type='Itop.Domain.Chen.PSP_VolumeBalance_Calc' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_VolumeBalance_CalcResult' class='PSP_VolumeBalance_Calc'>
+			<result property='UID' column='UID' />
+			<result property='Title' column='Title' />
+			<result property='LX1' column='LX1' />
+			<result property='LX2' column='LX2' />
+			<result property='Vol' column='Vol' />
+			<result property='Type' column='Type' />
+			<result property='Flag' column='Flag' />
+			<result property='CreateTime' column='CreateTime' />
+			<result property='Sort' column='Sort' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Col3' column='Col3' />
+			<result property='Col4' column='Col4' />
+			<result property='Col5' column='Col5' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_VolumeBalance_Calc' parameterClass='PSP_VolumeBalance_Calc'>
+    INSERT INTO PSP_VolumeBalance_Calc		(
+    "UID",
+    "Title",
+    "LX1",
+    "LX2",
+    "Vol",
+    "Type",
+    "Flag",
+    "CreateTime",
+    "Sort",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4",
+    "Col5"
+    )
+    VALUES
+    (
+    #UID#,
+    #Title#,
+    #LX1#,
+    #LX2#,
+    #Vol#,
+    #Type#,
+    #Flag#,
+    #CreateTime#,
+    #Sort#,
+    #Col1#,
+    #Col2#,
+    #Col3#,
+    #Col4#,
+    #Col5#
+    )
+  </insert>
+	<delete id='DeletePSP_VolumeBalance_Calc' parameterClass='PSP_VolumeBalance_Calc'>
+		DELETE FROM PSP_VolumeBalance_Calc
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdatePSP_VolumeBalance_Calc' parameterClass='PSP_VolumeBalance_Calc'>
+    UPDATE PSP_VolumeBalance_Calc
+    SET
+    "Title" = #Title#,
+    "LX1" = #LX1#,
+    "LX2" = #LX2#,
+    "Vol" = #Vol#,
+    "Type" = #Type#,
+    "Flag" = #Flag#,
+    "Sort" = #Sort#,
+    "Col1" = #Col1#,
+    "Col2" = #Col2#,
+    "Col3" = #Col3#,
+    "Col4" = #Col4#,
+    "Col5" = #Col5#,
+    "CreateTime" = #CreateTime#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectPSP_VolumeBalance_CalcList' resultMap='PSP_VolumeBalance_CalcResult' parameterClass='PSP_VolumeBalance_Calc'>
+		SELECT
+			"UID",
+			"Title",
+			"LX1",
+			"LX2",
+			"Vol",
+			"Type",
+			"Flag",
+			"CreateTime",
+			"Sort",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5"
+		FROM PSP_VolumeBalance_Calc
+	</select>
+	<select id='SelectPSP_VolumeBalance_CalcByKey' resultMap='PSP_VolumeBalance_CalcResult' parameterClass='PSP_VolumeBalance_Calc'>
+		SELECT
+			"UID",
+			"Title",
+			"LX1",
+			"LX2",
+			"Vol",
+			"Type",
+			"Flag",
+			"CreateTime",
+			"Sort",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5"
+		FROM PSP_VolumeBalance_Calc
+		WHERE
+			UID = #UID#
+	</select>
+  <select id='SelectPSP_VolumeBalance_CalcByTypeFlag' resultMap='PSP_VolumeBalance_CalcResult' parameterClass='PSP_VolumeBalance_Calc'>
+    SELECT
+    "UID",
+    "Title",
+    "LX1",
+    "LX2",
+    "Vol",
+    "Type",
+    "Flag",
+    "CreateTime",
+    "Sort",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4",
+    "Col5"
+    FROM PSP_VolumeBalance_Calc
+    WHERE
+    Type = #Type# and Flag = #Flag# order by CreateTime
+  </select>
+  <select id='SelectPSP_VolumeBalance_CalcByTypeTitle' resultMap='PSP_VolumeBalance_CalcResult' parameterClass='PSP_VolumeBalance_Calc'>
+    SELECT
+    "UID",
+    "Title",
+    "LX1",
+    "LX2",
+    "Vol",
+    "Type",
+    "Flag",
+    "CreateTime",
+    "Sort",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4",
+    "Col5"
+    FROM PSP_VolumeBalance_Calc
+    WHERE
+    Type = #Type# and Title = #Title#
+  </select>
+</statements>
+</sqlMap>

@@ -1,0 +1,110 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBDFCD20-106B-424D-8988-729C9D228A99}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Domain.Stutistics</RootNamespace>
+    <AssemblyName>Itop.Domain.Stutistics</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Server\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Server\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stutistic\BurdenLine.cs" />
+    <Compile Include="Stutistic\BurdenByte.cs" />
+    <Compile Include="Stutistic\BurdenLineForecast.cs" />
+    <Compile Include="Stutistic\BurdenMonth.cs" />
+    <Compile Include="Stutistic\Foretime_Elect.cs" />
+    <Compile Include="Stutistic\LayoutList.cs" />
+    <Compile Include="Stutistic\Line_Info.cs" />
+    <Compile Include="Stutistic\PowerEachTotal.cs" />
+    <Compile Include="Stutistic\PowerEachTotalList.cs" />
+    <Compile Include="Stutistic\PowerLine.cs" />
+    <Compile Include="Stutistic\PowerPicSelect.cs" />
+    <Compile Include="Stutistic\PowerProject.cs" />
+    <Compile Include="Stutistic\PowerProjectList.cs" />
+    <Compile Include="Stutistic\PowerStuff.cs" />
+    <Compile Include="Stutistic\PowerStuffList.cs" />
+    <Compile Include="Stutistic\PowerSubstationLine.cs" />
+    <Compile Include="Stutistic\PowerTypes.cs" />
+    <Compile Include="Stutistic\PowerValues.cs" />
+    <Compile Include="Stutistic\PowerYears.cs" />
+    <Compile Include="Stutistic\PowerEachList.cs" />
+    <Compile Include="Stutistic\PowerProjectEachList.cs" />
+    <Compile Include="Stutistic\PowerProjectValues.cs" />
+    <Compile Include="Stutistic\PowerProjectYears.cs" />
+    <Compile Include="Stutistic\PowerProjectTypes.cs" />
+    <Compile Include="Stutistic\PowerStuffTypes.cs" />
+    <Compile Include="Stutistic\PowerStuffValues.cs" />
+    <Compile Include="Stutistic\PowerStuffYears.cs" />
+    <Compile Include="Stutistic\PowersTypes.cs" />
+    <Compile Include="Stutistic\PowersValues.cs" />
+    <Compile Include="Stutistic\PowersYears.cs" />
+    <Compile Include="Stutistic\PowerProTypes.cs" />
+    <Compile Include="Stutistic\PowerProValues.cs" />
+    <Compile Include="Stutistic\PowerProYears.cs" />
+    <Compile Include="Stutistic\BurdenYear.cs" />
+    <Compile Include="Stutistic\Project_Sum.cs" />
+    <Compile Include="Stutistic\PSP_BigUser_Types.cs" />
+    <Compile Include="Stutistic\PSP_BigUser_Values.cs" />
+    <Compile Include="Stutistic\PSP_BigUser_Years.cs" />
+    <Compile Include="Stutistic\PSP_EachList.cs" />
+    <Compile Include="Stutistic\PSP_ImgInfo.cs" />
+    <Compile Include="Stutistic\PSP_ImgTree.cs" />
+    <Compile Include="Stutistic\Ps_Power.cs" />
+    <Compile Include="Stutistic\Ps_Substation_As.cs" />
+    <Compile Include="Stutistic\Substation_Info.cs" />
+    <Compile Include="Stutistic\Line_beicong.cs" />
+    <Compile Include="Stutistic\Line_beizhu.cs" />
+    <Compile Include="Stutistic\PSP_PowerSubstationInfo.cs" />
+    <Compile Include="Stutistic\PSP_PowerTypes_Liao.cs" />
+    <Compile Include="Stutistic\PSP_PowerProValues_LangFang.cs" />
+    <Compile Include="Stutistic\PSP_PlanTable_HuaiBei.cs" />
+    <Compile Include="Stutistic\PSP_Project_List.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

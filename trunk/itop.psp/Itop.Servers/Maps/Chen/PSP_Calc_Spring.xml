@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_Calc_Spring' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_Calc_Spring' assembly='Itop.Domain.Chen.dll' type='Itop.Domain.Chen.PSP_Calc_Spring' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_Calc_SpringResult' class='PSP_Calc_Spring'>
+			<result property='ID' column='ID' />
+			<result property='Name' column='Name' />
+			<result property='Value1' column='Value1' />
+			<result property='Value2' column='Value2' />
+			<result property='Value3' column='Value3' />
+			<result property='Value4' column='Value4' />
+			<result property='Value5' column='Value5' />
+			<result property='Value6' column='Value6' />
+			<result property='Value7' column='Value7' />
+			<result property='Value8' column='Value8' />
+			<result property='Value9' column='Value9' />
+			<result property='Value10' column='Value10' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Col3' column='Col3' />
+			<result property='Col4' column='Col4' />
+			<result property='Flag' column='Flag' />
+			<result property='Type' column='Type' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_Calc_Spring' parameterClass='PSP_Calc_Spring'>
+		INSERT INTO PSP_Calc_Spring		(
+			"ID",
+			"Name",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Flag",
+			"Type"
+		)
+		VALUES
+		(
+			#ID#,
+			#Name#,
+			#Value1#,
+			#Value2#,
+			#Value3#,
+			#Value4#,
+			#Value5#,
+			#Value6#,
+			#Value7#,
+			#Value8#,
+			#Value9#,
+			#Value10#,
+			#Col1#,
+			#Col2#,
+			#Col3#,
+			#Col4#,
+			#Flag#,
+			#Type#
+		)
+	</insert>
+	<delete id='DeletePSP_Calc_Spring' parameterClass='PSP_Calc_Spring'>
+		DELETE FROM PSP_Calc_Spring
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePSP_Calc_Spring' parameterClass='PSP_Calc_Spring'>
+		UPDATE PSP_Calc_Spring
+		SET
+			"Name" = #Name#,
+			"Value1" = #Value1#,
+			"Value2" = #Value2#,
+			"Value3" = #Value3#,
+			"Value4" = #Value4#,
+			"Value5" = #Value5#,
+			"Value6" = #Value6#,
+			"Value7" = #Value7#,
+			"Value8" = #Value8#,
+			"Value9" = #Value9#,
+			"Value10" = #Value10#,
+			"Col1" = #Col1#,
+			"Col2" = #Col2#,
+			"Col3" = #Col3#,
+			"Col4" = #Col4#,
+			"Flag" = #Flag#,
+			"Type" = #Type#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPSP_Calc_SpringList' resultMap='PSP_Calc_SpringResult' parameterClass='PSP_Calc_Spring'>
+		SELECT
+			"ID",
+			"Name",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Flag",
+			"Type"
+		FROM PSP_Calc_Spring
+	</select>
+	<select id='SelectPSP_Calc_SpringByKey' resultMap='PSP_Calc_SpringResult' parameterClass='PSP_Calc_Spring'>
+		SELECT
+			"ID",
+			"Name",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Flag",
+			"Type"
+		FROM PSP_Calc_Spring
+		WHERE
+			ID = #ID#
+	</select>
+
+	<select id='SelectPSP_Calc_SpringByFlag' resultMap='PSP_Calc_SpringResult' parameterClass='string'>
+		SELECT
+			"ID",
+			"Name",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Flag",
+			"Type"
+		FROM PSP_Calc_Spring
+		WHERE
+			Flag= #Flag#
+	</select>
+
+
+
+  <select id='SelectPSP_Calc_SpringByWhere' resultMap='PSP_Calc_SpringResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "Name",
+    "Value1",
+    "Value2",
+    "Value3",
+    "Value4",
+    "Value5",
+    "Value6",
+    "Value7",
+    "Value8",
+    "Value9",
+    "Value10",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4",
+    "Flag",
+    "Type"
+    FROM PSP_Calc_Spring
+    WHERE
+      $Flag$
+  </select>
+</statements>
+</sqlMap>

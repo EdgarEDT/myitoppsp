@@ -1,0 +1,1060 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Forecast_Math' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Ps_Forecast_Math' assembly='Itop.Domain.Forecast.dll' type='Itop.Domain.Forecast.Ps_Forecast_Math' />
+</alias>
+	<resultMaps>
+		<resultMap id='Ps_Forecast_MathResult' class='Ps_Forecast_Math'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='Sort' column='Sort' />
+			<result property='ForecastID' column='ForecastID' />
+			<result property='Forecast' column='Forecast' />
+			<result property='ParentID' column='ParentID' />
+			<result property='y1990' column='y1990' />
+			<result property='y1991' column='y1991' />
+			<result property='y1992' column='y1992' />
+			<result property='y1993' column='y1993' />
+			<result property='y1994' column='y1994' />
+			<result property='y1995' column='y1995' />
+			<result property='y1996' column='y1996' />
+			<result property='y1997' column='y1997' />
+			<result property='y1998' column='y1998' />
+			<result property='y1999' column='y1999' />
+			<result property='y2000' column='y2000' />
+			<result property='y2001' column='y2001' />
+			<result property='y2002' column='y2002' />
+			<result property='y2003' column='y2003' />
+			<result property='y2004' column='y2004' />
+			<result property='y2005' column='y2005' />
+			<result property='y2006' column='y2006' />
+			<result property='y2007' column='y2007' />
+			<result property='y2008' column='y2008' />
+			<result property='y2009' column='y2009' />
+			<result property='y2010' column='y2010' />
+			<result property='y2011' column='y2011' />
+			<result property='y2012' column='y2012' />
+			<result property='y2013' column='y2013' />
+			<result property='y2014' column='y2014' />
+			<result property='y2015' column='y2015' />
+			<result property='y2016' column='y2016' />
+			<result property='y2017' column='y2017' />
+			<result property='y2018' column='y2018' />
+			<result property='y2019' column='y2019' />
+			<result property='y2020' column='y2020' />
+			<result property='y2021' column='y2021' />
+			<result property='y2022' column='y2022' />
+			<result property='y2023' column='y2023' />
+			<result property='y2024' column='y2024' />
+			<result property='y2025' column='y2025' />
+			<result property='y2026' column='y2026' />
+			<result property='y2027' column='y2027' />
+			<result property='y2028' column='y2028' />
+			<result property='y2029' column='y2029' />
+			<result property='y2030' column='y2030' />
+			<result property='y2031' column='y2031' />
+			<result property='y2032' column='y2032' />
+			<result property='y2033' column='y2033' />
+			<result property='y2034' column='y2034' />
+			<result property='y2035' column='y2035' />
+			<result property='y2036' column='y2036' />
+			<result property='y2037' column='y2037' />
+			<result property='y2038' column='y2038' />
+			<result property='y2039' column='y2039' />
+			<result property='y2040' column='y2040' />
+			<result property='y2041' column='y2041' />
+			<result property='y2042' column='y2042' />
+			<result property='y2043' column='y2043' />
+			<result property='y2044' column='y2044' />
+			<result property='y2045' column='y2045' />
+			<result property='y2046' column='y2046' />
+			<result property='y2047' column='y2047' />
+			<result property='y2048' column='y2048' />
+			<result property='y2049' column='y2049' />
+			<result property='y2050' column='y2050' />
+			<result property='y2051' column='y2051' />
+			<result property='y2052' column='y2052' />
+			<result property='y2053' column='y2053' />
+			<result property='y2054' column='y2054' />
+			<result property='y2055' column='y2055' />
+			<result property='y2056' column='y2056' />
+			<result property='y2057' column='y2057' />
+			<result property='y2058' column='y2058' />
+			<result property='y2059' column='y2059' />
+			<result property='y2060' column='y2060' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Col3' column='Col3' />
+			<result property='Col4' column='Col4' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPs_Forecast_Math' parameterClass='Ps_Forecast_Math'>
+		INSERT INTO Ps_Forecast_Math		(
+			"ID",
+			"Title",
+			"Sort",
+			"ForecastID",
+			"Forecast",
+			"ParentID",
+			"y1990",
+			"y1991",
+			"y1992",
+			"y1993",
+			"y1994",
+			"y1995",
+			"y1996",
+			"y1997",
+			"y1998",
+			"y1999",
+			"y2000",
+			"y2001",
+			"y2002",
+			"y2003",
+			"y2004",
+			"y2005",
+			"y2006",
+			"y2007",
+			"y2008",
+			"y2009",
+			"y2010",
+			"y2011",
+			"y2012",
+			"y2013",
+			"y2014",
+			"y2015",
+			"y2016",
+			"y2017",
+			"y2018",
+			"y2019",
+			"y2020",
+			"y2021",
+			"y2022",
+			"y2023",
+			"y2024",
+			"y2025",
+			"y2026",
+			"y2027",
+			"y2028",
+			"y2029",
+			"y2030",
+			"y2031",
+			"y2032",
+			"y2033",
+			"y2034",
+			"y2035",
+			"y2036",
+			"y2037",
+			"y2038",
+			"y2039",
+			"y2040",
+			"y2041",
+			"y2042",
+			"y2043",
+			"y2044",
+			"y2045",
+			"y2046",
+			"y2047",
+			"y2048",
+			"y2049",
+			"y2050",
+			"y2051",
+			"y2052",
+			"y2053",
+			"y2054",
+			"y2055",
+			"y2056",
+			"y2057",
+			"y2058",
+			"y2059",
+			"y2060",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4"
+		)
+		VALUES
+		(
+			#ID#,
+			#Title#,
+			#Sort#,
+			#ForecastID#,
+			#Forecast#,
+			#ParentID#,
+			#y1990#,
+			#y1991#,
+			#y1992#,
+			#y1993#,
+			#y1994#,
+			#y1995#,
+			#y1996#,
+			#y1997#,
+			#y1998#,
+			#y1999#,
+			#y2000#,
+			#y2001#,
+			#y2002#,
+			#y2003#,
+			#y2004#,
+			#y2005#,
+			#y2006#,
+			#y2007#,
+			#y2008#,
+			#y2009#,
+			#y2010#,
+			#y2011#,
+			#y2012#,
+			#y2013#,
+			#y2014#,
+			#y2015#,
+			#y2016#,
+			#y2017#,
+			#y2018#,
+			#y2019#,
+			#y2020#,
+			#y2021#,
+			#y2022#,
+			#y2023#,
+			#y2024#,
+			#y2025#,
+			#y2026#,
+			#y2027#,
+			#y2028#,
+			#y2029#,
+			#y2030#,
+			#y2031#,
+			#y2032#,
+			#y2033#,
+			#y2034#,
+			#y2035#,
+			#y2036#,
+			#y2037#,
+			#y2038#,
+			#y2039#,
+			#y2040#,
+			#y2041#,
+			#y2042#,
+			#y2043#,
+			#y2044#,
+			#y2045#,
+			#y2046#,
+			#y2047#,
+			#y2048#,
+			#y2049#,
+			#y2050#,
+			#y2051#,
+			#y2052#,
+			#y2053#,
+			#y2054#,
+			#y2055#,
+			#y2056#,
+			#y2057#,
+			#y2058#,
+			#y2059#,
+			#y2060#,
+			#Col1#,
+			#Col2#,
+			#Col3#,
+			#Col4#
+		)
+	</insert>
+  <update id='DeletePs_Forecast_MathForecastIDAndForecast' parameterClass='Ps_Forecast_Math'>
+    DELETE FROM Ps_Forecast_Math
+    WHERE
+    Forecast = #Forecast#
+    and
+    ForecastID = #ForecastID#
+  </update>
+  <delete id='DeletePs_Forecast_MathBy' parameterClass='Ps_Forecast_Math'>
+    DELETE FROM Ps_Forecast_Math
+    WHERE
+    ID = #ID#
+  </delete>
+  <delete id='DeletePs_Forecast_Math' parameterClass='Ps_Forecast_Math'>
+    DELETE FROM Ps_Forecast_Math
+    WHERE
+    ID = #ID#
+  </delete>
+	<update id='UpdatePs_Forecast_Math' parameterClass='Ps_Forecast_Math'>
+		UPDATE Ps_Forecast_Math
+		SET
+			"Title" = #Title#,
+			"Sort" = #Sort#,
+			"ForecastID" = #ForecastID#,
+			"Forecast" = #Forecast#,
+			"ParentID" = #ParentID#,
+			"y1990" = #y1990#,
+			"y1991" = #y1991#,
+			"y1992" = #y1992#,
+			"y1993" = #y1993#,
+			"y1994" = #y1994#,
+			"y1995" = #y1995#,
+			"y1996" = #y1996#,
+			"y1997" = #y1997#,
+			"y1998" = #y1998#,
+			"y1999" = #y1999#,
+			"y2000" = #y2000#,
+			"y2001" = #y2001#,
+			"y2002" = #y2002#,
+			"y2003" = #y2003#,
+			"y2004" = #y2004#,
+			"y2005" = #y2005#,
+			"y2006" = #y2006#,
+			"y2007" = #y2007#,
+			"y2008" = #y2008#,
+			"y2009" = #y2009#,
+			"y2010" = #y2010#,
+			"y2011" = #y2011#,
+			"y2012" = #y2012#,
+			"y2013" = #y2013#,
+			"y2014" = #y2014#,
+			"y2015" = #y2015#,
+			"y2016" = #y2016#,
+			"y2017" = #y2017#,
+			"y2018" = #y2018#,
+			"y2019" = #y2019#,
+			"y2020" = #y2020#,
+			"y2021" = #y2021#,
+			"y2022" = #y2022#,
+			"y2023" = #y2023#,
+			"y2024" = #y2024#,
+			"y2025" = #y2025#,
+			"y2026" = #y2026#,
+			"y2027" = #y2027#,
+			"y2028" = #y2028#,
+			"y2029" = #y2029#,
+			"y2030" = #y2030#,
+			"y2031" = #y2031#,
+			"y2032" = #y2032#,
+			"y2033" = #y2033#,
+			"y2034" = #y2034#,
+			"y2035" = #y2035#,
+			"y2036" = #y2036#,
+			"y2037" = #y2037#,
+			"y2038" = #y2038#,
+			"y2039" = #y2039#,
+			"y2040" = #y2040#,
+			"y2041" = #y2041#,
+			"y2042" = #y2042#,
+			"y2043" = #y2043#,
+			"y2044" = #y2044#,
+			"y2045" = #y2045#,
+			"y2046" = #y2046#,
+			"y2047" = #y2047#,
+			"y2048" = #y2048#,
+			"y2049" = #y2049#,
+			"y2050" = #y2050#,
+			"y2051" = #y2051#,
+			"y2052" = #y2052#,
+			"y2053" = #y2053#,
+			"y2054" = #y2054#,
+			"y2055" = #y2055#,
+			"y2056" = #y2056#,
+			"y2057" = #y2057#,
+			"y2058" = #y2058#,
+			"y2059" = #y2059#,
+			"y2060" = #y2060#,
+			"Col1" = #Col1#,
+			"Col2" = #Col2#,
+			"Col3" = #Col3#,
+			"Col4" = #Col4#
+		WHERE
+			ID = #ID#
+	</update>
+
+
+  <update id='UpdatePs_Forecast_MathByID' parameterClass='Ps_Forecast_Math'>
+    UPDATE Ps_Forecast_Math
+    SET
+    "y1990" = #y1990#,
+    "y1991" = #y1991#,
+    "y1992" = #y1992#,
+    "y1993" = #y1993#,
+    "y1994" = #y1994#,
+    "y1995" = #y1995#,
+    "y1996" = #y1996#,
+    "y1997" = #y1997#,
+    "y1998" = #y1998#,
+    "y1999" = #y1999#,
+    "y2000" = #y2000#,
+    "y2001" = #y2001#,
+    "y2002" = #y2002#,
+    "y2003" = #y2003#,
+    "y2004" = #y2004#,
+    "y2005" = #y2005#,
+    "y2006" = #y2006#,
+    "y2007" = #y2007#,
+    "y2008" = #y2008#,
+    "y2009" = #y2009#,
+    "y2010" = #y2010#,
+    "y2011" = #y2011#,
+    "y2012" = #y2012#,
+    "y2013" = #y2013#,
+    "y2014" = #y2014#,
+    "y2015" = #y2015#,
+    "y2016" = #y2016#,
+    "y2017" = #y2017#,
+    "y2018" = #y2018#,
+    "y2019" = #y2019#,
+    "y2020" = #y2020#,
+    "y2021" = #y2021#,
+    "y2022" = #y2022#,
+    "y2023" = #y2023#,
+    "y2024" = #y2024#,
+    "y2025" = #y2025#,
+    "y2026" = #y2026#,
+    "y2027" = #y2027#,
+    "y2028" = #y2028#,
+    "y2029" = #y2029#,
+    "y2030" = #y2030#,
+    "y2031" = #y2031#,
+    "y2032" = #y2032#,
+    "y2033" = #y2033#,
+    "y2034" = #y2034#,
+    "y2035" = #y2035#,
+    "y2036" = #y2036#,
+    "y2037" = #y2037#,
+    "y2038" = #y2038#,
+    "y2039" = #y2039#,
+    "y2040" = #y2040#,
+    "y2041" = #y2041#,
+    "y2042" = #y2042#,
+    "y2043" = #y2043#,
+    "y2044" = #y2044#,
+    "y2045" = #y2045#,
+    "y2046" = #y2046#,
+    "y2047" = #y2047#,
+    "y2048" = #y2048#,
+    "y2049" = #y2049#,
+    "y2050" = #y2050#,
+    "y2051" = #y2051#,
+    "y2052" = #y2052#,
+    "y2053" = #y2053#,
+    "y2054" = #y2054#,
+    "y2055" = #y2055#,
+    "y2056" = #y2056#,
+    "y2057" = #y2057#,
+    "y2058" = #y2058#,
+    "y2059" = #y2059#,
+    "y2060" = #y2060#
+    WHERE
+    ID = #ID#
+  </update>
+  
+  
+  <update id='UpdatePs_Forecast_MathbyIDAndYear' parameterClass='Ps_Forecast_Math'>
+    UPDATE Ps_Forecast_Math
+    $str$
+    </update>
+    <select id='SelectPs_Forecast_MathList' resultMap='Ps_Forecast_MathResult' parameterClass='Ps_Forecast_Math'>
+		SELECT
+			"ID",
+			"Title",
+			"Sort",
+			"ForecastID",
+			"Forecast",
+			"ParentID",
+			"y1990",
+			"y1991",
+			"y1992",
+			"y1993",
+			"y1994",
+			"y1995",
+			"y1996",
+			"y1997",
+			"y1998",
+			"y1999",
+			"y2000",
+			"y2001",
+			"y2002",
+			"y2003",
+			"y2004",
+			"y2005",
+			"y2006",
+			"y2007",
+			"y2008",
+			"y2009",
+			"y2010",
+			"y2011",
+			"y2012",
+			"y2013",
+			"y2014",
+			"y2015",
+			"y2016",
+			"y2017",
+			"y2018",
+			"y2019",
+			"y2020",
+			"y2021",
+			"y2022",
+			"y2023",
+			"y2024",
+			"y2025",
+			"y2026",
+			"y2027",
+			"y2028",
+			"y2029",
+			"y2030",
+			"y2031",
+			"y2032",
+			"y2033",
+			"y2034",
+			"y2035",
+			"y2036",
+			"y2037",
+			"y2038",
+			"y2039",
+			"y2040",
+			"y2041",
+			"y2042",
+			"y2043",
+			"y2044",
+			"y2045",
+			"y2046",
+			"y2047",
+			"y2048",
+			"y2049",
+			"y2050",
+			"y2051",
+			"y2052",
+			"y2053",
+			"y2054",
+			"y2055",
+			"y2056",
+			"y2057",
+			"y2058",
+			"y2059",
+			"y2060",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4"
+		FROM Ps_Forecast_Math
+	</select>
+  <select id='SelectPs_Forecast_MathGroupList' resultMap='Ps_Forecast_MathResult' parameterClass='Ps_Forecast_Math'>
+    SELECT
+    '' "ID",
+    "Title",
+    0 "Sort",
+    '' "ForecastID",
+    0 "Forecast",
+    '' "ParentID",
+    sum(y1990) "y1990",
+    sum(y1991) "y1991",
+    sum(y1992) "y1992",
+    sum(y1993) "y1993",
+    sum(y1994) "y1994",
+    sum(y1995) "y1995",
+    sum(y1996) "y1996",
+    sum(y1997) "y1997",
+    sum(y1998) "y1998",
+    sum(y1999) "y1999",
+    sum(y2000) "y2000",
+    sum(y2001) "y2001",
+    sum(y2002) "y2002",
+    sum(y2003) "y2003",
+    sum(y2004) "y2004",
+    sum(y2005) "y2005",
+    sum(y2006) "y2006",
+    sum(y2007) "y2007",
+    sum(y2008) "y2008",
+    sum(y2009) "y2009",
+    sum(y2010) "y2010",
+    sum(y2011) "y2011",
+    sum(y2012) "y2012",
+    sum(y2013) "y2013",
+    sum(y2014) "y2014",
+    sum(y2015) "y2015",
+    sum(y2016) "y2016",
+    sum(y2017) "y2017",
+    sum(y2018) "y2018",
+    sum(y2019) "y2019",
+    sum(y2020) "y2020",
+    sum(y2021) "y2021",
+    sum(y2022) "y2022",
+    sum(y2023) "y2023",
+    sum(y2024) "y2024",
+    sum(y2025) "y2025",
+    sum(y2026) "y2026",
+    sum(y2027) "y2027",
+    sum(y2028) "y2028",
+    sum(y2029) "y2029",
+    sum(y2030) "y2030",
+    sum(y2031) "y2031",
+    sum(y2032) "y2032",
+    sum(y2033) "y2033",
+    sum(y2034) "y2034",
+    sum(y2035) "y2035",
+    sum(y2036) "y2036",
+    sum(y2037) "y2037",
+    sum(y2038) "y2038",
+    sum(y2039) "y2039",
+    sum(y2040) "y2040",
+    sum(y2041) "y2041",
+    sum(y2042) "y2042",
+    sum(y2043) "y2043",
+    sum(y2044) "y2044",
+    sum(y2045) "y2045",
+    sum(y2046) "y2046",
+    sum(y2047) "y2047",
+    sum(y2048) "y2048",
+    sum(y2049) "y2049",
+    sum(y2050) "y2050",
+    sum(y2051) "y2051",
+    sum(y2052) "y2052",
+    sum(y2053) "y2053",
+    sum(y2054) "y2054",
+    sum(y2055) "y2055",
+    sum(y2056) "y2056",
+    sum(y2057) "y2057",
+    sum(y2058) "y2058",
+    sum(y2059) "y2059",
+    sum(y2060) "y2060",
+    '' "Col1",
+    '' "Col2",
+    '' "Col3",
+    '' "Col4"
+    FROM Ps_Forecast_Math
+    WHERE
+    $value$
+    group by Title
+
+  </select>
+	<select id='SelectPs_Forecast_MathByKey' resultMap='Ps_Forecast_MathResult' parameterClass='Ps_Forecast_Math'>
+		SELECT
+			"ID",
+			"Title",
+			"Sort",
+			"ForecastID",
+			"Forecast",
+			"ParentID",
+			"y1990",
+			"y1991",
+			"y1992",
+			"y1993",
+			"y1994",
+			"y1995",
+			"y1996",
+			"y1997",
+			"y1998",
+			"y1999",
+			"y2000",
+			"y2001",
+			"y2002",
+			"y2003",
+			"y2004",
+			"y2005",
+			"y2006",
+			"y2007",
+			"y2008",
+			"y2009",
+			"y2010",
+			"y2011",
+			"y2012",
+			"y2013",
+			"y2014",
+			"y2015",
+			"y2016",
+			"y2017",
+			"y2018",
+			"y2019",
+			"y2020",
+			"y2021",
+			"y2022",
+			"y2023",
+			"y2024",
+			"y2025",
+			"y2026",
+			"y2027",
+			"y2028",
+			"y2029",
+			"y2030",
+			"y2031",
+			"y2032",
+			"y2033",
+			"y2034",
+			"y2035",
+			"y2036",
+			"y2037",
+			"y2038",
+			"y2039",
+			"y2040",
+			"y2041",
+			"y2042",
+			"y2043",
+			"y2044",
+			"y2045",
+			"y2046",
+			"y2047",
+			"y2048",
+			"y2049",
+			"y2050",
+			"y2051",
+			"y2052",
+			"y2053",
+			"y2054",
+			"y2055",
+			"y2056",
+			"y2057",
+			"y2058",
+			"y2059",
+			"y2060",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4"
+		FROM Ps_Forecast_Math
+		WHERE
+			ID = #ID#
+	</select>
+
+  <select id='SelectPs_Forecast_MathByForecastIDAndForecast' resultMap='Ps_Forecast_MathResult' parameterClass='Ps_Forecast_Math'>
+    SELECT
+    *
+    FROM Ps_Forecast_Math
+    WHERE
+    ForecastID = #ForecastID#
+    and
+    Forecast = #Forecast#
+    order by Sort
+  </select>
+  <select id='SelectPs_Forecast_MathMaxID' resultClass='int'>
+    SELECT
+    Max(Sort)
+    FROM Ps_Forecast_Math
+  </select>
+  <select id='SelectPs_Forecast_MathByCol1' resultClass='Ps_Forecast_Math' parameterClass='Ps_Forecast_Math'>
+    SELECT
+    *
+    FROM Ps_Forecast_Math
+    where
+    Col1 = #Col1#
+    and
+    ForecastID = #ForecastID#
+    and
+    Forecast = #Forecast#
+  </select>
+  <select id='SelectPs_Forecast_MathByCol4' resultClass='Ps_Forecast_Math' parameterClass='Ps_Forecast_Math'>
+    SELECT
+    *
+    FROM Ps_Forecast_Math
+    where
+    Col4 = #Col4#
+    and
+    ForecastID = #ForecastID#
+    and
+    Forecast = #Forecast#
+  </select>
+
+  <select id='SelectPs_Forecast_MathBy3' resultMap='Ps_Forecast_MathResult' parameterClass='Ps_Forecast_Math'>
+    SELECT
+    "ID",
+    "Title",
+    "Sort",
+    "ForecastID",
+    "Forecast",
+    "ParentID",
+    "y1990",
+    "y1991",
+    "y1992",
+    "y1993",
+    "y1994",
+    "y1995",
+    "y1996",
+    "y1997",
+    "y1998",
+    "y1999",
+    "y2000",
+    "y2001",
+    "y2002",
+    "y2003",
+    "y2004",
+    "y2005",
+    "y2006",
+    "y2007",
+    "y2008",
+    "y2009",
+    "y2010",
+    "y2011",
+    "y2012",
+    "y2013",
+    "y2014",
+    "y2015",
+    "y2016",
+    "y2017",
+    "y2018",
+    "y2019",
+    "y2020",
+    "y2021",
+    "y2022",
+    "y2023",
+    "y2024",
+    "y2025",
+    "y2026",
+    "y2027",
+    "y2028",
+    "y2029",
+    "y2030",
+    "y2031",
+    "y2032",
+    "y2033",
+    "y2034",
+    "y2035",
+    "y2036",
+    "y2037",
+    "y2038",
+    "y2039",
+    "y2040",
+    "y2041",
+    "y2042",
+    "y2043",
+    "y2044",
+    "y2045",
+    "y2046",
+    "y2047",
+    "y2048",
+    "y2049",
+    "y2050",
+    "y2051",
+    "y2052",
+    "y2053",
+    "y2054",
+    "y2055",
+    "y2056",
+    "y2057",
+    "y2058",
+    "y2059",
+    "y2060",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4"
+    FROM Ps_Forecast_Math
+    where
+    Col1 = #Col1#
+    and
+    Col4 = #Col4#
+    and
+    ForecastID = #ForecastID#
+    and
+    Forecast = #Forecast#
+  </select>
+  
+  
+  <select id='SelectPs_Forecast_MathByForecastIDAndForecastTitle' resultClass='Ps_Forecast_Math' parameterClass='Ps_Forecast_Math'>
+    SELECT
+    *
+    FROM Ps_Forecast_Math
+    where
+    Title = #Title#
+    and
+    ForecastID = #ForecastID#
+    and
+    Forecast = #Forecast#
+  </select>
+  <select id='SelectPs_Forecast_MathByWhere' resultClass='Ps_Forecast_Math' parameterClass='string'>
+    SELECT
+    *
+    FROM Ps_Forecast_Math
+    where
+    $value$
+  </select>
+  <insert id='InsertPs_Forecast_MathbyPs_History' parameterClass='Ps_Forecast_Math'>
+    INSERT INTO Ps_Forecast_Math		(
+    "ID",
+    "Title",
+    "Sort",
+    "ForecastID",
+    "Forecast",
+    "ParentID",
+    "y1990",
+    "y1991",
+    "y1992",
+    "y1993",
+    "y1994",
+    "y1995",
+    "y1996",
+    "y1997",
+    "y1998",
+    "y1999",
+    "y2000",
+    "y2001",
+    "y2002",
+    "y2003",
+    "y2004",
+    "y2005",
+    "y2006",
+    "y2007",
+    "y2008",
+    "y2009",
+    "y2010",
+    "y2011",
+    "y2012",
+    "y2013",
+    "y2014",
+    "y2015",
+    "y2016",
+    "y2017",
+    "y2018",
+    "y2019",
+    "y2020",
+    "y2021",
+    "y2022",
+    "y2023",
+    "y2024",
+    "y2025",
+    "y2026",
+    "y2027",
+    "y2028",
+    "y2029",
+    "y2030",
+    "y2031",
+    "y2032",
+    "y2033",
+    "y2034",
+    "y2035",
+    "y2036",
+    "y2037",
+    "y2038",
+    "y2039",
+    "y2040",
+    "y2041",
+    "y2042",
+    "y2043",
+    "y2044",
+    "y2045",
+    "y2046",
+    "y2047",
+    "y2048",
+    "y2049",
+    "y2050",
+    "y2051",
+    "y2052",
+    "y2053",
+    "y2054",
+    "y2055",
+    "y2056",
+    "y2057",
+    "y2058",
+    "y2059",
+    "y2060",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #Sort#,
+    #ForecastID#,
+    #Forecast#,
+    #ParentID#,
+    #y1990#,
+    #y1991#,
+    #y1992#,
+    #y1993#,
+    #y1994#,
+    #y1995#,
+    #y1996#,
+    #y1997#,
+    #y1998#,
+    #y1999#,
+    #y2000#,
+    #y2001#,
+    #y2002#,
+    #y2003#,
+    #y2004#,
+    #y2005#,
+    #y2006#,
+    #y2007#,
+    #y2008#,
+    #y2009#,
+    #y2010#,
+    #y2011#,
+    #y2012#,
+    #y2013#,
+    #y2014#,
+    #y2015#,
+    #y2016#,
+    #y2017#,
+    #y2018#,
+    #y2019#,
+    #y2020#,
+    #y2021#,
+    #y2022#,
+    #y2023#,
+    #y2024#,
+    #y2025#,
+    #y2026#,
+    #y2027#,
+    #y2028#,
+    #y2029#,
+    #y2030#,
+    #y2031#,
+    #y2032#,
+    #y2033#,
+    #y2034#,
+    #y2035#,
+    #y2036#,
+    #y2037#,
+    #y2038#,
+    #y2039#,
+    #y2040#,
+    #y2041#,
+    #y2042#,
+    #y2043#,
+    #y2044#,
+    #y2045#,
+    #y2046#,
+    #y2047#,
+    #y2048#,
+    #y2049#,
+    #y2050#,
+    #y2051#,
+    #y2052#,
+    #y2053#,
+    #y2054#,
+    #y2055#,
+    #y2056#,
+    #y2057#,
+    #y2058#,
+    #y2059#,
+    #y2060#,
+    #Col1#,
+    #Col2#,
+    #Col3#,
+    #Col4#
+    )
+  </insert>
+  <!--查询2015-2010的差值-->
+  <select id='SelectPFM_D_Value' resultClass='double'  parameterClass='string'>
+    select (Sum(y2015)-Sum(y2010)) FROM  Ps_Forecast_Math
+    where $value$
+  </select>
+  <!--2015到2010值-->
+  <select id='SelectPFM2011and2015Duty' resultClass='double'  parameterClass='string'>
+    select (Sum(y2011)+Sum(y2012)+Sum(y2013)+Sum(y2014)+Sum(y2015)) FROM  Ps_Forecast_Math
+    where $value$
+  </select>
+  <!--年末资产原值-->
+  <select id='SelectPFMZCYZDuty' resultClass='double'  parameterClass='string'>
+    select (Sum(y2010)+Sum(y2015)) FROM  Ps_Forecast_Math
+    where $value$
+  </select>
+  <!--查询double数据-->
+  <select id='SelectPFMdoubleWhatever' resultClass='double' parameterClass='string'>
+    $value$
+  </select>
+  <!--查询string数据-->
+  <select id='SelectPFMStringWhatever' resultClass='string' parameterClass='string'>
+    $value$
+  </select>
+  <!--查询id -->
+  <select id='SelectPFMID' resultClass='string' parameterClass='string'>
+    select ID from Ps_Forecast_Math where
+    $value$
+  </select>
+</statements>
+</sqlMap>

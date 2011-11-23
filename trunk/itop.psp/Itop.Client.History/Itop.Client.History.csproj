@@ -1,0 +1,462 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{56542638-B605-40D1-95EE-9544AC3F7CB7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.Client.History</RootNamespace>
+    <AssemblyName>Itop.Client.History</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Data.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.Utils.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraPivotGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraPrinting.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraReports.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraScheduler.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DundasWinChart, Version=5.5.0.1697, Culture=neutral, PublicKeyToken=a4c03dce5db22406, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Excel, Version=2.0.12.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Using, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\output\Server\Itop.Server.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChooseYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseYears.Designer.cs">
+      <DependentUpon>ChooseYears.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastJG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastJG.Designer.cs">
+      <DependentUpon>FormForecastJG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFqHistory_Param.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFqHistory_Param.Designer.cs">
+      <DependentUpon>FormFqHistory_Param.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGdpView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGdpView.Designer.cs">
+      <DependentUpon>FormGdpView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistory.designer.cs">
+      <DependentUpon>FormHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistory2_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistory2_add.Designer.cs">
+      <DependentUpon>FormHistory2_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistoryType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistoryType.Designer.cs">
+      <DependentUpon>FormHistoryType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProjectDataCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProjectDataCopy.Designer.cs">
+      <DependentUpon>FormProjectDataCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formtj432.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formtj432.Designer.cs">
+      <DependentUpon>Formtj432.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistoryTypeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistoryTypeEdit.Designer.cs">
+      <DependentUpon>FormHistoryTypeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFqHistory_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFqHistory_add.Designer.cs">
+      <DependentUpon>FormFqHistory_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormYearSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormYearSet.Designer.cs">
+      <DependentUpon>FormYearSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemperature .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTemperature .Designer.cs">
+      <DependentUpon>frmTemperature .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Historytool.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FormPowerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPowerView.Designer.cs">
+      <DependentUpon>FormPowerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHisView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHisView.Designer.cs">
+      <DependentUpon>FormHisView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistory2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistory2.designer.cs">
+      <DependentUpon>FormHistory2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseYears1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseYears1.Designer.cs">
+      <DependentUpon>ChooseYears1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast2.designer.cs">
+      <DependentUpon>FormForecast2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast3.designer.cs">
+      <DependentUpon>FormForecast3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast3_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast3_add.Designer.cs">
+      <DependentUpon>FormForecast3_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formtj512.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formtj512.Designer.cs">
+      <DependentUpon>Formtj512.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistory2_add2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistory2_add2.Designer.cs">
+      <DependentUpon>FormHistory2_add2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistory_add_AH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistory_add_AH.Designer.cs">
+      <DependentUpon>FormHistory_add_AH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistoryAH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistoryAH.designer.cs">
+      <DependentUpon>FormHistoryAH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistoryTypeDeal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistoryTypeDeal.Designer.cs">
+      <DependentUpon>FormHistoryTypeDeal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFqHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFqHistory.designer.cs">
+      <DependentUpon>FormFqHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFqHistoryDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFqHistoryDF.designer.cs">
+      <DependentUpon>FormFqHistoryDF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFqHistoryDF_addnext.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFqHistoryDF_addnext.Designer.cs">
+      <DependentUpon>FormFqHistoryDF_addnext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFqHistoryDF_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFqHistoryDF_add.Designer.cs">
+      <DependentUpon>FormFqHistoryDF_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFqHistoryDF_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFqHistoryDF_Edit.Designer.cs">
+      <DependentUpon>FormFqHistoryDF_Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFqHistoryDF_Edit2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFqHistoryDF_Edit2.Designer.cs">
+      <DependentUpon>FormFqHistoryDF_Edit2.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itop.Domain.Forecast\Itop.Domain.Forecast.csproj">
+      <Project>{028877BB-F597-40C7-8E0C-2DADF4196778}</Project>
+      <Name>Itop.Domain.Forecast</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.Domain.Table\Itop.Domain.Table.csproj">
+      <Project>{F575DDFF-4B24-4DDA-AE88-CB3B558C7C3E}</Project>
+      <Name>Itop.Domain.Table</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Itop.ICON\Itop.ICON.csproj">
+      <Project>{D4165A76-37B8-45F3-9F78-5A3516562F8E}</Project>
+      <Name>Itop.ICON</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ChooseYears.resx">
+      <DependentUpon>ChooseYears.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastJG.resx">
+      <DependentUpon>FormForecastJG.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFqHistory_Param.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormFqHistory_Param.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGdpView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormGdpView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistory.resx">
+      <DependentUpon>FormHistory.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistory2_add.resx">
+      <DependentUpon>FormHistory2_add.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistoryType.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormHistoryType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProjectDataCopy.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormProjectDataCopy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formtj432.resx">
+      <DependentUpon>Formtj432.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistoryTypeEdit.resx">
+      <DependentUpon>FormHistoryTypeEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFqHistory_add.resx">
+      <DependentUpon>FormFqHistory_add.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormYearSet.resx">
+      <DependentUpon>FormYearSet.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemperature .resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmTemperature .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPowerView.resx">
+      <DependentUpon>FormPowerView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHisView.resx">
+      <DependentUpon>FormHisView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistory2.resx">
+      <DependentUpon>FormHistory2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseYears1.resx">
+      <DependentUpon>ChooseYears1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast2.resx">
+      <DependentUpon>FormForecast2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast3.resx">
+      <DependentUpon>FormForecast3.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast3_add.resx">
+      <DependentUpon>FormForecast3_add.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formtj512.resx">
+      <DependentUpon>Formtj512.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistory2_add2.resx">
+      <DependentUpon>FormHistory2_add2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistory_add_AH.resx">
+      <DependentUpon>FormHistory_add_AH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistoryAH.resx">
+      <DependentUpon>FormHistoryAH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistoryTypeDeal.resx">
+      <DependentUpon>FormHistoryTypeDeal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFqHistory.resx">
+      <DependentUpon>FormFqHistory.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFqHistoryDF.resx">
+      <DependentUpon>FormFqHistoryDF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFqHistoryDF_addnext.resx">
+      <DependentUpon>FormFqHistoryDF_addnext.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFqHistoryDF_add.resx">
+      <DependentUpon>FormFqHistoryDF_add.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFqHistoryDF_Edit.resx">
+      <DependentUpon>FormFqHistoryDF_Edit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFqHistoryDF_Edit2.resx">
+      <DependentUpon>FormFqHistoryDF_Edit2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='BurdenCommon' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+
+
+<statements>
+
+  <select id='SelectPowerData' resultClass='double'  parameterClass='int'>
+    select t1.Value from psp_Values t1,psp_types t2 where t1.typeid=t2.id and t2.title like '%供电量%' and t2.parentid=26 and t1.year=#value#
+  </select>
+  <select id='SelectPowerData1' resultClass='double'  parameterClass='int'>
+    select t1.Value from psp_Values t1,psp_types t2 where t1.typeid=t2.id and t2.title like '%供电量%' and t2.parentid=26 and t1.year=#value#
+  </select>
+</statements>
+</sqlMap>

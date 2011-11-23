@@ -1,0 +1,612 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Project_Sum' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Project_Sum' assembly='Itop.Domain.Stutistics.dll' type='Itop.Domain.Stutistics.Project_Sum' />
+</alias>
+	<resultMaps>
+		<resultMap id='Project_SumResult' class='Project_Sum'>
+			<result property='UID' column='UID' />
+			<result property='Type' column='Type' />
+			<result property='Name' column='Name' />
+			<result property='T1' column='T1' />
+			<result property='T2' column='T2' />
+			<result property='T3' column='T3' />
+      <result property='T4' column='T4' />
+      <result property='T5' column='T5' />
+			<result property='Num' column='Num' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='S3' column='S3' />
+			<result property='S4' column='S4' />
+			<result property='S5' column='S5' />
+      <result property='L1' column='L1' />
+      <result property='L2' column='L2' />
+      <result property='L3' column='L3' />
+      <result property='L4' column='L4' />
+      <result property='L5' column='L5' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertProject_Sum' parameterClass='Project_Sum'>
+    INSERT INTO PSP_Project_Sum		(
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    )
+    VALUES
+    (
+    #UID#,
+    #Type#,
+    #Name#,
+    #T1#,
+    #T2#,
+    #T3#,
+    #T4#,
+    #T5#,
+    #Num#,
+    #L1#,
+    #L2#,
+    #L3#,
+    #L4#,
+    #L5#,
+    #S1#,
+    #S2#,
+    #S3#,
+    #S4#,
+    #S5#
+    )
+  </insert>
+	<delete id='DeleteProject_Sum' parameterClass='Project_Sum'>
+		DELETE FROM PSP_Project_Sum
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateProject_Sum' parameterClass='Project_Sum'>
+    UPDATE PSP_Project_Sum
+    SET
+    "Type" = #Type#,
+    "Name" = #Name#,
+    "T1" = #T1#,
+    "T2" = #T2#,
+    "T3" = #T3#,
+    "T4" = #T4#,
+    "T5" = #T5#,
+    "Num" = #Num#,
+    "L1" = #L1#,
+    "L2" = #L2#,
+    "L3" = #L3#,
+    "L4" = #L4#,
+    "L5" = #L5#,
+    "S1" = #S1#,
+    "S2" = #S2#,
+    "S3" = #S3#,
+    "S4" = #S4#,
+    "S5" = #S5#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectProject_SumList' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+  </select>
+	<select id='SelectProject_SumByKey' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    UID = #UID#
+  </select>
+  <select id='SelectProject_SumByS1andS5' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and S5 = #S5#
+  </select>
+  <select id='SelectProject_SumByS1andS5andType' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and S5 = #S5# and Type = #Type#
+  </select>
+  <select id='SelectProject_SumByvalue' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and S5 = #S5# and T1 = #T1# and T5 = #T5# and Type = #Type#
+  </select>
+  <select id='SelectProject_SumByvalue1' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and S5 = #S5# and T1 = #T1# and T2 = #T2# and T5 = #T5# and Type = #Type#
+  </select>
+  <select id='SelectProject_SumByvalue2' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and S5 = #S5# and T1 = #T1# and T2 = #T2# and T3 = #T3# and T5 = #T5# and Type = #Type#
+  </select>
+    <select id='SelectProject_SumByvalue3' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+      SELECT
+      "UID",
+      "Type",
+      "Name",
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "Num",
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5"
+      FROM PSP_Project_Sum
+      WHERE
+      S1 = #S1# and S5 = #S5# and T5 = #T5# and T1 = #T1#
+    </select>
+    <select id='SelectProject_SumByvalue4' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+      SELECT
+      "UID",
+      "Type",
+      "Name",
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "Num",
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5"
+      FROM PSP_Project_Sum
+      WHERE
+      S1 = #S1# and S5 = #S5# and T1 = #T1# and T5 = #T5# 
+    </select>
+  <select id='SelectProject_SumByvalueL7' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and S5 = #S5# and Type = #Type#
+  </select>
+  <select id='SelectProject_SumByS5' resultMap='Project_SumResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S5 = #S5# order by S1,Type,Name
+  </select>
+
+  <select id='SelectProject_SumByWhere' resultMap='Project_SumResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S5 = $S5$ order by S1,Type,Name
+  </select>
+  <select id='SelectProject_SumByValues' resultMap='Project_SumResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    $str$
+  </select>
+  <select id='SelectProject_SumByLinevalue' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and S5 = #S5# and L1 = #L1#
+  </select>
+  <select id='SelectProject_SumByLinevalue1' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and S5 = #S5# and L1 = #L1# and L2 = #L2#
+  </select>
+  <select id='SelectProject_SumByLinevalue2' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and S5 = #S5# and L1 = #L1# 
+  </select>
+  <select id='SelectProject_SumBySxt' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    S1 = #S1# and T5 = #T5# and Name = #Name# and Type=#Type#
+  </select>
+  <select id='SelectProject_SumByNameandS5' resultMap='Project_SumResult' parameterClass='Project_Sum'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE
+    Name = #Name# and S5 = #S5# 
+  </select>
+  <select id='SelectProject_SumByGroupType'  parameterClass='string'>
+    SELECT
+    "Type"
+    FROM PSP_Project_Sum
+    WHERE $value$
+    group by Type ORDER BY Type DESC
+  </select>
+  <select id='SelectProject_SumByGroupName'  parameterClass='string'>
+    SELECT
+    "Name"
+    FROM PSP_Project_Sum
+    WHERE $value$
+    group by Name
+  </select>
+  <select id='SelectProject_SumByGroupT5'  parameterClass='string'>
+    SELECT
+    "T5"
+    FROM PSP_Project_Sum
+    WHERE $value$
+    group by T5
+  </select>
+  <select id='SelectProject_SumByGroupS1'  parameterClass='string'>
+    SELECT
+    "S1"
+    FROM PSP_Project_Sum
+    WHERE $value$
+    group by S1
+  </select>
+  <select id='SelectProject_SumByAllVol' resultMap='Project_SumResult'  parameterClass='string'>
+    SELECT
+    "UID",
+    "Type",
+    "Name",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "Num",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+    FROM PSP_Project_Sum
+    WHERE $value$
+  </select>
+  <select id='SelectProject_Sum_NUM' resultClass='double'    parameterClass='string'>
+    SELECT
+    "Num"
+    FROM PSP_Project_Sum
+    WHERE $value$
+  </select>
+</statements>
+</sqlMap>

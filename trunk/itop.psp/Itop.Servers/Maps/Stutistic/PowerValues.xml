@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PowerValues' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PowerValues' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.PowerValues' />
+</alias>
+	<resultMaps>
+		<resultMap id='PowerValuesResult' class='PowerValues'>
+			<result property='ID' column='ID' />
+			<result property='TypeID' column='TypeID' />
+			<result property='Year' column='Year' />
+			<result property='Value' column='Value' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPowerValues' parameterClass='PowerValues'>
+		INSERT INTO psp_PowerValues		(
+			"TypeID",
+			"Year",
+			"Value"
+		)
+		VALUES
+		(
+			#TypeID#,
+			#Year#,
+			#Value#
+		)
+	</insert>
+	<delete id='DeletePowerValues' parameterClass='PowerValues'>
+		DELETE FROM psp_PowerValues
+		WHERE
+			ID = #ID#
+	</delete>
+
+	<update id='DeletePowerValuesByType' parameterClass='PowerValues'>
+		DELETE FROM psp_PowerValues
+		WHERE
+			TypeID = #TypeID#
+
+		DELETE FROM PSP_powerTypes
+		WHERE
+			ID = #TypeID#
+	</update>
+
+  <update id='DeletePowerValuesANDPSP_PowerTypes_LiaoByType' parameterClass='PowerValues'>
+    DELETE FROM psp_PowerValues
+    WHERE
+    TypeID = #TypeID#
+
+    DELETE FROM PSP_PowerTypes_Liao
+    WHERE
+    ID = #TypeID#
+  </update>
+	<update id='DeletePowerValuesByYear' parameterClass='Hashtable'>
+		DELETE FROM psp_PowerValues
+		WHERE
+			Year = #Year#
+			And TypeID in (Select ID from PSP_powerTypes where Flag2=#ID#)
+		DELETE FROM PSP_powerYears
+		WHERE
+			Flag = #ID#
+			AND
+			Year = #Year#
+	</update>
+  <update id='DeletePowerValuesByValue' parameterClass='Hashtable'>
+    DELETE FROM psp_PowerValues
+    WHERE
+    Year = #Year#
+    And TypeID=#ID#
+    DELETE FROM PSP_powerYears
+    WHERE
+    Flag = #Flag#
+    AND
+    Year = #Year#
+  </update>
+	<update id='UpdatePowerValues' parameterClass='PowerValues'>
+		If Exists(Select ID from psp_PowerValues Where Year=#Year# And TypeID=#TypeID#)
+			UPDATE psp_PowerValues
+			SET
+				"Value" = #Value#
+			WHERE
+				"TypeID" = #TypeID#
+				And
+				"Year" = #Year#
+		Else
+			INSERT INTO psp_PowerValues		(
+				"TypeID",
+				"Year",
+				"Value"
+			)
+			VALUES
+			(
+				#TypeID#,
+				#Year#,
+				#Value#
+			)
+	</update>
+	<select id='SelectPowerValuesList' resultMap='PowerValuesResult' parameterClass='PowerValues'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM psp_PowerValues
+			Where
+				TypeID = #TypeID#
+	</select>
+	<select id='SelectPowerValuesListByFlag2' resultMap='PowerValuesResult' parameterClass='string'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM psp_PowerValues
+			Where
+				TypeID in (Select ID from PSP_powerTypes where Flag2=#ID#)
+	</select>
+  <select id='SelectPowerValuesListFromTypes_LiaoByFlag2' resultMap='PowerValuesResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "TypeID",
+    "Year",
+    "Value"
+    FROM psp_PowerValues
+    Where
+    TypeID in (Select ID from PSP_PowerTypes_Liao where Flag2=#ID#)
+  </select>
+	<select id='SelectPowerValuesByKey' resultMap='PowerValuesResult' parameterClass='PowerValues'>
+		SELECT
+			"ID",
+			"TypeID",
+			"Year",
+			"Value"
+		FROM psp_PowerValues
+		WHERE
+			ID = #ID#
+	</select>
+</statements>
+</sqlMap>

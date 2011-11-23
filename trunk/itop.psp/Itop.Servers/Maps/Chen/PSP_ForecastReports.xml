@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_ForecastReports' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_ForecastReports' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_ForecastReports' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_ForecastReportsResult' class='PSP_ForecastReports'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='StartYear' column='StartYear' />
+			<result property='EndYear' column='EndYear' />
+			<result property='HistoryYears' column='HistoryYears' />
+			<result property='Flag' column='Flag' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_ForecastReports' parameterClass='PSP_ForecastReports'>
+		INSERT INTO PSP_ForecastReports		(
+			"Title",
+			"StartYear",
+			"EndYear",
+			"HistoryYears",
+			"Flag",
+      "ProjectID"
+		)
+		VALUES
+		(
+			#Title#,
+			#StartYear#,
+			#EndYear#,
+			#HistoryYears#,
+			#Flag#,
+      #ProjectID#
+		)
+		<selectKey property="ID" resultClass="int" type="post">
+				SELECT @@IDENTITY AS value
+		</selectKey> 
+	</insert>
+	<delete id='DeletePSP_ForecastReports' parameterClass='PSP_ForecastReports'>
+		DELETE FROM PSP_ForecastReports
+		WHERE
+			ID = #ID#
+
+		DELETE FROM PSP_ForecastValues
+		WHERE
+			ForecastID = #ID#
+	</delete>
+	<update id='UpdatePSP_ForecastReports' parameterClass='PSP_ForecastReports'>
+		UPDATE PSP_ForecastReports
+		SET
+			"Title" = #Title#,
+			"StartYear" = #StartYear#,
+			"EndYear" = #EndYear#,
+			"HistoryYears" = #HistoryYears#,
+			"Flag" = #Flag#,
+      "ProjectID"=#ProjectID#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPSP_ForecastReportsList' resultMap='PSP_ForecastReportsResult' parameterClass='PSP_ForecastReports'>
+		SELECT
+			"ID",
+			"Title",
+			"StartYear",
+			"EndYear",
+			"HistoryYears",
+			"Flag",
+      "ProjectID"
+		FROM PSP_ForecastReports
+	</select>
+	<select id='SelectPSP_ForecastReportsByKey' resultMap='PSP_ForecastReportsResult' parameterClass='PSP_ForecastReports'>
+		SELECT
+			"ID",
+			"Title",
+			"StartYear",
+			"EndYear",
+			"HistoryYears",
+			"Flag",
+      "ProjectID"
+		FROM PSP_ForecastReports
+		WHERE
+			ID = #ID#
+	</select>
+	<select id='SelectPSP_ForecastReportsByFlag' resultMap='PSP_ForecastReportsResult' parameterClass='PSP_ForecastReports'>
+		SELECT
+			"ID",
+			"Title",
+			"StartYear",
+			"EndYear",
+			"HistoryYears",
+			"Flag",
+      "ProjectID"
+		FROM PSP_ForecastReports
+		WHERE
+			Flag = #Flag#
+	</select>
+  <select id='SelectPSP_ForecastReportsByFlagANDProjectID' resultMap='PSP_ForecastReportsResult' parameterClass='PSP_ForecastReports'>
+    SELECT
+    "ID",
+    "Title",
+    "StartYear",
+    "EndYear",
+    "HistoryYears",
+    "Flag",
+    "ProjectID"
+    FROM PSP_ForecastReports
+    WHERE
+    Flag = #Flag# AND ProjectID=#ProjectID#
+  </select>
+</statements>
+</sqlMap>

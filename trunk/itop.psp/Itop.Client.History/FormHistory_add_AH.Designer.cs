@@ -1,0 +1,220 @@
+﻿namespace Itop.Client.History
+{
+    partial class FormHistory_add_AH
+    {
+        /// <summary>
+        /// 必需的设计器变量。
+
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// 清理所有正在使用的资源。
+
+        /// </summary>
+        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows 窗体设计器生成的代码
+
+        /// <summary>
+        /// 设计器支持所需的方法 - 不要
+        /// 使用代码编辑器修改此方法的内容。
+
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkArea = new System.Windows.Forms.CheckBox();
+            this.cobArea = new System.Windows.Forms.ComboBox();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.textEdit1.Location = new System.Drawing.Point(66, 24);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.MaxLength = 100;
+            this.textEdit1.Size = new System.Drawing.Size(232, 23);
+            this.textEdit1.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.chkArea);
+            this.groupBox1.Controls.Add(this.cobArea);
+            this.groupBox1.Controls.Add(this.textEdit2);
+            this.groupBox1.Controls.Add(this.textEdit1);
+            this.groupBox1.Controls.Add(this.spinEdit1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(1, -5);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(317, 178);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            // 
+            // chkArea
+            // 
+            this.chkArea.AutoSize = true;
+            this.chkArea.Location = new System.Drawing.Point(36, 140);
+            this.chkArea.Name = "chkArea";
+            this.chkArea.Size = new System.Drawing.Size(72, 16);
+            this.chkArea.TabIndex = 6;
+            this.chkArea.Text = "选择地区";
+            this.chkArea.UseVisualStyleBackColor = true;
+            this.chkArea.CheckedChanged += new System.EventHandler(this.chkArea_CheckedChanged);
+            // 
+            // cobArea
+            // 
+            this.cobArea.FormattingEnabled = true;
+            this.cobArea.Location = new System.Drawing.Point(66, 26);
+            this.cobArea.Name = "cobArea";
+            this.cobArea.Size = new System.Drawing.Size(232, 20);
+            this.cobArea.TabIndex = 5;
+            this.cobArea.TabStop = false;
+            this.cobArea.Visible = false;
+            this.cobArea.SelectedIndexChanged += new System.EventHandler(this.cobArea_SelectedIndexChanged);
+            // 
+            // textEdit2
+            // 
+            this.textEdit2.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.textEdit2.Location = new System.Drawing.Point(66, 54);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.MaxLength = 100;
+            this.textEdit2.Size = new System.Drawing.Size(232, 23);
+            this.textEdit2.TabIndex = 1;
+            // 
+            // spinEdit1
+            // 
+            this.spinEdit1.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit1.Location = new System.Drawing.Point(66, 83);
+            this.spinEdit1.Name = "spinEdit1";
+            this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.spinEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.spinEdit1.Properties.IsFloatValue = false;
+            this.spinEdit1.Properties.Mask.EditMask = "N00";
+            this.spinEdit1.Size = new System.Drawing.Size(74, 23);
+            this.spinEdit1.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(38, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "序号";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 60);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "生产能力";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(38, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "名称";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(132, 130);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(74, 26);
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Text = "确定(&O)";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButton2.Location = new System.Drawing.Point(229, 130);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(77, 26);
+            this.simpleButton2.TabIndex = 1;
+            this.simpleButton2.Text = "取消(&C)";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // FormHistory_add_AH
+            // 
+            this.AcceptButton = this.simpleButton1;
+            this.Appearance.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Appearance.Options.UseFont = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(319, 174);
+            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FormHistory_add_AH";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Form2";
+            this.Load += new System.EventHandler(this.FormTypeTitle_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SpinEdit spinEdit1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkArea;
+        private System.Windows.Forms.ComboBox cobArea;
+
+
+    }
+}

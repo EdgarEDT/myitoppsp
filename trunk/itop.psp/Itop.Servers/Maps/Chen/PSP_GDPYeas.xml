@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_GDPYeas' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_GDPYeas' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_GDPYeas' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_GDPYeasResult' class='PSP_GDPYeas'>
+      <result property='ID' column='ID' />
+      <result property='Year' column='Year' />
+      <result property='Flag' column='Flag' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_GDPYeas' parameterClass='PSP_GDPYeas'>
+      INSERT INTO PSP_GDPYeas		(
+      "Year",
+      "Flag"
+      )
+      VALUES
+      (
+      #Year#,
+      #Flag#
+      )
+    </insert>
+    <delete id='DeletePSP_GDPYeas' parameterClass='PSP_GDPYeas'>
+      DELETE FROM PSP_GDPYeas
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdatePSP_GDPYeas' parameterClass='PSP_GDPYeas'>
+      UPDATE PSP_GDPYeas
+      SET
+      "Year" = #Year#,
+      "Flag" = #Flag#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPSP_GDPYeasList' resultMap='PSP_GDPYeasResult' parameterClass='PSP_GDPYeas'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_GDPYeas
+    </select>
+    <select id='SelectPSP_GDPYeasListByFlag' resultMap='PSP_GDPYeasResult' parameterClass='PSP_GDPYeas'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_GDPYeas
+      Where
+      Flag = #Flag#
+      Order by Year
+    </select>
+
+    <select id='SelectPSP_GDPYeasMinByFlag' resultMap='PSP_GDPYeasResult' parameterClass='string'>
+      SELECT TOP 1
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_GDPYeas
+      Where
+      Flag = #Flag#
+      Order by Year
+    </select>
+    <select id='SelectPSP_YeasListByFlagAndYear' resultMap='PSP_GDPYeasResult' parameterClass='hashtable'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_GDPYeas
+      Where
+      Flag = #Flag# and Year>=#Year#
+      Order by Year
+    </select>
+    <select id='SelectPSP_YeasByFlagYear' resultMap='PSP_GDPYeasResult' parameterClass='hashtable'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_GDPYeas
+      Where
+      Flag = #Flag# and Year=#Year#
+    </select>
+    <select id='SelectPSP_GDPYeasByKey' resultMap='PSP_GDPYeasResult' parameterClass='PSP_GDPYeas'>
+      SELECT
+      "ID",
+      "Year",
+      "Flag"
+      FROM PSP_GDPYeas
+      WHERE
+      ID = #ID#
+    </select>
+  </statements>
+</sqlMap>

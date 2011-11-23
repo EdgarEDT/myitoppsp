@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='EconomyAnalysis' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='EconomyAnalysis' assembly='Itop.Domain.Layouts.dll' type='Itop.Domain.Layouts.EconomyAnalysis' />
+</alias>
+	<resultMaps>
+		<resultMap id='EconomyAnalysisResult' class='EconomyAnalysis'>
+			<result property='UID' column='UID' />
+			<result property='Title' column='Title' />
+			<result property='ParentID' column='ParentID' />
+			<result property='CreateDate' column='CreateDate' />
+			<result property='Contents' column='Contents' />
+			<result property='Remark' column='Remark' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertEconomyAnalysis' parameterClass='EconomyAnalysis'>
+    INSERT INTO PSP_EconomyAnalysis		(
+    "UID",
+    "Title",
+    "ParentID",
+    "Contents",
+    "CreateDate",
+    "Remark"
+    )
+    VALUES
+    (
+    #UID#,
+    #Title#,
+    #ParentID#,
+    #Contents#,
+    GetDate(),
+    #Remark#
+    )
+  </insert>
+	<delete id='DeleteEconomyAnalysis' parameterClass='EconomyAnalysis'>
+		DELETE FROM PSP_EconomyAnalysis
+		WHERE
+			UID = #UID#
+	</delete>
+
+  <delete id='DeleteEconomyAnalysisByKey' parameterClass='string'>
+    DELETE FROM PSP_EconomyAnalysis
+    WHERE
+    UID = #UID#
+  </delete>
+	<update id='UpdateEconomyAnalysis' parameterClass='EconomyAnalysis'>
+		UPDATE PSP_EconomyAnalysis
+		SET
+			"Title" = #Title#,
+			"Remark" = #Remark#
+		WHERE
+			UID = #UID#
+	</update>
+
+
+	<update id='UpdateEconomyAnalysisByContents' parameterClass='EconomyAnalysis'>
+		UPDATE PSP_EconomyAnalysis
+		SET
+			"Contents" = #Contents#
+		WHERE
+			UID = #UID#
+	</update>
+  <!--保存高压电网规划报表 -->
+  <update id='UpdateEconomyAnalysisByContentsAndtitle' parameterClass='EconomyAnalysis'>
+    UPDATE PSP_EconomyAnalysis
+    SET
+    "Title" = #Title#,
+    "Contents" = #Contents#
+    WHERE
+    UID = #UID#
+  </update>
+	<select id='SelectEconomyAnalysisList' resultMap='EconomyAnalysisResult' parameterClass='EconomyAnalysis'>
+		SELECT
+			"UID",
+			"Title",
+			"ParentID",
+			"CreateDate",
+			null as "Contents",
+			"Remark"
+		FROM PSP_EconomyAnalysis
+	</select>
+	<select id='SelectEconomyAnalysisByKey' resultMap='EconomyAnalysisResult' parameterClass='EconomyAnalysis'>
+		SELECT
+			"UID",
+			"Title",
+			"ParentID",
+			"CreateDate",
+			"Contents",
+			"Remark"
+		FROM PSP_EconomyAnalysis
+		WHERE
+			UID = #UID#
+	</select>
+
+  <select id='SelectEconomyAnalysisByWhere' resultMap='EconomyAnalysisResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title",
+    "ParentID",
+    "CreateDate",
+    "Contents",
+    "Remark"
+    FROM PSP_EconomyAnalysis
+    WHERE 
+    $UID$
+  </select>
+  <select id='SelectEconomyAnalysisByvalue' resultMap='EconomyAnalysisResult' parameterClass='string'>
+    SELECT
+    "UID",
+    "Title",
+    "ParentID",
+    "CreateDate",
+    "Contents",
+    "Remark"
+    FROM PSP_EconomyAnalysis
+    WHERE
+    $value$
+  </select>
+</statements>
+</sqlMap>

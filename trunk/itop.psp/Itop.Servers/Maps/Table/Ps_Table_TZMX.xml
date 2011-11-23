@@ -1,0 +1,701 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Table_TZMX' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Ps_Table_TZMX' assembly='Itop.Domain.Table.dll' type='Itop.Domain.Table.Ps_Table_TZMX' />
+</alias>
+	<resultMaps>
+		<resultMap id='Ps_Table_TZMXResult' class='Ps_Table_TZMX'>
+			<result property='ID' column='ID' />
+			<result property='Title' column='Title' />
+			<result property='ProjectID' column='ProjectID' />
+			<result property='Vol' column='Vol' />
+			<result property='Typeqf' column='Typeqf' />
+			<result property='Num' column='Num' />
+      <result property='Linetype' column='Linetype' />
+      <result property='BuildYear' column='BuildYear' />
+      <result property='BuildEnd' column='BuildEnd' />
+      <result property='y1990' column='y1990' />
+      <result property='y1991' column='y1991' />
+      <result property='y1992' column='y1992' />
+      <result property='y1993' column='y1993' />
+      <result property='y1994' column='y1994' />
+      <result property='y1995' column='y1995' />
+      <result property='y1996' column='y1996' />
+      <result property='y1997' column='y1997' />
+      <result property='y1998' column='y1998' />
+      <result property='y1999' column='y1999' />
+      <result property='y2000' column='y2000' />
+      <result property='y2001' column='y2001' />
+      <result property='y2002' column='y2002' />
+      <result property='y2003' column='y2003' />
+      <result property='y2004' column='y2004' />
+      <result property='y2005' column='y2005' />
+      <result property='y2006' column='y2006' />
+      <result property='y2007' column='y2007' />
+      <result property='y2008' column='y2008' />
+      <result property='y2009' column='y2009' />
+      <result property='y2010' column='y2010' />
+      <result property='y2011' column='y2011' />
+      <result property='y2012' column='y2012' />
+      <result property='y2013' column='y2013' />
+      <result property='y2014' column='y2014' />
+      <result property='y2015' column='y2015' />
+      <result property='y2016' column='y2016' />
+      <result property='y2017' column='y2017' />
+      <result property='y2018' column='y2018' />
+      <result property='y2019' column='y2019' />
+      <result property='y2020' column='y2020' />
+      <result property='y2021' column='y2021' />
+      <result property='y2022' column='y2022' />
+      <result property='y2023' column='y2023' />
+      <result property='y2024' column='y2024' />
+      <result property='y2025' column='y2025' />
+      <result property='y2026' column='y2026' />
+      <result property='y2027' column='y2027' />
+      <result property='y2028' column='y2028' />
+      <result property='y2029' column='y2029' />
+      <result property='y2030' column='y2030' />
+      <result property='y2031' column='y2031' />
+      <result property='y2032' column='y2032' />
+      <result property='y2033' column='y2033' />
+      <result property='y2034' column='y2034' />
+      <result property='y2035' column='y2035' />
+      <result property='y2036' column='y2036' />
+      <result property='y2037' column='y2037' />
+      <result property='y2038' column='y2038' />
+      <result property='y2039' column='y2039' />
+      <result property='y2040' column='y2040' />
+      <result property='y2041' column='y2041' />
+      <result property='y2042' column='y2042' />
+      <result property='y2043' column='y2043' />
+      <result property='y2044' column='y2044' />
+      <result property='y2045' column='y2045' />
+      <result property='y2046' column='y2046' />
+      <result property='y2047' column='y2047' />
+      <result property='y2048' column='y2048' />
+      <result property='y2049' column='y2049' />
+      <result property='y2050' column='y2050' />
+      <result property='y2051' column='y2051' />
+      <result property='y2052' column='y2052' />
+      <result property='y2053' column='y2053' />
+      <result property='y2054' column='y2054' />
+      <result property='y2055' column='y2055' />
+      <result property='y2056' column='y2056' />
+      <result property='y2057' column='y2057' />
+      <result property='y2058' column='y2058' />
+      <result property='y2059' column='y2059' />
+      <result property='y2060' column='y2060' />
+      <result property='LendRate' column='LendRate' />
+      <result property='PrepChange' column='PrepChange' />
+      <result property='DynInvest' column='DynInvest' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPs_Table_TZMX' parameterClass='Ps_Table_TZMX'>
+    INSERT INTO Ps_Table_TZMX		(
+    "ID",
+    "Title",
+    "ProjectID",
+    "Vol",
+    "Typeqf",
+    "Num",
+    "Linetype",
+    "BuildYear",
+    "BuildEnd",
+    "y1990",
+    "y1991",
+    "y1992",
+    "y1993",
+    "y1994",
+    "y1995",
+    "y1996",
+    "y1997",
+    "y1998",
+    "y1999",
+    "y2000",
+    "y2001",
+    "y2002",
+    "y2003",
+    "y2004",
+    "y2005",
+    "y2006",
+    "y2007",
+    "y2008",
+    "y2009",
+    "y2010",
+    "y2011",
+    "y2012",
+    "y2013",
+    "y2014",
+    "y2015",
+    "y2016",
+    "y2017",
+    "y2018",
+    "y2019",
+    "y2020",
+    "y2021",
+    "y2022",
+    "y2023",
+    "y2024",
+    "y2025",
+    "y2026",
+    "y2027",
+    "y2028",
+    "y2029",
+    "y2030",
+    "y2031",
+    "y2032",
+    "y2033",
+    "y2034",
+    "y2035",
+    "y2036",
+    "y2037",
+    "y2038",
+    "y2039",
+    "y2040",
+    "y2041",
+    "y2042",
+    "y2043",
+    "y2044",
+    "y2045",
+    "y2046",
+    "y2047",
+    "y2048",
+    "y2049",
+    "y2050",
+    "y2051",
+    "y2052",
+    "y2053",
+    "y2054",
+    "y2055",
+    "y2056",
+    "y2057",
+    "y2058",
+    "y2059",
+    "y2060",
+    "LendRate",
+    "PrepChange",
+    "DynInvest"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #ProjectID#,
+    #Vol#,
+    #Typeqf#,
+    #Num#,
+    #Linetype#,
+    #BuildYear#,
+    #BuildEnd#,
+    #y1990#,
+    #y1991#,
+    #y1992#,
+    #y1993#,
+    #y1994#,
+    #y1995#,
+    #y1996#,
+    #y1997#,
+    #y1998#,
+    #y1999#,
+    #y2000#,
+    #y2001#,
+    #y2002#,
+    #y2003#,
+    #y2004#,
+    #y2005#,
+    #y2006#,
+    #y2007#,
+    #y2008#,
+    #y2009#,
+    #y2010#,
+    #y2011#,
+    #y2012#,
+    #y2013#,
+    #y2014#,
+    #y2015#,
+    #y2016#,
+    #y2017#,
+    #y2018#,
+    #y2019#,
+    #y2020#,
+    #y2021#,
+    #y2022#,
+    #y2023#,
+    #y2024#,
+    #y2025#,
+    #y2026#,
+    #y2027#,
+    #y2028#,
+    #y2029#,
+    #y2030#,
+    #y2031#,
+    #y2032#,
+    #y2033#,
+    #y2034#,
+    #y2035#,
+    #y2036#,
+    #y2037#,
+    #y2038#,
+    #y2039#,
+    #y2040#,
+    #y2041#,
+    #y2042#,
+    #y2043#,
+    #y2044#,
+    #y2045#,
+    #y2046#,
+    #y2047#,
+    #y2048#,
+    #y2049#,
+    #y2050#,
+    #y2051#,
+    #y2052#,
+    #y2053#,
+    #y2054#,
+    #y2055#,
+    #y2056#,
+    #y2057#,
+    #y2058#,
+    #y2059#,
+    #y2060#,
+    #LendRate#,
+    #PrepChange#,
+    #DynInvest#
+    )
+  </insert>
+	<delete id='DeletePs_Table_TZMX' parameterClass='Ps_Table_TZMX'>
+		DELETE FROM Ps_Table_TZMX
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePs_Table_TZMX' parameterClass='Ps_Table_TZMX'>
+    UPDATE Ps_Table_TZMX
+    SET
+    "Title" = #Title#,
+    "ProjectID" = #ProjectID#,
+    "Vol" = #Vol#,
+    "Typeqf" = #Typeqf#,
+    "Num" = #Num#,
+    "Linetype"=#Linetype#,
+    "BuildYear"=#BuildYear#,
+    "BuildEnd"=#BuildEnd#,
+    "y1990" = #y1990#,
+    "y1991" = #y1991#,
+    "y1992" = #y1992#,
+    "y1993" = #y1993#,
+    "y1994" = #y1994#,
+    "y1995" = #y1995#,
+    "y1996" = #y1996#,
+    "y1997" = #y1997#,
+    "y1998" = #y1998#,
+    "y1999" = #y1999#,
+    "y2000" = #y2000#,
+    "y2001" = #y2001#,
+    "y2002" = #y2002#,
+    "y2003" = #y2003#,
+    "y2004" = #y2004#,
+    "y2005" = #y2005#,
+    "y2006" = #y2006#,
+    "y2007" = #y2007#,
+    "y2008" = #y2008#,
+    "y2009" = #y2009#,
+    "y2010" = #y2010#,
+    "y2011" = #y2011#,
+    "y2012" = #y2012#,
+    "y2013" = #y2013#,
+    "y2014" = #y2014#,
+    "y2015" = #y2015#,
+    "y2016" = #y2016#,
+    "y2017" = #y2017#,
+    "y2018" = #y2018#,
+    "y2019" = #y2019#,
+    "y2020" = #y2020#,
+    "y2021" = #y2021#,
+    "y2022" = #y2022#,
+    "y2023" = #y2023#,
+    "y2024" = #y2024#,
+    "y2025" = #y2025#,
+    "y2026" = #y2026#,
+    "y2027" = #y2027#,
+    "y2028" = #y2028#,
+    "y2029" = #y2029#,
+    "y2030" = #y2030#,
+    "y2031" = #y2031#,
+    "y2032" = #y2032#,
+    "y2033" = #y2033#,
+    "y2034" = #y2034#,
+    "y2035" = #y2035#,
+    "y2036" = #y2036#,
+    "y2037" = #y2037#,
+    "y2038" = #y2038#,
+    "y2039" = #y2039#,
+    "y2040" = #y2040#,
+    "y2041" = #y2041#,
+    "y2042" = #y2042#,
+    "y2043" = #y2043#,
+    "y2044" = #y2044#,
+    "y2045" = #y2045#,
+    "y2046" = #y2046#,
+    "y2047" = #y2047#,
+    "y2048" = #y2048#,
+    "y2049" = #y2049#,
+    "y2050" = #y2050#,
+    "y2051" = #y2051#,
+    "y2052" = #y2052#,
+    "y2053" = #y2053#,
+    "y2054" = #y2054#,
+    "y2055" = #y2055#,
+    "y2056" = #y2056#,
+    "y2057" = #y2057#,
+    "y2058" = #y2058#,
+    "y2059" = #y2059#,
+    "y2060" = #y2060#,
+    "LendRate" = #LendRate#,
+    "PrepChange" = #PrepChange#,
+    "DynInvest" = #DynInvest#
+    WHERE
+    ID = #ID#
+  </update>
+  <select id='SelectPs_Table_TZMXList' resultMap='Ps_Table_TZMXResult' parameterClass='Ps_Table_TZMX'>
+    SELECT
+    "ID",
+    "Title",
+    "ProjectID",
+    "Vol",
+    "Typeqf",
+    "Num",
+    "Linetype",
+    "BuildYear",
+    "BuildEnd",
+    "y1990",
+    "y1991",
+    "y1992",
+    "y1993",
+    "y1994",
+    "y1995",
+    "y1996",
+    "y1997",
+    "y1998",
+    "y1999",
+    "y2000",
+    "y2001",
+    "y2002",
+    "y2003",
+    "y2004",
+    "y2005",
+    "y2006",
+    "y2007",
+    "y2008",
+    "y2009",
+    "y2010",
+    "y2011",
+    "y2012",
+    "y2013",
+    "y2014",
+    "y2015",
+    "y2016",
+    "y2017",
+    "y2018",
+    "y2019",
+    "y2020",
+    "y2021",
+    "y2022",
+    "y2023",
+    "y2024",
+    "y2025",
+    "y2026",
+    "y2027",
+    "y2028",
+    "y2029",
+    "y2030",
+    "y2031",
+    "y2032",
+    "y2033",
+    "y2034",
+    "y2035",
+    "y2036",
+    "y2037",
+    "y2038",
+    "y2039",
+    "y2040",
+    "y2041",
+    "y2042",
+    "y2043",
+    "y2044",
+    "y2045",
+    "y2046",
+    "y2047",
+    "y2048",
+    "y2049",
+    "y2050",
+    "y2051",
+    "y2052",
+    "y2053",
+    "y2054",
+    "y2055",
+    "y2056",
+    "y2057",
+    "y2058",
+    "y2059",
+    "y2060",
+    "LendRate",
+    "PrepChange",
+    "DynInvest"
+    FROM Ps_Table_TZMX
+  </select>
+	<select id='SelectPs_Table_TZMXByKey' resultMap='Ps_Table_TZMXResult' parameterClass='Ps_Table_TZMX'>
+    SELECT
+    "ID",
+    "Title",
+    "ProjectID",
+    "Vol",
+    "Typeqf",
+    "Num",
+    "Linetype",
+    "BuildYear",
+    "BuildEnd",
+    "y1990",
+    "y1991",
+    "y1992",
+    "y1993",
+    "y1994",
+    "y1995",
+    "y1996",
+    "y1997",
+    "y1998",
+    "y1999",
+    "y2000",
+    "y2001",
+    "y2002",
+    "y2003",
+    "y2004",
+    "y2005",
+    "y2006",
+    "y2007",
+    "y2008",
+    "y2009",
+    "y2010",
+    "y2011",
+    "y2012",
+    "y2013",
+    "y2014",
+    "y2015",
+    "y2016",
+    "y2017",
+    "y2018",
+    "y2019",
+    "y2020",
+    "y2021",
+    "y2022",
+    "y2023",
+    "y2024",
+    "y2025",
+    "y2026",
+    "y2027",
+    "y2028",
+    "y2029",
+    "y2030",
+    "y2031",
+    "y2032",
+    "y2033",
+    "y2034",
+    "y2035",
+    "y2036",
+    "y2037",
+    "y2038",
+    "y2039",
+    "y2040",
+    "y2041",
+    "y2042",
+    "y2043",
+    "y2044",
+    "y2045",
+    "y2046",
+    "y2047",
+    "y2048",
+    "y2049",
+    "y2050",
+    "y2051",
+    "y2052",
+    "y2053",
+    "y2054",
+    "y2055",
+    "y2056",
+    "y2057",
+    "y2058",
+    "y2059",
+    "y2060",
+    "LendRate",
+    "PrepChange",
+    "DynInvest"
+    FROM Ps_Table_TZMX
+    WHERE
+    ID = #ID#
+  </select>
+  <select id='SelectPs_Table_TZMXByValue' resultMap='Ps_Table_TZMXResult' parameterClass='Ps_Table_TZMX'>
+    SELECT
+    "ID",
+    "Title",
+    "ProjectID",
+    "Vol",
+    "Typeqf",
+    "Num",
+    "Linetype",
+    "BuildYear",
+    "BuildEnd",
+    "y1990",
+    "y1991",
+    "y1992",
+    "y1993",
+    "y1994",
+    "y1995",
+    "y1996",
+    "y1997",
+    "y1998",
+    "y1999",
+    "y2000",
+    "y2001",
+    "y2002",
+    "y2003",
+    "y2004",
+    "y2005",
+    "y2006",
+    "y2007",
+    "y2008",
+    "y2009",
+    "y2010",
+    "y2011",
+    "y2012",
+    "y2013",
+    "y2014",
+    "y2015",
+    "y2016",
+    "y2017",
+    "y2018",
+    "y2019",
+    "y2020",
+    "y2021",
+    "y2022",
+    "y2023",
+    "y2024",
+    "y2025",
+    "y2026",
+    "y2027",
+    "y2028",
+    "y2029",
+    "y2030",
+    "y2031",
+    "y2032",
+    "y2033",
+    "y2034",
+    "y2035",
+    "y2036",
+    "y2037",
+    "y2038",
+    "y2039",
+    "y2040",
+    "y2041",
+    "y2042",
+    "y2043",
+    "y2044",
+    "y2045",
+    "y2046",
+    "y2047",
+    "y2048",
+    "y2049",
+    "y2050",
+    "y2051",
+    "y2052",
+    "y2053",
+    "y2054",
+    "y2055",
+    "y2056",
+    "y2057",
+    "y2058",
+    "y2059",
+    "y2060",
+    "LendRate",
+    "PrepChange",
+    "DynInvest"
+    FROM Ps_Table_TZMX
+    WHERE
+    $Value$
+  </select>
+  <!--统计十二五线路静态投资总额-->
+  <select id='SelectTZGSlinejttz' resultClass='double'  parameterClass='string'>
+    Select SUM(y2010+y2011+y2012+y2013+y2014+y2015)  FROM  Ps_Table_TZMX
+    where
+    ProjectID in(Select a.id  FROM  Ps_Table_TZGS a INNER JOIN
+    Ps_Table_TZGS b ON a.ID = b.ParentID INNER JOIN
+    Ps_Table_TZGS c ON a.ID = c.ParentID
+    where b.Col4 = 'bian' and c.Col4='line' $value$) and Typeqf='line'
+
+  </select>
+  <!--统计十二五变电静态投资总额-->
+  <select id='SelectTZGSsubjttz' resultClass='double'  parameterClass='string'>
+    Select SUM(y2010+y2011+y2012+y2013+y2014+y2015)  FROM  Ps_Table_TZMX
+    where
+    ProjectID in(Select a.id  FROM  Ps_Table_TZGS a INNER JOIN
+    Ps_Table_TZGS b ON a.ID = b.ParentID INNER JOIN
+    Ps_Table_TZGS c ON a.ID = c.ParentID
+    where b.Col4 = 'bian' and c.Col4='line' $value$) and Typeqf='sub'
+  </select>
+  <!--统计十二五线路动态投资总额-->
+  <select id='SelectTZGSlinedttz' resultClass='double'  parameterClass='string'>
+    Select SUM(DynInvest)  FROM  Ps_Table_TZMX
+    where
+    ProjectID in(Select a.id  FROM  Ps_Table_TZGS a INNER JOIN
+    Ps_Table_TZGS b ON a.ID = b.ParentID INNER JOIN
+    Ps_Table_TZGS c ON a.ID = c.ParentID
+    where b.Col4 = 'bian' and c.Col4='line' $value$) and Typeqf='line'
+  </select>
+  <!--统计十二五变电站动态投资总额-->
+  <select id='SelectTZGSsubdttz' resultClass='double'  parameterClass='string'>
+    Select SUM(DynInvest)  FROM  Ps_Table_TZMX
+    where
+    ProjectID in(Select a.id  FROM  Ps_Table_TZGS a INNER JOIN
+    Ps_Table_TZGS b ON a.ID = b.ParentID INNER JOIN
+    Ps_Table_TZGS c ON a.ID = c.ParentID
+    where b.Col4 = 'bian' and c.Col4='line' $value$) and Typeqf='sub'
+  </select>
+  <!--统计十二五配网线路动态投资总额-->
+  <select id='SelectTZGSPWlinedttz' resultClass='double'  parameterClass='string'>
+    Select SUM(DynInvest)  FROM  Ps_Table_TZMX
+    where
+    ProjectID in(select a.ID
+    FROM Ps_Table_TZGS a,Ps_Table_TZGS b,Ps_Table_TZGS c,Ps_Table_TZGS d
+    where  a.ID = b.ParentID AND b.Col4 = 'pw-line'
+    AND a.ID = c.ParentID AND c.Col4 = 'pw-pb'
+    and a.ID = d.ParentID AND d.Col4 = 'pw-kg' $value$) and Typeqf='pw-line'
+  </select>
+  <!--统计十二五配网变电站动态投资总额-->
+  <select id='SelectTZGSPWsubdttz' resultClass='double'  parameterClass='string'>
+    Select SUM(DynInvest)  FROM  Ps_Table_TZMX
+    where
+    ProjectID in(select a.ID
+    FROM Ps_Table_TZGS a,Ps_Table_TZGS b,Ps_Table_TZGS c,Ps_Table_TZGS d
+    where  a.ID = b.ParentID AND b.Col4 = 'pw-line'
+    AND a.ID = c.ParentID AND c.Col4 = 'pw-pb'
+    and a.ID = d.ParentID AND d.Col4 = 'pw-kg' $value$) and Typeqf='pw-pb'
+  </select>
+  <!--统计十二五配网变其他元件动态投资总额-->
+  <select id='SelectTZGSPWqtdttz' resultClass='double'  parameterClass='string'>
+    Select SUM(DynInvest)  FROM  Ps_Table_TZMX
+    where
+    ProjectID in(select a.ID
+    FROM Ps_Table_TZGS a,Ps_Table_TZGS b,Ps_Table_TZGS c,Ps_Table_TZGS d
+    where  a.ID = b.ParentID AND b.Col4 = 'pw-line'
+    AND a.ID = c.ParentID AND c.Col4 = 'pw-pb'
+    and a.ID = d.ParentID AND d.Col4 = 'pw-kg' $value$) and Typeqf='pw-kg'
+  </select>
+  <!--统计架空线路或电缆线路长度-->
+  <select id='SelectTZMXOfVal' resultClass='double' parameterClass='string'>
+    select Vol  from Ps_Table_TZMX where $value$
+  </select>
+  <!--统计当前年份的静态投资额-->
+  <select id='SelectTZMXOfYearAmount' resultClass='double' parameterClass='string'>
+   $value$
+  </select>
+</statements>
+</sqlMap>

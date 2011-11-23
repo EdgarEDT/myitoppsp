@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='UseGroup' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='UseGroup' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.UseGroup' />
+</alias>
+	<resultMaps>
+		<resultMap id='UseGroupResult' class='UseGroup'>
+			<result property='UID' column='UID' />
+			<result property='GroupName' column='GroupName' />
+			<result property='Content' column='Content' />
+			<result property='Remark' column='Remark' />
+			<result property='X' column='X' />
+			<result property='Y' column='Y' />
+			<result property='Width' column='Width' />
+			<result property='Height' column='Height' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertUseGroup' parameterClass='UseGroup'>
+		INSERT INTO UseGroup		(
+			"UID",
+			"GroupName",
+			"Content",
+			"Remark",
+			"X",
+			"Y",
+			"Width",
+			"Height"
+		)
+		VALUES
+		(
+			#UID#,
+			#GroupName#,
+			#Content#,
+			#Remark#,
+			#X#,
+			#Y#,
+			#Width#,
+			#Height#
+		)
+	</insert>
+	<delete id='DeleteUseGroup' parameterClass='UseGroup'>
+		DELETE FROM UseGroup
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateUseGroup' parameterClass='UseGroup'>
+		UPDATE UseGroup
+		SET
+			"GroupName" = #GroupName#,
+			"Content" = #Content#,
+			"Remark" = #Remark#
+		WHERE
+			UID = #UID#
+	</update>
+	<select id='SelectUseGroupList' resultMap='UseGroupResult' parameterClass='UseGroup'>
+		SELECT
+			"UID",
+			"GroupName",
+			"Content",
+			"Remark",
+			"X",
+			"Y",
+			"Width",
+			"Height"
+		FROM UseGroup order by GroupName
+	</select>
+	<select id='SelectUseGroupByKey' resultMap='UseGroupResult' parameterClass='UseGroup'>
+		SELECT
+			"UID",
+			"GroupName",
+			"Content",
+			"Remark",
+			"X",
+			"Y",
+			"Width",
+			"Height"
+		FROM UseGroup
+		WHERE
+			UID = #UID#
+	</select>
+</statements>
+</sqlMap>

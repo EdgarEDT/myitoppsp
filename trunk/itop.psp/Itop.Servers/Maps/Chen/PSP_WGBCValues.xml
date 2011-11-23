@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_WGBCValues' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='PSP_WGBCValues' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_WGBCValues' />
+</alias>
+	<resultMaps>
+		<resultMap id='PSP_WGBCValuesResult' class='PSP_WGBCValues'>
+			<result property='ID' column='ID' />
+			<result property='ReportID' column='ReportID' />
+			<result property='TypeID' column='TypeID' />
+			<result property='ParentTypeID' column='ParentTypeID' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Col3' column='Col3' />
+			<result property='Col4' column='Col4' />
+			<result property='Col5' column='Col5' />
+			<result property='Col6' column='Col6' />
+			<result property='Col7' column='Col7' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPSP_WGBCValues' parameterClass='PSP_WGBCValues'>
+		INSERT INTO PSP_WGBCValues		(
+			"ReportID",
+			"TypeID",
+			"ParentTypeID",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"Col6",
+			"Col7"
+		)
+		VALUES
+		(
+			#ReportID#,
+			#TypeID#,
+			#ParentTypeID#,
+			#Col1#,
+			#Col2#,
+			#Col3#,
+			#Col4#,
+			#Col5#,
+			#Col6#,
+			#Col7#
+		)
+		<selectKey property="ID" resultClass="int" type="post">
+				SELECT @@IDENTITY AS value
+		</selectKey> 
+	</insert>
+	<insert id='InsertPSP_WGBCFixedValues' parameterClass='PSP_WGBCValues'>
+		If Exists(Select ID from PSP_WGBCValues Where ReportID = #ReportID# AND TypeID = #TypeID# AND ParentTypeID=0)
+		Begin
+			Delete from PSP_WGBCValues Where ParentTypeID in (Select ID from PSP_WGBCValues Where ReportID = #ReportID# AND TypeID = #TypeID# AND ParentTypeID=0)
+			Delete from PSP_WGBCValues Where ReportID = #ReportID# AND TypeID = #TypeID# AND ParentTypeID=0
+		End
+
+		INSERT INTO PSP_WGBCValues		(
+			"ReportID",
+			"TypeID",
+			"ParentTypeID",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"Col6",
+			"Col7"
+		)
+		VALUES
+		(
+			#ReportID#,
+			#TypeID#,
+			#ParentTypeID#,
+			#Col1#,
+			#Col2#,
+			#Col3#,
+			#Col4#,
+			#Col5#,
+			#Col6#,
+			#Col7#
+		)
+		<selectKey property="ID" resultClass="int" type="post">
+				SELECT @@IDENTITY AS value
+		</selectKey> 
+	</insert>
+	<delete id='DeletePSP_WGBCValues' parameterClass='PSP_WGBCValues'>
+		DELETE FROM PSP_WGBCValues
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePSP_WGBCValues' parameterClass='PSP_WGBCValues'>
+		If Exists(Select ID from PSP_WGBCValues Where ID = #ID#)
+			UPDATE PSP_WGBCValues
+			SET
+				"ReportID" = #ReportID#,
+				"TypeID" = #TypeID#,
+				"ParentTypeID" = #ParentTypeID#,
+				"Col1" = #Col1#,
+				"Col2" = #Col2#,
+				"Col3" = #Col3#,
+				"Col4" = #Col4#,
+				"Col5" = #Col5#,
+				"Col6" = #Col6#,
+				"Col7" = #Col7#
+			WHERE
+				ID = #ID#
+		Else
+			INSERT INTO PSP_WGBCValues		(
+				"ReportID",
+				"TypeID",
+				"ParentTypeID",
+				"Col1",
+				"Col2",
+				"Col3",
+				"Col4",
+				"Col5",
+				"Col6",
+				"Col7"
+			)
+			VALUES
+			(
+				#ReportID#,
+				#TypeID#,
+				#ParentTypeID#,
+				#Col1#,
+				#Col2#,
+				#Col3#,
+				#Col4#,
+				#Col5#,
+				#Col6#,
+				#Col7#
+			)
+	</update>
+	<select id='SelectPSP_WGBCValuesList' resultMap='PSP_WGBCValuesResult' parameterClass='PSP_WGBCValues'>
+		SELECT
+			"ID",
+			"ReportID",
+			"TypeID",
+			"ParentTypeID",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"Col6",
+			"Col7"
+		FROM PSP_WGBCValues
+	</select>
+	<select id='SelectPSP_WGBCValuesByKey' resultMap='PSP_WGBCValuesResult' parameterClass='PSP_WGBCValues'>
+		SELECT
+			"ID",
+			"ReportID",
+			"TypeID",
+			"ParentTypeID",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"Col6",
+			"Col7"
+		FROM PSP_WGBCValues
+		WHERE
+			ID = #ID#
+	</select>
+	<select id='SelectPSP_WGBCValuesByReportID' resultMap='PSP_WGBCValuesResult' parameterClass='PSP_WGBCValues'>
+		SELECT
+			"ID",
+			"ReportID",
+			"TypeID",
+			"ParentTypeID",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4",
+			"Col5",
+			"Col6",
+			"Col7"
+		FROM PSP_WGBCValues
+		WHERE
+			ReportID = #ReportID#
+		Order By TypeID, ID
+	</select>
+</statements>
+</sqlMap>

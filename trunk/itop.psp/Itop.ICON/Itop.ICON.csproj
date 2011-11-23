@@ -1,0 +1,456 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D4165A76-37B8-45F3-9F78-5A3516562F8E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Itop.ICON</RootNamespace>
+    <AssemblyName>Itop.ICON</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\Server\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\output\Client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Resource.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\保存.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\布局.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\查询.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\打回重新编.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\打印.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\发送.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\工具.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关闭1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关闭.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\角色.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\审核.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\审批.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\授权.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\刷新.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\添加同级.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\添加下级.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\新建.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\修改.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\作废.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\down.bmp" />
+    <Content Include="Resources\FillDownHS.png" />
+    <Content Include="Resources\FillUpHS.png" />
+    <Content Include="Resources\选中1.bmp" />
+    <Content Include="Resources\未选中.bmp" />
+    <Content Include="Resources\选中.bmp" />
+    <Content Include="图标文件\ico图标\01 Computer.ico" />
+    <Content Include="图标文件\ico图标\011.ico" />
+    <Content Include="图标文件\ico图标\016.ico" />
+    <Content Include="图标文件\ico图标\02 Network.ico" />
+    <Content Include="图标文件\ico图标\03 Control Panel.ico" />
+    <Content Include="图标文件\ico图标\03.ico" />
+    <Content Include="图标文件\ico图标\031.ico" />
+    <Content Include="图标文件\ico图标\04 EMail.ico" />
+    <Content Include="图标文件\ico图标\04.ico" />
+    <Content Include="图标文件\ico图标\041.ico" />
+    <Content Include="图标文件\ico图标\05 Folder.ico" />
+    <Content Include="图标文件\ico图标\05.ico" />
+    <Content Include="图标文件\ico图标\051.ico" />
+    <Content Include="图标文件\ico图标\06 Picture.ico" />
+    <Content Include="图标文件\ico图标\07 Video.ico" />
+    <Content Include="图标文件\ico图标\07.ico" />
+    <Content Include="图标文件\ico图标\071.ico" />
+    <Content Include="图标文件\ico图标\08 Music.ico" />
+    <Content Include="图标文件\ico图标\08.ico" />
+    <Content Include="图标文件\ico图标\081.ico" />
+    <Content Include="图标文件\ico图标\09 Hard Drive.ico" />
+    <Content Include="图标文件\ico图标\1.ico" />
+    <Content Include="图标文件\ico图标\10 Desktop.ico" />
+    <Content Include="图标文件\ico图标\10.ico" />
+    <Content Include="图标文件\ico图标\11 Trash Empty.ico" />
+    <Content Include="图标文件\ico图标\110.ico" />
+    <Content Include="图标文件\ico图标\12 Trash Full.ico" />
+    <Content Include="图标文件\ico图标\12.ico" />
+    <Content Include="图标文件\ico图标\13 Firefox.ico" />
+    <Content Include="图标文件\ico图标\13.ico" />
+    <Content Include="图标文件\ico图标\14 Photoshop.ico" />
+    <Content Include="图标文件\ico图标\15 ICQ.ico" />
+    <Content Include="图标文件\ico图标\15.ico" />
+    <Content Include="图标文件\ico图标\16 Steam.ico" />
+    <Content Include="图标文件\ico图标\16.ico" />
+    <Content Include="图标文件\ico图标\17 Download Program.ico" />
+    <Content Include="图标文件\ico图标\17.ico" />
+    <Content Include="图标文件\ico图标\18 Avast!.ico" />
+    <Content Include="图标文件\ico图标\18.ico" />
+    <Content Include="图标文件\ico图标\19 Darkfix.ico" />
+    <Content Include="图标文件\ico图标\19.ico" />
+    <Content Include="图标文件\ico图标\2.ico" />
+    <Content Include="图标文件\ico图标\20 Help And Support.ico" />
+    <Content Include="图标文件\ico图标\20.ico" />
+    <Content Include="图标文件\ico图标\21 Default.ico" />
+    <Content Include="图标文件\ico图标\21.ico" />
+    <Content Include="图标文件\ico图标\22 Text Document.ico" />
+    <Content Include="图标文件\ico图标\23 JetAudio.ico" />
+    <Content Include="图标文件\ico图标\23.ico" />
+    <Content Include="图标文件\ico图标\24 Custom.ico" />
+    <Content Include="图标文件\ico图标\24.ico" />
+    <Content Include="图标文件\ico图标\25 Run.ico" />
+    <Content Include="图标文件\ico图标\25.ico" />
+    <Content Include="图标文件\ico图标\26.ico" />
+    <Content Include="图标文件\ico图标\27.ico" />
+    <Content Include="图标文件\ico图标\28.ico" />
+    <Content Include="图标文件\ico图标\29.ico" />
+    <Content Include="图标文件\ico图标\3.ico" />
+    <Content Include="图标文件\ico图标\31.ico" />
+    <Content Include="图标文件\ico图标\32.ico" />
+    <Content Include="图标文件\ico图标\33.ico" />
+    <Content Include="图标文件\ico图标\34.ico" />
+    <Content Include="图标文件\ico图标\35.ico" />
+    <Content Include="图标文件\ico图标\36.ico" />
+    <Content Include="图标文件\ico图标\37.ico" />
+    <Content Include="图标文件\ico图标\38.ico" />
+    <Content Include="图标文件\ico图标\39.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Config.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Favorites.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Menu.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Next.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Pause.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Play.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Previous.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Restart.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Screensaver.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Shutdown.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Standby.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Start.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Stop.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX1 - Switch User.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Config.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Favorites.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Menu.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Next.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Pause.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Play.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Previous.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Restart.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Screensaver.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Shutdown.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Standby.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Start.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Stop.ico" />
+    <Content Include="图标文件\ico图标\3dico\NX2 - Switch user.ico" />
+    <Content Include="图标文件\ico图标\4.ico" />
+    <Content Include="图标文件\ico图标\40.ico" />
+    <Content Include="图标文件\ico图标\41.ico" />
+    <Content Include="图标文件\ico图标\42.ico" />
+    <Content Include="图标文件\ico图标\43.ico" />
+    <Content Include="图标文件\ico图标\44.ico" />
+    <Content Include="图标文件\ico图标\45.ico" />
+    <Content Include="图标文件\ico图标\46.ico" />
+    <Content Include="图标文件\ico图标\47.ico" />
+    <Content Include="图标文件\ico图标\48.ico" />
+    <Content Include="图标文件\ico图标\49.ico" />
+    <Content Include="图标文件\ico图标\5.ico" />
+    <Content Include="图标文件\ico图标\50.ico" />
+    <Content Include="图标文件\ico图标\51.ico" />
+    <Content Include="图标文件\ico图标\52.ico" />
+    <Content Include="图标文件\ico图标\53.ico" />
+    <Content Include="图标文件\ico图标\54.ico" />
+    <Content Include="图标文件\ico图标\55.ico" />
+    <Content Include="图标文件\ico图标\56.ico" />
+    <Content Include="图标文件\ico图标\57.ico" />
+    <Content Include="图标文件\ico图标\58.ico" />
+    <Content Include="图标文件\ico图标\59.ico" />
+    <Content Include="图标文件\ico图标\6.ico" />
+    <Content Include="图标文件\ico图标\7.ico" />
+    <Content Include="图标文件\ico图标\8.ico" />
+    <Content Include="图标文件\ico图标\9.ico" />
+    <Content Include="图标文件\ico图标\CD Drive2.ico" />
+    <Content Include="图标文件\ico图标\CD2.ico" />
+    <Content Include="图标文件\ico图标\Clipboard.ico" />
+    <Content Include="图标文件\ico图标\Closed Folder green.ico" />
+    <Content Include="图标文件\ico图标\Control Panel.ico" />
+    <Content Include="图标文件\ico图标\correct.ico" />
+    <Content Include="图标文件\ico图标\cube3.ico" />
+    <Content Include="图标文件\ico图标\danger.ico" />
+    <Content Include="图标文件\ico图标\delete-folder.ico" />
+    <Content Include="图标文件\ico图标\excel x circle.ico" />
+    <Content Include="图标文件\ico图标\folders.ico" />
+    <Content Include="图标文件\ico图标\foward.ico" />
+    <Content Include="图标文件\ico图标\gears.ico" />
+    <Content Include="图标文件\ico图标\generic.ico" />
+    <Content Include="图标文件\ico图标\Generic2.ico" />
+    <Content Include="图标文件\ico图标\globo.ico" />
+    <Content Include="图标文件\ico图标\hd1.ico" />
+    <Content Include="图标文件\ico图标\house4.ico" />
+    <Content Include="图标文件\ico图标\ima.ico" />
+    <Content Include="图标文件\ico图标\key.ico" />
+    <Content Include="图标文件\ico图标\objectdock.ico" />
+    <Content Include="图标文件\ico图标\padlocke.ico" />
+    <Content Include="图标文件\ico图标\personal-folder2.ico" />
+    <Content Include="图标文件\ico图标\project1.ico" />
+    <Content Include="图标文件\ico图标\quest.ico" />
+    <Content Include="图标文件\ico图标\reg.ico" />
+    <Content Include="图标文件\ico图标\save.ico" />
+    <Content Include="图标文件\ico图标\scissors.ico" />
+    <Content Include="图标文件\ico图标\suport.ico" />
+    <Content Include="图标文件\ico图标\suportfile.ico" />
+    <Content Include="图标文件\ico图标\top-gear.ico" />
+    <Content Include="图标文件\ico图标\trash.ico" />
+    <Content Include="图标文件\ico图标\view.ico" />
+    <Content Include="图标文件\ico图标\zoom-less.ico" />
+    <Content Include="图标文件\ico图标\zoom-more.ico" />
+    <Content Include="图标文件\ico图标\作废.ico" />
+    <Content Include="图标文件\ico图标\保存.ico" />
+    <Content Include="图标文件\ico图标\修改.ico" />
+    <Content Include="图标文件\ico图标\修改1.ico" />
+    <Content Include="图标文件\ico图标\修改2.ico" />
+    <Content Include="图标文件\ico图标\修改3.ico" />
+    <Content Include="图标文件\ico图标\关闭.ico" />
+    <Content Include="图标文件\ico图标\关闭1.ico" />
+    <Content Include="图标文件\ico图标\删除.ico" />
+    <Content Include="图标文件\ico图标\删除1.ico" />
+    <Content Include="图标文件\ico图标\删除2.ico" />
+    <Content Include="图标文件\ico图标\刷新.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\43641.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\436410.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\436411.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\436412.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\436413.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\43642.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\43643.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\43644.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\43645.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\43646.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\43647.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\43648.ico" />
+    <Content Include="图标文件\ico图标\卡通%28ico%29\43649.ico" />
+    <Content Include="图标文件\ico图标\发送.ico" />
+    <Content Include="图标文件\ico图标\审批.ico" />
+    <Content Include="图标文件\ico图标\审核.ico" />
+    <Content Include="图标文件\ico图标\工具.ico" />
+    <Content Include="图标文件\ico图标\布局.ico" />
+    <Content Include="图标文件\ico图标\恢复.ico" />
+    <Content Include="图标文件\ico图标\打印.ico" />
+    <Content Include="图标文件\ico图标\打印1.ico" />
+    <Content Include="图标文件\ico图标\打回重新编.ico" />
+    <Content Include="图标文件\ico图标\授权.ico" />
+    <Content Include="图标文件\ico图标\新建.ico" />
+    <Content Include="图标文件\ico图标\查找2.ico" />
+    <Content Include="图标文件\ico图标\查询.ico" />
+    <Content Include="图标文件\ico图标\查询1.ico" />
+    <Content Include="图标文件\ico图标\查询2.ico" />
+    <Content Include="图标文件\ico图标\添加.ico" />
+    <Content Include="图标文件\ico图标\添加下级.ico" />
+    <Content Include="图标文件\ico图标\添加同级.ico" />
+    <Content Include="图标文件\ico图标\角色.ico" />
+    <Content Include="图标文件\ico图标\退出.ico" />
+    <Content Include="图标文件\png图标\3D Studio Max.png" />
+    <Content Include="图标文件\png图标\ACDSee Classic.png" />
+    <Content Include="图标文件\png图标\Ad Aware SE.png" />
+    <Content Include="图标文件\png图标\Adobe Go Live.ico" />
+    <Content Include="图标文件\png图标\Adobe Photoshop.ico" />
+    <Content Include="图标文件\png图标\Adobe Photoshop.png" />
+    <Content Include="图标文件\png图标\AIM Express.png" />
+    <Content Include="图标文件\png图标\alarm.png" />
+    <Content Include="图标文件\png图标\AOL Instant Messenger.png" />
+    <Content Include="图标文件\png图标\arrow.png" />
+    <Content Include="图标文件\png图标\Axialis Icon Workshop.png" />
+    <Content Include="图标文件\png图标\Bittorrent Plu1s.png" />
+    <Content Include="图标文件\png图标\Bittorrent Plus.png" />
+    <Content Include="图标文件\png图标\Bluetooth.png" />
+    <Content Include="图标文件\png图标\build.png" />
+    <Content Include="图标文件\png图标\clock.png" />
+    <Content Include="图标文件\png图标\Company_256.png" />
+    <Content Include="图标文件\png图标\Creative MediaSource.png" />
+    <Content Include="图标文件\png图标\Download Alternate.ico" />
+    <Content Include="图标文件\png图标\Download.Com.png" />
+    <Content Include="图标文件\png图标\Factory_256.png" />
+    <Content Include="图标文件\png图标\free_for_job.png" />
+    <Content Include="图标文件\png图标\green.png" />
+    <Content Include="图标文件\png图标\Help And Support.png" />
+    <Content Include="图标文件\png图标\Home_256.png" />
+    <Content Include="图标文件\png图标\Icon003.png" />
+    <Content Include="图标文件\png图标\Icon004.png" />
+    <Content Include="图标文件\png图标\Icon006.png" />
+    <Content Include="图标文件\png图标\Icon010.png" />
+    <Content Include="图标文件\png图标\Icon011.png" />
+    <Content Include="图标文件\png图标\Icon014.png" />
+    <Content Include="图标文件\png图标\Icon028.png" />
+    <Content Include="图标文件\png图标\Icon029.png" />
+    <Content Include="图标文件\png图标\Icon030.png" />
+    <Content Include="图标文件\png图标\Icon031.png" />
+    <Content Include="图标文件\png图标\Icon032.png" />
+    <Content Include="图标文件\png图标\Icon_AviIcon.png" />
+    <Content Include="图标文件\png图标\interact.png" />
+    <Content Include="图标文件\png图标\Internet Explorer.png" />
+    <Content Include="图标文件\png图标\Ishidourou %28garden lantern%29.png" />
+    <Content Include="图标文件\png图标\Kanban %28sign%29.png" />
+    <Content Include="图标文件\png图标\Kokedama %28moss ball%29.png" />
+    <Content Include="图标文件\png图标\Limewire.ico" />
+    <Content Include="图标文件\png图标\maintenance64.png" />
+    <Content Include="图标文件\png图标\MAME.png" />
+    <Content Include="图标文件\png图标\marshrute.png" />
+    <Content Include="图标文件\png图标\McAfee Scan.png" />
+    <Content Include="图标文件\png图标\Microsoft Office Access.ico" />
+    <Content Include="图标文件\png图标\Microsoft Office Excel.ico" />
+    <Content Include="图标文件\png图标\Microsoft Office Excel.png" />
+    <Content Include="图标文件\png图标\Microsoft Zune.ico" />
+    <Content Include="图标文件\png图标\MP3 Tag.ico" />
+    <Content Include="图标文件\png图标\MP3 Tag.png" />
+    <Content Include="图标文件\png图标\objectdock.png" />
+    <Content Include="图标文件\png图标\options64.png" />
+    <Content Include="图标文件\png图标\organization256.png" />
+    <Content Include="图标文件\png图标\pathing.png" />
+    <Content Include="图标文件\png图标\people.png" />
+    <Content Include="图标文件\png图标\plus.png" />
+    <Content Include="图标文件\png图标\Quicktime.png" />
+    <Content Include="图标文件\png图标\recycle_bin_blue.png" />
+    <Content Include="图标文件\png图标\recycle_bin_full.png" />
+    <Content Include="图标文件\png图标\recycle_bin_green.png" />
+    <Content Include="图标文件\png图标\report.png" />
+    <Content Include="图标文件\png图标\rss.png" />
+    <Content Include="图标文件\png图标\rules128.png" />
+    <Content Include="图标文件\png图标\School_256.png" />
+    <Content Include="图标文件\png图标\search.png" />
+    <Content Include="图标文件\png图标\semi_success256.png" />
+    <Content Include="图标文件\png图标\ship64.png" />
+    <Content Include="图标文件\png图标\Skype Alternate.ico" />
+    <Content Include="图标文件\png图标\Skype Classic.png" />
+    <Content Include="图标文件\png图标\Skype.png" />
+    <Content Include="图标文件\png图标\smashing.png" />
+    <Content Include="图标文件\png图标\Takezake %28sake虂 in a bamboo container%29.png" />
+    <Content Include="图标文件\png图标\tests128.png" />
+    <Content Include="图标文件\png图标\themes128.png" />
+    <Content Include="图标文件\png图标\twitter.png" />
+    <Content Include="图标文件\png图标\user.png" />
+    <Content Include="图标文件\png图标\vault.png" />
+    <Content Include="图标文件\png图标\VideoLAN.png" />
+    <Content Include="图标文件\png图标\Wacom Intuos 3.png" />
+    <Content Include="图标文件\png图标\Winamp.ico" />
+    <Content Include="图标文件\png图标\Winamp.png" />
+    <Content Include="图标文件\png图标\Windows Log Off.png" />
+    <Content Include="图标文件\png图标\Windows Messenger.png" />
+    <Content Include="图标文件\png图标\Windows Restart.ico" />
+    <Content Include="图标文件\png图标\world.png" />
+    <Content Include="图标文件\png图标\Yagura2 %28hot spring tower%29.png" />
+    <Content Include="图标文件\png图标\Yahoo Messenger Alternate.png" />
+    <Content Include="图标文件\png图标\Yahoo Messenger.png" />
+    <Content Include="图标文件\png图标\Yahoo Widgets.png" />
+    <Content Include="图标文件\png图标\zone.png" />
+    <Content Include="图标文件\png图标\地理信息0.png" />
+    <Content Include="图标文件\png图标\地理信息2 .png" />
+    <Content Include="图标文件\png图标\地理信息2.png" />
+    <Content Include="图标文件\png图标\地理信息3.png" />
+    <Content Include="图标文件\png图标\城市地图.png" />
+    <Content Include="图标文件\png图标\志日管理2.png" />
+    <Content Include="图标文件\png图标\投资估算0.png" />
+    <Content Include="图标文件\png图标\投资估算1.png" />
+    <Content Include="图标文件\png图标\投资估算2.png" />
+    <Content Include="图标文件\png图标\投资估算3.png" />
+    <Content Include="图标文件\png图标\投资估算4.png" />
+    <Content Include="图标文件\png图标\报表信息.png" />
+    <Content Include="图标文件\png图标\日志管理0.png" />
+    <Content Include="图标文件\png图标\日志管理1.png" />
+    <Content Include="图标文件\png图标\权限管理0.png" />
+    <Content Include="图标文件\png图标\电力平衡0.png" />
+    <Content Include="图标文件\png图标\电网优化.png" />
+    <Content Include="图标文件\png图标\规划报告.png" />
+    <Content Include="图标文件\png图标\项目规划.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

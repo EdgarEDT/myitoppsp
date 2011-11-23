@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+ <sqlMap namespace="PSP_EachList" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  - <alias>
+    <typeAlias alias="PSP_EachList" assembly="Itop.Domain.Stutistic.dll" type="Itop.Domain.Stutistic.PSP_EachList" />
+  </alias>
+  - <resultMaps>
+    - <resultMap id="PSP_EachListResult" class="PSP_EachList">
+      <result property="ID" column="ID" />
+      <result property="ListName" column="ListName" />
+      <result property="Remark" column="Remark" />
+      <result property="CreateDate" column="CreateDate" />
+      <result property="ParentID" column="ParentID" />
+      <result property="Types" column="Types" />
+    </resultMap>
+  </resultMaps>
+  - <statements>
+    <insert id="InsertPSP_EachList" parameterClass="PSP_EachList">INSERT INTO PSP_EachList ( "ListName", "Remark", "CreateDate", "ParentID", "Types" ) VALUES ( #ListName#, #Remark#, #CreateDate#, #ParentID#, #Types# )</insert>
+    <delete id="DeletePSP_EachList" parameterClass="PSP_EachList">DELETE FROM PSP_EachList WHERE ID = #ID#</delete>
+    <update id="UpdatePSP_EachList" parameterClass="PSP_EachList">UPDATE PSP_EachList SET "ListName" = #ListName#, "Remark" = #Remark#, "CreateDate" = #CreateDate#, "ParentID" = #ParentID#, "Types" = #Types# WHERE ID = #ID#</update>
+    <select id="SelectPSP_EachListList" resultMap="PSP_EachListResult" parameterClass="PSP_EachList">SELECT "ID", "ListName", "Remark", "CreateDate", "ParentID", "Types" FROM PSP_EachList</select>
+    <select id="SelectPSP_EachListByKey" resultMap="PSP_EachListResult" parameterClass="PSP_EachList">SELECT "ID", "ListName", "Remark", "CreateDate", "ParentID", "Types" FROM PSP_EachList WHERE ID = #ID#</select>
+    <select id="SelectPSP_EachListByTypes" resultMap="PSP_EachListResult" parameterClass="PSP_EachList">SELECT "ID", "ListName", "Remark", "CreateDate", "ParentID", "Types" FROM PSP_EachList WHERE Types = #Types# order by CreateDate</select>
+  </statements>
+</sqlMap>

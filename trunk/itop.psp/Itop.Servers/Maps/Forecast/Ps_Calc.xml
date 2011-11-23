@@ -1,0 +1,385 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_Calc' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Ps_Calc' assembly='Itop.Domain.Forecast.dll' type='Itop.Domain.Forecast.Ps_Calc' />
+</alias>
+	<resultMaps>
+		<resultMap id='Ps_CalcResult' class='Ps_Calc'>
+			<result property='ID' column='ID' />
+			<result property='CalcID' column='CalcID' />
+			<result property='Year' column='Year' />
+			<result property='Forecast' column='Forecast' />
+			<result property='ForecastID' column='ForecastID' />
+			<result property='Value1' column='Value1' />
+			<result property='Value2' column='Value2' />
+			<result property='Value3' column='Value3' />
+			<result property='Value4' column='Value4' />
+			<result property='Value5' column='Value5' />
+			<result property='Value6' column='Value6' />
+			<result property='Value7' column='Value7' />
+			<result property='Value8' column='Value8' />
+			<result property='Value9' column='Value9' />
+			<result property='Value10' column='Value10' />
+			<result property='Value11' column='Value11' />
+			<result property='Value12' column='Value12' />
+			<result property='Value13' column='Value13' />
+			<result property='Value14' column='Value14' />
+			<result property='Value15' column='Value15' />
+			<result property='Value16' column='Value16' />
+			<result property='Value17' column='Value17' />
+			<result property='Value18' column='Value18' />
+			<result property='Value19' column='Value19' />
+			<result property='Value20' column='Value20' />
+			<result property='Col1' column='Col1' />
+			<result property='Col2' column='Col2' />
+			<result property='Col3' column='Col3' />
+			<result property='Col4' column='Col4' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPs_Calc' parameterClass='Ps_Calc'>
+		INSERT INTO Ps_Calc		(
+			"ID",
+			"CalcID",
+			"Year",
+			"Forecast",
+			"ForecastID",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Value11",
+			"Value12",
+			"Value13",
+			"Value14",
+			"Value15",
+			"Value16",
+			"Value17",
+			"Value18",
+			"Value19",
+			"Value20",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4"
+		)
+		VALUES
+		(
+			#ID#,
+			#CalcID#,
+			#Year#,
+			#Forecast#,
+			#ForecastID#,
+			#Value1#,
+			#Value2#,
+			#Value3#,
+			#Value4#,
+			#Value5#,
+			#Value6#,
+			#Value7#,
+			#Value8#,
+			#Value9#,
+			#Value10#,
+			#Value11#,
+			#Value12#,
+			#Value13#,
+			#Value14#,
+			#Value15#,
+			#Value16#,
+			#Value17#,
+			#Value18#,
+			#Value19#,
+			#Value20#,
+			#Col1#,
+			#Col2#,
+			#Col3#,
+			#Col4#
+		)
+	</insert>
+	<delete id='DeletePs_Calc' parameterClass='Ps_Calc'>
+		DELETE FROM Ps_Calc
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePs_Calc' parameterClass='Ps_Calc'>
+		UPDATE Ps_Calc
+		SET
+			"CalcID" = #CalcID#,
+			"Year" = #Year#,
+			"Forecast" = #Forecast#,
+			"ForecastID" = #ForecastID#,
+			"Value1" = #Value1#,
+			"Value2" = #Value2#,
+			"Value3" = #Value3#,
+			"Value4" = #Value4#,
+			"Value5" = #Value5#,
+			"Value6" = #Value6#,
+			"Value7" = #Value7#,
+			"Value8" = #Value8#,
+			"Value9" = #Value9#,
+			"Value10" = #Value10#,
+			"Value11" = #Value11#,
+			"Value12" = #Value12#,
+			"Value13" = #Value13#,
+			"Value14" = #Value14#,
+			"Value15" = #Value15#,
+			"Value16" = #Value16#,
+			"Value17" = #Value17#,
+			"Value18" = #Value18#,
+			"Value19" = #Value19#,
+			"Value20" = #Value20#,
+			"Col1" = #Col1#,
+			"Col2" = #Col2#,
+			"Col3" = #Col3#,
+			"Col4" = #Col4#
+		WHERE
+			ID = #ID#
+	</update>
+  <!--复合预测中设置参数用的-->
+  <update id='UpdatePs_CalcWhereID' parameterClass='Ps_Calc'>
+    UPDATE Ps_Calc
+    SET
+    <!--"CalcID" = #CalcID#,-->
+    "Value1" = #Value1#,
+    "Value2" = #Value2#,
+    "Value3" = #Value3#,
+    "Value4" = #Value4#,
+    "Value5" = #Value5#,
+    "Value6" = #Value6#,
+    "Value7" = #Value7#,
+    "Value8" = #Value8#,
+    "Value9" = #Value9#,
+    "Value10" = #Value10#,
+    "Value11" = #Value11#,
+    "Value12" = #Value12#,
+    "Value13" = #Value13#,
+    "Value14" = #Value14#,
+    "Value15" = #Value15#,
+    "Value16" = #Value16#,
+    "Value17" = #Value17#,
+    "Value18" = #Value18#,
+    "Value19" = #Value19#,
+    "Value20" = #Value20#,
+    "Col1" = #Col1#,
+    "Col2" = #Col2#,
+    "Col3" = #Col3#,
+    "Col4" = #Col4#
+    WHERE
+    ID = #ID#
+  </update>
+  <select id='SelectPs_CalcList' resultMap='Ps_CalcResult' parameterClass='Ps_Calc'>
+		SELECT
+			"ID",
+			"CalcID",
+			"Year",
+			"Forecast",
+			"ForecastID",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Value11",
+			"Value12",
+			"Value13",
+			"Value14",
+			"Value15",
+			"Value16",
+			"Value17",
+			"Value18",
+			"Value19",
+			"Value20",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4"
+		FROM Ps_Calc
+	</select>
+	<select id='SelectPs_CalcByKey' resultMap='Ps_CalcResult' parameterClass='Ps_Calc'>
+		SELECT
+			"ID",
+			"CalcID",
+			"Year",
+			"Forecast",
+			"ForecastID",
+			"Value1",
+			"Value2",
+			"Value3",
+			"Value4",
+			"Value5",
+			"Value6",
+			"Value7",
+			"Value8",
+			"Value9",
+			"Value10",
+			"Value11",
+			"Value12",
+			"Value13",
+			"Value14",
+			"Value15",
+			"Value16",
+			"Value17",
+			"Value18",
+			"Value19",
+			"Value20",
+			"Col1",
+			"Col2",
+			"Col3",
+			"Col4"
+		FROM Ps_Calc
+		WHERE
+			ID = #ID#
+	</select>
+  <select id='SelectPs_CalcByForecast' resultMap='Ps_CalcResult' parameterClass='Ps_Calc'>
+    SELECT
+    "ID",
+    "CalcID",
+    "Year",
+    "Forecast",
+    "ForecastID",
+    "Value1",
+    "Value2",
+    "Value3",
+    "Value4",
+    "Value5",
+    "Value6",
+    "Value7",
+    "Value8",
+    "Value9",
+    "Value10",
+    "Value11",
+    "Value12",
+    "Value13",
+    "Value14",
+    "Value15",
+    "Value16",
+    "Value17",
+    "Value18",
+    "Value19",
+    "Value20",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4"
+    FROM Ps_Calc
+    WHERE
+    Forecast = #Forecast# and ForecastID = #ForecastID#
+  </select>
+  <select id='SelectPs_CalcByWhere' resultMap='Ps_CalcResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "CalcID",
+    "Year",
+    "Forecast",
+    "ForecastID",
+    "Value1",
+    "Value2",
+    "Value3",
+    "Value4",
+    "Value5",
+    "Value6",
+    "Value7",
+    "Value8",
+    "Value9",
+    "Value10",
+    "Value11",
+    "Value12",
+    "Value13",
+    "Value14",
+    "Value15",
+    "Value16",
+    "Value17",
+    "Value18",
+    "Value19",
+    "Value20",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4"
+    FROM Ps_Calc
+    WHERE
+    $value$
+  </select>
+  <select id='SelectPs_CalcByForecastCalcID' resultMap='Ps_CalcResult' parameterClass='Ps_Calc'>
+    SELECT
+    "ID",
+    "CalcID",
+    "Year",
+    "Forecast",
+    "ForecastID",
+    "Value1",
+    "Value2",
+    "Value3",
+    "Value4",
+    "Value5",
+    "Value6",
+    "Value7",
+    "Value8",
+    "Value9",
+    "Value10",
+    "Value11",
+    "Value12",
+    "Value13",
+    "Value14",
+    "Value15",
+    "Value16",
+    "Value17",
+    "Value18",
+    "Value19",
+    "Value20",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4"
+    FROM Ps_Calc
+    WHERE
+    Forecast = #Forecast# and ForecastID = #ForecastID# and  CalcID = #CalcID#
+  </select>
+  <select id='SelectPs_CalcOfCol4' resultMap='Ps_CalcResult' parameterClass='Ps_Calc'>
+    SELECT
+    "ID",
+    "CalcID",
+    "Year",
+    "Forecast",
+    "ForecastID",
+    "Value1",
+    "Value2",
+    "Value3",
+    "Value4",
+    "Value5",
+    "Value6",
+    "Value7",
+    "Value8",
+    "Value9",
+    "Value10",
+    "Value11",
+    "Value12",
+    "Value13",
+    "Value14",
+    "Value15",
+    "Value16",
+    "Value17",
+    "Value18",
+    "Value19",
+    "Value20",
+    "Col1",
+    "Col2",
+    "Col3",
+    "Col4"
+    FROM Ps_Calc
+    WHERE
+    Forecast = #Forecast# and ForecastID = #ForecastID# and Col4 !=''
+  </select>
+</statements>
+</sqlMap>

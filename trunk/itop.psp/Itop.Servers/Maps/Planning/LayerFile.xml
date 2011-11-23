@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='LayerFile' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='LayerFile' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.LayerFile' />
+  </alias>
+  <resultMaps>
+    <resultMap id='LayerFileResult' class='LayerFile'>
+      <result property='SUID' column='SUID' />
+      <result property='LayerID' column='LayerID' />
+      <result property='LayerFileName' column='LayerFileName' />
+      <result property='SvgDataUid' column='SvgDataUid' />
+      <result property='LayerOuterXml' column='LayerOuterXml' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertLayerFile' parameterClass='LayerFile'>
+      INSERT INTO LayerFile		(
+      "SUID",
+      "LayerID",
+      "LayerFileName",
+      "SvgDataUid",
+      "LayerOuterXml"
+      )
+      VALUES
+      (
+      #SUID#,
+      #LayerID#,
+      #LayerFileName#,
+      #SvgDataUid#,
+      #LayerOuterXml#
+      )
+    </insert>
+    <delete id='DeleteLayerFile' parameterClass='LayerFile'>
+      DELETE FROM LayerFile
+      WHERE
+      SUID = #SUID#
+    </delete>
+    <update id='UpdateLayerFile' parameterClass='LayerFile'>
+      UPDATE LayerFile
+      SET
+      "LayerID" = #LayerID#,
+      "LayerFileName" = #LayerFileName#,
+      "SvgDataUid" = #SvgDataUid#,
+      "LayerOuterXml" = #LayerOuterXml#
+      WHERE
+      SUID = #SUID#
+    </update>
+    <select id='SelectLayerFileList' resultMap='LayerFileResult' parameterClass='LayerFile'>
+      SELECT
+      "SUID",
+      "LayerID",
+      "LayerFileName",
+      "SvgDataUid",
+      "LayerOuterXml"
+      FROM LayerFile
+    </select>
+    <select id='SelectLayerFileByKey' resultMap='LayerFileResult' parameterClass='LayerFile'>
+      SELECT
+      "SUID",
+      "LayerID",
+      "LayerFileName",
+      "SvgDataUid",
+      "LayerOuterXml"
+      FROM LayerFile
+      WHERE
+      SUID = #SUID#
+    </select>
+    <select id='SelectLayerFileByNameAndSvgDataUid' resultMap='LayerFileResult' parameterClass='LayerFile'>
+      SELECT
+      "SUID",
+      "LayerID",
+      "LayerFileName",
+      "SvgDataUid",
+      "LayerOuterXml"
+      FROM LayerFile
+      WHERE
+      LayerFileName = #LayerFileName#
+      AND SvgDataUid = #SvgDataUid#
+    </select>
+    <select id='SelectLayerFileBySvgDataUid' resultMap='LayerFileResult' parameterClass='LayerFile'>
+      SELECT
+      "SUID",
+      "LayerID",
+      "LayerFileName",
+      "SvgDataUid",
+      "LayerOuterXml"
+      FROM LayerFile
+      WHERE
+      SvgDataUid = #SvgDataUid#
+    </select>
+  </statements>
+</sqlMap>
+    

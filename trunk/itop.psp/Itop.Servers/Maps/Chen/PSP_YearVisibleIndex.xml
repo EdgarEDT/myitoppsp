@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PSP_YearVisibleIndex' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='PSP_YearVisibleIndex' assembly='Itop.Domain.HistoryValue.dll' type='Itop.Domain.HistoryValue.PSP_YearVisibleIndex' />
+  </alias>
+  <resultMaps>
+    <resultMap id='PSP_YearVisibleIndexResult' class='PSP_YearVisibleIndex'>
+      <result property='ID' column='ID' />
+      <result property='VisibleIndex' column='VisibleIndex' />
+      <result property='Year' column='Year' />
+      <result property='ModuleFlag' column='ModuleFlag' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPSP_YearVisibleIndex' parameterClass='PSP_YearVisibleIndex'>
+      INSERT INTO PSP_YearVisibleIndex		(
+      "VisibleIndex",
+      "Year",
+      "ModuleFlag"
+      )
+      VALUES
+      (
+      #VisibleIndex#,
+      #Year#,
+      #ModuleFlag#
+      )
+    </insert>
+    <delete id='DeletePSP_YearVisibleIndex' parameterClass='PSP_YearVisibleIndex'>
+      DELETE FROM PSP_YearVisibleIndex
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdatePSP_YearVisibleIndex' parameterClass='PSP_YearVisibleIndex'>
+      UPDATE PSP_YearVisibleIndex
+      SET
+      "VisibleIndex" = #VisibleIndex#,
+      "Year" = #Year#,
+      "ModuleFlag" = #ModuleFlag#
+      WHERE
+      ID = #ID#
+    </update>
+    <update id='DeletePSP_YearVisibleIndexByModuleFlagAndYear' parameterClass='PSP_YearVisibleIndex'>
+      DELETE FROM PSP_YearVisibleIndex
+      WHERE
+      ID =( SELECT
+      "ID"
+      FROM PSP_YearVisibleIndex
+      WHERE
+      ModuleFlag = #ModuleFlag# and Year= #Year#)
+    </update>
+    <update id='UpdatePSP_YearVisibleIndexbyExists' parameterClass='PSP_YearVisibleIndex'>
+      If Exists(Select ID from PSP_YearVisibleIndex Where Year=#Year# And ModuleFlag=#ModuleFlag#)
+      UPDATE PSP_YearVisibleIndex
+      SET
+      "VisibleIndex" = #VisibleIndex#
+      WHERE
+      Year=#Year# And ModuleFlag=#ModuleFlag#
+      Else
+      INSERT INTO PSP_YearVisibleIndex		(
+      "VisibleIndex",
+      "Year",
+      "ModuleFlag"
+      )
+      VALUES
+      (
+      #VisibleIndex#,
+      #Year#,
+      #ModuleFlag#
+      )
+    </update>
+    <update id='InsertPSP_YearVisibleByModuleFlagAndYear' parameterClass='PSP_YearVisibleIndex'>
+      INSERT INTO PSP_YearVisibleIndex		(
+      "VisibleIndex",
+      "Year",
+      "ModuleFlag"
+      )
+      VALUES
+      (
+      #VisibleIndex#,
+      #Year#,
+      #ModuleFlag#
+      )
+    </update>
+    <select id='SelectPSP_YearVisibleIndexList' resultMap='PSP_YearVisibleIndexResult' parameterClass='PSP_YearVisibleIndex'>
+      SELECT
+      "ID",
+      "VisibleIndex",
+      "Year",
+      "ModuleFlag"
+      FROM PSP_YearVisibleIndex
+    </select>
+    <select id='SelectPSP_YearVisibleIndexByKey' resultMap='PSP_YearVisibleIndexResult' parameterClass='PSP_YearVisibleIndex'>
+      SELECT
+      "ID",
+      "VisibleIndex",
+      "Year",
+      "ModuleFlag"
+      FROM PSP_YearVisibleIndex
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPSP_YearVisibleIndexByModuleFlagAndYear' resultMap='PSP_YearVisibleIndexResult' parameterClass='PSP_YearVisibleIndex'>
+      SELECT
+      "ID",
+      "VisibleIndex",
+      "Year",
+      "ModuleFlag"
+      FROM PSP_YearVisibleIndex
+      WHERE
+      ModuleFlag = #ModuleFlag# and Year= #Year#
+    </select>
+
+    <select id='SelectPSP_YearVisibleIndexFindMaxVisibleIndex' resultMap='PSP_YearVisibleIndexResult' parameterClass='PSP_YearVisibleIndex'>
+      SELECT top 1
+      "ID",
+      "VisibleIndex",
+      "Year",
+      "ModuleFlag"
+      FROM PSP_YearVisibleIndex
+      WHERE
+      ModuleFlag = #ModuleFlag#
+      order by VisibleIndex desc
+    </select>
+    <select id='SelectPSP_YearVisibleYearListByModuleFlagAndVisibleIndex' resultMap='PSP_YearVisibleIndexResult' parameterClass='PSP_YearVisibleIndex'>
+      SELECT
+      "ID",
+      "VisibleIndex",
+      "Year",
+      "ModuleFlag"
+      FROM PSP_YearVisibleIndex
+      WHERE
+      ModuleFlag = #ModuleFlag# and  VisibleIndex> #VisibleIndex#
+    </select>
+    <select id='SelectPSP_YearVisibleIndexByModuleFlagSort' resultMap='PSP_YearVisibleIndexResult' parameterClass='PSP_YearVisibleIndex'>
+      SELECT
+      "ID",
+      "VisibleIndex",
+      "Year",
+      "ModuleFlag"
+      FROM PSP_YearVisibleIndex
+      WHERE
+      ModuleFlag = #ModuleFlag#  And convert(int,Year)>=#Year#
+      order by VisibleIndex asc
+    </select>
+  </statements>
+</sqlMap>

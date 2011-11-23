@@ -1,0 +1,548 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='BurdenLine' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='BurdenLine' assembly='Itop.Domain.Stutistic.dll' type='Itop.Domain.Stutistic.BurdenLine' />
+</alias>
+	<resultMaps>
+		<resultMap id='BurdenLineResult' class='BurdenLine'>
+			<result property='UID' column='UID' />
+			<result property='Season' column='Season' />
+			<result property='BurdenDate' column='BurdenDate' />
+			<result property='Hour1' column='Hour1' />
+			<result property='Hour2' column='Hour2' />
+			<result property='Hour3' column='Hour3' />
+			<result property='Hour4' column='Hour4' />
+			<result property='Hour5' column='Hour5' />
+			<result property='Hour6' column='Hour6' />
+			<result property='Hour7' column='Hour7' />
+			<result property='Hour8' column='Hour8' />
+			<result property='Hour9' column='Hour9' />
+			<result property='Hour10' column='Hour10' />
+			<result property='Hour11' column='Hour11' />
+			<result property='Hour12' column='Hour12' />
+			<result property='Hour13' column='Hour13' />
+			<result property='Hour14' column='Hour14' />
+			<result property='Hour15' column='Hour15' />
+			<result property='Hour16' column='Hour16' />
+			<result property='Hour17' column='Hour17' />
+			<result property='Hour18' column='Hour18' />
+			<result property='Hour19' column='Hour19' />
+			<result property='Hour20' column='Hour20' />
+			<result property='Hour21' column='Hour21' />
+			<result property='Hour22' column='Hour22' />
+			<result property='Hour23' column='Hour23' />
+			<result property='Hour24' column='Hour24' />
+			<result property='IsType' column='IsType' />
+      <result property='IsMaxDate' column='IsMaxDate' />
+			<result property='DayAverage' column='DayAverage' />
+			<result property='MinAverage' column='MinAverage' />
+      <result property='AreaID' column='AreaID' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertBurdenLine' parameterClass='BurdenLine'>
+    INSERT INTO PSP_BurdenLine		(
+    "UID",
+    "Season",
+    "BurdenDate",
+    "Hour1",
+    "Hour2",
+    "Hour3",
+    "Hour4",
+    "Hour5",
+    "Hour6",
+    "Hour7",
+    "Hour8",
+    "Hour9",
+    "Hour10",
+    "Hour11",
+    "Hour12",
+    "Hour13",
+    "Hour14",
+    "Hour15",
+    "Hour16",
+    "Hour17",
+    "Hour18",
+    "Hour19",
+    "Hour20",
+    "Hour21",
+    "Hour22",
+    "Hour23",
+    "Hour24",
+    "IsType","IsMaxDate",
+    "DayAverage",
+    "MinAverage",
+    "AreaID"
+    )
+    VALUES
+    (
+    #UID#,
+    #Season#,
+    #BurdenDate#,
+    #Hour1#,
+    #Hour2#,
+    #Hour3#,
+    #Hour4#,
+    #Hour5#,
+    #Hour6#,
+    #Hour7#,
+    #Hour8#,
+    #Hour9#,
+    #Hour10#,
+    #Hour11#,
+    #Hour12#,
+    #Hour13#,
+    #Hour14#,
+    #Hour15#,
+    #Hour16#,
+    #Hour17#,
+    #Hour18#,
+    #Hour19#,
+    #Hour20#,
+    #Hour21#,
+    #Hour22#,
+    #Hour23#,
+    #Hour24#,
+    #IsType#,#IsMaxDate#,
+    #DayAverage#,
+    #MinAverage#,
+    #AreaID#
+    )
+  </insert>
+	<delete id='DeleteBurdenLine' parameterClass='BurdenLine'>
+		DELETE FROM PSP_BurdenLine
+		WHERE
+			UID = #UID#
+	</delete>
+	<update id='UpdateBurdenLine' parameterClass='BurdenLine'>
+    UPDATE PSP_BurdenLine
+    SET
+    "Season" = #Season#,
+    "BurdenDate" = #BurdenDate#,
+    "Hour1" = #Hour1#,
+    "Hour2" = #Hour2#,
+    "Hour3" = #Hour3#,
+    "Hour4" = #Hour4#,
+    "Hour5" = #Hour5#,
+    "Hour6" = #Hour6#,
+    "Hour7" = #Hour7#,
+    "Hour8" = #Hour8#,
+    "Hour9" = #Hour9#,
+    "Hour10" = #Hour10#,
+    "Hour11" = #Hour11#,
+    "Hour12" = #Hour12#,
+    "Hour13" = #Hour13#,
+    "Hour14" = #Hour14#,
+    "Hour15" = #Hour15#,
+    "Hour16" = #Hour16#,
+    "Hour17" = #Hour17#,
+    "Hour18" = #Hour18#,
+    "Hour19" = #Hour19#,
+    "Hour20" = #Hour20#,
+    "Hour21" = #Hour21#,
+    "Hour22" = #Hour22#,
+    "Hour23" = #Hour23#,
+    "Hour24" = #Hour24#,
+    "IsType" = #IsType#,
+    "IsMaxDate"=#IsMaxDate#,
+    "DayAverage" = #DayAverage#,
+    "MinAverage" = #MinAverage#,
+    "AreaID" = #AreaID#
+    WHERE
+    UID = #UID#
+  </update>
+  <update id='UpdateBurdenLineByBurdenDate' parameterClass='BurdenLine'>
+    If Exists(Select UID from PSP_BurdenLine WHERE Datename(year,BurdenDate)+'-'+Datename (month,BurdenDate)+'-'+Datename(day,BurdenDate) = #BurdenDate#)
+    INSERT INTO PSP_BurdenLine(
+    "UID",
+    "Season",
+    "BurdenDate",
+    "Hour1",
+    "Hour2",
+    "Hour3",
+    "Hour4",
+    "Hour5",
+    "Hour6",
+    "Hour7",
+    "Hour8",
+    "Hour9",
+    "Hour10",
+    "Hour11",
+    "Hour12",
+    "Hour13",
+    "Hour14",
+    "Hour15",
+    "Hour16",
+    "Hour17",
+    "Hour18",
+    "Hour19",
+    "Hour20",
+    "Hour21",
+    "Hour22",
+    "Hour23",
+    "Hour24",
+    "IsType","IsMaxDate",
+    "DayAverage",
+    "MinAverage",
+    "AreaID"
+    )
+    VALUES
+    (
+    #UID#,
+    #Season#,
+    #BurdenDate#,
+    #Hour1#,
+    #Hour2#,
+    #Hour3#,
+    #Hour4#,
+    #Hour5#,
+    #Hour6#,
+    #Hour7#,
+    #Hour8#,
+    #Hour9#,
+    #Hour10#,
+    #Hour11#,
+    #Hour12#,
+    #Hour13#,
+    #Hour14#,
+    #Hour15#,
+    #Hour16#,
+    #Hour17#,
+    #Hour18#,
+    #Hour19#,
+    #Hour20#,
+    #Hour21#,
+    #Hour22#,
+    #Hour23#,
+    #Hour24#,
+    #IsType#,#IsMaxDate#,
+    #DayAverage#,
+    #MinAverage#,
+    #AreaID#
+    )
+    Else
+    UPDATE PSP_BurdenLine
+    SET
+    "Season" = #Season#,
+    "BurdenDate" = #BurdenDate#,
+    "Hour1" = #Hour1#,
+    "Hour2" = #Hour2#,
+    "Hour3" = #Hour3#,
+    "Hour4" = #Hour4#,
+    "Hour5" = #Hour5#,
+    "Hour6" = #Hour6#,
+    "Hour7" = #Hour7#,
+    "Hour8" = #Hour8#,
+    "Hour9" = #Hour9#,
+    "Hour10" = #Hour10#,
+    "Hour11" = #Hour11#,
+    "Hour12" = #Hour12#,
+    "Hour13" = #Hour13#,
+    "Hour14" = #Hour14#,
+    "Hour15" = #Hour15#,
+    "Hour16" = #Hour16#,
+    "Hour17" = #Hour17#,
+    "Hour18" = #Hour18#,
+    "Hour19" = #Hour19#,
+    "Hour20" = #Hour20#,
+    "Hour21" = #Hour21#,
+    "Hour22" = #Hour22#,
+    "Hour23" = #Hour23#,
+    "Hour24" = #Hour24#,
+    "IsType" = #IsType#,
+    "IsMaxDate"=#IsMaxDate#,
+    "DayAverage" = #DayAverage#,
+    "MinAverage" = #MinAverage#,
+    "AreaID" = #AreaID#
+    WHERE
+    UID IN (Select UID from PSP_BurdenLine WHERE Datename(year,BurdenDate)+'-'+Datename (month,BurdenDate)+'-'+Datename(day,BurdenDate) = #BurdenDate#)
+
+  </update>
+	<select id='SelectBurdenLineList' resultMap='BurdenLineResult' parameterClass='BurdenLine'>
+    SELECT
+    "UID",
+    "Season",
+    "BurdenDate",
+    "Hour1",
+    "Hour2",
+    "Hour3",
+    "Hour4",
+    "Hour5",
+    "Hour6",
+    "Hour7",
+    "Hour8",
+    "Hour9",
+    "Hour10",
+    "Hour11",
+    "Hour12",
+    "Hour13",
+    "Hour14",
+    "Hour15",
+    "Hour16",
+    "Hour17",
+    "Hour18",
+    "Hour19",
+    "Hour20",
+    "Hour21",
+    "Hour22",
+    "Hour23",
+    "Hour24",
+    "IsType","IsMaxDate",
+    "DayAverage",
+    "MinAverage",
+    "AreaID"
+    FROM PSP_BurdenLine order by BurdenDate
+  </select>
+	<select id='SelectBurdenLineByWhere2' resultMap='BurdenLineResult' parameterClass='string'>
+    SELECT a.UID, a.Season, a.BurdenDate, a.Hour1, a.Hour2, a.Hour3, a.Hour4, a.Hour5,
+    a.Hour6, a.Hour7, a.Hour8, a.Hour9, a.Hour10, a.Hour11, a.Hour12, a.Hour13,
+    a.Hour14, a.Hour15, a.Hour16, a.Hour17, a.Hour18, a.Hour19, a.Hour20, a.Hour21,
+    a.Hour22, a.Hour23, a.Hour24, a.IsType, a.IsMaxDate, a.DayAverage, a.MinAverage,
+    b.Title AS AreaID
+    FROM (select * from PSP_BurdenLine  where  $UID$ )as a  LEFT OUTER JOIN
+    PS_Table_AreaWH b ON a.AreaID = b.ID
+
+  </select>
+  <select id='SelectBurdenLineByWhere' resultMap='BurdenLineResult' parameterClass='BurdenLine'>
+    SELECT
+    "UID",
+    "Season",
+    "BurdenDate",
+    "Hour1",
+    "Hour2",
+    "Hour3",
+    "Hour4",
+    "Hour5",
+    "Hour6",
+    "Hour7",
+    "Hour8",
+    "Hour9",
+    "Hour10",
+    "Hour11",
+    "Hour12",
+    "Hour13",
+    "Hour14",
+    "Hour15",
+    "Hour16",
+    "Hour17",
+    "Hour18",
+    "Hour19",
+    "Hour20",
+    "Hour21",
+    "Hour22",
+    "Hour23",
+    "Hour24",
+    "IsType","IsMaxDate",
+    "DayAverage",
+    "MinAverage",
+    "AreaID"
+    FROM PSP_BurdenLine
+    WHERE
+    $UID$
+  </select>
+  <select id='SelectBurdenLineByKey' resultMap='BurdenLineResult' parameterClass='BurdenLine'>
+    SELECT
+    "UID",
+    "Season",
+    "BurdenDate",
+    "Hour1",
+    "Hour2",
+    "Hour3",
+    "Hour4",
+    "Hour5",
+    "Hour6",
+    "Hour7",
+    "Hour8",
+    "Hour9",
+    "Hour10",
+    "Hour11",
+    "Hour12",
+    "Hour13",
+    "Hour14",
+    "Hour15",
+    "Hour16",
+    "Hour17",
+    "Hour18",
+    "Hour19",
+    "Hour20",
+    "Hour21",
+    "Hour22",
+    "Hour23",
+    "Hour24",
+    "IsType","IsMaxDate",
+    "DayAverage",
+    "MinAverage",
+    "AreaID"
+    FROM PSP_BurdenLine
+    WHERE
+    UID = #UID#
+  </select>
+
+  <select id='SelectBurdenLineByBurdenDate' resultMap='BurdenLineResult' parameterClass='BurdenLine'>
+    SELECT
+    "UID",
+    "Season",
+    "BurdenDate",
+    "Hour1",
+    "Hour2",
+    "Hour3",
+    "Hour4",
+    "Hour5",
+    "Hour6",
+    "Hour7",
+    "Hour8",
+    "Hour9",
+    "Hour10",
+    "Hour11",
+    "Hour12",
+    "Hour13",
+    "Hour14",
+    "Hour15",
+    "Hour16",
+    "Hour17",
+    "Hour18",
+    "Hour19",
+    "Hour20",
+    "Hour21",
+    "Hour22",
+    "Hour23",
+    "Hour24",
+    "IsType","IsMaxDate",
+    "DayAverage",
+    "MinAverage",
+    "AreaID"
+    FROM PSP_BurdenLine
+    WHERE
+    Datename(year,BurdenDate)+'-'+Datename (month,BurdenDate)+'-'+Datename(day,BurdenDate) = #BurdenDate#
+  </select>
+
+
+
+  <select id='SelectBurdenLineByType' resultMap='BurdenLineResult'  parameterClass='BurdenLine'>
+    SELECT
+    "UID",
+    "Season",
+    "BurdenDate",
+    "Hour1",
+    "Hour2",
+    "Hour3",
+    "Hour4",
+    "Hour5",
+    "Hour6",
+    "Hour7",
+    "Hour8",
+    "Hour9",
+    "Hour10",
+    "Hour11",
+    "Hour12",
+    "Hour13",
+    "Hour14",
+    "Hour15",
+    "Hour16",
+    "Hour17",
+    "Hour18",
+    "Hour19",
+    "Hour20",
+    "Hour21",
+    "Hour22",
+    "Hour23",
+    "Hour24",
+    "IsType","IsMaxDate",
+    "DayAverage",
+    "MinAverage",
+    "AreaID"
+    FROM PSP_BurdenLine
+    WHERE
+    $Season$
+  </select>
+
+
+  <select id='SelectBurdenLineByMaxDate' resultMap='BurdenLineResult'  parameterClass='BurdenLine'>
+    SELECT
+    "UID",
+    "Season",
+    "BurdenDate",
+    "Hour1",
+    "Hour2",
+    "Hour3",
+    "Hour4",
+    "Hour5",
+    "Hour6",
+    "Hour7",
+    "Hour8",
+    "Hour9",
+    "Hour10",
+    "Hour11",
+    "Hour12",
+    "Hour13",
+    "Hour14",
+    "Hour15",
+    "Hour16",
+    "Hour17",
+    "Hour18",
+    "Hour19",
+    "Hour20",
+    "Hour21",
+    "Hour22",
+    "Hour23",
+    "Hour24",
+    "IsType","IsMaxDate",
+    "DayAverage",
+    "MinAverage",
+    "AreaID"
+    FROM PSP_BurdenLine
+    WHERE
+    $Season$
+  </select>
+
+
+
+
+  <select id='SelectBurdenLineBySeasonandDate' resultMap='BurdenLineResult'  parameterClass='BurdenLine'>
+    SELECT
+    "UID",
+    "Season",
+    "BurdenDate",
+    "Hour1",
+    "Hour2",
+    "Hour3",
+    "Hour4",
+    "Hour5",
+    "Hour6",
+    "Hour7",
+    "Hour8",
+    "Hour9",
+    "Hour10",
+    "Hour11",
+    "Hour12",
+    "Hour13",
+    "Hour14",
+    "Hour15",
+    "Hour16",
+    "Hour17",
+    "Hour18",
+    "Hour19",
+    "Hour20",
+    "Hour21",
+    "Hour22",
+    "Hour23",
+    "Hour24",
+    "IsType","IsMaxDate",
+    "DayAverage",
+    "MinAverage",
+    "AreaID"
+    FROM PSP_BurdenLine
+    WHERE
+    Season = #Season# and convert(varchar,year(BurdenDate))=#UID#
+  </select>
+
+
+  <select id='SelectBurdenLineByDate' resultClass='int'  parameterClass='BurdenLine'>
+    SELECT
+    count(*)
+    FROM PSP_BurdenLine
+    WHERE
+    BurdenDate = #BurdenDate#
+  </select>
+</statements>
+</sqlMap>

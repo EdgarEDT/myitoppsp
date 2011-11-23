@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SVG_LAYER' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='SVG_LAYER' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.SVG_LAYER' />
+  </alias>
+  <resultMaps>
+    <resultMap id='SVG_LAYERResult' class='SVG_LAYER'>
+      <result property='SUID' column='SUID' />
+      <result property='svgID' column='svgID' />
+      <result property='NAME' column='NAME' />
+      <result property='XML' column='XML' />
+      <result property='MDATE' column='MDATE' />
+      <result property='OrderID' column='OrderID' />
+      <result property='YearID' column='YearID' />
+      <result property='layerType' column='layerType' />
+      <result property='visibility' column='visibility' />
+      <result property='IsSelect' column='IsSelect' />
+      <result property='IsChange' column='IsChange' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertSVG_LAYER' parameterClass='SVG_LAYER'>
+      INSERT INTO SVG_LAYER		(
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "OrderID",
+      "YearID",
+      "layerType",
+      "visibility",
+      "IsSelect",
+      "IsChange"
+      )
+      VALUES
+      (
+      #SUID#,
+      #svgID#,
+      #NAME#,
+      #XML#,
+      #MDATE#,
+      #OrderID#,
+      #YearID#,
+      #layerType#,
+      #visibility#,
+      #IsSelect#,
+      #IsChange#
+      )
+    </insert>
+    <delete id='DeleteSVG_LAYER' parameterClass='SVG_LAYER'>
+      DELETE FROM SVG_LAYER
+      WHERE
+      SUID = #SUID#
+    </delete>
+    <update id='UpdateSVG_LAYER' parameterClass='SVG_LAYER'>
+      UPDATE SVG_LAYER
+      SET
+      "svgID" = #svgID#,
+      "NAME" = #NAME#,
+      "XML" = #XML#,
+      "MDATE" = #MDATE#,
+      "OrderID" = #OrderID#,
+      "YearID" = #YearID#,
+      "layerType" = #layerType#,
+      "visibility" = #visibility#,
+      "IsSelect" = #IsSelect#,
+      "IsChange" = #IsChange#
+      WHERE
+      SUID = #SUID#
+    </update>
+    <select id='SelectSVG_LAYERList' resultMap='SVG_LAYERResult' parameterClass='SVG_LAYER'>
+      SELECT
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "OrderID",
+      "YearID",
+      "layerType",
+      "visibility",
+      "IsSelect",
+      "IsChange"
+      FROM SVG_LAYER
+    </select>
+    <select id='SelectSVG_LAYERByKey' resultMap='SVG_LAYERResult' parameterClass='SVG_LAYER'>
+      SELECT
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "OrderID",
+      "YearID",
+      "layerType",
+      "visibility",
+      "IsSelect",
+      "IsChange"
+      FROM SVG_LAYER
+      WHERE
+      SUID = #SUID# and 
+      svgID =#svgID#
+    </select>
+    <select id='SelectSVG_LAYERBySvgID' resultMap='SVG_LAYERResult' parameterClass='SVG_LAYER'>
+      SELECT
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "OrderID",
+      "YearID",
+      "layerType",
+      "visibility",
+      "IsSelect",
+      "IsChange"
+      FROM SVG_LAYER
+      WHERE
+      svgID = #svgID#
+      order by OrderID
+    </select>
+    <select id='SelectSVG_LAYERByYearID' resultMap='SVG_LAYERResult' parameterClass='SVG_LAYER'>
+      SELECT
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "OrderID",
+      "YearID",
+      "layerType",
+      "visibility",
+      "IsSelect",
+      "IsChange"
+      FROM SVG_LAYER
+      WHERE
+      svgID = #svgID#
+      and YearID in ( $YearID$ ) 
+      order by OrderID
+    </select>
+    <select id='SelectSVG_LAYERByWhere' resultMap='SVG_LAYERResult' parameterClass='SVG_LAYER'>
+      SELECT
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "OrderID",
+      "YearID",
+      "layerType",
+      "visibility",
+      "IsSelect",
+      "IsChange"
+      FROM SVG_LAYER
+      WHERE
+      svgID = #svgID#
+      and $YearID$ 
+      order by OrderID
+    </select>
+  </statements>
+</sqlMap>
