@@ -3176,7 +3176,7 @@ namespace ItopVector.Tools
                             {
 
 
-                                frmProperty f = new frmProperty();
+                                frmProperty f = new frmProperty();//地块属性
                                 if (SelUseArea == "") { SelUseArea = "0"; }
                                 f.InitData(xml1.GetAttribute("id"), tlVectorControl1.SVGDocument.SvgdataUid, SelUseArea, rzb, SvgDocument.currentLayer);
                                 //f.ShowDialog();
@@ -9886,7 +9886,8 @@ namespace ItopVector.Tools
             for (int i = 0; i < list.Count; i++)
             {
                 IGraph graph1 = (IGraph)list[i];
-                RectangleF rect = graph1.GetBounds();
+                //RectangleF rect = graph1.GetBounds();
+                PointF pf1=graph1.CenterPoint;//rabbit edit 2011.11.24
                 glebeProperty gle = new glebeProperty();
                 gle.EleID = graph1.ID;
                 gle.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
@@ -9896,8 +9897,8 @@ namespace ItopVector.Tools
                 {
                     XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                     //Point point1 = tlVectorControl1.PointToView(new Point(e.Mouse.X, e.Mouse.Y));
-                    n1.SetAttribute("x", Convert.ToString(rect.X + rect.Width / 2));
-                    n1.SetAttribute("y", Convert.ToString(rect.Y + rect.Height / 2));
+                    n1.SetAttribute("x",pf1.X.ToString());// Convert.ToString(rect.X + rect.Width / 2));
+                    n1.SetAttribute("y", pf1.Y.ToString());// Convert.ToString(rect.Y + rect.Height / 2));
                     n1.SetAttribute("font-famliy", "宋体");
                     n1.SetAttribute("font-size", "14");
                     n1.InnerText = gle.Burthen.ToString();
