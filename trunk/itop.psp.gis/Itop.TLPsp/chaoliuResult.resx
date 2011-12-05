@@ -133,7 +133,7 @@
     <value>330, 17</value>
   </metadata>
   <assembly alias="DevExpress.Utils3" name="DevExpress.Utils3, Version=3.2.5.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4" />
-  <data name="imageCollection1.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils3" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="imageCollection1.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils10.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFREZXZFeHByZXNzLlV0aWxzMywgVmVyc2lvbj0zLjIuNS4wLCBD
         dWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTc5ODY4YjgxNDdiNWVhZTQFAQAAAChEZXZFeHBy
