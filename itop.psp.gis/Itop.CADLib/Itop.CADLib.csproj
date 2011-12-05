@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="CAD.cs" />
     <Compile Include="FlashWindow.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
