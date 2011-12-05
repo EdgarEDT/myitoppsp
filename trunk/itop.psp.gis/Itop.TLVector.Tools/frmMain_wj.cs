@@ -11328,8 +11328,9 @@ namespace ItopVector.Tools
             dotNetBarManager1.Bars["bar7"].GetItem("mFzzj").Enabled = b;
             dotNetBarManager1.Bars["bar7"].GetItem("mAreaPoly").Enabled = b;
             dotNetBarManager1.Bars["bar7"].GetItem("mReCompute").Enabled = b;
-            dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Visible = false;
-
+            //dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Visible = false;
+            dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Visible = true;
+            dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Enabled = b;
             dotNetBarManager1.Bars["bar2"].GetItem("mFreeTransform").Enabled = b;
             dotNetBarManager1.Bars["bar2"].GetItem("mShapeTransform").Enabled = b;
             dotNetBarManager1.Bars["bar2"].GetItem("mLine").Enabled = b;
