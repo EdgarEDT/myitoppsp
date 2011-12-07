@@ -1468,9 +1468,9 @@ namespace ItopVector.Tools
                 {
                     XmlElement _x = (XmlElement)_polylist[m];
                     PointF _f = TLMath.polyCentriod(_x);
-                    if (gr1.IsVisible(_f))
+                    if (gr1.IsVisible(_f))    //外接圆包括那些负荷中心点
                     {
-                        k = k + 1;
+                        k = k + 1;   //求和的过程
                         string sid = _x.GetAttribute("id");
                         glebeProperty pl = new glebeProperty();
                         pl.EleID = sid;
@@ -1482,7 +1482,7 @@ namespace ItopVector.Tools
                         }
                     }
                 }
-                clist.Add(sum + n, cir);
+                clist.Add(sum + n, cir);  
                 string aa = "";
 
             }
