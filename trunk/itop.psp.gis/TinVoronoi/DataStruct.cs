@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Collections.ObjectModel;
 namespace TinVoronoi
 {
-    //离散点
+    //离散点
+
     public struct Vertex
     {
         public long x;
@@ -139,14 +140,17 @@ namespace TinVoronoi
             return bbox;
         }
     }
-    //边
+    //边
+
     public struct Edge
     {
-        public long Vertex1ID;   //点索引
+        public long Vertex1ID;   //点索引
+
         public long Vertex2ID;
         public Boolean NotHullEdge;  //非凸壳边
         public long AdjTriangle1ID;
-        public long AdjacentT1V3;    //△1的第三顶点在顶点数组的索引
+        public long AdjacentT1V3;    //△1的第三顶点在顶点数组的索引
+
         public long AdjTriangle2ID;
 
         public Edge(long iV1, long iV2)
@@ -168,10 +172,12 @@ namespace TinVoronoi
 
     }
 
-    //三角形
+    //三角形
+
     public struct Triangle
     {
-        public long V1Index; //点在链表中的索引值
+        public long V1Index; //点在链表中的索引值
+
         public long V2Index;
         public long V3Index;
     }
@@ -214,11 +220,13 @@ namespace TinVoronoi
                 vetexboundary[i] = new voronoiboundary();
             }
         }
-        public BoundaryBox BBOX = new BoundaryBox();  //图副边界框
+        public BoundaryBox BBOX = new BoundaryBox();  //图副边界框
+
         public int VerticesNum = 0;
         public int TinEdgeNum = 0;
         public int TriangleNum = 0;
-        public double radius = 0;                //最小覆盖圆的半径
+        public double radius = 0;                //最小覆盖圆的半径
+
         public double precison = 1.0e-8;          //精度
         public Vertex maxcic;
         public int[] curset = new int[MaxVertices], posset = new int[3];
@@ -231,7 +239,8 @@ namespace TinVoronoi
         public long pointid;
         public bool hullflag = false;        //默认为否凸壳的泰森多边形
         public  List<PointF> voronicollect;  //形成voroni边界包络多边形的拐点集合
-        public  List<PointF> insertboundarycollect;  //记录与外围多边形边界的交点
+        public  List<PointF> insertboundarycollect;  //记录与外围多边形边界的交点
+
         public  List<PointF> vimultcollect;  //真正边界相交点的集合
        
         public voronoiboundary()
@@ -254,7 +263,8 @@ namespace TinVoronoi
             return flag;
         }
 
-        public bool Vimultptcompare(PointF f)             //比较与多边形边界相交的点集合里面有没有重复的点
+        public bool Vimultptcompare(PointF f)             //比较与多边形边界相交的点集合里面有没有重复的点
+
         {
             bool flag = true;
             foreach (PointF p in vimultcollect)
