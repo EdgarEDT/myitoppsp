@@ -654,4 +654,14 @@ namespace ItopVector.Tools
            }
        }
     }
+    public class SubandFHcollect
+    {
+        public SubandFHcollect(Dictionary<XmlElement, PointF> _FHcollect, XmlElement _Sub)
+        {
+            FHcollect = _FHcollect;
+            Sub = _Sub;
+        }
+        public Dictionary<XmlElement, PointF> FHcollect;
+        public XmlElement Sub;
+    }
 }
