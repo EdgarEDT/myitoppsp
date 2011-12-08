@@ -108,7 +108,8 @@ namespace Itop.Client.Forecast
                 {
                     continue;
                 }
-                dr["D"] = pcs2.Col4;//权重值
+                dr["D"] = pcs2.Col4;//权重值
+
                 dt.Rows.Add(dr);
             }
             //dt=
@@ -200,7 +201,8 @@ namespace Itop.Client.Forecast
             }
         }
         /// <summary>
-        /// 设置子算法控件是否显示
+        /// 设置子算法控件是否显示
+
         /// </summary>
         /// <param name="IsVisible"></param>
         private void SetSubalgorithm(bool IsVisible)
@@ -313,7 +315,8 @@ namespace Itop.Client.Forecast
             }
         }
         /// <summary>
-        /// 不能选择同一种算法
+        /// 不能选择同一种算法
+
         /// </summary>
         /// <param name="strTemp"></param>
         private bool bCompare(Object strTemp)
@@ -337,7 +340,8 @@ namespace Itop.Client.Forecast
             return bTemp;
         }
         /// <summary>
-        /// 添加数据到datatable中
+        /// 添加数据到datatable中
+
         /// </summary>
         private bool AddDataToDatatable(Ps_Calc pcs)
         {
@@ -349,7 +353,8 @@ namespace Itop.Client.Forecast
 
             if(m_CalcList != null && m_CalcList.Count != 0)
             {
-                _CalcTemp = m_CalcList[0];//保证各个算法的时间一致
+                _CalcTemp = m_CalcList[0];//保证各个算法的时间一致
+
             }
             
             bool _IsTrue = false;
@@ -375,7 +380,8 @@ namespace Itop.Client.Forecast
             pcs.ID = Guid.NewGuid().ToString();
             pcs.Forecast = type;
             pcs.ForecastID = forecastReport.ID;
-            //算法名
+            //算法名
+
             pcs.CalcID = dr["A"].ToString();
             pcs.Col4 = spinEdit1.Value.ToString() + "%";//权重值存放到表col4字段
            //================================================================
@@ -383,7 +389,8 @@ namespace Itop.Client.Forecast
             //======================================================================================
             //id
             dr["ID"] = pcs.ID;
-            //权重值,把这个数据存放在数据库表中的Col4字段中
+            //权重值,把这个数据存放在数据库表中的Col4字段中
+
             dr["D"] = pcs.Col4 ;
 
             if (!_IsTrue)
@@ -393,7 +400,8 @@ namespace Itop.Client.Forecast
             return _IsTrue;
         }
         /// <summary>
-        /// 选择历史年份数据和预测年份数据
+        /// 选择历史年份数据和预测年份数据
+
         /// </summary>
         /// <param name="_CalcTemp">ps_calc数据表对象</param>
         /// <param name="dr">DataRow object</param>
@@ -445,7 +453,8 @@ namespace Itop.Client.Forecast
             }
         }
         /// <summary>
-        /// 把datatable中的数据加载到datarow中
+        /// 把datatable中的数据加载到datarow中
+
         /// </summary>
         private void AddToDataRow()
         {
@@ -514,7 +523,8 @@ namespace Itop.Client.Forecast
             InitGridControl();
         }
         /// <summary>
-        /// 修改用数据添加到datarow中
+        /// 修改用数据添加到datarow中
+
         /// </summary>
         private void AddToDataRow_Update(Ps_Calc _pcs)
         {
@@ -559,7 +569,8 @@ namespace Itop.Client.Forecast
 
 
             _pcs.ID = dt.Rows[intex]["ID"].ToString();
-            //权重值
+            //权重值
+
             _pcs.Col4 = spinEdit1.Value.ToString() + "%";
             //_pcs.Forecast = type;
             //_pcs.ForecastID = forecastReport.ID;
@@ -567,12 +578,14 @@ namespace Itop.Client.Forecast
             AddYears_Update(_pcs, _dr);
 
             gridView1.RefreshData();
-            ////刷新list列表中数据
+            ////刷新list列表中数据
+
             m_CalcList.Clear();
             m_CalcList = m_pf.SelectedForecastList(type, forecastReport);
         }
         /// <summary>
-        /// 修改历史年份和预测年份
+        /// 修改历史年份和预测年份
+
         /// </summary>
         /// <param name="pcs"></param>
         /// <param name="dr"></param>
@@ -652,14 +665,17 @@ namespace Itop.Client.Forecast
             YearSelect();
         }
         /// <summary>
-        /// 查询历史年份开始
+        /// 查询历史年份开始
+
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int nFristYear = 0;//起始年
-            int nEndYear = 0;//结束年
+            int nFristYear = 0;//起始年
+
+            int nEndYear = 0;//结束年
+
             if(comboBox1.SelectedItem == null)
             {
                 return;
@@ -779,7 +795,8 @@ namespace Itop.Client.Forecast
             }
         }
         /// <summary>
-        /// 选择预测年份开始
+        /// 选择预测年份开始
+
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -930,7 +947,8 @@ namespace Itop.Client.Forecast
             }
         }
         /// <summary>
-        /// gridview行改变焦点
+        /// gridview行改变焦点
+
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -939,7 +957,8 @@ namespace Itop.Client.Forecast
             Refresh_YearData();
         }
         /// <summary>
-        /// 设置历史时间，和预测时间的内容
+        /// 设置历史时间，和预测时间的内容
+
         /// </summary>
         /// <param name="_combo">comboBox object</param>
         /// <param name="_dr">DataRow object</param>
@@ -1022,7 +1041,8 @@ namespace Itop.Client.Forecast
             }
         }
         /// <summary>
-        /// 给dataview排序,得到历史时间和预测时间区间的值
+        /// 给dataview排序,得到历史时间和预测时间区间的值
+
         /// </summary>
         /// <param name="dt">datatable object</param>
         /// <param name="Column">列标题</param>
@@ -1113,7 +1133,8 @@ namespace Itop.Client.Forecast
                 comboBox6.SelectedIndex = -1;
                 comboBox2.SelectedIndex = comboBox2.Items.IndexOf(_strname);
             }
-            //刷新历史年份和预测年份
+            //刷新历史年份和预测年份
+
             SetcomboBoxContent(comboBox1, dr);
             SetcomboBoxContent(comboBox4, dr);
             SetcomboBoxContent(comboBox3, dr);
