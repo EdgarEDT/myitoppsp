@@ -411,6 +411,73 @@ namespace ItopVector.Tools
            float y = Convert.ToSingle((p1.Y * (1 / Math.Tan(ang2)) + p2.Y * (1 / Math.Tan(ang1)) + p2.X - p1.X) / ((1 / Math.Tan(ang1)) + (1 / Math.Tan(ang2))));
            return new PointF(x, y);
        }
+       public static float getdcNumber(decimal number1, float Scale)
+       {
+           int chose = Convert.ToInt32(ConfigurationSettings.AppSettings.Get("chose"));
+
+           if (chose == 2) {
+               int n = Convert.ToInt32(Scale * 1000000);
+               switch (n) {
+                   case 15600:
+                       return (float)(number1 * 120 / (Convert.ToDecimal(Scale) * 40));
+                       break;
+                   case 31200:
+                       return (float)(number1 * 120 / (Convert.ToDecimal(Scale) * 20));
+                       break;
+                   case 62500:
+                       return (float)(number1 * 120 / (Convert.ToDecimal(Scale) * 10));
+                       break;
+                   case 125000:
+                       return (float)(number1 * 120 / (Convert.ToDecimal(Scale) * 5));
+                       break;
+                   case 250000:
+                       return (float)(number1 * 120 / (Convert.ToDecimal(Scale) *  Convert.ToDecimal(2.5)));
+                       break;
+                   case 500000:
+                       return(float)(number1 * 120 / (Convert.ToDecimal(Scale) *  Convert.ToDecimal(1.25))); 
+                   case 1000000:
+                       return (float)(number1 * 120 / (Convert.ToDecimal(Scale) *  Convert.ToDecimal(0.625)));
+                       break;
+                   case 2000000:
+                       return (float)(number1 * 120 / (Convert.ToDecimal(Scale) *  Convert.ToDecimal(0.3125)));
+                       break;
+                   case 4000000:
+                       return (float)(number1 * 120 / (Convert.ToDecimal(Scale) *  Convert.ToDecimal(0.15625)));
+                   default:
+                       return 0;
+               }
+           } else {
+               int n = Convert.ToInt32(Scale * 1000);
+               switch (n) {
+                   case 10:
+                       return (float)(number1 * 60 / (Convert.ToDecimal(Scale) * 40));
+                       break;
+                   case 20:
+                       return (float)(number1 * 60 / (Convert.ToDecimal(Scale) * 20));
+                       break;
+                   case 40:
+                       return (float)(number1 * 60 / (Convert.ToDecimal(Scale) * 10));
+                   case 100:
+                       return (float)(number1 * 60 / (Convert.ToDecimal(Scale) * 4));
+                       break;
+                   case 200:
+                       return (float)(number1 * 60 / (Convert.ToDecimal(Scale) * 2));
+                   case 400:
+                       return (float)(number1 * 60 / (Convert.ToDecimal(Scale) * 1));
+                       break;
+                   case 1000:
+                       return (float)(number1 * 60 / (Convert.ToDecimal(Scale) *  Convert.ToDecimal(0.4)));
+                       break;
+                   case 2000:
+                       return (float)(number1 * 60 / (Convert.ToDecimal(Scale) *  Convert.ToDecimal(0.2)));
+                       break;
+                   case 4000:
+                       return (float)(number1 * 60 / (Convert.ToDecimal(Scale) *  Convert.ToDecimal(0.1)));
+                   default:
+                       return 0;
+               }
+           }
+       }
        public static decimal getNumber(decimal number1, float Scale)
        {
            int chose = Convert.ToInt32(ConfigurationSettings.AppSettings.Get("chose"));
