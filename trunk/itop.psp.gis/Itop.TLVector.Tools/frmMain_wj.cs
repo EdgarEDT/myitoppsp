@@ -151,7 +151,7 @@ namespace ItopVector.Tools
             tlVectorControl1.DrawArea.BeforeAddSvgElement += new AddSvgElementEventHandler(DrawArea_BeforeAddSvgElement);
             tlVectorControl1.DrawArea.OnAddElement += new AddSvgElementEventHandler(DrawArea_OnAddElement);
             tlVectorControl1.SVGDocument.OnDocumentChanged += new OnDocumentChangedEventHandler(SVGDocument_OnDocumentChanged);
-            //tlVectorControl1.DrawArea.OnElementMove += new ElementMoveEventHandler(DrawArea_OnElementMove);
+            tlVectorControl1.DrawArea.OnElementMove += new ElementMoveEventHandler(DrawArea_OnElementMove);
             tlVectorControl1.DrawArea.OnMouseDown += new MouseEventHandler(DrawArea_OnMouseDown);
             toolDel.Click += delegate { tlVectorControl1.Delete(); };
             SvgDocument.BkImageLoad = true;
@@ -212,13 +212,63 @@ namespace ItopVector.Tools
             if (mapclass.PicImage != null)
                 tlVectorControl1.DrawArea.InvadateRect(mapclass.Bounds);
         }
-
+        
         void DrawArea_OnElementMove(object sender, MoveEventArgs e)
         {
 
             //string a = tlVectorControl1.SVGDocument.CurrentLayer.ID;
             //MessageBox.Show(a);
             //变电站选址移动时起相关的辐射线也跟着移动
+            try {
+                ISvgElement element = e.SvgElement;
+                XmlElement el = (XmlElement)tlVectorControl1.SVGDocument.SelectSingleNode("svg/use [@id='" + element.ID + "']");
+                if (!string.IsNullOrEmpty(el.GetAttribute("xzflag").ToString()) && el.GetAttribute("xzflag").ToString() == "1") {
+                    SvgElementCollection list = tlVectorControl1.SVGDocument.SelectCollection;
+                    PointF beforeMove = e.BeforeMove;
+                    PointF afterMove = e.AfterMove;
+                    XmlNodeList listFirstNode = tlVectorControl1.SVGDocument.SelectNodes("svg/polyline[@FirstNode='" + element.ID + "']");
+                    RectangleF t = ((IGraph)element).GetBounds();
+                    PointF[] ptt = new PointF[] { beforeMove, afterMove };
+                    Transf tran = (element as Graph).Transform;
+                    tran.Matrix.TransformPoints(ptt);
+                    beforeMove = ptt[0];
+                    afterMove = ptt[1];
+                    foreach (XmlNode node in listFirstNode) {
+                        if (list.Contains((ISvgElement)(node as XmlElement))) {
+                            continue;
+                        }
+                        PointF[] first = (node as Polyline).Points;
+                        XmlElement line = node as XmlElement;
+                        PointF pt1 = new PointF(first[0].X, first[0].Y);
+                        first[0].X = first[0].X + afterMove.X - beforeMove.X;
+                        first[0].Y = first[0].Y + afterMove.Y - beforeMove.Y;
+                        string temp = null;
+                        (node as Polyline).GPath.Reset();
+                        (node as Polyline).GPath.AddLines(first);
+                        temp = first[0].X + " " + first[0].Y + "," + first[1].X + " " + first[1].Y;
+                        //foreach (PointF pt in first) {
+                        //    if (temp == null) {
+                        //        temp += pt.X + " " + pt.Y;
+                        //    } else {
+                        //        temp += "," + pt.X + " " + pt.Y;
+                        //    }
+                        //}
+                        //if (first[0] != pt1) {
+                        (node as XmlElement).SetAttribute("points", temp);
+                        // }
+                    }
+
+                    //XmlNode listText = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@ParentID='" + element.ID + "']");
+                    //(listText as Text).SetAttribute("x", (Convert.ToDouble((listText as Text).GetAttribute("x")) + afterMove.X - beforeMove.X).ToString());
+                    //(listText as Text).SetAttribute("y", (Convert.ToDouble((listText as Text).GetAttribute("y")) + afterMove.Y - beforeMove.Y).ToString());
+                }
+            }
+            catch(Exception e1)
+            {
+
+            }
+           
+            
 
         }
 
@@ -1608,173 +1658,166 @@ namespace ItopVector.Tools
 
         }
 private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
-{ 
-            Dictionary<XmlElement, PointF> fhkcollect=new Dictionary<XmlElement,PointF>(); 
-            PointF fhcenter=new PointF();
-            
-           string aaa = yearID;
-            if (D_TIN.DS.VerticesNum > 2)  //构建三角网
-                D_TIN.CreateTIN();
+{
+     try {
+         Dictionary<XmlElement, PointF> fhkcollect = new Dictionary<XmlElement, PointF>();
+         PointF fhcenter = new PointF();
 
-            //输出三角形
-            for (int i = 0; i < D_TIN.DS.TriangleNum; i++)
-            {
-                Point point1 = new Point(Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V1Index].x), Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V1Index].y));
-                Point point2 = new Point(Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V2Index].x), Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V2Index].y));
-                Point point3 = new Point(Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V3Index].x), Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V3Index].y));
+         string aaa = yearID;
+         if (D_TIN.DS.VerticesNum > 2)  //构建三角网
+             D_TIN.CreateTIN();
 
-                string str_points = "";
-                str_points = point1.X.ToString() + " " + point1.Y.ToString() + "," + point2.X.ToString() + " " + point2.Y.ToString() + "," + point3.X.ToString() + " " + point3.Y.ToString();
-                //XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as XmlElement;
-                //e1.SetAttribute("points", str_points);
-                //e1.SetAttribute("style", "stroke-width:1;stroke:#0000FF;stroke-opacity:1;");
-                //e1.SetAttribute("IsTin", "1");
-                //e1.SetAttribute("layer", SvgDocument.currentLayer);
-                //tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
+         //输出三角形
+         for (int i = 0; i < D_TIN.DS.TriangleNum; i++) {
+             Point point1 = new Point(Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V1Index].x), Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V1Index].y));
+             Point point2 = new Point(Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V2Index].x), Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V2Index].y));
+             Point point3 = new Point(Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V3Index].x), Convert.ToInt32(D_TIN.DS.Vertex[D_TIN.DS.Triangle[i].V3Index].y));
 
-            }
-            D_TIN.CalculateBC();
-            D_TIN.CreateVoronoi();
+             string str_points = "";
+             str_points = point1.X.ToString() + " " + point1.Y.ToString() + "," + point2.X.ToString() + " " + point2.Y.ToString() + "," + point3.X.ToString() + " " + point3.Y.ToString();
+             //XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as XmlElement;
+             //e1.SetAttribute("points", str_points);
+             //e1.SetAttribute("style", "stroke-width:1;stroke:#0000FF;stroke-opacity:1;");
+             //e1.SetAttribute("IsTin", "1");
+             //e1.SetAttribute("layer", SvgDocument.currentLayer);
+             //tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
 
-            ArrayList CirList = new ArrayList();
-            ArrayList polyCentriodList = new ArrayList();
-            for (int n = 0; n < D_TIN.DS.Barycenters.Length; n++)
-            {
+         }
+         D_TIN.CalculateBC();
+         D_TIN.CreateVoronoi();
 
-                Barycenter bar = D_TIN.DS.Barycenters[n];
-                if (bar.X == 0 && bar.Y == 0)
-                {
-                    break;
-                }
-                Triangle tri = D_TIN.DS.Triangle[n];
-                Vertex ver = D_TIN.DS.Vertex[tri.V1Index];
-                Vertex ver2 = D_TIN.DS.Vertex[tri.V2Index];
-                Vertex ver3 = D_TIN.DS.Vertex[tri.V3Index];
-                Decimal r = Convert.ToDecimal(Math.Abs(Math.Sqrt(Math.Pow(Convert.ToDouble(ver.x - bar.X), 2.0) + Math.Pow(Convert.ToDouble(ver.y - bar.Y), 2.0))));
+         ArrayList CirList = new ArrayList();
+         ArrayList polyCentriodList = new ArrayList();
+         for (int n = 0; n < D_TIN.DS.Barycenters.Length; n++) {
 
-                XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
-                n1.SetAttribute("cx", bar.X.ToString());
-                n1.SetAttribute("cy", bar.Y.ToString());
-                n1.SetAttribute("r", r.ToString());
-                n1.SetAttribute("r", r.ToString());
-                n1.SetAttribute("layer", SvgDocument.currentLayer);
-                n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
-                //tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
-                CirList.Add(n1);
+             Barycenter bar = D_TIN.DS.Barycenters[n];
+             if (bar.X == 0 && bar.Y == 0) {
+                 break;
+             }
+             Triangle tri = D_TIN.DS.Triangle[n];
+             Vertex ver = D_TIN.DS.Vertex[tri.V1Index];
+             Vertex ver2 = D_TIN.DS.Vertex[tri.V2Index];
+             Vertex ver3 = D_TIN.DS.Vertex[tri.V3Index];
+             Decimal r = Convert.ToDecimal(Math.Abs(Math.Sqrt(Math.Pow(Convert.ToDouble(ver.x - bar.X), 2.0) + Math.Pow(Convert.ToDouble(ver.y - bar.Y), 2.0))));
 
-                PointF[] Flist = new PointF[3];
-                Flist[0] = new PointF(ver.x, ver.y);
-                Flist[1] = new PointF(ver2.x, ver2.y);
-                Flist[2] = new PointF(ver3.x, ver3.y);
-                polyCentriodList.Add(TLMath.polyCentriod(Flist));
-            }
-            System.Collections.SortedList clist = new SortedList();
-            System.Collections.SortedList CtoFHlist=new SortedList();
-            decimal sum = 0;
-            for (int n = 0; n < CirList.Count; n++)
-            {
-                fhkcollect=new Dictionary<XmlElement,PointF>();
-                int k = 0;
-                Circle cir = (Circle)CirList[n];
-                GraphicsPath gr1 = new GraphicsPath();
-                gr1.AddPath(cir.GPath, true);
-                gr1.CloseFigure();
-                for (int m = 0; m < _polylist.Count; m++)
-                {
-                    XmlElement _x = (XmlElement)_polylist[m];
-                    PointF _f = TLMath.polyCentriod(_x);
-                    if (gr1.IsVisible(_f))    //外接圆包括那些负荷中心点
+             XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+             n1.SetAttribute("cx", bar.X.ToString());
+             n1.SetAttribute("cy", bar.Y.ToString());
+             n1.SetAttribute("r", r.ToString());
+
+             n1.SetAttribute("layer", SvgDocument.currentLayer);
+             n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+             //tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+             CirList.Add(n1);
+
+             PointF[] Flist = new PointF[3];
+             Flist[0] = new PointF(ver.x, ver.y);
+             Flist[1] = new PointF(ver2.x, ver2.y);
+             Flist[2] = new PointF(ver3.x, ver3.y);
+             polyCentriodList.Add(TLMath.polyCentriod(Flist));
+         }
+         System.Collections.SortedList clist = new SortedList();
+         System.Collections.SortedList CtoFHlist = new SortedList();
+         decimal sum = 0;
+         for (int n = 0; n < CirList.Count; n++) {
+             fhkcollect = new Dictionary<XmlElement, PointF>();
+             int k = 0;
+             Circle cir = (Circle)CirList[n];
+             GraphicsPath gr1 = new GraphicsPath();
+             gr1.AddPath(cir.GPath, true);
+             gr1.CloseFigure();
+             for (int m = 0; m < _polylist.Count; m++) {
+                 XmlElement _x = (XmlElement)_polylist[m];
+                 PointF _f = TLMath.polyCentriod(_x);
+                 if (gr1.IsVisible(_f))    //外接圆包括那些负荷中心点
                     {
-                        k = k + 1;   //求和的过程
-                        string sid = _x.GetAttribute("id");
-                        glebeProperty pl = new glebeProperty();
-                        pl.EleID = sid;
-                        pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                        pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
-                        if (pl != null)
-                        {
-                            sum = sum + pl.Burthen;
-                        }
-                        fhkcollect.Add(_x,_f);//记录外包圆相交的负荷块
-                    }
-                }
-                clist.Add(sum + n, cir); 
-                CtoFHlist.Add(sum+n,fhkcollect);
-                string aa = "";
+                     k = k + 1;   //求和的过程
+                     string sid = _x.GetAttribute("id");
+                     glebeProperty pl = new glebeProperty();
+                     pl.EleID = sid;
+                     pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                     pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
+                     if (pl != null) {
+                         sum = sum + pl.Burthen;
+                     }
+                     fhkcollect.Add(_x, _f);//记录外包圆相交的负荷块
+                 }
+             }
+             clist.Add(sum + n, cir);
+             CtoFHlist.Add(sum + n, fhkcollect);
+             string aa = "";
 
-            }
+         }
 
-            string str_sub = getSubName(str_dy);
+         string str_sub = getSubName(str_dy);
 
 
-            for (int k = 0; k < Convert.ToInt32(str_num); k++)
-            {
-                GraphicsPath gr1 = new GraphicsPath();
-                gr1.AddPolygon(TLMath.getPolygonPoints(_poly));
-                gr1.CloseFigure();
+         for (int k = 0; k < Convert.ToInt32(str_num); k++) {
+             GraphicsPath gr1 = new GraphicsPath();
+             gr1.AddPolygon(TLMath.getPolygonPoints(_poly));
+             gr1.CloseFigure();
 
-                Circle c1 = clist.GetByIndex(k) as Circle;
-                Dictionary<XmlElement,PointF> FHandPointF=CtoFHlist.GetByIndex(k) as  Dictionary<XmlElement,PointF>;
-                PointF pf = TLMath.getUseOffset(str_sub);
-                float X = 0f;
-                float Y = 0f;
-                float ox = 0f;
-                float oy = 0f;
-                if (gr1.IsVisible(new PointF(c1.CX, c1.CY)))
-                {
-                    X = c1.CenterPoint.X - pf.X;
-                    Y = c1.CenterPoint.Y - pf.Y;
-                    ox = c1.CenterPoint.X + 8;
-                    oy = c1.CenterPoint.Y;
-                }
-                else
-                {
-                    X = ((PointF)polyCentriodList[k]).X - pf.X;
-                    Y = ((PointF)polyCentriodList[k]).Y - pf.Y;
-                    ox = ((PointF)polyCentriodList[k]).X + 8;
-                    oy = ((PointF)polyCentriodList[k]).Y;
-                }
-                XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
+             Circle c1 = clist.GetByIndex(k) as Circle;
+             Dictionary<XmlElement, PointF> FHandPointF = CtoFHlist.GetByIndex(k) as Dictionary<XmlElement, PointF>;
+             PointF pf = TLMath.getUseOffset(str_sub);
+             float X = 0f;
+             float Y = 0f;
+             float ox = 0f;
+             float oy = 0f;
+             if (gr1.IsVisible(new PointF(c1.CX, c1.CY))) {
+                 X = c1.CenterPoint.X - pf.X;
+                 Y = c1.CenterPoint.Y - pf.Y;
+                 ox = c1.CenterPoint.X + 8;
+                 oy = c1.CenterPoint.Y;
+             } else {
+                 X = ((PointF)polyCentriodList[k]).X - pf.X;
+                 Y = ((PointF)polyCentriodList[k]).Y - pf.Y;
+                 ox = ((PointF)polyCentriodList[k]).X + 8;
+                 oy = ((PointF)polyCentriodList[k]).Y;
+             }
+             XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
 
-                e1.SetAttribute("x", Convert.ToString(X));
-                e1.SetAttribute("y", Convert.ToString(Y));
-                e1.SetAttribute("xzflag", "1");
-                e1.SetAttribute("xlink:href", str_sub);
-                e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
-                e1.SetAttribute("layer", SvgDocument.currentLayer);
-                SubandFHcollect _subandfh = new SubandFHcollect(FHandPointF, e1);
-                tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
-                tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
+             e1.SetAttribute("x", Convert.ToString(X));
+             e1.SetAttribute("y", Convert.ToString(Y));
+             e1.SetAttribute("xzflag", "1");
+             e1.SetAttribute("xlink:href", str_sub);
+             e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
+             e1.SetAttribute("layer", SvgDocument.currentLayer);
+             SubandFHcollect _subandfh = new SubandFHcollect(FHandPointF, e1);
+             tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
+             tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
 
-                XmlElement t1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
-                t1.SetAttribute("x", Convert.ToString(ox));
-                t1.SetAttribute("y", Convert.ToString(oy));
+             XmlElement t1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
+             t1.SetAttribute("x", Convert.ToString(ox));
+             t1.SetAttribute("y", Convert.ToString(oy));
 
-                t1.SetAttribute("layer", SvgDocument.currentLayer);
-                t1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
-                t1.SetAttribute("font-famliy", "宋体");
-                t1.SetAttribute("font-size", "54");
-                t1.InnerText = Convert.ToString(k + 1) + "号";
-                tlVectorControl1.SVGDocument.RootElement.AppendChild(t1);
+             t1.SetAttribute("layer", SvgDocument.currentLayer);
+             t1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
+             t1.SetAttribute("font-famliy", "宋体");
+             t1.SetAttribute("font-size", "54");
+             t1.InnerText = Convert.ToString(k + 1) + "号";
+             tlVectorControl1.SVGDocument.RootElement.AppendChild(t1);
 
-                decimal temp1 = TLMath.getNumber((decimal)c1.R, tlVectorControl1.ScaleRatio);
-                //MessageBox.Show(temp1.ToString());
-                if (Convert.ToDecimal(str_jj) > temp1)
-                {
-                    MessageBox.Show(Convert.ToString(k + 1) + "号变电站候选站址小于最小供电半径，请手动进行调整。");
-                }
+             decimal temp1 = TLMath.getNumber((decimal)c1.R, tlVectorControl1.ScaleRatio);
+             //MessageBox.Show(temp1.ToString());
+             if (Convert.ToDecimal(str_jj) > temp1) {
+                 MessageBox.Show(Convert.ToString(k + 1) + "号变电站候选站址小于最小供电半径，请手动进行调整。");
+             }
 
-                PSP_SubstationSelect s = new PSP_SubstationSelect();
-                s.UID = Guid.NewGuid().ToString();
-                s.EleID = t1.GetAttribute("id");
-                s.SName = Convert.ToString(k + 1) + "号";
-                s.Remark = "";
-                s.col2 = XZ_bdz;
-                s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
-                Services.BaseService.Create<PSP_SubstationSelect>(s);
-                CreateSubline(_subandfh);    //生成负荷中心与变电站的连接线
-               
-            }
+             PSP_SubstationSelect s = new PSP_SubstationSelect();
+             s.UID = Guid.NewGuid().ToString();
+             s.EleID = t1.GetAttribute("id");
+             s.SName = Convert.ToString(k + 1) + "号";
+             s.Remark = "";
+             s.col2 = XZ_bdz;
+             s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
+             Services.BaseService.Create<PSP_SubstationSelect>(s);
+             CreateSubline(_subandfh);    //生成负荷中心与变电站的连接线
+
+         }
+     } 
+     catch (Exception e1) { }
+            
 }
 #endregion
        
