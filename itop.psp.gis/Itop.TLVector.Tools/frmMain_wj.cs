@@ -1098,7 +1098,8 @@ namespace ItopVector.Tools
                             }
                             else
                             {
-                                ShowTriangle(polylist, poly1);
+                               // ShowTriangle(polylist, poly1);    //王哥写的
+                                ShowTriangle1(polylist, poly1);
                                 bdz_xz = "";
                                 return;
                             }
@@ -1784,8 +1785,12 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                      XmlElement _x = kv.Key;
                      PointF pf = kv.Value;
                      PointF _f = TLMath.polyCentriod(_x);
-
-                     string temp = sub.GetAttribute("x").ToString() + " " + sub.GetAttribute("x").ToString() + "," + _f.X.ToString() + " " + _f.Y.ToString();                                        
+                     XmlNode xnode = tlVectorControl1.SVGDocument.SelectSingleNode("svg/polyline[@xz='1' and FirstNode='" + sub.GetAttribute("id").ToString() + "'and LastNode='" + _x.GetAttribute("id").ToString() + "']");
+                   if (xnode!=null)
+                   {
+                       tlVectorControl1.SVGDocument.RootElement.RemoveChild(xnode);
+                   }
+                     string temp = sub.GetAttribute("x").ToString() + " " + sub.GetAttribute("y").ToString() + "," + _f.X.ToString() + " " + _f.Y.ToString();                                        
                          
                     XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
                     
@@ -1796,7 +1801,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                     n1.SetAttribute("FirstNode", sub.GetAttribute("id").ToString());
                     n1.SetAttribute("LastNode", _x.GetAttribute("id").ToString());
                     n1.SetAttribute("xz", "1");
-                    
+                    tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+                    tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)n1);
                  }
 
                  
