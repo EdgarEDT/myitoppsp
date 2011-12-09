@@ -218,6 +218,8 @@ namespace ItopVector.Tools
 
             //string a = tlVectorControl1.SVGDocument.CurrentLayer.ID;
             //MessageBox.Show(a);
+            //变电站选址移动时起相关的辐射线也跟着移动
+
         }
 
         void DrawArea_GraphChanged(object sender, EventArgs e)
@@ -814,7 +816,7 @@ namespace ItopVector.Tools
                                     XmlElement e0 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                     e0.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
                                     e0.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
-
+                                    e0.SetAttribute("xzflag", "1");
                                     e0.SetAttribute("xlink:href", str_sub);
                                     e0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                     e0.SetAttribute("layer", SvgDocument.currentLayer);
@@ -861,7 +863,7 @@ namespace ItopVector.Tools
                                         XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                         e1.SetAttribute("x", Convert.ToString(Convert.ToSingle(x) - pf.X));
                                         e1.SetAttribute("y", Convert.ToString(Convert.ToSingle(y) - pf.Y));
-
+                                        e1.SetAttribute("xzflag", "1");
                                         e1.SetAttribute("xlink:href", str_sub);
                                         e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                         e1.SetAttribute("layer", SvgDocument.currentLayer);
@@ -932,7 +934,7 @@ namespace ItopVector.Tools
                                     XmlElement e0 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                     e0.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
                                     e0.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
-
+                                    e0.SetAttribute("xzflag", "1");
                                     e0.SetAttribute("xlink:href", str_sub);
                                     e0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                     e0.SetAttribute("layer", SvgDocument.currentLayer);
@@ -979,7 +981,7 @@ namespace ItopVector.Tools
                                         XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                         e1.SetAttribute("x", Convert.ToString(Convert.ToSingle(x) - pf.X));
                                         e1.SetAttribute("y", Convert.ToString(Convert.ToSingle(y) - pf.Y));
-
+                                        e1.SetAttribute("xzflag", "1");
                                         e1.SetAttribute("xlink:href", str_sub);
                                         e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                         e1.SetAttribute("layer", SvgDocument.currentLayer);
@@ -1057,7 +1059,7 @@ namespace ItopVector.Tools
                                 XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                 e1.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
                                 e1.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
-
+                                e1.SetAttribute("xzflag", "1");
                                 e1.SetAttribute("xlink:href", str_sub);
                                 e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                 e1.SetAttribute("layer", SvgDocument.currentLayer);
@@ -1736,7 +1738,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
 
                 e1.SetAttribute("x", Convert.ToString(X));
                 e1.SetAttribute("y", Convert.ToString(Y));
-
+                e1.SetAttribute("xzflag", "1");
                 e1.SetAttribute("xlink:href", str_sub);
                 e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                 e1.SetAttribute("layer", SvgDocument.currentLayer);
@@ -1771,7 +1773,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                 s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
                 Services.BaseService.Create<PSP_SubstationSelect>(s);
                 CreateSubline(_subandfh);    //生成负荷中心与变电站的连接线
-
+               
             }
 }
 #endregion
