@@ -820,7 +820,17 @@ namespace ItopVector.Tools
                                     e0.SetAttribute("layer", SvgDocument.currentLayer);
                                     tlVectorControl1.SVGDocument.RootElement.AppendChild(e0);
                                     tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e0);
-
+                                    //获得此变电站的最小半径的圆 生成辐射线
+                                    XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                    n1.SetAttribute("cx", e0.GetAttribute("x").ToString());
+                                    n1.SetAttribute("cy", e0.GetAttribute("y").ToString());
+                                    n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
+                                  
+                                    n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                    n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                    SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e0);
+                                    CreateSubline(sf);
+                                    //
                                     XmlElement t0 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                                     t0.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x));
                                     t0.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y));
@@ -857,7 +867,17 @@ namespace ItopVector.Tools
                                         e1.SetAttribute("layer", SvgDocument.currentLayer);
                                         tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
                                         tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
+                                        //获得此变电站的最小半径的圆 生成辐射线
+                                        n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                        n1.SetAttribute("cx", e1.GetAttribute("x").ToString());
+                                        n1.SetAttribute("cy", e1.GetAttribute("y").ToString());
+                                        n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
 
+                                        n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                        n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                         sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
+                                        CreateSubline(sf);
+                                        //
                                         PSP_SubstationSelect s2 = new PSP_SubstationSelect();
                                         s2.UID = Guid.NewGuid().ToString();
                                         s2.EleID = e1.GetAttribute("id");
@@ -918,7 +938,17 @@ namespace ItopVector.Tools
                                     e0.SetAttribute("layer", SvgDocument.currentLayer);
                                     tlVectorControl1.SVGDocument.RootElement.AppendChild(e0);
                                     tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e0);
+                                    //获得此变电站的最小半径的圆 生成辐射线
+                                    XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                    n1.SetAttribute("cx", e0.GetAttribute("x").ToString());
+                                    n1.SetAttribute("cy", e0.GetAttribute("y").ToString());
+                                    n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
 
+                                    n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                    n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                    SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e0);
+                                    CreateSubline(sf);
+                                    //
                                     XmlElement t0 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                                     t0.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x));
                                     t0.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y));
@@ -955,7 +985,17 @@ namespace ItopVector.Tools
                                         e1.SetAttribute("layer", SvgDocument.currentLayer);
                                         tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
                                         tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
+                                        //获得此变电站的最小半径的圆 生成辐射线
+                                          n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                        n1.SetAttribute("cx", e1.GetAttribute("x").ToString());
+                                        n1.SetAttribute("cy", e1.GetAttribute("y").ToString());
+                                        n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
 
+                                        n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                        n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                       sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
+                                        CreateSubline(sf);
+                                        //
                                         PSP_SubstationSelect s2 = new PSP_SubstationSelect();
                                         s2.UID = Guid.NewGuid().ToString();
                                         s2.EleID = e1.GetAttribute("id");
@@ -1012,7 +1052,7 @@ namespace ItopVector.Tools
                                 n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
 
-
+                                
                                 PointF pf = getOff(str_dy);
                                 XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                 e1.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
@@ -1023,7 +1063,11 @@ namespace ItopVector.Tools
                                 e1.SetAttribute("layer", SvgDocument.currentLayer);
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
                                 tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
-
+                                //获得此变电站的最小半径的圆 生成辐射线
+                               
+                                SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
+                                CreateSubline(sf);
+                                //
                                 PSP_SubstationSelect s2 = new PSP_SubstationSelect();
                                 s2.UID = Guid.NewGuid().ToString();
                                 s2.EleID = e1.GetAttribute("id");
@@ -1648,7 +1692,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                         {
                             sum = sum + pl.Burthen;
                         }
-                        fhkcollect.Add(_x,_f);
+                        fhkcollect.Add(_x,_f);//记录外包圆相交的负荷块
                     }
                 }
                 clist.Add(sum + n, cir); 
@@ -1754,6 +1798,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                     n1.SetAttribute("xz", "1");
                     
                  }
+
                  
 
         //    XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
@@ -1767,6 +1812,40 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
         //    SubandFHcollect _subandfh = new SubandFHcollect(FHandPointF, e1);
         //    tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
         //    tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
+        }
+
+        //返回某变电站最小覆盖原相交的地块
+        private Dictionary<XmlElement,PointF> GetsubFhk(Circle cir,ArrayList _polylist)
+        {
+            Dictionary<XmlElement, PointF> fhkcollect = new Dictionary<XmlElement, PointF>();
+         
+                
+                int k = 0;
+                GraphicsPath gr1 = new GraphicsPath();
+                gr1.AddPath(cir.GPath, true);
+                gr1.CloseFigure();
+                for (int m = 0; m < _polylist.Count; m++) {
+                    XmlElement _x = (XmlElement)_polylist[m];
+                    PointF _f = TLMath.polyCentriod(_x);
+                    if (gr1.IsVisible(_f))    //外接圆包括那些负荷中心点
+                    {
+                        //k = k + 1;   //求和的过程
+                        //string sid = _x.GetAttribute("id");
+                        //glebeProperty pl = new glebeProperty();
+                        //pl.EleID = sid;
+                        //pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                        //pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
+                        //if (pl != null) {
+                        //    sum = sum + pl.Burthen;
+                        //}
+                        fhkcollect.Add(_x, _f);//记录外包圆相交的负荷块
+                    }
+                }
+                //clist.Add(sum + n, cir);
+                //CtoFHlist.Add(sum + n, fhkcollect);
+                //string aa = "";
+                return fhkcollect;
+           
         }
         public void InputBDZFile(string filename, bool create)
         {
