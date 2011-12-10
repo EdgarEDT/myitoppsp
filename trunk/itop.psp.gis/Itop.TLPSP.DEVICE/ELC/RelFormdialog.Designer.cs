@@ -30,6 +30,7 @@
         {
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.SuspendLayout();
             // 
             // buttonX1
@@ -45,18 +46,29 @@
             // buttonX2
             // 
             this.buttonX2.ColorScheme.DockSiteBackColorGradientAngle = 0;
-            this.buttonX2.Location = new System.Drawing.Point(21, 76);
+            this.buttonX2.Location = new System.Drawing.Point(21, 78);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(103, 23);
             this.buttonX2.TabIndex = 1;
             this.buttonX2.Text = "变压器可靠性";
             this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
             // 
+            // buttonX3
+            // 
+            this.buttonX3.ColorScheme.DockSiteBackColorGradientAngle = 0;
+            this.buttonX3.Location = new System.Drawing.Point(17, 122);
+            this.buttonX3.Name = "buttonX3";
+            this.buttonX3.Size = new System.Drawing.Size(103, 23);
+            this.buttonX3.TabIndex = 2;
+            this.buttonX3.Text = "配电可靠性";
+            this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
+            // 
             // RelFormdialog
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(210)))), ((int)(((byte)(248)))));
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(136, 131);
+            this.ClientSize = new System.Drawing.Size(136, 170);
+            this.Controls.Add(this.buttonX3);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -73,5 +85,6 @@
 
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.ButtonX buttonX3;
     }
 }

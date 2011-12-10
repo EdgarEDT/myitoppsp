@@ -923,6 +923,10 @@ namespace Itop.TLPsp.Graphical
                 FrmLayoutSubstationInfo layoutSubstation = new FrmLayoutSubstationInfo();
                 layoutSubstation.Biandianzhan();
 
+            } 
+            else if (reldialog.DialogResult == DialogResult.Yes) {
+                this.Visible = false;
+                //配电可靠性窗体
             }
             else if (reldialog.DialogResult == DialogResult.Cancel)
             {
