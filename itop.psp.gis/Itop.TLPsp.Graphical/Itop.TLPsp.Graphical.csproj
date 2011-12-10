@@ -172,6 +172,24 @@
     <Compile Include="frmPowerAndLineList.designer.cs">
       <DependentUpon>frmPowerAndLineList.cs</DependentUpon>
     </Compile>
+    <Compile Include="UcPddate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcPddate.Designer.cs">
+      <DependentUpon>UcPddate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcPdtype.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcPdtype.Designer.cs">
+      <DependentUpon>UcPdtype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XtraPDrelfrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XtraPDrelfrm.Designer.cs">
+      <DependentUpon>XtraPDrelfrm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmTLpspGraphical.resx">
@@ -258,6 +276,15 @@
     <EmbeddedResource Include="frmPowerAndLineList.resx">
       <DependentUpon>frmPowerAndLineList.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcPddate.resx">
+      <DependentUpon>UcPddate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcPdtype.resx">
+      <DependentUpon>UcPdtype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraPDrelfrm.resx">
+      <DependentUpon>XtraPDrelfrm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
