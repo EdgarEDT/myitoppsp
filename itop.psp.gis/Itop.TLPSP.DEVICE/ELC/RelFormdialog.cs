@@ -31,5 +31,10 @@ namespace Itop.TLPSP.DEVICE
             
             //this.Parent.Visible = false;
         }
+
+        private void buttonX3_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.Yes;
+            //this.Close();
+        }
     }
 }
