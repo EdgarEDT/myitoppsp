@@ -69,6 +69,7 @@
     <Content Include="工程说明.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Itop.Domain.Table.dll" />
     <Content Include="MapLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
