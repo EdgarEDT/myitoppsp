@@ -61,6 +61,8 @@
     <Compile Include="LineInfo.cs" />
     <Compile Include="LineList1.cs" />
     <Compile Include="LineType.cs" />
+    <Compile Include="PDrelcontent.cs" />
+    <Compile Include="PDrelregion.cs" />
     <Compile Include="PrintInfo.cs" />
     <Compile Include="PSP_ElcDevice.cs" />
     <Compile Include="PSP_ELCPROJECT.cs" />
