@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{10DB99AD-605C-4D45-8611-159245BDF1EF}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -132,6 +132,24 @@
     </Compile>
     <Compile Include="ForecastList2.Designer.cs">
       <DependentUpon>ForecastList2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForecastMaxHourSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastMaxHourSet.Designer.cs">
+      <DependentUpon>ForecastMaxHourSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormMaxHour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormMaxHour.designer.cs">
+      <DependentUpon>FormMaxHour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormUnitConsumptionValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormUnitConsumptionValue.designer.cs">
+      <DependentUpon>FormUnitConsumptionValue.cs</DependentUpon>
     </Compile>
     <Compile Include="FormArgumentSet.cs">
       <SubType>Form</SubType>
@@ -432,6 +450,48 @@
     <Compile Include="FormForecastCalcTX.Designer.cs">
       <DependentUpon>FormForecastCalcTX.cs</DependentUpon>
     </Compile>
+    <Compile Include="ForecastListF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastListF.Designer.cs">
+      <DependentUpon>ForecastListF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastF.designer.cs">
+      <DependentUpon>FormForecastF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoadForecastDataforMaxHour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoadForecastDataforMaxHour.Designer.cs">
+      <DependentUpon>FormLoadForecastDataforMaxHour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastLoadDataforMaxHour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastLoadDataforMaxHour.Designer.cs">
+      <DependentUpon>FormForecastLoadDataforMaxHour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForecastListD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastListD.Designer.cs">
+      <DependentUpon>ForecastListD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastD.designer.cs">
+      <DependentUpon>FormForecastD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForecastUnitConsumptionValueSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastUnitConsumptionValueSet.Designer.cs">
+      <DependentUpon>ForecastUnitConsumptionValueSet.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ForecastList.resx">
@@ -440,6 +500,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ForecastList2.resx">
       <DependentUpon>ForecastList2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForecastMaxHourSet.resx">
+      <DependentUpon>ForecastMaxHourSet.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormMaxHour.resx">
+      <DependentUpon>FormMaxHour.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormUnitConsumptionValue.resx">
+      <DependentUpon>FormUnitConsumptionValue.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormArgumentSet.resx">
       <SubType>Designer</SubType>
@@ -641,6 +714,34 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormForecastCalcTX.resx">
       <DependentUpon>FormForecastCalcTX.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForecastListF.resx">
+      <DependentUpon>ForecastListF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastF.resx">
+      <DependentUpon>FormForecastF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoadForecastDataforMaxHour.resx">
+      <DependentUpon>FormLoadForecastDataforMaxHour.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastLoadDataforMaxHour.resx">
+      <DependentUpon>FormForecastLoadDataforMaxHour.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForecastListD.resx">
+      <DependentUpon>ForecastListD.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastD.resx">
+      <DependentUpon>FormForecastD.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForecastUnitConsumptionValueSet.resx">
+      <DependentUpon>ForecastUnitConsumptionValueSet.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
