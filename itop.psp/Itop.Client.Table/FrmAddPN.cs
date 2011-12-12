@@ -104,6 +104,10 @@ namespace Itop.Client.Table
             }
         }
 
+        private void groupControl1_Paint(object sender, PaintEventArgs e) {
+
+        }
+
 
     }
 }
