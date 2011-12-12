@@ -18,6 +18,7 @@ namespace Itop.Domain.Graphics
 		#region ×Ö¶Î
 		private string _id="";
 		private string _areaname="";
+        private string _ProjectID = "";
 		private int _peoplesum;
 		private int _year;
 		private string _title="";
@@ -44,6 +45,13 @@ namespace Itop.Domain.Graphics
 			set{ _areaname=value;}
 			get{return _areaname;}
 		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ProjectID {
+            set { _ProjectID = value; }
+            get { return _ProjectID; }
+        }
 		/// <summary>
 		/// 
 		/// </summary>
