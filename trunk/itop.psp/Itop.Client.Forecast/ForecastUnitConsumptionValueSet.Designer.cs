@@ -85,7 +85,7 @@
             this.rbdhtwo.Name = "rbdhtwo";
             this.rbdhtwo.Size = new System.Drawing.Size(59, 16);
             this.rbdhtwo.TabIndex = 1;
-            this.rbdhtwo.Text = "kWh/元";
+            this.rbdhtwo.Text = "Wh/元";
             this.rbdhtwo.UseVisualStyleBackColor = true;
             this.rbdhtwo.CheckedChanged += new System.EventHandler(this.rbdhtwo_CheckedChanged);
             // 
@@ -151,7 +151,6 @@
             this.rbgpdone.TabStop = true;
             this.rbgpdone.Text = "亿元";
             this.rbgpdone.UseVisualStyleBackColor = true;
-        
             // 
             // ForecastUnitConsumptionValueSet
             // 
