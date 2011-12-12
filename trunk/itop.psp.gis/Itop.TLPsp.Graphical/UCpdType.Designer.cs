@@ -28,15 +28,15 @@
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +82,30 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "添加";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.ImageIndex = 4;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "修改";
+            this.barButtonItem2.Id = 1;
+            this.barButtonItem2.ImageIndex = 5;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "删除";
+            this.barButtonItem3.Id = 2;
+            this.barButtonItem3.ImageIndex = 2;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // bar3
             // 
             this.bar3.BarName = "Status bar";
@@ -123,39 +147,27 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "保存.ico");
-            this.imageList1.Images.SetKeyName(1, "打印.ico");
-            this.imageList1.Images.SetKeyName(2, "删除.ico");
-            this.imageList1.Images.SetKeyName(3, "添加下级.ico");
-            this.imageList1.Images.SetKeyName(4, "新建.ico");
-            this.imageList1.Images.SetKeyName(5, "修改.ico");
-            this.imageList1.Images.SetKeyName(6, "添加同级.ico");
-            this.imageList1.Images.SetKeyName(7, "审批.ico");
-            this.imageList1.Images.SetKeyName(8, "审核.ico");
-            this.imageList1.Images.SetKeyName(9, "关闭.ico");
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "添加";
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.ImageIndex = 4;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "修改";
-            this.barButtonItem2.Id = 1;
-            this.barButtonItem2.ImageIndex = 5;
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "删除";
-            this.barButtonItem3.Id = 2;
-            this.barButtonItem3.ImageIndex = 2;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.imageList1.Images.SetKeyName(1, "布局.ico");
+            this.imageList1.Images.SetKeyName(2, "查询.ico");
+            this.imageList1.Images.SetKeyName(3, "打回重新编.ico");
+            this.imageList1.Images.SetKeyName(4, "打印.ico");
+            this.imageList1.Images.SetKeyName(5, "发送.ico");
+            this.imageList1.Images.SetKeyName(6, "关闭1.ico");
+            this.imageList1.Images.SetKeyName(7, "关闭.ico");
+            this.imageList1.Images.SetKeyName(8, "角色.ico");
+            this.imageList1.Images.SetKeyName(9, "三等功发1.ico");
+            this.imageList1.Images.SetKeyName(10, "删除.ico");
+            this.imageList1.Images.SetKeyName(11, "审核.ico");
+            this.imageList1.Images.SetKeyName(12, "审批.ico");
+            this.imageList1.Images.SetKeyName(13, "授权.ico");
+            this.imageList1.Images.SetKeyName(14, "刷新.ico");
+            this.imageList1.Images.SetKeyName(15, "添加同级.ico");
+            this.imageList1.Images.SetKeyName(16, "添加下级.ico");
+            this.imageList1.Images.SetKeyName(17, "新建.ico");
+            this.imageList1.Images.SetKeyName(18, "修改.ico");
+            this.imageList1.Images.SetKeyName(19, "作废.ico");
+            this.imageList1.Images.SetKeyName(20, "FillUpHS.png");
+            this.imageList1.Images.SetKeyName(21, "FillDownHS.png");
             // 
             // UcPdtype
             // 
@@ -184,9 +196,9 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

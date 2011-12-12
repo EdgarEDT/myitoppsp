@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PDrelcontent' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<TDtypeAlias alias='PDrelcontent' assembly='Itop.Domain.Graphics.dll' TDtype='Itop.Domain.Graphics.PDrelcontent' />
+</alias>
+	<resultMaps>
+		<resultMap id='PDrelcontentResult' class='PDrelcontent'>
+			<result property='ID' column='ID' />
+			<result property='ParentID' column='ParentID' />
+			<result property='TDdatetime' column='TDdatetime' />
+			<result property='TDtime' column='TDtime' />
+			<result property='PeopleRegion' column='PeopleRegion' />
+			<result property='TDtype' column='TDtype' />
+			<result property='AvgFH' column='AvgFH' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='S3' column='S3' />
+			<result property='S4' column='S4' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPDrelcontent' parameterClass='PDrelcontent'>
+		INSERT INTO PDrelcontent		(
+			"ID",
+			"ParentID",
+			"TDdatetime",
+			"TDtime",
+			"PeopleRegion",
+			"TDtype",
+			"AvgFH",
+			"S1",
+			"S2",
+			"S3",
+			"S4"
+		)
+		VALUES
+		(
+			#ID#,
+			#ParentID#,
+			#TDdatetime#,
+			#TDtime#,
+			#PeopleRegion#,
+			#TDtype#,
+			#AvgFH#,
+			#S1#,
+			#S2#,
+			#S3#,
+			#S4#
+		)
+	</insert>
+	<delete id='DeletePDrelcontent' parameterClass='PDrelcontent'>
+		DELETE FROM PDrelcontent
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePDrelcontent' parameterClass='PDrelcontent'>
+		UPDATE PDrelcontent
+		SET
+			"ParentID" = #ParentID#,
+			"TDdatetime" = #TDdatetime#,
+			"TDtime" = #TDtime#,
+			"PeopleRegion" = #PeopleRegion#,
+			"TDtype" = #TDtype#,
+			"AvgFH" = #AvgFH#,
+			"S1" = #S1#,
+			"S2" = #S2#,
+			"S3" = #S3#,
+			"S4" = #S4#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPDrelcontentList' resultMap='PDrelcontentResult' parameterClass='PDrelcontent'>
+		SELECT
+			"ID",
+			"ParentID",
+			"TDdatetime",
+			"TDtime",
+			"PeopleRegion",
+			"TDtype",
+			"AvgFH",
+			"S1",
+			"S2",
+			"S3",
+			"S4"
+		FROM PDrelcontent
+	</select>
+	<select id='SelectPDrelcontentByKey' resultMap='PDrelcontentResult' parameterClass='PDrelcontent'>
+		SELECT
+			"ID",
+			"ParentID",
+			"TDdatetime",
+			"TDtime",
+			"PeopleRegion",
+			"TDtype",
+			"AvgFH",
+			"S1",
+			"S2",
+			"S3",
+			"S4"
+		FROM PDrelcontent
+		WHERE
+			ID = #ID#
+	</select>
+</statements>
+</sqlMap>
