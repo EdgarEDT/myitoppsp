@@ -25,7 +25,8 @@ namespace Itop.Domain.Graphics
         private string _filetype = "";
         #endregion 字段
 
-        #region 属性
+        #region 属性
+
         /// <summary>
         /// 
         /// </summary>
@@ -66,7 +67,8 @@ namespace Itop.Domain.Graphics
             set { _filetype = value; }
             get { return _filetype; }
         }
-        #endregion 属性
+        #endregion 属性
+
     }
 }
 
