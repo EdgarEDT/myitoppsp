@@ -468,8 +468,9 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                                 currtenpfm.Title = "用电量(万kWh)";
                             }
                             Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
+                            break;
                         }
-                        break;
+                       
                     }
                     
                 }
@@ -590,7 +591,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             Application.DoEvents();
 
             bLoadingData = false;
-
+            RefreshChart();
         }
         /// <summary>
         /// 处理最大小时数法的数，如果不是三行并且符合标准，则删除，重新添加固定的三行
