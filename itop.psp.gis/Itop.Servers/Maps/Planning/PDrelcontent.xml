@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <sqlMap namespace='PDrelcontent' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
 <alias>
-	<TDtypeAlias alias='PDrelcontent' assembly='Itop.Domain.Graphics.dll' TDtype='Itop.Domain.Graphics.PDrelcontent' />
+	<typeAlias alias='PDrelcontent' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PDrelcontent' />
 </alias>
 	<resultMaps>
 		<resultMap id='PDrelcontentResult' class='PDrelcontent'>
@@ -10,7 +10,7 @@
 			<result property='TDdatetime' column='TDdatetime' />
 			<result property='TDtime' column='TDtime' />
 			<result property='PeopleRegion' column='PeopleRegion' />
-			<result property='TDtype' column='TDtype' />
+			<result property='Type' column='Type' />
 			<result property='AvgFH' column='AvgFH' />
 			<result property='S1' column='S1' />
 			<result property='S2' column='S2' />
@@ -26,7 +26,7 @@
 			"TDdatetime",
 			"TDtime",
 			"PeopleRegion",
-			"TDtype",
+			"Type",
 			"AvgFH",
 			"S1",
 			"S2",
@@ -40,7 +40,7 @@
 			#TDdatetime#,
 			#TDtime#,
 			#PeopleRegion#,
-			#TDtype#,
+			#Type#,
 			#AvgFH#,
 			#S1#,
 			#S2#,
@@ -60,7 +60,7 @@
 			"TDdatetime" = #TDdatetime#,
 			"TDtime" = #TDtime#,
 			"PeopleRegion" = #PeopleRegion#,
-			"TDtype" = #TDtype#,
+			"Type" = #Type#,
 			"AvgFH" = #AvgFH#,
 			"S1" = #S1#,
 			"S2" = #S2#,
@@ -76,7 +76,7 @@
 			"TDdatetime",
 			"TDtime",
 			"PeopleRegion",
-			"TDtype",
+			"Type",
 			"AvgFH",
 			"S1",
 			"S2",
@@ -91,7 +91,7 @@
 			"TDdatetime",
 			"TDtime",
 			"PeopleRegion",
-			"TDtype",
+			"Type",
 			"AvgFH",
 			"S1",
 			"S2",

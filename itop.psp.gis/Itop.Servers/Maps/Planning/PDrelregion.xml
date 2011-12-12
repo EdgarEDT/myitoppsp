@@ -1,14 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <sqlMap namespace='PDrelregion' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
 <alias>
-	<PeopleSumAlias alias='PDrelregion' assembly='Itop.Domain.Graphics.dll' PeopleSum='Itop.Domain.Graphics.PDrelregion' />
+	<typeAlias alias='PDrelregion' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.PDrelregion' />
 </alias>
 	<resultMaps>
 		<resultMap id='PDrelregionResult' class='PDrelregion'>
 			<result property='ID' column='ID' />
 			<result property='AreaName' column='AreaName' />
 			<result property='PeopleSum' column='PeopleSum' />
-			<result property='ProjectID' column='ProjectID' />
 			<result property='Year' column='Year' />
 			<result property='Title' column='Title' />
 			<result property='S1' column='S1' />
@@ -23,7 +22,6 @@
 			"ID",
 			"AreaName",
 			"PeopleSum",
-			"ProjectID",
 			"Year",
 			"Title",
 			"S1",
@@ -36,7 +34,6 @@
 			#ID#,
 			#AreaName#,
 			#PeopleSum#,
-			#ProjectID#,
 			#Year#,
 			#Title#,
 			#S1#,
@@ -49,13 +46,12 @@
 		DELETE FROM PDrelregion
 		WHERE
 			ID = #ID#
-			AND AreaName = #AreaName#
 	</delete>
 	<update id='UpdatePDrelregion' parameterClass='PDrelregion'>
 		UPDATE PDrelregion
 		SET
+			"AreaName" = #AreaName#,
 			"PeopleSum" = #PeopleSum#,
-			"ProjectID" = #ProjectID#,
 			"Year" = #Year#,
 			"Title" = #Title#,
 			"S1" = #S1#,
@@ -64,14 +60,12 @@
 			"S4" = #S4#
 		WHERE
 			ID = #ID#
-			AND AreaName = #AreaName#
 	</update>
 	<select id='SelectPDrelregionList' resultMap='PDrelregionResult' parameterClass='PDrelregion'>
 		SELECT
 			"ID",
 			"AreaName",
 			"PeopleSum",
-			"ProjectID",
 			"Year",
 			"Title",
 			"S1",
@@ -85,7 +79,6 @@
 			"ID",
 			"AreaName",
 			"PeopleSum",
-			"ProjectID",
 			"Year",
 			"Title",
 			"S1",
@@ -95,23 +88,6 @@
 		FROM PDrelregion
 		WHERE
 			ID = #ID#
-			AND AreaName = #AreaName#
 	</select>
-  <select id='SelectPDrelregionByCondition' resultMap='PDrelregionResult' parameterClass='string'>
-    SELECT
-    "ID",
-    "AreaName",
-    "PeopleSum",
-    "ProjectID",
-    "Year",
-    "Title",
-    "S1",
-    "S2",
-    "S3",
-    "S4"
-    FROM PDrelregion
-    WHERE
-    $value$
-  </select>
 </statements>
 </sqlMap>
