@@ -5,7 +5,6 @@
 //
 //********************************************************************************/
 using System;
-using System.ComponentModel;
 namespace Itop.Domain.Graphics
 {
 	/// <summary>
@@ -22,7 +21,7 @@ namespace Itop.Domain.Graphics
 		private DateTime _tddatetime;
 		private double _tdtime;
 		private int _peopleregion;
-		private string _tdtype="";
+        private string _TDtype= "";
 		private double _avgfh;
 		private string _s1="";
 		private string _s2="";
@@ -34,8 +33,6 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-		[Browsable(false)]
-        [DisplayNameAttribute("ID")]
 		public string ID
 		{
 			set{ _id=value;}
@@ -44,8 +41,6 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-		[Browsable(false)]
-        [DisplayNameAttribute("ParentID")]
 		public string ParentID
 		{
 			set{ _parentid=value;}
@@ -54,7 +49,6 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-        [DisplayNameAttribute("停电日期")]
 		public DateTime TDdatetime
 		{
 			set{ _tddatetime=value;}
@@ -63,7 +57,6 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-        [DisplayNameAttribute("停电持续时间（小时）")]
 		public double TDtime
 		{
 			set{ _tdtime=value;}
@@ -72,7 +65,6 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-        [DisplayNameAttribute("停电范围用户数")]
 		public int PeopleRegion
 		{
 			set{ _peopleregion=value;}
@@ -81,16 +73,14 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-        [DisplayNameAttribute("停电类型")]
-		public string TDtype
+        public string TDtype
 		{
-			set{ _tdtype=value;}
-			get{return _tdtype;}
+            set { _TDtype = value; }
+            get { return _TDtype; }
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-        [DisplayNameAttribute("平均负荷")]
 		public double AvgFH
 		{
 			set{ _avgfh=value;}
@@ -99,8 +89,6 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-		[Browsable(false)]
-        [DisplayNameAttribute("S1")]
 		public string S1
 		{
 			set{ _s1=value;}
@@ -109,8 +97,6 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-		[Browsable(false)]
-        [DisplayNameAttribute("S2")]
 		public string S2
 		{
 			set{ _s2=value;}
@@ -119,8 +105,6 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-		[Browsable(false)]
-        [DisplayNameAttribute("S3")]
 		public string S3
 		{
 			set{ _s3=value;}
@@ -129,8 +113,6 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-		[Browsable(false)]
-        [DisplayNameAttribute("S4")]
 		public string S4
 		{
 			set{ _s4=value;}

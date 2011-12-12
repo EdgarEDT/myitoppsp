@@ -1,144 +1,106 @@
 //********************************************************************************/
 //
-//此代码由Itop.NET代码生成器自动生成.
-//生成时间:2010-3-3 13:29:41
+//此代码由TONLI.NET代码生成器自动生成.
+//生成时间:2011-12-12 14:26:47
 //
 //********************************************************************************/
 using System;
-using System.ComponentModel;
 namespace Itop.Domain.Graphics
 {
-    /// <summary>
-    /// 实体类PSP_ELCPROJECT 。(属性说明自动提取数据库字段的描述信息)
-    /// </summary>
-    [Serializable]
-    public class PDrelregion
-    {
-        public PDrelregion()
-        {
-            ID = Guid.NewGuid().ToString();
-        }
-        #region 字段
-        private string _id = "";
-        private string _areaname = "";
-        private int _PeopleSum = 0;
-        private string _projectid = "";
-        private int _Year = 2000;
-        private string _Title = "";
-        private string _S1 = "";
-        private string _S2 = "";
-        private string _S3 = "";
-        private string _S4 = "";
+	/// <summary>
+	/// 实体类PDrelregion 。(属性说明自动提取数据库字段的描述信息)
+	/// </summary>
+	[Serializable]
+	public class PDrelregion
+	{
+		public PDrelregion()
+		{}
+		#region 字段
+		private string _id="";
+		private string _areaname="";
+		private int _peoplesum;
+		private int _year;
+		private string _title="";
+		private string _s1="";
+		private string _s2="";
+		private string _s3="";
+		private string _s4="";
+		#endregion 字段
 
-
-        #endregion 字段
-
-        #region 属性
-
-        /// <summary>
-       
-        /// 属性描述：记录ID
-        /// 字段信息：[gzrjID],nvarchar
-        /// </summary>
-        [Browsable(false)]
-        [DisplayNameAttribute("ID")]
-        public string ID
-        {
-            set { _id = value; }
-            get { return _id; }
-        }
-         /// <summary>
-       
-        /// 属性描述：记录ID
-        /// 字段信息：[gzrjID],nvarchar
-        /// </summary>
-        [DisplayNameAttribute("地区")]
-        public string AreaName
-        {
-            set { _areaname = value; }
-            get { return _areaname; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-		[DisplayNameAttribute("人口数")]
-        public int PeopleSum
-        {
-            set { _PeopleSum = value; }
-            get { return _PeopleSum; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-		[Browsable(false)]
-        [DisplayNameAttribute("ProjectID")]
-        public string ProjectID
-        {
-            set { _projectid = value; }
-            get { return _projectid; }
-        }
-		 /// <summary>
-        /// 
-        /// </summary>
-		[DisplayNameAttribute("年份")]
-        public int Year
-        {
-            set { _Year = value; }
-            get { return _Year; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-       [Browsable(false)]
-        [DisplayNameAttribute("标题")]
-        public string Title
-        {
-            set { _Title = value; }
-            get { return _Title; }
-        }
-         /// <summary>
-        /// 
-        /// </summary>
-       [Browsable(false)]
-        [DisplayNameAttribute("S1")]
-        public string S1
-        {
-            set { _S1 = value; }
-            get { return _S1; }
-        }
-       /// <summary>
-        /// 
-        /// </summary>
-       [Browsable(false)]
-        [DisplayNameAttribute("S2")]
-        public string S2
-        {
-            set { _S2 = value; }
-            get { return _S2; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-       [Browsable(false)]
-        [DisplayNameAttribute("S3")]
-        public string S3
-        {
-            set { _S3 = value; }
-            get { return _S3; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-       [Browsable(false)]
-        [DisplayNameAttribute("S4")]
-        public string S4
-        {
-            set { _S4 = value; }
-            get { return _S4; }
-        }
-
-        #endregion 属性
-
-    }
+		#region 属性
+		/// <summary>
+		/// 
+		/// </summary>
+		public string ID
+		{
+			set{ _id=value;}
+			get{return _id;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string AreaName
+		{
+			set{ _areaname=value;}
+			get{return _areaname;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int PeopleSum
+		{
+			set{ _peoplesum=value;}
+			get{return _peoplesum;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int Year
+		{
+			set{ _year=value;}
+			get{return _year;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Title
+		{
+			set{ _title=value;}
+			get{return _title;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string S1
+		{
+			set{ _s1=value;}
+			get{return _s1;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string S2
+		{
+			set{ _s2=value;}
+			get{return _s2;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string S3
+		{
+			set{ _s3=value;}
+			get{return _s3;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string S4
+		{
+			set{ _s4=value;}
+			get{return _s4;}
+		}
+		#endregion 属性
+	}
 }
 
