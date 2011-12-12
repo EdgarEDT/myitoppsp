@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='PDrelregion' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<PeopleSumAlias alias='PDrelregion' assembly='Itop.Domain.Graphics.dll' PeopleSum='Itop.Domain.Graphics.PDrelregion' />
+</alias>
+	<resultMaps>
+		<resultMap id='PDrelregionResult' class='PDrelregion'>
+			<result property='ID' column='ID' />
+			<result property='AreaName' column='AreaName' />
+			<result property='PeopleSum' column='PeopleSum' />
+			<result property='ProjectID' column='ProjectID' />
+			<result property='Year' column='Year' />
+			<result property='Title' column='Title' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='S3' column='S3' />
+			<result property='S4' column='S4' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPDrelregion' parameterClass='PDrelregion'>
+		INSERT INTO PDrelregion		(
+			"ID",
+			"AreaName",
+			"PeopleSum",
+			"ProjectID",
+			"Year",
+			"Title",
+			"S1",
+			"S2",
+			"S3",
+			"S4"
+		)
+		VALUES
+		(
+			#ID#,
+			#AreaName#,
+			#PeopleSum#,
+			#ProjectID#,
+			#Year#,
+			#Title#,
+			#S1#,
+			#S2#,
+			#S3#,
+			#S4#
+		)
+	</insert>
+	<delete id='DeletePDrelregion' parameterClass='PDrelregion'>
+		DELETE FROM PDrelregion
+		WHERE
+			ID = #ID#
+			AND AreaName = #AreaName#
+	</delete>
+	<update id='UpdatePDrelregion' parameterClass='PDrelregion'>
+		UPDATE PDrelregion
+		SET
+			"PeopleSum" = #PeopleSum#,
+			"ProjectID" = #ProjectID#,
+			"Year" = #Year#,
+			"Title" = #Title#,
+			"S1" = #S1#,
+			"S2" = #S2#,
+			"S3" = #S3#,
+			"S4" = #S4#
+		WHERE
+			ID = #ID#
+			AND AreaName = #AreaName#
+	</update>
+	<select id='SelectPDrelregionList' resultMap='PDrelregionResult' parameterClass='PDrelregion'>
+		SELECT
+			"ID",
+			"AreaName",
+			"PeopleSum",
+			"ProjectID",
+			"Year",
+			"Title",
+			"S1",
+			"S2",
+			"S3",
+			"S4"
+		FROM PDrelregion
+	</select>
+	<select id='SelectPDrelregionByKey' resultMap='PDrelregionResult' parameterClass='PDrelregion'>
+		SELECT
+			"ID",
+			"AreaName",
+			"PeopleSum",
+			"ProjectID",
+			"Year",
+			"Title",
+			"S1",
+			"S2",
+			"S3",
+			"S4"
+		FROM PDrelregion
+		WHERE
+			ID = #ID#
+			AND AreaName = #AreaName#
+	</select>
+  <select id='SelectPDrelregionByCondition' resultMap='PDrelregionResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "AreaName",
+    "PeopleSum",
+    "ProjectID",
+    "Year",
+    "Title",
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+    FROM PDrelregion
+    WHERE
+    $value$
+  </select>
+</statements>
+</sqlMap>
