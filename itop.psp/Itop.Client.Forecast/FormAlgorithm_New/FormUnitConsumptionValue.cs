@@ -472,8 +472,9 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                                 currtenpfm.Title = "单耗（Wh/元）";
                             }
                             Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
+                            break;
                         }
-                        break;
+                       
                     }
                     
                 }
@@ -582,25 +583,23 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                     {
                         Ps_Forecast_Math currtenpfm = (Ps_Forecast_Math)listTypes[i];
                         //更新换算单位
-                        if (currtenpfm.Sort == 2)
+                        if (currtenpfm.Sort == 3)
                         {
                             CheckUnit(currtenpfm.Title.ToString());
+                            break;
                         }
 
-                        break;
+                      
                     }
 
                 }
                 
               this.treeList1.DataSource = dataTable;
 
-
-
-
-
               Application.DoEvents();
 
               bLoadingData = false;
+              RefreshChart();
 
         }
         /// <summary>
