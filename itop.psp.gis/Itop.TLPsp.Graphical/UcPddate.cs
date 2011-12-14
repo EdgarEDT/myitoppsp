@@ -107,6 +107,11 @@ namespace Itop.TLPsp.Graphical {
               if (PDT.ShowDialog() == DialogResult.OK) {
 
                   pdr = PDT.RowData;
+                  if (pdr.TDdatetime.Year!=ParentObj.Year)
+                  {
+                      Itop.Common.MsgBox.ShowYesNo("停电日期和年份不符！");
+                      return;
+                  }
                   Itop.Client.Common.Services.BaseService.Create<PDrelcontent>(pdr);
                   
                   //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
@@ -125,6 +130,10 @@ namespace Itop.TLPsp.Graphical {
                   if (PDT.ShowDialog() == DialogResult.OK) {
 
                      PD = PDT.RowData;
+                     if (PD.TDdatetime.Year != ParentObj.Year) {
+                         Itop.Common.MsgBox.ShowYesNo("停电日期和年份不符！");
+                         return;
+                     }
                       Itop.Client.Common.Services.BaseService.Update<PDrelcontent>(PD);
                       parentID = ParentObj.ID;
                       //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
@@ -146,6 +155,104 @@ namespace Itop.TLPsp.Graphical {
               }
           }
 
+          private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+              FileClass.ExportExcel(this.gridControl1);
+          }
 
+          private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+              InsertInfo();
+          }
+
+          private DataTable GetExcel(string filepach) {
+              string str;
+              FarPoint.Win.Spread.FpSpread fpSpread1 = new FarPoint.Win.Spread.FpSpread();
+
+              try {
+                  fpSpread1.OpenExcel(filepach);
+              } catch {
+                  string filepath1 = Path.GetTempPath() + "\\" + Path.GetFileName(filepach);
+                  File.Copy(filepach, filepath1);
+                  fpSpread1.OpenExcel(filepath1);
+                  File.Delete(filepath1);
+              }
+              DataTable dt = new DataTable();
+              Hashtable h1 = new Hashtable();
+              int aa = 0;
+              for (int k = 1; k <= fpSpread1.Sheets[0].GetLastNonEmptyColumn(FarPoint.Win.Spread.NonEmptyItemFlag.Data) + 1; k++) {
+                  bool bl = false;
+                  GridColumn gc = gridView1.VisibleColumns[k - 1];
+                  dt.Columns.Add(gc.FieldName);
+                  h1.Add(aa.ToString(), gc.FieldName);
+                  aa++;
+              }
+
+              int m = 1;
+              for (int i = m; i < fpSpread1.Sheets[0].GetLastNonEmptyRow(FarPoint.Win.Spread.NonEmptyItemFlag.Data) + 1; i++) {
+                  DataRow dr = dt.NewRow();
+                  str = "";
+                  for (int j = 0; j < fpSpread1.Sheets[0].GetLastNonEmptyColumn(FarPoint.Win.Spread.NonEmptyItemFlag.Data) + 1; j++) {
+                      str = str + fpSpread1.Sheets[0].Cells[i, j].Text;
+                      dr[h1[j.ToString()].ToString()] = fpSpread1.Sheets[0].Cells[i, j].Text;
+                  }
+                  if (str != "")
+                      dt.Rows.Add(dr);
+
+              }
+              return dt;
+          }
+          private void InsertInfo() {
+              string columnname = "";
+
+              try {
+                  DataTable dts = new DataTable();
+                  OpenFileDialog op = new OpenFileDialog();
+                  op.Filter = "Excel文件(*.xls)|*.xls";
+                  if (op.ShowDialog() == DialogResult.OK) {
+                      dts = GetExcel(op.FileName);
+                      IList<PDrelcontent> lii = new List<PDrelcontent>();
+                      DateTime s8 = DateTime.Now;
+                      for (int i = 0; i < dts.Rows.Count; i++) {
+
+                    
+                          PDrelcontent l1 = new PDrelcontent();
+                          foreach (DataColumn dc in dts.Columns) {
+                              columnname = dc.ColumnName;
+                              //if (dts.Rows[i][dc.ColumnName].ToString() == "")
+                              //    continue;
+                              if (columnname == "TDdatetime" && Convert.ToDateTime(dts.Rows[i][dc.ColumnName]).Year != ParentObj.Year)
+                              {
+                                  MessageBox.Show("第'" + (i + 1) + "'行停电日期和年份不符！");
+                                  break;
+                              }
+                              l1.GetType().GetProperty(dc.ColumnName).SetValue(l1, dts.Rows[i][dc.ColumnName].ToString(), null);
+
+
+                          }
+                          
+                          lii.Add(l1);
+                      }
+
+                      foreach (PDrelcontent lll in lii) {
+
+                         PDrelcontent l1 = new PDrelcontent();
+
+                          IList<PDrelcontent> list = new List<PDrelcontent>();
+
+
+                          //{
+                          lll.ID = Guid.NewGuid().ToString();
+                          lll.ParentID = parentID;
+                          Services.BaseService.Create<PDrelcontent>(lll);
+                          //}
+                      }
+                      ParentID = ParentObj.ID;  //重新显示数据
+
+                  }
+              } catch (Exception ex) {
+                  MsgBox.Show(columnname + ex.Message);
+                  MsgBox.Show("导入格式不正确！");
+
+              }
+          }
     }
 }
