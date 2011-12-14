@@ -30,14 +30,14 @@ namespace Itop.TLPsp.Graphical {
             set {
                 parentID = value;
                 if (!string.IsNullOrEmpty(value)) {
-                    RefreshData(" where ParentID='" + value + "' order by TDdatetime");
+                    RefreshData("ParentID='" + value + "' order by TDdatetime");
                 }
             }
         }
         private void RefreshData(string con)
         {
             AddFixColumn();
-            IList<PDrelcontent> pl = Itop.Client.Common.Services.BaseService.GetListByWhere<PDrelcontent>(con);
+            IList<PDrelcontent> pl = Itop.Client.Common.Services.BaseService.GetList<PDrelcontent>("SelectPDrelcontentByWhere",con);
             datatable = Itop.Common.DataConverter.ToDataTable((IList)pl, typeof(PDrelcontent));
             gridControl1.DataSource = datatable;
         }
@@ -80,5 +80,6 @@ namespace Itop.TLPsp.Graphical {
             column.Width = 120;
             this.gridView1.Columns.Add(column);
         }
+
     }
 }
