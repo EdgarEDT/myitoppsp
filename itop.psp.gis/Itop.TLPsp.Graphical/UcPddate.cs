@@ -96,6 +96,12 @@ namespace Itop.TLPsp.Graphical {
             column.VisibleIndex = 4;
             column.Width = 120;
             this.gridView1.Columns.Add(column);
+            column = new GridColumn();
+            column.FieldName = "S1";
+            column.Caption = "停电率";
+            column.VisibleIndex = 5;
+            column.Width = 60;
+            this.gridView1.Columns.Add(column);
         }
         
           private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
@@ -253,6 +259,10 @@ namespace Itop.TLPsp.Graphical {
                   MsgBox.Show("导入格式不正确！");
 
               }
+          }
+
+          private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+
           }
     }
 }

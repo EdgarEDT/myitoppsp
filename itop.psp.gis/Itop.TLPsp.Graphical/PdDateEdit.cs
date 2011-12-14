@@ -27,6 +27,7 @@ namespace Itop.TLPsp.Graphical {
                 rowdate.TDtype = TDtype;
                 rowdate.PeopleRegion = PeopleRegion;
                 rowdate.AvgFH = AvgFH;
+                rowdate.S1 = S1;
                 return rowdate;
             }
             set
@@ -37,6 +38,7 @@ namespace Itop.TLPsp.Graphical {
                 PeopleRegion = rowdate.PeopleRegion;
                 TDtype = rowdate.TDtype;
                 AvgFH = rowdate.AvgFH;
+                S1 = rowdate.S1;
             }
         }
         public DateTime TDdatetime
@@ -65,6 +67,10 @@ namespace Itop.TLPsp.Graphical {
         public double AvgFH {
             get { return (double)spinEdit3.Value; }
             set { spinEdit3.Value = Convert.ToDecimal(value); }
+        }
+        public string S1 {
+            get { return spinEdit4.Value.ToString(); }
+            set { spinEdit4.Value = Convert.ToDecimal(value); }
         }
         protected void Init() {
             comboBoxEdit1.Properties.Items.Add("故障停电");
