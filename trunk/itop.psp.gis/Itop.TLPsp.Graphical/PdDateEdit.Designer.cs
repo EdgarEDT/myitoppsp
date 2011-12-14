@@ -110,6 +110,7 @@
             // 
             // simpleButton1
             // 
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton1.Location = new System.Drawing.Point(76, 217);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(87, 27);

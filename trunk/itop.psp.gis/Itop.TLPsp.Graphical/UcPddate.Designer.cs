@@ -42,7 +42,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
@@ -63,9 +62,8 @@
             // 
             // gridView1
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1});
             this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GroupPanelText = "停电数据";
             this.gridView1.Name = "gridView1";
             // 
             // gridView2
@@ -119,6 +117,7 @@
             this.barButtonItem1.ImageIndex = 18;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -127,6 +126,7 @@
             this.barButtonItem2.ImageIndex = 3;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -135,6 +135,7 @@
             this.barButtonItem3.ImageIndex = 10;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // barButtonItem5
             // 
@@ -223,12 +224,6 @@
             this.imageList1.Images.SetKeyName(20, "FillUpHS.png");
             this.imageList1.Images.SetKeyName(21, "FillDownHS.png");
             // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "gridColumn1";
-            this.gridColumn1.FieldName = "ID";
-            this.gridColumn1.Name = "gridColumn1";
-            // 
             // UcPddate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -267,6 +262,5 @@
         private System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

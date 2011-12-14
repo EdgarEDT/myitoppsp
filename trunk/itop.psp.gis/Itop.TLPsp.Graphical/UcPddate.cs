@@ -34,8 +34,25 @@ namespace Itop.TLPsp.Graphical {
                 }
             }
         }
+        PDrelregion parentObj = new PDrelregion();
+        public PDrelregion ParentObj {
+            get { return parentObj; }
+            set {
+
+                parentObj = value;
+                if (value == null) {
+                    parentID = null;
+                } else {
+                    ParentID = value.ID;
+                }
+            }
+        }
         private void RefreshData(string con)
         {
+            if (datatable != null) {
+                datatable.Columns.Clear();
+                gridView1.Columns.Clear();
+            }
             AddFixColumn();
             IList<PDrelcontent> pl = Itop.Client.Common.Services.BaseService.GetList<PDrelcontent>("SelectPDrelcontentByWhere",con);
             datatable = Itop.Common.DataConverter.ToDataTable((IList)pl, typeof(PDrelcontent));
@@ -80,6 +97,55 @@ namespace Itop.TLPsp.Graphical {
             column.Width = 120;
             this.gridView1.Columns.Add(column);
         }
+        
+          private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+              PdDateEdit PDT = new PdDateEdit();
+              PDT.parentobj = ParentObj;
+              PDrelcontent pdr = new PDrelcontent();
+              pdr.ParentID = ParentObj.ID;
+              PDT.RowData = pdr;
+              if (PDT.ShowDialog() == DialogResult.OK) {
+
+                  pdr = PDT.RowData;
+                  Itop.Client.Common.Services.BaseService.Create<PDrelcontent>(pdr);
+                  
+                  //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
+                  ((DataTable)gridControl1.DataSource).Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
+                  //gridControl1.DataSource = datatable;
+              }
+          }
+
+          private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+                DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+              if (row != null) {
+                  PDrelcontent PD = Itop.Common.DataConverter.RowToObject<PDrelcontent>(row);
+                  PdDateEdit PDT = new PdDateEdit();
+                  PDT.parentobj = ParentObj;
+                  PDT.RowData = PD;
+                  if (PDT.ShowDialog() == DialogResult.OK) {
+
+                     PD = PDT.RowData;
+                      Itop.Client.Common.Services.BaseService.Update<PDrelcontent>(PD);
+                      parentID = ParentObj.ID;
+                      //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
+                      //((DataTable)gridControl1.DataSource).Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
+                      //gridControl1.DataSource = datatable;
+                  }
+              }
+          }
+  
+
+          private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+              DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+              if (row != null) {
+                  PDrelcontent dev = Itop.Common.DataConverter.RowToObject<PDrelcontent>(row);
+                  if (Itop.Common.MsgBox.ShowYesNo("是否确认删除?") == DialogResult.Yes) {
+                      Itop.Client.Common.Services.BaseService.Delete<PDrelcontent>(dev);
+                      ((DataTable)gridControl1.DataSource).Rows.Remove(row);
+                  }
+              }
+          }
+
 
     }
 }
