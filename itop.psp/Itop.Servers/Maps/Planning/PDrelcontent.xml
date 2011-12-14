@@ -101,5 +101,22 @@
     WHERE
     ID = #ID#
   </select>
+  <select id='SelectPDrelcontentByWhere' resultMap='PDrelcontentResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "ParentID",
+    "TDdatetime",
+    "TDtime",
+    "PeopleRegion",
+    "TDtype",
+    "AvgFH",
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+    FROM PDrelcontent
+    WHERE
+    $value$
+  </select>
 </statements>
 </sqlMap>
