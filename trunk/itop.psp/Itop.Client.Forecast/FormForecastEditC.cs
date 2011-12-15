@@ -59,7 +59,7 @@ namespace Itop.Client.Forecast
         {
             InitializeComponent();
             _isEdit = false;
-            _typeFlag = 1;
+            //_typeFlag = 1;
             _noHistoryYears = false;
             _typeText = "µÁ¡ø";
         }
