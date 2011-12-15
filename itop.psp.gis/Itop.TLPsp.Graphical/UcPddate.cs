@@ -262,7 +262,13 @@ namespace Itop.TLPsp.Graphical {
           }
 
           private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+              FrmPDrelResult fr = new FrmPDrelResult();
+              fr.datatable = (DataTable)gridControl1.DataSource;
+              fr.ParentObj = ParentObj;
+              if (fr.ShowDialog()==DialogResult.OK)
+              {
 
+              }
           }
     }
 }

@@ -39,11 +39,11 @@ namespace Itop.TLPsp.Graphical {
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-
+            FileClass.ExportExcel(this.gridControl1);
         }
 
         private void FrmPDrelResult_Load(object sender, EventArgs e) {
-
+            analyst();
         }
         private void analyst()
         {
