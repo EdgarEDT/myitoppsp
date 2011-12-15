@@ -19,7 +19,7 @@ namespace Itop.Client.Forecast
     public partial class ForecastListD : Itop.Client.Base.FormBase
     {
         //设计为电量预测模块
-        private int typeFlag =1;
+        private int typeFlag =2;
         DataTable dataTable;
         public ForecastListD()
         {
@@ -80,7 +80,7 @@ namespace Itop.Client.Forecast
 
             Ps_forecast_list report = new Ps_forecast_list();
             report.UserID = ProjectUID;  //SetCfgValue("lastLoginUserNumber", Application.ExecutablePath + ".config");
-            report.Col1 = "1";
+            report.Col1 = "2";
             IList listReports = Common.Services.BaseService.GetList("SelectPs_forecast_listByCOL1AndUserID", report);
 
             dataTable = Itop.Common.DataConverter.ToDataTable(listReports, typeof(Ps_forecast_list));
@@ -112,6 +112,7 @@ namespace Itop.Client.Forecast
             }
 
             FormForecastEditC frm = new FormForecastEditC();
+            frm.TypeFlag = 2;
             frm.IsEdit = false;
             frm.ProjectUID = ProjectUID;
      //       frm.TypeFlag = typeFlag;

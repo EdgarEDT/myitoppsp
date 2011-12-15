@@ -111,6 +111,7 @@ namespace Itop.Client.Forecast
             }
 
             FormForecastEditC frm = new FormForecastEditC();
+            frm.TypeFlag = 1;
             frm.IsEdit = false;
             frm.ProjectUID = ProjectUID;
      //       frm.TypeFlag = typeFlag;
