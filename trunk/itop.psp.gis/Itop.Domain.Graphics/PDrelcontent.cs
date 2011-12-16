@@ -16,7 +16,7 @@ namespace Itop.Domain.Graphics
 		public PDrelcontent()
 		{}
 		#region ×Ö¶Î
-		private string _id="";
+		private string _id=Guid.NewGuid().ToString();
 		private string _parentid="";
 		private DateTime _tddatetime;
 		private double _tdtime;

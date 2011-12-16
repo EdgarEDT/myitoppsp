@@ -30,6 +30,7 @@ namespace Itop.TLPsp.Graphical {
             if (FocusedNodeChanged != null)
                 FocusedNodeChanged(treeList1, treeList1.GetDataRecordByNode(e.Node) as PDrelregion );
         }
+
         DataTable dataTable = new DataTable();
         private void init()
         {
@@ -88,6 +89,7 @@ namespace Itop.TLPsp.Graphical {
                 pdr.Year = PDT.Year;
                 Itop.Client.Common.Services.BaseService.Create<PDrelregion>(pdr);
                 dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, dataTable.NewRow()));
+                //init();
             }
         }
 
@@ -105,7 +107,8 @@ namespace Itop.TLPsp.Graphical {
             if (PDT.ShowDialog() == DialogResult.OK) {
                 
                 Itop.Client.Common.Services.BaseService.Update<PDrelregion>(PDT.Pdtype);
-                init();
+                treeList1.FocusedNode.SetValue("AreaName", PDT.Areaname);
+                treeList1.FocusedNode.SetValue("PeopleSum", PDT.Peplesum);
             }
         }
 
@@ -164,6 +167,10 @@ namespace Itop.TLPsp.Graphical {
                     break;
                 }
             }
+        }
+
+        private void UcPdtype_Load(object sender, EventArgs e) {
+            init();
         }
 
     }

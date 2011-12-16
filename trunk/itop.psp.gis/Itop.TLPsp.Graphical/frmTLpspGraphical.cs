@@ -927,10 +927,13 @@ namespace Itop.TLPsp.Graphical
             else if (reldialog.DialogResult == DialogResult.Yes) {
                 this.Visible = false;
                 //配电可靠性窗体
+                XtraPDrelfrm xf = new XtraPDrelfrm();
+                xf.Show();
             }
             else if (reldialog.DialogResult == DialogResult.Cancel)
             {
                 this.Visible = false;
+                
             }
         }   
         void tlVectorControl1_OperationChanged(object sender, EventArgs e)
