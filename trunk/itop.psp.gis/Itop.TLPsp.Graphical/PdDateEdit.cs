@@ -57,8 +57,8 @@ namespace Itop.TLPsp.Graphical {
             set { spinEdit1.Value = Convert.ToDecimal(value); }
         }
         public int PeopleRegion {
-            get { return (int)spinEdit1.Value; }
-            set { spinEdit1.Value = Convert.ToDecimal(value); }
+            get { return (int)spinEdit2.Value; }
+            set { spinEdit2.Value = Convert.ToDecimal(value); }
         }
         public string TDtype {
             get { return comboBoxEdit1.Text; }
@@ -70,7 +70,12 @@ namespace Itop.TLPsp.Graphical {
         }
         public string S1 {
             get { return spinEdit4.Value.ToString(); }
-            set { spinEdit4.Value = Convert.ToDecimal(value); }
+            set { if (string.IsNullOrEmpty(value))
+                  {
+                    spinEdit4.Value = 0;
+                  }
+                else
+                spinEdit4.Value = Convert.ToDecimal(value); }
         }
         protected void Init() {
             comboBoxEdit1.Properties.Items.Add("故障停电");

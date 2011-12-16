@@ -928,7 +928,7 @@ namespace Itop.TLPsp.Graphical
                 this.Visible = false;
                 //配电可靠性窗体
                 XtraPDrelfrm xf = new XtraPDrelfrm();
-                xf.Show();
+                xf.ShowDialog();
             }
             else if (reldialog.DialogResult == DialogResult.Cancel)
             {
