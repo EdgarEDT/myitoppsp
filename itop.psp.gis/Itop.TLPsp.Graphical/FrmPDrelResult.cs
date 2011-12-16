@@ -34,7 +34,7 @@ namespace Itop.TLPsp.Graphical {
             dt.Columns.Add("AreaName",typeof(string)).Caption="分类";
             dt.Columns.Add("Year", typeof(int)).Caption = "年份";
             dt.Columns.Add("ZB", typeof(string)).Caption = "分析指标";
-            dt.Columns.Add("Result", typeof(double)).Caption = "分析结果";
+            dt.Columns.Add("Result", typeof(string)).Caption = "分析结果";
 
         }
 
@@ -43,6 +43,7 @@ namespace Itop.TLPsp.Graphical {
         }
 
         private void FrmPDrelResult_Load(object sender, EventArgs e) {
+            init();
             analyst();
         }
         private void analyst()
@@ -56,18 +57,19 @@ namespace Itop.TLPsp.Graphical {
             double ztdl = 0;   //总停电量
             foreach (DataRow dr in datatable.Rows)
             {
-                AIHC += ((double)dr["TDtime"]) * ((double)dr["PeopleRegion"]);
-                sumtdcs += ((double)dr["S1"]) * ((double)dr["PeopleRegion"]);
-                tdzys += ((double)dr["PeopleRegion"]);
-                yhtdcs += ((double)dr["TDtime"]) * ((double)dr["PeopleRegion"]);
+                
+               AIHC += ((double)dr["TDtime"]) * ((int)dr["PeopleRegion"]);
+               sumtdcs += (Convert.ToDouble(dr["S1"])) * ((int)dr["PeopleRegion"]);
+                tdzys += ((int)dr["PeopleRegion"]);
+                yhtdcs += ((double)dr["TDtime"]) * ((int)dr["PeopleRegion"]);
                 ztdl += ((double)dr["TDtime"]) * ((double)dr["AvgFH"]);
 
-                if (dr["TDtype"] == "外部影响")
+                if (dr["TDtype"].ToString() == "外部影响")
                 {
-                    avgwb += ((double)dr["TDtime"]) * ((double)dr["PeopleRegion"]);
-                } else if (dr["TDtype"] == "系统电源不足限电") 
+                    avgwb += ((double)dr["TDtime"]) * ((int)dr["PeopleRegion"]);
+                } else if (dr["TDtype"].ToString() == "系统电源不足限电") 
                 {
-                    avgxd += ((double)dr["TDtime"]) * ((double)dr["PeopleRegion"]);
+                    avgxd += ((double)dr["TDtime"]) * ((int)dr["PeopleRegion"]);
                 }
                
             }
@@ -88,43 +90,50 @@ namespace Itop.TLPsp.Graphical {
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
             dr1["ZB"] = "RS-1";
-            dr1["Result"] = RS1;
+            dr1["Result"] = RS1.ToString("0.000");
+            dt.Rows.Add(dr1);
 
             dr1 = dt.NewRow();
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
             dr1["ZB"] = "RS-2";
-            dr1["Result"] = RS2;
+            dr1["Result"] = RS2.ToString("0.000");
+            dt.Rows.Add(dr1);
 
             dr1 = dt.NewRow();
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
             dr1["ZB"] = "RS-3";
-            dr1["Result"] = RS3;
+            dr1["Result"] = RS3.ToString("0.000");
+            dt.Rows.Add(dr1);
 
             dr1 = dt.NewRow();
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
             dr1["ZB"] = "AIHC";
-            dr1["Result"] = AIHC;
+            dr1["Result"] = AIHC.ToString("0.000");
+            dt.Rows.Add(dr1);
 
             dr1 = dt.NewRow();
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
             dr1["ZB"] = "AITC";
-            dr1["Result"] = AITC;
+            dr1["Result"] = AITC.ToString("0.000");
+            dt.Rows.Add(dr1);
 
             dr1 = dt.NewRow();
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
             dr1["ZB"] = "AID";
-            dr1["Result"] = AID;
+            dr1["Result"] = AID.ToString("0.000");
+            dt.Rows.Add(dr1);
 
             dr1 = dt.NewRow();
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
-            dr1["AENS"] = "AENS";
-            dr1["Result"] = AENS;
+            dr1["ZB"] = "AENS";
+            dr1["Result"] = AENS.ToString("0.000");
+            dt.Rows.Add(dr1);
 
             gridControl1.DataSource = dt;
         }

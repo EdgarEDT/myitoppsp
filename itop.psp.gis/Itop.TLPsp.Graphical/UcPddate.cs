@@ -92,7 +92,7 @@ namespace Itop.TLPsp.Graphical {
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "AvgFH";
-            column.Caption = "平均符合（KW）";
+            column.Caption = "平均负荷（KW）";
             column.VisibleIndex = 4;
             column.Width = 120;
             this.gridView1.Columns.Add(column);
@@ -146,7 +146,7 @@ namespace Itop.TLPsp.Graphical {
                          return;
                      }
                       Itop.Client.Common.Services.BaseService.Update<PDrelcontent>(PD);
-                      parentID = ParentObj.ID;
+                      ParentID = ParentObj.ID;
                       //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
                       //((DataTable)gridControl1.DataSource).Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
                       //gridControl1.DataSource = datatable;
@@ -270,10 +270,11 @@ namespace Itop.TLPsp.Graphical {
               FrmPDrelResult fr = new FrmPDrelResult();
               fr.datatable = (DataTable)gridControl1.DataSource;
               fr.ParentObj = ParentObj;
-              if (fr.ShowDialog()==DialogResult.OK)
-              {
+              fr.ShowDialog();
+              //if (fr.ShowDialog()==DialogResult.OK)
+              //{
 
-              }
+              //}
           }
     }
 }

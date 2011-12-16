@@ -25,17 +25,17 @@ namespace Itop.TLPsp.Graphical {
         }
         public delegate void SendDataEventHandler<T>(object sender,T obj);
         public event SendDataEventHandler<PDrelregion> FocusedNodeChanged;
-
+       
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e) {
            
-            if (FocusedNodeChanged != null)
-            {
-                TreeListNode tn = treeList1.FocusedNode;
-                PDrelregion pdr = new PDrelregion();
-                pdr.ID = tn["ID"].ToString();
-                pdr = Services.BaseService.GetOneByKey<PDrelregion>(pdr);
-                FocusedNodeChanged(treeList1, pdr);
-            }
+            //if (FocusedNodeChanged != null)
+            //{
+            //    TreeListNode tn = treeList1.FocusedNode;
+            //    PDrelregion pdr = new PDrelregion();
+            //    pdr.ID = tn["ID"].ToString();
+            //    pdr = Services.BaseService.GetOneByKey<PDrelregion>(pdr);
+            //    FocusedNodeChanged(treeList1, pdr);
+            //}
 
                
         }
@@ -57,10 +57,13 @@ namespace Itop.TLPsp.Graphical {
             dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(PDrelregion));
             treeList1.BeginInit();
             treeList1.DataSource = dataTable;
+            
             //treeList1.Columns["Sort"].SortOrder = SortOrder.Ascending;
             treeList1.EndInit();
             Application.DoEvents();
             treeList1.ExpandAll();
+            
+          
         }
         private void AddFixColumn()
         {
@@ -181,6 +184,17 @@ namespace Itop.TLPsp.Graphical {
 
         private void UcPdtype_Load(object sender, EventArgs e) {
             init();
+        }
+
+        private void treeList1_MouseClick(object sender, MouseEventArgs e) {
+            if (FocusedNodeChanged != null) {
+                TreeListNode tn = treeList1.FocusedNode;
+                PDrelregion pdr = new PDrelregion();
+                pdr.ID = tn["ID"].ToString();
+                pdr = Services.BaseService.GetOneByKey<PDrelregion>(pdr);
+                FocusedNodeChanged(treeList1, pdr);
+            }
+
         }
 
     }
