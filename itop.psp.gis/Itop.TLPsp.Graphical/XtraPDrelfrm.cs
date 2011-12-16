@@ -11,7 +11,6 @@ namespace Itop.TLPsp.Graphical {
     public partial class XtraPDrelfrm : DevExpress.XtraEditors.XtraForm {
         public XtraPDrelfrm() {
             InitializeComponent();
-            ucPdtype1 = new UcPdtype();
             ucPdtype1.init();
            ucPdtype1.FocusedNodeChanged+=new UcPdtype.SendDataEventHandler<Itop.Domain.Graphics.PDrelregion>(ucPdtype1_FocusedNodeChanged);
         }

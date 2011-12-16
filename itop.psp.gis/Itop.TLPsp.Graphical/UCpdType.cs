@@ -27,8 +27,17 @@ namespace Itop.TLPsp.Graphical {
         public event SendDataEventHandler<PDrelregion> FocusedNodeChanged;
 
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e) {
+           
             if (FocusedNodeChanged != null)
-                FocusedNodeChanged(treeList1, treeList1.GetDataRecordByNode(e.Node) as PDrelregion );
+            {
+                TreeListNode tn = treeList1.FocusedNode;
+                PDrelregion pdr = new PDrelregion();
+                pdr.ID = tn["ID"].ToString();
+                pdr = Services.BaseService.GetOneByKey<PDrelregion>(pdr);
+                FocusedNodeChanged(treeList1, pdr);
+            }
+
+               
         }
 
         DataTable dataTable = new DataTable();
@@ -89,6 +98,7 @@ namespace Itop.TLPsp.Graphical {
                 pdr.Year = PDT.Year;
                 Services.BaseService.Create<PDrelregion>(pdr);
                 dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, dataTable.NewRow()));
+               
                 //init();
             }
         }
@@ -98,7 +108,7 @@ namespace Itop.TLPsp.Graphical {
              if (treeList1.FocusedNode == null)
                 return;
               TreeListNode tn=treeList1.FocusedNode;
-            DataRow[] dr=dataTable.Select("where ID='"+tn["ID"].ToString()+"'");
+            DataRow[] dr=dataTable.Select("ID='"+tn["ID"].ToString()+"'");
             PDtypefrmedit PDT = new PDtypefrmedit();
             if (dr[0]!=null)
             {

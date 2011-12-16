@@ -106,6 +106,11 @@ namespace Itop.TLPsp.Graphical {
         
           private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
               PdDateEdit PDT = new PdDateEdit();
+              if (ParentObj==null)
+              {
+                  Itop.Common.MsgBox.ShowYesNo("配电区域为空！");
+                  return;
+              }
               PDT.parentobj = ParentObj;
               PDrelcontent pdr = new PDrelcontent();
               pdr.ParentID = ParentObj.ID;
