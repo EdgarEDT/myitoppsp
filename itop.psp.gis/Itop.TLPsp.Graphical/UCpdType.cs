@@ -32,7 +32,7 @@ namespace Itop.TLPsp.Graphical {
         }
 
         DataTable dataTable = new DataTable();
-        private void init()
+        public void init()
         {
             if (dataTable != null) {
                 dataTable.Columns.Clear();
@@ -41,7 +41,7 @@ namespace Itop.TLPsp.Graphical {
             AddFixColumn();
            PDrelregion pr = new PDrelregion();
             pr.ProjectID = Itop.Client.MIS.ProgUID;
-            IList<PDrelregion> listTypes = Itop.Client.Common.Services.BaseService.GetList<PDrelregion>("SelectPDrelregionByProjectID", pr);
+            IList<PDrelregion> listTypes = Services.BaseService.GetList<PDrelregion>("SelectPDrelregionByProjectID", pr);
 
 
 
@@ -87,7 +87,7 @@ namespace Itop.TLPsp.Graphical {
                 pdr.PeopleSum = PDT.Peplesum;
                 pdr.AreaName = PDT.Areaname;
                 pdr.Year = PDT.Year;
-                Itop.Client.Common.Services.BaseService.Create<PDrelregion>(pdr);
+                Services.BaseService.Create<PDrelregion>(pdr);
                 dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, dataTable.NewRow()));
                 //init();
             }
@@ -106,7 +106,7 @@ namespace Itop.TLPsp.Graphical {
             }
             if (PDT.ShowDialog() == DialogResult.OK) {
                 
-                Itop.Client.Common.Services.BaseService.Update<PDrelregion>(PDT.Pdtype);
+                Services.BaseService.Update<PDrelregion>(PDT.Pdtype);
                 treeList1.FocusedNode.SetValue("AreaName", PDT.Areaname);
                 treeList1.FocusedNode.SetValue("PeopleSum", PDT.Peplesum);
             }

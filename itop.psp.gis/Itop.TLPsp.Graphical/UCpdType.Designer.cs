@@ -184,7 +184,6 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "UcPdtype";
             this.Size = new System.Drawing.Size(663, 380);
-            this.Load += new System.EventHandler(this.UcPdtype_Load);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
