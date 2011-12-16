@@ -16,7 +16,7 @@ namespace Itop.Domain.Graphics
 		public PDrelregion()
 		{}
 		#region ×Ö¶Î
-		private string _id="";
+		private string _id=Guid.NewGuid().ToString();
 		private string _areaname="";
         private string _ProjectID = "";
 		private int _peoplesum;

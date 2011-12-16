@@ -63,8 +63,10 @@
             // gridView1
             // 
             this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.Hidden;
             this.gridView1.GroupPanelText = "停电数据";
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridView2
             // 
