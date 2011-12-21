@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{10DB99AD-605C-4D45-8611-159245BDF1EF}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -144,6 +144,12 @@
     </Compile>
     <Compile Include="FormAlgorithm_New\FormMaxHour.designer.cs">
       <DependentUpon>FormMaxHour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormSpatialforcast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormSpatialforcast.Designer.cs">
+      <DependentUpon>FormSpatialforcast.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAlgorithm_New\FormUnitConsumptionValue.cs">
       <SubType>Form</SubType>
@@ -509,6 +515,9 @@
     <EmbeddedResource Include="FormAlgorithm_New\FormMaxHour.resx">
       <DependentUpon>FormMaxHour.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormSpatialforcast.resx">
+      <DependentUpon>FormSpatialforcast.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAlgorithm_New\FormUnitConsumptionValue.resx">
       <DependentUpon>FormUnitConsumptionValue.cs</DependentUpon>
