@@ -11,6 +11,7 @@ using Itop.Client.Common;
 using Itop.Domain.Graphics;
 
 using Itop.Client.Base;
+using Itop.Domain.Table;
 namespace ItopVector.Tools
 {
     public partial class frmProperty : FormBase
@@ -66,6 +67,8 @@ namespace ItopVector.Tools
                 dl.DataBindings.Add("Text", gPro, "Number");
                 xyxs.DataBindings.Add("Text", gPro, "ObligateField11");
                 remark.DataBindings.Add("Text", gPro, "Remark");
+                comboBoxEdit1.DataBindings.Add("Text", gPro, "ObligateField12");
+                comboBoxEdit2.DataBindings.Add("Text", gPro, "ObligateField13");
             }
             catch(Exception e){
                 MessageBox.Show(e.Message);
@@ -120,8 +123,20 @@ namespace ItopVector.Tools
             dt = Itop.Common.DataConverter.ToDataTable(Services.BaseService.GetList("SelectglebeTypeList", gType), typeof(glebeType));
             lx.Properties.DataSource = dt;
             bh.Focus();
+            string DQ = "市区";
+            string conn = "ProjectID='" + Itop.Client.MIS.ProgUID + "' and Col1='" + DQ + "' order by Sort";
+            IList<PS_Table_AreaWH> list = Services.BaseService.GetList<PS_Table_AreaWH>("SelectPS_Table_AreaWHByConn", conn);
+            foreach (PS_Table_AreaWH area in list) {
+                this.comboBoxEdit1.Properties.Items.Add(area.Title);
+            }
+            for (int i = 0; i < 60; i++) {
+                string y = (2011 + i).ToString();
+                this.comboBoxEdit2.Properties.Items.Add(y);
+            }
             if(IsReadonly){
                 bh.Properties.ReadOnly = true;
+                comboBoxEdit1.Properties.ReadOnly = true;
+                comboBoxEdit2.Properties.ReadOnly = true;
                 lx.Properties.ReadOnly = true;
                 mj.Properties.ReadOnly = true;
                 fh.Properties.ReadOnly = true;
