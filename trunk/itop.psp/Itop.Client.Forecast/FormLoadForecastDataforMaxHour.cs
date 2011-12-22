@@ -62,7 +62,7 @@ namespace Itop.Client.Forecast
         {
             Ps_forecast_list report = new Ps_forecast_list();
             report.UserID = ProjectUID;
-            report.Col1 = "1";
+            report.Col1 = "2";
             IList<Ps_forecast_list> listReports = Common.Services.BaseService.GetList<Ps_forecast_list>("SelectPs_forecast_listByCOL1AndUserID", report);
 
             gridControl1.DataSource = listReports;
