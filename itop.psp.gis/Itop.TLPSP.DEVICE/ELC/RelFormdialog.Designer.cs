@@ -36,7 +36,7 @@
             // buttonX1
             // 
             this.buttonX1.ColorScheme.DockSiteBackColorGradientAngle = 0;
-            this.buttonX1.Location = new System.Drawing.Point(21, 25);
+            this.buttonX1.Location = new System.Drawing.Point(17, 25);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(103, 23);
             this.buttonX1.TabIndex = 0;
@@ -46,7 +46,7 @@
             // buttonX2
             // 
             this.buttonX2.ColorScheme.DockSiteBackColorGradientAngle = 0;
-            this.buttonX2.Location = new System.Drawing.Point(21, 78);
+            this.buttonX2.Location = new System.Drawing.Point(17, 78);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(103, 23);
             this.buttonX2.TabIndex = 1;
@@ -60,7 +60,7 @@
             this.buttonX3.Name = "buttonX3";
             this.buttonX3.Size = new System.Drawing.Size(103, 23);
             this.buttonX3.TabIndex = 2;
-            this.buttonX3.Text = "配电可靠性";
+            this.buttonX3.Text = "供电可靠性";
             this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
             // 
             // RelFormdialog
@@ -77,6 +77,7 @@
             this.Name = "RelFormdialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "可靠性分析";
+            this.Load += new System.EventHandler(this.RelFormdialog_Load);
             this.ResumeLayout(false);
 
         }
