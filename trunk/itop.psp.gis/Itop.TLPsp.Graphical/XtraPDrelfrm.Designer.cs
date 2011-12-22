@@ -77,7 +77,7 @@
             this.ucPddate1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucPddate1.Location = new System.Drawing.Point(0, 0);
             this.ucPddate1.Name = "ucPddate1";
-            //this.ucPddate1.ParentID = "";
+            //this.ucPddate1.ParentID = "89f89449-6317-4fe5-9e10-74c0c6080bb3";
             //this.ucPddate1.ParentObj = ((Itop.Domain.Graphics.PDrelregion)(resources.GetObject("ucPddate1.ParentObj")));
             this.ucPddate1.Size = new System.Drawing.Size(616, 513);
             this.ucPddate1.TabIndex = 0;
@@ -96,9 +96,8 @@
             this.ClientSize = new System.Drawing.Size(863, 513);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "XtraPDrelfrm";
-            this.Text = "可靠性分析";
+            this.Text = "供电可靠性分析";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.XtraPDrelfrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
