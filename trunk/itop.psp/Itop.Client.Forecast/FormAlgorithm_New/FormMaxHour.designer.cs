@@ -79,7 +79,7 @@
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsView.AutoWidth = false;
-            this.treeList1.Size = new System.Drawing.Size(1141, 236);
+            this.treeList1.Size = new System.Drawing.Size(1028, 236);
             this.treeList1.TabIndex = 2;
             this.treeList1.NodeCellStyle += new DevExpress.XtraTreeList.GetCustomNodeCellStyleEventHandler(this.treeList1_NodeCellStyle);
             this.treeList1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeList1_MouseUp);
@@ -161,7 +161,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton3);
             this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton1);
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1141, 320);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1028, 320);
             this.splitContainerControl1.SplitterPosition = 152;
             this.splitContainerControl1.TabIndex = 8;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -171,7 +171,7 @@
             this.chart_user1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart_user1.Location = new System.Drawing.Point(0, 0);
             this.chart_user1.Name = "chart_user1";
-            this.chart_user1.Size = new System.Drawing.Size(983, 320);
+            this.chart_user1.Size = new System.Drawing.Size(870, 320);
             this.chart_user1.TabIndex = 0;
             // 
             // splitContainerControl2
@@ -185,7 +185,7 @@
             this.splitContainerControl2.Panel1.Text = "splitContainerControl2_Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.splitContainerControl1);
             this.splitContainerControl2.Panel2.Text = "splitContainerControl2_Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1141, 562);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1028, 562);
             this.splitContainerControl2.SplitterPosition = 320;
             this.splitContainerControl2.TabIndex = 16;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -195,7 +195,7 @@
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitterControl1.Location = new System.Drawing.Point(0, 34);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1141, 6);
+            this.splitterControl1.Size = new System.Drawing.Size(1028, 6);
             this.splitterControl1.TabIndex = 15;
             this.splitterControl1.TabStop = false;
             // 
@@ -441,13 +441,13 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1141, 34);
+            this.barDockControlTop.Size = new System.Drawing.Size(1028, 34);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 602);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1141, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1028, 0);
             // 
             // barDockControlLeft
             // 
@@ -458,7 +458,7 @@
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1141, 34);
+            this.barDockControlRight.Location = new System.Drawing.Point(1028, 34);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 568);
             // 
             // FormMaxHour
@@ -466,7 +466,7 @@
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 602);
+            this.ClientSize = new System.Drawing.Size(1028, 602);
             this.Controls.Add(this.splitContainerControl2);
             this.Controls.Add(this.splitterControl1);
             this.Controls.Add(this.barDockControlLeft);
