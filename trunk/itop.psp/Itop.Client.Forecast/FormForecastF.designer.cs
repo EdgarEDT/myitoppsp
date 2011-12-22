@@ -48,6 +48,7 @@ namespace Itop.Client.Forecast
             this.barButtonItem30 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem33 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem34 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem36 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
@@ -83,7 +84,6 @@ namespace Itop.Client.Forecast
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.chart_user1 = new Itop.Client.Using.chart_user();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.barButtonItem36 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -232,6 +232,7 @@ namespace Itop.Client.Forecast
             this.barButtonItem2.Caption = "弹性系数法";
             this.barButtonItem2.Id = 9;
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem31
@@ -311,6 +312,13 @@ namespace Itop.Client.Forecast
             this.barButtonItem34.Name = "barButtonItem34";
             this.barButtonItem34.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem34.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem34_ItemClick);
+            // 
+            // barButtonItem36
+            // 
+            this.barButtonItem36.Caption = "空间负荷预测";
+            this.barButtonItem36.Id = 59;
+            this.barButtonItem36.Name = "barButtonItem36";
+            this.barButtonItem36.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem36_ItemClick);
             // 
             // barButtonItem14
             // 
@@ -643,13 +651,6 @@ namespace Itop.Client.Forecast
             this.imageList2.Images.SetKeyName(7, "8.ico");
             this.imageList2.Images.SetKeyName(8, "9.ico");
             this.imageList2.Images.SetKeyName(9, "10.ico");
-            // 
-            // barButtonItem36
-            // 
-            this.barButtonItem36.Caption = "空间负荷预测";
-            this.barButtonItem36.Id = 59;
-            this.barButtonItem36.Name = "barButtonItem36";
-            this.barButtonItem36.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem36_ItemClick);
             // 
             // FormForecastF
             // 
