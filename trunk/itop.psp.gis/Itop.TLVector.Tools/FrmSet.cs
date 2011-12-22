@@ -56,7 +56,10 @@ namespace ItopVector.Tools
 
         private void FrmSet_Load(object sender, EventArgs e)
         {
-            
+            if (sub_s * 0.9 >Convert.ToDouble(s)) {
+                label8.Text = "当前区域内供电负荷满足要求，无需新建变电站。";
+            } else
+                label8.Text = "";
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
