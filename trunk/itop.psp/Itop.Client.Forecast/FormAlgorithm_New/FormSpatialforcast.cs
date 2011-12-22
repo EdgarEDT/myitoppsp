@@ -83,26 +83,39 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
                 }
             }
         }
+        List<string> VisitColumnyear = new List<string>();
         private void LoadData() {
             //this.splitContainerControl1.SplitterPosition = (2 * this.splitterControl1.Width) / 3;
             //this.splitContainerControl2.SplitterPosition = splitContainerControl2.Height / 2;
             treeList1.DataSource = null;
+            VisitColumnyear.Clear();
             bLoadingData = true;
             if (dataTable != null) {
                 dataTable.Columns.Clear();
                 treeList1.Columns.Clear();
             }
             AddFixColumn();
-            for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++) {
-                AddColumn(i);
-            }
             Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
             psp_Type.ForecastID = forecastReport.ID;
             psp_Type.Forecast = type;
             IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
 
-            dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Forecast_Math));
+            
 
+            for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++) {
+             
+                foreach (Ps_Forecast_Math pm in listTypes)
+                {
+                   if (Convert.ToDouble(pm.GetType().GetProperty("y" + i.ToString()).GetValue(pm, null))!=0)
+                   {
+                       VisitColumnyear.Add("y" + i.ToString());
+                      AddColumn(i);
+                   }
+                    
+                }
+                
+            }
+            dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Forecast_Math));
             treeList1.DataSource = dataTable;
 
             treeList1.Columns["Title"].OptionsColumn.AllowEdit = false;
@@ -115,7 +128,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
         private void AddFixColumn() {
             TreeListColumn column = new TreeListColumn();
             column.FieldName = "Title";
-            column.Caption = "分类名";
+            column.Caption = "区域";
             column.VisibleIndex = 0;
             column.Width = 180;
             this.treeList1.Columns.AddRange(new TreeListColumn[] {
