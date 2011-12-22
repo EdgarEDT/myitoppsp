@@ -485,13 +485,13 @@ namespace Itop.Client.Forecast
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1195, 34);
+            this.barDockControlTop.Size = new System.Drawing.Size(1028, 34);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 509);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1195, 22);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1028, 22);
             // 
             // barDockControlLeft
             // 
@@ -502,7 +502,7 @@ namespace Itop.Client.Forecast
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1195, 34);
+            this.barDockControlRight.Location = new System.Drawing.Point(1028, 34);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 475);
             // 
             // imageList1
@@ -580,7 +580,7 @@ namespace Itop.Client.Forecast
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitterControl1.Location = new System.Drawing.Point(0, 34);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1195, 6);
+            this.splitterControl1.Size = new System.Drawing.Size(1028, 6);
             this.splitterControl1.TabIndex = 5;
             this.splitterControl1.TabStop = false;
             // 
@@ -602,7 +602,7 @@ namespace Itop.Client.Forecast
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.chart_user1);
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1195, 469);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1028, 469);
             this.splitContainerControl1.SplitterPosition = 311;
             this.splitContainerControl1.TabIndex = 8;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -613,7 +613,7 @@ namespace Itop.Client.Forecast
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsView.AutoWidth = false;
-            this.treeList1.Size = new System.Drawing.Size(1195, 152);
+            this.treeList1.Size = new System.Drawing.Size(1028, 152);
             this.treeList1.TabIndex = 1;
             this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
             this.treeList1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.treeList1_ShowingEditor);
@@ -623,7 +623,7 @@ namespace Itop.Client.Forecast
             this.chart_user1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart_user1.Location = new System.Drawing.Point(0, 0);
             this.chart_user1.Name = "chart_user1";
-            this.chart_user1.Size = new System.Drawing.Size(1195, 311);
+            this.chart_user1.Size = new System.Drawing.Size(1028, 311);
             this.chart_user1.TabIndex = 0;
             // 
             // imageList2
@@ -645,7 +645,7 @@ namespace Itop.Client.Forecast
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1195, 531);
+            this.ClientSize = new System.Drawing.Size(1028, 531);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.splitterControl1);
             this.Controls.Add(this.treeList2);
