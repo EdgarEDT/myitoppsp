@@ -51,53 +51,53 @@
             // 
             // txtjj
             // 
-            this.txtjj.Location = new System.Drawing.Point(139, 15);
+            this.txtjj.Location = new System.Drawing.Point(162, 17);
             this.txtjj.Name = "txtjj";
             this.txtjj.Properties.Mask.EditMask = "f0";
             this.txtjj.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtjj.Size = new System.Drawing.Size(63, 21);
+            this.txtjj.Size = new System.Drawing.Size(73, 21);
             this.txtjj.TabIndex = 0;
             // 
             // simpleButton1
             // 
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(149, 169);
+            this.simpleButton1.Location = new System.Drawing.Point(174, 197);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(55, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(64, 27);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "取消";
             // 
             // txtrzb
             // 
-            this.txtrzb.Location = new System.Drawing.Point(139, 42);
+            this.txtrzb.Location = new System.Drawing.Point(162, 49);
             this.txtrzb.Name = "txtrzb";
-            this.txtrzb.Size = new System.Drawing.Size(100, 21);
+            this.txtrzb.Size = new System.Drawing.Size(117, 21);
             this.txtrzb.TabIndex = 0;
             // 
             // txtrl
             // 
-            this.txtrl.Location = new System.Drawing.Point(139, 96);
+            this.txtrl.Location = new System.Drawing.Point(162, 112);
             this.txtrl.Name = "txtrl";
-            this.txtrl.Size = new System.Drawing.Size(100, 21);
+            this.txtrl.Size = new System.Drawing.Size(117, 21);
             this.txtrl.TabIndex = 0;
             this.txtrl.EditValueChanged += new System.EventHandler(this.txtrl_EditValueChanged);
             // 
             // txtnum
             // 
-            this.txtnum.Location = new System.Drawing.Point(139, 123);
+            this.txtnum.Location = new System.Drawing.Point(162, 143);
             this.txtnum.Name = "txtnum";
             this.txtnum.Properties.Mask.EditMask = "n0";
             this.txtnum.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtnum.Properties.MaxLength = 2;
-            this.txtnum.Size = new System.Drawing.Size(100, 21);
+            this.txtnum.Size = new System.Drawing.Size(117, 21);
             this.txtnum.TabIndex = 0;
             this.txtnum.EditValueChanged += new System.EventHandler(this.txtnum_EditValueChanged);
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(88, 169);
+            this.simpleButton2.Location = new System.Drawing.Point(103, 197);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(55, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(64, 27);
             this.simpleButton2.TabIndex = 1;
             this.simpleButton2.Text = "确定";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
@@ -105,45 +105,45 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 19);
+            this.label1.Location = new System.Drawing.Point(15, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 12);
+            this.label1.Size = new System.Drawing.Size(91, 14);
             this.label1.TabIndex = 2;
             this.label1.Text = "变电站最小间距";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 46);
+            this.label2.Location = new System.Drawing.Point(15, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(43, 14);
             this.label2.TabIndex = 2;
             this.label2.Text = "容载比";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 74);
+            this.label3.Location = new System.Drawing.Point(14, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(55, 14);
             this.label3.TabIndex = 2;
             this.label3.Text = "电压等级";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 101);
+            this.label4.Location = new System.Drawing.Point(15, 118);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.Size = new System.Drawing.Size(55, 14);
             this.label4.TabIndex = 2;
             this.label4.Text = "变电容量";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 128);
+            this.label5.Location = new System.Drawing.Point(15, 149);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 12);
+            this.label5.Size = new System.Drawing.Size(91, 14);
             this.label5.TabIndex = 2;
             this.label5.Text = "新建变电站数量";
             // 
@@ -156,26 +156,26 @@
             "220",
             "110",
             "35"});
-            this.txtdy.Location = new System.Drawing.Point(139, 70);
+            this.txtdy.Location = new System.Drawing.Point(162, 82);
             this.txtdy.Name = "txtdy";
-            this.txtdy.Size = new System.Drawing.Size(77, 20);
+            this.txtdy.Size = new System.Drawing.Size(89, 22);
             this.txtdy.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(219, 75);
+            this.label6.Location = new System.Drawing.Point(255, 87);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 12);
+            this.label6.Size = new System.Drawing.Size(21, 14);
             this.label6.TabIndex = 4;
             this.label6.Text = "kV";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(206, 19);
+            this.label7.Location = new System.Drawing.Point(240, 22);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.Size = new System.Drawing.Size(47, 14);
             this.label7.TabIndex = 2;
             this.label7.Text = "（KM）";
             // 
@@ -183,17 +183,16 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(13, 154);
+            this.label8.Location = new System.Drawing.Point(15, 180);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(269, 12);
+            this.label8.Size = new System.Drawing.Size(0, 14);
             this.label8.TabIndex = 2;
-            this.label8.Text = "当前区域内供电负荷满足要求，无需新建变电站。";
             // 
             // FrmSet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 204);
+            this.ClientSize = new System.Drawing.Size(328, 238);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtdy);
             this.Controls.Add(this.label8);
