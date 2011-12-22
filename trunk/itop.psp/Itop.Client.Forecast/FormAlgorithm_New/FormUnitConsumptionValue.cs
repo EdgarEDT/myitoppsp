@@ -906,15 +906,15 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             //
             RepositoryItemTextEdit repositoryItemTextEdit1 = new RepositoryItemTextEdit();
             repositoryItemTextEdit1.AutoHeight = false;
-            repositoryItemTextEdit1.DisplayFormat.FormatString = "n2";
+            repositoryItemTextEdit1.DisplayFormat.FormatString = "n4";
             repositoryItemTextEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            repositoryItemTextEdit1.Mask.EditMask = "n2";
+            repositoryItemTextEdit1.Mask.EditMask = "n4";
             repositoryItemTextEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
 
             column.ColumnEdit = repositoryItemTextEdit1;
             //column.DisplayFormat.FormatString = "#####################0.##";
             //column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            column.Format.FormatString = "#####################0.##";
+            column.Format.FormatString = "#####################0.####";
             column.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.treeList1.Columns.AddRange(new TreeListColumn[] {
             column});
@@ -1081,7 +1081,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                     dh = dl * unitdata / gdp;
 	            }
 
-                dhpfm.GetType().GetProperty("y" + i).SetValue(dhpfm, Math.Round(dh, 3), null);
+                dhpfm.GetType().GetProperty("y" + i).SetValue(dhpfm, Math.Round(dh, 4), null);
             }
             Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
 
@@ -1094,7 +1094,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 dl = dh * gdp /unitdata ;
 
 
-                dlpfm.GetType().GetProperty("y" + i).SetValue(dlpfm, Math.Round(dl, 2), null);
+                dlpfm.GetType().GetProperty("y" + i).SetValue(dlpfm, Math.Round(dl, 4), null);
             }
             Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm);
             LoadData();
