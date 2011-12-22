@@ -228,6 +228,7 @@ namespace Itop.TLPsp.Graphical {
                           PDrelcontent l1 = new PDrelcontent();
                           foreach (DataColumn dc in dts.Columns) {
                               columnname = dc.ColumnName;
+                              Type type = l1.GetType().GetProperty(dc.ColumnName).PropertyType;
                               //if (dts.Rows[i][dc.ColumnName].ToString() == "")
                               //    continue;
                               if (columnname == "TDdatetime" && Convert.ToDateTime(dts.Rows[i][dc.ColumnName]).Year != ParentObj.Year)
@@ -235,7 +236,19 @@ namespace Itop.TLPsp.Graphical {
                                   MessageBox.Show("第'" + (i + 1) + "'行停电日期和年份不符！");
                                   break;
                               }
-                              l1.GetType().GetProperty(dc.ColumnName).SetValue(l1, dts.Rows[i][dc.ColumnName].ToString(), null);
+                              if (type == typeof(DateTime))
+                              {
+                                  l1.GetType().GetProperty(dc.ColumnName).SetValue(l1,Convert.ToDateTime(dts.Rows[i][dc.ColumnName]) , null);
+                              }
+                              else if (type == typeof(double)) {
+                                  l1.GetType().GetProperty(dc.ColumnName).SetValue(l1, Convert.ToDouble(dts.Rows[i][dc.ColumnName]), null);
+                              } 
+                              else if (type == typeof(decimal)) {
+                                  l1.GetType().GetProperty(dc.ColumnName).SetValue(l1, Convert.ToDecimal(dts.Rows[i][dc.ColumnName]), null);
+                              } 
+                              else if (type == typeof(int)) {
+                                  l1.GetType().GetProperty(dc.ColumnName).SetValue(l1, Convert.ToInt32(dts.Rows[i][dc.ColumnName]), null);
+                              }
 
 
                           }

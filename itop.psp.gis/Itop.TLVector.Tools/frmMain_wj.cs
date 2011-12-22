@@ -1453,11 +1453,13 @@ namespace ItopVector.Tools
             }
             else if (str_dy == "220")
             {
-                str_sub = "#gh-Substation220-48";
+                //str_sub = "#gh-Substation220-48";
+                str_sub = "#Substation220-1412";
             }
             else if (str_dy == "110")
             {
-                str_sub = "#gh-Substation110-61";
+                //str_sub = "#gh-Substation110-61";
+                str_sub = "#Substation110-1422";
             }
             else if (str_dy == "66")
             {
@@ -1465,7 +1467,8 @@ namespace ItopVector.Tools
             }
             else if (str_dy == "35")
             {
-                str_sub = "#gh-Substation35-51";
+                //str_sub = "#gh-Substation35-51";
+                str_sub = "#Substation35-1622";
             }
             return str_sub;
         }
