@@ -1255,7 +1255,7 @@ namespace ItopVector.Tools
                                 }
 
                             }
-                            decimal nullpoly = TLMath.getNumber2(TLMath.getPolygonArea(TLMath.getPolygonPoints(poly1), 1), tlVectorControl1.ScaleRatio) - s;
+                            decimal nullpoly = TLMath.getNumber2(TLMath.getPolygonArea(TLMath.getPolygonPoints(poly1), 1), tlVectorControl1.ScaleRatio) / Convert.ToDecimal(areaoption) - s;
 
                             for (int j = 0; j < list.Count; j++)
                             {
