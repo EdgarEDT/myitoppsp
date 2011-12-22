@@ -161,34 +161,79 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            FormLoadForecastDataforMaxHour frm = new FormLoadForecastDataforMaxHour();
-            frm.ProjectUID = Itop.Client.MIS.ProgUID;
-            if (frm.ShowDialog() == DialogResult.OK)
+            //FormLoadForecastDataforMaxHour frm = new FormLoadForecastDataforMaxHour();
+            //frm.ProjectUID = Itop.Client.MIS.ProgUID;
+            //if (frm.ShowDialog() == DialogResult.OK)
+            //{
+            //    DataRow row = frm.ROW;
+            //    Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
+            //    psp_Type.ForecastID = forecastReport.ID;
+            //    psp_Type.Forecast = type;
+            //    IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
+            //    for (int j = 0; j < listTypes.Count; j++)
+            //    {
+            //         Ps_Forecast_Math currtenpfm=(Ps_Forecast_Math)listTypes[j];
+            //        //更新GDP数据
+            //        if (currtenpfm.Sort==1)
+            //        {
+            //            for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
+            //            {
+            //                currtenpfm.GetType().GetProperty("y" + i).SetValue(currtenpfm, Math.Round(double.Parse(row["y" + i.ToString()].ToString()), 1), null);
+            //            }
+            //            Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
+            //            break;
+            //        }
+                   
+            //    }
+            //}
+            //LoadData();
+            //this.chart_user1.All_Select(true);
+            //RefreshChart();
+
+
+            FormForecastLoadDataforMaxHour ffs = new FormForecastLoadDataforMaxHour();
+            ffs.maxhour = false;
+            ffs.PID = MIS.ProgUID;
+            ffs.StartYear = forecastReport.StartYear;
+            ffs.EndYear = forecastReport.EndYear;
+            if (ffs.ShowDialog() != DialogResult.OK)
+                return;
+
+
+            Hashtable hs = ffs.HS;
+
+            if (hs.Count == 0)
+                return;
+            string id = Guid.NewGuid().ToString();
+            foreach (Ps_History de3 in hs.Values)
             {
-                DataRow row = frm.ROW;
                 Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
                 psp_Type.ForecastID = forecastReport.ID;
                 psp_Type.Forecast = type;
                 IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
                 for (int j = 0; j < listTypes.Count; j++)
                 {
-                     Ps_Forecast_Math currtenpfm=(Ps_Forecast_Math)listTypes[j];
-                    //更新GDP数据
-                    if (currtenpfm.Sort==1)
-	                {
+                    Ps_Forecast_Math currtenpfm = (Ps_Forecast_Math)listTypes[j];
+                    //更新用电量数据
+                    if (currtenpfm.Sort == 1)
+                    {
                         for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
                         {
-                            currtenpfm.GetType().GetProperty("y" + i).SetValue(currtenpfm, Math.Round(double.Parse(row["y" + i.ToString()].ToString()), 1), null);
+                            currtenpfm.GetType().GetProperty("y" + i).SetValue(currtenpfm, de3.GetType().GetProperty("y" + i).GetValue(de3, null), null);
                         }
                         Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
                         break;
-	                }
-                   
+                    }
+
                 }
+
             }
+
             LoadData();
+
             this.chart_user1.All_Select(true);
             RefreshChart();
+
         }
         /// <summary>
         /// 开始截取数据
