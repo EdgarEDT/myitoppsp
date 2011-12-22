@@ -21,15 +21,20 @@ namespace Itop.TLPsp.Graphical {
         public XtraPDrelfrm() {
             InitializeComponent();
            
+            ucPdtype1.FocusedNodeChanged += new UcPdtype.SendDataEventHandler<PDrelregion>(ucPdtype1_FocusedNodeChanged);
         }
         void ucPdtype1_FocusedNodeChanged(object sender,PDrelregion e)
         {
            ucPddate1.ParentObj = e;
         }
-
-        private void XtraPDrelfrm_Load(object sender, EventArgs e) {
+        public void init()
+        {
             ucPdtype1.init();
-            ucPdtype1.FocusedNodeChanged += new UcPdtype.SendDataEventHandler<PDrelregion>(ucPdtype1_FocusedNodeChanged);
         }
+        protected override void OnLoad(EventArgs e) {
+            base.OnLoad(e);
+            
+        }
+       
     }
 }

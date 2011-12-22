@@ -74,7 +74,7 @@ namespace Itop.TLPsp.Graphical {
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "TDtime";
-            column.Caption = "停电持续时间";
+            column.Caption = "停电持续时间（小时）";
             column.VisibleIndex = 1;
             column.Width = 100;
             this.gridView1.Columns.Add(column);
@@ -98,7 +98,7 @@ namespace Itop.TLPsp.Graphical {
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "S1";
-            column.Caption = "停电率";
+            column.Caption = "停运率";
             column.VisibleIndex = 5;
             column.Width = 60;
             this.gridView1.Columns.Add(column);

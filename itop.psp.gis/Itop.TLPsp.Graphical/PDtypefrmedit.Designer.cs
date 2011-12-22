@@ -129,7 +129,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 14);
             this.label3.TabIndex = 1;
-            this.label3.Text = "人口数：";
+            this.label3.Text = "总户数：";
             // 
             // label1
             // 

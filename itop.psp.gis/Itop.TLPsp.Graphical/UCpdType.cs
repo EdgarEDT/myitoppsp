@@ -88,7 +88,7 @@ namespace Itop.TLPsp.Graphical {
             column});
             column = new TreeListColumn();
             column.FieldName = "PeopleSum";
-            column.Caption = "人口总数";
+            column.Caption = "总户数";
             this.treeList1.Columns.AddRange(new TreeListColumn[] {
             column});
 
