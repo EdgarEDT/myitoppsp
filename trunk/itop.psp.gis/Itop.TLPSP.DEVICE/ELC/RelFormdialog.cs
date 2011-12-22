@@ -36,5 +36,9 @@ namespace Itop.TLPSP.DEVICE
             this.DialogResult = DialogResult.Yes;
             //this.Close();
         }
+
+        private void RelFormdialog_Load(object sender, EventArgs e) {
+
+        }
     }
 }
