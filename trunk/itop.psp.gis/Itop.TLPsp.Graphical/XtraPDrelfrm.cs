@@ -20,12 +20,16 @@ namespace Itop.TLPsp.Graphical {
     public partial class XtraPDrelfrm :FormBase {
         public XtraPDrelfrm() {
             InitializeComponent();
-            ucPdtype1.init();
-           ucPdtype1.FocusedNodeChanged+=new UcPdtype.SendDataEventHandler<PDrelregion>(ucPdtype1_FocusedNodeChanged);
+           
         }
         void ucPdtype1_FocusedNodeChanged(object sender,PDrelregion e)
         {
            ucPddate1.ParentObj = e;
+        }
+
+        private void XtraPDrelfrm_Load(object sender, EventArgs e) {
+            ucPdtype1.init();
+            ucPdtype1.FocusedNodeChanged += new UcPdtype.SendDataEventHandler<PDrelregion>(ucPdtype1_FocusedNodeChanged);
         }
     }
 }

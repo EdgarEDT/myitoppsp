@@ -43,25 +43,30 @@ namespace Itop.TLPsp.Graphical {
         DataTable dataTable = new DataTable();
         public void init()
         {
-            if (dataTable != null) {
-                dataTable.Columns.Clear();
-                treeList1.Columns.Clear();
+            try {
+                if (dataTable != null) {
+                    dataTable.Columns.Clear();
+                    treeList1.Columns.Clear();
+                }
+                AddFixColumn();
+                PDrelregion pr = new PDrelregion();
+                pr.ProjectID = Itop.Client.MIS.ProgUID;
+                IList<PDrelregion> listTypes = Services.BaseService.GetList<PDrelregion>("SelectPDrelregionByProjectID", pr);
+
+
+
+                dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(PDrelregion));
+                treeList1.BeginInit();
+                treeList1.DataSource = dataTable;
+
+                //treeList1.Columns["Sort"].SortOrder = SortOrder.Ascending;
+                treeList1.EndInit();
+                Application.DoEvents();
+                treeList1.ExpandAll();
+            } catch (System.Exception ex) {
+
             }
-            AddFixColumn();
-           PDrelregion pr = new PDrelregion();
-            pr.ProjectID = Itop.Client.MIS.ProgUID;
-            IList<PDrelregion> listTypes = Services.BaseService.GetList<PDrelregion>("SelectPDrelregionByProjectID", pr);
-
-
-
-            dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(PDrelregion));
-            treeList1.BeginInit();
-            treeList1.DataSource = dataTable;
             
-            //treeList1.Columns["Sort"].SortOrder = SortOrder.Ascending;
-            treeList1.EndInit();
-            Application.DoEvents();
-            treeList1.ExpandAll();
             
           
         }
@@ -182,9 +187,9 @@ namespace Itop.TLPsp.Graphical {
             }
         }
 
-        private void UcPdtype_Load(object sender, EventArgs e) {
-            init();
-        }
+        //private void UcPdtype_Load(object sender, EventArgs e) {
+        //    init();
+        //}
 
         private void treeList1_MouseClick(object sender, MouseEventArgs e) {
             if (FocusedNodeChanged != null) {
