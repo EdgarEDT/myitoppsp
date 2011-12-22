@@ -640,6 +640,7 @@ namespace ItopVector.Tools
                    return new PointF(2642f, 2867f);
                case "#Substation220-8":
                case "#Substation220-9":
+              // case "#Substation220-1412":
                case "#Substation220-58":
                    return new PointF(2897f, 4864f);
                case "#Substation66-11":
@@ -667,6 +668,7 @@ namespace ItopVector.Tools
                    return new PointF(2838f, 2726f);
                   
                case "#user-Substation110-2":
+              // case "#Substation110-1422":
                case "#user-Substation110-3":
                    return new PointF(-22f, 739f);
                   
@@ -675,6 +677,7 @@ namespace ItopVector.Tools
                    return new PointF(-88f, 823f);
                   
                case "#user-Substation35-2":
+              // case "#Substation35-1622":
                case "#user-Substation35-3":
                    return new PointF(-39f, 824f);
                  

@@ -90,21 +90,21 @@ namespace Itop.TLPsp.Graphical {
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
             dr1["ZB"] = "RS-1";
-            dr1["Result"] = RS1.ToString("0.000");
+            dr1["Result"] = RS1.ToString("0.000000");
             dt.Rows.Add(dr1);
 
             dr1 = dt.NewRow();
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
             dr1["ZB"] = "RS-2";
-            dr1["Result"] = RS2.ToString("0.000");
+            dr1["Result"] = RS2.ToString("0.000000");
             dt.Rows.Add(dr1);
 
             dr1 = dt.NewRow();
             dr1["AreaName"] = ParentObj.AreaName;
             dr1["Year"] = ParentObj.Year;
             dr1["ZB"] = "RS-3";
-            dr1["Result"] = RS3.ToString("0.000");
+            dr1["Result"] = RS3.ToString("0.000000");
             dt.Rows.Add(dr1);
 
             dr1 = dt.NewRow();
