@@ -248,8 +248,9 @@ namespace Itop.TLPsp.Graphical {
                               } 
                               else if (type == typeof(int)) {
                                   l1.GetType().GetProperty(dc.ColumnName).SetValue(l1, Convert.ToInt32(dts.Rows[i][dc.ColumnName]), null);
+                              } else if (type == typeof(string)) {
+                                  l1.GetType().GetProperty(dc.ColumnName).SetValue(l1, dts.Rows[i][dc.ColumnName].ToString(), null);
                               }
-
 
                           }
                           
