@@ -29,6 +29,11 @@
       <result property='ObligateField9' column='ObligateField9' />
       <result property='ObligateField10' column='ObligateField10' />
       <result property='ObligateField11' column='ObligateField11' />
+      <result property='ObligateField12' column='ObligateField12' />
+      <result property='ObligateField13' column='ObligateField13' />
+      <result property='ObligateField14' column='ObligateField14' />
+      <result property='ObligateField15' column='ObligateField15' />
+      <result property='ObligateField16' column='ObligateField16' />
     </resultMap>
 
   </resultMaps>
@@ -63,7 +68,12 @@
       "ObligateField8",
       "ObligateField9",
       "ObligateField10",
-      "ObligateField11"
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15",
+      "ObligateField16"
       )
       VALUES
       (
@@ -90,7 +100,12 @@
       #ObligateField8#,
       #ObligateField9#,
       #ObligateField10#,
-      #ObligateField11#
+      #ObligateField11#,
+      #ObligateField12#,
+      #ObligateField13#,
+      #ObligateField14#,
+      #ObligateField15#,
+      #ObligateField16#
       )
     </insert>
     <delete id='DeleteglebeProperty' parameterClass='glebeProperty'>
@@ -133,7 +148,12 @@
       "ObligateField8"= #ObligateField8#,
       "ObligateField9"= #ObligateField9#,
       "ObligateField10"= #ObligateField10#,
-      "ObligateField11"= #ObligateField11#
+      "ObligateField11"= #ObligateField11#,
+      "ObligateField12"= #ObligateField12#,
+      "ObligateField13"= #ObligateField13#,
+      "ObligateField14"= #ObligateField14#,
+      "ObligateField15"= #ObligateField15#,
+      "ObligateField16"= #ObligateField16#
       WHERE
       UID = #UID#
     </update>
@@ -190,7 +210,12 @@
       "ObligateField8",
       "ObligateField9",
       "ObligateField10",
-      "ObligateField11"
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15",
+      "ObligateField16"
       FROM glebeProperty
     </select>
     <select id='SelectglebePropertyByKey' resultMap='glebePropertyResult' parameterClass='glebeProperty'>
@@ -218,7 +243,12 @@
       "ObligateField8",
       "ObligateField9",
       "ObligateField10",
-      "ObligateField11"
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15",
+      "ObligateField16"
       FROM glebeProperty
       WHERE
       UID = #UID#
@@ -248,7 +278,12 @@
       "ObligateField8",
       "ObligateField9",
       "ObligateField10",
-      "ObligateField11"
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15",
+      "ObligateField16"
       FROM glebeProperty
       WHERE
       EleID= #EleID# and SvgUID= #SvgUID#
@@ -278,10 +313,51 @@
       "ObligateField8",
       "ObligateField9",
       "ObligateField10",
-      "ObligateField11"
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15",
+      "ObligateField16"
       FROM glebeProperty
       WHERE
       SvgUID= #SvgUID#
+    </select>
+    <select id='SelectglebePropertyByUseIDCK' resultMap='glebePropertyResult' parameterClass='glebeProperty'>
+      SELECT
+      "UID",
+      "EleID",
+      "UseID",
+      "TypeUID",
+      "Area",
+      "Burthen",
+      "Number",
+      "Remark",
+      "SonUid",
+      "SelSonArea",
+      "SvgUID",
+      "ParentEleID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7",
+      "ObligateField8",
+      "ObligateField9",
+      "ObligateField10",
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15",
+      "ObligateField16"
+      FROM glebeProperty
+      WHERE
+      SvgUID= #SvgUID# and
+      UseID= #UseID#
     </select>
     <select id='SelectglebePropertParentIDTop' resultMap='glebePropertyResult' parameterClass='Hashtable'>
       SELECT
@@ -308,7 +384,12 @@
       a.ObligateField8,
       a.ObligateField9,
       a.ObligateField10,
-      a.ObligateField11
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15,
+      a.ObligateField16
       FROM glebeProperty a
       WHERE
       a.ParentEleID = #ParentEleID# and
@@ -340,7 +421,12 @@
       a.ObligateField8,
       a.ObligateField9,
       a.ObligateField10,
-      a.ObligateField11
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15,
+      a.ObligateField16
       FROM glebeProperty a
       WHERE
       a.ParentEleID = #ParentEleID# and
@@ -372,7 +458,12 @@
       a.ObligateField8,
       a.ObligateField9,
       b.ObligateField1 as ObligateField10,
-      a.ObligateField11
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15,
+      a.ObligateField16
       FROM glebeProperty a,glebeType b
       WHERE
       a.TypeUID=b.UID and a.ParentEleID = #ParentEleID# and
@@ -403,11 +494,52 @@
       a.ObligateField8,
       a.ObligateField9,
       a.ObligateField10,
-      a.ObligateField11
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15,
+      a.ObligateField16
       FROM glebeProperty a,glebeType b
       WHERE
       a.TypeUID=b.UID and a.ParentEleID !='0' and a.ParentEleID!='' and
       a.SvgUID= #SvgUID# and a.LayerID in ( $LayerID$ ) order by a.UseID
+    </select>
+    <select id='SelectglebePropertParentIDSubZH' resultMap='glebePropertyResult' parameterClass='Hashtable'>
+      SELECT
+      '' as "UID",
+      '' as "EleID",
+      '' as "UseID",
+      b.TypeName as "TypeUID",
+      sum(a.Area) as "Area",
+      sum(a.Burthen) as "Burthen",
+      sum(a.Burthen)/sum(a.Area) as "Number",
+      '' as "Remark",
+      '' as "SonUid",
+      '' as "SelSonArea",
+      '' as "SvgUID",
+      '' as "ParentEleID",
+      '' as "LayerID",
+      '' as "ObligateField1",
+      '' as "ObligateField2",
+      '' as "ObligateField3",
+      '' as "ObligateField4",
+      '' as "ObligateField5",
+      '' as "ObligateField6",
+      '' as "ObligateField7",
+      '' as "ObligateField8",
+      '' as "ObligateField9",
+      '' as "ObligateField10",
+      '' as "ObligateField11",
+      '' as "ObligateField12",
+      '' as "ObligateField13",
+      '' as "ObligateField14",
+      '' as "ObligateField15",
+      '' as "ObligateField16"
+      FROM glebeProperty a,glebeType b
+      WHERE
+      a.TypeUID=b.UID and a.ParentEleID !='0' and a.ParentEleID!='' and
+      a.SvgUID= #SvgUID# and a.LayerID in ( $LayerID$ )  group by b.TypeName
     </select>
     <select id='SelectglebePropertParentIDSubAll' resultMap='glebePropertyResult' parameterClass='Hashtable'>
       SELECT
@@ -434,7 +566,12 @@
       a.ObligateField8,
       a.ObligateField9,
       b.ObligateField1 as ObligateField10,
-      a.ObligateField11
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15,
+      a.ObligateField16
       FROM glebeProperty a,glebeType b
       WHERE
       a.TypeUID=b.UID and a.ParentEleID !='0' and a.ParentEleID!='' and
@@ -465,7 +602,12 @@
       a.ObligateField8,
       a.ObligateField9,
       a.ObligateField10,
-      a.ObligateField11
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15,
+      a.ObligateField16
       FROM glebeProperty a,glebeType b ,glebeProperty bak
       WHERE
       a.TypeUID=b.UID and a.ParentEleID !='0'
@@ -498,7 +640,12 @@
       a.ObligateField8,
       a.ObligateField9,
       a.ObligateField10,
-      a.ObligateField11
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15,
+      a.ObligateField16
       FROM glebeProperty a,glebeType b
       WHERE
       a.TypeUID=b.UID and
@@ -530,7 +677,12 @@
       a.ObligateField8,
       a.ObligateField9,
       a.ObligateField10,
-      a.ObligateField11
+      a.ObligateField11,
+      a.ObligateField12,
+      a.ObligateField13,
+      a.ObligateField14,
+      a.ObligateField15,
+      a.ObligateField16
       FROM glebeProperty a,glebeType b
       WHERE
       a.TypeUID=b.UID and
