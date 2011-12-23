@@ -952,14 +952,14 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             if (e.Column.FieldName.Substring(0, 1) != "y") return;
             double d = 0;
             if (!double.TryParse(e.Value.ToString(), out d)) return;
-            treeList1.BeginInit();
+            //treeList1.BeginInit();
             try
             {
                 CalculateSum(e.Node, e.Column);
             }
             catch 
             { }
-            treeList1.EndInit();
+            //treeList1.EndInit();
             RefreshChart();
         }
         private void CalculateSum(TreeListNode node, TreeListColumn column)
