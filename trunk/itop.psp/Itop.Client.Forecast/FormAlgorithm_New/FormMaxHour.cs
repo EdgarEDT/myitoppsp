@@ -30,6 +30,8 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         bool isyqwh = true;
 
 
+        TreeListNode node = null;
+
         //最大小时数法的单位换算 默认情况下电量为（亿kWh）,负荷为（MW），换算为10000;
         
         int unitdata = 1000000;
@@ -895,19 +897,21 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void treeList1_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
         {
+          
             //表格数据发生变化
             if (e.Column.FieldName.Substring(0, 1) != "y") return;
             double d = 0;
             if (!double.TryParse(e.Value.ToString(), out d)) return;
-            treeList1.BeginInit();
+            //treeList1.BeginInit();
             try
             {
                 CalculateSum(e.Node, e.Column);
             }
             catch 
             { }
-            treeList1.EndInit();
+            //treeList1.EndInit();
             RefreshChart();
+           
         }
         private void CalculateSum(TreeListNode node, TreeListColumn column)
         {
@@ -1107,6 +1111,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void treeList1_ShowingEditor(object sender, CancelEventArgs e)
         {
+            node=treeList1.FocusedNode;
             CanEdit = false;
             if (treeList1.FocusedNode["Sort"].ToString() == "1")
             {
