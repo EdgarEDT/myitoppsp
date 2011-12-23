@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='glebeYearValue' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='glebeYearValue' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.glebeYearValue' />
+</alias>
+	<resultMaps>
+		<resultMap id='glebeYearValueResult' class='glebeYearValue'>
+			<result property='ID' column='ID' />
+			<result property='ParentID' column='ParentID' />
+			<result property='Year' column='Year' />
+			<result property='Burthen' column='Burthen' />
+			<result property='AvgFHmd' column='AvgFHmd' />
+			<result property='FHmdTz' column='FHmdTz' />
+			<result property='s1' column='s1' />
+			<result property='s2' column='s2' />
+			<result property='s3' column='s3' />
+			<result property='s4' column='s4' />
+			<result property='s5' column='s5' />
+			<result property='s6' column='s6' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertglebeYearValue' parameterClass='glebeYearValue'>
+		INSERT INTO glebeYearValue		(
+			"ID",
+			"ParentID",
+			"Year",
+			"Burthen",
+			"AvgFHmd",
+			"FHmdTz",
+			"s1",
+			"s2",
+			"s3",
+			"s4",
+			"s5",
+			"s6"
+		)
+		VALUES
+		(
+			#ID#,
+			#ParentID#,
+			#Year#,
+			#Burthen#,
+			#AvgFHmd#,
+			#FHmdTz#,
+			#s1#,
+			#s2#,
+			#s3#,
+			#s4#,
+			#s5#,
+			#s6#
+		)
+	</insert>
+	<delete id='DeleteglebeYearValue' parameterClass='glebeYearValue'>
+		DELETE FROM glebeYearValue
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdateglebeYearValue' parameterClass='glebeYearValue'>
+		UPDATE glebeYearValue
+		SET
+			"ParentID" = #ParentID#,
+			"Year" = #Year#,
+			"Burthen" = #Burthen#,
+			"AvgFHmd" = #AvgFHmd#,
+			"FHmdTz" = #FHmdTz#,
+			"s1" = #s1#,
+			"s2" = #s2#,
+			"s3" = #s3#,
+			"s4" = #s4#,
+			"s5" = #s5#,
+			"s6" = #s6#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectglebeYearValueList' resultMap='glebeYearValueResult' parameterClass='glebeYearValue'>
+		SELECT
+			"ID",
+			"ParentID",
+			"Year",
+			"Burthen",
+			"AvgFHmd",
+			"FHmdTz",
+			"s1",
+			"s2",
+			"s3",
+			"s4",
+			"s5",
+			"s6"
+		FROM glebeYearValue
+	</select>
+	<select id='SelectglebeYearValueByKey' resultMap='glebeYearValueResult' parameterClass='glebeYearValue'>
+		SELECT
+			"ID",
+			"ParentID",
+			"Year",
+			"Burthen",
+			"AvgFHmd",
+			"FHmdTz",
+			"s1",
+			"s2",
+			"s3",
+			"s4",
+			"s5",
+			"s6"
+		FROM glebeYearValue
+		WHERE
+			ID = #ID#
+	</select>
+</statements>
+</sqlMap>

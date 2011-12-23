@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{807BF5A9-8EF8-423D-BF42-55B6B2F34B75}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -237,6 +237,7 @@
     <Content Include="Maps\Planning\glebeType.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Maps\Planning\glebeYearValue.xml" />
     <Content Include="Maps\Planning\GraPowerRelation.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
