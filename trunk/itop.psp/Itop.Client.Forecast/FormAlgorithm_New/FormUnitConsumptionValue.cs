@@ -56,6 +56,10 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             get
             {
                 int result=0;
+                if (firstyear.Contains("y"))
+                {
+                    firstyear = firstyear.Replace("y", "");
+                }
                 if (int.TryParse(firstyear, out result))
                 {
                 }
@@ -68,6 +72,10 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             get
             {
                 int result = 0;
+                if (endyear.Contains("y"))
+                {
+                    endyear = endyear.Replace("y", "");
+                }
                 if (int.TryParse(endyear, out result))
                 {
                 }
@@ -1080,6 +1088,10 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 	            {
                     dh = dl * unitdata / gdp;
 	            }
+                else
+                {
+                    dh = 0;
+                }
 
                 dhpfm.GetType().GetProperty("y" + i).SetValue(dhpfm, Math.Round(dh, 4), null);
             }

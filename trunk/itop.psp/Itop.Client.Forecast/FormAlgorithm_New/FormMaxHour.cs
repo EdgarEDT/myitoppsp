@@ -52,6 +52,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             get
             {
                 int result=0;
+                if (firstyear.Contains("y"))
+                {
+                    firstyear = firstyear.Replace("y", "");
+                }
+
                 if (int.TryParse(firstyear, out result))
                 {
                 }
@@ -64,6 +69,10 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             get
             {
                 int result = 0;
+                if (endyear.Contains("y"))
+                {
+                    endyear = endyear.Replace("y", "");
+                }
                 if (int.TryParse(endyear, out result))
                 {
                 }
@@ -1026,6 +1035,10 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 	            {
                     hour = dl * unitdata / fh;
 	            }
+                else
+                {
+                    hour = 0;
+                }
 
                 hourpfm.GetType().GetProperty("y" + i).SetValue(hourpfm, Math.Round(hour, 0), null);
             }
@@ -1039,6 +1052,10 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 if (hour != 0)
                 {
                     fh = dl * unitdata / hour;
+                }
+                else
+                {
+                    fh = 0;
                 }
 
                 fhpfm.GetType().GetProperty("y" + i).SetValue(fhpfm, Math.Round(fh, 2), null);
