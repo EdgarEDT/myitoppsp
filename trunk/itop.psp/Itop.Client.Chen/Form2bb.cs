@@ -157,7 +157,8 @@ namespace Itop.Client.Chen
         private void LoadValues()
         {
             PSP_Values psp_Values = new PSP_Values();
-            psp_Values.ID = typeFlag2;//用ID字段存放Flag2的值
+            psp_Values.ID = typeFlag2;//用ID字段存放Flag2的值
+
 
 
             IList<PSP_Values> listValues = Common.Services.BaseService.GetList<PSP_Values>("SelectPSP_ValuesListByFlag2", psp_Values);
@@ -238,7 +239,8 @@ namespace Itop.Client.Chen
             ////catch { }
         }
 
-        //添加年份后，新增一列
+        //添加年份后，新增一列
+
 
         private void AddColumn(int year)
         {
@@ -259,22 +261,26 @@ namespace Itop.Client.Chen
 
         private int GetInsertIndex(int year)
         {
-            int nFixedColumns = typeof(PSP_Types).GetProperties().Length - 2;//ID和ParentID列不在treeList1.Columns中
+            int nFixedColumns = typeof(PSP_Types).GetProperties().Length - 2;//ID和ParentID列不在treeList1.Columns中
+
 
             int nColumns = treeList1.Columns.Count;
             int nIndex = nFixedColumns;
 
-            //还没有年份
+            //还没有年份
+
 
             if (nColumns == nFixedColumns)
             {
             }
-            else//已经有年份
+            else//已经有年份
+
 
             {
                 bool bFind = false;
 
-                //查找此年的位置
+                //查找此年的位置
+
 
                 for (int i = nFixedColumns + 1; i < nColumns; i++)
                 {
@@ -289,7 +295,8 @@ namespace Itop.Client.Chen
                     }
                 }
 
-                //不在最大和最小之间
+                //不在最大和最小之间
+
 
                 if (!bFind)
                 {
@@ -377,14 +384,16 @@ namespace Itop.Client.Chen
             frm.Flag2 = typeFlag2;
             int nFixedColumns = typeof(PSP_Types).GetProperties().Length;
             int nColumns = treeList1.Columns.Count;
-            if (nFixedColumns == nColumns + 2)//相等时，表示还没有年份，新年份默认为当前年减去15年
+            if (nFixedColumns == nColumns + 2)//相等时，表示还没有年份，新年份默认为当前年减去15年
+
 
             {
                 frm.YearValue = DateTime.Now.Year - 15;
             }
             else
             {
-                //有年份时，默认为最大年份加1年
+                //有年份时，默认为最大年份加1年
+
 
                 frm.YearValue = (int)treeList1.Columns[nColumns - 1].Tag + 1;
             }
@@ -402,7 +411,8 @@ namespace Itop.Client.Chen
                 return;
             }
 
-            //不是年份列
+            //不是年份列
+
 
             if(treeList1.FocusedColumn.FieldName.IndexOf("年") == -1)
             {
@@ -426,7 +436,8 @@ namespace Itop.Client.Chen
 
             try
             {
-                //DeletePSP_ValuesByYear删除数据和年份
+                //DeletePSP_ValuesByYear删除数据和年份
+
 
                 int colIndex = treeList1.FocusedColumn.AbsoluteIndex;
                 Common.Services.BaseService.Update("DeletePSP_ValuesByYear", psp_Values);
@@ -513,7 +524,8 @@ namespace Itop.Client.Chen
             }            
         }
 
-        //当子分类数据改变时，计算其父分类的值
+        //当子分类数据改变时，计算其父分类的值
+
 
         private void CalculateSum(TreeListNode node, TreeListColumn column)
         {
@@ -580,7 +592,8 @@ namespace Itop.Client.Chen
             }
         }
 
-        //把树控件内容按显示顺序生成到DataTable中
+        //把树控件内容按显示顺序生成到DataTable中
+
 
         private DataTable ConvertTreeListToDataTable(DevExpress.XtraTreeList.TreeList xTreeList)
         {
@@ -628,7 +641,8 @@ namespace Itop.Client.Chen
                 }                 
             }
 
-            //根分类结束后加空行
+            //根分类结束后加空行
+
 
             if(node.ParentNode == null && dt.Rows.Count > 0)
             {
@@ -643,7 +657,8 @@ namespace Itop.Client.Chen
             }
         }
 
-        //根据选择的统计年份，生成统计结果数据表
+        //根据选择的统计年份，生成统计结果数据表
+
 
         private DataTable ResultDataTable(DataTable sourceDataTable, List<ChoosedYears> listChoosedYears)
         {
@@ -674,7 +689,8 @@ namespace Itop.Client.Chen
             }
             #endregion
 
-            #region 计算增长率
+            #region 计算增长率
+
 
             DataColumn columnBegin = null;
             foreach(DataColumn column in dtReturn.Columns)
@@ -709,7 +725,8 @@ namespace Itop.Client.Chen
                         }
                     }
 
-                    //本次计算增长率的列作为下次的起始列
+                    //本次计算增长率的列作为下次的起始列
+
 
                     columnBegin = columnEnd;
                 }
@@ -774,7 +791,8 @@ namespace Itop.Client.Chen
         private void SetValuesTo0()
         {
             PSP_Values psp_Values = new PSP_Values();
-            psp_Values.ID = typeFlag2;//用ID字段存放Flag2的值
+            psp_Values.ID = typeFlag2;//用ID字段存放Flag2的值
+
 
 
             IList<PSP_Values> listValues = Common.Services.BaseService.GetList<PSP_Values>("SelectPSP_ValuesListByFlag2", psp_Values);
@@ -802,7 +820,8 @@ namespace Itop.Client.Chen
                // Class1.TreeNodeToDataObject<PSP_Types>(psp_Type, treeList1.FocusedNode);
 
                 psp_Values.TypeID = Convert.ToInt32(dr["id"]);
-                //DeletePSP_ValuesByType里面删除数据和分类
+                //DeletePSP_ValuesByType里面删除数据和分类
+
 
                 Common.Services.BaseService.Update("DeletePSP_ValuesByType", psp_Values);
                
