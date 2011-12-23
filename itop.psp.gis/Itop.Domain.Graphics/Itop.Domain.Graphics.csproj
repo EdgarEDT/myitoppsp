@@ -54,6 +54,7 @@
     <Compile Include="FenZhi.cs" />
     <Compile Include="glebeProperty.cs" />
     <Compile Include="glebeType.cs" />
+    <Compile Include="glebeYearValue.cs" />
     <Compile Include="GraPowerRelation.cs" />
     <Compile Include="LayerFile.cs" />
     <Compile Include="LayerGrade.cs" />
