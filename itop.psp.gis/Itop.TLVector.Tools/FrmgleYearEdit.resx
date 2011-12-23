@@ -117,20 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ctrlglebeYearValue1.ParentObj" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAEtJdG9wLkRvbWFpbi5HcmFwaGljcywgVmVyc2lvbj0xLjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwFAQAAACJJdG9wLkRvbWFpbi5HcmFw
-        aGljcy5nbGViZVByb3BlcnR5HAAAAARfdWlkBl9lbGVpZAZfdXNlaWQIX3R5cGV1aWQFX2FyZWEIX2J1
-        cnRoZW4HX251bWJlcgdfcmVtYXJrB19zb251aWQLX3NlbHNvbmFyZWEHX3N2Z3VpZAxfcGFyZW50ZWxl
-        aWQIX2xheWVyaWQPX29ibGlnYXRlZmllbGQxD19vYmxpZ2F0ZWZpZWxkMg9fb2JsaWdhdGVmaWVsZDMP
-        X29ibGlnYXRlZmllbGQ0D19vYmxpZ2F0ZWZpZWxkNQ9fb2JsaWdhdGVmaWVsZDYPX29ibGlnYXRlZmll
-        bGQ3D19vYmxpZ2F0ZWZpZWxkOA9fb2JsaWdhdGVmaWVsZDkQX29ibGlnYXRlZmllbGQxMBBfb2JsaWdh
-        dGVmaWVsZDExEF9vYmxpZ2F0ZWZpZWxkMTIQX29ibGlnYXRlZmllbGQxMxBfb2JsaWdhdGVmaWVsZDE0
-        EF9vYmxpZ2F0ZWZpZWxkMTUBAQEBAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBBQUFAgAAAAYDAAAAAAkD
-        AAAACQMAAAAJAwAAAAEwATABMAkDAAAACQMAAAAJAwAAAAkDAAAACQMAAAAJAwAAAAkDAAAACQMAAAAJ
-        AwAAAAkDAAAACQMAAAAJAwAAAAkDAAAACQMAAAAJAwAAAAkDAAAACQMAAAAJAwAAAAkDAAAACQMAAAAJ
-        AwAAAAs=
-</value>
-  </data>
 </root>

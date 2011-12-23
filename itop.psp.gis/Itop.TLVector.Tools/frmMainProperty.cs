@@ -101,7 +101,7 @@ namespace ItopVector.Tools
                 jc3.DataBindings.Add("Text", gPro, "ObligateField13");
                 nl3.DataBindings.Add("Text", gPro, "ObligateField14");
                 ph3.DataBindings.Add("Text", gPro, "ObligateField15");
-
+                comboBoxEdit1.DataBindings.Add("Text", gPro, "ObligateField16");
             
                 Hashtable hs = new Hashtable();
                 hs.Add("ParentEleID", gPro.EleID);
@@ -167,6 +167,9 @@ namespace ItopVector.Tools
                 string sql = " where SUID in ( " +strID+ ")";
                 IList<PSPDEV> l22=  Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
                 gridControl1.DataSource = l22;
+
+                //添加负荷预测数据
+                ctrlglebeYearValue1.ParentObj = gPro;
             }
             catch(Exception e1)
             {
@@ -286,6 +289,9 @@ namespace ItopVector.Tools
                 //{
                 //    Reload();
                 //}
+                //空间负荷进行自动的刷新
+                ctrlglebeYearValue1.ParentObj = gPro;
+                ctrlglebeYearValue1.Refresh();
             }
             catch (Exception e1)
             {
@@ -480,7 +486,7 @@ namespace ItopVector.Tools
             jc3.Text = gPro.ObligateField13;
             nl3.Text = gPro.ObligateField14;
             ph3.Text = gPro.ObligateField15;
-
+            comboBoxEdit1.Text=gPro.ObligateField16;
             remark.Text = gPro.Remark;
             this.Refresh();
         }
@@ -532,6 +538,12 @@ namespace ItopVector.Tools
                 remark.Properties.ReadOnly = true;
                 simpleButton1.Visible = false;
                 simpleButton2.Text = "关闭";
+            }
+            string DQ = "市区";
+            string conn = "ProjectID='" + Itop.Client.MIS.ProgUID + "' and Col1='" + DQ + "' order by Sort";
+            IList<PS_Table_AreaWH> list = Services.BaseService.GetList<PS_Table_AreaWH>("SelectPS_Table_AreaWHByConn", conn);
+            foreach (PS_Table_AreaWH area in list) {
+                this.comboBoxEdit1.Properties.Items.Add(area.Title);
             }
         }
         public glebeProperty glebeProp
@@ -623,6 +635,7 @@ namespace ItopVector.Tools
                 if (w != null)
                 {
                     w.Col2 = Str;
+                    comboBoxEdit1.Text = w.Title;
                     Services.BaseService.Update<PS_Table_AreaWH>(w);
                 }
             }

@@ -107,5 +107,23 @@
 		WHERE
 			ID = #ID#
 	</select>
+  <select id='SelectglebeYearValueBywhere' resultMap='glebeYearValueResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "ParentID",
+    "Year",
+    "Burthen",
+    "AvgFHmd",
+    "FHmdTz",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+    FROM glebeYearValue
+    WHERE
+   $value$
+  </select>
 </statements>
 </sqlMap>

@@ -124,11 +124,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CtrlglebeYearValue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrlglebeYearValue.Designer.cs">
+      <DependentUpon>CtrlglebeYearValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAreaSel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAreaSel.Designer.cs">
       <DependentUpon>frmAreaSel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmgleYearEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmgleYearEdit.Designer.cs">
+      <DependentUpon>FrmgleYearEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="frmInJWD.cs">
       <SubType>Form</SubType>
@@ -1326,6 +1338,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CtrlglebeYearValue.resx">
+      <DependentUpon>CtrlglebeYearValue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormGXXlist.resx">
       <DependentUpon>FormGXXlist.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1337,6 +1352,9 @@
     <EmbeddedResource Include="frmCS.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmCS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmgleYearEdit.resx">
+      <DependentUpon>FrmgleYearEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInJWD.resx">
       <SubType>Designer</SubType>

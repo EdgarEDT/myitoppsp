@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainProperty));
             this.lx = new DevExpress.XtraEditors.LookUpEdit();
             this.remark = new DevExpress.XtraEditors.MemoEdit();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -99,6 +100,9 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.ctrlglebeYearValue1 = new ItopVector.Tools.CtrlglebeYearValue();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lx.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.remark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dl.Properties)).BeginInit();
@@ -131,46 +135,48 @@
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.xtraTabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lx
             // 
-            this.lx.Location = new System.Drawing.Point(158, 180);
+            this.lx.Location = new System.Drawing.Point(184, 210);
             this.lx.Name = "lx";
             this.lx.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lx.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("UID", "", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TypeName", "土地类型", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("UID", "", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TypeName", "土地类型")});
             this.lx.Properties.DisplayMember = "TypeName";
             this.lx.Properties.NullText = "";
             this.lx.Properties.ValueMember = "UID";
-            this.lx.Size = new System.Drawing.Size(185, 21);
+            this.lx.Size = new System.Drawing.Size(216, 21);
             this.lx.TabIndex = 18;
             this.lx.Visible = false;
             // 
             // remark
             // 
-            this.remark.Location = new System.Drawing.Point(415, 38);
+            this.remark.Location = new System.Drawing.Point(484, 44);
             this.remark.Name = "remark";
-            this.remark.Size = new System.Drawing.Size(221, 55);
+            this.remark.Size = new System.Drawing.Size(258, 64);
             this.remark.TabIndex = 11;
             // 
             // simpleButton2
             // 
             this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(665, 72);
+            this.simpleButton2.Location = new System.Drawing.Point(776, 84);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(78, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(91, 27);
             this.simpleButton2.TabIndex = 13;
             this.simpleButton2.Text = "关闭";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(665, 13);
+            this.simpleButton1.Location = new System.Drawing.Point(776, 15);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(78, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(91, 27);
             this.simpleButton1.TabIndex = 12;
             this.simpleButton1.Text = "确定";
             this.simpleButton1.Visible = false;
@@ -178,7 +184,7 @@
             // 
             // dl
             // 
-            this.dl.Location = new System.Drawing.Point(107, 180);
+            this.dl.Location = new System.Drawing.Point(125, 210);
             this.dl.Name = "dl";
             this.dl.Properties.Appearance.Options.UseTextOptions = true;
             this.dl.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -186,13 +192,13 @@
             this.dl.Properties.Mask.EditMask = "n";
             this.dl.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.dl.Properties.MaxLength = 50;
-            this.dl.Size = new System.Drawing.Size(45, 21);
+            this.dl.Size = new System.Drawing.Size(52, 21);
             this.dl.TabIndex = 17;
             this.dl.Visible = false;
             // 
             // fh
             // 
-            this.fh.Location = new System.Drawing.Point(416, 7);
+            this.fh.Location = new System.Drawing.Point(485, 8);
             this.fh.Name = "fh";
             this.fh.Properties.Appearance.Options.UseTextOptions = true;
             this.fh.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -203,12 +209,12 @@
             this.fh.Properties.Mask.EditMask = "######0.####";
             this.fh.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.fh.Properties.MaxLength = 12;
-            this.fh.Size = new System.Drawing.Size(221, 21);
+            this.fh.Size = new System.Drawing.Size(258, 21);
             this.fh.TabIndex = 9;
             // 
             // mj
             // 
-            this.mj.Location = new System.Drawing.Point(83, 101);
+            this.mj.Location = new System.Drawing.Point(97, 118);
             this.mj.Name = "mj";
             this.mj.Properties.Appearance.Options.UseTextOptions = true;
             this.mj.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -216,59 +222,59 @@
             this.mj.Properties.Mask.EditMask = "#######0.####";
             this.mj.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.mj.Properties.MaxLength = 12;
-            this.mj.Size = new System.Drawing.Size(233, 21);
+            this.mj.Size = new System.Drawing.Size(272, 21);
             this.mj.TabIndex = 7;
             // 
             // bh
             // 
-            this.bh.Location = new System.Drawing.Point(83, 7);
+            this.bh.Location = new System.Drawing.Point(97, 8);
             this.bh.Name = "bh";
             this.bh.Properties.MaxLength = 15;
-            this.bh.Size = new System.Drawing.Size(233, 21);
+            this.bh.Size = new System.Drawing.Size(272, 21);
             this.bh.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(328, 43);
+            this.label6.Location = new System.Drawing.Point(383, 50);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.Size = new System.Drawing.Size(43, 14);
             this.label6.TabIndex = 10;
             this.label6.Text = "备注：";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 41);
+            this.label5.Location = new System.Drawing.Point(9, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.Size = new System.Drawing.Size(43, 14);
             this.label5.TabIndex = 2;
             this.label5.Text = "类型：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(328, 13);
+            this.label4.Location = new System.Drawing.Point(383, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.Size = new System.Drawing.Size(74, 14);
             this.label4.TabIndex = 8;
             this.label4.Text = "负荷(MW)：";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 13);
+            this.label3.Location = new System.Drawing.Point(10, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.Size = new System.Drawing.Size(43, 14);
             this.label3.TabIndex = 0;
             this.label3.Text = "编号：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 180);
+            this.label2.Location = new System.Drawing.Point(35, 210);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 12);
+            this.label2.Size = new System.Drawing.Size(78, 14);
             this.label2.TabIndex = 16;
             this.label2.Text = "容量(MVA)：";
             this.label2.Visible = false;
@@ -276,9 +282,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 107);
+            this.label1.Location = new System.Drawing.Point(8, 125);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 12);
+            this.label1.Size = new System.Drawing.Size(75, 14);
             this.label1.TabIndex = 6;
             this.label1.Text = "面积(KM²)：";
             // 
@@ -288,6 +294,7 @@
             this.splitContainerControl1.Horizontal = false;
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.comboBoxEdit1);
             this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton5);
             this.splitContainerControl1.Panel1.Controls.Add(this.checkBox1);
             this.splitContainerControl1.Panel1.Controls.Add(this.label3);
@@ -316,16 +323,16 @@
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(818, 455);
-            this.splitContainerControl1.SplitterPosition = 171;
+            this.splitContainerControl1.Size = new System.Drawing.Size(954, 531);
+            this.splitContainerControl1.SplitterPosition = 189;
             this.splitContainerControl1.TabIndex = 21;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
             // simpleButton5
             // 
-            this.simpleButton5.Location = new System.Drawing.Point(80, 132);
+            this.simpleButton5.Location = new System.Drawing.Point(93, 154);
             this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(100, 23);
+            this.simpleButton5.Size = new System.Drawing.Size(117, 27);
             this.simpleButton5.TabIndex = 20;
             this.simpleButton5.Text = "更新区域坐标";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
@@ -335,9 +342,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(665, 139);
+            this.checkBox1.Location = new System.Drawing.Point(776, 162);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(96, 16);
+            this.checkBox1.Size = new System.Drawing.Size(98, 18);
             this.checkBox1.TabIndex = 19;
             this.checkBox1.Text = "保存到数据库";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -345,43 +352,43 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(2, 154);
+            this.label7.Location = new System.Drawing.Point(2, 180);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 12);
+            this.label7.Size = new System.Drawing.Size(0, 14);
             this.label7.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 71);
+            this.label8.Location = new System.Drawing.Point(8, 83);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.Size = new System.Drawing.Size(55, 14);
             this.label8.TabIndex = 4;
             this.label8.Text = "容载比：";
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(665, 102);
+            this.simpleButton3.Location = new System.Drawing.Point(776, 119);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(78, 23);
+            this.simpleButton3.Size = new System.Drawing.Size(91, 27);
             this.simpleButton3.TabIndex = 14;
             this.simpleButton3.Text = "重新统计";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(665, 43);
+            this.simpleButton4.Location = new System.Drawing.Point(776, 50);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(78, 23);
+            this.simpleButton4.Size = new System.Drawing.Size(91, 27);
             this.simpleButton4.TabIndex = 13;
             this.simpleButton4.Text = "保存";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // bt4
             // 
-            this.bt4.Location = new System.Drawing.Point(665, 13);
+            this.bt4.Location = new System.Drawing.Point(776, 15);
             this.bt4.Name = "bt4";
-            this.bt4.Size = new System.Drawing.Size(107, 23);
+            this.bt4.Size = new System.Drawing.Size(125, 27);
             this.bt4.TabIndex = 12;
             this.bt4.Text = "修改负荷密度";
             this.bt4.Click += new System.EventHandler(this.bt4_Click);
@@ -389,7 +396,7 @@
             // rzb
             // 
             this.rzb.EditValue = "2";
-            this.rzb.Location = new System.Drawing.Point(83, 69);
+            this.rzb.Location = new System.Drawing.Point(97, 80);
             this.rzb.Name = "rzb";
             this.rzb.Properties.Appearance.Options.UseTextOptions = true;
             this.rzb.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -400,22 +407,22 @@
             this.rzb.Properties.Mask.EditMask = "###.#";
             this.rzb.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.rzb.Properties.MaxLength = 5;
-            this.rzb.Size = new System.Drawing.Size(233, 21);
+            this.rzb.Size = new System.Drawing.Size(272, 21);
             this.rzb.TabIndex = 5;
             this.rzb.EditValueChanged += new System.EventHandler(this.rzb_EditValueChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(328, 107);
+            this.label17.Location = new System.Drawing.Point(383, 125);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(161, 12);
+            this.label17.Size = new System.Drawing.Size(176, 14);
             this.label17.TabIndex = 10;
             this.label17.Text = "区域内平均负荷密度MW/KM2：";
             // 
             // pjfh
             // 
-            this.pjfh.Location = new System.Drawing.Point(495, 103);
+            this.pjfh.Location = new System.Drawing.Point(577, 120);
             this.pjfh.Name = "pjfh";
             this.pjfh.Properties.Appearance.Options.UseTextOptions = true;
             this.pjfh.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -426,16 +433,16 @@
             this.pjfh.Properties.Mask.EditMask = "######0.####";
             this.pjfh.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.pjfh.Properties.MaxLength = 12;
-            this.pjfh.Size = new System.Drawing.Size(138, 21);
+            this.pjfh.Size = new System.Drawing.Size(161, 21);
             this.pjfh.TabIndex = 9;
             // 
             // textEdit1
             // 
             this.textEdit1.EditValue = "组合地块";
-            this.textEdit1.Location = new System.Drawing.Point(83, 38);
+            this.textEdit1.Location = new System.Drawing.Point(97, 44);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(233, 21);
+            this.textEdit1.Size = new System.Drawing.Size(272, 21);
             this.textEdit1.TabIndex = 3;
             // 
             // xtraTabControl1
@@ -444,12 +451,13 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(810, 272);
+            this.xtraTabControl1.Size = new System.Drawing.Size(954, 336);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2,
             this.xtraTabPage1,
-            this.xtraTabPage3});
+            this.xtraTabPage3,
+            this.xtraTabPage4});
             // 
             // xtraTabPage2
             // 
@@ -480,71 +488,71 @@
             this.xtraTabPage2.Controls.Add(this.label9);
             this.xtraTabPage2.Controls.Add(this.yk1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(804, 245);
+            this.xtraTabPage2.Size = new System.Drawing.Size(947, 306);
             this.xtraTabPage2.Text = "辅助决策";
             this.xtraTabPage2.Paint += new System.Windows.Forms.PaintEventHandler(this.xtraTabPage2_Paint);
             // 
             // nl3
             // 
-            this.nl3.Location = new System.Drawing.Point(557, 12);
+            this.nl3.Location = new System.Drawing.Point(650, 14);
             this.nl3.Name = "nl3";
             this.nl3.Properties.MaxLength = 500;
-            this.nl3.Size = new System.Drawing.Size(256, 92);
+            this.nl3.Size = new System.Drawing.Size(299, 107);
             this.nl3.TabIndex = 9;
             this.nl3.Visible = false;
             // 
             // nl2
             // 
-            this.nl2.Location = new System.Drawing.Point(535, 16);
+            this.nl2.Location = new System.Drawing.Point(624, 19);
             this.nl2.Name = "nl2";
             this.nl2.Properties.MaxLength = 500;
-            this.nl2.Size = new System.Drawing.Size(255, 92);
+            this.nl2.Size = new System.Drawing.Size(297, 107);
             this.nl2.TabIndex = 9;
             // 
             // jc3
             // 
             this.jc3.EditValue = "";
-            this.jc3.Location = new System.Drawing.Point(557, 171);
+            this.jc3.Location = new System.Drawing.Point(650, 199);
             this.jc3.Name = "jc3";
             this.jc3.Properties.MaxLength = 200;
-            this.jc3.Size = new System.Drawing.Size(255, 64);
+            this.jc3.Size = new System.Drawing.Size(297, 75);
             this.jc3.TabIndex = 15;
             this.jc3.Visible = false;
             // 
             // jc2
             // 
             this.jc2.EditValue = "";
-            this.jc2.Location = new System.Drawing.Point(535, 171);
+            this.jc2.Location = new System.Drawing.Point(624, 199);
             this.jc2.Name = "jc2";
             this.jc2.Properties.MaxLength = 200;
-            this.jc2.Size = new System.Drawing.Size(254, 64);
+            this.jc2.Size = new System.Drawing.Size(296, 75);
             this.jc2.TabIndex = 15;
             // 
             // jc1
             // 
             this.jc1.EditValue = "";
-            this.jc1.Location = new System.Drawing.Point(98, 174);
+            this.jc1.Location = new System.Drawing.Point(114, 203);
             this.jc1.Name = "jc1";
             this.jc1.Properties.MaxLength = 200;
-            this.jc1.Size = new System.Drawing.Size(270, 63);
+            this.jc1.Size = new System.Drawing.Size(315, 73);
             this.jc1.TabIndex = 7;
             // 
             // nl1
             // 
             this.nl1.EditValue = "";
-            this.nl1.Location = new System.Drawing.Point(98, 16);
+            this.nl1.Location = new System.Drawing.Point(114, 19);
             this.nl1.Name = "nl1";
             this.nl1.Properties.MaxLength = 500;
-            this.nl1.Size = new System.Drawing.Size(270, 94);
+            this.nl1.Size = new System.Drawing.Size(315, 110);
             this.nl1.TabIndex = 1;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label21.Location = new System.Drawing.Point(415, 175);
+            this.label21.Location = new System.Drawing.Point(484, 204);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(95, 12);
+            this.label21.Size = new System.Drawing.Size(102, 14);
             this.label21.TabIndex = 14;
             this.label21.Text = "110kV辅助决策：";
             // 
@@ -552,9 +560,9 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(444, 173);
+            this.label14.Location = new System.Drawing.Point(518, 202);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 12);
+            this.label14.Size = new System.Drawing.Size(95, 14);
             this.label14.TabIndex = 14;
             this.label14.Text = "66kV辅助决策：";
             this.label14.Visible = false;
@@ -563,9 +571,9 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(2, 174);
+            this.label11.Location = new System.Drawing.Point(2, 203);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 12);
+            this.label11.Size = new System.Drawing.Size(102, 14);
             this.label11.TabIndex = 6;
             this.label11.Text = "220kV辅助决策：";
             // 
@@ -573,9 +581,9 @@
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label20.Location = new System.Drawing.Point(415, 149);
+            this.label20.Location = new System.Drawing.Point(484, 174);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(95, 12);
+            this.label20.Size = new System.Drawing.Size(102, 14);
             this.label20.TabIndex = 12;
             this.label20.Text = "110kV容量平衡：";
             // 
@@ -583,9 +591,9 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(446, 146);
+            this.label16.Location = new System.Drawing.Point(520, 170);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(89, 12);
+            this.label16.Size = new System.Drawing.Size(95, 14);
             this.label16.TabIndex = 12;
             this.label16.Text = "66kV容量平衡：";
             this.label16.Visible = false;
@@ -594,9 +602,9 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(415, 120);
+            this.label19.Location = new System.Drawing.Point(484, 140);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(95, 12);
+            this.label19.Size = new System.Drawing.Size(102, 14);
             this.label19.TabIndex = 10;
             this.label19.Text = "110kV电力盈亏：";
             // 
@@ -604,9 +612,9 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label18.Location = new System.Drawing.Point(412, 20);
+            this.label18.Location = new System.Drawing.Point(481, 23);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(95, 12);
+            this.label18.Size = new System.Drawing.Size(102, 14);
             this.label18.TabIndex = 8;
             this.label18.Text = "110kV供电能力：";
             // 
@@ -614,9 +622,9 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(443, 118);
+            this.label13.Location = new System.Drawing.Point(517, 138);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(89, 12);
+            this.label13.Size = new System.Drawing.Size(95, 14);
             this.label13.TabIndex = 10;
             this.label13.Text = "66kV电力盈亏：";
             this.label13.Visible = false;
@@ -625,19 +633,19 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(442, 21);
+            this.label12.Location = new System.Drawing.Point(516, 24);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 12);
+            this.label12.Size = new System.Drawing.Size(95, 14);
             this.label12.TabIndex = 8;
             this.label12.Text = "66kV供电能力：";
             this.label12.Visible = false;
             // 
             // ph3
             // 
-            this.ph3.Location = new System.Drawing.Point(556, 141);
+            this.ph3.Location = new System.Drawing.Point(649, 164);
             this.ph3.Name = "ph3";
             this.ph3.Properties.MaxLength = 15;
-            this.ph3.Size = new System.Drawing.Size(256, 21);
+            this.ph3.Size = new System.Drawing.Size(299, 21);
             this.ph3.TabIndex = 13;
             this.ph3.Visible = false;
             // 
@@ -645,26 +653,26 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(2, 149);
+            this.label15.Location = new System.Drawing.Point(2, 174);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(95, 12);
+            this.label15.Size = new System.Drawing.Size(102, 14);
             this.label15.TabIndex = 4;
             this.label15.Text = "220kV容量平衡：";
             // 
             // ph2
             // 
-            this.ph2.Location = new System.Drawing.Point(535, 143);
+            this.ph2.Location = new System.Drawing.Point(624, 167);
             this.ph2.Name = "ph2";
             this.ph2.Properties.MaxLength = 15;
-            this.ph2.Size = new System.Drawing.Size(255, 21);
+            this.ph2.Size = new System.Drawing.Size(297, 21);
             this.ph2.TabIndex = 13;
             // 
             // yk3
             // 
-            this.yk3.Location = new System.Drawing.Point(557, 114);
+            this.yk3.Location = new System.Drawing.Point(650, 133);
             this.yk3.Name = "yk3";
             this.yk3.Properties.MaxLength = 15;
-            this.yk3.Size = new System.Drawing.Size(256, 21);
+            this.yk3.Size = new System.Drawing.Size(299, 21);
             this.yk3.TabIndex = 11;
             this.yk3.Visible = false;
             // 
@@ -672,51 +680,51 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(2, 120);
+            this.label10.Location = new System.Drawing.Point(2, 140);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 12);
+            this.label10.Size = new System.Drawing.Size(102, 14);
             this.label10.TabIndex = 2;
             this.label10.Text = "220kV电力盈亏：";
             // 
             // yk2
             // 
-            this.yk2.Location = new System.Drawing.Point(535, 114);
+            this.yk2.Location = new System.Drawing.Point(624, 133);
             this.yk2.Name = "yk2";
             this.yk2.Properties.MaxLength = 15;
-            this.yk2.Size = new System.Drawing.Size(255, 21);
+            this.yk2.Size = new System.Drawing.Size(297, 21);
             this.yk2.TabIndex = 11;
             // 
             // ph1
             // 
-            this.ph1.Location = new System.Drawing.Point(97, 145);
+            this.ph1.Location = new System.Drawing.Point(113, 169);
             this.ph1.Name = "ph1";
             this.ph1.Properties.MaxLength = 15;
-            this.ph1.Size = new System.Drawing.Size(271, 21);
+            this.ph1.Size = new System.Drawing.Size(316, 21);
             this.ph1.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(2, 16);
+            this.label9.Location = new System.Drawing.Point(2, 19);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(95, 12);
+            this.label9.Size = new System.Drawing.Size(102, 14);
             this.label9.TabIndex = 0;
             this.label9.Text = "220kV供电能力：";
             // 
             // yk1
             // 
-            this.yk1.Location = new System.Drawing.Point(97, 116);
+            this.yk1.Location = new System.Drawing.Point(113, 135);
             this.yk1.Name = "yk1";
             this.yk1.Properties.MaxLength = 15;
-            this.yk1.Size = new System.Drawing.Size(271, 21);
+            this.yk1.Size = new System.Drawing.Size(316, 21);
             this.yk1.TabIndex = 3;
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.gridControl);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(804, 245);
+            this.xtraTabPage1.Size = new System.Drawing.Size(947, 306);
             this.xtraTabPage1.Text = "包含地块";
             // 
             // gridControl
@@ -727,11 +735,10 @@
             this.gridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.gridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.gridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControl.EmbeddedNavigator.Name = "";
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(804, 245);
+            this.gridControl.Size = new System.Drawing.Size(947, 306);
             this.gridControl.TabIndex = 1;
             this.gridControl.UseEmbeddedNavigator = true;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -867,7 +874,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.gridControl1);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(804, 245);
+            this.xtraTabPage3.Size = new System.Drawing.Size(947, 306);
             this.xtraTabPage3.Text = "包含配网设备";
             // 
             // gridControl1
@@ -878,11 +885,10 @@
             this.gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControl1.EmbeddedNavigator.Name = "";
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(804, 245);
+            this.gridControl1.Size = new System.Drawing.Size(947, 306);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -974,11 +980,37 @@
             this.gridColumn5.VisibleIndex = 3;
             this.gridColumn5.Width = 144;
             // 
+            // xtraTabPage4
+            // 
+            this.xtraTabPage4.Controls.Add(this.ctrlglebeYearValue1);
+            this.xtraTabPage4.Name = "xtraTabPage4";
+            this.xtraTabPage4.Size = new System.Drawing.Size(947, 306);
+            this.xtraTabPage4.Text = "空间负荷预测";
+            // 
+            // ctrlglebeYearValue1
+            // 
+            this.ctrlglebeYearValue1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlglebeYearValue1.Location = new System.Drawing.Point(0, 0);
+            this.ctrlglebeYearValue1.Name = "ctrlglebeYearValue1";
+            //this.ctrlglebeYearValue1.ParentID = null;
+            //this.ctrlglebeYearValue1.ParentObj = ((Itop.Domain.Graphics.glebeProperty)(resources.GetObject("ctrlglebeYearValue1.ParentObj")));
+            this.ctrlglebeYearValue1.Size = new System.Drawing.Size(947, 306);
+            this.ctrlglebeYearValue1.TabIndex = 0;
+            // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.Location = new System.Drawing.Point(229, 156);
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(140, 21);
+            this.comboBoxEdit1.TabIndex = 21;
+            // 
             // frmMainProperty
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 455);
+            this.ClientSize = new System.Drawing.Size(954, 531);
             this.Controls.Add(this.splitContainerControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -1020,6 +1052,8 @@
             this.xtraTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.xtraTabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1097,5 +1131,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private CtrlglebeYearValue ctrlglebeYearValue1;
     }
 }
