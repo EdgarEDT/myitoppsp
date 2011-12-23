@@ -44,7 +44,7 @@ namespace Itop.Domain.Graphics
         private string _obligatefield13 = "";
         private string _obligatefield14 = "";
         private string _obligatefield15 = "";
-
+        private string _obligatefield16 = "";
        
        
       
@@ -211,6 +211,10 @@ namespace Itop.Domain.Graphics
         {
             get { return _obligatefield15; }
             set { _obligatefield15 = value; }
+        }
+        public string ObligateField16 {
+            get { return _obligatefield16; }
+            set { _obligatefield16 = value; }
         }
 		#endregion  Ù–‘
 	}
