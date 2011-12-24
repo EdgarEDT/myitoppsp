@@ -45,6 +45,7 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.rzb = new DevExpress.XtraEditors.TextEdit();
@@ -98,7 +99,7 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.ctrlglebeYearValue1 = new Itop.Client.Forecast.FormAlgorithm_New.CtrlglebeYearValue();
-            this.label22 = new System.Windows.Forms.Label();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.lx.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.remark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dl.Properties)).BeginInit();
@@ -165,7 +166,7 @@
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(91, 27);
             this.simpleButton2.TabIndex = 13;
-            this.simpleButton2.Text = "关闭";
+            this.simpleButton2.Text = "确定";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // dl
@@ -290,6 +291,7 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.label7);
             this.splitContainerControl1.Panel1.Controls.Add(this.label8);
             this.splitContainerControl1.Panel1.Controls.Add(this.label2);
+            this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton1);
             this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton2);
             this.splitContainerControl1.Panel1.Controls.Add(this.label4);
             this.splitContainerControl1.Panel1.Controls.Add(this.rzb);
@@ -330,6 +332,15 @@
             this.checkBox1.TabIndex = 19;
             this.checkBox1.Text = "保存到数据库";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(8, 159);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(67, 14);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "区域名称：";
             // 
             // label7
             // 
@@ -952,14 +963,15 @@
             this.ctrlglebeYearValue1.Size = new System.Drawing.Size(947, 306);
             this.ctrlglebeYearValue1.TabIndex = 0;
             // 
-            // label22
+            // simpleButton1
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(8, 159);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(67, 14);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "区域名称：";
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButton1.Location = new System.Drawing.Point(776, 70);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(91, 27);
+            this.simpleButton1.TabIndex = 13;
+            this.simpleButton1.Text = "取消";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // frmMainProperty
             // 
@@ -1085,5 +1097,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private CtrlglebeYearValue ctrlglebeYearValue1;
         private System.Windows.Forms.Label label22;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
