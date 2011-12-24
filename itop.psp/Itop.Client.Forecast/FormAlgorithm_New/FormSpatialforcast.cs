@@ -369,5 +369,14 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             this.chart_user1.chart1.SaveAsImage(sf.FileName, ci);
         }
 
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            FrmAddspatialarea FA = new FrmAddspatialarea();
+            FA.init();
+            if (FA.ShowDialog()==DialogResult.OK)
+            {
+
+            }
+        }
+
     }
 }
