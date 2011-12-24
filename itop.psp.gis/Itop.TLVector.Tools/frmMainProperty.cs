@@ -510,6 +510,13 @@ namespace ItopVector.Tools
             }
             if (IsCreate)
             {
+                //删除叫相同名字的地区
+                glebeProperty glep = new glebeProperty();
+                glep.ParentEleID = "0";
+                glep.SvgUID = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
+                glep.ObligateField16 = comboBoxEdit1.Text;
+                Services.BaseService.Update("DeleteglebePropertyByObligateField16", glep);
+
                 gPro.LayerID = layerID;
                 Services.BaseService.Create<glebeProperty>(gPro);
             }
