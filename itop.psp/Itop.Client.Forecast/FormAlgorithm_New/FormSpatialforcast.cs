@@ -19,6 +19,7 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraEditors.Repository;
 using Dundas.Charting.WinControl;
 using Itop.Client.Using;
+using Itop.Domain.Graphics;
 
 namespace Itop.Client.Forecast.FormAlgorithm_New {
     public partial class FormSpatialforcast : FormBase {
@@ -374,7 +375,60 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             FA.init();
             if (FA.ShowDialog()==DialogResult.OK)
             {
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    if (dr["Title"]==FA.Areatitle)
+                    {
+                        MessageBox.Show("已经存在此地区！请重新选。");
+                        return;
+                    }
+                }
+                glebeProperty gp = new glebeProperty();
+                gp.ParentEleID = "0";
+                gp.SonUid = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
+                gp.ObligateField16 = FA.Areatitle;
+                IList<glebeProperty> svglist = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByObligateField16", gp);
+                if (svglist.Count>0)
+                {
+                    frmMainProperty f = new frmMainProperty();
+                    f.IsReadonly = true;
+                    f.InitData(svglist[0], "", "","");
+                   
+                    if (f.ShowDialog()==DialogResult.OK)
+                    {
+                        Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
 
+                        psp_Type.ID = Guid.NewGuid().ToString();
+
+                        psp_Type.Forecast = type;
+                        psp_Type.ForecastID = forecastReport.ID;
+
+                        psp_Type.Title = FA.Areatitle;
+                        glebeYearValue gy = new glebeYearValue();
+               
+                        IList<glebeYearValue> yearlist = Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", "ParentID='" + svglist[0].UID + "'");
+                        for (int i = 0; i < yearlist.Count;i++ ) {
+                            string y = "y" + yearlist[i].Year.ToString();
+                            psp_Type.GetType().GetProperty(y).SetValue(psp_Type,y,null);
+                        }
+                        object obj = Services.BaseService.GetObject("SelectPs_Forecast_MathMaxID", null);
+                        if (obj != null)
+                            psp_Type.Sort = ((int)obj) + 1;
+                        else
+                            psp_Type.Sort = 1;
+
+                        try {
+                            Common.Services.BaseService.Create<Ps_Forecast_Math>(psp_Type);
+                            //psp_Type.ID = (int)Common.Services.BaseService.Create("InsertPSP_P_Types", psp_Type);
+                            dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(psp_Type, dataTable.NewRow()));
+
+
+                        } catch (Exception ex) {
+                            MsgBox.Show("增加区域出错：" + ex.Message);
+                        }
+                        RefreshChart();
+                    }
+                }
             }
         }
 

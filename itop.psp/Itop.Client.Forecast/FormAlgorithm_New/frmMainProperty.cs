@@ -628,7 +628,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.OK;
         }
 
         private void buttonEdit1_Properties_Click(object sender, EventArgs e)
