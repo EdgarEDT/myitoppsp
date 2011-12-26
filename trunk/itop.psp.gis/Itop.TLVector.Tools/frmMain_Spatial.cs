@@ -10301,7 +10301,10 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             }
             else
             {
-                Open2(_SvgUID);
+                //Open2(_SvgUID);
+
+                //空间负荷的入口
+                Open3(_SvgUID);
             }
             this.tlVectorControl1.Size = new Size((Screen.PrimaryScreen.WorkingArea.Height - 258), (Screen.PrimaryScreen.WorkingArea.Width - 176));
         }
@@ -10486,6 +10489,111 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                    MessageBox.Show(e.Message);
                }
            }*/
+        public void Open3(string _SvgUID)
+        {
+            StringBuilder txt = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?><svg id=\"svg\" width=\"1500\" height=\"1000\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:itop=\"http://www.Itop.com/itop\" transform=\"matrix(1 0 0 1 0 1)\"><defs>");
+            string svgdefs = "";
+            string layertxt = "";
+            StringBuilder content = new StringBuilder();
+            string where = "";
+            if (string.IsNullOrEmpty(_SvgUID)) return;
+            try {
+                if (progtype == "城市规划层") {
+                    where = " (layerType = '城市规划层') OR (layerType = '地理信息层') ";
+                } else {
+                    where = " (layerType = '地理信息层') ";
+                }
+                SVGFILE svgFile = new SVGFILE();
+                svgFile.SUID = _SvgUID;
+                svgFile = (SVGFILE)Services.BaseService.GetObject("SelectSVGFILEByKey", svgFile);
+                //SvgDocument document = CashSvgDocument;
+                //if (document == null) {
+                if (!string.IsNullOrEmpty(GetSpatiallayerid()))
+                {
+                    where += GetSpatiallayerid();
+                }
+
+                SVG_LAYER lar = new SVG_LAYER();
+                lar.svgID = _SvgUID;
+                lar.YearID = where;
+                IList<SVG_LAYER> larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByWhere", lar);
+                foreach (SVG_LAYER _lar in larlist) {
+                    layertxt = layertxt + "<layer id=\"" + _lar.SUID + "\" label=\"" + _lar.NAME + "\" layerType=\"" + _lar.layerType + "\" visibility=\"" + _lar.visibility + "\" ParentID=\"" + _lar.YearID + "\" IsSelect=\"" + _lar.IsSelect + "\" />";
+                    content.Append(_lar.XML);
+                }
+                txt.Append(layertxt);
+
+
+                SVG_SYMBOL sym = new SVG_SYMBOL();
+                sym.svgID = _SvgUID;
+                IList<SVG_SYMBOL> symlist = Services.BaseService.GetList<SVG_SYMBOL>("SelectSVG_SYMBOLBySvgID", sym);
+                foreach (SVG_SYMBOL _sym in symlist) {
+                    svgdefs = svgdefs + _sym.XML;
+                }
+
+                txt.Append(svgdefs + "</defs>");
+                txt.Append(content.ToString() + "</svg>");
+
+                SvgDocument document = new SvgDocument();
+                document.LoadXml(txt.ToString());
+                document.FileName = SvgName;
+                document.SvgdataUid = _SvgUID;
+                SVGUID = _SvgUID;
+
+                this.Text = document.FileName;
+                if (document.RootElement == null) {
+                    tlVectorControl1.NewFile();
+                    Layer.CreateNew("背景层", tlVectorControl1.SVGDocument);
+                    Layer.CreateNew("城市规划层", tlVectorControl1.SVGDocument);
+                    Layer.CreateNew("供电区域层", tlVectorControl1.SVGDocument);
+                } else {
+                    tlVectorControl1.SVGDocument = document;
+                }
+                tlVectorControl1.SVGDocument.SvgdataUid = _SvgUID;
+                tlVectorControl1.SVGDocument.FileName = this.Text;
+                tlVectorControl1.DocumentbgColor = Color.White;
+                tlVectorControl1.BackColor = Color.White;
+                //tlVectorControl1.ForeColor = Color.White;
+                CreateComboBox();
+                xltProcessor = new XLTProcessor(tlVectorControl1);
+                xltProcessor.MapView = mapview;
+                xltProcessor.OnNewLine += new NewLineDelegate(xltProcessor_OnNewLine);
+            } catch (Exception e) {
+                MessageBox.Show(e.Message);
+            }
+        }
+        private string GetSpatiallayerid()
+        {
+            string layerid = "SUID in (";
+            glebeProperty gp = new glebeProperty();
+            gp.ParentEleID = "0";
+            gp.SvgUID = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
+            IList<glebeProperty> svglist = Services.BaseService.GetList<glebeProperty>("SelectglebePropertParentIDTopAll", gp);
+            StringBuilder st = new StringBuilder();
+            int i = 0;
+            int max = 0;
+            foreach (glebeProperty gpr in svglist)
+            {
+                
+                
+                if (!string.IsNullOrEmpty(gpr.LayerID))
+                {
+                   
+                    st.Append("'" + gpr.LayerID + "',");
+                    max=i;
+                }
+                if (i == svglist.Count - 1) {
+                    st.Append("'" + svglist[max].LayerID + "')");
+                } 
+              i++;
+            }
+            if (max!=0)
+            {
+                return layerid += st.ToString();
+            }
+            return  "";
+
+        }
         public void Open2(string _SvgUID)
         {
 
@@ -10606,6 +10714,184 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             this.popupContainerEdit1.Properties.PopupControl = this.popupContainerControl1;
 
         }
+        public static Layer getlayer1(string CurrLayerID, string LayerName, ArrayList LayerList) {
+            Layer layer = null;
+            string layerType = "";
+            for (int i = 0; i < LayerList.Count; i++) {
+                if (CurrLayerID == ((Layer)LayerList[i]).ID) {
+                    layer = (Layer)LayerList[i];
+                    layerType = layer.GetAttribute("layerType");
+                    if (layerType == LayerName) {
+                        return layer;
+                    }
+                }
+            }
+            return layer;
+        }
+        public void OpenGHQYpropetty(string areatitle)
+        {
+             glebeProperty gp = new glebeProperty();
+                gp.ParentEleID = "0";
+                gp.SvgUID = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
+                gp.ObligateField16 = areatitle;
+                IList<glebeProperty> svglist = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByObligateField16", gp);
+                if (svglist.Count>0)
+                {
+                    XmlElement temp = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@id='" + svglist[0].EleID + "']") as XmlElement;
+                    Layer lar = getlayer1(temp.GetAttribute("layer"),"电网规划层", tlVectorControl1.SVGDocument.getLayerList());
+                    if (lar!=null)
+                    {
+                         SvgDocument.currentLayer = lar.ID;
+                    lar.Visible = true;
+                    tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)temp);
+#region //显示属性数据
+                     XmlNodeList n1 = tlVectorControl1.SVGDocument.GetElementsByTagName("use");
+                            PointF[] tfArray1 = TLMath.getPolygonPoints(temp);
+                            string str220 = "";
+                            string str110 = "";
+                            string str66 = "";
+
+                            string str_id = "";
+                            GraphicsPath selectAreaPath = new GraphicsPath();
+                            selectAreaPath.AddLines(tfArray1);
+                            selectAreaPath.CloseFigure();
+                            //Matrix x=new Matrix(
+                            //Region region1 = new Region(selectAreaPath);
+                            for (int i = 0; i < n1.Count; i++)
+                            {
+                                float OffX = 0f;
+                                float OffY = 0f;
+                                bool ck = false;
+                                Use use = (Use)n1[i];
+                                if (use.GetAttribute("xlink:href").Contains("byq") || use.GetAttribute("xlink:href").Contains("pds"))
+                                {
+                                    if (selectAreaPath.IsVisible(use.CenterPoint))
+                                    {
+                                        if (use.GetAttribute("Deviceid") != "")
+                                        {
+                                            str_id = str_id + "'" + use.GetAttribute("Deviceid") + "',";
+                                        }
+                                    }
+                                }
+                                if (use.GetAttribute("xlink:href").Contains("Substation"))
+                                {
+                                    //string strMatrix = use.GetAttribute("transform");
+                                    //if (strMatrix != "")
+                                    //{
+                                    //    strMatrix = strMatrix.Replace("matrix(", "");
+                                    //    strMatrix = strMatrix.Replace(")", "");
+                                    //    string[] mat = strMatrix.Split(',');
+                                    //    if (mat.Length > 5)
+                                    //    {
+                                    //        OffX = Convert.ToSingle(mat[4]);
+                                    //        OffY = Convert.ToSingle(mat[5]);
+                                    //    }
+                                    //}
+                                    if (frmlar.getSelectedLayer().Contains(use.GetAttribute("layer")))
+                                    {
+                                        ck = true;
+                                    }
+                                    PointF TempPoint = TLMath.getUseOffset(use.GetAttribute("xlink:href"));
+                                    //if (selectAreaPath.IsVisible(use.X + TempPoint.X + OffX, use.Y + TempPoint.Y + OffY) && ck)
+                                    if (selectAreaPath.IsVisible(use.CenterPoint) && ck)
+                                    {
+                                        if (use.GetAttribute("xlink:href").Contains("220"))
+                                        {
+                                            str220 = str220 + "'" + use.GetAttribute("Deviceid") + "',";
+                                        }
+                                        if (use.GetAttribute("xlink:href").Contains("110"))
+                                        {
+                                            str110 = str110 + "'" + use.GetAttribute("Deviceid") + "',";
+                                        }
+                                        if (use.GetAttribute("xlink:href").Contains("66"))
+                                        {
+                                            str66 = str66 + "'" + use.GetAttribute("Deviceid") + "',";
+                                        }
+                                    }
+                                }
+                            }
+                            if (str220.Length > 1)
+                            {
+                                str220 = str220.Substring(0, str220.Length - 1);
+                            }
+                            if (str110.Length > 1)
+                            {
+                                str110 = str110.Substring(0, str110.Length - 1);
+                            }
+                            if (str66.Length > 1)
+                            {
+                                str66 = str66.Substring(0, str66.Length - 1);
+                            }
+                            if (str_id.Length > 1)
+                            {
+                                str_id = str_id.Substring(0, str_id.Length - 1);
+                            }
+                            glebeProperty _gle = new glebeProperty();
+                            _gle.EleID = tlVectorControl1.SVGDocument.CurrentElement.ID;
+                            _gle.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+
+                            IList<glebeProperty> UseProList = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByEleID", _gle);
+                            if (UseProList.Count > 0)
+                            {
+                                _gle = UseProList[0];
+                                _gle.LayerID = SvgDocument.currentLayer;
+                                frmMainProperty f = new frmMainProperty();
+                                f.strID = str_id;
+                                f.InitData(_gle, str220, str110, str66);
+                                PointF[] pn = (PointF[])((Polygon)temp).Points.Clone();
+                                ((Polygon)temp).Transform.Matrix.TransformPoints(pn);
+                                string s1 = "";
+                                for (int p = 0; p < pn.Length; p++)
+                                {
+                                    s1 = s1 + pn[p].X.ToString() + " " + pn[p].Y.ToString() + ",";
+                                }
+                                f.Str = s1;
+                                f.ShowDialog();
+                                if (f.checkBox1.Checked == false)
+                                {
+                                    tlVectorControl1.SVGDocument.RootElement.RemoveChild(tlVectorControl1.SVGDocument.CurrentElement);
+                                }
+                                if (f.DialogResult==DialogResult.OK)
+                                {
+                                    this.Close();
+                                    this.DialogResult = DialogResult.OK;
+                                }
+                                //tlVectorControl1.Refresh();
+                            }
+                            else
+                            {
+                                _gle = new glebeProperty();
+                                _gle.LayerID = SvgDocument.currentLayer;
+                                frmMainProperty f = new frmMainProperty();
+                                f.strID = str_id;
+                                f.InitData(_gle, str220, str110, str66);
+                                PointF[] pn = (PointF[])((Polygon)temp).Points.Clone();
+                                ((Polygon)temp).Transform.Matrix.TransformPoints(pn);
+                                string s1 = "";
+                                for (int p = 0; p < pn.Length; p++)
+                                {
+                                    s1 = s1 + pn[p].X.ToString() + " " + pn[p].Y.ToString() + ",";
+                                }
+                                f.Str = s1;
+                                f.ShowDialog();
+                                if (f.DialogResult == DialogResult.OK) {
+                                    this.Close();
+                                    this.DialogResult = DialogResult.OK;
+                                }
+                            }
+                            //}
+                        }
+                   
+#endregion       
+                    else
+                    {
+                        MessageBox.Show("没有找到对应的图层，请检查数据后再进行此操作！");
+                    }
+
+                    }
+                   
+                }
+
         public void Init(string stype)
         {
             ArrayList layerlist = tlVectorControl1.SVGDocument.getLayerList();
