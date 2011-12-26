@@ -11268,6 +11268,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             }
             return false;
         }
+        
         private void ImportDxf()
         {
             string strGUID = tlVectorControl1.SVGDocument.SvgdataUid;
