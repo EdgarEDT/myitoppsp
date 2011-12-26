@@ -869,6 +869,12 @@
     <Compile Include="frmLayerSel2.Designer.cs">
       <DependentUpon>frmLayerSel2.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMain_Spatial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain_Spatial.Designer.cs">
+      <DependentUpon>frmMain_Spatial.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CtrlFileManager.resx">
@@ -1416,6 +1422,13 @@
     <EmbeddedResource Include="frmLayerSel2.resx">
       <DependentUpon>frmLayerSel2.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain_Spatial.resx">
+      <DependentUpon>frmMain_Spatial.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain_Spatial.dotNetBarManager1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="更新说明.txt" />
   </ItemGroup>
