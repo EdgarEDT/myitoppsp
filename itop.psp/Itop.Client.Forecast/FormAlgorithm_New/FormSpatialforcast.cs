@@ -20,6 +20,7 @@ using DevExpress.XtraEditors.Repository;
 using Dundas.Charting.WinControl;
 using Itop.Client.Using;
 using Itop.Domain.Graphics;
+using ItopVector.Tools;
 
 namespace Itop.Client.Forecast.FormAlgorithm_New {
     public partial class FormSpatialforcast : FormBase {
@@ -385,7 +386,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
                 }
                 glebeProperty gp = new glebeProperty();
                 gp.ParentEleID = "0";
-                gp.SonUid = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
+                gp.SvgUID = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
                 gp.ObligateField16 = FA.Areatitle;
                 IList<glebeProperty> svglist = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByObligateField16", gp);
                 if (svglist.Count>0)
@@ -429,6 +430,33 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
                         RefreshChart();
                     }
                 }
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            frmMain_Spatial fmain = new frmMain_Spatial();
+            frmMain_Spatial.MapType = "接线图";
+            frmMain_wj.progtype = "城市规划层";
+            string pid = "";
+            fmain.ShowDialog();
+            string progtype = "城市规划层";
+            //if (progtype == "地理信息层") {
+            //    fmain.ViewMenu();
+            //}
+            if (pid == "") {
+                fmain.Open("c5ec3bc7-9706-4cbd-9b8b-632d3606f933", "");
+            } else {
+                fmain.Open("c5ec3bc7-9706-4cbd-9b8b-632d3606f933", pid);
+            }
+           // LoadImage = true;
+            fmain.InitShape();
+            fmain.Init(progtype);
+            fmain.InitScaleRatio();
+            fmain.LayerManagerShow();
+            if (fmain.DialogResult==DialogResult.OK)
+            {
+                //重新对选中的数据进行更新
+
             }
         }
 
