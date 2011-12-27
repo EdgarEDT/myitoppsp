@@ -26,14 +26,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpatialforcast));
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.chart_user1 = new Itop.Client.Using.chart_user();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -71,42 +65,7 @@
             this.treeList1.OptionsView.AutoWidth = false;
             this.treeList1.Size = new System.Drawing.Size(1096, 147);
             this.treeList1.TabIndex = 2;
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton6.Location = new System.Drawing.Point(17, 115);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(122, 37);
-            this.simpleButton6.TabIndex = 5;
-            this.simpleButton6.Text = "保   存";
-            // 
-            // simpleButton4
-            // 
-            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton4.Location = new System.Drawing.Point(17, 60);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(122, 37);
-            this.simpleButton4.TabIndex = 5;
-            this.simpleButton4.Text = "计算单位设置";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Location = new System.Drawing.Point(17, 5);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(122, 37);
-            this.simpleButton2.TabIndex = 5;
-            this.simpleButton2.Text = "计算预测值";
-            // 
-            // simpleButton5
-            // 
-            this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton5.Location = new System.Drawing.Point(17, 279);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(122, 37);
-            this.simpleButton5.TabIndex = 5;
-            this.simpleButton5.Text = "全部折线图";
+            this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
             // 
             // splitContainerControl1
             // 
@@ -116,15 +75,9 @@
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.chart_user1);
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton6);
-            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton4);
-            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton2);
-            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton5);
-            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton3);
-            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton1);
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1096, 320);
-            this.splitContainerControl1.SplitterPosition = 152;
+            this.splitContainerControl1.SplitterPosition = 0;
             this.splitContainerControl1.TabIndex = 8;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -133,26 +86,8 @@
             this.chart_user1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart_user1.Location = new System.Drawing.Point(0, 0);
             this.chart_user1.Name = "chart_user1";
-            this.chart_user1.Size = new System.Drawing.Size(938, 320);
+            this.chart_user1.Size = new System.Drawing.Size(1090, 320);
             this.chart_user1.TabIndex = 0;
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.Location = new System.Drawing.Point(17, 224);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(122, 37);
-            this.simpleButton3.TabIndex = 5;
-            this.simpleButton3.Text = "预测数据折线图";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(17, 170);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(122, 37);
-            this.simpleButton1.TabIndex = 5;
-            this.simpleButton1.Text = "历史数据折线图";
             // 
             // imageList1
             // 
@@ -301,6 +236,7 @@
             this.barButtonItem5.ImageIndex = 10;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // barSubItem1
             // 
@@ -421,14 +357,8 @@
         #endregion
 
         private DevExpress.XtraTreeList.TreeList treeList1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private Itop.Client.Using.chart_user chart_user1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
         private DevExpress.XtraBars.Bar bar1;

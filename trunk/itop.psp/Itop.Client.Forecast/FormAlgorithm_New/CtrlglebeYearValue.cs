@@ -53,11 +53,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             }
             AddFixColumn();
             IList<glebeYearValue> pl = Itop.Client.Common.Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", con);
-            if (pl.Count>0)
-            {
+            //if (pl.Count>0)
+            //{
                 datatable = Itop.Common.DataConverter.ToDataTable((IList)pl, typeof(glebeYearValue));
                 gridControl1.DataSource = datatable;
-            }
+          //  }
            
         }
         public void Refresh()
