@@ -1951,7 +1951,14 @@ namespace Itop.Client.Forecast
         //添加空间负荷预测功能
         private void barButtonItem36_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MessageBox.Show("请添写空间负荷预测功能!");
+            //MessageBox.Show("请添写空间负荷预测功能!");
+
+            FormSpatialforcast frm = new FormSpatialforcast(forecastReport);
+            frm.CanEdit = EditRight;
+            //frm.project = Itop.Client.MIS.ProgUID;
+            frm.smdgroup = smdgroup;
+            frm.Text = this.Text + "- " + forecastReport.Title;
+            DialogResult dr = frm.ShowDialog();
         }
        
        

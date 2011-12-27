@@ -108,7 +108,8 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 hs.Add("SvgUID", gPro.SvgUID);
                 sondt = Itop.Common.DataConverter.ToDataTable(Services.BaseService.GetList("SelectglebePropertParentID", hs), typeof(glebeProperty));
                 gridControl.DataSource = sondt;
-
+                //添加负荷预测数据
+                ctrlglebeYearValue1.ParentObj = gPro;
                 string temp = "";
                 foreach (DataRow row in sondt.Rows)
                 {
@@ -168,8 +169,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 IList<PSPDEV> l22=  Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
                 gridControl1.DataSource = l22;
 
-                //添加负荷预测数据
-                ctrlglebeYearValue1.ParentObj = gPro;
+              
             }
             catch(Exception e1)
             {
@@ -211,7 +211,9 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 if (gPro.ObligateField10 == "") { gPro.ObligateField10 = "0"; }
 
                 nullvalue = Convert.ToDecimal(gPro.ObligateField10) * Convert.ToDecimal(g.TypeStyle);
-
+                //空间负荷进行自动的刷新
+                ctrlglebeYearValue1.ParentObj = gPro;
+                ctrlglebeYearValue1.Refresh();
                 //bh.DataBindings.Add("Text", gPro, "UseID");
                 //lx.DataBindings.Add("EditValue", gPro, "TypeUID");
 
@@ -289,9 +291,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 //{
                 //    Reload();
                 //}
-                //空间负荷进行自动的刷新
-                ctrlglebeYearValue1.ParentObj = gPro;
-                ctrlglebeYearValue1.Refresh();
+               
             }
             catch (Exception e1)
             {

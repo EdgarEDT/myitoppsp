@@ -158,5 +158,22 @@
       and $YearID$ 
       order by OrderID
     </select>
+    <select id='SelectSVG_LAYERByWhere1' resultMap='SVG_LAYERResult' parameterClass='string'>
+      SELECT
+      "SUID",
+      "svgID",
+      "NAME",
+      "XML",
+      "MDATE",
+      "OrderID",
+      "YearID",
+      "layerType",
+      "visibility",
+      "IsSelect",
+      "IsChange"
+      FROM SVG_LAYER
+      WHERE
+      $value$
+    </select>
   </statements>
 </sqlMap>

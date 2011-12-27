@@ -50,7 +50,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-
+            this.Close();
         }
 
         private void FormSpatialforcast_Load(object sender, EventArgs e) {
@@ -105,16 +105,17 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             
 
             for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++) {
+                AddColumn(i);
              
-                foreach (Ps_Forecast_Math pm in listTypes)
-                {
-                   if (Convert.ToDouble(pm.GetType().GetProperty("y" + i.ToString()).GetValue(pm, null))!=0)
-                   {
-                       VisitColumnyear.Add("y" + i.ToString());
-                      AddColumn(i);
-                   }
+                //foreach (Ps_Forecast_Math pm in listTypes)
+                //{
+                //   if (Convert.ToDouble(pm.GetType().GetProperty("y" + i.ToString()).GetValue(pm, null))!=0)
+                //   {
+                //       VisitColumnyear.Add("y" + i.ToString());
+                //      AddColumn(i);
+                //   }
                     
-                }
+                //}
                 
             }
             dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Forecast_Math));
@@ -430,21 +431,68 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
                         RefreshChart();
                     }
                 }
+                else
+                {
+                    Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
+
+                    psp_Type.ID = Guid.NewGuid().ToString();
+
+                    psp_Type.Forecast = type;
+                    psp_Type.ForecastID = forecastReport.ID;
+
+                    psp_Type.Title = FA.Areatitle;
+                    //glebeYearValue gy = new glebeYearValue();
+
+                    //IList<glebeYearValue> yearlist = Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", "ParentID='" + svglist[0].UID + "'");
+                    //for (int i = 0; i < yearlist.Count; i++) {
+                    //    string y = "y" + yearlist[i].Year.ToString();
+                    //    psp_Type.GetType().GetProperty(y).SetValue(psp_Type, y, null);
+                    //}
+                    object obj = Services.BaseService.GetObject("SelectPs_Forecast_MathMaxID", null);
+                    if (obj != null)
+                        psp_Type.Sort = ((int)obj) + 1;
+                    else
+                        psp_Type.Sort = 1;
+
+                    try {
+                        Common.Services.BaseService.Create<Ps_Forecast_Math>(psp_Type);
+                        //psp_Type.ID = (int)Common.Services.BaseService.Create("InsertPSP_P_Types", psp_Type);
+                        dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(psp_Type, dataTable.NewRow()));
+
+
+                    } catch (Exception ex) {
+                        MsgBox.Show("增加区域出错：" + ex.Message);
+                    }
+                    RefreshChart();
+                }
             }
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            TreeListNode row = this.treeList1.FocusedNode;
+            if (row == null) {
+                return;
+            }
+
+
+            string parentid = row["ParentID"].ToString();
+
+
+           // FormTypeTitle frm = new FormTypeTitle();
+            string TypeTitle = row["Title"].ToString();
+          
             frmMain_Spatial fmain = new frmMain_Spatial();
             frmMain_Spatial.MapType = "接线图";
-            frmMain_wj.progtype = "城市规划层";
+            frmMain_Spatial.progtype = "城市规划层";
             string pid = "";
-            fmain.ShowDialog();
+            fmain.Show();
+            fmain.Owner = this;
             string progtype = "城市规划层";
             //if (progtype == "地理信息层") {
             //    fmain.ViewMenu();
             //}
             if (pid == "") {
-                fmain.Open("c5ec3bc7-9706-4cbd-9b8b-632d3606f933", "");
+                fmain.Open("c5ec3bc7-9706-4cbd-9b8b-632d3606f933","");
             } else {
                 fmain.Open("c5ec3bc7-9706-4cbd-9b8b-632d3606f933", pid);
             }
@@ -452,11 +500,94 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             fmain.InitShape();
             fmain.Init(progtype);
             fmain.InitScaleRatio();
+            fmain.OpenGHQYpropetty(TypeTitle);
             fmain.LayerManagerShow();
+            
+            
             if (fmain.DialogResult==DialogResult.OK)
             {
+                glebeProperty gp = new glebeProperty();
+                gp.ParentEleID = "0";
+                gp.SvgUID = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
+                gp.ObligateField16 = TypeTitle;
+                IList<glebeProperty> svglist = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByObligateField16", gp);
                 //重新对选中的数据进行更新
+                 Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
+                 ForecastClass1.TreeNodeToDataObject<Ps_Forecast_Math>(psp_Type, row);
+                      
+                        IList<glebeYearValue> yearlist = Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", "ParentID='" + svglist[0].UID + "'");
+                        for (int i = 0; i < yearlist.Count;i++ ) {
+                            string y = "y" + yearlist[i].Year.ToString();
+                            psp_Type.GetType().GetProperty(y).SetValue(psp_Type,y,null);
+                            
+                        }
+                       
 
+                        try {
+                            Common.Services.BaseService.Update<Ps_Forecast_Math>(psp_Type);
+                            //psp_Type.ID = (int)Common.Services.BaseService.Create("InsertPSP_P_Types", psp_Type);
+                            //dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(psp_Type, dataTable.NewRow()));
+                            LoadData();
+                            //treeList1.EndUpdate();
+                            RefreshChart();
+                        }
+                catch(Exception ex)
+                        {
+
+                }
+            }
+        }
+
+        private void treeList1_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e) {
+            TreeListNode row = this.treeList1.FocusedNode;
+            if (row == null)
+                return;
+            Ps_Forecast_Math pf = new Ps_Forecast_Math();
+            ForecastClass1.TreeNodeToDataObject<Ps_Forecast_Math>(pf, row);
+            Services.BaseService.Update<Ps_Forecast_Math>(pf);
+            //CalculateSum2(row);
+            //aaa(row);
+            RefreshChart();
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            TreeListNode row = this.treeList1.FocusedNode;
+            if (row == null) {
+                return;
+            }
+
+            if (row.Nodes.Count > 0) {
+                MsgBox.Show("有下级分类，不可删除");
+                return;
+            }
+
+            string parentid = row["ParentID"].ToString();
+
+
+
+            if (MsgBox.ShowYesNo("是否删除分类 " + row["Title"].ToString() + "？") == DialogResult.Yes) {
+                Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
+                ForecastClass1.TreeNodeToDataObject(psp_Type, row);
+                //psp_Type = Itop.Common.DataConverter.RowToObject<Ps_Forecast_Math>(row);
+                Ps_Forecast_Math psp_Values = new Ps_Forecast_Math();
+                psp_Values.ID = psp_Type.ID;
+
+                try {
+                    //DeletePSP_ValuesByType里面删除数据和分类
+                    Common.Services.BaseService.Delete<Ps_Forecast_Math>(psp_Values);
+                    FORBaseColor bc1 = new FORBaseColor();
+
+                    bc1.Remark = forecastReport.ID + "-" + type;
+                    bc1.Title = row["Title"].ToString();
+                    Common.Services.BaseService.Update("DeleteFORBaseColorByTitleRemark", bc1);
+
+                    this.treeList1.Nodes.Remove(row);
+                } catch (Exception ex) {
+                    this.Cursor = Cursors.WaitCursor;
+                    LoadData();
+                    this.Cursor = Cursors.Default;
+                }
+                RefreshChart();
             }
         }
 
