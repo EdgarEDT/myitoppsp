@@ -11618,7 +11618,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             dotNetBarManager1.Bars["bar7"].GetItem("mAreaPoly").Enabled = b;
             dotNetBarManager1.Bars["bar7"].GetItem("mLeadLine").Visible = false;
             dotNetBarManager1.Bars["bar7"].GetItem("mJQLeadLine").Visible = false;
-            dotNetBarManager1.Bars["bar7"].GetItem("mFx").Visible = false;
+            //dotNetBarManager1.Bars["bar7"].GetItem("mFx").Visible = false;
+            dotNetBarManager1.Bars["bar7"].GetItem("mFx").Visible = true;
             dotNetBarManager1.Bars["bar7"].GetItem("mFzzj").Visible = false;
             dotNetBarManager1.Bars["bar7"].GetItem("mReCompute").Visible = false;
             dotNetBarManager1.Bars["bar7"].GetItem("mPriQu").Visible = false;
@@ -11640,7 +11641,31 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             dotNetBarManager1.Bars["bar2"].GetItem("mBezier").Enabled = b;
             dotNetBarManager1.Bars["bar2"].GetItem("mImage").Enabled = b;
             dotNetBarManager1.Bars["bar2"].GetItem("mText").Enabled = b;
-            dotNetBarManager1.GetItem("ButtonItem7").Visible = false;
+            //dotNetBarManager1.GetItem("ButtonItem7").Visible = false;
+            //添加的为不可见的
+   
+            dotNetBarManager1.GetItem("m_jp").Visible = false;
+            dotNetBarManager1.GetItem("m_cx").Visible = false;
+            dotNetBarManager1.GetItem("m_ld").Visible = false;
+            dotNetBarManager1.GetItem("m_fz").Visible = false;
+            dotNetBarManager1.GetItem("m_bxz").Visible = false;
+            dotNetBarManager1.GetItem("m_tp").Visible = false;
+            dotNetBarManager1.GetItem("m_reDraw").Visible = false;
+            dotNetBarManager1.GetItem("m_subColor").Visible = false;
+            dotNetBarManager1.GetItem("m_line1").Visible = false;
+            dotNetBarManager1.GetItem("m_subxz").Visible = false;
+            dotNetBarManager1.GetItem("Chaoliujisuan").Visible = false;
+            dotNetBarManager1.GetItem("WJYHBut").Visible = false;
+            dotNetBarManager1.GetItem("YHresult").Visible = false;
+
+            dotNetBarManager1.GetItem("ORP").Visible = false;
+            dotNetBarManager1.GetItem("ghwj").Visible = false;
+            dotNetBarManager1.GetItem("m_djcl").Visible = false;
+            dotNetBarManager1.GetItem("m_outxljwd").Visible = false;
+            dotNetBarManager1.GetItem("m_outsubjwd").Visible = false;
+            dotNetBarManager1.GetItem("m_inxljwd").Visible = false;
+            dotNetBarManager1.GetItem("m_inbdzjwd").Visible = false;
+            dotNetBarManager1.GetItem("m_unsel").Visible = false;
 
             propertyGrid.Enabled = b;
             symbolSelector.Enabled = b;
