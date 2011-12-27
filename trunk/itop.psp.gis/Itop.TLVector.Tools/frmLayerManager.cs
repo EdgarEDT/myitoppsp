@@ -27,6 +27,7 @@ namespace ItopVector.Tools
     public delegate void OnCheckhandler(object sender);     
     public partial class frmLayerManager : FormBase
     {
+        public bool spatialflag=true;
         FlashWindow f = new FlashWindow();
         public event OnClickLayerhandler OnClickLayer;
         public event OnDeleteLayerhandler OnDeleteLayer;
@@ -96,15 +97,26 @@ namespace ItopVector.Tools
                     }
                     if (progtype == "城市规划层")
                     {
-                        if (element1.GetAttribute("layerType") == progtype || element1.GetAttribute("layerType") == "地理信息层")
+                        if (spatialflag)
+                        {
+                            if (element1.GetAttribute("layerType") == progtype || element1.GetAttribute("layerType") == "地理信息层") {
+                                string strLayerID = element1.GetAttribute("id");
+                                int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
+                                if (element1.Visible) {
+                                    checkedListBox1.SetItemChecked(n, true);
+                                }
+                            }
+
+                        }
+                        else
                         {
                             string strLayerID = element1.GetAttribute("id");
                             int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
-                            if (element1.Visible)
-                            {
+                            if (element1.Visible) {
                                 checkedListBox1.SetItemChecked(n, true);
                             }
                         }
+                        
                     }
                     if (progtype == "电网规划层")
                     {

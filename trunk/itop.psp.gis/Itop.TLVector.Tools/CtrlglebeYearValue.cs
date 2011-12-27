@@ -55,11 +55,11 @@ namespace ItopVector.Tools {
             }
             AddFixColumn();
             IList<glebeYearValue> pl = Itop.Client.Common.Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", con);
-            if (pl.Count>0)
-            {
+            //if (pl.Count>0)
+            //{
                 datatable = Itop.Common.DataConverter.ToDataTable((IList)pl, typeof(glebeYearValue));
                 gridControl1.DataSource = datatable;
-            }
+            //}
            
         }
         public void Refresh()
@@ -109,6 +109,7 @@ namespace ItopVector.Tools {
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
             FrmgleYearEdit PDT = new FrmgleYearEdit();
+         
             if (ParentObj == null) {
                 Itop.Common.MsgBox.ShowYesNo("配电区域为空！");
                 return;

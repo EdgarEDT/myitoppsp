@@ -15,7 +15,7 @@ namespace ItopVector.Tools {
     public partial class FrmgleYearEdit : DevExpress.XtraEditors.XtraForm {
         public FrmgleYearEdit() {
             InitializeComponent();
-           
+            init();
         }
         private void init()
         {
@@ -44,6 +44,10 @@ namespace ItopVector.Tools {
                   spinEdit1.Value = Convert.ToDecimal(rowdata.FHmdTz);
               }
             }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.OK;
         }
 
     }

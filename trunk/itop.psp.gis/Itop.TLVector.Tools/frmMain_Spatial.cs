@@ -10320,6 +10320,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             {
                 frmlar.Progtype = progtype;
             }
+            frmlar.spatialflag = false;
             frmlar.Owner = this;
             frmlar.OnClickLayer += new OnClickLayerhandler(frmlar_OnClickLayer);
             frmlar.OnDeleteLayer += new OnDeleteLayerhandler(frmlar_OnDeleteLayer);
@@ -10730,6 +10731,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             }
             return layer;
         }
+       
         public void OpenGHQYpropetty(string areatitle)
         {
              glebeProperty gp = new glebeProperty();
@@ -10855,7 +10857,9 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                 }
                                 if (f.DialogResult==DialogResult.OK)
                                 {
-                                    this.Close();
+                                    //this.Close();
+                                    this.Visible = false;
+                                    frmlar.Visible = false;
                                     this.DialogResult = DialogResult.OK;
                                 }
                                 //tlVectorControl1.Refresh();

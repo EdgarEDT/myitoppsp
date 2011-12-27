@@ -108,6 +108,8 @@ namespace ItopVector.Tools
                 hs.Add("SvgUID", gPro.SvgUID);
                 sondt = Itop.Common.DataConverter.ToDataTable(Services.BaseService.GetList("SelectglebePropertParentID", hs), typeof(glebeProperty));
                 gridControl.DataSource = sondt;
+                //添加负荷预测数据
+                ctrlglebeYearValue1.ParentObj = gPro;
 
                 string temp = "";
                 foreach (DataRow row in sondt.Rows)
@@ -168,8 +170,7 @@ namespace ItopVector.Tools
                 IList<PSPDEV> l22=  Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
                 gridControl1.DataSource = l22;
 
-                //添加负荷预测数据
-                ctrlglebeYearValue1.ParentObj = gPro;
+               
             }
             catch(Exception e1)
             {
@@ -211,6 +212,9 @@ namespace ItopVector.Tools
                 if (gPro.ObligateField10 == "") { gPro.ObligateField10 = "0"; }
 
                 nullvalue = Convert.ToDecimal(gPro.ObligateField10) * Convert.ToDecimal(g.TypeStyle);
+                //空间负荷进行自动的刷新
+                ctrlglebeYearValue1.ParentObj = gPro;
+                ctrlglebeYearValue1.Refresh();
 
                 //bh.DataBindings.Add("Text", gPro, "UseID");
                 //lx.DataBindings.Add("EditValue", gPro, "TypeUID");
@@ -289,9 +293,7 @@ namespace ItopVector.Tools
                 //{
                 //    Reload();
                 //}
-                //空间负荷进行自动的刷新
-                ctrlglebeYearValue1.ParentObj = gPro;
-                ctrlglebeYearValue1.Refresh();
+               
             }
             catch (Exception e1)
             {

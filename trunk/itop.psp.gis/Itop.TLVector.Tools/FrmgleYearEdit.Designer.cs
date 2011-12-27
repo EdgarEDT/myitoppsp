@@ -61,6 +61,11 @@
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit1.Properties.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.spinEdit1.Size = new System.Drawing.Size(192, 21);
             this.spinEdit1.TabIndex = 2;
             // 
@@ -79,9 +84,11 @@
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 3;
             this.simpleButton1.Text = "确定";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // simpleButton2
             // 
+            this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.simpleButton2.Location = new System.Drawing.Point(205, 90);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(75, 23);
