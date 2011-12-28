@@ -411,7 +411,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
                         IList<glebeYearValue> yearlist = Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", "ParentID='" + svglist[0].UID + "'");
                         for (int i = 0; i < yearlist.Count;i++ ) {
                             string y = "y" + yearlist[i].Year.ToString();
-                            psp_Type.GetType().GetProperty(y).SetValue(psp_Type,y,null);
+                            psp_Type.GetType().GetProperty(y).SetValue(psp_Type, yearlist[i].Burthen, null);
                         }
                         object obj = Services.BaseService.GetObject("SelectPs_Forecast_MathMaxID", null);
                         if (obj != null)
@@ -518,7 +518,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
                         IList<glebeYearValue> yearlist = Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", "ParentID='" + svglist[0].UID + "'");
                         for (int i = 0; i < yearlist.Count;i++ ) {
                             string y = "y" + yearlist[i].Year.ToString();
-                            psp_Type.GetType().GetProperty(y).SetValue(psp_Type,y,null);
+                            psp_Type.GetType().GetProperty(y).SetValue(psp_Type, yearlist[i].Burthen, null);
                             
                         }
                        
