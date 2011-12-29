@@ -6923,6 +6923,9 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                             }
                         }
                         break;
+                    case "m_createbdzinfo":
+                        createBdzInfo(null);
+                        break;
                     #endregion
                     #region 未来联动
                     case "m_bxz":
