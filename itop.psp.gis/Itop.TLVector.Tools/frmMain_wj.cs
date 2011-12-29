@@ -3852,7 +3852,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                         xml1.SetAttribute("Deviceid", deviceid);
                                         xml1.SetAttribute("info-name", ((PSP_Substation_Info)obj).Title);
                                         //return;
-
+                                        //根据变站创建线路
+                                        createLine(xml1, deviceid);
                                     }
                                     /*
                                     substation sb = new substation();

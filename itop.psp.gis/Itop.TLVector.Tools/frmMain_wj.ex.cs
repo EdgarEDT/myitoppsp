@@ -7,6 +7,11 @@ using ItopVector.Core;
 using ItopVector.Core.Interface.Figure;
 using System.Windows.Forms;
 using ItopVector.Core.Figure;
+using System.Drawing;
+using ItopVector.Core.Document;
+using Itop.Domain.Graphics;
+using Itop.Client.Common;
+using System.Collections;
 
 namespace ItopVector.Tools
 {
@@ -15,6 +20,15 @@ namespace ItopVector.Tools
     /// </summary>
     partial class frmMain_wj
     {
+        class OddEven {
+            static private int s = 1;
+            static public bool IsEven(int a) {
+                return ((a & s) == 0);
+            }
+            static public bool IsOdd(int a) {
+                return !IsEven(a);
+            }
+        }
         private void openAutojxt() {
             if (dlg == null) {
                 dlg = new frmAutojxt();
@@ -59,6 +73,114 @@ namespace ItopVector.Tools
 
                     xltVectorCtrl.SVGDocument.SelectCollection.Add(ee);
                     xltVectorCtrl.Refresh();
+                }
+            }
+        }
+        /// <summary>
+        /// 创建相关变电站图层的文字
+        /// </summary>
+        /// <param name="layer"></param>
+        void createBdzInfo(Layer layer) {
+
+        }
+        /// <summary>
+        /// 根据设备关系创建线路
+        /// </summary>
+        /// <param name="device">变电站图元</param>
+        /// <param name="devicSUID">变电站设备ID</param>
+        void createLine(XmlElement device, string devicSUID) {
+            string projectid=Itop.Client.MIS.ProgUID;
+            string strCon = string.Format(" where Type = '01' and projectid='{0}' and svguid='{1}'",projectid,devicSUID);
+            IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon);
+            SvgElementCollection list2 = tlVectorControl1.SVGDocument.CurrentLayer.GraphList;// tlVectorControl1.SVGDocument.SelectNodes("svg/use");
+            foreach (PSPDEV dev in list) {
+                foreach (SvgElement element in list2) {
+                    if (!(element is Use)) continue;
+                    ///XmlElement element = node as XmlElement;
+                    //XmlNode text = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@ParentID='" + element.GetAttribute("id") + "']");
+                    string deviceid = (element).GetAttribute("Deviceid");
+                    if (devicSUID == deviceid) continue;
+                    string strCon1 = string.Format(" where Type = '01' and projectid='{0}' and svguid='{1}'", projectid, deviceid); //" where projectid='" + projectid + "' AND SvgUID = '" + (element).GetAttribute("Deviceid") + "' AND Type = '01'";
+
+                    IList list3 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon1);
+                    foreach (PSPDEV pd in list3) {
+                        if (dev.Number != pd.Number) {
+                            string strCon2 = " where projectid = '" + projectid + "' AND Type = '05' AND FirstNode = '" + dev.Number + "' AND LastNode = '" + pd.Number + "'";
+                            IList list4 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon2);
+
+                            string strCon3 = "where projectid = '" + projectid + "' AND Type = '05' AND FirstNode = '" + pd.Number + "' AND LastNode = '" + dev.Number + "'";
+                            IList list5 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon3);
+
+                            for (int i = 0; i < list4.Count; i++) {
+                                PointF[] t2 = new PointF[] { ((IGraph)device).CenterPoint, ((IGraph)element).CenterPoint };
+                                float angel = 0f;
+                                angel = (float)(180 * Math.Atan2((t2[1].Y - t2[0].Y), (t2[1].X - t2[0].X)) / Math.PI);
+                                PointF pStart1 = new PointF(((IGraph)device).CenterPoint.X + (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y - (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart2 = new PointF(((IGraph)device).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
+
+                                PointF pStart3 = new PointF(((IGraph)element).CenterPoint.X + (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y - (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart4 = new PointF(((IGraph)element).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
+
+                                string temp = "";
+                                if (i == 0) {
+                                    temp = ((IGraph)device).CenterPoint.X.ToString() + " " + ((IGraph)device).CenterPoint.Y.ToString() + "," + ((IGraph)element).CenterPoint.X + " " + ((IGraph)element).CenterPoint.Y.ToString();
+                                } else if (OddEven.IsOdd(i)) {
+                                    temp = pStart1.X.ToString() + " " + pStart1.Y.ToString() + "," + pStart3.X.ToString() + " " + pStart3.Y.ToString();
+                                } else if (OddEven.IsEven(i)) {
+                                    temp = pStart2.X.ToString() + " " + pStart2.Y.ToString() + "," + pStart4.X.ToString() + " " + pStart4.Y.ToString();
+                                }
+                                XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
+
+                                n1.SetAttribute("points", temp);
+                                n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
+                                n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                n1.SetAttribute("FirstNode", device.GetAttribute("id"));
+                                n1.SetAttribute("LastNode", element.GetAttribute("id"));
+                                n1.SetAttribute("Deviceid", ((PSPDEV)list4[i]).SUID);
+                                tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+                                tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
+                                tlVectorControl1.ChangeLevel(LevelType.Bottom);
+                                //n1.RemoveAttribute("layer");
+                                tlVectorControl1.Operation = ToolOperation.Select;
+                                tlVectorControl1.SVGDocument.CurrentElement = element as SvgElement;
+                            }
+                            int j = 0;
+                            if (list4 != null) {
+                                j = list4.Count;
+                            }
+                            for (int i = j; i < j + list5.Count; i++) {
+                                PointF[] t2 = new PointF[] { ((IGraph)element).CenterPoint, ((IGraph)device).CenterPoint };
+                                float angel = 0f;
+                                angel = (float)(180 * Math.Atan2((t2[1].Y - t2[0].Y), (t2[1].X - t2[0].X)) / Math.PI);
+                                PointF pStart1 = new PointF(((IGraph)element).CenterPoint.X + (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y - (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart2 = new PointF(((IGraph)element).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
+
+                                PointF pStart3 = new PointF(((IGraph)device).CenterPoint.X + (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y - (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart4 = new PointF(((IGraph)device).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                string temp = "";
+                                if (i == 0) {
+                                    temp = ((IGraph)element).CenterPoint.X.ToString() + " " + ((IGraph)element).CenterPoint.Y.ToString() + "," + ((IGraph)device).CenterPoint.X + " " + ((IGraph)device).CenterPoint.Y.ToString();
+                                } else if (OddEven.IsOdd(i)) {
+                                    temp = pStart1.X.ToString() + " " + pStart1.Y.ToString() + "," + pStart3.X.ToString() + " " + pStart3.Y.ToString();
+                                } else if (OddEven.IsEven(i)) {
+                                    temp = pStart2.X.ToString() + " " + pStart2.Y.ToString() + "," + pStart4.X.ToString() + " " + pStart4.Y.ToString();
+                                }
+                                XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
+                                n1.SetAttribute("points", temp);
+                                n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
+                                n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                n1.SetAttribute("FirstNode", element.GetAttribute("id"));
+                                n1.SetAttribute("LastNode", device.GetAttribute("id"));
+                                n1.SetAttribute("Deviceid", ((PSPDEV)list5[i - j]).SUID);
+                                tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+                                tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
+                                tlVectorControl1.ChangeLevel(LevelType.Bottom);
+                                //n1.RemoveAttribute("layer");
+                                tlVectorControl1.Operation = ToolOperation.Select;
+                                tlVectorControl1.SVGDocument.CurrentElement = element as SvgElement;
+                            }
+                        }
+                    }
                 }
             }
         }
