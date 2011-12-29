@@ -81,7 +81,78 @@ namespace ItopVector.Tools
         /// </summary>
         /// <param name="layer"></param>
         void createBdzInfo(Layer layer) {
+            if (layer == null)
+                layer = tlVectorControl1.SVGDocument.CurrentLayer;
+            if (layer == null) return;
+            if (!layer.Label.Contains("变电站")) return;
 
+            string name = layer.Label + "名称文字";
+            string name2 = layer.Label + "容量文字";
+            Layer lay1=null;
+            Layer lay2=null;
+            foreach(Layer lay in tlVectorControl1.SVGDocument.Layers){
+                if (lay.Label == name)
+                    lay1 = lay;
+                else if (lay.Label == name2)
+                    lay2 = lay;
+            }
+            //tlVectorControl1.SVGDocument.AcceptChanges = false;
+            if (lay1 == null) {
+                lay1 = Layer.CreateNew(name, tlVectorControl1.SVGDocument);
+                lay1.SetAttribute("layerType", "电网规划层");
+            } else {
+                for (int i = lay1.GraphList.Count - 1; i > 0; i--)
+                    lay1.GraphList.RemoveAt(i);
+            }
+            if (lay2 == null) {
+                lay2 = Layer.CreateNew(name2, tlVectorControl1.SVGDocument);
+                lay2.SetAttribute("layerType", "电网规划层");
+            } else {
+                for (int i = lay2.GraphList.Count-1; i > 0; i--) 
+                    lay2.GraphList.RemoveAt(i);
+            }
+            foreach (SvgElement ele in layer.GraphList) {
+                if(!(ele is Use))continue;
+                PSP_Substation_Info bdz = Services.BaseService.GetOneByKey<PSP_Substation_Info>(ele.GetAttribute("Deviceid"));
+                if (bdz == null) continue;
+                createName(ele as IGraph, lay1, bdz.Title);
+                createName2(ele as IGraph, lay2, "("+bdz.L4+")");//容量组成
+
+            }
+            //tlVectorControl1.SVGDocument.AcceptChanges = true;
+            lay1.Visible = false; 
+            lay2.Visible = false; 
+            frmlar.SymbolDoc = tlVectorControl1.SVGDocument;
+            frmlar.InitData();
+            tlVectorControl1.Refresh();
+        }
+        private void createName(IGraph temp,Layer layer,string text) {
+            Text n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
+            
+            RectangleF t = ((IGraph)temp).GetBounds();
+            n1.SetAttribute("x", (t.X + t.Width ).ToString());
+            n1.SetAttribute("y", (t.Y + t.Height / 2+150).ToString());
+            string name = (temp as SvgElement).GetAttribute("info-name");
+            n1.InnerText = string.IsNullOrEmpty(name)?text:name;
+            n1.Layer = layer;
+            //doc.CurrentLayer.Add(n1 as SvgElement);
+            //n1.SetAttribute("ParentID", temp.ID);
+            n1.SetAttribute("limitsize", "true");
+            tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+        }
+        private void createName2(IGraph temp, Layer layer, string text) {
+            Text n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
+
+            RectangleF t = ((IGraph)temp).GetBounds();
+            n1.SetAttribute("x", (t.X + t.Width).ToString());
+            n1.SetAttribute("y", (t.Y + t.Height / 2 + 350).ToString());
+
+            n1.InnerText = text;
+            n1.Layer = layer;
+            //doc.CurrentLayer.Add(n1 as SvgElement);
+            //n1.SetAttribute("ParentID", temp.ID);
+            n1.SetAttribute("limitsize", "true");
+            tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
         }
         /// <summary>
         /// 根据设备关系创建线路
