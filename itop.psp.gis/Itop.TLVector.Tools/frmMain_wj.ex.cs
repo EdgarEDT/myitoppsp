@@ -163,7 +163,9 @@ namespace ItopVector.Tools
             string projectid=Itop.Client.MIS.ProgUID;
             string strCon = string.Format(" where Type = '01' and projectid='{0}' and svguid='{1}'",projectid,devicSUID);
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon);
-            SvgElementCollection list2 = tlVectorControl1.SVGDocument.CurrentLayer.GraphList;// tlVectorControl1.SVGDocument.SelectNodes("svg/use");
+            SvgElementCollection list2 = tlVectorControl1.SVGDocument.CurrentLayer.GraphList.Clone();// tlVectorControl1.SVGDocument.SelectNodes("svg/use");
+            float scale = tlVectorControl1.ScaleRatio;
+            //scale = 1;
             foreach (PSPDEV dev in list) {
                 foreach (SvgElement element in list2) {
                     if (!(element is Use)) continue;
@@ -172,7 +174,7 @@ namespace ItopVector.Tools
                     string deviceid = (element).GetAttribute("Deviceid");
                     if (devicSUID == deviceid) continue;
                     string strCon1 = string.Format(" where Type = '01' and projectid='{0}' and svguid='{1}'", projectid, deviceid); //" where projectid='" + projectid + "' AND SvgUID = '" + (element).GetAttribute("Deviceid") + "' AND Type = '01'";
-
+                    string label = element.GetAttribute("info-name");
                     IList list3 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon1);
                     foreach (PSPDEV pd in list3) {
                         if (dev.Number != pd.Number) {
@@ -181,16 +183,17 @@ namespace ItopVector.Tools
 
                             string strCon3 = "where projectid = '" + projectid + "' AND Type = '05' AND FirstNode = '" + pd.Number + "' AND LastNode = '" + dev.Number + "'";
                             IList list5 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon3);
-
+                            float width =  ((IGraph)element).GetBounds().Width/3;
                             for (int i = 0; i < list4.Count; i++) {
                                 PointF[] t2 = new PointF[] { ((IGraph)device).CenterPoint, ((IGraph)element).CenterPoint };
                                 float angel = 0f;
+                                
                                 angel = (float)(180 * Math.Atan2((t2[1].Y - t2[0].Y), (t2[1].X - t2[0].X)) / Math.PI);
-                                PointF pStart1 = new PointF(((IGraph)device).CenterPoint.X + (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y - (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
-                                PointF pStart2 = new PointF(((IGraph)device).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart1 = new PointF(((IGraph)device).CenterPoint.X + (float)(width * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y - (float)(width * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart2 = new PointF(((IGraph)device).CenterPoint.X - (float)(width * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y + (float)(width * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
 
-                                PointF pStart3 = new PointF(((IGraph)element).CenterPoint.X + (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y - (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
-                                PointF pStart4 = new PointF(((IGraph)element).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart3 = new PointF(((IGraph)element).CenterPoint.X + (float)(width * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y - (float)(width * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart4 = new PointF(((IGraph)element).CenterPoint.X - (float)(width * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y + (float)(width * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
 
                                 string temp = "";
                                 if (i == 0) {
@@ -203,6 +206,8 @@ namespace ItopVector.Tools
                                 XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
 
                                 n1.SetAttribute("points", temp);
+                                n1.SetAttribute("IsLead", "1");
+
                                 n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                 n1.SetAttribute("layer", SvgDocument.currentLayer);
                                 n1.SetAttribute("FirstNode", device.GetAttribute("id"));
@@ -223,11 +228,11 @@ namespace ItopVector.Tools
                                 PointF[] t2 = new PointF[] { ((IGraph)element).CenterPoint, ((IGraph)device).CenterPoint };
                                 float angel = 0f;
                                 angel = (float)(180 * Math.Atan2((t2[1].Y - t2[0].Y), (t2[1].X - t2[0].X)) / Math.PI);
-                                PointF pStart1 = new PointF(((IGraph)element).CenterPoint.X + (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y - (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
-                                PointF pStart2 = new PointF(((IGraph)element).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart1 = new PointF(((IGraph)element).CenterPoint.X + (float)( width * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y - (float)(width * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart2 = new PointF(((IGraph)element).CenterPoint.X - (float)(width * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y + (float)(width * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
 
-                                PointF pStart3 = new PointF(((IGraph)device).CenterPoint.X + (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y - (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
-                                PointF pStart4 = new PointF(((IGraph)device).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart3 = new PointF(((IGraph)device).CenterPoint.X + (float)( width * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y - (float)(width * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
+                                PointF pStart4 = new PointF(((IGraph)device).CenterPoint.X - (float)(width * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y + (float)(width * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
                                 string temp = "";
                                 if (i == 0) {
                                     temp = ((IGraph)element).CenterPoint.X.ToString() + " " + ((IGraph)element).CenterPoint.Y.ToString() + "," + ((IGraph)device).CenterPoint.X + " " + ((IGraph)device).CenterPoint.Y.ToString();
@@ -238,6 +243,7 @@ namespace ItopVector.Tools
                                 }
                                 XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
                                 n1.SetAttribute("points", temp);
+                                n1.SetAttribute("IsLead", "1");
                                 n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                 n1.SetAttribute("layer", SvgDocument.currentLayer);
                                 n1.SetAttribute("FirstNode", element.GetAttribute("id"));
