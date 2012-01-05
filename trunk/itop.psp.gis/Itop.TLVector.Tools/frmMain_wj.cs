@@ -8546,15 +8546,15 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                 pro.svgID = tlVectorControl1.SVGDocument.SvgdataUid;
                                 Services.BaseService.Update("DeleteSVG_ENTITYByEleID", pro);
 
-                                substation p = new substation();
-                                p.EleID = tlVectorControl1.SVGDocument.SelectCollection[i].ID;
-                                p.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                                Services.BaseService.Update("DeletesubstationByEleID", p);
+                                //substation p = new substation();
+                                //p.EleID = tlVectorControl1.SVGDocument.SelectCollection[i].ID;
+                                //p.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                //Services.BaseService.Update("DeletesubstationByEleID", p);
 
-                                PSP_SubstationSelect sel = new PSP_SubstationSelect();
-                                sel.EleID = tlVectorControl1.SVGDocument.SelectCollection[i].ID;
-                                sel.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
-                                Services.BaseService.Update("DeletePSP_SubstationByEleID", sel);
+                                //PSP_SubstationSelect sel = new PSP_SubstationSelect();
+                                //sel.EleID = tlVectorControl1.SVGDocument.SelectCollection[i].ID;
+                                //sel.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                //Services.BaseService.Update("DeletePSP_SubstationByEleID", sel);
                             }
                         }
                         if (tlVectorControl1.SVGDocument.SelectCollection[i].GetType().ToString() == "ItopVector.Core.Figure.ConnectLine")

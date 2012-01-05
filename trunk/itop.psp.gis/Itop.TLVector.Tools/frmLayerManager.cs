@@ -235,15 +235,15 @@ namespace ItopVector.Tools
 
                         if ((MessageBox.Show(this, "此图层下有图元,是否删除图层：" + layer.Label + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes))
                         {
-                            PSPDEV _line = new PSPDEV();
-                            _line.LayerID = layer.ID;
-                            Services.BaseService.Update("DeletePSPDEVbyLayerID", _line);
+                            //PSPDEV _line = new PSPDEV();
+                            //_line.LayerID = layer.ID;
+                            //Services.BaseService.Update("DeletePSPDEVbyLayerID", _line);
                             glebeProperty gle = new glebeProperty();
                             gle.LayerID = layer.ID;
                             Services.BaseService.Update("DeleteglebePropertyByLayerID", gle);
-                            PSP_Substation_Info _sub = new PSP_Substation_Info();
-                            _sub.LayerID = layer.ID;
-                            Services.BaseService.Update("DeletePSP_Substation_InfoByLayerID", _sub);
+                            //PSP_Substation_Info _sub = new PSP_Substation_Info();
+                            //_sub.LayerID = layer.ID;
+                            //Services.BaseService.Update("DeletePSP_Substation_InfoByLayerID", _sub);
 
                             SVG_LAYER lar = new SVG_LAYER();
                             lar.SUID=layer.ID;
