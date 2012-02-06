@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="sysprog" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+  <typeAlias alias="sysprog"  type="Itop.Frame.Model.sysprog,Itop.Frame.Model" />
+  </alias>
+  <resultMaps>
+      <resultMap id="sysprog_AllColumns" class="sysprog">
+        <result property="id" column="id" />
+        <result property="ParentID" column="ParentID" />
+        <result property="orderID" column="orderID" />
+        <result property="ProgCode" column="ProgCode" />
+        <result property="ProgName" column="ProgName" />
+        <result property="ProgClass" column="ProgClass" />
+        <result property="ProgProp" column="ProgProp" />
+        <result property="ProgIcon1" column="ProgIcon1" />
+        <result property="ProgIcon2" column="ProgIcon2" />
+        <result property="IsGroup" column="IsGroup" />
+        <result property="funs" column="funs" />
+        <result property="IsVisible" column="IsVisible" />
+        <result property="IsUse" column="IsUse" />
+        <result property="IsCore" column="IsCore" />
+      </resultMap>
+  </resultMaps>
+
+  <statements>
+   <select id="SelectsysprogList" resultMap="sysprog_AllColumns" parameterClass="string">
+        SELECT 
+         [id],
+         [ParentID],
+         [orderID],
+         [ProgCode],
+         [ProgName],
+         [ProgClass],
+         [ProgProp],
+         [ProgIcon1],
+         [ProgIcon2],
+         [IsGroup],
+         [funs],
+         [IsVisible],
+         [IsUse],
+         [IsCore]
+          FROM sysprog
+          $value$
+   </select>
+   
+   <select id="SelectsysprogByHash" parameterClass="Hashtable">
+         SELECT 
+         [id],
+         [ParentID],
+         [orderID],
+         [ProgCode],
+         [ProgName],
+         [ProgClass],
+         [ProgProp],
+         [ProgIcon1],
+         [ProgIcon2],
+         [IsGroup],
+         [funs],
+         [IsVisible],
+         [IsUse],
+         [IsCore]
+          FROM sysprog
+     <dynamic prepend="WHERE">
+       <isNotNull prepend="AND" property="id">[id]='$id$'</isNotNull>
+       <isNotNull prepend="AND" property="ParentID">[ParentID]='$ParentID$'</isNotNull>
+       <isNotNull prepend="AND" property="orderID">[orderID]='$orderID$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgCode">[ProgCode]='$ProgCode$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgName">[ProgName]='$ProgName$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgClass">[ProgClass]='$ProgClass$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgProp">[ProgProp]='$ProgProp$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgIcon1">[ProgIcon1]='$ProgIcon1$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgIcon2">[ProgIcon2]='$ProgIcon2$'</isNotNull>
+       <isNotNull prepend="AND" property="IsGroup">[IsGroup]='$IsGroup$'</isNotNull>
+       <isNotNull prepend="AND" property="funs">[funs]='$funs$'</isNotNull>
+       <isNotNull prepend="AND" property="IsVisible">[IsVisible]='$IsVisible$'</isNotNull>
+       <isNotNull prepend="AND" property="IsUse">[IsUse]='$IsUse$'</isNotNull>
+       <isNotNull prepend="AND" property="IsCore">[IsCore]='$IsCore$'</isNotNull>
+     </dynamic>
+   </select>
+   <select id="SelectsysprogByKey" resultMap="sysprog_AllColumns" parameterClass="sysprog">
+         SELECT 
+         [id],
+         [ParentID],
+         [orderID],
+         [ProgCode],
+         [ProgName],
+         [ProgClass],
+         [ProgProp],
+         [ProgIcon1],
+         [ProgIcon2],
+         [IsGroup],
+         [funs],
+         [IsVisible],
+         [IsUse],
+         [IsCore]
+         FROM sysprog
+         WHERE 
+           id = #id#
+
+   </select>
+ 
+   <delete id="Deletesysprog" parameterClass="sysprog">
+        DELETE FROM 
+         sysprog
+           WHERE
+         id = #id#
+
+   </delete>
+   
+   <delete id="DeletesysprogByWhere" parameterClass="string">
+     delete from sysprog $value$
+   </delete>
+   
+   <delete id="DeletesysprogByKey" parameterClass="string">
+        DELETE FROM 
+         sysprog
+           WHERE
+         id = #id#
+    
+   </delete>
+   
+   <update id="Updatesysprog" parameterClass="sysprog" resultClass="int">
+          UPDATE sysprog
+           SET
+             [ParentID]=#ParentID#,
+             [orderID]=#orderID#,
+             [ProgCode]=#ProgCode#,
+             [ProgName]=#ProgName#,
+             [ProgClass]=#ProgClass#,
+             [ProgProp]=#ProgProp#,
+             [ProgIcon1]=#ProgIcon1#,
+             [ProgIcon2]=#ProgIcon2#,
+             [IsGroup]=#IsGroup#,
+             [funs]=#funs#,
+             [IsVisible]=#IsVisible#,
+             [IsUse]=#IsUse#,
+             [IsCore]=#IsCore#
+            WHERE 
+              id = #id#
+
+   </update>
+  
+   <insert id="Insertsysprog" parameterClass="sysprog">
+        INSERT INTO sysprog
+         (
+         [id],
+         [ParentID],
+         [orderID],
+         [ProgCode],
+         [ProgName],
+         [ProgClass],
+         [ProgProp],
+         [ProgIcon1],
+         [ProgIcon2],
+         [IsGroup],
+         [funs],
+         [IsVisible],
+         [IsUse],
+         [IsCore]
+         )
+       VALUES
+         (
+         #id#,
+         #ParentID#,
+         #orderID#,
+         #ProgCode#,
+         #ProgName#,
+         #ProgClass#,
+         #ProgProp#,
+         #ProgIcon1#,
+         #ProgIcon2#,
+         #IsGroup#,
+         #funs#,
+         #IsVisible#,
+         #IsUse#,
+         #IsCore#
+         )
+
+   </insert>
+   
+   <select id="GetsysprogRowCountByHash" parameterClass="Hashtable">
+         SELECT Count(*) 
+          FROM sysprog
+     <dynamic prepend="WHERE">
+       <isNotNull prepend="AND" property="id">[id]='$id$'</isNotNull>
+       <isNotNull prepend="AND" property="ParentID">[ParentID]='$ParentID$'</isNotNull>
+       <isNotNull prepend="AND" property="orderID">[orderID]='$orderID$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgCode">[ProgCode]='$ProgCode$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgName">[ProgName]='$ProgName$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgClass">[ProgClass]='$ProgClass$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgProp">[ProgProp]='$ProgProp$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgIcon1">[ProgIcon1]='$ProgIcon1$'</isNotNull>
+       <isNotNull prepend="AND" property="ProgIcon2">[ProgIcon2]='$ProgIcon2$'</isNotNull>
+       <isNotNull prepend="AND" property="IsGroup">[IsGroup]='$IsGroup$'</isNotNull>
+       <isNotNull prepend="AND" property="funs">[funs]='$funs$'</isNotNull>
+       <isNotNull prepend="AND" property="IsVisible">[IsVisible]='$IsVisible$'</isNotNull>
+       <isNotNull prepend="AND" property="IsUse">[IsUse]='$IsUse$'</isNotNull>
+       <isNotNull prepend="AND" property="IsCore">[IsCore]='$IsCore$'</isNotNull>
+     </dynamic>
+
+   </select>
+   
+   <select id="GetsysprogRowCount" parameterClass="string">
+    select count(*) from sysprog $value$
+   </select>
+  </statements>
+</sqlMap>
+ 

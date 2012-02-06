@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>	
+  <components>
+	<component id="sysgroupBLL" type="Itop.Frame.BLL.sysgroupBLL,Itop.Frame.BLL" />  
+	<component id="sysgroupprogBLL" type="Itop.Frame.BLL.sysgroupprogBLL,Itop.Frame.BLL" />  
+	<component id="sysgroupuserBLL" type="Itop.Frame.BLL.sysgroupuserBLL,Itop.Frame.BLL" />  
+	<component id="sysprogBLL" type="Itop.Frame.BLL.sysprogBLL,Itop.Frame.BLL" />  
+	<component id="sysuserBLL" type="Itop.Frame.BLL.sysuserBLL,Itop.Frame.BLL" /> 
+  </components>
+</configuration>

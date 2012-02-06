@@ -1,0 +1,56 @@
+table,div,span{font-size:12px}
+.icon-user {
+    background-image: url(images/user.png) !important;
+}
+
+.icon-user-add {
+    background-image: url(images/user_add.gif) !important;
+}
+
+.icon-save {
+    background-image: url(images/save.gif) !important;
+}
+
+.icon-reset {
+    background-image: url(images/stop.png) !important;
+}
+
+.icon-grid {
+    background-image: url(images/grid.png) !important;
+}
+.icon-exec {
+    background-image: url(images/grid.png) !important;
+}
+.icon-add {
+    background-image: url(images/add.png) !important;
+}
+
+.icon-delete {
+    background-image: url(images/delete.png) !important;
+}
+.icon-error {
+    background-image: url(images/ChangeOrder.png) !important;
+}
+.icon-back {
+    background-image: url(images/xp_back.gif) !important;
+}
+.x-grid-record-red {   
+    color: #FF0000 !important;   
+}
+.x-grid-record-yellow {   
+    color: #FF9900 !important;   
+}
+.red-row{ background-color: #F5C0C0 !important; } 
+.yellow-row{ background-color: #FBF8BF !important; } 
+.green-row{ background-color: #99CC99 !important; }
+
+/* shared styles for the ActionColumn icons */
+.x-action-col-cell img {
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+/* custom icon for the "guapai" ActionColumn icon */
+.x-action-col-cell img.icon-guapai {
+    background-image: url(images/error.png);
+}

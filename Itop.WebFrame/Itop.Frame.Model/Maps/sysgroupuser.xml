@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="sysgroupuser" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+  <typeAlias alias="sysgroupuser"  type="Itop.Frame.Model.sysgroupuser,Itop.Frame.Model" />
+  </alias>
+  <resultMaps>
+      <resultMap id="sysgroupuser_AllColumns" class="sysgroupuser">
+        <result property="GroupID" column="GroupID" />
+        <result property="UserID" column="UserID" />
+      </resultMap>
+  </resultMaps>
+
+  <statements>
+   <select id="SelectsysgroupuserList" resultMap="sysgroupuser_AllColumns" parameterClass="string">
+        SELECT 
+         [GroupID],
+         [UserID]
+          FROM sysgroupuser
+          $value$
+   </select>
+   
+   <select id="SelectsysgroupuserByHash" parameterClass="Hashtable">
+         SELECT 
+         [GroupID],
+         [UserID]
+          FROM sysgroupuser
+     <dynamic prepend="WHERE">
+       <isNotNull prepend="AND" property="GroupID">[GroupID]='$GroupID$'</isNotNull>
+       <isNotNull prepend="AND" property="UserID">[UserID]='$UserID$'</isNotNull>
+     </dynamic>
+   </select>
+   <select id="SelectsysgroupuserByKey" resultMap="sysgroupuser_AllColumns" parameterClass="sysgroupuser">
+         SELECT 
+         [GroupID],
+         [UserID]
+         FROM sysgroupuser
+         WHERE 
+           GroupID = #GroupID#
+         and UserID = #UserID#
+
+   </select>
+ 
+   <delete id="Deletesysgroupuser" parameterClass="sysgroupuser">
+        DELETE FROM 
+         sysgroupuser
+           WHERE
+         GroupID = #GroupID#
+         and UserID = #UserID#
+
+   </delete>
+   
+   <delete id="DeletesysgroupuserByWhere" parameterClass="string">
+     delete from sysgroupuser $value$
+   </delete>
+   
+   <delete id="DeletesysgroupuserByKey" parameterClass="string">
+        DELETE FROM 
+         sysgroupuser
+           WHERE
+         GroupID = #GroupID#
+         and UserID = #UserID#
+    
+   </delete>
+   
+   <update id="Updatesysgroupuser" parameterClass="sysgroupuser" resultClass="int">
+          UPDATE sysgroupuser
+           SET
+
+            WHERE 
+              GroupID = #GroupID#
+         and UserID = #UserID#
+
+   </update>
+  
+   <insert id="Insertsysgroupuser" parameterClass="sysgroupuser">
+        INSERT INTO sysgroupuser
+         (
+         [GroupID],
+         [UserID]
+         )
+       VALUES
+         (
+         #GroupID#,
+         #UserID#
+         )
+
+   </insert>
+   
+   <select id="GetsysgroupuserRowCountByHash" parameterClass="Hashtable">
+         SELECT Count(*) 
+          FROM sysgroupuser
+     <dynamic prepend="WHERE">
+       <isNotNull prepend="AND" property="GroupID">[GroupID]='$GroupID$'</isNotNull>
+       <isNotNull prepend="AND" property="UserID">[UserID]='$UserID$'</isNotNull>
+     </dynamic>
+
+   </select>
+   
+   <select id="GetsysgroupuserRowCount" parameterClass="string">
+    select count(*) from sysgroupuser $value$
+   </select>
+  </statements>
+</sqlMap>
+ 

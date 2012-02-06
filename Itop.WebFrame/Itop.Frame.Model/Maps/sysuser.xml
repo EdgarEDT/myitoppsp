@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="sysuser" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+  <typeAlias alias="sysuser"  type="Itop.Frame.Model.sysuser,Itop.Frame.Model" />
+  </alias>
+  <resultMaps>
+      <resultMap id="sysuser_AllColumns" class="sysuser">
+        <result property="id" column="id" />
+        <result property="dwID" column="dwID" />
+        <result property="orderID" column="orderID" />
+        <result property="LoginID" column="LoginID" />
+        <result property="UserName" column="UserName" />
+        <result property="isadmin" column="isadmin" />
+        <result property="IsUse" column="IsUse" />
+        <result property="LastDate" column="LastDate" />
+        <result property="LastIP" column="LastIP" />
+        <result property="LastTimes" column="LastTimes" />
+        <result property="sex" column="sex" />
+        <result property="job" column="job" />
+        <result property="post" column="post" />
+        <result property="grade" column="grade" />
+        <result property="phone1" column="phone1" />
+        <result property="phone2" column="phone2" />
+        <result property="mail" column="mail" />
+        <result property="adress" column="adress" />
+        <result property="education" column="education" />
+        <result property="pwd" column="pwd" />
+      </resultMap>
+  </resultMaps>
+
+  <statements>
+   <select id="SelectsysuserList" resultMap="sysuser_AllColumns" parameterClass="string">
+        SELECT 
+         [id],
+         [dwID],
+         [orderID],
+         [LoginID],
+         [UserName],
+         [isadmin],
+         [IsUse],
+         [LastDate],
+         [LastIP],
+         [LastTimes],
+         [sex],
+         [job],
+         [post],
+         [grade],
+         [phone1],
+         [phone2],
+         [mail],
+         [adress],
+         [education],
+         [pwd]
+          FROM sysuser
+          $value$
+   </select>
+   
+   <select id="SelectsysuserByHash" parameterClass="Hashtable">
+         SELECT 
+         [id],
+         [dwID],
+         [orderID],
+         [LoginID],
+         [UserName],
+         [isadmin],
+         [IsUse],
+         [LastDate],
+         [LastIP],
+         [LastTimes],
+         [sex],
+         [job],
+         [post],
+         [grade],
+         [phone1],
+         [phone2],
+         [mail],
+         [adress],
+         [education],
+         [pwd]
+          FROM sysuser
+     <dynamic prepend="WHERE">
+       <isNotNull prepend="AND" property="id">[id]='$id$'</isNotNull>
+       <isNotNull prepend="AND" property="dwID">[dwID]='$dwID$'</isNotNull>
+       <isNotNull prepend="AND" property="orderID">[orderID]='$orderID$'</isNotNull>
+       <isNotNull prepend="AND" property="LoginID">[LoginID]='$LoginID$'</isNotNull>
+       <isNotNull prepend="AND" property="UserName">[UserName]='$UserName$'</isNotNull>
+       <isNotNull prepend="AND" property="isadmin">[isadmin]='$isadmin$'</isNotNull>
+       <isNotNull prepend="AND" property="IsUse">[IsUse]='$IsUse$'</isNotNull>
+       <isNotNull prepend="AND" property="LastDate">[LastDate]='$LastDate$'</isNotNull>
+       <isNotNull prepend="AND" property="LastIP">[LastIP]='$LastIP$'</isNotNull>
+       <isNotNull prepend="AND" property="LastTimes">[LastTimes]='$LastTimes$'</isNotNull>
+       <isNotNull prepend="AND" property="sex">[sex]='$sex$'</isNotNull>
+       <isNotNull prepend="AND" property="job">[job]='$job$'</isNotNull>
+       <isNotNull prepend="AND" property="post">[post]='$post$'</isNotNull>
+       <isNotNull prepend="AND" property="grade">[grade]='$grade$'</isNotNull>
+       <isNotNull prepend="AND" property="phone1">[phone1]='$phone1$'</isNotNull>
+       <isNotNull prepend="AND" property="phone2">[phone2]='$phone2$'</isNotNull>
+       <isNotNull prepend="AND" property="mail">[mail]='$mail$'</isNotNull>
+       <isNotNull prepend="AND" property="adress">[adress]='$adress$'</isNotNull>
+       <isNotNull prepend="AND" property="education">[education]='$education$'</isNotNull>
+       <isNotNull prepend="AND" property="pwd">[pwd]='$pwd$'</isNotNull>
+     </dynamic>
+   </select>
+   <select id="SelectsysuserByKey" resultMap="sysuser_AllColumns" parameterClass="sysuser">
+         SELECT 
+         [id],
+         [dwID],
+         [orderID],
+         [LoginID],
+         [UserName],
+         [isadmin],
+         [IsUse],
+         [LastDate],
+         [LastIP],
+         [LastTimes],
+         [sex],
+         [job],
+         [post],
+         [grade],
+         [phone1],
+         [phone2],
+         [mail],
+         [adress],
+         [education],
+         [pwd]
+         FROM sysuser
+         WHERE 
+           id = #id#
+
+   </select>
+ 
+   <delete id="Deletesysuser" parameterClass="sysuser">
+        DELETE FROM 
+         sysuser
+           WHERE
+         id = #id#
+
+   </delete>
+   
+   <delete id="DeletesysuserByWhere" parameterClass="string">
+     delete from sysuser $value$
+   </delete>
+   
+   <delete id="DeletesysuserByKey" parameterClass="string">
+        DELETE FROM 
+         sysuser
+           WHERE
+         id = #id#
+    
+   </delete>
+   
+   <update id="Updatesysuser" parameterClass="sysuser" resultClass="int">
+          UPDATE sysuser
+           SET
+             [dwID]=#dwID#,
+             [orderID]=#orderID#,
+             [LoginID]=#LoginID#,
+             [UserName]=#UserName#,
+             [isadmin]=#isadmin#,
+             [IsUse]=#IsUse#,
+             [LastDate]=#LastDate#,
+             [LastIP]=#LastIP#,
+             [LastTimes]=#LastTimes#,
+             [sex]=#sex#,
+             [job]=#job#,
+             [post]=#post#,
+             [grade]=#grade#,
+             [phone1]=#phone1#,
+             [phone2]=#phone2#,
+             [mail]=#mail#,
+             [adress]=#adress#,
+             [education]=#education#,
+             [pwd]=#pwd#
+            WHERE 
+              id = #id#
+
+   </update>
+  
+   <insert id="Insertsysuser" parameterClass="sysuser">
+        INSERT INTO sysuser
+         (
+         [id],
+         [dwID],
+         [orderID],
+         [LoginID],
+         [UserName],
+         [isadmin],
+         [IsUse],
+         [LastDate],
+         [LastIP],
+         [LastTimes],
+         [sex],
+         [job],
+         [post],
+         [grade],
+         [phone1],
+         [phone2],
+         [mail],
+         [adress],
+         [education],
+         [pwd]
+         )
+       VALUES
+         (
+         #id#,
+         #dwID#,
+         #orderID#,
+         #LoginID#,
+         #UserName#,
+         #isadmin#,
+         #IsUse#,
+         #LastDate#,
+         #LastIP#,
+         #LastTimes#,
+         #sex#,
+         #job#,
+         #post#,
+         #grade#,
+         #phone1#,
+         #phone2#,
+         #mail#,
+         #adress#,
+         #education#,
+         #pwd#
+         )
+
+   </insert>
+   
+   <select id="GetsysuserRowCountByHash" parameterClass="Hashtable">
+         SELECT Count(*) 
+          FROM sysuser
+     <dynamic prepend="WHERE">
+       <isNotNull prepend="AND" property="id">[id]='$id$'</isNotNull>
+       <isNotNull prepend="AND" property="dwID">[dwID]='$dwID$'</isNotNull>
+       <isNotNull prepend="AND" property="orderID">[orderID]='$orderID$'</isNotNull>
+       <isNotNull prepend="AND" property="LoginID">[LoginID]='$LoginID$'</isNotNull>
+       <isNotNull prepend="AND" property="UserName">[UserName]='$UserName$'</isNotNull>
+       <isNotNull prepend="AND" property="isadmin">[isadmin]='$isadmin$'</isNotNull>
+       <isNotNull prepend="AND" property="IsUse">[IsUse]='$IsUse$'</isNotNull>
+       <isNotNull prepend="AND" property="LastDate">[LastDate]='$LastDate$'</isNotNull>
+       <isNotNull prepend="AND" property="LastIP">[LastIP]='$LastIP$'</isNotNull>
+       <isNotNull prepend="AND" property="LastTimes">[LastTimes]='$LastTimes$'</isNotNull>
+       <isNotNull prepend="AND" property="sex">[sex]='$sex$'</isNotNull>
+       <isNotNull prepend="AND" property="job">[job]='$job$'</isNotNull>
+       <isNotNull prepend="AND" property="post">[post]='$post$'</isNotNull>
+       <isNotNull prepend="AND" property="grade">[grade]='$grade$'</isNotNull>
+       <isNotNull prepend="AND" property="phone1">[phone1]='$phone1$'</isNotNull>
+       <isNotNull prepend="AND" property="phone2">[phone2]='$phone2$'</isNotNull>
+       <isNotNull prepend="AND" property="mail">[mail]='$mail$'</isNotNull>
+       <isNotNull prepend="AND" property="adress">[adress]='$adress$'</isNotNull>
+       <isNotNull prepend="AND" property="education">[education]='$education$'</isNotNull>
+       <isNotNull prepend="AND" property="pwd">[pwd]='$pwd$'</isNotNull>
+     </dynamic>
+
+   </select>
+   
+   <select id="GetsysuserRowCount" parameterClass="string">
+    select count(*) from sysuser $value$
+   </select>
+  </statements>
+</sqlMap>
+ 

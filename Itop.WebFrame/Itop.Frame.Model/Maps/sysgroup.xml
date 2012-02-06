@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="sysgroup" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+  <typeAlias alias="sysgroup"  type="Itop.Frame.Model.sysgroup,Itop.Frame.Model" />
+  </alias>
+  <resultMaps>
+      <resultMap id="sysgroup_AllColumns" class="sysgroup">
+        <result property="id" column="id" />
+        <result property="orderID" column="orderID" />
+        <result property="GroupCode" column="GroupCode" />
+        <result property="GroupName" column="GroupName" />
+        <result property="GroupType" column="GroupType" />
+        <result property="Remark" column="Remark" />
+      </resultMap>
+  </resultMaps>
+
+  <statements>
+   <select id="SelectsysgroupList" resultMap="sysgroup_AllColumns" parameterClass="string">
+        SELECT 
+         [id],
+         [orderID],
+         [GroupCode],
+         [GroupName],
+         [GroupType],
+         [Remark]
+          FROM sysgroup
+          $value$
+   </select>
+   
+   <select id="SelectsysgroupByHash" parameterClass="Hashtable">
+         SELECT 
+         [id],
+         [orderID],
+         [GroupCode],
+         [GroupName],
+         [GroupType],
+         [Remark]
+          FROM sysgroup
+     <dynamic prepend="WHERE">
+       <isNotNull prepend="AND" property="id">[id]='$id$'</isNotNull>
+       <isNotNull prepend="AND" property="orderID">[orderID]='$orderID$'</isNotNull>
+       <isNotNull prepend="AND" property="GroupCode">[GroupCode]='$GroupCode$'</isNotNull>
+       <isNotNull prepend="AND" property="GroupName">[GroupName]='$GroupName$'</isNotNull>
+       <isNotNull prepend="AND" property="GroupType">[GroupType]='$GroupType$'</isNotNull>
+       <isNotNull prepend="AND" property="Remark">[Remark]='$Remark$'</isNotNull>
+     </dynamic>
+   </select>
+   <select id="SelectsysgroupByKey" resultMap="sysgroup_AllColumns" parameterClass="sysgroup">
+         SELECT 
+         [id],
+         [orderID],
+         [GroupCode],
+         [GroupName],
+         [GroupType],
+         [Remark]
+         FROM sysgroup
+         WHERE 
+           id = #id#
+
+   </select>
+ 
+   <delete id="Deletesysgroup" parameterClass="sysgroup">
+        DELETE FROM 
+         sysgroup
+           WHERE
+         id = #id#
+
+   </delete>
+   
+   <delete id="DeletesysgroupByWhere" parameterClass="string">
+     delete from sysgroup $value$
+   </delete>
+   
+   <delete id="DeletesysgroupByKey" parameterClass="string">
+        DELETE FROM 
+         sysgroup
+           WHERE
+         id = #id#
+    
+   </delete>
+   
+   <update id="Updatesysgroup" parameterClass="sysgroup" resultClass="int">
+          UPDATE sysgroup
+           SET
+             [orderID]=#orderID#,
+             [GroupCode]=#GroupCode#,
+             [GroupName]=#GroupName#,
+             [GroupType]=#GroupType#,
+             [Remark]=#Remark#
+            WHERE 
+              id = #id#
+
+   </update>
+  
+   <insert id="Insertsysgroup" parameterClass="sysgroup">
+        INSERT INTO sysgroup
+         (
+         [id],
+         [orderID],
+         [GroupCode],
+         [GroupName],
+         [GroupType],
+         [Remark]
+         )
+       VALUES
+         (
+         #id#,
+         #orderID#,
+         #GroupCode#,
+         #GroupName#,
+         #GroupType#,
+         #Remark#
+         )
+
+   </insert>
+   
+   <select id="GetsysgroupRowCountByHash" parameterClass="Hashtable">
+         SELECT Count(*) 
+          FROM sysgroup
+     <dynamic prepend="WHERE">
+       <isNotNull prepend="AND" property="id">[id]='$id$'</isNotNull>
+       <isNotNull prepend="AND" property="orderID">[orderID]='$orderID$'</isNotNull>
+       <isNotNull prepend="AND" property="GroupCode">[GroupCode]='$GroupCode$'</isNotNull>
+       <isNotNull prepend="AND" property="GroupName">[GroupName]='$GroupName$'</isNotNull>
+       <isNotNull prepend="AND" property="GroupType">[GroupType]='$GroupType$'</isNotNull>
+       <isNotNull prepend="AND" property="Remark">[Remark]='$Remark$'</isNotNull>
+     </dynamic>
+
+   </select>
+   
+   <select id="GetsysgroupRowCount" parameterClass="string">
+    select count(*) from sysgroup $value$
+   </select>
+  </statements>
+</sqlMap>
+ 
