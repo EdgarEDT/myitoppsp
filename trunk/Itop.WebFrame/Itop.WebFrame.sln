@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itop.WebFrame", "Itop.WebFrame\Itop.WebFrame.csproj", "{CC0C9A29-3046-4FA2-B077-E79D0BFDCD97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itop.Frame.Model", "Itop.Frame.Model\Itop.Frame.Model.csproj", "{1A905521-20BF-4381-8E4B-BEB01DDE9EB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itop.Frame.BLL", "Itop.Frame.BLL\Itop.Frame.BLL.csproj", "{3EE86963-B497-4C78-BBC3-10DE83E3C910}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC0C9A29-3046-4FA2-B077-E79D0BFDCD97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC0C9A29-3046-4FA2-B077-E79D0BFDCD97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC0C9A29-3046-4FA2-B077-E79D0BFDCD97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC0C9A29-3046-4FA2-B077-E79D0BFDCD97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A905521-20BF-4381-8E4B-BEB01DDE9EB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A905521-20BF-4381-8E4B-BEB01DDE9EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A905521-20BF-4381-8E4B-BEB01DDE9EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A905521-20BF-4381-8E4B-BEB01DDE9EB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE86963-B497-4C78-BBC3-10DE83E3C910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE86963-B497-4C78-BBC3-10DE83E3C910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE86963-B497-4C78-BBC3-10DE83E3C910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE86963-B497-4C78-BBC3-10DE83E3C910}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

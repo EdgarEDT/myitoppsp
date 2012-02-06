@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <containers>
+    <!--平台服务容器配置-->
+    <container name ="PlatformServer">
+      <configuration>
+        <facilities>
+          <!--扩展对象块remoting配置-->
+          <!--扩展对象块ibatis配置-->
+          <facility id="ibatis" type="Castle.Facilities.IBatisNetIntegration.IBatisNetFacility, Castle.Facilities.IBatisNetIntegration" >
+            <sqlMap id="sqlServerSqlMap" config="./config/ibatis/SqlMap.config" />
+          </facility>
+ 
+        </facilities>
+        <include uri="Itop.FrameBll.xml" />
+
+        <!--服务块配置-->
+        <components>
+          <!--调试服务-->
+          <component
+			      id="remote.math"
+			      service="Ebada.Components.IRemoteMath, Ebada.Components"
+			      type="Ebada.Components.RemoteMath, Ebada.Components"
+			       lifestyle="transient">
+          </component>
+          <!--数据访问基础服务-->
+          <component
+			      id="IBaseSqlMapDao"
+			      service="Ebada.Components.IBaseSqlMapDao, Ebada.Components"
+			      type="Ebada.Components.BaseSqlMapDao, Ebada.Components"
+			      >
+          </component>
+       </components>
+        </configuration>
+      </container>
+    
+    </containers>
+</configuration>

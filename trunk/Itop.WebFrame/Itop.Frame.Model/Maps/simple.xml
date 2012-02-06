@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="simple" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+  </alias>
+  <resultMaps>
+      
+  </resultMaps>
+
+  <statements>
+   <select id="Select" resultClass="Hashtable" parameterClass="string">       
+     $value$
+   </select>  
+   <select id="SelectOneStr" resultClass="string" parameterClass="string">       
+     $value$
+   </select>
+    <select id="SelectOneInt" resultClass="int" parameterClass="string">
+      $value$
+    </select>
+    <delete id="Delete" parameterClass="string" resultClass="int">
+     $value$
+   </delete>  
+   
+   <update id="Update" parameterClass="string" resultClass="int">
+    $value$
+   </update>
+    <statement id="AnySql" parameterClass="string" resultClass="Hashtable">
+    $value$
+   </statement>   
+    <select id="SelectProgByUserID" resultClass="Hashtable" parameterClass="string">
+      select b.*,c.* from
+      (select ProgID,
+      convert(varchar,sum(convert(integer,fun1))) as "fun1",
+      convert(varchar,sum(convert(integer,fun2))) as "fun2",
+      convert(varchar,sum(convert(integer,fun3))) as "fun3",
+      convert(varchar,sum(convert(integer,fun4))) as "fun4",
+      convert(varchar,sum(convert(integer,fun5))) as "fun5",
+      convert(varchar,sum(convert(integer,fun6))) as "fun6",
+      convert(varchar,sum(convert(integer,fun7))) as "fun7",
+      convert(varchar,sum(convert(integer,fun8))) as "fun8",
+      convert(varchar,sum(convert(integer,fun9))) as "fun9"
+      from
+      (SELECT     dbo.sysgroupprog.id, dbo.sysgroupprog.GroupID, dbo.sysgroupprog.ProgID, dbo.sysgroupprog.fun1, dbo.sysgroupprog.fun2,
+      dbo.sysgroupprog.fun3, dbo.sysgroupprog.fun4, dbo.sysgroupprog.fun5, dbo.sysgroupprog.fun6, dbo.sysgroupprog.fun7, dbo.sysgroupprog.fun8,
+      dbo.sysgroupprog.fun9
+      FROM         dbo.sysgroup INNER JOIN
+      dbo.sysgroupprog ON dbo.sysgroup.id = dbo.sysgroupprog.GroupID INNER JOIN
+      dbo.sysgroupuser ON dbo.sysgroup.id = dbo.sysgroupuser.GroupID INNER JOIN
+      dbo.sysuser ON dbo.sysgroupuser.UserID = dbo.sysuser.id
+      where loginid=#value#) a
+      group by progid) b INNER JOIN
+      dbo.sysprog c  ON b.ProgID = c.id
+    </select>
+   </statements>
+</sqlMap>
+ 
