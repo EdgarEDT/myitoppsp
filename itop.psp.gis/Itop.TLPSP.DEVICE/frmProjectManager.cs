@@ -623,7 +623,7 @@ namespace Itop.TLPSP.DEVICE {
                 wait = new WaitDialogForm("", "正在处理数据, 请稍候...");
                 wait.Close();
                 elc.Allshortcheck(strID, this.ProjectUID, 100, 2);
-
+                curDevice.Init();
             } catch (Exception exc) {
                 Debug.Fail(exc.Message);
                 Itop.Client.Common.HandleException.TryCatch(exc);
