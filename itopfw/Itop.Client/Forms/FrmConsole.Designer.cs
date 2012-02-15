@@ -66,7 +66,6 @@
             this.splitContainer2 = new CSharpWin.SplitContainerEx();
             this.splitContainer1 = new CSharpWin.SplitContainerEx();
             this.nbctSystem = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.panel4 = new System.Windows.Forms.Panel();
             this.picMenu = new System.Windows.Forms.PictureBox();
@@ -517,12 +516,10 @@
             // 
             // nbctSystem
             // 
-            this.nbctSystem.ActiveGroup = this.navBarGroup1;
+            this.nbctSystem.ActiveGroup = null;
             this.nbctSystem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.nbctSystem.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1});
             this.nbctSystem.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItem1});
             this.nbctSystem.Location = new System.Drawing.Point(10, 0);
@@ -537,14 +534,6 @@
             this.nbctSystem.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
             this.nbctSystem.ActiveGroupChanged += new DevExpress.XtraNavBar.NavBarGroupEventHandler(this.nbctSystem_ActiveGroupChanged);
             this.nbctSystem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbctSystem_LinkClicked);
-            // 
-            // navBarGroup1
-            // 
-            this.navBarGroup1.Caption = "navBarGroup1";
-            this.navBarGroup1.Expanded = true;
-            this.navBarGroup1.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Small;
-            this.navBarGroup1.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
-            this.navBarGroup1.Name = "navBarGroup1";
             // 
             // navBarItem1
             // 
@@ -1045,7 +1034,6 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label5;
         private DevExpress.XtraNavBar.NavBarItem navBarItem1;
