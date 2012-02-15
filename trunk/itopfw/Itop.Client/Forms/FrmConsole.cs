@@ -1307,10 +1307,10 @@ namespace Itop.Client.Forms
                 //lastgroup=nbctSystem.ActiveGroup;
                 activegroupname = nbctSystem.ActiveGroup.Name;
             }
-            if (oneload)
-            {
-                return;
-            }
+            //if (oneload)
+            //{
+            //    return;
+            //}
             InitSelectControl();
             InitProRight();
             initButton();
