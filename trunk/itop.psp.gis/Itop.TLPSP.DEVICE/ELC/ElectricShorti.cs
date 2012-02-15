@@ -4817,7 +4817,11 @@ namespace Itop.TLPSP.DEVICE
                         }
                         if (!flag)
                         {
-                            UCDeviceBase.DataService.Delete<PSPDEV>(pspDev);
+                            PSP_ElcDevice pel = new PSP_ElcDevice();
+                            pel.ProjectSUID = projectSUID;
+                            pel.DeviceSUID = pspDev.SUID;
+                            UCDeviceBase.DataService.Delete<PSP_ElcDevice>(pel);
+                            //UCDeviceBase.DataService.Delete<PSPDEV>(pspDev);
                         }
                     }
                     con = " ,PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + projectSUID + "'AND PSPDEV.type='06'AND PSPDEV.KSwitchStatus = '0' order by PSPDEV.number";
