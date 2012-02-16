@@ -180,33 +180,26 @@ namespace Itop.RightManager.UI {
         }
         #endregion
        
-        //刷新
-        private void tsbRefresh_Click(object sender, EventArgs e) {
-            treeView1.Nodes.Clear();
-            CreateView();
-        }
-        //退出
-        private void tsbClose_Click(object sender, EventArgs e) {
-            this.Close();
-        }
 
-        private void tsbSave_Click(object sender, EventArgs e)
+      
+        //保存
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             treeView1.Focus();
             ArrayList list = new ArrayList();
             bool bl = true;
             try
             {
-                bl=bool.Parse(System.Configuration.ConfigurationSettings.AppSettings["RightModule"]);
+                bl = bool.Parse(System.Configuration.ConfigurationSettings.AppSettings["RightModule"]);
             }
             catch { }
             foreach (DataRow row in smdprogTable.GetChanges().Rows)
             {
-               //
+                //
 
-               　// if(row["progname"].ToString()=="8aa3924f-fb51-49da-8cfa-26f79acb02b8")
+                // if(row["progname"].ToString()=="8aa3924f-fb51-49da-8cfa-26f79acb02b8")
 
-                
+
 
                 VsmdgroupProg vp = DataConverter.RowToObject<VsmdgroupProg>(row);
 
@@ -215,7 +208,7 @@ namespace Itop.RightManager.UI {
                     vp.ins = "0";
                     vp.upd = "0";
                     vp.del = "0";
-                
+
                 }
 
                 list.Add(vp);
@@ -242,6 +235,17 @@ namespace Itop.RightManager.UI {
             {
                 this.Text = "系统权限授权管理";
             }
+        }
+        //刷新
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            treeView1.Nodes.Clear();
+            CreateView();
+        }
+        //退出
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
 
   
