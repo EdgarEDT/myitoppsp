@@ -9,7 +9,7 @@ using DevExpress.XtraEditors;
 
 namespace Itop.Client.Resources
 {
-    public partial class FrmAbout : XtraForm
+    public partial class FrmAbout : XtraForm 
     {
         public FrmAbout()
         {

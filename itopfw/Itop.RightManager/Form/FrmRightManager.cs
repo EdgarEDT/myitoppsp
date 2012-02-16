@@ -139,16 +139,16 @@ namespace Itop.RightManager.UI {
         #endregion
         private void Btn_Show()
         {
-            bool Canall = false;
+            DevExpress.XtraBars.BarItemVisibility Canall= DevExpress.XtraBars.BarItemVisibility.Never;
              string currentuser = MIS.UserNumber;
          
             if (currentuser == "admin" )
             {
-                Canall = true;
+                Canall = DevExpress.XtraBars.BarItemVisibility.Always;
             }
-            toolStripButton1.Visible = Canall;
-            toolStripButton2.Visible = Canall;
-            tsbDel.Visible = Canall;
+            barButtonItem1.Visibility = Canall;
+            barButtonItem2.Visibility = Canall;
+            barButtonItem4.Visibility = Canall;
            
         }
         //修改
@@ -372,6 +372,74 @@ namespace Itop.RightManager.UI {
             }
             catch { MessageBox.Show("删除失败！"); }
             
+        }
+        //添加组
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddGroup();
+        }
+        //添加用户
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddUser();
+        }
+        //修改
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (treeView1.SelectedNode == null)
+            {
+                return;
+            }
+            if (treeView1.SelectedNode.Tag == "组")
+            {
+                EditGroup();
+            }
+            else if (treeView1.SelectedNode.Tag == "用户")
+            {
+                EditUser();
+            }
+        }
+        //删除
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (treeView1.SelectedNode == null)
+            {
+                return;
+            }
+            if (treeView1.SelectedNode.Tag == "组")
+            {
+                DeleteGroup();
+            }
+            else if (treeView1.SelectedNode.Tag == "用户")
+            {
+                DeleteUser();
+            }
+        }
+        //刷新
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CreateView();
+        }
+        //授权
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (treeView1.SelectedNode == null)
+            {
+                return;
+            }
+            if (treeView1.SelectedNode.Tag == "组")
+            {
+                RightSetup();
+            }
+            else
+            {
+                MessageBox.Show("请选择分组再进行授权");
+            }
+        }
+        //关闭
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
 
         
