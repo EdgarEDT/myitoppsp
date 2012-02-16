@@ -67,6 +67,7 @@
             this.simpleButton6.Size = new System.Drawing.Size(76, 26);
             this.simpleButton6.TabIndex = 5;
             this.simpleButton6.Text = "取消";
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // groupBox3
             // 
@@ -162,6 +163,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 292);
             this.Controls.Add(this.groupControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ForecastMaxHourSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "最大小时数-计算单位设置";

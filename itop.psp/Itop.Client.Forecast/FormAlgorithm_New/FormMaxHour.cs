@@ -204,6 +204,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         /// <param name="e"></param>
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (treeList1.Nodes.Count == 0)
+            {
+                MessageBox.Show("无数据，不能操作！");
+                return;
+            }
             if (barButtonItem3.Caption == "开始截取历史数据")
             {
                 barButtonItem3.Caption = "结束截取历史数据";

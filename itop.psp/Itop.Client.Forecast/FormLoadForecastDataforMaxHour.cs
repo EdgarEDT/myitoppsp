@@ -135,13 +135,14 @@ namespace Itop.Client.Forecast
                     m = 2;
                     break;
                 case "指数平滑法":
-                    m = 3;
+                    //m = 3;
+                    m = 5;
                     break;
                 case "弹性系数法":
                     m = 4;
                     break;
                 case "相关法":
-                    m = 5;
+                    m = 3;
                     break;
                 case "灰色模型法":
                     m = 6;
