@@ -23,6 +23,7 @@ namespace Itop.Client.Forecast
         private bool _canPrint = true;
 
         bool _isSelect = false;
+        int xiaoshu = 2;
 
         public bool IsSelect
         {
@@ -73,7 +74,11 @@ namespace Itop.Client.Forecast
         {
             InitializeComponent();
         }
-
+        public FormResult( int m)
+        {
+            InitializeComponent();
+            xiaoshu = m;
+        }
 
         
 
@@ -181,8 +186,20 @@ namespace Itop.Client.Forecast
                         gridCol.Caption = dt.Columns[i].ColumnName.Replace("y", "") + "年";
                         gridCol.FieldName = dt.Columns[i].ColumnName;
                         gridCol.VisibleIndex = i + 1;
-                        gridCol.DisplayFormat.FormatString = "n2";
+                        //gridCol.DisplayFormat.FormatString = "n2";
+                        //gridCol.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                        if (xiaoshu==4)
+                        {
+                            gridCol.DisplayFormat.FormatString = "#####################0.####";
+                        }
+                        else
+                        {
+                            gridCol.DisplayFormat.FormatString = "#####################0.##";
+                        }
+                        
                         gridCol.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+
+
                     }
                     else if (dt.Columns[i].ColumnName.IndexOf("增长率") >= 0)
                     {
@@ -191,6 +208,9 @@ namespace Itop.Client.Forecast
                         gridCol.VisibleIndex = i + 1;
                         gridCol.DisplayFormat.FormatString = "p2";
                         gridCol.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+
+                       
+
                         gridCol.Width = 80;
                     }
                     
@@ -230,8 +250,9 @@ namespace Itop.Client.Forecast
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (gridView1.Columns.ColumnByFieldName("ParentID")!=null)
-            gridView1.Columns["ParentID"].Visible = true;
+            //if (gridView1.Columns.ColumnByFieldName("ParentID")!=null)
+            //gridView1.Columns["ParentID"].Visible = true;
+            gridView1.Columns["ParentID"].Visible = false ;
         FileClass.ExportExcel(this.Text, _unitHeader, this.gridControl1);
         if (gridView1.Columns.ColumnByFieldName("ParentID") != null)
             gridView1.Columns["ParentID"].Visible = false;

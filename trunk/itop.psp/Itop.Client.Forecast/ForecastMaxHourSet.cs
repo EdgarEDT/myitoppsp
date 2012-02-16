@@ -46,6 +46,11 @@ namespace Itop.Client.Forecast
             rbdlone.Checked = !rbdltwo.Checked;
         }
 
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         
     }
 }

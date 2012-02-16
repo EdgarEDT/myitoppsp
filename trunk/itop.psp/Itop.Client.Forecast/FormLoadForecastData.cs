@@ -16,6 +16,7 @@ namespace Itop.Client.Forecast
     public partial class FormLoadForecastData : FormBase
     {
         string projectUID = "";
+        int typeflag = 1;
 
         public string ProjectUID
         {
@@ -40,6 +41,11 @@ namespace Itop.Client.Forecast
         {
             InitializeComponent();
         }
+        public FormLoadForecastData(int m)
+        {
+            typeflag = m;
+            InitializeComponent();
+        }
 
         private void FormLoadForecastData_Load(object sender, EventArgs e)
         {
@@ -62,7 +68,7 @@ namespace Itop.Client.Forecast
         {
             Ps_forecast_list report = new Ps_forecast_list();
             report.UserID = ProjectUID;
-            report.Col1 = "1";
+            report.Col1 =typeflag.ToString();
             IList<Ps_forecast_list> listReports = Common.Services.BaseService.GetList<Ps_forecast_list>("SelectPs_forecast_listByCOL1AndUserID", report);
 
             gridControl1.DataSource = listReports;

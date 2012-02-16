@@ -325,14 +325,24 @@ namespace Itop.Client.Forecast
             listTypesn = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Typen);
             if (listTypesn.Count > 0)
                 barButtonItem19.ImageIndex = 0;
-            psp_Typen.Forecast = 11;
+
+            psp_Typen.Forecast = 12;
             listTypesn = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Typen);
             if (listTypesn.Count > 0)
                 barButtonItem30.ImageIndex = 0;
+
+
             psp_Typen.Forecast = 15;
             listTypesn = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Typen);
             if (listTypesn.Count > 0)
-                barButtonItem35.ImageIndex = 0;
+                barButtonItem33.ImageIndex = 0;
+
+
+            psp_Typen.Forecast = 16;
+            listTypesn = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Typen);
+            if (listTypesn.Count > 0)
+                barButtonItem36.ImageIndex = 0;
+
         }
 
 

@@ -282,7 +282,6 @@
             this.barButtonItem11,
             this.barButtonItem12,
             this.barButtonItem13});
-            this.barManager1.MainMenu = this.bar3;
             this.barManager1.MaxItemId = 16;
             // 
             // bar3
@@ -301,7 +300,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem7, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem8, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar3.OptionsBar.MultiLine = true;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Custom 1";
             // 
@@ -323,7 +323,7 @@
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "参数设置";
+            this.barButtonItem2.Caption = "计算单位设置";
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.ImageIndex = 14;
             this.barButtonItem2.Name = "barButtonItem2";

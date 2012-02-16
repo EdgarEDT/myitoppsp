@@ -3993,6 +3993,11 @@ namespace Itop.Client.Forecast
         bool selectdral = true;
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (treeList1.Nodes.Count == 0)
+            {
+                MessageBox.Show("无数据，不能操作！");
+                return;
+            }
             if (barButtonItem9.Caption == "开始截取历史数据")
             {
                 barButtonItem9.Caption = "结束截取历史数据";

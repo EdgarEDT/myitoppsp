@@ -126,7 +126,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             }
         }
 
-        int type = 16;
+        int type = 17;
         DataTable dataTable = new DataTable();
         private Ps_forecast_list forecastReport;
         private PublicFunction m_pf = new PublicFunction();
@@ -250,6 +250,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         /// <param name="e"></param>
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (treeList1.Nodes.Count == 0)
+            {
+                MessageBox.Show("无数据，不能操作！");
+                return;
+            }
             if (barButtonItem3.Caption == "开始截取历史数据")
             {
                 barButtonItem3.Caption = "结束截取历史数据";
@@ -301,7 +306,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //FileClass.ExportToExcelOld(this.forecastReport.Title, "", this.gridControl1);
-            FormResult fr = new FormResult();
+            FormResult fr = new FormResult(4);
             fr.LI = this.treeList1;
             fr.Text = forecastReport.Title;
             fr.ShowDialog();
