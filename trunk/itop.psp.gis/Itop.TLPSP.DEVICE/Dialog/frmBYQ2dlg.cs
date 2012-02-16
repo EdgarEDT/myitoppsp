@@ -481,21 +481,29 @@ namespace Itop.TLPSP.DEVICE
             {
                 spinEdit1.Value = 100;
             }
-           if (radioGroup3.SelectedIndex==0)
-           {
-               spinEdit18.Value = ((spinEdit22.Value * spinEdit5.Value * spinEdit5.Value) / (1000 * spinEdit1.Value * spinEdit1.Value))*(100/(spinEdit47.Value*spinEdit47.Value));
-               spinEdit16.Value = ((spinEdit20.Value * spinEdit5.Value * spinEdit5.Value) / (100  * spinEdit1.Value)) * (100 / (spinEdit47.Value * spinEdit47.Value));
-               spinEdit15.Value = (spinEdit21.Value/(1000*spinEdit1.Value))*(spinEdit1.Value/(spinEdit5.Value*spinEdit5.Value))*((spinEdit47.Value * spinEdit47.Value)/100);
-               spinEdit14.Value = (spinEdit19.Value/100)*(spinEdit1.Value/(spinEdit5.Value*spinEdit5.Value))*((spinEdit47.Value * spinEdit47.Value)/100);
+            try
+            {
+                if (radioGroup3.SelectedIndex == 0)
+                {
+                    spinEdit18.Value = ((spinEdit22.Value * spinEdit5.Value * spinEdit5.Value) / (1000 * spinEdit1.Value * spinEdit1.Value)) * (100 / (spinEdit47.Value * spinEdit47.Value));
+                    spinEdit16.Value = ((spinEdit20.Value * spinEdit5.Value * spinEdit5.Value) / (100 * spinEdit1.Value)) * (100 / (spinEdit47.Value * spinEdit47.Value));
+                    spinEdit15.Value = (spinEdit21.Value / (1000 * spinEdit1.Value)) * (spinEdit1.Value / (spinEdit5.Value * spinEdit5.Value)) * ((spinEdit47.Value * spinEdit47.Value) / 100);
+                    spinEdit14.Value = (spinEdit19.Value / 100) * (spinEdit1.Value / (spinEdit5.Value * spinEdit5.Value)) * ((spinEdit47.Value * spinEdit47.Value) / 100);
 
-           } 
-           else
-           {
-               spinEdit18.Value = ((spinEdit22.Value * spinEdit5.Value * spinEdit5.Value) / (1000 * spinEdit1.Value * spinEdit1.Value));
-               spinEdit16.Value = ((spinEdit20.Value * spinEdit5.Value * spinEdit5.Value) / (100 * spinEdit1.Value));
-               spinEdit15.Value = (spinEdit21.Value / (1000 * spinEdit1.Value)) * (spinEdit1.Value / (spinEdit5.Value * spinEdit5.Value));
-               spinEdit14.Value = (spinEdit19.Value / 100) * (spinEdit1.Value / (spinEdit5.Value * spinEdit5.Value));
-           }  
+                }
+                else
+                {
+                    spinEdit18.Value = ((spinEdit22.Value * spinEdit5.Value * spinEdit5.Value) / (1000 * spinEdit1.Value * spinEdit1.Value));
+                    spinEdit16.Value = ((spinEdit20.Value * spinEdit5.Value * spinEdit5.Value) / (100 * spinEdit1.Value));
+                    spinEdit15.Value = (spinEdit21.Value / (1000 * spinEdit1.Value)) * (spinEdit1.Value / (spinEdit5.Value * spinEdit5.Value));
+                    spinEdit14.Value = (spinEdit19.Value / 100) * (spinEdit1.Value / (spinEdit5.Value * spinEdit5.Value));
+                }  
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("变压器额定容量、一次侧额定电压、一次侧额定电流的值不能为零！");
+            }
+          
            
         }
 
