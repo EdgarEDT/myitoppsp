@@ -32,8 +32,8 @@
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +52,6 @@
             this.buttonEdit1.Properties.Click += new System.EventHandler(this.buttonEdit1_Properties_Click);
             this.buttonEdit1.Size = new System.Drawing.Size(217, 21);
             this.buttonEdit1.TabIndex = 7;
-          
             // 
             // label1
             // 
@@ -73,33 +72,33 @@
             this.checkBox1.Text = "生成设备台帐";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // simpleButton2
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(247, 78);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(69, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "取消";
-            this.button2.UseVisualStyleBackColor = true;
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButton2.Location = new System.Drawing.Point(254, 82);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton2.TabIndex = 77;
+            this.simpleButton2.Text = "取消(&C)";
             // 
-            // button1
+            // simpleButton1
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(166, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "确定";
-            this.button1.UseVisualStyleBackColor = true;
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.simpleButton1.Location = new System.Drawing.Point(161, 82);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton1.TabIndex = 76;
+            this.simpleButton1.Text = "确认(&O)";
             // 
             // frmInJWD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 123);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonEdit1);
@@ -121,7 +120,7 @@
         private DevExpress.XtraEditors.ButtonEdit buttonEdit1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

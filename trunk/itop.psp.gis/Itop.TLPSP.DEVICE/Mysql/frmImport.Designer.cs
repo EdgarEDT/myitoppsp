@@ -25,7 +25,6 @@
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent() {
-            this.connectBtn = new System.Windows.Forms.Button();
             this.password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.userid = new System.Windows.Forms.TextBox();
@@ -36,13 +35,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tables = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btImport = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.checkedListBox1 = new DevExpress.XtraEditors.ListBoxControl();
+            this.button1 = new DevExpress.XtraEditors.SimpleButton();
+            this.connectBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.btImport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -53,16 +53,6 @@
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // connectBtn
-            // 
-            this.connectBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.connectBtn.Location = new System.Drawing.Point(520, 17);
-            this.connectBtn.Name = "connectBtn";
-            this.connectBtn.Size = new System.Drawing.Size(90, 24);
-            this.connectBtn.TabIndex = 13;
-            this.connectBtn.Text = "连接";
-            this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click);
             // 
             // password
             // 
@@ -153,20 +143,9 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "表";
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(520, 68);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 24);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "查询";
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.EmbeddedNavigator.Name = "";
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
@@ -192,6 +171,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btImport);
+            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.connectBtn);
             this.splitContainer1.Panel1.Controls.Add(this.databaseList);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
@@ -201,10 +183,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.userid);
-            this.splitContainer1.Panel1.Controls.Add(this.btImport);
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.password);
-            this.splitContainer1.Panel1.Controls.Add(this.connectBtn);
             // 
             // splitContainer1.Panel2
             // 
@@ -212,16 +191,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(623, 358);
             this.splitContainer1.SplitterDistance = 127;
             this.splitContainer1.TabIndex = 19;
-            // 
-            // btImport
-            // 
-            this.btImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btImport.Location = new System.Drawing.Point(520, 98);
-            this.btImport.Name = "btImport";
-            this.btImport.Size = new System.Drawing.Size(90, 24);
-            this.btImport.TabIndex = 13;
-            this.btImport.Text = "导入";
-            this.btImport.Click += new System.EventHandler(this.btImport_Click);
             // 
             // splitContainer2
             // 
@@ -249,6 +218,38 @@
             this.checkedListBox1.TabIndex = 20;
             this.checkedListBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.checkedListBox1_MouseClick);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.Location = new System.Drawing.Point(535, 62);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 29);
+            this.button1.TabIndex = 73;
+            this.button1.Text = "查询";
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // connectBtn
+            // 
+            this.connectBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.connectBtn.Location = new System.Drawing.Point(535, 17);
+            this.connectBtn.Name = "connectBtn";
+            this.connectBtn.Size = new System.Drawing.Size(75, 29);
+            this.connectBtn.TabIndex = 72;
+            this.connectBtn.Text = "连接";
+            this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click_1);
+            // 
+            // btImport
+            // 
+            this.btImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btImport.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btImport.Location = new System.Drawing.Point(535, 91);
+            this.btImport.Name = "btImport";
+            this.btImport.Size = new System.Drawing.Size(75, 29);
+            this.btImport.TabIndex = 74;
+            this.btImport.Text = "导入";
+            this.btImport.Click += new System.EventHandler(this.btImport_Click_1);
+            // 
             // frmImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -273,7 +274,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button connectBtn;
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox userid;
@@ -284,12 +284,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox tables;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Button btImport;
         private DevExpress.XtraEditors.ListBoxControl checkedListBox1;
+        private DevExpress.XtraEditors.SimpleButton button1;
+        private DevExpress.XtraEditors.SimpleButton connectBtn;
+        private DevExpress.XtraEditors.SimpleButton btImport;
     }
 }

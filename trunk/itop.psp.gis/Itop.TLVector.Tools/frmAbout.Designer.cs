@@ -14,7 +14,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
 
@@ -48,9 +47,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,15 +125,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "电话：     0451-82280175";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(271, 232);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 24);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "确 定";
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDark;
@@ -152,12 +142,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "版权所有： 哈尔滨通力软件开发有限公司";
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(241, 230);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton1.TabIndex = 73;
+            this.simpleButton1.Text = "确认(&O)";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // frmAbout
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(344, 271);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox1);
@@ -178,5 +178,7 @@
         }
 
         #endregion
+
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

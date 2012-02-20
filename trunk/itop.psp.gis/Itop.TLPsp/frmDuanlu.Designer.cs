@@ -33,8 +33,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.hScrollBar2 = new DevExpress.XtraEditors.HScrollBar();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,6 +40,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboBoxEdit4 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
@@ -89,7 +89,7 @@
             "大方式电抗",
             "小方式电抗"});
             this.comboBoxEdit2.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit2.Size = new System.Drawing.Size(140, 23);
+            this.comboBoxEdit2.Size = new System.Drawing.Size(140, 21);
             this.comboBoxEdit2.TabIndex = 5;
             this.comboBoxEdit2.Visible = false;
             // 
@@ -106,28 +106,8 @@
             "两相故障",
             "三相故障"});
             this.comboBoxEdit3.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit3.Size = new System.Drawing.Size(140, 23);
+            this.comboBoxEdit3.Size = new System.Drawing.Size(140, 21);
             this.comboBoxEdit3.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(36, 206);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "确定";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(172, 206);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "取消";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // hScrollBar2
             // 
@@ -183,7 +163,7 @@
             "是",
             "否"});
             this.comboBoxEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit1.Size = new System.Drawing.Size(140, 23);
+            this.comboBoxEdit1.Size = new System.Drawing.Size(140, 21);
             this.comboBoxEdit1.TabIndex = 17;
             // 
             // comboBoxEdit4
@@ -197,8 +177,26 @@
             "图形输出短路电流",
             "无标注"});
             this.comboBoxEdit4.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit4.Size = new System.Drawing.Size(140, 23);
+            this.comboBoxEdit4.Size = new System.Drawing.Size(140, 21);
             this.comboBoxEdit4.TabIndex = 18;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButton2.Location = new System.Drawing.Point(176, 206);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton2.TabIndex = 22;
+            this.simpleButton2.Text = "取消(&C)";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.simpleButton1.Location = new System.Drawing.Point(86, 206);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton1.TabIndex = 21;
+            this.simpleButton1.Text = "确认(&O)";
             // 
             // frmDuanlu
             // 
@@ -206,6 +204,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(292, 254);
+            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.comboBoxEdit4);
             this.Controls.Add(this.comboBoxEdit1);
             this.Controls.Add(this.label6);
@@ -213,8 +213,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.hScrollBar1);
             this.Controls.Add(this.hScrollBar2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxEdit3);
             this.Controls.Add(this.comboBoxEdit2);
             this.Controls.Add(this.label4);
@@ -241,8 +239,6 @@
         private System.Windows.Forms.Label label4;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private DevExpress.XtraEditors.HScrollBar hScrollBar2;
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.Label label5;
@@ -250,5 +246,7 @@
         private System.Windows.Forms.Label label6;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

@@ -21,13 +21,7 @@ namespace ItopVector.Tools
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (FocusedObject==null)
-            {
-                MessageBox.Show("请选择记录。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                return;
-            }
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+           
         }
 
         private void frmSubstationCodeSel_Load(object sender, EventArgs e)
@@ -93,6 +87,22 @@ namespace ItopVector.Tools
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            if (FocusedObject == null)
+            {
+                MessageBox.Show("请选择记录。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.No;
             this.Close();

@@ -433,34 +433,55 @@ namespace ItopVector.Tools
         }
         private void button3_Click(object sender, EventArgs e)
         {
+          
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             decimal i = Convert.ToDecimal(q1.Text) +
-            Convert.ToDecimal(q2.Text) +
-            Convert.ToDecimal(q3.Text) +
-            Convert.ToDecimal(q4.Text) +
-            Convert.ToDecimal(q5.Text) +
-            Convert.ToDecimal(q6.Text) +
-            Convert.ToDecimal(q7.Text) +
-            Convert.ToDecimal(q8.Text) +
-            Convert.ToDecimal(q9.Text) +
-            Convert.ToDecimal(q10.Text) +
-            Convert.ToDecimal(q11.Text) +
-            Convert.ToDecimal(q12.Text) +
-            Convert.ToDecimal(q13.Text) +
-            Convert.ToDecimal(q14.Text) +
-            Convert.ToDecimal(q15.Text) +
-            Convert.ToDecimal(q16.Text) +
-            Convert.ToDecimal(q17.Text) +
-            Convert.ToDecimal(q18.Text) +
-            Convert.ToDecimal(q19.Text) +
-            Convert.ToDecimal(q20.Text) +
-            Convert.ToDecimal(q21.Text) +
-            Convert.ToDecimal(q22.Text) +
-            Convert.ToDecimal(q23.Text) +
-            Convert.ToDecimal(q24.Text) +
-            Convert.ToDecimal(q25.Text);
+          Convert.ToDecimal(q2.Text) +
+          Convert.ToDecimal(q3.Text) +
+          Convert.ToDecimal(q4.Text) +
+          Convert.ToDecimal(q5.Text) +
+          Convert.ToDecimal(q6.Text) +
+          Convert.ToDecimal(q7.Text) +
+          Convert.ToDecimal(q8.Text) +
+          Convert.ToDecimal(q9.Text) +
+          Convert.ToDecimal(q10.Text) +
+          Convert.ToDecimal(q11.Text) +
+          Convert.ToDecimal(q12.Text) +
+          Convert.ToDecimal(q13.Text) +
+          Convert.ToDecimal(q14.Text) +
+          Convert.ToDecimal(q15.Text) +
+          Convert.ToDecimal(q16.Text) +
+          Convert.ToDecimal(q17.Text) +
+          Convert.ToDecimal(q18.Text) +
+          Convert.ToDecimal(q19.Text) +
+          Convert.ToDecimal(q20.Text) +
+          Convert.ToDecimal(q21.Text) +
+          Convert.ToDecimal(q22.Text) +
+          Convert.ToDecimal(q23.Text) +
+          Convert.ToDecimal(q24.Text) +
+          Convert.ToDecimal(q25.Text);
             if (i > 1 || i < 1)
             {
-                MessageBox.Show("权重系数和必须为1，请调整权重系数。\r\n 当前权重和为" + i,"提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("权重系数和必须为1，请调整权重系数。\r\n 当前权重和为" + i, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             GetAllNumber();
@@ -492,22 +513,12 @@ namespace ItopVector.Tools
             Services.BaseService.Update<PSP_LineData>(data);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
             if (groupBox2.Enabled == true)
             {
                 PSP_LineData d1 = new PSP_LineData();
-                PSP_LineData temp=Services.BaseService.GetOneByKey<PSP_LineData>(groupBox2.Tag.ToString());
+                PSP_LineData temp = Services.BaseService.GetOneByKey<PSP_LineData>(groupBox2.Tag.ToString());
                 d1.UID = groupBox2.Tag.ToString();
                 d1.q1 = comboBox1.Text;
                 d1.q2 = comboBox2.Text;
@@ -704,7 +715,11 @@ namespace ItopVector.Tools
                     Services.BaseService.Update<PSP_LineData>(d1);
                 }
             }
+        }
 
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
        

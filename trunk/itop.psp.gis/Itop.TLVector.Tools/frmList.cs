@@ -27,6 +27,16 @@ namespace ItopVector.Tools
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             if (listBox1.SelectedIndex == -1)
             {
                 return;
@@ -36,7 +46,7 @@ namespace ItopVector.Tools
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
             this.Close();
         }

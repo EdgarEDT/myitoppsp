@@ -28,63 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.ctrlPSP_PlanList1 = new ItopVector.Tools.CtrlPSP_PlanList();
+            this.button4 = new DevExpress.XtraEditors.SimpleButton();
+            this.button5 = new DevExpress.XtraEditors.SimpleButton();
+            this.button1 = new DevExpress.XtraEditors.SimpleButton();
+            this.button2 = new DevExpress.XtraEditors.SimpleButton();
+            this.button3 = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(494, 280);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "确定";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(112, 279);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(88, 23);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "影响因素维护";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(206, 280);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(88, 23);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "线路评分";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(399, 280);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "删除线路规划";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(300, 280);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "新建线路规划";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ctrlPSP_PlanList1
             // 
@@ -94,6 +44,51 @@
             this.ctrlPSP_PlanList1.Size = new System.Drawing.Size(582, 266);
             this.ctrlPSP_PlanList1.TabIndex = 0;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(131, 280);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(88, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "影响因素维护";
+            this.button4.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(226, 280);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(88, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "线路评分";
+            this.button5.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(321, 280);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "新建线路规划";
+            this.button1.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(416, 280);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "删除线路规划";
+            this.button2.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(511, 280);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(65, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "确定";
+            this.button3.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
             // frmPlanList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -101,9 +96,9 @@
             this.ClientSize = new System.Drawing.Size(581, 315);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.ctrlPSP_PlanList1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -119,11 +114,11 @@
         #endregion
 
         private CtrlPSP_PlanList ctrlPSP_PlanList1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private DevExpress.XtraEditors.SimpleButton button4;
+        private DevExpress.XtraEditors.SimpleButton button5;
+        private DevExpress.XtraEditors.SimpleButton button1;
+        private DevExpress.XtraEditors.SimpleButton button2;
+        private DevExpress.XtraEditors.SimpleButton button3;
 
     }
 }

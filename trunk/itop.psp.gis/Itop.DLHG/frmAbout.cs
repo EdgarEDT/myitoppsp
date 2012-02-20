@@ -27,5 +27,10 @@ namespace Itop.DLGH
             this.process1.StartInfo.Arguments = "www.Itop.com";
             this.process1.Start();
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

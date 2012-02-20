@@ -21,6 +21,21 @@ namespace ItopVector.Tools
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
             frmGrade f = new frmGrade();
             f.type = "1";
             f.InitData(uid);
@@ -28,7 +43,7 @@ namespace ItopVector.Tools
             f.CK();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void simpleButton2_Click(object sender, EventArgs e)
         {
             frmGrade f = new frmGrade();
             f.type = "2";
@@ -37,7 +52,7 @@ namespace ItopVector.Tools
             f.CK();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void simpleButton3_Click(object sender, EventArgs e)
         {
             frmGrade f = new frmGrade();
             f.type = "3";

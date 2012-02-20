@@ -256,5 +256,29 @@ namespace Itop.TLPsp
             if (cc.ShowDialog() == DialogResult.OK)
             { }
         }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                if ((MessageBox.Show(this, "确定要删除线路型号：" + dataGridView1.CurrentRow.Cells[1].Value + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes))
+                {
+
+                    DataTable dt = dataGridView1.DataSource as DataTable;
+                    DataRow dr = dt.Rows[rows];
+                    if (dr != null)
+                    {
+                        WireCategory obj = Itop.Common.DataConverter.RowToObject<WireCategory>(dr);
+                        Services.BaseService.Delete<WireCategory>(obj);
+                    }
+                    InitData(vri);
+
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
     }
 }

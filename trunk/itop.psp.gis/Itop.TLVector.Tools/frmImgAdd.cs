@@ -38,8 +38,14 @@ namespace ItopVector.Tools
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if(buttonEdit1.Text==""){
-                MessageBox.Show("请选择附件。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+
+            if (buttonEdit1.Text == "")
+            {
+                MessageBox.Show("请选择附件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             System.IO.FileStream fs = new System.IO.FileStream(buttonEdit1.Text, FileMode.Open, FileAccess.Read);
@@ -47,12 +53,12 @@ namespace ItopVector.Tools
             byte[] filebt = br.ReadBytes((int)fs.Length);
             br.Close();
             fs.Close();
-            string[] str=buttonEdit1.Text.Split("\\".ToCharArray());
+            string[] str = buttonEdit1.Text.Split("\\".ToCharArray());
             PSP_ImgInfo imgInfo = new PSP_ImgInfo();
             imgInfo.UID = Guid.NewGuid().ToString();
             imgInfo.TreeID = uid;
             imgInfo.Image = filebt;
-            imgInfo.Name = str[str.Length-1];
+            imgInfo.Name = str[str.Length - 1];
             imgInfo.Remark = txtRe.Text;
             Services.BaseService.Create<PSP_ImgInfo>(imgInfo);
             this.DialogResult = DialogResult.OK;

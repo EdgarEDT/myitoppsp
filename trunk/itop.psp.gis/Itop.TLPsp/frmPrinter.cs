@@ -23,9 +23,14 @@ namespace Itop.TLPsp {
             printDocument1.DefaultPageSettings = PageSettings;
             pageSetupDialog1.PageSettings = PageSettings;
 
-            this.checkBox1.Checked = PrintHelper.ShowMap;
-            this.checkBox2.Checked = PrintHelper.ShowCenter;
-            this.checkBox3.Checked = PrintHelper.ShowPolygon;
+            barEditItem1.EditValue = (object)PrintHelper.ShowMap;
+            barEditItem2.EditValue = (object)PrintHelper.ShowCenter;
+            barEditItem3.EditValue = (object)PrintHelper.ShowPolygon;
+
+
+            //this.checkBox1.Checked = PrintHelper.ShowMap;
+            //this.checkBox2.Checked = PrintHelper.ShowCenter;
+            //this.checkBox3.Checked = PrintHelper.ShowPolygon;
         }
         public PrintHelper printHelper = null;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e) {
@@ -38,17 +43,8 @@ namespace Itop.TLPsp {
             zoom = printPreviewControl1.Zoom;
         }
         double zoom = 0f;
-        private void toolStripButton1_Click(object sender, EventArgs e) {
-            if (pageSetupDialog1.ShowDialog()==DialogResult.OK)
-            {
-                printPreviewControl1.InvalidatePreview();
-            }
-            
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e) {
-            printDocument1.Print();
-        }
+       
+    
         private void printPreviewControl1_MouseClick(object sender, MouseEventArgs e) {
             double f1 = printPreviewControl1.Zoom;
             if (f1 <= 1) {
@@ -60,23 +56,51 @@ namespace Itop.TLPsp {
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e) {
-            this.Close();
+           
         }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
-            PrintHelper.ShowMap = checkBox1.Checked;
+       
+        //设置
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (pageSetupDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printPreviewControl1.InvalidatePreview();
+            }
         }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e) {
-            PrintHelper.ShowCenter = checkBox2.Checked;
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e) {
-            PrintHelper.ShowPolygon = checkBox3.Checked;
-        }
-
-        private void toolStripButton4_Click(object sender, EventArgs e) {
+        //刷新
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
             printPreviewControl1.InvalidatePreview();
         }
+        //打印
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            printDocument1.Print();
+        }
+        //关闭
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+        //显示地图
+        private void repositoryItemCheckEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.CheckEdit chk = (DevExpress.XtraEditors.CheckEdit)sender;
+            PrintHelper.ShowMap = chk.Checked;
+        }
+        //居中显示
+        private void repositoryItemCheckEdit2_CheckedChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.CheckEdit chk = (DevExpress.XtraEditors.CheckEdit)sender;
+            PrintHelper.ShowCenter = chk.Checked;
+        }
+        //区域显示
+        private void repositoryItemCheckEdit3_CheckedChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.CheckEdit chk = (DevExpress.XtraEditors.CheckEdit)sender;
+            PrintHelper.ShowPolygon = chk.Checked;
+        }
+
+        
     }
 }

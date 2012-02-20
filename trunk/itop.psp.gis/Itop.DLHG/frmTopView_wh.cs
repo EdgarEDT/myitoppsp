@@ -28,7 +28,7 @@ namespace Itop.DLGH
 
         private void frmTopView_Load(object sender, EventArgs e)
         {
-            
+            ctrlSvgView1.SetBk1BackColor(this.BackColor);
             string svguid = ConfigurationSettings.AppSettings.Get("SvgID");
             CkImage(svguid);
             ctrlSvgView1.OpenFromDatabase(svguid);//("c5ec3bc7-9706-4cbd-9b8b-632d3606f933");
