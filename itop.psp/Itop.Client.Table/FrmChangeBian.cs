@@ -80,13 +80,14 @@ namespace Itop.Client.Table
                 this.Controls.Add(box);
                 bt = pt;
             }
-            Button ok = new Button();
+            DevExpress.XtraEditors.SimpleButton ok = new DevExpress.XtraEditors.SimpleButton();
+            
             ok.Name = "b1"; ok.Text = "确定";
             ok.DialogResult = DialogResult.OK;
             ok.Location = new Point(200, bt.Y + 40);
             ok.Click += new EventHandler(ok_Click);
             this.Controls.Add(ok);
-            Button cancel = new Button();
+            DevExpress.XtraEditors.SimpleButton cancel = new DevExpress.XtraEditors.SimpleButton();
             cancel.Name = "b2"; cancel.Text = "取消";
             cancel.DialogResult = DialogResult.Cancel;
             cancel.Location = new Point(300 + 30, bt.Y + 40);

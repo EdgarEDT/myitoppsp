@@ -45,7 +45,6 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.btn_Tzgs = new System.Windows.Forms.Button();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -129,6 +128,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.label28 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btn_Tzgs = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
@@ -192,17 +192,17 @@
             this.groupBox2.Controls.Add(this.textEdit2);
             this.groupBox2.Controls.Add(this.textEdit1);
             this.groupBox2.Controls.Add(this.gridControl1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(14, 14);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(508, 487);
+            this.groupBox2.Size = new System.Drawing.Size(593, 568);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(209, 20);
+            this.simpleButton4.Location = new System.Drawing.Point(244, 23);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(143, 24);
+            this.simpleButton4.Size = new System.Drawing.Size(167, 28);
             this.simpleButton4.TabIndex = 8;
             this.simpleButton4.Text = "从已有模块选择电量";
             this.simpleButton4.Visible = false;
@@ -211,9 +211,9 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(17, 39);
+            this.radioButton2.Location = new System.Drawing.Point(20, 45);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(107, 16);
+            this.radioButton2.Size = new System.Drawing.Size(109, 18);
             this.radioButton2.TabIndex = 7;
             this.radioButton2.Text = "从已有模块选择";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -223,9 +223,9 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(17, 16);
+            this.radioButton1.Location = new System.Drawing.Point(20, 19);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(119, 16);
+            this.radioButton1.Size = new System.Drawing.Size(121, 18);
             this.radioButton1.TabIndex = 6;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "根据基准电量计算";
@@ -234,9 +234,9 @@
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(451, 20);
+            this.simpleButton3.Location = new System.Drawing.Point(526, 23);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(39, 23);
+            this.simpleButton3.Size = new System.Drawing.Size(45, 27);
             this.simpleButton3.TabIndex = 5;
             this.simpleButton3.Text = "计算";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -244,38 +244,38 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(309, 25);
+            this.label27.Location = new System.Drawing.Point(360, 29);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(47, 12);
+            this.label27.Size = new System.Drawing.Size(47, 14);
             this.label27.TabIndex = 2;
             this.label27.Text = "售电率:";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(171, 24);
+            this.label26.Location = new System.Drawing.Point(199, 28);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(47, 12);
+            this.label26.Size = new System.Drawing.Size(47, 14);
             this.label26.TabIndex = 2;
             this.label26.Text = "售电量:";
             // 
             // textEdit2
             // 
-            this.textEdit2.Location = new System.Drawing.Point(358, 21);
+            this.textEdit2.Location = new System.Drawing.Point(418, 24);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit2.Properties.EditFormat.FormatString = "p2";
             this.textEdit2.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit2.Properties.Mask.EditMask = "###.##%";
             this.textEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit2.Size = new System.Drawing.Size(87, 23);
+            this.textEdit2.Size = new System.Drawing.Size(101, 21);
             this.textEdit2.TabIndex = 1;
             this.textEdit2.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged);
             this.textEdit2.Enter += new System.EventHandler(this.textEdit2_Enter);
             // 
             // textEdit1
             // 
-            this.textEdit1.Location = new System.Drawing.Point(224, 20);
+            this.textEdit1.Location = new System.Drawing.Point(261, 23);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.DisplayFormat.FormatString = "n0";
             this.textEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -283,20 +283,19 @@
             this.textEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit1.Properties.Mask.EditMask = "n0";
             this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit1.Size = new System.Drawing.Size(79, 23);
+            this.textEdit1.Size = new System.Drawing.Size(92, 21);
             this.textEdit1.TabIndex = 1;
             this.textEdit1.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged);
             this.textEdit1.Enter += new System.EventHandler(this.textEdit1_Enter);
             // 
             // gridControl1
             // 
-            this.gridControl1.EmbeddedNavigator.Name = "";
-            this.gridControl1.Location = new System.Drawing.Point(17, 61);
+            this.gridControl1.Location = new System.Drawing.Point(20, 71);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(473, 396);
+            this.gridControl1.Size = new System.Drawing.Size(552, 462);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -351,39 +350,28 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Controls.Add(this.btn_Tzgs);
             this.groupBox3.Controls.Add(this.gridControl2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Controls.Add(this.btn_Tzgs);
+            this.groupBox3.Location = new System.Drawing.Point(14, 14);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(508, 487);
+            this.groupBox3.Size = new System.Drawing.Size(593, 568);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(187, 16);
+            this.checkBox1.Location = new System.Drawing.Point(218, 19);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(72, 16);
+            this.checkBox1.Size = new System.Drawing.Size(74, 18);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "累计投资";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
             // 
-            // btn_Tzgs
-            // 
-            this.btn_Tzgs.Location = new System.Drawing.Point(26, 12);
-            this.btn_Tzgs.Name = "btn_Tzgs";
-            this.btn_Tzgs.Size = new System.Drawing.Size(118, 23);
-            this.btn_Tzgs.TabIndex = 1;
-            this.btn_Tzgs.Text = "获取投资估算数据";
-            this.btn_Tzgs.UseVisualStyleBackColor = true;
-            this.btn_Tzgs.Click += new System.EventHandler(this.btn_Tzgs_Click);
-            // 
             // gridControl2
             // 
-            this.gridControl2.EmbeddedNavigator.Name = "";
-            this.gridControl2.Location = new System.Drawing.Point(17, 41);
+            this.gridControl2.Location = new System.Drawing.Point(20, 48);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -391,7 +379,7 @@
             this.repositoryItemTextEdit4,
             this.repositoryItemTextEdit5,
             this.repositoryItemTextEdit6});
-            this.gridControl2.Size = new System.Drawing.Size(473, 433);
+            this.gridControl2.Size = new System.Drawing.Size(552, 505);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -541,25 +529,25 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(8, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(508, 487);
+            this.groupBox1.Size = new System.Drawing.Size(593, 568);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(75, 468);
+            this.label29.Location = new System.Drawing.Point(87, 546);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(47, 12);
+            this.label29.Size = new System.Drawing.Size(47, 14);
             this.label29.TabIndex = 45;
             this.label29.Text = "购电价:";
             // 
             // textEdit12
             // 
             this.textEdit12.EditValue = "338.12";
-            this.textEdit12.Location = new System.Drawing.Point(127, 462);
+            this.textEdit12.Location = new System.Drawing.Point(148, 539);
             this.textEdit12.Name = "textEdit12";
             this.textEdit12.Properties.DisplayFormat.FormatString = "n2";
             this.textEdit12.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -567,22 +555,22 @@
             this.textEdit12.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit12.Properties.Mask.EditMask = "n2";
             this.textEdit12.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit12.Size = new System.Drawing.Size(97, 23);
+            this.textEdit12.Size = new System.Drawing.Size(113, 21);
             this.textEdit12.TabIndex = 44;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(349, 468);
+            this.label7.Location = new System.Drawing.Point(407, 546);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 12);
+            this.label7.Size = new System.Drawing.Size(35, 14);
             this.label7.TabIndex = 43;
             this.label7.Text = "定员:";
             // 
             // textEdit11
             // 
             this.textEdit11.EditValue = "285";
-            this.textEdit11.Location = new System.Drawing.Point(393, 462);
+            this.textEdit11.Location = new System.Drawing.Point(458, 539);
             this.textEdit11.Name = "textEdit11";
             this.textEdit11.Properties.DisplayFormat.FormatString = "n0";
             this.textEdit11.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -590,12 +578,12 @@
             this.textEdit11.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit11.Properties.Mask.EditMask = "n0";
             this.textEdit11.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit11.Size = new System.Drawing.Size(97, 23);
+            this.textEdit11.Size = new System.Drawing.Size(113, 21);
             this.textEdit11.TabIndex = 42;
             // 
             // textEdit10
             // 
-            this.textEdit10.Location = new System.Drawing.Point(393, 434);
+            this.textEdit10.Location = new System.Drawing.Point(458, 506);
             this.textEdit10.Name = "textEdit10";
             this.textEdit10.Properties.DisplayFormat.FormatString = "p2";
             this.textEdit10.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -603,12 +591,12 @@
             this.textEdit10.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit10.Properties.Mask.EditMask = "###.##%";
             this.textEdit10.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit10.Size = new System.Drawing.Size(97, 23);
+            this.textEdit10.Size = new System.Drawing.Size(113, 21);
             this.textEdit10.TabIndex = 41;
             // 
             // textEdit9
             // 
-            this.textEdit9.Location = new System.Drawing.Point(393, 405);
+            this.textEdit9.Location = new System.Drawing.Point(458, 472);
             this.textEdit9.Name = "textEdit9";
             this.textEdit9.Properties.DisplayFormat.FormatString = "p2";
             this.textEdit9.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -616,12 +604,12 @@
             this.textEdit9.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit9.Properties.Mask.EditMask = "###.##%";
             this.textEdit9.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit9.Size = new System.Drawing.Size(97, 23);
+            this.textEdit9.Size = new System.Drawing.Size(113, 21);
             this.textEdit9.TabIndex = 40;
             // 
             // textEdit8
             // 
-            this.textEdit8.Location = new System.Drawing.Point(393, 376);
+            this.textEdit8.Location = new System.Drawing.Point(458, 439);
             this.textEdit8.Name = "textEdit8";
             this.textEdit8.Properties.DisplayFormat.FormatString = "p2";
             this.textEdit8.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -629,12 +617,12 @@
             this.textEdit8.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit8.Properties.Mask.EditMask = "###.##%";
             this.textEdit8.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit8.Size = new System.Drawing.Size(97, 23);
+            this.textEdit8.Size = new System.Drawing.Size(113, 21);
             this.textEdit8.TabIndex = 39;
             // 
             // textEdit7
             // 
-            this.textEdit7.Location = new System.Drawing.Point(393, 348);
+            this.textEdit7.Location = new System.Drawing.Point(458, 406);
             this.textEdit7.Name = "textEdit7";
             this.textEdit7.Properties.DisplayFormat.FormatString = "p2";
             this.textEdit7.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -642,12 +630,12 @@
             this.textEdit7.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit7.Properties.Mask.EditMask = "###.##%";
             this.textEdit7.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit7.Size = new System.Drawing.Size(97, 23);
+            this.textEdit7.Size = new System.Drawing.Size(113, 21);
             this.textEdit7.TabIndex = 38;
             // 
             // textEdit6
             // 
-            this.textEdit6.Location = new System.Drawing.Point(128, 433);
+            this.textEdit6.Location = new System.Drawing.Point(149, 505);
             this.textEdit6.Name = "textEdit6";
             this.textEdit6.Properties.DisplayFormat.FormatString = "p2";
             this.textEdit6.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -655,12 +643,12 @@
             this.textEdit6.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit6.Properties.Mask.EditMask = "###.##%";
             this.textEdit6.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit6.Size = new System.Drawing.Size(97, 23);
+            this.textEdit6.Size = new System.Drawing.Size(113, 21);
             this.textEdit6.TabIndex = 37;
             // 
             // textEdit5
             // 
-            this.textEdit5.Location = new System.Drawing.Point(128, 405);
+            this.textEdit5.Location = new System.Drawing.Point(149, 472);
             this.textEdit5.Name = "textEdit5";
             this.textEdit5.Properties.DisplayFormat.FormatString = "p2";
             this.textEdit5.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -668,13 +656,13 @@
             this.textEdit5.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit5.Properties.Mask.EditMask = "###.##%";
             this.textEdit5.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit5.Size = new System.Drawing.Size(97, 23);
+            this.textEdit5.Size = new System.Drawing.Size(113, 21);
             this.textEdit5.TabIndex = 36;
             // 
             // textEdit4
             // 
             this.textEdit4.EditValue = "50000";
-            this.textEdit4.Location = new System.Drawing.Point(128, 376);
+            this.textEdit4.Location = new System.Drawing.Point(149, 439);
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Properties.DisplayFormat.FormatString = "n0";
             this.textEdit4.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -682,12 +670,12 @@
             this.textEdit4.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit4.Properties.Mask.EditMask = "n0";
             this.textEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit4.Size = new System.Drawing.Size(97, 23);
+            this.textEdit4.Size = new System.Drawing.Size(113, 21);
             this.textEdit4.TabIndex = 35;
             // 
             // textEdit3
             // 
-            this.textEdit3.Location = new System.Drawing.Point(128, 348);
+            this.textEdit3.Location = new System.Drawing.Point(149, 406);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Properties.DisplayFormat.FormatString = "p2";
             this.textEdit3.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -695,85 +683,85 @@
             this.textEdit3.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit3.Properties.Mask.EditMask = "###.##%";
             this.textEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit3.Size = new System.Drawing.Size(97, 23);
+            this.textEdit3.Size = new System.Drawing.Size(113, 21);
             this.textEdit3.TabIndex = 34;
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(313, 439);
+            this.label31.Location = new System.Drawing.Point(365, 512);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(71, 12);
+            this.label31.Size = new System.Drawing.Size(71, 14);
             this.label31.TabIndex = 25;
             this.label31.Text = "内部收益率:";
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(325, 411);
+            this.label33.Location = new System.Drawing.Point(379, 479);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(59, 12);
+            this.label33.Size = new System.Drawing.Size(59, 14);
             this.label33.TabIndex = 26;
             this.label33.Text = "其他费用:";
             // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(325, 383);
+            this.label34.Location = new System.Drawing.Point(379, 447);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(59, 12);
+            this.label34.Size = new System.Drawing.Size(59, 14);
             this.label34.TabIndex = 28;
             this.label34.Text = "保险费率:";
             // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(313, 354);
+            this.label35.Location = new System.Drawing.Point(365, 413);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(71, 12);
+            this.label35.Size = new System.Drawing.Size(71, 14);
             this.label35.TabIndex = 27;
             this.label35.Text = "维护修理费:";
             // 
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(63, 354);
+            this.label36.Location = new System.Drawing.Point(73, 413);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(47, 12);
+            this.label36.Size = new System.Drawing.Size(47, 14);
             this.label36.TabIndex = 32;
             this.label36.Text = "线损率:";
             // 
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(63, 439);
+            this.label37.Location = new System.Drawing.Point(73, 512);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(47, 12);
+            this.label37.Size = new System.Drawing.Size(47, 14);
             this.label37.TabIndex = 33;
             this.label37.Text = "材料费:";
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(39, 383);
+            this.label38.Location = new System.Drawing.Point(45, 447);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(71, 12);
+            this.label38.Size = new System.Drawing.Size(71, 14);
             this.label38.TabIndex = 31;
             this.label38.Text = "年人均工资:";
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(3, 411);
+            this.label39.Location = new System.Drawing.Point(3, 479);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(107, 12);
+            this.label39.Size = new System.Drawing.Size(107, 14);
             this.label39.TabIndex = 29;
             this.label39.Text = "福利费及保险系数:";
             // 
             // t14
             // 
             this.t14.EditValue = "";
-            this.t14.Location = new System.Drawing.Point(393, 13);
+            this.t14.Location = new System.Drawing.Point(458, 15);
             this.t14.Name = "t14";
             this.t14.Properties.DisplayFormat.FormatString = "p2";
             this.t14.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -781,13 +769,13 @@
             this.t14.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t14.Properties.Mask.EditMask = "###.##%";
             this.t14.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t14.Size = new System.Drawing.Size(97, 23);
+            this.t14.Size = new System.Drawing.Size(113, 21);
             this.t14.TabIndex = 12;
             this.t14.Enter += new System.EventHandler(this.t14_Enter);
             // 
             // t24
             // 
-            this.t24.Location = new System.Drawing.Point(393, 293);
+            this.t24.Location = new System.Drawing.Point(458, 342);
             this.t24.Name = "t24";
             this.t24.Properties.DisplayFormat.FormatString = "p2";
             this.t24.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -795,13 +783,13 @@
             this.t24.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t24.Properties.Mask.EditMask = "###.##%";
             this.t24.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t24.Size = new System.Drawing.Size(97, 23);
+            this.t24.Size = new System.Drawing.Size(113, 21);
             this.t24.TabIndex = 22;
             this.t24.Enter += new System.EventHandler(this.t24_Enter);
             // 
             // t25
             // 
-            this.t25.Location = new System.Drawing.Point(393, 322);
+            this.t25.Location = new System.Drawing.Point(458, 376);
             this.t25.Name = "t25";
             this.t25.Properties.DisplayFormat.FormatString = "p2";
             this.t25.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -809,13 +797,13 @@
             this.t25.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t25.Properties.Mask.EditMask = "###.##%";
             this.t25.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t25.Size = new System.Drawing.Size(97, 23);
+            this.t25.Size = new System.Drawing.Size(113, 21);
             this.t25.TabIndex = 23;
             this.t25.Enter += new System.EventHandler(this.t25_Enter);
             // 
             // t23
             // 
-            this.t23.Location = new System.Drawing.Point(393, 265);
+            this.t23.Location = new System.Drawing.Point(458, 309);
             this.t23.Name = "t23";
             this.t23.Properties.DisplayFormat.FormatString = "p2";
             this.t23.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -823,13 +811,13 @@
             this.t23.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t23.Properties.Mask.EditMask = "###.##%";
             this.t23.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t23.Size = new System.Drawing.Size(97, 23);
+            this.t23.Size = new System.Drawing.Size(113, 21);
             this.t23.TabIndex = 21;
             this.t23.Enter += new System.EventHandler(this.t23_Enter);
             // 
             // t22
             // 
-            this.t22.Location = new System.Drawing.Point(393, 237);
+            this.t22.Location = new System.Drawing.Point(458, 276);
             this.t22.Name = "t22";
             this.t22.Properties.DisplayFormat.FormatString = "p2";
             this.t22.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -837,13 +825,13 @@
             this.t22.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t22.Properties.Mask.EditMask = "###.##%";
             this.t22.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t22.Size = new System.Drawing.Size(97, 23);
+            this.t22.Size = new System.Drawing.Size(113, 21);
             this.t22.TabIndex = 20;
             this.t22.Enter += new System.EventHandler(this.t22_Enter);
             // 
             // t21
             // 
-            this.t21.Location = new System.Drawing.Point(393, 209);
+            this.t21.Location = new System.Drawing.Point(458, 244);
             this.t21.Name = "t21";
             this.t21.Properties.DisplayFormat.FormatString = "p2";
             this.t21.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -851,13 +839,13 @@
             this.t21.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t21.Properties.Mask.EditMask = "###.##%";
             this.t21.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t21.Size = new System.Drawing.Size(97, 23);
+            this.t21.Size = new System.Drawing.Size(113, 21);
             this.t21.TabIndex = 19;
             this.t21.Enter += new System.EventHandler(this.t21_Enter);
             // 
             // t20
             // 
-            this.t20.Location = new System.Drawing.Point(393, 181);
+            this.t20.Location = new System.Drawing.Point(458, 211);
             this.t20.Name = "t20";
             this.t20.Properties.DisplayFormat.FormatString = "p2";
             this.t20.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -865,13 +853,13 @@
             this.t20.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t20.Properties.Mask.EditMask = "###.##%";
             this.t20.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t20.Size = new System.Drawing.Size(97, 23);
+            this.t20.Size = new System.Drawing.Size(113, 21);
             this.t20.TabIndex = 18;
             this.t20.Enter += new System.EventHandler(this.t20_Enter);
             // 
             // t19
             // 
-            this.t19.Location = new System.Drawing.Point(393, 153);
+            this.t19.Location = new System.Drawing.Point(458, 178);
             this.t19.Name = "t19";
             this.t19.Properties.DisplayFormat.FormatString = "p2";
             this.t19.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -879,13 +867,13 @@
             this.t19.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t19.Properties.Mask.EditMask = "###.##%";
             this.t19.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t19.Size = new System.Drawing.Size(97, 23);
+            this.t19.Size = new System.Drawing.Size(113, 21);
             this.t19.TabIndex = 17;
             this.t19.Enter += new System.EventHandler(this.t19_Enter);
             // 
             // t18
             // 
-            this.t18.Location = new System.Drawing.Point(393, 125);
+            this.t18.Location = new System.Drawing.Point(458, 146);
             this.t18.Name = "t18";
             this.t18.Properties.DisplayFormat.FormatString = "p2";
             this.t18.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -893,13 +881,13 @@
             this.t18.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t18.Properties.Mask.EditMask = "###.##%";
             this.t18.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t18.Size = new System.Drawing.Size(97, 23);
+            this.t18.Size = new System.Drawing.Size(113, 21);
             this.t18.TabIndex = 16;
             this.t18.Enter += new System.EventHandler(this.t18_Enter);
             // 
             // t17
             // 
-            this.t17.Location = new System.Drawing.Point(393, 97);
+            this.t17.Location = new System.Drawing.Point(458, 113);
             this.t17.Name = "t17";
             this.t17.Properties.DisplayFormat.FormatString = "p2";
             this.t17.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -907,22 +895,22 @@
             this.t17.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t17.Properties.Mask.EditMask = "###.##%";
             this.t17.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t17.Size = new System.Drawing.Size(97, 23);
+            this.t17.Size = new System.Drawing.Size(113, 21);
             this.t17.TabIndex = 15;
             this.t17.Enter += new System.EventHandler(this.t17_Enter);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(301, 298);
+            this.label22.Location = new System.Drawing.Point(351, 348);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(83, 12);
+            this.label22.Size = new System.Drawing.Size(83, 14);
             this.label22.TabIndex = 0;
             this.label22.Text = "自有资金比率:";
             // 
             // t16
             // 
-            this.t16.Location = new System.Drawing.Point(393, 69);
+            this.t16.Location = new System.Drawing.Point(458, 80);
             this.t16.Name = "t16";
             this.t16.Properties.DisplayFormat.FormatString = "p2";
             this.t16.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -930,31 +918,31 @@
             this.t16.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t16.Properties.Mask.EditMask = "###.##%";
             this.t16.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t16.Size = new System.Drawing.Size(97, 23);
+            this.t16.Size = new System.Drawing.Size(113, 21);
             this.t16.TabIndex = 14;
             this.t16.Enter += new System.EventHandler(this.t16_Enter);
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(313, 327);
+            this.label25.Location = new System.Drawing.Point(365, 381);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(71, 12);
+            this.label25.Size = new System.Drawing.Size(71, 14);
             this.label25.TabIndex = 0;
             this.label25.Text = "存贷利率比:";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(313, 270);
+            this.label21.Location = new System.Drawing.Point(365, 315);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 12);
+            this.label21.Size = new System.Drawing.Size(71, 14);
             this.label21.TabIndex = 0;
             this.label21.Text = "资本金比率:";
             // 
             // t15
             // 
-            this.t15.Location = new System.Drawing.Point(393, 41);
+            this.t15.Location = new System.Drawing.Point(458, 48);
             this.t15.Name = "t15";
             this.t15.Properties.DisplayFormat.FormatString = "p2";
             this.t15.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -962,23 +950,23 @@
             this.t15.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t15.Properties.Mask.EditMask = "###.##%";
             this.t15.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t15.Size = new System.Drawing.Size(97, 23);
+            this.t15.Size = new System.Drawing.Size(113, 21);
             this.t15.TabIndex = 13;
             this.t15.Enter += new System.EventHandler(this.t15_Enter);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(301, 242);
+            this.label20.Location = new System.Drawing.Point(351, 282);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(83, 12);
+            this.label20.Size = new System.Drawing.Size(83, 14);
             this.label20.TabIndex = 0;
             this.label20.Text = "流动资金比率:";
             // 
             // t13
             // 
             this.t13.EditValue = "4";
-            this.t13.Location = new System.Drawing.Point(128, 322);
+            this.t13.Location = new System.Drawing.Point(149, 376);
             this.t13.Name = "t13";
             this.t13.Properties.DisplayFormat.FormatString = "n0";
             this.t13.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -986,13 +974,13 @@
             this.t13.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t13.Properties.Mask.EditMask = "##########";
             this.t13.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t13.Size = new System.Drawing.Size(97, 23);
+            this.t13.Size = new System.Drawing.Size(113, 21);
             this.t13.TabIndex = 11;
             this.t13.Enter += new System.EventHandler(this.t13_Enter);
             // 
             // t11
             // 
-            this.t11.Location = new System.Drawing.Point(128, 265);
+            this.t11.Location = new System.Drawing.Point(149, 309);
             this.t11.Name = "t11";
             this.t11.Properties.DisplayFormat.FormatString = "p2";
             this.t11.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1000,22 +988,22 @@
             this.t11.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t11.Properties.Mask.EditMask = "###.##%";
             this.t11.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t11.Size = new System.Drawing.Size(97, 23);
+            this.t11.Size = new System.Drawing.Size(113, 21);
             this.t11.TabIndex = 9;
             this.t11.Enter += new System.EventHandler(this.t11_Enter);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(301, 214);
+            this.label19.Location = new System.Drawing.Point(351, 250);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(83, 12);
+            this.label19.Size = new System.Drawing.Size(83, 14);
             this.label19.TabIndex = 0;
             this.label19.Text = "动态投资分额:";
             // 
             // t12
             // 
-            this.t12.Location = new System.Drawing.Point(128, 294);
+            this.t12.Location = new System.Drawing.Point(149, 343);
             this.t12.Name = "t12";
             this.t12.Properties.DisplayFormat.FormatString = "p2";
             this.t12.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1023,13 +1011,13 @@
             this.t12.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t12.Properties.Mask.EditMask = "###.##%";
             this.t12.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t12.Size = new System.Drawing.Size(97, 23);
+            this.t12.Size = new System.Drawing.Size(113, 21);
             this.t12.TabIndex = 10;
             this.t12.Enter += new System.EventHandler(this.t12_Enter);
             // 
             // t10
             // 
-            this.t10.Location = new System.Drawing.Point(128, 237);
+            this.t10.Location = new System.Drawing.Point(149, 276);
             this.t10.Name = "t10";
             this.t10.Properties.DisplayFormat.FormatString = "p2";
             this.t10.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1037,22 +1025,22 @@
             this.t10.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t10.Properties.Mask.EditMask = "###.##%";
             this.t10.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t10.Size = new System.Drawing.Size(97, 23);
+            this.t10.Size = new System.Drawing.Size(113, 21);
             this.t10.TabIndex = 8;
             this.t10.Enter += new System.EventHandler(this.t10_Enter);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(313, 186);
+            this.label18.Location = new System.Drawing.Point(365, 217);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(71, 12);
+            this.label18.Size = new System.Drawing.Size(71, 14);
             this.label18.TabIndex = 0;
             this.label18.Text = "教育费附加:";
             // 
             // t9
             // 
-            this.t9.Location = new System.Drawing.Point(128, 209);
+            this.t9.Location = new System.Drawing.Point(149, 244);
             this.t9.Name = "t9";
             this.t9.Properties.DisplayFormat.FormatString = "p2";
             this.t9.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1060,22 +1048,22 @@
             this.t9.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t9.Properties.Mask.EditMask = "###.##%";
             this.t9.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t9.Size = new System.Drawing.Size(97, 23);
+            this.t9.Size = new System.Drawing.Size(113, 21);
             this.t9.TabIndex = 7;
             this.t9.Enter += new System.EventHandler(this.t9_Enter);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(229, 158);
+            this.label17.Location = new System.Drawing.Point(267, 184);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(155, 12);
+            this.label17.Size = new System.Drawing.Size(155, 14);
             this.label17.TabIndex = 0;
             this.label17.Text = "其它地区维护及建设税税率:";
             // 
             // t8
             // 
-            this.t8.Location = new System.Drawing.Point(128, 181);
+            this.t8.Location = new System.Drawing.Point(149, 211);
             this.t8.Name = "t8";
             this.t8.Properties.DisplayFormat.FormatString = "p2";
             this.t8.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1083,22 +1071,22 @@
             this.t8.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t8.Properties.Mask.EditMask = "###.##%";
             this.t8.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t8.Size = new System.Drawing.Size(97, 23);
+            this.t8.Size = new System.Drawing.Size(113, 21);
             this.t8.TabIndex = 6;
             this.t8.Enter += new System.EventHandler(this.t8_Enter);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(253, 130);
+            this.label16.Location = new System.Drawing.Point(295, 152);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(131, 12);
+            this.label16.Size = new System.Drawing.Size(131, 14);
             this.label16.TabIndex = 0;
             this.label16.Text = "县镇维护及建设税税率:";
             // 
             // t7
             // 
-            this.t7.Location = new System.Drawing.Point(128, 153);
+            this.t7.Location = new System.Drawing.Point(149, 178);
             this.t7.Name = "t7";
             this.t7.Properties.DisplayFormat.FormatString = "p2";
             this.t7.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1106,49 +1094,49 @@
             this.t7.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t7.Properties.Mask.EditMask = "###.##%";
             this.t7.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t7.Size = new System.Drawing.Size(97, 23);
+            this.t7.Size = new System.Drawing.Size(113, 21);
             this.t7.TabIndex = 5;
             this.t7.Enter += new System.EventHandler(this.t7_Enter);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(253, 102);
+            this.label15.Location = new System.Drawing.Point(295, 119);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(131, 12);
+            this.label15.Size = new System.Drawing.Size(131, 14);
             this.label15.TabIndex = 0;
             this.label15.Text = "城市维护及建设税税率:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(51, 214);
+            this.label13.Location = new System.Drawing.Point(59, 250);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 12);
+            this.label13.Size = new System.Drawing.Size(59, 14);
             this.label13.TabIndex = 0;
             this.label13.Text = "所得税率:";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(51, 327);
+            this.label24.Location = new System.Drawing.Point(59, 381);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(59, 12);
+            this.label24.Size = new System.Drawing.Size(59, 14);
             this.label24.TabIndex = 0;
             this.label24.Text = "还贷系数:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(39, 270);
+            this.label14.Location = new System.Drawing.Point(45, 315);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 12);
+            this.label14.Size = new System.Drawing.Size(71, 14);
             this.label14.TabIndex = 0;
             this.label14.Text = "股本金分利:";
             // 
             // t4
             // 
-            this.t4.Location = new System.Drawing.Point(128, 97);
+            this.t4.Location = new System.Drawing.Point(149, 113);
             this.t4.Name = "t4";
             this.t4.Properties.DisplayFormat.FormatString = "n0";
             this.t4.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1156,31 +1144,31 @@
             this.t4.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t4.Properties.Mask.EditMask = "##";
             this.t4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t4.Size = new System.Drawing.Size(97, 23);
+            this.t4.Size = new System.Drawing.Size(113, 21);
             this.t4.TabIndex = 3;
             this.t4.Enter += new System.EventHandler(this.t4_Enter);
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(51, 299);
+            this.label23.Location = new System.Drawing.Point(59, 349);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(59, 12);
+            this.label23.Size = new System.Drawing.Size(59, 14);
             this.label23.TabIndex = 0;
             this.label23.Text = "银行利率:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(39, 242);
+            this.label12.Location = new System.Drawing.Point(45, 282);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(71, 12);
+            this.label12.Size = new System.Drawing.Size(71, 14);
             this.label12.TabIndex = 0;
             this.label12.Text = "折旧还贷率:";
             // 
             // t5
             // 
-            this.t5.Location = new System.Drawing.Point(128, 125);
+            this.t5.Location = new System.Drawing.Point(149, 146);
             this.t5.Name = "t5";
             this.t5.Properties.DisplayFormat.FormatString = "p2";
             this.t5.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1188,22 +1176,22 @@
             this.t5.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t5.Properties.Mask.EditMask = "0.##%";
             this.t5.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t5.Size = new System.Drawing.Size(97, 23);
+            this.t5.Size = new System.Drawing.Size(113, 21);
             this.t5.TabIndex = 4;
             this.t5.Enter += new System.EventHandler(this.t5_Enter);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(277, 74);
+            this.label11.Location = new System.Drawing.Point(323, 86);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 12);
+            this.label11.Size = new System.Drawing.Size(107, 14);
             this.label11.TabIndex = 0;
             this.label11.Text = "公积金，公益金率:";
             // 
             // t3
             // 
-            this.t3.Location = new System.Drawing.Point(128, 69);
+            this.t3.Location = new System.Drawing.Point(149, 80);
             this.t3.Name = "t3";
             this.t3.Properties.DisplayFormat.FormatString = "n0";
             this.t3.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1211,22 +1199,22 @@
             this.t3.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t3.Properties.Mask.EditMask = "#######";
             this.t3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t3.Size = new System.Drawing.Size(97, 23);
+            this.t3.Size = new System.Drawing.Size(113, 21);
             this.t3.TabIndex = 2;
             this.t3.Enter += new System.EventHandler(this.t3_Enter);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(277, 46);
+            this.label10.Location = new System.Drawing.Point(323, 54);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(107, 12);
+            this.label10.Size = new System.Drawing.Size(107, 14);
             this.label10.TabIndex = 0;
             this.label10.Text = "城建及教育附加税:";
             // 
             // t2
             // 
-            this.t2.Location = new System.Drawing.Point(128, 41);
+            this.t2.Location = new System.Drawing.Point(149, 48);
             this.t2.Name = "t2";
             this.t2.Properties.DisplayFormat.FormatString = "n0";
             this.t2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1234,7 +1222,7 @@
             this.t2.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t2.Properties.Mask.EditMask = "n0";
             this.t2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t2.Size = new System.Drawing.Size(97, 23);
+            this.t2.Size = new System.Drawing.Size(113, 21);
             this.t2.TabIndex = 1;
             this.t2.EditValueChanged += new System.EventHandler(this.t2_EditValueChanged);
             this.t2.Enter += new System.EventHandler(this.t2_Enter);
@@ -1242,15 +1230,15 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(301, 18);
+            this.label9.Location = new System.Drawing.Point(351, 21);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 12);
+            this.label9.Size = new System.Drawing.Size(83, 14);
             this.label9.TabIndex = 0;
             this.label9.Text = "固定资产残值:";
             // 
             // t1
             // 
-            this.t1.Location = new System.Drawing.Point(128, 13);
+            this.t1.Location = new System.Drawing.Point(149, 15);
             this.t1.Name = "t1";
             this.t1.Properties.DisplayFormat.FormatString = "####";
             this.t1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -1258,7 +1246,7 @@
             this.t1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.t1.Properties.Mask.EditMask = "####";
             this.t1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.t1.Size = new System.Drawing.Size(97, 23);
+            this.t1.Size = new System.Drawing.Size(113, 21);
             this.t1.TabIndex = 0;
             this.t1.EditValueChanged += new System.EventHandler(this.t1_EditValueChanged);
             this.t1.Enter += new System.EventHandler(this.t1_Enter);
@@ -1266,88 +1254,88 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(63, 186);
+            this.label8.Location = new System.Drawing.Point(73, 217);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 12);
+            this.label8.Size = new System.Drawing.Size(47, 14);
             this.label8.TabIndex = 0;
             this.label8.Text = "折旧率:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(51, 158);
+            this.label6.Location = new System.Drawing.Point(59, 184);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 12);
+            this.label6.Size = new System.Drawing.Size(59, 14);
             this.label6.TabIndex = 0;
             this.label6.Text = "经营成本:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 130);
+            this.label5.Location = new System.Drawing.Point(17, 152);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 12);
+            this.label5.Size = new System.Drawing.Size(95, 14);
             this.label5.TabIndex = 0;
             this.label5.Text = "实际还贷年利率:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(39, 102);
+            this.label4.Location = new System.Drawing.Point(45, 119);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 12);
+            this.label4.Size = new System.Drawing.Size(71, 14);
             this.label4.TabIndex = 0;
             this.label4.Text = "项目计算期:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 74);
+            this.label3.Location = new System.Drawing.Point(73, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 12);
+            this.label3.Size = new System.Drawing.Size(47, 14);
             this.label3.TabIndex = 0;
             this.label3.Text = "还贷期:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 46);
+            this.label2.Location = new System.Drawing.Point(59, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 12);
+            this.label2.Size = new System.Drawing.Size(59, 14);
             this.label2.TabIndex = 0;
             this.label2.Text = "建设年限:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 18);
+            this.label1.Location = new System.Drawing.Point(31, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 12);
+            this.label1.Size = new System.Drawing.Size(83, 14);
             this.label1.TabIndex = 0;
             this.label1.Text = "开始建设年度:";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(36, 521);
+            this.label30.Location = new System.Drawing.Point(42, 608);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(0, 12);
+            this.label30.Size = new System.Drawing.Size(0, 14);
             this.label30.TabIndex = 5;
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(424, 515);
+            this.simpleButton2.Location = new System.Drawing.Point(495, 601);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(97, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(113, 27);
             this.simpleButton2.TabIndex = 1;
             this.simpleButton2.Text = "下一步";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(300, 515);
+            this.simpleButton1.Location = new System.Drawing.Point(350, 601);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(97, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(113, 27);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "上一步";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -1356,9 +1344,9 @@
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(36, 521);
+            this.label28.Location = new System.Drawing.Point(42, 608);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(0, 12);
+            this.label28.Size = new System.Drawing.Size(0, 14);
             this.label28.TabIndex = 4;
             // 
             // panelControl1
@@ -1373,15 +1361,23 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(533, 550);
+            this.panelControl1.Size = new System.Drawing.Size(622, 642);
             this.panelControl1.TabIndex = 0;
-            this.panelControl1.Text = "panelControl1";
+            // 
+            // btn_Tzgs
+            // 
+            this.btn_Tzgs.Location = new System.Drawing.Point(31, 16);
+            this.btn_Tzgs.Name = "btn_Tzgs";
+            this.btn_Tzgs.Size = new System.Drawing.Size(110, 23);
+            this.btn_Tzgs.TabIndex = 3;
+            this.btn_Tzgs.Text = "获取投资估算数据";
+            this.btn_Tzgs.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // FrmEconomyGuide1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 550);
+            this.ClientSize = new System.Drawing.Size(622, 642);
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -1544,7 +1540,6 @@
         private DevExpress.XtraEditors.TextEdit textEdit11;
         private System.Windows.Forms.Label label29;
         private DevExpress.XtraEditors.TextEdit textEdit12;
-        private System.Windows.Forms.Button btn_Tzgs;
         private System.Windows.Forms.CheckBox checkBox1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.RadioButton radioButton2;
@@ -1554,6 +1549,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraEditors.SimpleButton btn_Tzgs;
 
     }
 }

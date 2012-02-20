@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new DevExpress.XtraEditors.SimpleButton();
+            this.button1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,54 +42,50 @@
             0,
             0,
             0});
-            this.spinEdit1.Location = new System.Drawing.Point(127, 16);
+            this.spinEdit1.Location = new System.Drawing.Point(148, 19);
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.spinEdit1.Properties.IsFloatValue = false;
             this.spinEdit1.Properties.Mask.EditMask = "####";
-            this.spinEdit1.Size = new System.Drawing.Size(100, 23);
+            this.spinEdit1.Size = new System.Drawing.Size(117, 21);
             this.spinEdit1.TabIndex = 8;
-            // 
-            // button2
-            // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(165, 53);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "取 消";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(81, 53);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(62, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "确 定";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 21);
+            this.label1.Location = new System.Drawing.Point(33, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 12);
+            this.label1.Size = new System.Drawing.Size(91, 14);
             this.label1.TabIndex = 5;
             this.label1.Text = "请选择基准年：";
             // 
+            // button2
+            // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button2.Location = new System.Drawing.Point(190, 72);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "取 消";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(90, 72);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "确 定";
+            this.button1.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
             // Form7_BaseYear
             // 
-            this.AcceptButton = this.button1;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(255, 92);
-            this.Controls.Add(this.spinEdit1);
+            this.ClientSize = new System.Drawing.Size(297, 107);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.spinEdit1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -106,8 +102,8 @@
         #endregion
 
         private DevExpress.XtraEditors.SpinEdit spinEdit1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.SimpleButton button2;
+        private DevExpress.XtraEditors.SimpleButton button1;
     }
 }

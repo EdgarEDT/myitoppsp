@@ -32,11 +32,6 @@
             this.gropold = new System.Windows.Forms.GroupBox();
             this.gropnew = new System.Windows.Forms.GroupBox();
             this.txtnew = new System.Windows.Forms.TextBox();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnChangeandNext = new System.Windows.Forms.Button();
-            this.btnChange = new System.Windows.Forms.Button();
-            this.btnCanser = new System.Windows.Forms.Button();
-            this.btnOk = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -47,6 +42,11 @@
             this.StartP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MarkType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnChangeandNext = new DevExpress.XtraEditors.SimpleButton();
+            this.btnChange = new DevExpress.XtraEditors.SimpleButton();
+            this.btnNext = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCanser = new DevExpress.XtraEditors.SimpleButton();
             this.gropold.SuspendLayout();
             this.gropnew.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -57,20 +57,20 @@
             // txtold
             // 
             this.txtold.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.txtold.Location = new System.Drawing.Point(7, 14);
+            this.txtold.Location = new System.Drawing.Point(8, 16);
             this.txtold.Multiline = true;
             this.txtold.Name = "txtold";
             this.txtold.ReadOnly = true;
             this.txtold.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtold.Size = new System.Drawing.Size(181, 70);
+            this.txtold.Size = new System.Drawing.Size(210, 81);
             this.txtold.TabIndex = 2;
             // 
             // gropold
             // 
             this.gropold.Controls.Add(this.txtold);
-            this.gropold.Location = new System.Drawing.Point(233, 3);
+            this.gropold.Location = new System.Drawing.Point(272, 3);
             this.gropold.Name = "gropold";
-            this.gropold.Size = new System.Drawing.Size(198, 92);
+            this.gropold.Size = new System.Drawing.Size(231, 107);
             this.gropold.TabIndex = 3;
             this.gropold.TabStop = false;
             this.gropold.Text = "当前内容";
@@ -78,91 +78,37 @@
             // gropnew
             // 
             this.gropnew.Controls.Add(this.txtnew);
-            this.gropnew.Location = new System.Drawing.Point(232, 101);
+            this.gropnew.Location = new System.Drawing.Point(271, 118);
             this.gropnew.Name = "gropnew";
-            this.gropnew.Size = new System.Drawing.Size(198, 96);
+            this.gropnew.Size = new System.Drawing.Size(231, 112);
             this.gropnew.TabIndex = 4;
             this.gropnew.TabStop = false;
             this.gropnew.Text = "替换内容";
             // 
             // txtnew
             // 
-            this.txtnew.Location = new System.Drawing.Point(9, 18);
+            this.txtnew.Location = new System.Drawing.Point(10, 21);
             this.txtnew.Multiline = true;
             this.txtnew.Name = "txtnew";
             this.txtnew.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtnew.Size = new System.Drawing.Size(181, 72);
+            this.txtnew.Size = new System.Drawing.Size(210, 83);
             this.txtnew.TabIndex = 2;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(192, 209);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(78, 27);
-            this.btnNext.TabIndex = 5;
-            this.btnNext.Text = "下一个";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnChangeandNext
-            // 
-            this.btnChangeandNext.Location = new System.Drawing.Point(6, 209);
-            this.btnChangeandNext.Name = "btnChangeandNext";
-            this.btnChangeandNext.Size = new System.Drawing.Size(98, 27);
-            this.btnChangeandNext.TabIndex = 6;
-            this.btnChangeandNext.Text = "替换并到下一个";
-            this.btnChangeandNext.UseVisualStyleBackColor = true;
-            this.btnChangeandNext.Click += new System.EventHandler(this.btnChangeandNext_Click);
-            // 
-            // btnChange
-            // 
-            this.btnChange.Location = new System.Drawing.Point(110, 209);
-            this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(78, 27);
-            this.btnChange.TabIndex = 7;
-            this.btnChange.Text = "替 换";
-            this.btnChange.UseVisualStyleBackColor = true;
-            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
-            // 
-            // btnCanser
-            // 
-            this.btnCanser.Location = new System.Drawing.Point(354, 209);
-            this.btnCanser.Name = "btnCanser";
-            this.btnCanser.Size = new System.Drawing.Size(78, 27);
-            this.btnCanser.TabIndex = 8;
-            this.btnCanser.Text = "取 消";
-            this.btnCanser.UseVisualStyleBackColor = true;
-            this.btnCanser.Click += new System.EventHandler(this.btnCanser_Click);
-            // 
-            // btnOk
-            // 
-            this.btnOk.Location = new System.Drawing.Point(273, 209);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(78, 27);
-            this.btnOk.TabIndex = 9;
-            this.btnOk.Text = "保 存";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.gridControl2);
-            this.panel1.Location = new System.Drawing.Point(10, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(216, 184);
+            this.panel1.Size = new System.Drawing.Size(252, 215);
             this.panel1.TabIndex = 10;
             // 
             // gridControl2
             // 
             this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            // 
-            // 
-            // 
-            this.gridControl2.EmbeddedNavigator.Name = "";
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(216, 184);
+            this.gridControl2.Size = new System.Drawing.Size(252, 215);
             this.gridControl2.TabIndex = 5;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -236,17 +182,62 @@
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.Width = 118;
             // 
+            // btnChangeandNext
+            // 
+            this.btnChangeandNext.Location = new System.Drawing.Point(12, 245);
+            this.btnChangeandNext.Name = "btnChangeandNext";
+            this.btnChangeandNext.Size = new System.Drawing.Size(110, 23);
+            this.btnChangeandNext.TabIndex = 11;
+            this.btnChangeandNext.Text = "替换并到下一个";
+            this.btnChangeandNext.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // btnChange
+            // 
+            this.btnChange.Location = new System.Drawing.Point(128, 245);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(91, 23);
+            this.btnChange.TabIndex = 12;
+            this.btnChange.Text = "替 换";
+            this.btnChange.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(225, 245);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(91, 23);
+            this.btnNext.TabIndex = 13;
+            this.btnNext.Text = "下一个";
+            this.btnNext.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(322, 245);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(91, 23);
+            this.btnOk.TabIndex = 14;
+            this.btnOk.Text = "保 存";
+            this.btnOk.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
+            // btnCanser
+            // 
+            this.btnCanser.Location = new System.Drawing.Point(419, 245);
+            this.btnCanser.Name = "btnCanser";
+            this.btnCanser.Size = new System.Drawing.Size(91, 23);
+            this.btnCanser.TabIndex = 15;
+            this.btnCanser.Text = "取 消";
+            this.btnCanser.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
             // Frm_FindandChangeTL
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 245);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnOk);
+            this.ClientSize = new System.Drawing.Size(518, 286);
             this.Controls.Add(this.btnCanser);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnChange);
             this.Controls.Add(this.btnChangeandNext);
-            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.gropnew);
             this.Controls.Add(this.gropold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -275,11 +266,6 @@
         private System.Windows.Forms.GroupBox gropold;
         private System.Windows.Forms.GroupBox gropnew;
         private System.Windows.Forms.TextBox txtnew;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnChangeandNext;
-        private System.Windows.Forms.Button btnChange;
-        private System.Windows.Forms.Button btnCanser;
-        private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraGrid.GridControl gridControl2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
@@ -290,5 +276,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn StartP;
         private DevExpress.XtraGrid.Columns.GridColumn MarkType;
         private DevExpress.XtraGrid.Columns.GridColumn CreateDate;
+        private DevExpress.XtraEditors.SimpleButton btnChangeandNext;
+        private DevExpress.XtraEditors.SimpleButton btnChange;
+        private DevExpress.XtraEditors.SimpleButton btnNext;
+        private DevExpress.XtraEditors.SimpleButton btnOk;
+        private DevExpress.XtraEditors.SimpleButton btnCanser;
     }
 }

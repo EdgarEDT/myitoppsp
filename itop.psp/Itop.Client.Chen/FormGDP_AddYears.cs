@@ -34,6 +34,22 @@ namespace Itop.Client.Chen
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void FormGDP_AddYears_Load(object sender, EventArgs e)
+        {
+            spinEdit1.Value = _getvalue;
+        }
+        private InputLanguage output = null;
+        private void spinEdit1_Enter(object sender, EventArgs e)
+        {
+            output = InputLanguage.CurrentInputLanguage;
+            InputLanguage.CurrentInputLanguage = null;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             PSP_GDPYeas psp_Year = new PSP_GDPYeas();
             psp_Year.Flag = _flag2;
             psp_Year.Year = _getvalue = (int)spinEdit1.Value;
@@ -60,17 +76,6 @@ namespace Itop.Client.Chen
             {
                 MsgBox.Show("³ö´íÀ²£º" + ex.Message);
             }
-        }
-
-        private void FormGDP_AddYears_Load(object sender, EventArgs e)
-        {
-            spinEdit1.Value = _getvalue;
-        }
-        private InputLanguage output = null;
-        private void spinEdit1_Enter(object sender, EventArgs e)
-        {
-            output = InputLanguage.CurrentInputLanguage;
-            InputLanguage.CurrentInputLanguage = null;
         }
     }
 }

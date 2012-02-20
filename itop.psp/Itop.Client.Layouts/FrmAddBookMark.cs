@@ -26,14 +26,25 @@ namespace Itop.Client.Layouts
 
         private void btnAddMark_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void btnCanser_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+
             BM_Word = FrmGHBZTLContents.W_Doc;
             W_Bkm = BM_Word.Bookmarks;
-            if (BM_Word.Application.Selection.Range.Text==null)
+            if (BM_Word.Application.Selection.Range.Text == null)
             {
                 MessageBox.Show("请选择添加书签的文本!");
                 return;
             }
-            if (txtMarkName.Text.Length==0)
+            if (txtMarkName.Text.Length == 0)
             {
                 MessageBox.Show("请输入书签名称!");
                 txtMarkName.Focus();
@@ -53,20 +64,20 @@ namespace Itop.Client.Layouts
                 lbm.MarkType = "用户";
             }
             Word.Range tmpRng = BM_Word.Application.Selection.Range;
-            if (tmpRng.Bookmarks.Count>0)
+            if (tmpRng.Bookmarks.Count > 0)
             {
                 MessageBox.Show(tmpRng.Text + " 已是书签或包含已有书签!");
                 return;
             }
             object oRng = tmpRng;
             W_Bkm.Add(lbm.UID.ToString(), ref oRng);
-            object markid=lbm.UID.ToString();
-            Word.Bookmark tempbk=W_Bkm.get_Item(ref markid);
+            object markid = lbm.UID.ToString();
+            Word.Bookmark tempbk = W_Bkm.get_Item(ref markid);
             tempbk.Range.Font.Color = Word.WdColor.wdColorBlue;
             lbm.StartP = tempbk.Start;
-            if (tempbk.Range.Text.Length>140)
+            if (tempbk.Range.Text.Length > 140)
             {
-                lbm.MarkText = tempbk.Range.Text.Substring(0,140);
+                lbm.MarkText = tempbk.Range.Text.Substring(0, 140);
             }
             else
             {
@@ -78,7 +89,7 @@ namespace Itop.Client.Layouts
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
             FrmBookMark.Parentfrm.InitGrid2();
@@ -89,10 +100,9 @@ namespace Itop.Client.Layouts
             txtMarkName.Text = "";
             txtMarkDisc.Text = "";
             txtMarkName.Focus();
-           
         }
 
-        private void btnCanser_Click(object sender, EventArgs e)
+        private void btnNext_Click(object sender, EventArgs e)
         {
             this.Close();
         }

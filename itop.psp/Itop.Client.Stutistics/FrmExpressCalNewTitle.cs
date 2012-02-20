@@ -140,6 +140,17 @@ namespace Itop.Client.Stutistics
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar >= 31 && (e.KeyChar < '0' || e.KeyChar > '9'))
+            { e.Handled = true; } 
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
             string strExpression = "";
             if (textBox1.Text == "")
             {
@@ -162,7 +173,7 @@ namespace Itop.Client.Stutistics
                     textBox2.Text = "2";
                 }
                 else
-                    if (SaveDecimalPoint>15)
+                    if (SaveDecimalPoint > 15)
                     {
                         SaveDecimalPoint = 15;
                         textBox2.Text = "15";
@@ -170,7 +181,7 @@ namespace Itop.Client.Stutistics
             }
 
             ExpressionCalculator calc = new ExpressionCalculator();
-           
+
 
             strExpression = calc.CharConverter(textBox1.Text);
             textBox1.Text = strExpression;
@@ -180,12 +191,6 @@ namespace Itop.Client.Stutistics
 
             if (!calc.ExpressiontempISIllegal(strExpression, gridView1, true, SaveDecimalPoint))
                 return;
-        }
-
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar >= 31 && (e.KeyChar < '0' || e.KeyChar > '9'))
-            { e.Handled = true; } 
         }
 
 

@@ -1196,37 +1196,7 @@ namespace Itop.Client.Layouts
 
         private void btn_Tzgs_Click(object sender, EventArgs e)
         {
-            Itop.Client.Table.FrmTzgs_Economy frmtz = new Itop.Client.Table.FrmTzgs_Economy();
-            if (frmtz.ShowDialog()==DialogResult.OK)
-            {
-                //DataRow temprow = frmtz.nowrow;
-                Hashtable hs = frmtz.hs;
-                if (hs.Count>0)
-                {
-                    for (int i = 0; i < gridView2.RowCount; i++)
-                    {
-                        gridView2.SetRowCellValue(i, "S2", 0);
-                    }
-                    foreach (DataRow temprow in hs.Values)
-                    {
-                        for (int i = 0; i < gridView2.RowCount; i++)
-                        {
-                            if (temprow["y" + gridView2.GetRowCellDisplayText(i, "S1")] != null)
-                            {
-                                if (temprow["y" + gridView2.GetRowCellDisplayText(i, "S1")].ToString()!="")
-                                {
-                                    double tempdoub = Convert.ToDouble(gridView2.GetRowCellDisplayText(i, "S2"));
-                                    tempdoub += Convert.ToDouble(temprow["y" + gridView2.GetRowCellDisplayText(i, "S1")].ToString());
-                                    tempdoub = Math.Round(tempdoub, 2);
-                                    gridView2.SetRowCellValue(i, "S2", tempdoub);
-
-                                }
-                            }
-                        }
-                    }
-                }
-               
-            }
+            
         }
         //private void Del_Tz(DataRow dt)
         //{
@@ -1293,6 +1263,41 @@ namespace Itop.Client.Layouts
                  
                
        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            Itop.Client.Table.FrmTzgs_Economy frmtz = new Itop.Client.Table.FrmTzgs_Economy();
+            if (frmtz.ShowDialog() == DialogResult.OK)
+            {
+                //DataRow temprow = frmtz.nowrow;
+                Hashtable hs = frmtz.hs;
+                if (hs.Count > 0)
+                {
+                    for (int i = 0; i < gridView2.RowCount; i++)
+                    {
+                        gridView2.SetRowCellValue(i, "S2", 0);
+                    }
+                    foreach (DataRow temprow in hs.Values)
+                    {
+                        for (int i = 0; i < gridView2.RowCount; i++)
+                        {
+                            if (temprow["y" + gridView2.GetRowCellDisplayText(i, "S1")] != null)
+                            {
+                                if (temprow["y" + gridView2.GetRowCellDisplayText(i, "S1")].ToString() != "")
+                                {
+                                    double tempdoub = Convert.ToDouble(gridView2.GetRowCellDisplayText(i, "S2"));
+                                    tempdoub += Convert.ToDouble(temprow["y" + gridView2.GetRowCellDisplayText(i, "S1")].ToString());
+                                    tempdoub = Math.Round(tempdoub, 2);
+                                    gridView2.SetRowCellValue(i, "S2", tempdoub);
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
 
 
 

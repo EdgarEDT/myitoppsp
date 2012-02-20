@@ -55,17 +55,28 @@ namespace Itop.Client.PWTable
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < checkedListBox1.Items.Count;i++ )
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
             {
                 if (checkedListBox1.GetItemChecked(i))
                 {
                     sel_str = sel_str + checkedListBox1.Items[i].ToString() + ",";
                 }
             }
-            if(sel_str.Length>0){
+            if (sel_str.Length > 0)
+            {
                 sel_str = sel_str.Substring(0, sel_str.Length - 1);
             }
-           this.DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

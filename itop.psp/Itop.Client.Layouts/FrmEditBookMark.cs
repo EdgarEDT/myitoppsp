@@ -29,7 +29,17 @@ namespace Itop.Client.Layouts
 
         private void btnAddMark_Click(object sender, EventArgs e)
         {
-            if (txtMarkName.Text.Length==0)
+            
+        }
+
+        private void btnCanser_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            if (txtMarkName.Text.Length == 0)
             {
                 MessageBox.Show("书签名称不能为空");
                 return;
@@ -40,7 +50,7 @@ namespace Itop.Client.Layouts
             this.Close();
         }
 
-        private void btnCanser_Click(object sender, EventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
             this.Close();
         }

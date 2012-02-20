@@ -62,14 +62,20 @@ namespace Itop.Client.Stutistics
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             yearvalue = (int)spinEdit1.Value;
             monthvalue = (int)spinEdit2.Value;
             PSP_BigUser_Years biguseryear = new PSP_BigUser_Years();
-       //     biguseryear.Year = yearvalue + "年" + monthvalue + "月";
-            biguseryear.Year =  monthvalue.ToString() ;
+            //     biguseryear.Year = yearvalue + "年" + monthvalue + "月";
+            biguseryear.Year = monthvalue.ToString();
             biguseryear.Flag = flag;
             biguseryear.ItemID = itemid;
-            try {
+            try
+            {
                 if (Common.Services.BaseService.GetObject("SelectPSP_BigUser_YearsByYearFlag", biguseryear) == null)
                 {
                     try
@@ -87,11 +93,11 @@ namespace Itop.Client.Stutistics
                     MsgBox.Show("此年月份已经存在，请重新输入！");
 
                 }
-                
+
             }
             catch
             {
-               
+
             }
         }
     }

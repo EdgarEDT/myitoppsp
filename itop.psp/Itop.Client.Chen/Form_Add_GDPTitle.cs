@@ -24,6 +24,11 @@ namespace Itop.Client.Chen
 
         private void button1_Click(object sender, EventArgs e)
         {
+          
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
             if (textBox1.Text == "")
             {
                 MessageBox.Show("请输入分类名称！");
@@ -34,6 +39,11 @@ namespace Itop.Client.Chen
                 GDPTitle = textBox1.Text;
                 DialogResult = DialogResult.OK;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
 
 

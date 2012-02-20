@@ -92,106 +92,26 @@ namespace Itop.Client.Layouts
         //替换并到下一个
         private void btnChangeandNext_Click(object sender, EventArgs e)
         {
-            object tempid = tempmk.Name.ToString();
-            Word.Range tmpRng = tempmk.Range;
-            tmpRng.Text = txtnew.Text;
-            object oRng = tmpRng;
-            W_Bkm.Add(tempid.ToString(), ref oRng);
-            if (txtold.Text==txtnew.Text)
-            {
-                tmpRng.Font.Color = Word.WdColor.wdColorGold;
-            }
-            if (num >= marklist.Count-1)
-            {
-                MessageBox.Show("标签已到结尾");
-                return;
-            }
-            num = num + 1;;
-            if (W_Bkm.Exists(marklist[num].UID.ToString()))
-            {
-                object tempid2 = marklist[num].UID.ToString();
-                tempmk = W_Bkm.get_Item(ref tempid2);
-                tempmk.Select();
-                oldstr = tempmk.Range.Text;
-                txtold.Text = oldstr;
-                if (mkd.FindStr(marklist[num].UID.ToString()) != -1)
-                {
-                    txtnew.Text = mkd.Data[mkd.FindStr(marklist[num].UID.ToString())].BQdata.ToString();
-                    newstr = txtnew.Text;
-                    txtnew.SelectAll();
-                }
-                else
-                {
-                    newstr = "暂无值";
-                    txtnew.Text = newstr;
-                    txtnew.SelectAll();
-                }
-            }
-            gridRefreh();
+           
         }
         //替换
         private void btnChange_Click(object sender, EventArgs e)
         {
-            object NoThing=Missing.Value;
-            object tempid = tempmk.Name.ToString();
-            Word.Range tmpRng = tempmk.Range;
-           // //tempmk.Range.
-           // Word.Document tempdoc = FrmGHBZTLContents.W_Doc;
-           //Word.Table temptable= tempdoc.Tables.Add(tmpRng, 1, 1, ref NoThing, ref NoThing);
-           //temptable = (Word.Table)data_object;
-           // //tempmk.Range = data_object;
-            tmpRng.Text = txtnew.Text;
-            object oRng = tmpRng;
-            W_Bkm.Add(tempid.ToString(), ref oRng);
-            if (txtold.Text == txtnew.Text)
-            {
-                tmpRng.Font.Color = Word.WdColor.wdColorGold;
-            }
+           
         }
         //下一个
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (num < marklist.Count-1 )
-            {
-                num = num + 1; ;
-                if (W_Bkm.Exists(marklist[num].UID.ToString()))
-                {
-                    object tempid = marklist[num].UID.ToString();
-                    tempmk = W_Bkm.get_Item(ref tempid);
-                    tempmk.Select();
-                    oldstr = tempmk.Range.Text;
-                    txtold.Text = oldstr;
-                    if (mkd.FindStr(marklist[num].UID.ToString()) != -1)
-                    {
-                        txtnew.Text = mkd.Data[mkd.FindStr(marklist[num].UID.ToString())].BQdata.ToString();
-                        newstr = txtnew.Text;
-                        txtnew.SelectAll();
-                    }
-                    else
-                    {
-                        newstr = "暂无值";
-                        txtnew.Text = newstr;
-                        txtnew.SelectAll();
-                    }
-                }
-                gridRefreh();
-            }
-            else
-            {
-                MessageBox.Show("已到书签结尾！");
-            }
-            
+          
         }
         private void btnOk_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
-            saveflag = true;
-            this.Close();
+           
         }
 
         private void btnCanser_Click(object sender, EventArgs e)
         {
-            this.Close();
+           
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -247,6 +167,111 @@ namespace Itop.Client.Layouts
                 btnNext.PerformClick();
             } 
         }
+
+         private void simpleButton1_Click(object sender, EventArgs e)
+         {
+             object tempid = tempmk.Name.ToString();
+             Word.Range tmpRng = tempmk.Range;
+             tmpRng.Text = txtnew.Text;
+             object oRng = tmpRng;
+             W_Bkm.Add(tempid.ToString(), ref oRng);
+             if (txtold.Text == txtnew.Text)
+             {
+                 tmpRng.Font.Color = Word.WdColor.wdColorGold;
+             }
+             if (num >= marklist.Count - 1)
+             {
+                 MessageBox.Show("标签已到结尾");
+                 return;
+             }
+             num = num + 1; ;
+             if (W_Bkm.Exists(marklist[num].UID.ToString()))
+             {
+                 object tempid2 = marklist[num].UID.ToString();
+                 tempmk = W_Bkm.get_Item(ref tempid2);
+                 tempmk.Select();
+                 oldstr = tempmk.Range.Text;
+                 txtold.Text = oldstr;
+                 if (mkd.FindStr(marklist[num].UID.ToString()) != -1)
+                 {
+                     txtnew.Text = mkd.Data[mkd.FindStr(marklist[num].UID.ToString())].BQdata.ToString();
+                     newstr = txtnew.Text;
+                     txtnew.SelectAll();
+                 }
+                 else
+                 {
+                     newstr = "暂无值";
+                     txtnew.Text = newstr;
+                     txtnew.SelectAll();
+                 }
+             }
+             gridRefreh();
+         }
+
+         private void simpleButton2_Click(object sender, EventArgs e)
+         {
+             object NoThing = Missing.Value;
+             object tempid = tempmk.Name.ToString();
+             Word.Range tmpRng = tempmk.Range;
+             // //tempmk.Range.
+             // Word.Document tempdoc = FrmGHBZTLContents.W_Doc;
+             //Word.Table temptable= tempdoc.Tables.Add(tmpRng, 1, 1, ref NoThing, ref NoThing);
+             //temptable = (Word.Table)data_object;
+             // //tempmk.Range = data_object;
+             tmpRng.Text = txtnew.Text;
+             object oRng = tmpRng;
+             W_Bkm.Add(tempid.ToString(), ref oRng);
+             if (txtold.Text == txtnew.Text)
+             {
+                 tmpRng.Font.Color = Word.WdColor.wdColorGold;
+             }
+         }
+
+         private void simpleButton3_Click(object sender, EventArgs e)
+         {
+             if (num < marklist.Count - 1)
+             {
+                 num = num + 1; ;
+                 if (W_Bkm.Exists(marklist[num].UID.ToString()))
+                 {
+                     object tempid = marklist[num].UID.ToString();
+                     tempmk = W_Bkm.get_Item(ref tempid);
+                     tempmk.Select();
+                     oldstr = tempmk.Range.Text;
+                     txtold.Text = oldstr;
+                     if (mkd.FindStr(marklist[num].UID.ToString()) != -1)
+                     {
+                         txtnew.Text = mkd.Data[mkd.FindStr(marklist[num].UID.ToString())].BQdata.ToString();
+                         newstr = txtnew.Text;
+                         txtnew.SelectAll();
+                     }
+                     else
+                     {
+                         newstr = "暂无值";
+                         txtnew.Text = newstr;
+                         txtnew.SelectAll();
+                     }
+                 }
+                 gridRefreh();
+             }
+             else
+             {
+                 MessageBox.Show("已到书签结尾！");
+             }
+            
+         }
+
+         private void simpleButton4_Click(object sender, EventArgs e)
+         {
+             DialogResult = DialogResult.OK;
+             saveflag = true;
+             this.Close();
+         }
+
+         private void simpleButton5_Click(object sender, EventArgs e)
+         {
+             this.Close();
+         }
        
     }
 }
