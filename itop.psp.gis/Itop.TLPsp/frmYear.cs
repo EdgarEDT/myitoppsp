@@ -21,6 +21,25 @@ namespace Itop.TLPsp
 
         private void button1_Click(object sender, EventArgs e)
         {
+          
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmGrade f = new frmGrade();
+            f.type = "3";
+            f.InitData(uid);
+            f.Show();
+            f.CK();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
             frmGrade f = new frmGrade();
             f.type = "1";
             f.InitData(uid);
@@ -28,7 +47,7 @@ namespace Itop.TLPsp
             f.CK();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void simpleButton2_Click(object sender, EventArgs e)
         {
             frmGrade f = new frmGrade();
             f.type = "2";
@@ -37,7 +56,7 @@ namespace Itop.TLPsp
             f.CK();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void simpleButton3_Click(object sender, EventArgs e)
         {
             frmGrade f = new frmGrade();
             f.type = "3";

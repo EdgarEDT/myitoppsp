@@ -49,20 +49,7 @@ namespace Itop.TLPSP.DEVICE.Mysql
             strpsw = password.Text;
         }
         private void connectBtn_Click(object sender, EventArgs e) {
-            if (conn != null)
-                conn.Close();//charset=latin1
-
-            string connStr = String.Format("server={0};user id={1}; password={2}; database=mysql; pooling=false;",
-                server.Text, userid.Text, password.Text);
-
-            try {
-                conn = new MySqlConnection(connStr);
-                conn.Open();
-
-                GetDatabases();
-            } catch (MySqlException ex) {
-                MessageBox.Show("连接服务器失败: " + ex.Message);
-            }
+           
         }
 
         private void GetDatabases() {
@@ -113,9 +100,7 @@ namespace Itop.TLPSP.DEVICE.Mysql
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            if (tables.SelectedIndex < 0) return;
-            showTable(tables.SelectedItem.ToString());
-            checkedListBox1.SelectedItem = null;
+           
         }
         private void showTable(string table) {
             da = new MySqlDataAdapter("SELECT * FROM " + table, conn);
@@ -142,7 +127,41 @@ namespace Itop.TLPSP.DEVICE.Mysql
             showTable(importTables[checkedListBox1.SelectedItem].ToString());
         }
 
-        private void btImport_Click(object sender, EventArgs e) {
+      
+        int ncount;
+        int ncurrent;
+
+        private void connectBtn_Click_1(object sender, EventArgs e)
+        {
+            if (conn != null)
+                conn.Close();//charset=latin1
+
+            string connStr = String.Format("server={0};user id={1}; password={2}; database=mysql; pooling=false;",
+                server.Text, userid.Text, password.Text);
+
+            try
+            {
+                conn = new MySqlConnection(connStr);
+                conn.Open();
+
+                GetDatabases();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("连接服务器失败: " + ex.Message);
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (tables.SelectedIndex < 0) return;
+            showTable(tables.SelectedItem.ToString());
+            checkedListBox1.SelectedItem = null;
+        }
+
+        private void btImport_Click_1(object sender, EventArgs e)
+        {
+        
             //导入
             if (checkedListBox1.SelectedItem == null) return;
             IEnumerator ie = null;
@@ -181,9 +200,8 @@ namespace Itop.TLPSP.DEVICE.Mysql
                 Thread.Sleep(1000);
                 msgbox.Close();
             }
+       
         }
-        int ncount;
-        int ncurrent;
 
     }
 }

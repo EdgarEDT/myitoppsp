@@ -26,12 +26,12 @@ namespace ItopVector.Tools
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ctrlPSP_PlanList1.AddObject();
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ctrlPSP_PlanList1.DeleteObject();
+          
         }
 
         private void frmPlanList_Load(object sender, EventArgs e)
@@ -40,6 +40,21 @@ namespace ItopVector.Tools
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
             //if (ctrlPSP_PlanList1.FocusedObject == null)
             //{
@@ -53,7 +68,7 @@ namespace ItopVector.Tools
             par.ShowDialog();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void simpleButton2_Click(object sender, EventArgs e)
         {
             if (ctrlPSP_PlanList1.FocusedObject == null)
             {
@@ -67,7 +82,17 @@ namespace ItopVector.Tools
             //f1.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            ctrlPSP_PlanList1.AddObject();
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            ctrlPSP_PlanList1.DeleteObject();
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
         {
             if (ctrlPSP_PlanList1.FocusedObject == null)
             {

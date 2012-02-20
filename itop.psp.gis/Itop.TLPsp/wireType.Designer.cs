@@ -171,7 +171,7 @@
             "35",
             "15.75",
             "10"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(133, 23);
+            this.comboBoxEdit1.Size = new System.Drawing.Size(133, 21);
             this.comboBoxEdit1.TabIndex = 10;
             // 
             // wireType

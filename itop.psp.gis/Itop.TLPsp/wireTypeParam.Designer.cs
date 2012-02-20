@@ -29,11 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.wireTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WireLevel = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.wireRDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wireTQDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wireGNDCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wireChangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WireCategoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,12 +50,7 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.kVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.wireTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WireLevel = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.wireRDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wireTQDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wireGNDCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wireChangeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WireCategoryBindingSource1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -66,14 +66,14 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.wireTypeDataGridViewTextBoxColumn,
@@ -83,14 +83,14 @@
             this.wireGNDCDataGridViewTextBoxColumn,
             this.wireChangeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.WireCategoryBindingSource1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Location = new System.Drawing.Point(12, 41);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
@@ -99,20 +99,61 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
+            // wireTypeDataGridViewTextBoxColumn
+            // 
+            this.wireTypeDataGridViewTextBoxColumn.DataPropertyName = "WireType";
+            this.wireTypeDataGridViewTextBoxColumn.HeaderText = "导线型号";
+            this.wireTypeDataGridViewTextBoxColumn.Name = "wireTypeDataGridViewTextBoxColumn";
+            this.wireTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.wireTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // WireLevel
+            // 
+            this.WireLevel.DataPropertyName = "WireLevel";
+            this.WireLevel.HeaderText = "电压等级";
+            this.WireLevel.Items.AddRange(new object[] {
+            "500",
+            "220",
+            "110",
+            "66",
+            "35",
+            "15.75",
+            "10"});
+            this.WireLevel.Name = "WireLevel";
+            this.WireLevel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.WireLevel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // wireRDataGridViewTextBoxColumn
+            // 
+            this.wireRDataGridViewTextBoxColumn.DataPropertyName = "WireR";
+            this.wireRDataGridViewTextBoxColumn.HeaderText = "电阻";
+            this.wireRDataGridViewTextBoxColumn.Name = "wireRDataGridViewTextBoxColumn";
+            this.wireRDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // wireTQDataGridViewTextBoxColumn
+            // 
+            this.wireTQDataGridViewTextBoxColumn.DataPropertyName = "WireTQ";
+            this.wireTQDataGridViewTextBoxColumn.HeaderText = "电抗";
+            this.wireTQDataGridViewTextBoxColumn.Name = "wireTQDataGridViewTextBoxColumn";
+            this.wireTQDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // wireGNDCDataGridViewTextBoxColumn
+            // 
+            this.wireGNDCDataGridViewTextBoxColumn.DataPropertyName = "WireGNDC";
+            this.wireGNDCDataGridViewTextBoxColumn.HeaderText = "电纳";
+            this.wireGNDCDataGridViewTextBoxColumn.Name = "wireGNDCDataGridViewTextBoxColumn";
+            this.wireGNDCDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // wireChangeDataGridViewTextBoxColumn
+            // 
+            this.wireChangeDataGridViewTextBoxColumn.DataPropertyName = "WireChange";
+            this.wireChangeDataGridViewTextBoxColumn.HeaderText = "电流限值";
+            this.wireChangeDataGridViewTextBoxColumn.Name = "wireChangeDataGridViewTextBoxColumn";
+            this.wireChangeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // WireCategoryBindingSource1
             // 
             this.WireCategoryBindingSource1.DataSource = typeof(Itop.Domain.Graphics.WireCategory);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(239)))));
-            this.button1.Location = new System.Drawing.Point(118, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "删除";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // simpleButton1
             // 
@@ -211,57 +252,14 @@
             this.simpleButton2.Visible = false;
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
-            // wireTypeDataGridViewTextBoxColumn
+            // simpleButton3
             // 
-            this.wireTypeDataGridViewTextBoxColumn.DataPropertyName = "WireType";
-            this.wireTypeDataGridViewTextBoxColumn.HeaderText = "导线型号";
-            this.wireTypeDataGridViewTextBoxColumn.Name = "wireTypeDataGridViewTextBoxColumn";
-            this.wireTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.wireTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // WireLevel
-            // 
-            this.WireLevel.DataPropertyName = "WireLevel";
-            this.WireLevel.HeaderText = "电压等级";
-            this.WireLevel.Items.AddRange(new object[] {
-            "500",
-            "220",
-            "110",
-            "66",
-            "35",
-            "15.75",
-            "10"});
-            this.WireLevel.Name = "WireLevel";
-            this.WireLevel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.WireLevel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // wireRDataGridViewTextBoxColumn
-            // 
-            this.wireRDataGridViewTextBoxColumn.DataPropertyName = "WireR";
-            this.wireRDataGridViewTextBoxColumn.HeaderText = "电阻";
-            this.wireRDataGridViewTextBoxColumn.Name = "wireRDataGridViewTextBoxColumn";
-            this.wireRDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // wireTQDataGridViewTextBoxColumn
-            // 
-            this.wireTQDataGridViewTextBoxColumn.DataPropertyName = "WireTQ";
-            this.wireTQDataGridViewTextBoxColumn.HeaderText = "电抗";
-            this.wireTQDataGridViewTextBoxColumn.Name = "wireTQDataGridViewTextBoxColumn";
-            this.wireTQDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // wireGNDCDataGridViewTextBoxColumn
-            // 
-            this.wireGNDCDataGridViewTextBoxColumn.DataPropertyName = "WireGNDC";
-            this.wireGNDCDataGridViewTextBoxColumn.HeaderText = "电纳";
-            this.wireGNDCDataGridViewTextBoxColumn.Name = "wireGNDCDataGridViewTextBoxColumn";
-            this.wireGNDCDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // wireChangeDataGridViewTextBoxColumn
-            // 
-            this.wireChangeDataGridViewTextBoxColumn.DataPropertyName = "WireChange";
-            this.wireChangeDataGridViewTextBoxColumn.HeaderText = "电流限值";
-            this.wireChangeDataGridViewTextBoxColumn.Name = "wireChangeDataGridViewTextBoxColumn";
-            this.wireChangeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.simpleButton3.Location = new System.Drawing.Point(124, 0);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton3.TabIndex = 5;
+            this.simpleButton3.Text = "删除";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // wireTypeParam
             // 
@@ -269,9 +267,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(210)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(569, 270);
+            this.Controls.Add(this.simpleButton3);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -293,7 +291,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource WireCategoryBindingSource1;
-        private System.Windows.Forms.Button button1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -311,5 +308,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn wireTQDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wireGNDCDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wireChangeDataGridViewTextBoxColumn;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
     }
 }

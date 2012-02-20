@@ -214,7 +214,6 @@
             this.b4c3 = new System.Windows.Forms.ComboBox();
             this.b4c2 = new System.Windows.Forms.ComboBox();
             this.b4c1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.lb1 = new System.Windows.Forms.Label();
             this.lb2 = new System.Windows.Forms.Label();
             this.lb3 = new System.Windows.Forms.Label();
@@ -226,8 +225,9 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button1 = new DevExpress.XtraEditors.SimpleButton();
+            this.button3 = new DevExpress.XtraEditors.SimpleButton();
+            this.button2 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -2727,16 +2727,6 @@
             this.b4c1.TabIndex = 0;
             this.b4c1.Text = "好";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(611, 650);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "取消";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // lb1
             // 
             this.lb1.AutoSize = true;
@@ -2826,40 +2816,50 @@
             this.label31.TabIndex = 0;
             this.label31.Text = "得分";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(443, 650);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "计算";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(526, 650);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(507, 650);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
+            this.button1.Size = new System.Drawing.Size(75, 29);
+            this.button1.TabIndex = 81;
             this.button1.Text = "保存";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(418, 650);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 29);
+            this.button3.TabIndex = 80;
+            this.button3.Text = "计算";
+            this.button3.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(596, 650);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 29);
+            this.button2.TabIndex = 82;
+            this.button2.Text = "取消";
+            this.button2.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // frmLineList2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 684);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
@@ -3133,7 +3133,6 @@
         private System.Windows.Forms.ComboBox b4c3;
         private System.Windows.Forms.ComboBox b4c2;
         private System.Windows.Forms.ComboBox b4c1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lb1;
         private System.Windows.Forms.Label lb2;
         private System.Windows.Forms.Label lb3;
@@ -3145,7 +3144,8 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
+        private DevExpress.XtraEditors.SimpleButton button1;
+        private DevExpress.XtraEditors.SimpleButton button3;
+        private DevExpress.XtraEditors.SimpleButton button2;
     }
 }

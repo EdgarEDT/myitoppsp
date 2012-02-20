@@ -33,25 +33,7 @@ namespace ItopVector.Tools
 
         private void button1_Click(object sender, EventArgs e)
         {
-            list.Clear();
-            if(gridView.GetSelectedRows().Length==0){
-                MessageBox.Show("请选择记录。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            //if(gridView.GetSelectedRows().Length>5){
-            //    MessageBox.Show("每次最多选择5条记录。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return;
-            //}
-            int[] a=gridView.GetSelectedRows();
-            for (int i = 0; i < a.Length;i++ )
-            {
-                list.Add(gridView.GetRowCellValue(i, "UID").ToString());
-                //MessageBox.Show(gridView.GetRowCellValue(i,"UID").ToString());
-            }
-            frmPengFenLine f1 = new frmPengFenLine();
-            f1.SelList = list;
-            f1.PID = eleid;
-            f1.ShowDialog();
+           
         }
 
         private void frmLineList1_Load(object sender, EventArgs e)
@@ -165,6 +147,35 @@ namespace ItopVector.Tools
                 return;
             }
             UpdateObject();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            list.Clear();
+            if (gridView.GetSelectedRows().Length == 0)
+            {
+                MessageBox.Show("请选择记录。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            //if(gridView.GetSelectedRows().Length>5){
+            //    MessageBox.Show("每次最多选择5条记录。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
+            int[] a = gridView.GetSelectedRows();
+            for (int i = 0; i < a.Length; i++)
+            {
+                list.Add(gridView.GetRowCellValue(i, "UID").ToString());
+                //MessageBox.Show(gridView.GetRowCellValue(i,"UID").ToString());
+            }
+            frmPengFenLine f1 = new frmPengFenLine();
+            f1.SelList = list;
+            f1.PID = eleid;
+            f1.ShowDialog();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

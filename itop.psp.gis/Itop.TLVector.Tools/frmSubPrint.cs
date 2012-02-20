@@ -1208,11 +1208,7 @@ namespace ItopVector.Tools {
             DrawOther(g);
         }
         private void button1_Click(object sender, EventArgs e) {
-            // printDocument1.Print();
-            //printPreviewDialog1.Document = printDocument1;
-            pageSetupDialog1.Document = printDocument1;
-            pageSetupDialog1.ShowDialog();
-            //pictureBox1.Image.Save("D:\\123.jpg",System.Drawing.Imaging.ImageFormat.Jpeg);
+           
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e) {
@@ -1231,19 +1227,40 @@ namespace ItopVector.Tools {
         }
 
         private void button2_Click(object sender, EventArgs e) {
-            //printDocument1.PrinterSettings.
-            printPreviewDialog1.Document = printDocument1;
-            
-            printPreviewDialog1.ShowDialog();
+           
         }
 
         private void button3_Click(object sender, EventArgs e) {
+            
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            // printDocument1.Print();
+            //printPreviewDialog1.Document = printDocument1;
+            pageSetupDialog1.Document = printDocument1;
+            pageSetupDialog1.ShowDialog();
+            //pictureBox1.Image.Save("D:\\123.jpg",System.Drawing.Imaging.ImageFormat.Jpeg);
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            //printDocument1.PrinterSettings.
+            printPreviewDialog1.Document = printDocument1;
+
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
             saveFileDialog1.Filter = "bmp文件 (*.bmp)|*.bmp|jpg文件 (*.jpg)|*.jpg|png文件 (*.png)|*.png|gif文件 (*.gif)|*.gif|tif文件 (*.tif)|*.tif";
             saveFileDialog1.ShowDialog();
             string fname = saveFileDialog1.FileName;
-            if (fname != "") {
+            if (fname != "")
+            {
                 string type = fname.Substring(fname.LastIndexOf(".") + 1).ToLower();
-                switch (type) {
+                switch (type)
+                {
                     case "bmp":
                         pictureBox1.Image.Save(fname, ImageFormat.Bmp);
                         break;

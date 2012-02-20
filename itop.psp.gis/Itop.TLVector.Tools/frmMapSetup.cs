@@ -38,5 +38,10 @@ namespace ItopVector.Tools
             if (!isinit) trackBar1.Value =(int) numericUpDown1.Value;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

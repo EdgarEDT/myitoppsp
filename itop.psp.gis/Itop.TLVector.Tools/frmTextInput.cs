@@ -18,9 +18,24 @@ namespace ItopVector.Tools
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             Content = textBox1.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

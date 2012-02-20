@@ -958,18 +958,7 @@ namespace ItopVector.Tools
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(checkedListBox1.SelectedIndex==-1){
-                MessageBox.Show("请选择图层。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                return;
-            }
-            frmList l = new frmList();
-            Layer layer = this.checkedListBox1.Items[checkedListBox1.SelectedIndex] as Layer;
-            if (!NoSave.Contains(layer))
-            {
-                NoSave.Add(layer);
-            }
-            l.list = NoSave;
-            l.Show();
+           
         }
 
         private void 全选ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1147,7 +1136,7 @@ namespace ItopVector.Tools
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ChangeCheck(sender);
+           
         }
 
         private void dateEdit1_KeyDown(object sender, KeyEventArgs e)
@@ -1157,6 +1146,28 @@ namespace ItopVector.Tools
             //{
             //    e.SuppressKeyPress = false;
             //}
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            ChangeCheck(sender);
+        }
+
+        private void simpleButton5_Click_1(object sender, EventArgs e)
+        {
+            if (checkedListBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("请选择图层。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            frmList l = new frmList();
+            Layer layer = this.checkedListBox1.Items[checkedListBox1.SelectedIndex] as Layer;
+            if (!NoSave.Contains(layer))
+            {
+                NoSave.Add(layer);
+            }
+            l.list = NoSave;
+            l.Show();
         }
     }
 }

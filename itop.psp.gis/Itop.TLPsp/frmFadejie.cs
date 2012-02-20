@@ -264,7 +264,7 @@ namespace Itop.TLPsp
                 }
                 else
                 {
-                    button1.DialogResult = DialogResult.OK;
+                    simpleButton1.DialogResult = DialogResult.OK;
                 }
             }
         }
@@ -486,6 +486,11 @@ namespace Itop.TLPsp
                 }
             }
             if (e.KeyChar == 45 && (((TextBox)sender).SelectionStart != 0 || ((TextBox)sender).Text.IndexOf("-") >= 0)) e.Handled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }      
     }
 }

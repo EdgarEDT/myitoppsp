@@ -30,8 +30,8 @@
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button1 = new DevExpress.XtraEditors.SimpleButton();
+            this.button2 = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // listBox1
@@ -52,25 +52,25 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "不保存图层";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(169, 187);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(52, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "删除";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(227, 187);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(228, 187);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(53, 23);
-            this.button1.TabIndex = 3;
+            this.button1.Size = new System.Drawing.Size(50, 29);
+            this.button1.TabIndex = 81;
             this.button1.Text = "关闭";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(172, 187);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(50, 29);
+            this.button2.TabIndex = 80;
+            this.button2.Text = "删除";
+            this.button2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // frmList
             // 
@@ -96,7 +96,7 @@
 
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private DevExpress.XtraEditors.SimpleButton button1;
+        private DevExpress.XtraEditors.SimpleButton button2;
     }
 }
