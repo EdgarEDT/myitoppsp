@@ -122,39 +122,7 @@ namespace Itop.RightManager.UI {
 
         private void button1_Click(object sender, EventArgs e) 
         {
-            try {
-                string strErr = "";
-                if (!SmmuserRule.Check(DataObject, ref strErr,isNew)) {
-                    MsgBox.Show(strErr);
-                    return;
-                }
-
-                if (tbDisableflg.Checked)
-                    DataObject.Disableflg = "Y";
-                else
-                    DataObject.Disableflg = "N";
-                DataObject.Lastlogon = imageComboBoxEdit1.SelectedIndex.ToString();
-                foreach (DictionaryEntry de in addgroupItems)
-                {
-                    Smugroup data = new Smugroup();
-                    data.Groupno = ((Smmgroup)de.Value).Groupno;
-                    data.Userid = tbUserid.Text;
-                    SmmprogService.Create<Smugroup>(data);
-                }
-                if (!isNew)
-                {
-                    foreach (DictionaryEntry de in deletegroupItems)
-                    {
-                        SmmprogService.Delete<Smugroup>((Smugroup)de.Value);
-                    }
-                }
-               
-
-                this.DialogResult = DialogResult.OK;
-
-               
-            } catch { MessageBox.Show("数据格式有误"); return; }
-            DialogResult = DialogResult.OK;
+           
 
         }
 
@@ -191,17 +159,100 @@ namespace Itop.RightManager.UI {
 
         private void btn_DeleteGroup_Click(object sender, EventArgs e)
         {
-            if (listView1.Items.Count==0)
+           
+            
+        }
+
+        private void imageComboBoxEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            //ShowValues(teImageComboBoxEdit1, sender as ImageComboBoxEdit);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strErr = "";
+                if (!SmmuserRule.Check(DataObject, ref strErr, isNew))
+                {
+                    MsgBox.Show(strErr);
+                    return;
+                }
+
+                if (tbDisableflg.Checked)
+                    DataObject.Disableflg = "Y";
+                else
+                    DataObject.Disableflg = "N";
+                DataObject.Lastlogon = imageComboBoxEdit1.SelectedIndex.ToString();
+                foreach (DictionaryEntry de in addgroupItems)
+                {
+                    Smugroup data = new Smugroup();
+                    data.Groupno = ((Smmgroup)de.Value).Groupno;
+                    data.Userid = tbUserid.Text;
+                    SmmprogService.Create<Smugroup>(data);
+                }
+                if (!isNew)
+                {
+                    foreach (DictionaryEntry de in deletegroupItems)
+                    {
+                        SmmprogService.Delete<Smugroup>((Smugroup)de.Value);
+                    }
+                }
+
+
+                this.DialogResult = DialogResult.OK;
+
+
+            }
+            catch { MessageBox.Show("数据格式有误"); return; }
+            DialogResult = DialogResult.OK;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_addgroup_Click_1(object sender, EventArgs e)
+        {
+            if (tbUserid.Text.Length == 0)
+            {
+                MessageBox.Show("请先添加用户信息");
+                return;
+            }
+            FrmSelectGroup frm = new FrmSelectGroup();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                foreach (DictionaryEntry de in frm.GroupItems)
+                {
+                    if (!groupItems.Contains(de.Key) && !addgroupItems.Contains(de.Key))
+                    {
+                        addgroupItems.Add(de.Key, de.Value);
+                        ListViewItem listItem = new ListViewItem();
+                        listItem.Name = de.Key.ToString(); ;
+                        listItem.Text = ((Smmgroup)de.Value).Groupname;
+                        listItem.ImageIndex = 0;
+
+                        listItem.Tag = de.Value;
+                        listView1.Items.Add(listItem);
+                    }
+                }
+            }
+        }
+
+        private void btn_DeleteGroup_Click_1(object sender, EventArgs e)
+        {
+            if (listView1.Items.Count == 0)
             {
                 MessageBox.Show("没有添加分组信息，无法删除！");
                 return;
             }
-            if (listView1.FocusedItem==null)
+            if (listView1.FocusedItem == null)
             {
                 MessageBox.Show("请选择要删除的分组！");
                 return;
             }
-           
+
             object listviewKey = "";
             if (tbUserid.Text == "admin" && listView1.FocusedItem.Name == "SystemManage")
             {
@@ -220,12 +271,6 @@ namespace Itop.RightManager.UI {
             }
 
             listView1.FocusedItem.Remove();
-            
-        }
-
-        private void imageComboBoxEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-            //ShowValues(teImageComboBoxEdit1, sender as ImageComboBoxEdit);
         }
 
        

@@ -71,20 +71,29 @@ namespace Itop.RightManager.UI {
             get { return _smmgroup; }
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            try {
-                string strErr = "";
-                if (!SmmgroupRule.Check(DataObject, ref strErr,isNew)) {
-                    MsgBox.Show(strErr);
-                    return;
-                }               
-               
-            } catch { MessageBox.Show("数据格式有误"); return; }
-            DialogResult = DialogResult.OK;
-
+       
+        private void button2_Click(object sender, EventArgs e) {
+            this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e) {
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strErr = "";
+                if (!SmmgroupRule.Check(DataObject, ref strErr, isNew))
+                {
+                    MsgBox.Show(strErr);
+                    return;
+                }
+
+            }
+            catch { MessageBox.Show("数据格式有误"); return; }
+            DialogResult = DialogResult.OK;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

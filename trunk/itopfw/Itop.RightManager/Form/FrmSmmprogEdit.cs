@@ -66,10 +66,7 @@ namespace Itop.RightManager.UI {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            try {                
-
-            } catch { MessageBox.Show("数据格式有误"); return; }
-            DialogResult = DialogResult.OK;
+           
         }
 
         private void button2_Click(object sender, EventArgs e) {
@@ -115,6 +112,33 @@ namespace Itop.RightManager.UI {
                 Tico.Text = dlg.SelectedImageKey;
                 dataClass.ProgIco = dlg.SelectedImageKey;
             }
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            FrmResources dlg = new FrmResources();
+            dlg.StartPosition = FormStartPosition.CenterScreen;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                //MessageBox.Show(dlg.SelectedImageKey);
+                Tico.Text = dlg.SelectedImageKey;
+                dataClass.ProgIco = dlg.SelectedImageKey;
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch { MessageBox.Show("数据格式有误"); return; }
+            DialogResult = DialogResult.OK;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

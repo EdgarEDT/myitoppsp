@@ -37,19 +37,31 @@ namespace Itop.RightManager.UI {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            try {
+          
+
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 //string strErr = "";
                 //if (!SmmgroupRule.Check(DataObject, ref strErr,isNew)) {
                 //    MsgBox.Show(strErr);
                 //    return;
                 //}               
-               
-            } catch { MessageBox.Show("数据格式有误"); return; }
-            DialogResult = DialogResult.OK;
 
+            }
+            catch { MessageBox.Show("数据格式有误"); return; }
+            DialogResult = DialogResult.OK;
         }
 
-        private void button2_Click(object sender, EventArgs e) {
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

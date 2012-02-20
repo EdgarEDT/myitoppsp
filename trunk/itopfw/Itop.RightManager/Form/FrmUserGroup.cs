@@ -82,10 +82,47 @@ namespace Itop.RightManager
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnOk_Click_1(object sender, EventArgs e)
+        {
+            foreach (DictionaryEntry de in addgroupItems)
+            {
+                Smugroup data = new Smugroup();
+                data.Groupno = ((Smmgroup)de.Value).Groupno;
+                data.Userid = userNo;
+                SmmprogService.Create<Smugroup>(data);
+            }
+            foreach (DictionaryEntry de in deletegroupItems)
+            {
+                SmmprogService.Delete<Smugroup>((Smugroup)de.Value);
+            }
+
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
             FrmSelectGroup frm = new FrmSelectGroup();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                
+
                 foreach (DictionaryEntry de in frm.GroupItems)
                 {
                     if (!groupItems.Contains(de.Key) && !addgroupItems.Contains(de.Key))
@@ -100,38 +137,23 @@ namespace Itop.RightManager
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
             if (listView.FocusedItem == null)
                 return;
-            object listviewKey ="";
+            object listviewKey = "";
 
-            if (addgroupItems.ContainsValue(listView.FocusedItem.Tag)){
+            if (addgroupItems.ContainsValue(listView.FocusedItem.Tag))
+            {
                 addgroupItems.Remove(((Smmgroup)listView.FocusedItem.Tag).Groupno);
             }
-            else if(!deletegroupItems.ContainsValue(listView.FocusedItem.Tag)){
+            else if (!deletegroupItems.ContainsValue(listView.FocusedItem.Tag))
+            {
 
-                deletegroupItems.Add(((Smugroup)listView.FocusedItem.Tag).Groupno,listView.FocusedItem.Tag);
+                deletegroupItems.Add(((Smugroup)listView.FocusedItem.Tag).Groupno, listView.FocusedItem.Tag);
             }
 
             listView.FocusedItem.Remove();
-        }
-
-        private void btnOk_Click(object sender, EventArgs e)
-        {
-            foreach (DictionaryEntry de in addgroupItems)
-            {
-                Smugroup data = new Smugroup();
-                data.Groupno = ((Smmgroup)de.Value).Groupno;
-                data.Userid = userNo;
-                SmmprogService.Create<Smugroup>(data);               
-            }
-            foreach (DictionaryEntry de in deletegroupItems)
-            {
-                SmmprogService.Delete<Smugroup>((Smugroup)de.Value);
-            }
-            
-            this.DialogResult = DialogResult.OK;
         }
     }
 }

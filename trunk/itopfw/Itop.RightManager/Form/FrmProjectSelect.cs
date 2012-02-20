@@ -64,13 +64,15 @@ namespace Itop.RightManager.UI
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+     
+
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (treeList1.FocusedNode==null)
+            if (treeList1.FocusedNode == null)
             {
                 return;
             }
-            if (treeList1.FocusedNode["ProjectManager"]==null)
+            if (treeList1.FocusedNode["ProjectManager"] == null)
             {
                 MessageBox.Show("ÇëÑ¡Ôñ¾íÊÚÈ¨£¡");
                 return;
@@ -82,7 +84,11 @@ namespace Itop.RightManager.UI
             dlg.ProjectName = treeList1.FocusedNode["ProjectName"].ToString(); ;
             dlg.ShowDialog();
         
-            
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
       
