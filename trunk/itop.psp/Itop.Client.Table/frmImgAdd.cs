@@ -38,8 +38,14 @@ namespace Itop.Client.Table
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if(buttonEdit1.Text==""){
-                MessageBox.Show("请选择附件。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+          
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (buttonEdit1.Text == "")
+            {
+                MessageBox.Show("请选择附件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             try

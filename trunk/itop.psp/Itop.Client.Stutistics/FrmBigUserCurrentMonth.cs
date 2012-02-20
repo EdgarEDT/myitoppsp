@@ -29,8 +29,7 @@ namespace Itop.Client.Stutistics
 
         private void button1_Click(object sender, EventArgs e)
         {
-            month = Convert.ToInt32(comboBox1.Text.Replace("ÔÂ",""));
-            this.DialogResult = DialogResult.OK;
+            
         }
 
         private void FrmBigUserCurrentMonth_Load(object sender, EventArgs e)
@@ -43,6 +42,12 @@ namespace Itop.Client.Stutistics
             }
             if (comboBox1.Items.Count > 0)
                 comboBox1.Text = comboBox1.Items[0].ToString();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            month = Convert.ToInt32(comboBox1.Text.Replace("ÔÂ", ""));
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

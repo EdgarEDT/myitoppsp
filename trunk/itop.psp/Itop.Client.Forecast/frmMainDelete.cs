@@ -30,7 +30,11 @@ namespace Itop.Client.Forecast
 
         private void frmMainDelete_Load(object sender, EventArgs e)
         {
-           
+            this.dataGridView1.DefaultCellStyle.BackColor = this.BackColor;
+            this.dataGridView1.RowHeadersDefaultCellStyle.BackColor = this.BackColor;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = this.BackColor;
+            this.dataGridView1.GridColor = System.Drawing.Color.White;
+
             IList<string> templist = Common.Services.BaseService.GetList<string>("SelectSystemDeleteByconn", "");
             dt.Columns.Add("NUM", typeof(string));
             dt.Columns.Add("tablename", typeof(string));
@@ -137,18 +141,28 @@ namespace Itop.Client.Forecast
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("删除数不可恢复！\n请您谨慎操作！！！","警告！",MessageBoxButtons.YesNo,MessageBoxIcon.Warning)==DialogResult.Yes)
+           
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("删除数不可恢复！\n请您谨慎操作！！！", "警告！", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 int allnum = SelectRowNum();
-                if (allnum==0)
+                if (allnum == 0)
                 {
                     MessageBox.Show("您没有选择任何表！！");
                     return;
-                } 
+                }
                 int m = 0;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                   
+
                     dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.White;
                     if ((bool)dt.Rows[i]["select"])
                     {
@@ -169,11 +183,16 @@ namespace Itop.Client.Forecast
                             MessageBox.Show(dt.Rows[i]["tablename"].ToString() + "    表出现问题，不能删除数据！");
                             throw;
                         }
-                       
+
                     }
                 }
                 MessageBox.Show("已完成删除！");
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 

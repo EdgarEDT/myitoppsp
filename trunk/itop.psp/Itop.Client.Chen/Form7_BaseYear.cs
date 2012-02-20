@@ -47,6 +47,17 @@ namespace Itop.Client.Chen
         //}
         private void button1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void Form7_BaseYear_Load(object sender, EventArgs e)
+        {
+
+            spinEdit1.Text = _baseyear;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             if (spinEdit1.Text == "")
             {
                 Itop.Common.MsgBox.Show("请选择指定的年份！");
@@ -69,12 +80,6 @@ namespace Itop.Client.Chen
                 _baseyear = spinEdit1.Text;
                 DialogResult = DialogResult.OK;
             }
-        }
-
-        private void Form7_BaseYear_Load(object sender, EventArgs e)
-        {
-
-            spinEdit1.Text = _baseyear;
         }
 
       

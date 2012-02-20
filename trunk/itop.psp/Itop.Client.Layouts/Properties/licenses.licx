@@ -1,0 +1,5 @@
+DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+FarPoint.Win.Spread.FpSpread, FarPoint.Win.Spread, Version=2.0.6.0, Culture=neutral, PublicKeyToken=327c3516b1b18457
+DevExpress.XtraTab.XtraTabControl, DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a

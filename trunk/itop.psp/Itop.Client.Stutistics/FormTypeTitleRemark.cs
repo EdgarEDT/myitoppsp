@@ -31,6 +31,18 @@ namespace Itop.Client.Stutistics
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+
+        private void FormTypeTitleRemark_Load(object sender, EventArgs e)
+        {
+            textBox1.Text = typeTitle;
+            textBox2.Text = typeRemark;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             if (textBox1.Text == string.Empty)
             {
                 MsgBox.Show("单位名称不能为空！");
@@ -39,13 +51,6 @@ namespace Itop.Client.Stutistics
             typeTitle = textBox1.Text;
             typeRemark = textBox2.Text;
             DialogResult = DialogResult.OK;
-        }
-
-
-        private void FormTypeTitleRemark_Load(object sender, EventArgs e)
-        {
-            textBox1.Text = typeTitle;
-            textBox2.Text = typeRemark;
         }
     }
 }

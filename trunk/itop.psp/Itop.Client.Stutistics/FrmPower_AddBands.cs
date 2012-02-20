@@ -102,92 +102,7 @@ namespace Itop.Client.Stutistics
         {
            
 
-            PowerSubstationLine pl = new PowerSubstationLine();
-            classname = textBox1.Text;
-            pl.Type2 = type2;
-            pl.Flag = flag;
-            pl.Title = classname;
-//            pl.Type = type;
-            ////PowerSubstationLine psp_l = new PowerSubstationLine();
-            ////psp_l = (PowerSubstationLine)Common.Services.BaseService.GetObject("SelectPowerSubstationLineByTitleTypeFlag", pl);
-      
-            ////psp_l.Type2 = type2;
-            ////psp_l.Flag = flag;
-
-            psp_sl.Title = textBox1.Text;
-            if (classname.ToString() == "")
-            {
-                MsgBox.Show("类别名称不能为空");
-                return;
-            }
-
-            if (al.Contains(textBox1.Text) == true)
-            {
-                MsgBox.Show("已经存在此分类，要想添加，请先删除已存在的" + textBox1.Text + "!");
-            
-                return;
-            }
-            try
-            {
-                PowerSubstationLine plobj = new PowerSubstationLine();
-                plobj = (PowerSubstationLine)Common.Services.BaseService.GetObject("SelectPowerSubstationLineByTitleTypeFlag", pl);
-                if (plobj == null)
-                {
-                    try
-                    {
-                        if (!IsUpdate)
-                        {
-                            bool bz = false;
-                            string f = "";
-                            foreach (string ss in s)
-                            {
-                                PowerSubstationLine ps = new PowerSubstationLine();
-                                //ps.Title = classname;
-                                ps.Flag = flag;
-                                //ps.Type = type;
-                                ps.Type2 = type2;
-                                ps.ClassType = ss;
-                                
- //                               object obj = Common.Services.BaseService.GetObject("SelectPowerSubstationLineByTitleTypeClass1", ps);
-                                object obj = Common.Services.BaseService.GetObject("SelectPowerSubstationLineByClassTypeType2Class1", ps);
-                                if (obj == null)
-                                {
-                                    classtype = ss;
-                                    bz = true;
-                                    f = ss;
-                                    break;
-                                }
-
-                            }
-                            if (bz)
-                            {
-                             
-                                psp_sl.ClassType = f;
-                                psp_sl.Type = type;
-                                Common.Services.BaseService.Create<PowerSubstationLine>(psp_sl);
-                            }
-
-
-                        }
-                        else
-                        {
-                            Common.Services.BaseService.Update<PowerSubstationLine>(psp_sl);
-                        }
-
-                        this.DialogResult = DialogResult.OK;
-                    }
-                    catch (Exception ex)
-                    {
-                        MsgBox.Show("出错啦：" + ex.Message);
-                    }
-                }
-                else
-                {
-                    MsgBox.Show("此分类已经存在，请重新输入！");
-                }
-
-            }
-            catch { }
+           
         }
 
         private void FrmPower_AddBands_Load(object sender, EventArgs e)
@@ -286,6 +201,96 @@ namespace Itop.Client.Stutistics
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            PowerSubstationLine pl = new PowerSubstationLine();
+            classname = textBox1.Text;
+            pl.Type2 = type2;
+            pl.Flag = flag;
+            pl.Title = classname;
+            //            pl.Type = type;
+            ////PowerSubstationLine psp_l = new PowerSubstationLine();
+            ////psp_l = (PowerSubstationLine)Common.Services.BaseService.GetObject("SelectPowerSubstationLineByTitleTypeFlag", pl);
+
+            ////psp_l.Type2 = type2;
+            ////psp_l.Flag = flag;
+
+            psp_sl.Title = textBox1.Text;
+            if (classname.ToString() == "")
+            {
+                MsgBox.Show("类别名称不能为空");
+                return;
+            }
+
+            if (al.Contains(textBox1.Text) == true)
+            {
+                MsgBox.Show("已经存在此分类，要想添加，请先删除已存在的" + textBox1.Text + "!");
+
+                return;
+            }
+            try
+            {
+                PowerSubstationLine plobj = new PowerSubstationLine();
+                plobj = (PowerSubstationLine)Common.Services.BaseService.GetObject("SelectPowerSubstationLineByTitleTypeFlag", pl);
+                if (plobj == null)
+                {
+                    try
+                    {
+                        if (!IsUpdate)
+                        {
+                            bool bz = false;
+                            string f = "";
+                            foreach (string ss in s)
+                            {
+                                PowerSubstationLine ps = new PowerSubstationLine();
+                                //ps.Title = classname;
+                                ps.Flag = flag;
+                                //ps.Type = type;
+                                ps.Type2 = type2;
+                                ps.ClassType = ss;
+
+                                //                               object obj = Common.Services.BaseService.GetObject("SelectPowerSubstationLineByTitleTypeClass1", ps);
+                                object obj = Common.Services.BaseService.GetObject("SelectPowerSubstationLineByClassTypeType2Class1", ps);
+                                if (obj == null)
+                                {
+                                    classtype = ss;
+                                    bz = true;
+                                    f = ss;
+                                    break;
+                                }
+
+                            }
+                            if (bz)
+                            {
+
+                                psp_sl.ClassType = f;
+                                psp_sl.Type = type;
+                                Common.Services.BaseService.Create<PowerSubstationLine>(psp_sl);
+                            }
+
+
+                        }
+                        else
+                        {
+                            Common.Services.BaseService.Update<PowerSubstationLine>(psp_sl);
+                        }
+
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    catch (Exception ex)
+                    {
+                        MsgBox.Show("出错啦：" + ex.Message);
+                    }
+                }
+                else
+                {
+                    MsgBox.Show("此分类已经存在，请重新输入！");
+                }
+
+            }
+            catch { }
         }
     }
 }

@@ -25,6 +25,20 @@ namespace Itop.Client.Chen
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void FormGDP_Compute_BaseYear_Load(object sender, EventArgs e)
+        {
+            PSP_GDPBaseYear BaseYear = (PSP_GDPBaseYear)Common.Services.BaseService.GetObject("SelectPSP_GDPBaseYearList", null);
+            if (BaseYear != null)
+            {
+                spinEdit1.Text = BaseYear.BaseYear;
+            }
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             if (spinEdit1.Text == "")
             {
                 Itop.Common.MsgBox.Show("请选择指定的年份！");
@@ -41,15 +55,6 @@ namespace Itop.Client.Chen
                 DialogResult = DialogResult.OK;
             }
            
-        }
-
-        private void FormGDP_Compute_BaseYear_Load(object sender, EventArgs e)
-        {
-            PSP_GDPBaseYear BaseYear = (PSP_GDPBaseYear)Common.Services.BaseService.GetObject("SelectPSP_GDPBaseYearList", null);
-            if (BaseYear != null)
-            {
-                spinEdit1.Text = BaseYear.BaseYear;
-            }
         }
 
     }

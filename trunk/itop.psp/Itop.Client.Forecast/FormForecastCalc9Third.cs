@@ -449,53 +449,6 @@ namespace Itop.Client.Forecast
         private void button1_Click(object sender, EventArgs e)
         {
             
-           
-            if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null || comboBox3.SelectedItem == null || comboBox4.SelectedItem == null || comboBox5.SelectedItem == null || (comboBox6.SelectedItem == null && comboBox6.Visible))
-            {
-                MessageBox.Show("参数设置不正确！");
-                return;
-            }
-            int yearselect1 = Convert.ToInt32(comboBox4.SelectedItem.ToString().Replace("年", ""));
-            int yearselect2 = Convert.ToInt32(comboBox5.SelectedItem.ToString().Replace("年", ""));
-            foreach (DataRow ndr in dt.Rows)
-            {
-                int year1 = Convert.ToInt32(ndr["C"].ToString().Split('-')[0].Replace("年", ""));
-                int year2 = Convert.ToInt32(ndr["C"].ToString().Split('-')[1].Replace("年", ""));
-                if (!(yearselect1 > year2 || year1 > yearselect2))
-                {
-                    MessageBox.Show("所选年份包含在" + ndr["C"]);
-                    return;
-                }
-            }
-            DataRow dr;
-            dr = dt.NewRow();
-            if (comboBox6.Visible)
-                dr["A"] = comboBox6.SelectedItem;
-            else
-                dr["A"] = comboBox1.SelectedItem;
-            Ps_Calc pcs = new Ps_Calc();
-            pcs.ID = Guid.NewGuid().ToString();
-            pcs.Forecast = type;
-            pcs.ForecastID = forecastReport.ID;
-            pcs.CalcID = dr["A"].ToString();
-            pcs.Value2 = Convert.ToDouble(comboBox4.SelectedItem.ToString().Replace("年", ""));
-            pcs.Value3 = Convert.ToDouble(comboBox5.SelectedItem.ToString().Replace("年", ""));
-            pcs.Value4 = Convert.ToDouble(comboBox2.SelectedItem.ToString().Replace("年", ""));
-            pcs.Value5 = Convert.ToDouble(comboBox3.SelectedItem.ToString().Replace("年", ""));
-            dr["B"] = comboBox2.SelectedItem + "-" + comboBox3.SelectedItem;
-
-            dr["C"] = comboBox4.SelectedItem + "-" + comboBox5.SelectedItem;
-            dr["ID"] = pcs.ID;
-
-            dt.Rows.Add(dr);
-            
-           
-            savevalue(pcs, true);
-           
-            comboBox2.SelectedIndex = -1;
-            comboBox3.SelectedIndex = -1;
-            comboBox4.SelectedIndex = -1;
-            comboBox5.SelectedIndex = -1;
         }
         /// <summary>
         /// 删除
@@ -504,33 +457,7 @@ namespace Itop.Client.Forecast
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
-            if (gridView1.FocusedRowHandle<0)
-            {
-                return;
-            }
-            int i = gridView1.FocusedRowHandle;
-            //gridView1.FocusedRowHandle = -1;
-            DataRowView drv = gridView1.GetRow(i) as DataRowView;
-            if (drv==null)
-            {
-                MessageBox.Show("删除失败！");
-                gridView1.RefreshData();
-                return;
-            }
-            Ps_Calc pcs = new Ps_Calc();
-            pcs.ID = drv.Row["ID"].ToString();
-            pcs=Services.BaseService.GetOneByKey<Ps_Calc>(pcs);
-            if(pcs!=null)
-            Services.BaseService.Delete<Ps_Calc>(pcs);
-            else
-            {
-                MessageBox.Show("删除失败!");
-                gridView1.RefreshData();
-                return;
-            }
-            dt.Rows.Remove(drv.Row);
             
-           gridView1.RefreshData();
             
         }
 
@@ -717,6 +644,20 @@ namespace Itop.Client.Forecast
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
+           
+        }
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
             DataTable dttemp = GetSortTable(dt, "C", true);
             int i = 0;
             ha.Clear();
@@ -735,25 +676,118 @@ namespace Itop.Client.Forecast
                 ha.Add(i, dttemp.Rows[i]["A"] + "@" + dttemp.Rows[i]["B"].ToString().Replace("年", "") + "@" + dttemp.Rows[i]["C"].ToString().Replace("年", ""));
 
             }
-            if(dttemp.Rows.Count>0)
-            ha.Add(i, dttemp.Rows[i]["A"] + "@" + dttemp.Rows[i]["B"].ToString().Replace("年", "") + "@" + dttemp.Rows[i]["C"].ToString().Replace("年", ""));
+            if (dttemp.Rows.Count > 0)
+                ha.Add(i, dttemp.Rows[i]["A"] + "@" + dttemp.Rows[i]["B"].ToString().Replace("年", "") + "@" + dttemp.Rows[i]["C"].ToString().Replace("年", ""));
             this.DialogResult = DialogResult.OK;
         }
-        /// <summary>
-        /// 修改
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
+
+        private void simpleButton4_Click(object sender, EventArgs e)
         {
 
-            
+
+            if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null || comboBox3.SelectedItem == null || comboBox4.SelectedItem == null || comboBox5.SelectedItem == null || (comboBox6.SelectedItem == null && comboBox6.Visible))
+            {
+                MessageBox.Show("参数设置不正确！");
+                return;
+            }
+            int yearselect1 = Convert.ToInt32(comboBox4.SelectedItem.ToString().Replace("年", ""));
+            int yearselect2 = Convert.ToInt32(comboBox5.SelectedItem.ToString().Replace("年", ""));
+            foreach (DataRow ndr in dt.Rows)
+            {
+                int year1 = Convert.ToInt32(ndr["C"].ToString().Split('-')[0].Replace("年", ""));
+                int year2 = Convert.ToInt32(ndr["C"].ToString().Split('-')[1].Replace("年", ""));
+                if (!(yearselect1 > year2 || year1 > yearselect2))
+                {
+                    MessageBox.Show("所选年份包含在" + ndr["C"]);
+                    return;
+                }
+            }
+            DataRow dr;
+            dr = dt.NewRow();
+            if (comboBox6.Visible)
+                dr["A"] = comboBox6.SelectedItem;
+            else
+                dr["A"] = comboBox1.SelectedItem;
+            Ps_Calc pcs = new Ps_Calc();
+            pcs.ID = Guid.NewGuid().ToString();
+            pcs.Forecast = type;
+            pcs.ForecastID = forecastReport.ID;
+            pcs.CalcID = dr["A"].ToString();
+            pcs.Value2 = Convert.ToDouble(comboBox4.SelectedItem.ToString().Replace("年", ""));
+            pcs.Value3 = Convert.ToDouble(comboBox5.SelectedItem.ToString().Replace("年", ""));
+            pcs.Value4 = Convert.ToDouble(comboBox2.SelectedItem.ToString().Replace("年", ""));
+            pcs.Value5 = Convert.ToDouble(comboBox3.SelectedItem.ToString().Replace("年", ""));
+            dr["B"] = comboBox2.SelectedItem + "-" + comboBox3.SelectedItem;
+
+            dr["C"] = comboBox4.SelectedItem + "-" + comboBox5.SelectedItem;
+            dr["ID"] = pcs.ID;
+
+            dt.Rows.Add(dr);
+
+
+            savevalue(pcs, true);
+
+            comboBox2.SelectedIndex = -1;
+            comboBox3.SelectedIndex = -1;
+            comboBox4.SelectedIndex = -1;
+            comboBox5.SelectedIndex = -1;
+        }
+
+        private void simpleButton2_Click_1(object sender, EventArgs e)
+        {
             if (gridView1.FocusedRowHandle < 0)
             {
                 return;
             }
-          
-            
+            int i = gridView1.FocusedRowHandle;
+            //gridView1.FocusedRowHandle = -1;
+            DataRowView drv = gridView1.GetRow(i) as DataRowView;
+            if (drv == null)
+            {
+                MessageBox.Show("删除失败！");
+                gridView1.RefreshData();
+                return;
+            }
+            Ps_Calc pcs = new Ps_Calc();
+            pcs.ID = drv.Row["ID"].ToString();
+            pcs = Services.BaseService.GetOneByKey<Ps_Calc>(pcs);
+            if (pcs != null)
+                Services.BaseService.Delete<Ps_Calc>(pcs);
+            else
+            {
+                MessageBox.Show("删除失败!");
+                gridView1.RefreshData();
+                return;
+            }
+            dt.Rows.Remove(drv.Row);
+
+            gridView1.RefreshData();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+            comboBox3.SelectedIndex = -1;
+            comboBox4.SelectedIndex = -1;
+            comboBox5.SelectedIndex = -1;
+            comboBox6.SelectedIndex = -1;
+            comboBox6.Visible = false;
+            comboBox6.Enabled = false;
+            label6.Visible = false;
+            label6.Enabled = false;
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+
+
+            if (gridView1.FocusedRowHandle < 0)
+            {
+                return;
+            }
+
+
             if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null || comboBox3.SelectedItem == null || comboBox4.SelectedItem == null || comboBox5.SelectedItem == null || (comboBox6.SelectedItem == null && comboBox6.Visible))
             {
                 MessageBox.Show("参数设置不正确！");
@@ -764,7 +798,7 @@ namespace Itop.Client.Forecast
 
             DataRowView drv = gridView1.GetRow(gridView1.FocusedRowHandle) as DataRowView;
             DataRow dr = drv.Row;
-            int intex=dt.Rows.IndexOf(dr);
+            int intex = dt.Rows.IndexOf(dr);
             int i = 0;
             foreach (DataRow ndr in dt.Rows)
             {
@@ -778,9 +812,9 @@ namespace Itop.Client.Forecast
                 }
                 i++;
             }
-            
-          
-         
+
+
+
             if (comboBox6.Visible)
                 dt.Rows[intex]["A"] = comboBox6.SelectedItem;
             else
@@ -800,6 +834,11 @@ namespace Itop.Client.Forecast
             pcs.Value5 = Convert.ToDouble(comboBox3.SelectedItem.ToString().Replace("年", ""));
             savevalue(pcs, false);
             gridView1.RefreshData();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
       
     }

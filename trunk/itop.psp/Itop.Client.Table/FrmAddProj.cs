@@ -546,9 +546,58 @@ namespace Itop.Client.Table
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void dateStateTime_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+
+            FrmProjTZEdit frm = new FrmProjTZEdit();
+            frm.Currentptb = Currentptb;
+            spinEdit3.Text = Currentptb.AllVolumn.ToString();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                Currentptb = frm.Currentptb;
+                ChangeStatetime = true;
+                if (!Changetzflag)
+                {
+                    switch (combState.Text)
+                    {
+                        case "可行性研究":
+                            sptz.Value = Changetz((Currentptb.Col6 == null || Currentptb.Col6 == "") ? "" : Currentptb.Col6);
+                            break;
+                        case "初步设计":
+                            sptz.Value = Changetz((Currentptb.Col7 == null || Currentptb.Col7 == "") ? "" : Currentptb.Col7);
+                            break;
+                        case "施工设计":
+                            sptz.Value = Changetz((Currentptb.Col8 == null || Currentptb.Col8 == "") ? "" : Currentptb.Col8);
+                            break;
+                        case "移交":
+                            sptz.Value = Changetz((Currentptb.Col9 == null || Currentptb.Col9 == "") ? "" : Currentptb.Col9);
+                            break;
+                        default:
+
+                            break;
+                    }
+                }
+
+            }
+        }
+
+        private void simpleButton3_Click_1(object sender, EventArgs e)
+        {
             FrmProjTimeEdit frm = new FrmProjTimeEdit();
             frm.Currentptb = Currentptb;
-            if (frm.ShowDialog()==DialogResult.OK)
+            if (frm.ShowDialog() == DialogResult.OK)
             {
                 Currentptb = frm.Currentptb;
                 ChangeStatetime = true;
@@ -591,45 +640,6 @@ namespace Itop.Client.Table
                 }
                 ChangeStatetime = false;
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            FrmProjTZEdit frm = new FrmProjTZEdit();
-            frm.Currentptb = Currentptb;
-            spinEdit3.Text = Currentptb.AllVolumn.ToString();
-            if (frm.ShowDialog()==DialogResult.OK)
-            {
-                Currentptb = frm.Currentptb;
-                ChangeStatetime = true;
-                if (!Changetzflag)
-                    {
-                        switch (combState.Text)
-                        {
-                            case "可行性研究":
-                                 sptz.Value = Changetz((Currentptb.Col6 == null || Currentptb.Col6 == "") ? "" : Currentptb.Col6);
-                                break;
-                            case "初步设计":
-                                sptz.Value = Changetz((Currentptb.Col7 == null || Currentptb.Col7 == "") ? "" : Currentptb.Col7);
-                                break;
-                            case "施工设计":
-                                 sptz.Value = Changetz((Currentptb.Col8 == null || Currentptb.Col8 == "") ? "" : Currentptb.Col8);
-                                break;
-                            case "移交":
-                                 sptz.Value = Changetz((Currentptb.Col9 == null || Currentptb.Col9 == "") ? "" : Currentptb.Col9);
-                                break;
-                            default:
-                              
-                                break;
-                        }
-                    }
-                
-            }
-        }
-
-        private void dateStateTime_ValueChanged(object sender, EventArgs e)
-        {
-
         }
 
        
