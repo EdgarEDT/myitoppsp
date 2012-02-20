@@ -227,6 +227,14 @@ namespace Itop.RightManager.UI {
 
         private void FrmGroupRights_Load(object sender, EventArgs e)
         {
+            //改变datagridveiw背景色
+            this.groupRightsList1.dataGridView1.DefaultCellStyle.BackColor = this.BackColor;
+            this.groupRightsList1.dataGridView1.RowHeadersDefaultCellStyle.BackColor=this.BackColor;
+            this.groupRightsList1.dataGridView1.ColumnHeadersDefaultCellStyle.BackColor=this.BackColor;
+            this.groupRightsList1.dataGridView1.GridColor = System.Drawing.Color.White;
+            
+
+
             if (projectUID != "")
             {
                 this.Text = projectName + "授权管理";

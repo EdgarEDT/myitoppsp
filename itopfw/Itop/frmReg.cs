@@ -19,8 +19,8 @@ namespace Forms
 		private System.Windows.Forms.Label l3;
         private TextBox t1;
         private TextBox t2;
-        private Button button1;
-        private Button button2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
 	
 		/// <summary>
 		/// 必需的设计器变量。
@@ -79,8 +79,8 @@ namespace Forms
             this.l3 = new System.Windows.Forms.Label();
             this.t1 = new System.Windows.Forms.TextBox();
             this.t2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // label2
@@ -121,32 +121,30 @@ namespace Forms
             this.t2.Size = new System.Drawing.Size(275, 21);
             this.t2.TabIndex = 7;
             // 
-            // button1
+            // simpleButton2
             // 
-            this.button1.Location = new System.Drawing.Point(201, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "确定";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.simpleButton2.Location = new System.Drawing.Point(297, 88);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton2.TabIndex = 22;
+            this.simpleButton2.Text = "取消(&C)";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click_1);
             // 
-            // button2
+            // simpleButton1
             // 
-            this.button2.Location = new System.Drawing.Point(297, 88);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "取消";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.simpleButton1.Location = new System.Drawing.Point(207, 88);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton1.TabIndex = 21;
+            this.simpleButton1.Text = "确认(&O)";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);
             // 
             // frmReg
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
             this.ClientSize = new System.Drawing.Size(406, 124);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.t2);
             this.Controls.Add(this.t1);
             this.Controls.Add(this.l3);
@@ -157,8 +155,8 @@ namespace Forms
             this.Name = "frmReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "注册";
-            this.Closing += new System.ComponentModel.CancelEventHandler(this.frmReg_Closing);
             this.Load += new System.EventHandler(this.frmReg_Load);
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.frmReg_Closing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,11 +164,9 @@ namespace Forms
 		#endregion
 
 		private void simpleButton1_Click(object sender, System.EventArgs e)
-		{
-			
+        {
 
-			
-		}
+        }
 
 		private void frmReg_Load(object sender, System.EventArgs e)
 		{
@@ -178,10 +174,9 @@ namespace Forms
 		}
 
 		private void simpleButton2_Click(object sender, System.EventArgs e)
-		{
-			this.Close();
-			Application.Exit();
-		}
+        {
+
+        }
 
 		private void frmReg_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
@@ -189,6 +184,17 @@ namespace Forms
 		}
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
+        }
+
+        private void simpleButton1_Click_1(object sender, EventArgs e)
         {
             int i = VerifyRCode(AppSysID, t2.Text);
             if (i == 0)
@@ -203,10 +209,9 @@ namespace Forms
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void simpleButton2_Click_1(object sender, EventArgs e)
         {
             this.Close();
-            Application.Exit();
         }
 	}
 }

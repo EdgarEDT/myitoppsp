@@ -87,36 +87,7 @@ namespace Itop.Client.Projects
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Psp_ProgLayerList p1=new Psp_ProgLayerList();
-            p1.ProgUID=progid;
-            Services.BaseService.Update("DeletePsp_ProgLayerListByPID",p1);
-            
-            foreach(TreeNode node in treeView1.Nodes){
-                if (node.Checked == true)
-                {
-                    
-                    Psp_ProgLayerList obj = new Psp_ProgLayerList();
-                    obj.UID = Guid.NewGuid().ToString();
-                    obj.ProgUID = progid;
-                    obj.LayerGradeID = node.Tag.ToString();
-                    obj.col1 = node.Text;
-                    Services.BaseService.Create<Psp_ProgLayerList>(obj);
-                    foreach (TreeNode node2 in node.Nodes)
-                    {
-                        if (node2.Checked == true)
-                        {
-                            Psp_ProgLayerList obj2 = new Psp_ProgLayerList();
-                            obj2.UID = Guid.NewGuid().ToString();
-                            obj2.ProgUID = progid;
-                            obj2.LayerGradeID = node2.Tag.ToString();
-                            obj2.col1 = node2.Text;
-                            Services.BaseService.Create<Psp_ProgLayerList>(obj2);
-                        }
-                    }
-                }
-            }
-          
-            this.Close();
+           
         }
         private void tree_AfterCheck(object sender, System.Windows.Forms.TreeViewEventArgs e)
         {
@@ -172,6 +143,45 @@ namespace Itop.Client.Projects
                 e.Node.Parent.Checked = true;
             }
             tree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tree_AfterCheck);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+         Psp_ProgLayerList p1=new Psp_ProgLayerList();
+                    p1.ProgUID=progid;
+                    Services.BaseService.Update("DeletePsp_ProgLayerListByPID",p1);
+                    
+                    foreach(TreeNode node in treeView1.Nodes){
+                        if (node.Checked == true)
+                        {
+                            
+                            Psp_ProgLayerList obj = new Psp_ProgLayerList();
+                            obj.UID = Guid.NewGuid().ToString();
+                            obj.ProgUID = progid;
+                            obj.LayerGradeID = node.Tag.ToString();
+                            obj.col1 = node.Text;
+                            Services.BaseService.Create<Psp_ProgLayerList>(obj);
+                            foreach (TreeNode node2 in node.Nodes)
+                            {
+                                if (node2.Checked == true)
+                                {
+                                    Psp_ProgLayerList obj2 = new Psp_ProgLayerList();
+                                    obj2.UID = Guid.NewGuid().ToString();
+                                    obj2.ProgUID = progid;
+                                    obj2.LayerGradeID = node2.Tag.ToString();
+                                    obj2.col1 = node2.Text;
+                                    Services.BaseService.Create<Psp_ProgLayerList>(obj2);
+                                }
+                            }
+                        }
+                    }
+                  
+                    this.Close();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }   
 
     }

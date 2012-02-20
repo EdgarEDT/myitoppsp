@@ -49,7 +49,10 @@ namespace Itop.RightManager.UI
 
         private void FrmLogManager_Load(object sender, EventArgs e)
         {
-            
+            this.dataGridView.DefaultCellStyle.BackColor = this.BackColor;
+            this.dataGridView.RowHeadersDefaultCellStyle.BackColor = this.BackColor;
+            this.dataGridView.ColumnHeadersDefaultCellStyle.BackColor = this.BackColor;
+            this.dataGridView.GridColor = System.Drawing.Color.White;
             RefData();
 
 
@@ -98,22 +101,7 @@ namespace Itop.RightManager.UI
 
         }
 
-        private void toolDel_Click(object sender, EventArgs e)
-        {
-            if (dataGridView.CurrentRow != null)
-            {
-                string uid = dataGridView.CurrentRow.Cells["UID"].Value.ToString();
-
-                if (MsgBox.ShowYesNo("你确定要删除么？") == DialogResult.Yes)
-                {
-                    SysService.DeleteByKey<SMMLOG>(uid);
-                    
-                    //list.RemoveAt(dataGridView.CurrentRow.Index);
-                    RefData();
-
-                }
-            }
-        }
+       
 
         private void toolRes_Click(object sender, EventArgs e)
         {
@@ -125,22 +113,45 @@ namespace Itop.RightManager.UI
             this.Close();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (dataGridView.CurrentRow != null)
+            {
+                string uid = dataGridView.CurrentRow.Cells["UID"].Value.ToString();
+
+                if (MsgBox.ShowYesNo("你确定要删除么？") == DialogResult.Yes)
+                {
+                    SysService.DeleteByKey<SMMLOG>(uid);
+
+                    //list.RemoveAt(dataGridView.CurrentRow.Index);
+                    RefData();
+
+                }
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
                 if (MsgBox.ShowYesNo("你确定要删除么？") == DialogResult.Yes)
                 {
-                    SMMLOG sm=new SMMLOG();
+                    SMMLOG sm = new SMMLOG();
                     SysService.Delete<SMMLOG>(sm);
-                    list.Clear();                   
+                    list.Clear();
                     RefData();
                 }
             }
-            catch(Exception ex){
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
                 MsgBox.Show("删除失败");
             }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -293,7 +293,6 @@
     <None Include="Resources\zone.png" />
     <None Include="Resources\ma.jpg" />
     <None Include="Resources\login.ico" />
-    <None Include="Resources\about.jpg" />
     <None Include="Resources\loginwait.jpg" />
     <None Include="Resources\maintop.jpg" />
     <None Include="Resources\address-book-icon.png" />
@@ -433,6 +432,7 @@
     <None Include="Resources\xcons20003.png" />
     <None Include="Resources\excdel文档.png" />
     <None Include="Resources\maintop1.jpg" />
+    <None Include="Resources\about.jpg" />
     <Content Include="Resources\作废.ico" />
     <None Include="Resources\供电范围与负荷平衡0.png" />
     <None Include="Resources\供电范围与负荷平衡.png" />
@@ -488,6 +488,7 @@
     <None Include="Resources\实际类别.png" />
     <Content Include="Resources\审批.ico" />
     <Content Include="Resources\审核.ico" />
+    <None Include="Resources\宽条副本.jpg" />
     <Content Include="Resources\布局.ico" />
     <None Include="Resources\帮助.gif" />
     <None Include="Resources\年电量预测0.png" />
@@ -602,7 +603,9 @@
     <None Include="Resources\线路参数维护.png" />
     <None Include="Resources\线路走廊优化.png" />
     <None Include="Resources\线损分析.png" />
+    <None Include="Resources\登录界面.jpg" />
     <Content Include="Resources\角色.ico" />
+    <None Include="Resources\进入面.jpg" />
     <None Include="Resources\负荷预测.png" />
     <None Include="Resources\项目明细.png" />
     <None Include="Resources\输电线路数据.png" />

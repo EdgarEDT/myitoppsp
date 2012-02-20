@@ -85,63 +85,15 @@ namespace Itop.RightManager.UI {
         }
 
         private void btAdd_Click(object sender, EventArgs e) {
-            Smmprog prog = new Smmprog();
-            prog.ProgModuleType = "0";
-            
-            if (treeView1.SelectedNode.Level == 0) {
-                prog.ParentId = "";
-            }
-            else if(treeView1.SelectedNode.Tag is Smmprog)
-            {
-                prog.ParentId = (treeView1.SelectedNode.Tag as Smmprog).ProgId;                
-            }
-            FrmSmmprogEdit dlg = new FrmSmmprogEdit();
-            dlg.Smmprog = prog;
-            dlg.ShowInTaskbar = false;
-            if (dlg.ShowDialog() == DialogResult.OK) {
-                try {
-                    //SmmprogService.Create<Smmprog>(prog);
-                    SmmprogService.Create("InsertSmmprog", prog);
-
-                    TreeNode node = treeView1.SelectedNode.Nodes.Add(prog.ProgName);
-                    node.Tag = prog;
-                } catch { }
-            }
+          
         }
 
         private void btEdit_Click(object sender, EventArgs e) {
-            TreeNode node = treeView1.SelectedNode;
-            
-            if (node != null && node.Tag is Smmprog) {
-                FrmSmmprogEdit dlg = new FrmSmmprogEdit();
-                dlg.Smmprog = node.Tag as Smmprog;
-                if (dlg.ShowDialog() == DialogResult.OK) {
-                    try {
-                        SmmprogService.Update<Smmprog>(dlg.Smmprog);
-                        node.Text = dlg.Smmprog.ProgName;
-                    } catch (Exception err) { MessageBox.Show(err.Message); }
-                }
-            }
+          
         }
 
         private void btDelete_Click(object sender, EventArgs e) {
-            TreeNode node = treeView1.SelectedNode;
-            if (node != null && node.Tag is Smmprog) {
-                try {
-                    Smmprog prog =node.Tag as Smmprog;
-                    Hashtable hashtable1 = new Hashtable();
-                    
-                    if (smmprogService.GetRowCount<Smmprog>(prog)>0) {
-                        MsgBox.Show("有下级目录或者模块,不可删除!");
-                        return;
-                    }
-                    if (MsgBox.ShowYesNo("是否确认删除[" + prog.ProgName + "]") == DialogResult.Yes) {
-                        SmmprogService.Delete<Smmprog>(node.Tag as Smmprog);
-                        
-                        treeView1.SelectedNode.Remove();
-                    }
-                } catch { }
-            }
+          
         }
 
         private void treeView1_BeforeExpand(object sender, TreeViewCancelEventArgs e) {
@@ -155,7 +107,7 @@ namespace Itop.RightManager.UI {
 
         private void button1_Click(object sender, EventArgs e) {
             //Itop.Client.MIS.MainFormInterface.RefreshMainMenu();
-            Itop.Client.MIS.MFrmConsole.InitData();
+           
             
 
 
@@ -249,6 +201,92 @@ namespace Itop.RightManager.UI {
         }
 
         private void btClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btAdd_Click_1(object sender, EventArgs e)
+        {
+            Smmprog prog = new Smmprog();
+            prog.ProgModuleType = "0";
+
+            if (treeView1.SelectedNode.Level == 0)
+            {
+                prog.ParentId = "";
+            }
+            else if (treeView1.SelectedNode.Tag is Smmprog)
+            {
+                prog.ParentId = (treeView1.SelectedNode.Tag as Smmprog).ProgId;
+            }
+            FrmSmmprogEdit dlg = new FrmSmmprogEdit();
+            dlg.Smmprog = prog;
+            dlg.ShowInTaskbar = false;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //SmmprogService.Create<Smmprog>(prog);
+                    SmmprogService.Create("InsertSmmprog", prog);
+
+                    TreeNode node = treeView1.SelectedNode.Nodes.Add(prog.ProgName);
+                    node.Tag = prog;
+                }
+                catch { }
+            }
+        }
+
+        private void btEdit_Click_1(object sender, EventArgs e)
+        {
+            TreeNode node = treeView1.SelectedNode;
+
+            if (node != null && node.Tag is Smmprog)
+            {
+                FrmSmmprogEdit dlg = new FrmSmmprogEdit();
+                dlg.Smmprog = node.Tag as Smmprog;
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        SmmprogService.Update<Smmprog>(dlg.Smmprog);
+                        node.Text = dlg.Smmprog.ProgName;
+                    }
+                    catch (Exception err) { MessageBox.Show(err.Message); }
+                }
+            }
+        }
+
+        private void btDelete_Click_1(object sender, EventArgs e)
+        {
+            TreeNode node = treeView1.SelectedNode;
+            if (node != null && node.Tag is Smmprog)
+            {
+                try
+                {
+                    Smmprog prog = node.Tag as Smmprog;
+                    Hashtable hashtable1 = new Hashtable();
+
+                    if (smmprogService.GetRowCount<Smmprog>(prog) > 0)
+                    {
+                        MsgBox.Show("有下级目录或者模块,不可删除!");
+                        return;
+                    }
+                    if (MsgBox.ShowYesNo("是否确认删除[" + prog.ProgName + "]") == DialogResult.Yes)
+                    {
+                        SmmprogService.Delete<Smmprog>(node.Tag as Smmprog);
+
+                        treeView1.SelectedNode.Remove();
+                    }
+                }
+                catch { }
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Itop.Client.MIS.MFrmConsole.InitData();
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
         {
             this.Close();
         }

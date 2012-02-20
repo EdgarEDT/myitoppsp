@@ -25,8 +25,6 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSmmgroupEdit));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbGroupno = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -34,101 +32,74 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbRemark = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.label4 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(174, 320);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "确认(&O)";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(255, 320);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "取消(&C)";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 30);
+            this.label1.Location = new System.Drawing.Point(43, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 12);
+            this.label1.Size = new System.Drawing.Size(35, 14);
             this.label1.TabIndex = 2;
             this.label1.Text = "组号:";
             // 
             // tbGroupno
             // 
-            this.tbGroupno.Location = new System.Drawing.Point(96, 27);
+            this.tbGroupno.Location = new System.Drawing.Point(112, 31);
             this.tbGroupno.MaxLength = 20;
             this.tbGroupno.Name = "tbGroupno";
-            this.tbGroupno.Size = new System.Drawing.Size(232, 21);
+            this.tbGroupno.Size = new System.Drawing.Size(270, 22);
             this.tbGroupno.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 57);
+            this.label2.Location = new System.Drawing.Point(43, 66);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 12);
+            this.label2.Size = new System.Drawing.Size(35, 14);
             this.label2.TabIndex = 2;
             this.label2.Text = "组名:";
             // 
             // tbGroupname
             // 
-            this.tbGroupname.Location = new System.Drawing.Point(96, 54);
+            this.tbGroupname.Location = new System.Drawing.Point(112, 63);
             this.tbGroupname.MaxLength = 30;
             this.tbGroupname.Name = "tbGroupname";
-            this.tbGroupname.Size = new System.Drawing.Size(232, 21);
+            this.tbGroupname.Size = new System.Drawing.Size(270, 22);
             this.tbGroupname.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 84);
+            this.label3.Location = new System.Drawing.Point(43, 98);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 12);
+            this.label3.Size = new System.Drawing.Size(35, 14);
             this.label3.TabIndex = 2;
             this.label3.Text = "描述:";
             // 
             // tbRemark
             // 
-            this.tbRemark.Location = new System.Drawing.Point(96, 81);
+            this.tbRemark.Location = new System.Drawing.Point(112, 94);
             this.tbRemark.MaxLength = 50;
             this.tbRemark.Name = "tbRemark";
-            this.tbRemark.Size = new System.Drawing.Size(232, 21);
+            this.tbRemark.Size = new System.Drawing.Size(270, 22);
             this.tbRemark.TabIndex = 2;
             // 
             // listView1
             // 
             this.listView1.LargeImageList = this.imageList1;
-            this.listView1.Location = new System.Drawing.Point(41, 139);
+            this.listView1.Location = new System.Drawing.Point(48, 162);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(289, 164);
+            this.listView1.Size = new System.Drawing.Size(336, 191);
             this.listView1.SmallImageList = this.imageList1;
             this.listView1.StateImageList = this.imageList1;
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(39, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "组用户:";
             // 
             // imageList1
             // 
@@ -136,11 +107,40 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "角色.ico");
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(45, 127);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 14);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "组用户:";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(208, 373);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton1.TabIndex = 6;
+            this.simpleButton1.Text = "确认(&O)";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(298, 373);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton2.TabIndex = 7;
+            this.simpleButton2.Text = "取消(&C)";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
             // FrmSmmgroupEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 355);
+            this.ClientSize = new System.Drawing.Size(428, 414);
+            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -149,8 +149,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbGroupno);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmSmmgroupEdit";
@@ -164,8 +162,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbGroupno;
         private System.Windows.Forms.Label label2;
@@ -175,5 +171,7 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ImageList imageList1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

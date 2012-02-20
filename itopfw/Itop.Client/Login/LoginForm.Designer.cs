@@ -81,7 +81,7 @@ namespace Itop.Client.Login {
             // 
             // sbtnSetting
             // 
-            this.sbtnSetting.Location = new System.Drawing.Point(283, 121);
+            this.sbtnSetting.Location = new System.Drawing.Point(68, 139);
             this.sbtnSetting.Name = "sbtnSetting";
             this.sbtnSetting.Size = new System.Drawing.Size(58, 23);
             this.sbtnSetting.TabIndex = 1;
@@ -90,7 +90,7 @@ namespace Itop.Client.Login {
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(327, 73);
+            this.txtPassword.Location = new System.Drawing.Point(112, 91);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.Appearance.BorderColor = System.Drawing.SystemColors.Desktop;
             this.txtPassword.Properties.Appearance.Options.UseBorderColor = true;
@@ -101,7 +101,7 @@ namespace Itop.Client.Login {
             // 
             // sbtnExit
             // 
-            this.sbtnExit.Location = new System.Drawing.Point(410, 121);
+            this.sbtnExit.Location = new System.Drawing.Point(195, 139);
             this.sbtnExit.Name = "sbtnExit";
             this.sbtnExit.Size = new System.Drawing.Size(58, 23);
             this.sbtnExit.TabIndex = 2;
@@ -110,7 +110,7 @@ namespace Itop.Client.Login {
             // 
             // sbtnOk
             // 
-            this.sbtnOk.Location = new System.Drawing.Point(346, 121);
+            this.sbtnOk.Location = new System.Drawing.Point(131, 139);
             this.sbtnOk.Name = "sbtnOk";
             this.sbtnOk.Size = new System.Drawing.Size(58, 23);
             this.sbtnOk.TabIndex = 0;
@@ -119,7 +119,7 @@ namespace Itop.Client.Login {
             // 
             // txtUserid
             // 
-            this.txtUserid.Location = new System.Drawing.Point(327, 39);
+            this.txtUserid.Location = new System.Drawing.Point(112, 57);
             this.txtUserid.Name = "txtUserid";
             this.txtUserid.Properties.Appearance.BorderColor = System.Drawing.SystemColors.Desktop;
             this.txtUserid.Properties.Appearance.Options.UseBorderColor = true;
@@ -132,7 +132,7 @@ namespace Itop.Client.Login {
             this.m_labelUserNumber.AutoSize = true;
             this.m_labelUserNumber.BackColor = System.Drawing.Color.Transparent;
             this.m_labelUserNumber.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelUserNumber.Location = new System.Drawing.Point(278, 44);
+            this.m_labelUserNumber.Location = new System.Drawing.Point(63, 62);
             this.m_labelUserNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelUserNumber.Name = "m_labelUserNumber";
             this.m_labelUserNumber.Size = new System.Drawing.Size(41, 12);
@@ -144,7 +144,7 @@ namespace Itop.Client.Login {
             this.m_labelPassword.AutoSize = true;
             this.m_labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.m_labelPassword.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelPassword.Location = new System.Drawing.Point(278, 76);
+            this.m_labelPassword.Location = new System.Drawing.Point(63, 94);
             this.m_labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelPassword.Name = "m_labelPassword";
             this.m_labelPassword.Size = new System.Drawing.Size(41, 12);
@@ -259,6 +259,8 @@ namespace Itop.Client.Login {
             // LoginForm
             // 
             this.AcceptButton = this.sbtnOk;
+            this.Appearance.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Appearance.Options.UseFont = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(500, 300);
             this.Controls.Add(this.panel2);

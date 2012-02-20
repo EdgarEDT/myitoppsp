@@ -31,19 +31,19 @@
             this.listView = new System.Windows.Forms.ListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView
             // 
-            this.listView.Location = new System.Drawing.Point(16, 13);
+            this.listView.Location = new System.Drawing.Point(19, 15);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(309, 195);
+            this.listView.Size = new System.Drawing.Size(360, 227);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.List;
@@ -51,10 +51,10 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(14, 14);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(350, 273);
+            this.tabControl1.Size = new System.Drawing.Size(408, 318);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -62,59 +62,57 @@
             this.tabPage1.Controls.Add(this.btnDelete);
             this.tabPage1.Controls.Add(this.btnAdd);
             this.tabPage1.Controls.Add(this.listView);
-            this.tabPage1.Location = new System.Drawing.Point(4, 21);
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(342, 248);
+            this.tabPage1.Size = new System.Drawing.Size(400, 291);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "隶属于";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // btnDelete
+            // btnCancel
             // 
-            this.btnDelete.Location = new System.Drawing.Point(88, 214);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(65, 23);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "删除(&R)";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(16, 214);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(66, 23);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "添加(&D)";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Location = new System.Drawing.Point(331, 342);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 29);
+            this.btnCancel.TabIndex = 30;
+            this.btnCancel.Text = "取消(&C)";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(208, 296);
+            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOk.Location = new System.Drawing.Point(241, 342);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(64, 23);
-            this.btnOk.TabIndex = 3;
-            this.btnOk.Text = "确定";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            this.btnOk.Size = new System.Drawing.Size(75, 29);
+            this.btnOk.TabIndex = 29;
+            this.btnOk.Text = "确认(&O)";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click_1);
             // 
-            // btnCancel
+            // btnDelete
             // 
-            this.btnCancel.Location = new System.Drawing.Point(288, 296);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(65, 23);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnDelete.Location = new System.Drawing.Point(111, 256);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 29);
+            this.btnDelete.TabIndex = 32;
+            this.btnDelete.Text = "删除(&R)";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(26, 256);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 29);
+            this.btnAdd.TabIndex = 31;
+            this.btnAdd.Text = "添加(&D)";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // FrmUserGroup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 326);
+            this.ClientSize = new System.Drawing.Size(435, 380);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.tabControl1);
@@ -132,9 +130,9 @@
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnCancel;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraEditors.SimpleButton btnOk;
+        private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private DevExpress.XtraEditors.SimpleButton btnAdd;
     }
 }

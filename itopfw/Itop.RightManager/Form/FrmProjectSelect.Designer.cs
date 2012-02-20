@@ -34,8 +34,8 @@
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +48,7 @@
             this.panel1.Controls.Add(this.treeList1);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(378, 198);
+            this.panel1.Size = new System.Drawing.Size(441, 231);
             this.panel1.TabIndex = 0;
             // 
             // treeList1
@@ -66,7 +66,6 @@
             this.treeList1.KeyFieldName = "UID";
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.LookAndFeel.SkinName = "The Asphalt World";
-            this.treeList1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Skin;
             this.treeList1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.AutoFocusNewNode = true;
@@ -74,7 +73,7 @@
             this.treeList1.OptionsBehavior.DragNodes = true;
             this.treeList1.OptionsBehavior.Editable = false;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(378, 198);
+            this.treeList1.Size = new System.Drawing.Size(441, 231);
             this.treeList1.TabIndex = 8;
             // 
             // treeListColumn2
@@ -88,6 +87,7 @@
             this.treeListColumn2.OptionsColumn.AllowMoveToCustomizationForm = false;
             this.treeListColumn2.OptionsColumn.AllowSize = false;
             this.treeListColumn2.OptionsColumn.AllowSort = false;
+            this.treeListColumn2.Visible = true;
             this.treeListColumn2.VisibleIndex = 0;
             this.treeListColumn2.Width = 187;
             // 
@@ -112,35 +112,31 @@
             this.treeListColumn4.Name = "treeListColumn4";
             this.treeListColumn4.SortOrder = System.Windows.Forms.SortOrder.Ascending;
             // 
-            // button1
+            // simpleButton2
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(184, 209);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "确定";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.simpleButton2.Location = new System.Drawing.Point(328, 239);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton2.TabIndex = 24;
+            this.simpleButton2.Text = "取消(&C)";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
-            // button2
+            // simpleButton1
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(277, 209);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "取消";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.simpleButton1.Location = new System.Drawing.Point(238, 239);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton1.TabIndex = 23;
+            this.simpleButton1.Text = "确认(&O)";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // FrmProjectSelect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 240);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(440, 280);
+            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.panel1);
             this.Name = "FrmProjectSelect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -160,7 +156,7 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
