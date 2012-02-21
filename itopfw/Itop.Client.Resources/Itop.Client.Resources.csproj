@@ -489,6 +489,7 @@
     <Content Include="Resources\审批.ico" />
     <Content Include="Resources\审核.ico" />
     <None Include="Resources\宽条副本.jpg" />
+    <None Include="Resources\宽条新.jpg" />
     <Content Include="Resources\布局.ico" />
     <None Include="Resources\帮助.gif" />
     <None Include="Resources\年电量预测0.png" />
