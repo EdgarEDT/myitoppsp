@@ -26,8 +26,8 @@ namespace Itop.TLPSP.DEVICE
 
         private void frmSelectSub_Load(object sender, EventArgs e)
         {
-            MaximumSize = new Size(303, 198);
-            MinimumSize = new Size(303, 198);
+            //MaximumSize = new Size(303, 198);
+            //MinimumSize = new Size(303, 198);
         }
     }
 }
