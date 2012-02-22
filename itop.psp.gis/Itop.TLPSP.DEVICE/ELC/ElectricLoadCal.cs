@@ -3596,9 +3596,15 @@ namespace Itop.TLPSP.DEVICE
             bool flag = false;
             int iResult = 0;
             frmSelectSub frmSub = new frmSelectSub();
-            if (frmSub.ShowDialog()==DialogResult.OK)
+            frmSub.ShowDialog();
+            if (frmSub.DialogResult==DialogResult.OK)
             {
                 iResult = frmSub.SelectSub;
+            }
+            else if (frmSub.DialogResult== DialogResult.Cancel)
+            {
+                wForm.Close();
+                return false;
             }
             System.Windows.Forms.Clipboard.Clear(); 
             flag = LFC(projectSUID, type, ratedCapacity,wForm);
