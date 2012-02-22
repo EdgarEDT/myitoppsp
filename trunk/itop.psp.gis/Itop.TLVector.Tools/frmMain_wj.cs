@@ -644,7 +644,14 @@ namespace ItopVector.Tools
                         moveMenuItem.Visible = false;
                         jxtToolStripMenuItem.Visible = false;
                         w3MenuItem.Visible = false;
-
+                        printToolStripMenuItem.Visible = false;
+                        toolDel.Visible = true;
+                        sToolStripMenuItem.Visible = true;
+                        清除关联ToolStripMenuItem.Visible = true;
+                        tmjxt.Visible = true;
+                        关联设备ToolStripMenuItem.Visible = true;
+                        SubToolStripMenuItem.Visible = true;
+                        saveImg.Visible = false;
                     }
                     else
                     {
@@ -653,6 +660,14 @@ namespace ItopVector.Tools
                             moveMenuItem.Visible = true;
                             jxtToolStripMenuItem.Visible = true;
                             w3MenuItem.Visible = true;
+                            printToolStripMenuItem.Visible = false;
+                            toolDel.Visible = true;
+                            sToolStripMenuItem.Visible = true;
+                            清除关联ToolStripMenuItem.Visible = true;
+                            tmjxt.Visible = true;
+                            关联设备ToolStripMenuItem.Visible = true;
+                            SubToolStripMenuItem.Visible = true;
+                            saveImg.Visible = false;
                         }
                     }
                     if (show3d == 0)
@@ -666,24 +681,51 @@ namespace ItopVector.Tools
                         printToolStripMenuItem.Visible = false;
                         toolDel.Visible = false;
                         SubToolStripMenuItem.Visible = false;
+                    
+                        sToolStripMenuItem.Visible = true;
+                        清除关联ToolStripMenuItem.Visible = true;
+                        tmjxt.Visible = true;
+                        关联设备ToolStripMenuItem.Visible = true;
+                       
+                        saveImg.Visible = true;
                     }
                     else
                     {
                         printToolStripMenuItem.Visible = true;
                         toolDel.Visible = true;
+                        sToolStripMenuItem.Visible = false;
+                        清除关联ToolStripMenuItem.Visible = false;
+                        tmjxt.Visible = false;
+                        关联设备ToolStripMenuItem.Visible = false;
                         SubToolStripMenuItem.Visible = false;
-                        saveImg.Visible = true;
+                        saveImg.Visible = false;
 
                     }
                     if (tlVectorControl1.SVGDocument.CurrentElement != null && tlVectorControl1.SVGDocument.CurrentElement.GetType().ToString() == "ItopVector.Core.Figure.Polyline")
                     {
                         mUpdateMenuItem.Visible = true;
                         tmloctaionjxt.Visible = true;
+                        printToolStripMenuItem.Visible = false;
+                        toolDel.Visible = true;
+                        sToolStripMenuItem.Visible = true;
+                        清除关联ToolStripMenuItem.Visible = true;
+                        tmjxt.Visible = true;
+                        关联设备ToolStripMenuItem.Visible = true;
+                        SubToolStripMenuItem.Visible = true;
+                        saveImg.Visible = false;
                     }
                     else
                     {
                         mUpdateMenuItem.Visible = false;
                         tmloctaionjxt.Visible = false;
+                        printToolStripMenuItem.Visible = false;
+                        toolDel.Visible = true;
+                        sToolStripMenuItem.Visible = true;
+                        清除关联ToolStripMenuItem.Visible = true;
+                        tmjxt.Visible = true;
+                        关联设备ToolStripMenuItem.Visible = true;
+                        SubToolStripMenuItem.Visible = true;
+                        saveImg.Visible = false;
                     }
                     string guid = Guid.NewGuid().ToString();
                     if (tlVectorControl1.Operation == ToolOperation.LeadLine && linekey != "")
