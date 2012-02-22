@@ -502,6 +502,10 @@ namespace Itop.TLPSP.DEVICE
             catch (System.Exception ex)
             {
                 MessageBox.Show("变压器额定容量、一次侧额定电压、一次侧额定电流的值不能为零！");
+                spinEdit22.Value = 0;
+                spinEdit20.Value = 0;
+                spinEdit21.Value = 0;
+                spinEdit19.Value = 0;
             }
           
            
