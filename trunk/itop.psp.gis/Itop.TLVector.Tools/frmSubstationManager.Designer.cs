@@ -38,63 +38,64 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(27, 10);
+            this.button1.Location = new System.Drawing.Point(31, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 23);
+            this.button1.Size = new System.Drawing.Size(174, 27);
             this.button1.TabIndex = 1;
             this.button1.Text = "模块管理";
             this.button1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(27, 39);
+            this.button6.Location = new System.Drawing.Point(31, 45);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(149, 23);
+            this.button6.Size = new System.Drawing.Size(174, 27);
             this.button6.TabIndex = 2;
             this.button6.Text = "变电站选址方案管理";
             this.button6.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(27, 68);
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button2.Location = new System.Drawing.Point(31, 79);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(149, 23);
+            this.button2.Size = new System.Drawing.Size(174, 27);
             this.button2.TabIndex = 3;
             this.button2.Text = "站址初选";
             this.button2.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(27, 97);
+            this.button3.Location = new System.Drawing.Point(31, 113);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(149, 23);
+            this.button3.Size = new System.Drawing.Size(174, 27);
             this.button3.TabIndex = 4;
             this.button3.Text = "资料阅读";
             this.button3.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(27, 126);
+            this.button4.Location = new System.Drawing.Point(31, 147);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(149, 23);
+            this.button4.Size = new System.Drawing.Size(174, 27);
             this.button4.TabIndex = 5;
             this.button4.Text = "在线评分";
             this.button4.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(27, 155);
+            this.button5.Location = new System.Drawing.Point(31, 181);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(149, 23);
+            this.button5.Size = new System.Drawing.Size(174, 27);
             this.button5.TabIndex = 6;
             this.button5.Text = "优选结果";
             this.button5.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // frmSubstationManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(210, 202);
+            this.ClientSize = new System.Drawing.Size(245, 236);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);

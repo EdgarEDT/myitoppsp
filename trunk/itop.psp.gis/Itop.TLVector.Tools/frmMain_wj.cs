@@ -651,7 +651,7 @@ namespace ItopVector.Tools
                         tmjxt.Visible = true;
                         关联设备ToolStripMenuItem.Visible = true;
                         SubToolStripMenuItem.Visible = true;
-                        saveImg.Visible = false;
+                        saveImg.Visible = true;
                     }
                     else
                     {
@@ -667,7 +667,7 @@ namespace ItopVector.Tools
                             tmjxt.Visible = true;
                             关联设备ToolStripMenuItem.Visible = true;
                             SubToolStripMenuItem.Visible = true;
-                            saveImg.Visible = false;
+                            saveImg.Visible = true;
                         }
                     }
                     if (show3d == 0)
@@ -712,20 +712,13 @@ namespace ItopVector.Tools
                         tmjxt.Visible = true;
                         关联设备ToolStripMenuItem.Visible = true;
                         SubToolStripMenuItem.Visible = true;
-                        saveImg.Visible = false;
+                        saveImg.Visible = true;
                     }
                     else
                     {
                         mUpdateMenuItem.Visible = false;
                         tmloctaionjxt.Visible = false;
-                        printToolStripMenuItem.Visible = false;
-                        toolDel.Visible = true;
-                        sToolStripMenuItem.Visible = true;
-                        清除关联ToolStripMenuItem.Visible = true;
-                        tmjxt.Visible = true;
-                        关联设备ToolStripMenuItem.Visible = true;
-                        SubToolStripMenuItem.Visible = true;
-                        saveImg.Visible = false;
+
                     }
                     string guid = Guid.NewGuid().ToString();
                     if (tlVectorControl1.Operation == ToolOperation.LeadLine && linekey != "")
