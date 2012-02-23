@@ -6402,7 +6402,11 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                     }
                                 }
                             }
-
+                            if (nn0.Count==0)
+                            {
+                                MessageBox.Show("此层中不包含线路！请重新选择图层");
+                                return;
+                            }
                             if (str_dy == "")
                             {
                                 if (MessageBox.Show("选择图层线路不包含电压等级信息，是否继续导出？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
@@ -6414,6 +6418,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                     ckright = false;
                                 }
                             }
+                           
                             if (ckright)
                             {
                                 Excel.Application ex = new Excel.Application();
