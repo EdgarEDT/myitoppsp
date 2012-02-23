@@ -44,65 +44,66 @@
             // 
             // txtRe
             // 
-            this.txtRe.Location = new System.Drawing.Point(72, 41);
+            this.txtRe.Location = new System.Drawing.Point(84, 48);
             this.txtRe.Multiline = true;
             this.txtRe.Name = "txtRe";
-            this.txtRe.Size = new System.Drawing.Size(316, 125);
+            this.txtRe.Size = new System.Drawing.Size(368, 145);
             this.txtRe.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 11);
+            this.label2.Location = new System.Drawing.Point(14, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.Size = new System.Drawing.Size(31, 14);
             this.label2.TabIndex = 4;
             this.label2.Text = "附件";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 41);
+            this.label3.Location = new System.Drawing.Point(15, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.Size = new System.Drawing.Size(31, 14);
             this.label3.TabIndex = 4;
             this.label3.Text = "描述";
             // 
             // buttonEdit1
             // 
-            this.buttonEdit1.Location = new System.Drawing.Point(72, 12);
+            this.buttonEdit1.Location = new System.Drawing.Point(84, 14);
             this.buttonEdit1.Name = "buttonEdit1";
             this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.buttonEdit1.Properties.ReadOnly = true;
             this.buttonEdit1.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_Properties_ButtonClick);
-            this.buttonEdit1.Size = new System.Drawing.Size(314, 21);
+            this.buttonEdit1.Size = new System.Drawing.Size(366, 21);
             this.buttonEdit1.TabIndex = 6;
             // 
             // simpleButton2
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(311, 172);
+            this.simpleButton2.Location = new System.Drawing.Point(363, 201);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton2.Size = new System.Drawing.Size(87, 34);
             this.simpleButton2.TabIndex = 75;
             this.simpleButton2.Text = "取消(&C)";
             // 
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(218, 172);
+            this.simpleButton1.Location = new System.Drawing.Point(254, 201);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 29);
+            this.simpleButton1.Size = new System.Drawing.Size(87, 34);
             this.simpleButton1.TabIndex = 74;
             this.simpleButton1.Text = "确认(&O)";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // frmImgAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 212);
+            this.ClientSize = new System.Drawing.Size(464, 247);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.buttonEdit1);

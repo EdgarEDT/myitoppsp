@@ -47,10 +47,32 @@ namespace ItopVector.Tools
         }
         public void LoadData(string uid)
         {
+            LineList1 line = new LineList1();
+            line.col1 = uid;
+            IList<LineList1> linelist = Services.BaseService.GetList<LineList1>("SelectLineList1ByRefLineEleID", line);
+            ArrayList val = new ArrayList();
+
+
+
+            for (int i = 0; i < linelist.Count; i++)
+            {
+                PSP_SubstationUserNum num1 = new PSP_SubstationUserNum();
+                num1.userID = Itop.Client.MIS.UserNumber;
+                num1.SubStationID = linelist[i].UID;
+                num1.num = 3;
+                IList<PSP_SubstationUserNum> sublist = Services.BaseService.GetList<PSP_SubstationUserNum>("SelectPSP_SubstationUserNumByUser", num1);
+                if (sublist.Count == 0)
+                {
+                    MessageBox.Show("线路" + linelist[i].LineName + "还没有评分完成，不能自动计算权值。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+
             LineList1 n1=new LineList1();
             n1.col1 = uid;
             list1 = Services.BaseService.GetList<LineList1>("SelectLineList1ByEleIDToTal", n1);
-
+           
+            
             //for (int i = 0; i < list1.Count; i++)
             //{
             //    LineInfo line = new LineInfo();
