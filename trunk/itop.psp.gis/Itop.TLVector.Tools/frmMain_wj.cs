@@ -691,14 +691,30 @@ namespace ItopVector.Tools
                     }
                     else
                     {
-                        printToolStripMenuItem.Visible = true;
-                        toolDel.Visible = true;
-                        sToolStripMenuItem.Visible = false;
-                        清除关联ToolStripMenuItem.Visible = false;
-                        tmjxt.Visible = false;
-                        关联设备ToolStripMenuItem.Visible = false;
-                        SubToolStripMenuItem.Visible = false;
-                        saveImg.Visible = false;
+                        if (tlVectorControl1.SVGDocument.CurrentElement.GetType().ToString() == "ItopVector.Core.Figure.RectangleElement"&&SubPrint==true)
+                        {
+                            printToolStripMenuItem.Visible = true;
+                            toolDel.Visible = true;
+                            sToolStripMenuItem.Visible = false;
+                            清除关联ToolStripMenuItem.Visible = false;
+                            tmjxt.Visible = false;
+                            关联设备ToolStripMenuItem.Visible = false;
+                            SubToolStripMenuItem.Visible = false;
+                            saveImg.Visible = false;
+                        }
+                        else
+                        {
+                            printToolStripMenuItem.Visible = false;
+                            toolDel.Visible = false;
+                            SubToolStripMenuItem.Visible = false;
+
+                            sToolStripMenuItem.Visible = true;
+                            清除关联ToolStripMenuItem.Visible = true;
+                            tmjxt.Visible = true;
+                            关联设备ToolStripMenuItem.Visible = true;
+
+                            saveImg.Visible = true;
+                        }
 
                     }
                     if (tlVectorControl1.SVGDocument.CurrentElement != null && tlVectorControl1.SVGDocument.CurrentElement.GetType().ToString() == "ItopVector.Core.Figure.Polyline")
@@ -9762,11 +9778,19 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             {
                 if (ele.Name == "use")
                 {
-                    subList.Add(ele.ID, ele);
+                    if (!subList.Contains(ele.ID))
+                    {
+                        subList.Add(ele.ID, ele);
+                    }
+                    
                 }
                 if (ele.Name == "polyline" && ele.GetAttribute("IsLead") == "1")
                 {
-                    LineList.Add(ele.ID, ele);
+                    if (!LineList.Contains(ele.ID))
+                    {
+                        LineList.Add(ele.ID, ele);
+                    }
+                    
                 }
             }
             foreach (Layer layer in tlVectorControl1.SVGDocument.Layers)
