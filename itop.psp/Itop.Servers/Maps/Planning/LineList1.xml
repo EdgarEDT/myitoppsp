@@ -159,7 +159,7 @@
     when col2='很差' then CAST(col1 AS decimal(18,2))*1
     when col2='极差' then 0
     when col2='' then 0
-    else col2 end)
+    end)
 
     FROM PSP_SubstationUserNum
     where SubStationID=a.UID) as "Coefficient",
