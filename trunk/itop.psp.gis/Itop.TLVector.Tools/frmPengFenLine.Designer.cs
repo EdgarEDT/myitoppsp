@@ -55,6 +55,7 @@
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // il
@@ -85,13 +87,13 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 33);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 34);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.treeView1);
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(773, 543);
+            this.splitContainerControl1.Size = new System.Drawing.Size(902, 638);
             this.splitContainerControl1.SplitterPosition = 196;
             this.splitContainerControl1.TabIndex = 3;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -101,7 +103,7 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(188, 535);
+            this.treeView1.Size = new System.Drawing.Size(196, 638);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -112,16 +114,16 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(565, 535);
+            this.tabControl1.Size = new System.Drawing.Size(700, 638);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.gridControl1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 21);
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(557, 510);
+            this.tabPage2.Size = new System.Drawing.Size(692, 611);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "评分影响因素";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -134,7 +136,6 @@
             this.gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControl1.EmbeddedNavigator.Name = "";
             this.gridControl1.Location = new System.Drawing.Point(3, 3);
             this.gridControl1.MainView = this.gridView2;
             this.gridControl1.Name = "gridControl1";
@@ -145,13 +146,15 @@
             this.repositoryItemComboBox4,
             this.repositoryItemTimeEdit1,
             this.repositoryItemSpinEdit1,
-            this.repositoryItemSpinEdit2});
-            this.gridControl1.Size = new System.Drawing.Size(551, 504);
+            this.repositoryItemSpinEdit2,
+            this.repositoryItemLookUpEdit1});
+            this.gridControl1.Size = new System.Drawing.Size(686, 605);
             this.gridControl1.TabIndex = 3;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2,
             this.gridView3});
+            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView2
             // 
@@ -228,7 +231,7 @@
             // gridColumn14
             // 
             this.gridColumn14.Caption = "分数";
-            this.gridColumn14.ColumnEdit = this.repositoryItemComboBox3;
+            this.gridColumn14.ColumnEdit = this.repositoryItemLookUpEdit1;
             this.gridColumn14.FieldName = "col2";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
@@ -248,6 +251,8 @@
             "很差",
             "极差"});
             this.repositoryItemComboBox3.Name = "repositoryItemComboBox3";
+            this.repositoryItemComboBox3.ShowPopupShadow = false;
+            this.repositoryItemComboBox3.ValidateOnEnterKey = true;
             // 
             // repositoryItemMemoEdit3
             // 
@@ -386,11 +391,19 @@
             this.gridColumn23.Visible = true;
             this.gridColumn23.VisibleIndex = 5;
             // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.ShowPopupShadow = false;
+            // 
             // frmPengFenLine
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 576);
+            this.ClientSize = new System.Drawing.Size(902, 672);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "frmPengFenLine";
             this.Text = "在线评分";
@@ -411,6 +424,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -443,5 +457,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
     }
 }
