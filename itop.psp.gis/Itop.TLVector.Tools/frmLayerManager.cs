@@ -170,7 +170,7 @@ namespace ItopVector.Tools
                 this.symbolDoc = value;
             }
         }
-
+        bool addflag = false;
         private void btAdd_Click(object sender, EventArgs e)
         {
             frmInput dlg = new frmInput();
@@ -187,8 +187,23 @@ namespace ItopVector.Tools
                 if (ilist.Count>0){
                     lar.SetAttribute("ParentID", ilist[0].ToString());
                 }
+                addflag = true;
                 this.checkedListBox1.Items.Add(lar, true);
-                checkedListBox1.SelectedIndex = -1;
+                checkedListBox1.SelectedIndex = checkedListBox1.Items.Count-1;
+
+                if (this.checkedListBox1.SelectedIndex != -1)
+                {
+                    Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
+                    if (checkedListBox1.GetItemCheckState(checkedListBox1.SelectedIndex) == CheckState.Checked)
+                    {
+                        layer.Visible = true;
+                    }
+                    else
+                    {
+                        layer.Visible = false;
+                    }
+                }
+
                 //string guid=Guid.NewGuid().ToString();
                 //GraPowerRelation gra = new GraPowerRelation();
                 //gra.UID = Guid.NewGuid().ToString();
@@ -405,15 +420,19 @@ namespace ItopVector.Tools
   
             if (this.checkedListBox1.SelectedIndex!=-1)
             {
-                Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
-                if (checkedListBox1.GetItemCheckState(checkedListBox1.SelectedIndex) == CheckState.Checked)
+                if (!addflag)
                 {
-                    layer.Visible = false;
+                    Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
+                    if (checkedListBox1.GetItemCheckState(checkedListBox1.SelectedIndex) == CheckState.Checked)
+                    {
+                        layer.Visible = false;
+                    }
+                    else
+                    {
+                        layer.Visible = true;
+                    }               
                 }
-                else
-                {
-                    layer.Visible = true;
-                }               
+                
             }
            
         }
@@ -424,6 +443,7 @@ namespace ItopVector.Tools
                 Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
                 if (OnClickLayer != null)
                 {
+                    addflag = false;
                     OnClickLayer(sender, layer);
                 }
             }
