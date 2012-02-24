@@ -561,6 +561,16 @@ namespace ItopVector.Tools
                int n = Convert.ToInt32(Scale * 1000000);
                switch (n)
                {
+                   case 7812:
+                       return number1 * Convert.ToDecimal(Scale) / 14400 * 80 / 2;
+
+                   case 15625:
+                       return number1 * Convert.ToDecimal(Scale) / 14400 * 40 / 2;
+
+                   case 31250:
+                       return number1 * Convert.ToDecimal(Scale) / 14400 * 20 / 2;
+
+                  
                    case 15600:
                        return number1 * Convert.ToDecimal(Scale) / 14400 * 40 / 2;
                      
