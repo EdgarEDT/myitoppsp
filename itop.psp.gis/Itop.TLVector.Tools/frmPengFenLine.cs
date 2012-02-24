@@ -47,6 +47,38 @@ namespace ItopVector.Tools
             barPrint.Caption = "评分结果";
             LoadTree();
            // LoadData();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("A",typeof(string));
+            dt.Columns.Add("B", typeof(string));
+            DataRow dr = dt.NewRow();
+            dr["A"] = "很好";
+            dr["B"] = "很好";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["A"] = "好";
+            dr["B"] = "好";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["A"] = "一般";
+            dr["B"] = "一般";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["A"] = "差";
+            dr["B"] = "差";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["A"] = "很差";
+            dr["B"] = "很差";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["A"] = "极差";
+            dr["B"] = "极差";
+            dt.Rows.Add(dr);
+            repositoryItemLookUpEdit1.DisplayMember = "A";
+            repositoryItemLookUpEdit1.NullText = "";
+            repositoryItemLookUpEdit1.ValueMember = "B";
+            repositoryItemLookUpEdit1.DataSource = dt;
+
         }
      
         public void LoadTree()
@@ -99,6 +131,21 @@ namespace ItopVector.Tools
             }
             else
             {
+                list.Clear();
+                PSP_SubstationPar par1 = new PSP_SubstationPar();
+                par1.type = 3;
+                IList<PSP_SubstationPar> _list = Services.BaseService.GetList<PSP_SubstationPar>("SelectPSP_SubstationParByType", par1);
+                for (int i = 0; i < _list.Count; i++)
+                {
+                    PSP_SubstationUserNum n1 = new PSP_SubstationUserNum();
+                    n1.SubStationID = _list[i].InfoName;
+                    n1.col1 = _list[i].col1;
+                    //n1.col2 = "是";
+                    n1.Remark = _list[i].InfoName;
+                    n1.col4 = _list[i].UID;
+                    n1.SubParID = _list[i].UID;
+                    list.Add(n1);
+                }
                 Create1 = false;
             }
             gridControl1.DataSource = list;
@@ -171,7 +218,8 @@ namespace ItopVector.Tools
                 {
                     if (getNumber(sublist[j].col2) == 0)
                     {
-                        subnum[j] = 1 / sum;
+                        //subnum[j] = 1 / sum;
+                        subnum[j] = 0;
                     }
                     else
                     {
@@ -311,6 +359,11 @@ namespace ItopVector.Tools
 
             }
             MessageBox.Show("更新完成。");
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
