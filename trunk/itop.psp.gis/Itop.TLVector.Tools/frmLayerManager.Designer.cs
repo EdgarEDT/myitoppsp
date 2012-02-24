@@ -71,7 +71,7 @@
             this.btAdd.Image = ((System.Drawing.Image)(resources.GetObject("btAdd.Image")));
             this.btAdd.Location = new System.Drawing.Point(2, 3);
             this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(31, 23);
+            this.btAdd.Size = new System.Drawing.Size(36, 27);
             this.btAdd.TabIndex = 1;
             this.btAdd.Text = "增加";
             this.btAdd.ToolTip = "增加";
@@ -79,9 +79,9 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Location = new System.Drawing.Point(198, -17);
+            this.groupControl1.Location = new System.Drawing.Point(231, -20);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(2, 288);
+            this.groupControl1.Size = new System.Drawing.Size(2, 336);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "groupControl1";
             this.groupControl1.Visible = false;
@@ -89,9 +89,9 @@
             // btDel
             // 
             this.btDel.Image = ((System.Drawing.Image)(resources.GetObject("btDel.Image")));
-            this.btDel.Location = new System.Drawing.Point(74, 3);
+            this.btDel.Location = new System.Drawing.Point(86, 3);
             this.btDel.Name = "btDel";
-            this.btDel.Size = new System.Drawing.Size(32, 23);
+            this.btDel.Size = new System.Drawing.Size(37, 27);
             this.btDel.TabIndex = 1;
             this.btDel.Text = "删除";
             this.btDel.ToolTip = "删除";
@@ -100,9 +100,9 @@
             // btEdit
             // 
             this.btEdit.Image = ((System.Drawing.Image)(resources.GetObject("btEdit.Image")));
-            this.btEdit.Location = new System.Drawing.Point(37, 3);
+            this.btEdit.Location = new System.Drawing.Point(43, 3);
             this.btEdit.Name = "btEdit";
-            this.btEdit.Size = new System.Drawing.Size(33, 23);
+            this.btEdit.Size = new System.Drawing.Size(38, 27);
             this.btEdit.TabIndex = 1;
             this.btEdit.Text = "修改";
             this.btEdit.ToolTip = "修改";
@@ -110,9 +110,9 @@
             // 
             // btOK
             // 
-            this.btOK.Location = new System.Drawing.Point(209, 245);
+            this.btOK.Location = new System.Drawing.Point(244, 286);
             this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(24, 23);
+            this.btOK.Size = new System.Drawing.Size(28, 27);
             this.btOK.TabIndex = 1;
             this.btOK.Text = "确定";
             this.btOK.Visible = false;
@@ -121,9 +121,9 @@
             // btCel
             // 
             this.btCel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btCel.Location = new System.Drawing.Point(209, 245);
+            this.btCel.Location = new System.Drawing.Point(244, 286);
             this.btCel.Name = "btCel";
-            this.btCel.Size = new System.Drawing.Size(23, 23);
+            this.btCel.Size = new System.Drawing.Size(27, 27);
             this.btCel.TabIndex = 1;
             this.btCel.Text = "取消";
             this.btCel.Visible = false;
@@ -132,9 +132,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label1.Location = new System.Drawing.Point(207, 152);
+            this.label1.Location = new System.Drawing.Point(241, 177);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 24);
+            this.label1.Size = new System.Drawing.Size(79, 28);
             this.label1.TabIndex = 3;
             this.label1.Text = "被选中图层为\r\n当前操作图层";
             this.label1.Visible = false;
@@ -143,9 +143,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label2.Location = new System.Drawing.Point(209, 183);
+            this.label2.Location = new System.Drawing.Point(244, 213);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 24);
+            this.label2.Size = new System.Drawing.Size(79, 28);
             this.label2.TabIndex = 4;
             this.label2.Text = "打钩为显示,\r\n不打钩为隐藏";
             this.label2.Visible = false;
@@ -157,9 +157,9 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBox1.ContextMenuStrip = this.contextMenuStrip1;
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(2, 92);
+            this.checkedListBox1.Location = new System.Drawing.Point(2, 107);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(242, 260);
+            this.checkedListBox1.Size = new System.Drawing.Size(282, 293);
             this.checkedListBox1.TabIndex = 5;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
@@ -196,9 +196,9 @@
             // 
             // btUp
             // 
-            this.btUp.Location = new System.Drawing.Point(209, 245);
+            this.btUp.Location = new System.Drawing.Point(244, 286);
             this.btUp.Name = "btUp";
-            this.btUp.Size = new System.Drawing.Size(24, 23);
+            this.btUp.Size = new System.Drawing.Size(28, 27);
             this.btUp.TabIndex = 1;
             this.btUp.Text = "复制";
             this.btUp.Visible = false;
@@ -207,9 +207,9 @@
             // simpleButton1
             // 
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(170, 3);
+            this.simpleButton1.Location = new System.Drawing.Point(198, 3);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(32, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(37, 27);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "上移";
             this.simpleButton1.ToolTip = "上移";
@@ -218,9 +218,9 @@
             // simpleButton2
             // 
             this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(206, 3);
+            this.simpleButton2.Location = new System.Drawing.Point(240, 3);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(32, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(37, 27);
             this.simpleButton2.TabIndex = 1;
             this.simpleButton2.Text = "下移";
             this.simpleButton2.ToolTip = "下移";
@@ -229,9 +229,9 @@
             // simpleButton3
             // 
             this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(110, 3);
+            this.simpleButton3.Location = new System.Drawing.Point(128, 3);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(26, 23);
+            this.simpleButton3.Size = new System.Drawing.Size(30, 27);
             this.simpleButton3.TabIndex = 1;
             this.simpleButton3.Text = "复制";
             this.simpleButton3.ToolTip = "复制";
@@ -240,9 +240,9 @@
             // simpleButton4
             // 
             this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
-            this.simpleButton4.Location = new System.Drawing.Point(140, 3);
+            this.simpleButton4.Location = new System.Drawing.Point(163, 3);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(26, 23);
+            this.simpleButton4.Size = new System.Drawing.Size(30, 27);
             this.simpleButton4.TabIndex = 6;
             this.simpleButton4.Text = "合并";
             this.simpleButton4.ToolTip = "合并";
@@ -255,9 +255,9 @@
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("单层复制"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("多层复制"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("年图层复制")});
-            this.checkedListBoxControl2.Location = new System.Drawing.Point(126, 22);
+            this.checkedListBoxControl2.Location = new System.Drawing.Point(147, 26);
             this.checkedListBoxControl2.Name = "checkedListBoxControl2";
-            this.checkedListBoxControl2.Size = new System.Drawing.Size(94, 56);
+            this.checkedListBoxControl2.Size = new System.Drawing.Size(110, 65);
             this.checkedListBoxControl2.TabIndex = 8;
             this.checkedListBoxControl2.Visible = false;
             this.checkedListBoxControl2.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.checkedListBoxControl2_ItemCheck);
@@ -265,93 +265,93 @@
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(7, 31);
+            this.checkEdit1.Location = new System.Drawing.Point(8, 36);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "数据有效时间";
-            this.checkEdit1.Size = new System.Drawing.Size(104, 19);
+            this.checkEdit1.Size = new System.Drawing.Size(121, 19);
             this.checkEdit1.TabIndex = 10;
             this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 54);
+            this.label3.Location = new System.Drawing.Point(6, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 12);
+            this.label3.Size = new System.Drawing.Size(19, 14);
             this.label3.TabIndex = 13;
             this.label3.Text = "起";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 73);
+            this.label4.Location = new System.Drawing.Point(6, 85);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 12);
+            this.label4.Size = new System.Drawing.Size(19, 14);
             this.label4.TabIndex = 13;
             this.label4.Text = "止";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(74, 54);
+            this.label5.Location = new System.Drawing.Point(86, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 12);
+            this.label5.Size = new System.Drawing.Size(19, 14);
             this.label5.TabIndex = 15;
             this.label5.Text = "年";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(74, 74);
+            this.label6.Location = new System.Drawing.Point(86, 86);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 12);
+            this.label6.Size = new System.Drawing.Size(19, 14);
             this.label6.TabIndex = 15;
             this.label6.Text = "年";
             // 
             // dateEdit1
             // 
-            this.dateEdit1.Location = new System.Drawing.Point(23, 49);
+            this.dateEdit1.Location = new System.Drawing.Point(27, 57);
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Mask.EditMask = "f0";
             this.dateEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.dateEdit1.Properties.MaxLength = 4;
-            this.dateEdit1.Size = new System.Drawing.Size(48, 21);
+            this.dateEdit1.Size = new System.Drawing.Size(56, 21);
             this.dateEdit1.TabIndex = 17;
             // 
             // dateEdit2
             // 
-            this.dateEdit2.Location = new System.Drawing.Point(23, 70);
+            this.dateEdit2.Location = new System.Drawing.Point(27, 82);
             this.dateEdit2.Name = "dateEdit2";
             this.dateEdit2.Properties.Mask.EditMask = "f0";
             this.dateEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.dateEdit2.Properties.MaxLength = 4;
-            this.dateEdit2.Size = new System.Drawing.Size(48, 21);
+            this.dateEdit2.Size = new System.Drawing.Size(56, 21);
             this.dateEdit2.TabIndex = 17;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(91, 68);
+            this.button2.Location = new System.Drawing.Point(106, 79);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(37, 23);
+            this.button2.Size = new System.Drawing.Size(43, 27);
             this.button2.TabIndex = 18;
             this.button2.Text = "确定";
             this.button2.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(211, 32);
+            this.button1.Location = new System.Drawing.Point(246, 37);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 23);
+            this.button1.Size = new System.Drawing.Size(43, 27);
             this.button1.TabIndex = 19;
             this.button1.Text = "参";
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.simpleButton5_Click_1);
             // 
             // frmLayerManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(243, 355);
+            this.ClientSize = new System.Drawing.Size(283, 414);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dateEdit2);
