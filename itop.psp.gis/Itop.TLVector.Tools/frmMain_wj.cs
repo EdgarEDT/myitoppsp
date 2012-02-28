@@ -691,7 +691,7 @@ namespace ItopVector.Tools
                     }
                     else
                     {
-                        if (tlVectorControl1.SVGDocument.CurrentElement.GetType().ToString() == "ItopVector.Core.Figure.RectangleElement"&&SubPrint==true)
+                        if (tlVectorControl1.SVGDocument.CurrentElement != null && tlVectorControl1.SVGDocument.CurrentElement.GetType().ToString() == "ItopVector.Core.Figure.RectangleElement" && SubPrint == true)
                         {
                             printToolStripMenuItem.Visible = true;
                             toolDel.Visible = true;
