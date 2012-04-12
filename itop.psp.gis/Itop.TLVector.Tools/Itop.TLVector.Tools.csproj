@@ -89,6 +89,7 @@
     </Reference>
     <Reference Include="Interop.PJCALLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.CADConvert, Version=1.0.4269.23920, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.CADLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Client.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
@@ -102,7 +103,7 @@
     <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.MapView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="ItopVector, Version=3.0.1.16663, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ItopVector, Version=3.0.1.27794, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="MapLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dll\MapLib.dll</HintPath>
@@ -927,10 +928,6 @@
     <ProjectReference Include="..\TinVoronoi\TinVoronoi.csproj">
       <Project>{194417E2-0B8E-45E0-80D6-4DD483E735D1}</Project>
       <Name>TinVoronoi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Itop.CADLib\Itop.CADLib.csproj">
-      <Project>{850816E0-DD57-44F4-9DB4-38764FCC1CDB}</Project>
-      <Name>Itop.CADLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\Itop.TLPSP.DEVICE\Itop.TLPSP.DEVICE.csproj">
       <Project>{549F483D-6CDD-47E6-84A4-7B530EB67DC1}</Project>
