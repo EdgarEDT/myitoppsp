@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_pdreltype' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Ps_pdreltype' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.Ps_pdreltype' />
+</alias>
+	<resultMaps>
+		<resultMap id='Ps_pdreltypeResult' class='Ps_pdreltype'>
+			<result property='ID' column='ID' />
+			<result property='ProjectID' column='ProjectID' />
+			<result property='Title' column='Title' />
+			<result property='Createtime' column='Createtime' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='D1' column='D1' />
+			<result property='D2' column='D2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPs_pdreltype' parameterClass='Ps_pdreltype'>
+		INSERT INTO Ps_pdreltype		(
+			"ID",
+			"ProjectID",
+			"Title",
+			"Createtime",
+			"S1",
+			"S2",
+			"D1",
+			"D2"
+		)
+		VALUES
+		(
+			#ID#,
+			#ProjectID#,
+			#Title#,
+			#Createtime#,
+			#S1#,
+			#S2#,
+			#D1#,
+			#D2#
+		)
+	</insert>
+	<delete id='DeletePs_pdreltype' parameterClass='Ps_pdreltype'>
+		DELETE FROM Ps_pdreltype
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePs_pdreltype' parameterClass='Ps_pdreltype'>
+		UPDATE Ps_pdreltype
+		SET
+			"ProjectID" = #ProjectID#,
+			"Title" = #Title#,
+			"Createtime" = #Createtime#,
+			"S1" = #S1#,
+			"S2" = #S2#,
+			"D1" = #D1#,
+			"D2" = #D2#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPs_pdreltypeList' resultMap='Ps_pdreltypeResult' parameterClass='Ps_pdreltype'>
+		SELECT
+			"ID",
+			"ProjectID",
+			"Title",
+			"Createtime",
+			"S1",
+			"S2",
+			"D1",
+			"D2"
+		FROM Ps_pdreltype
+	</select>
+	<select id='SelectPs_pdreltypeByKey' resultMap='Ps_pdreltypeResult' parameterClass='Ps_pdreltype'>
+		SELECT
+			"ID",
+			"ProjectID",
+			"Title",
+			"Createtime",
+			"S1",
+			"S2",
+			"D1",
+			"D2"
+		FROM Ps_pdreltype
+		WHERE
+			ID = #ID#
+	</select>
+</statements>
+</sqlMap>
