@@ -80,7 +80,7 @@
     <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.MapView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="ItopVector, Version=3.0.1.27794, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ItopVector, Version=3.0.1.16663, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
@@ -177,6 +177,12 @@
     <Compile Include="PdDateEdit.Designer.cs">
       <DependentUpon>PdDateEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="PDRel\PDreltypefrmedit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDRel\PDreltypefrmedit.Designer.cs">
+      <DependentUpon>PDreltypefrmedit.cs</DependentUpon>
+    </Compile>
     <Compile Include="PDtypefrmedit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,12 @@
     </Compile>
     <Compile Include="XtraPDrelfrm.Designer.cs">
       <DependentUpon>XtraPDrelfrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDRel\UcPdreltype.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PDRel\UcPdreltype.Designer.cs">
+      <DependentUpon>UcPdreltype.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +318,9 @@
     <EmbeddedResource Include="PdDateEdit.resx">
       <DependentUpon>PdDateEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\PDreltypefrmedit.resx">
+      <DependentUpon>PDreltypefrmedit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PDtypefrmedit.resx">
       <DependentUpon>PDtypefrmedit.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XtraPDrelfrm.resx">
       <DependentUpon>XtraPDrelfrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\UcPdreltype.resx">
+      <DependentUpon>UcPdreltype.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
