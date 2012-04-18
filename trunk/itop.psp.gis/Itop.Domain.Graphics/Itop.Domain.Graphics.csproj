@@ -87,6 +87,8 @@
     <Compile Include="PSP_SubstationPar.cs" />
     <Compile Include="PSP_SubstationSelect.cs" />
     <Compile Include="PSP_SubstationUserNum.cs" />
+    <Compile Include="Ps_pdreltype.cs" />
+    <Compile Include="Ps_pdtypenode.cs" />
     <Compile Include="rightMenu.cs" />
     <Compile Include="substation.cs" />
     <Compile Include="SVGFILE.cs" />
