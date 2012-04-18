@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='Ps_pdtypenode' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<alias>
+	<typeAlias alias='Ps_pdtypenode' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.Ps_pdtypenode' />
+</alias>
+	<resultMaps>
+		<resultMap id='Ps_pdtypenodeResult' class='Ps_pdtypenode'>
+			<result property='ID' column='ID' />
+			<result property='ParentID' column='ParentID' />
+			<result property='DeviceID' column='DeviceID' />
+			<result property='pdreltypeid' column='pdreltypeid' />
+			<result property='devicetype' column='devicetype' />
+			<result property='title' column='title' />
+			<result property='Code' column='Code' />
+			<result property='S1' column='S1' />
+			<result property='S2' column='S2' />
+			<result property='D1' column='D1' />
+			<result property='D2' column='D2' />
+		</resultMap>
+	</resultMaps>
+<statements>
+	<insert id='InsertPs_pdtypenode' parameterClass='Ps_pdtypenode'>
+		INSERT INTO Ps_pdtypenode		(
+			"ID",
+			"ParentID",
+			"DeviceID",
+			"pdreltypeid",
+			"devicetype",
+			"title",
+			"Code",
+			"S1",
+			"S2",
+			"D1",
+			"D2"
+		)
+		VALUES
+		(
+			#ID#,
+			#ParentID#,
+			#DeviceID#,
+			#pdreltypeid#,
+			#devicetype#,
+			#title#,
+			#Code#,
+			#S1#,
+			#S2#,
+			#D1#,
+			#D2#
+		)
+	</insert>
+	<delete id='DeletePs_pdtypenode' parameterClass='Ps_pdtypenode'>
+		DELETE FROM Ps_pdtypenode
+		WHERE
+			ID = #ID#
+	</delete>
+	<update id='UpdatePs_pdtypenode' parameterClass='Ps_pdtypenode'>
+		UPDATE Ps_pdtypenode
+		SET
+			"ParentID" = #ParentID#,
+			"DeviceID" = #DeviceID#,
+			"pdreltypeid" = #pdreltypeid#,
+			"devicetype" = #devicetype#,
+			"title" = #title#,
+			"Code" = #Code#,
+			"S1" = #S1#,
+			"S2" = #S2#,
+			"D1" = #D1#,
+			"D2" = #D2#
+		WHERE
+			ID = #ID#
+	</update>
+	<select id='SelectPs_pdtypenodeList' resultMap='Ps_pdtypenodeResult' parameterClass='Ps_pdtypenode'>
+		SELECT
+			"ID",
+			"ParentID",
+			"DeviceID",
+			"pdreltypeid",
+			"devicetype",
+			"title",
+			"Code",
+			"S1",
+			"S2",
+			"D1",
+			"D2"
+		FROM Ps_pdtypenode
+	</select>
+	<select id='SelectPs_pdtypenodeByKey' resultMap='Ps_pdtypenodeResult' parameterClass='Ps_pdtypenode'>
+		SELECT
+			"ID",
+			"ParentID",
+			"DeviceID",
+			"pdreltypeid",
+			"devicetype",
+			"title",
+			"Code",
+			"S1",
+			"S2",
+			"D1",
+			"D2"
+		FROM Ps_pdtypenode
+		WHERE
+			ID = #ID#
+	</select>
+</statements>
+</sqlMap>
