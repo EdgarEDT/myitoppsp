@@ -38,6 +38,7 @@ namespace Itop.TLPSP.DEVICE
         FZX=58,
         GT=70
     }
+   
     public class DeviceTypeHelper{
         public static DataTable GetDeviceTypes() {
             Stream fs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Itop.TLPSP.DEVICE.devicetypes.xml");
@@ -59,7 +60,31 @@ namespace Itop.TLPSP.DEVICE
             }
             return table;
         }
+        public static string DeviceClassbyType(string type)
+        {
+            switch(type)
+            {
+                case"01":
+                    return "Itop.TLPSP.DEVICE.UCDeviceMX";
+                case"73":
+                    return"Itop.TLPSP.DEVICE.UCDeviceDX";
+                case"74":
+                    return "Itop.TLPSP.DEVICE.UCDeviceFZX";
+                case "70":
+                    return "Itop.TLPSP.DEVICE.UCDeviceZX";
+                case"06":
+                    return "Itop.TLPSP.DEVICE.UCDeviceDLQ";
+                case"55":
+                    return "Itop.TLPSP.DEVICE.UCDevicePWKG";
+                 case"80":
+                    return "Itop.TLPSP.DEVICE.UCDevicePWFHZL";
+                 case"75":
+                    return "Itop.TLPSP.DEVICE.UCDeviceLUX";
+                default:
+                    return "Itop.TLPSP.DEVICE.UCDeviceMX";
 
+            }
+        }
         public static void InitDeviceTypes(DevExpress.XtraTreeList.TreeList treeList1) {
             TreeListColumn column = new TreeListColumn();
             column.Caption = "设备分类";
