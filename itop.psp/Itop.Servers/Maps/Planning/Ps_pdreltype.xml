@@ -83,5 +83,33 @@
 		WHERE
 			ID = #ID#
 	</select>
+  <select id='SelectPs_pdreltypeByCon' resultMap='Ps_pdreltypeResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "ProjectID",
+    "Title",
+    "Createtime",
+    "S1",
+    "S2",
+    "D1",
+    "D2"
+    FROM Ps_pdreltype
+    WHERE
+    $value$
+  </select>
+  <select id='SelectPs_pdreltypeByProjectID' resultMap='Ps_pdreltypeResult' parameterClass='Ps_pdreltype'>
+    SELECT
+    "ID",
+    "ProjectID",
+    "Title",
+    "Createtime",
+    "S1",
+    "S2",
+    "D1",
+    "D2"
+    FROM Ps_pdreltype
+    WHERE
+    ProjectID = #ProjectID#
+  </select>
 </statements>
 </sqlMap>
