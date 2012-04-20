@@ -10,6 +10,7 @@ using Itop.Common;
 using Itop.Domain.Graphics;
 using Itop.Client.Common;
 using Itop.Domain.Table;
+using Itop.TLPSP.DEVICE;
 namespace Itop.TLPsp.Graphical {
     public partial class PDreltypefrmedit : DevExpress.XtraEditors.XtraForm {
         public PDreltypefrmedit()
@@ -23,6 +24,7 @@ namespace Itop.TLPsp.Graphical {
                 //pdtype.Year = Year;
                 //pdtype.PeopleSum = Peplesum;
                 pdtype.Title= Title;
+                pdtype.S1 = S1;
                 return pdtype;
             }
             set{
@@ -30,38 +32,61 @@ namespace Itop.TLPsp.Graphical {
                 {
                     pdtype=value;
                     Title = pdtype.Title;
+                    S1 = pdtype.S1;
                     //Peplesum = pdtype.PeopleSum;
                     //Year = pdtype.Year;
                 }
                 
             }
         }
-        public int Peplesum
-        {
-            get
-            {
-                return Convert.ToInt32(spinEdit1.Value);
-            }
-            set
-            {
-                spinEdit1.Value = Convert.ToDecimal(value);
-            }
-        }
+        //public int Peplesum
+        //{
+        //    get
+        //    {
+        //        return Convert.ToInt32(spinEdit1.Value);
+        //    }
+        //    set
+        //    {
+        //        spinEdit1.Value = Convert.ToDecimal(value);
+        //    }
+        //}
         public string Title {
             //get { return this.textEdit1.Text; }
             //set { textEdit1.Text = value; }
             get { return this.comboBoxEdit1.Text; }
             set { comboBoxEdit1.Text = value; }
         }
-        public int Year {
-            get { return Convert.ToInt32(comboBoxEdit2.Text); }
-            set {
-                if (value!=null)
+        public string  S1
+        {
+            get { return this.lookUpEdit1.EditValue.ToString(); }
+            set { 
+                if (!string.IsNullOrEmpty(value))
+                {
+                    PSPDEV devzx = new PSPDEV();
+                    devzx.SUID = S1;
+                    devzx = Services.BaseService.GetOneByKey<PSPDEV>(devzx);
+                    if (devzx!=null)
                     {
-                        comboBoxEdit2.Text = value.ToString(); 
+                        lookUpEdit1.Text = devzx.Name;
+                        lookUpEdit1.EditValue = devzx.SUID;
+                    }
+                    else
+                    {
+                        lookUpEdit1.EditValue = value;
+                        lookUpEdit1.Text = value;
                     }
                 }
+               }
         }
+        //public int Year {
+        //    get { return Convert.ToInt32(comboBoxEdit2.Text); }
+        //    set {
+        //        if (value!=null)
+        //            {
+        //                comboBoxEdit2.Text = value.ToString(); 
+        //            }
+        //        }
+        //}
         private void PDtypefrmedit_Load(object sender, EventArgs e) {
             string DQ = "市区";
             string conn = "ProjectID='" + Itop.Client.MIS.ProgUID + "' and Col1='" + DQ + "' order by Sort";
@@ -69,14 +94,27 @@ namespace Itop.TLPsp.Graphical {
             foreach (PS_Table_AreaWH area in list) {
                 this.comboBoxEdit1.Properties.Items.Add(area.Title);
             }
-            for (int i = 0; i < 60;i++ ) {
-                string y = (2000 + i).ToString();
-                this.comboBoxEdit2.Properties.Items.Add(y);
-            }
+            //for (int i = 0; i < 60;i++ ) {
+            //    string y = (2000 + i).ToString();
+            //    this.comboBoxEdit2.Properties.Items.Add(y);
+            //}
         }
 
         private void simpleButton1_Click(object sender, EventArgs e) {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void lookUpEdit1_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            frmDeviceSelect dlg = new frmDeviceSelect();
+            dlg.InitDeviceType("01");
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                Dictionary<string, object> dic = dlg.GetSelectedDevice();
+                PSPDEV devzx = dic["device"] as PSPDEV;
+                 S1 = devzx.SUID;
+                
+            }
         }
 
 
