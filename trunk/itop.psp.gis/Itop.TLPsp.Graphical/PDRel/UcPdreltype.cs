@@ -100,10 +100,30 @@ namespace Itop.TLPsp.Graphical {
                 pdr.ProjectID = Itop.Client.MIS.ProgUID;
                 pdr.Createtime = DateTime.Now;
                 pdr.Title = PDT.Title;
+                pdr.S1 = PDT.S1;
                 //pdr.PeopleSum = PDT.Peplesum;
                 //pdr.AreaName = PDT.Areaname;
                 //pdr.Year = PDT.Year;
                 Services.BaseService.Create<Ps_pdreltype>(pdr);
+                //创建电源
+                Ps_pdtypenode pn = new Ps_pdtypenode();
+                pn.pdreltypeid = pdr.ID;
+                pn.devicetype = "01";
+                PSPDEV devzx = new PSPDEV();
+                devzx.SUID =pdr. S1;
+                devzx = Services.BaseService.GetOneByKey<PSPDEV>(devzx);
+                if (devzx != null)
+                {
+                    pn.title = devzx.Name;
+                    pn.DeviceID = devzx.SUID;
+                }
+                else
+                {
+                    pn.title = pdr.Title;
+
+                }
+                pn.Code = "0";
+                Services.BaseService.Create<Ps_pdtypenode>(pn);
                 dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, dataTable.NewRow()));
                
                 //init();
@@ -125,7 +145,26 @@ namespace Itop.TLPsp.Graphical {
                 
                 Services.BaseService.Update<Ps_pdreltype>(PDT.Pdtype);
                 treeList1.FocusedNode.SetValue("Title", PDT.Title);
-                treeList1.FocusedNode.SetValue("PeopleSum", PDT.Peplesum);
+                  IList<Ps_pdtypenode>  list1 = Services.BaseService.GetList<Ps_pdtypenode>("SelectPs_pdtypenodeByCon", "pdreltypeid='" + PDT.Pdtype.ID+ "'and devicetype='01'");
+               if (list1.Count>0)
+               {
+                   Ps_pdtypenode pn = list1[0];
+                   PSPDEV devzx = new PSPDEV();
+                   devzx.SUID = PDT.Pdtype.S1;
+                   devzx = Services.BaseService.GetOneByKey<PSPDEV>(devzx);
+                   if (devzx != null)
+                   {
+                       pn.title = devzx.Name;
+                       pn.DeviceID = devzx.SUID;
+                   }
+                   else
+                   {
+                       pn.title = PDT.Pdtype.Title;
+
+                   }
+                   Services.BaseService.Create<Ps_pdtypenode>(pn);
+               }
+               
             }
         }
 
@@ -165,7 +204,12 @@ namespace Itop.TLPsp.Graphical {
                     if (node != null)
                         tln.TreeList.DeleteNode(node);
                     RemoveDataTableRow(dataTable, pf.ID);
+                    Ps_pdtypenode pn = new Ps_pdtypenode();
+                    pn.pdreltypeid = pf.ID;
+                    Itop.Client.Common.Services.BaseService.Update("DeletePs_pdtypepdreltypeid", pn);
                     Itop.Client.Common.Services.BaseService.Delete<Ps_pdreltype>(pf);
+                    
+                    
                     
                     
                 } catch (Exception e) {
