@@ -252,14 +252,16 @@ namespace ItopVector.Tools
             }
 
             this.gridView.BeginUpdate();
-            //记住当前焦点行索引
+            //记住当前焦点行索引
+
             int iOldHandle = this.gridView.FocusedRowHandle;
             //从链表中删除
             //ObjectList.Remove(obj);
             gridView.DeleteRow(iOldHandle);
             //刷新表格
             gridControl.RefreshDataSource();
-            //设置新的焦点行索引
+            //设置新的焦点行索引
+
             GridHelper.FocuseRowAfterDelete(this.gridView, iOldHandle);
             this.gridView.EndUpdate();
         }

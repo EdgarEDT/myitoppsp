@@ -53,6 +53,11 @@
 		WHERE
 			ID = #ID#
 	</delete>
+  <delete id='DeletePs_pdtypepdreltypeid' parameterClass='Ps_pdtypenode'>
+    DELETE FROM Ps_pdtypenode
+    WHERE
+    pdreltypeid = #pdreltypeid#
+  </delete>
 	<update id='UpdatePs_pdtypenode' parameterClass='Ps_pdtypenode'>
 		UPDATE Ps_pdtypenode
 		SET
@@ -101,5 +106,39 @@
 		WHERE
 			ID = #ID#
 	</select>
+  <select id='SelectPs_pdtypenodeByCon' resultMap='Ps_pdtypenodeResult' parameterClass='string'>
+    SELECT
+    "ID",
+    "ParentID",
+    "DeviceID",
+    "pdreltypeid",
+    "devicetype",
+    "title",
+    "Code",
+    "S1",
+    "S2",
+    "D1",
+    "D2"
+    FROM Ps_pdtypenode
+    WHERE
+    $value$
+  </select>
+  <select id='SelectPs_pdtypenodeByParentID' resultMap='Ps_pdtypenodeResult' parameterClass='Ps_pdtypenode'>
+    SELECT
+    "ID",
+    "ParentID",
+    "DeviceID",
+    "pdreltypeid",
+    "devicetype",
+    "title",
+    "Code",
+    "S1",
+    "S2",
+    "D1",
+    "D2"
+    FROM Ps_pdtypenode
+    WHERE
+    ParentID=#ParentID#
+  </select>
 </statements>
 </sqlMap>

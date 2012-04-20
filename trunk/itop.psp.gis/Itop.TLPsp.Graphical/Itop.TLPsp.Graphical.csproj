@@ -45,6 +45,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\DevComponents.DotNetBar.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Charts.v10.1.Core, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Client\DevExpress.Data.v10.1.dll</HintPath>
@@ -57,6 +58,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Client\DevExpress.XtraBars.v10.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraCharts.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v10.1.UI, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Client\DevExpress.XtraEditors.v10.1.dll</HintPath>
@@ -80,7 +83,10 @@
     <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.MapView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="ItopVector, Version=3.0.1.16663, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ItopVector, Version=3.0.1.27794, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Client\ItopVector.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
@@ -182,6 +188,12 @@
     </Compile>
     <Compile Include="PDRel\PDreltypefrmedit.Designer.cs">
       <DependentUpon>PDreltypefrmedit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDRel\UcPdtypenode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PDRel\UcPdtypenode.Designer.cs">
+      <DependentUpon>UcPdtypenode.cs</DependentUpon>
     </Compile>
     <Compile Include="PDtypefrmedit.cs">
       <SubType>Form</SubType>
@@ -320,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PDRel\PDreltypefrmedit.resx">
       <DependentUpon>PDreltypefrmedit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\UcPdtypenode.resx">
+      <DependentUpon>UcPdtypenode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDtypefrmedit.resx">
       <DependentUpon>PDtypefrmedit.cs</DependentUpon>
