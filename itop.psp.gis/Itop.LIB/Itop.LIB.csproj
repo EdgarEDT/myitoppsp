@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Itop.Domain.Table.dll" />
+    <Content Include="ItopVector.dll" />
     <Content Include="MapLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
