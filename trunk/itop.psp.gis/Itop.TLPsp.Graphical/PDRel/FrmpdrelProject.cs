@@ -20,7 +20,7 @@ using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
 using Itop.TLPSP.DEVICE;
 using System.Reflection;
-namespace Itop.TLPsp.Graphical.PDRel
+namespace Itop.TLPsp.Graphical
 {
     public partial class FrmpdrelProject : FormBase
     {
