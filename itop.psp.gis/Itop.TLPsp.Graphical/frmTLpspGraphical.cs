@@ -927,7 +927,11 @@ namespace Itop.TLPsp.Graphical
             else if (reldialog.DialogResult == DialogResult.Yes) {
                 this.Visible = false;
                 //配电可靠性窗体
-                XtraPDrelfrm xf = new XtraPDrelfrm();
+                //XtraPDrelfrm xf = new XtraPDrelfrm();
+                //xf.init();
+                //xf.ShowDialog();
+                //更换为元件可靠性
+                FrmpdrelProject xf = new FrmpdrelProject();
                 xf.init();
                 xf.ShowDialog();
             }
