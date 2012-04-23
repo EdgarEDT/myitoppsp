@@ -56,24 +56,25 @@ namespace Itop.TLPsp.Graphical {
             get { return this.comboBoxEdit1.Text; }
             set { comboBoxEdit1.Text = value; }
         }
+        private string s1;
         public string  S1
         {
-            get { return this.lookUpEdit1.EditValue.ToString(); }
+            get { return s1; }
             set { 
                 if (!string.IsNullOrEmpty(value))
                 {
                     PSPDEV devzx = new PSPDEV();
-                    devzx.SUID = S1;
+                    devzx.SUID = value;
                     devzx = Services.BaseService.GetOneByKey<PSPDEV>(devzx);
                     if (devzx!=null)
                     {
-                        lookUpEdit1.Text = devzx.Name;
-                        lookUpEdit1.EditValue = devzx.SUID;
+                        comboBoxEdit2.Text= devzx.Name;
+                        s1 = devzx.SUID;
                     }
                     else
                     {
-                        lookUpEdit1.EditValue = value;
-                        lookUpEdit1.Text = value;
+                        comboBoxEdit2.Text = value;
+                        s1 = value;
                     }
                 }
                }
@@ -104,7 +105,10 @@ namespace Itop.TLPsp.Graphical {
             this.DialogResult = DialogResult.OK;
         }
 
-        private void lookUpEdit1_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+       
+      
+
+        private void comboBoxEdit2_Properties_Click(object sender, EventArgs e)
         {
             frmDeviceSelect dlg = new frmDeviceSelect();
             dlg.InitDeviceType("01");
@@ -112,8 +116,8 @@ namespace Itop.TLPsp.Graphical {
             {
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
                 PSPDEV devzx = dic["device"] as PSPDEV;
-                 S1 = devzx.SUID;
-                
+                S1 = devzx.SUID;
+
             }
         }
 
