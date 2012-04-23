@@ -41,27 +41,27 @@ namespace Itop.TLPsp.Graphical
             {
                 parentobj = value;
                 pdreltypeid = parentobj.ID;
+                Init();
             }
         }
-        private void Init(string pdreltype)
+        private void Init()
         {
-            TreeListColumn column1 = new TreeListColumn();
-            column1.Caption = "样式";
-            column1.FieldName = "devicetype";
-            column1.VisibleIndex = 0;
-            column1.Width = 20;
-            column1.OptionsColumn.AllowEdit = false;
-            column1.OptionsColumn.AllowSort = false;
+           // TreeListColumn column1 = new TreeListColumn();
+           // column1.Caption = "样式";
+           // column1.FieldName = "devicetype";
+           // column1.VisibleIndex = -1;
+           // column1.OptionsColumn.AllowEdit = false;
+           // column1.OptionsColumn.AllowSort = false;
 
-            TreeListColumn column = new TreeListColumn();
-            column.Caption = "元件";
-            column.FieldName = "title";
-            column.VisibleIndex =1;
-            column.Width = 90;
-            column.OptionsColumn.AllowEdit = false;
-            column.OptionsColumn.AllowSort = false;
-            treeList1.Columns.AddRange(new TreeListColumn[] {
-            column,column1});
+           // TreeListColumn column = new TreeListColumn();
+           // column.Caption = "元件";
+           // column.FieldName = "title";
+           // column.VisibleIndex =0;
+           // column.Width = 40;
+           // column.OptionsColumn.AllowEdit = false;
+           // column.OptionsColumn.AllowSort = false;
+           // treeList1.Columns.AddRange(new TreeListColumn[] {
+           //column1, column});
             treeList1.KeyFieldName = "ID";
             treeList1.ParentFieldName = "Parentid";
             IList<Ps_pdtypenode> list1 = Services.BaseService.GetList<Ps_pdtypenode>("SelectPs_pdtypenodeByCon", "pdreltypeid='" + pdreltypeid + "'");
@@ -76,7 +76,8 @@ namespace Itop.TLPsp.Graphical
         /// <returns></returns>
         private UCDeviceBase createInstance(string classname)
         {
-            return Assembly.GetExecutingAssembly().CreateInstance(classname, false) as UCDeviceBase;
+            //return Assembly.GetExecutingAssembly().CreateInstance(classname, false) as UCDeviceBase;
+            return Assembly.Load("Itop.TLPSP.DEVICE").CreateInstance(classname, false) as UCDeviceBase;
         }
         private void showDevice(UCDeviceBase device)
         {
@@ -130,7 +131,7 @@ namespace Itop.TLPsp.Graphical
             {
                 
                 //给一个空的选择
-                curDevice.strCon = " where 1=1 and suid='1111'";
+                curDevice.strCon = " where 1=1 and suid='1111' and";
                 curDevice.Init();
             }
         }
@@ -139,7 +140,7 @@ namespace Itop.TLPsp.Graphical
             if (e.Button == MouseButtons.Right) return;
             TreeListNode node = treeList1.FocusedNode;
             if (node == null) return;
-            string deviceid=node["ID"].ToString();
+            string deviceid = node["DeviceID"].ToString();
             string strID = node["devicetype"].ToString();
             string dtype = DeviceTypeHelper.DeviceClassbyType(strID);
             if (string.IsNullOrEmpty(dtype))
@@ -175,7 +176,7 @@ namespace Itop.TLPsp.Graphical
             curDevice = device;
             if (curDevice != null)
             {
-                curDevice.strCon = " where 1=1 and suid='" + deviceid + "'";
+                curDevice.strCon = " where 1=1 and suid='" + deviceid + "'and ";
                 curDevice.Init();
             }
         }
@@ -495,6 +496,77 @@ namespace Itop.TLPsp.Graphical
                 return;
             }
             DeleteNode(tln);
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            TreeListNode tln = treeList1.FocusedNode;
+            frmDeviceSelect dlg = new frmDeviceSelect();
+            if (tln != null)
+            {
+                DataRow row = (tln.TreeList.GetDataRecordByNode(tln) as DataRowView).Row;
+                Ps_pdtypenode v = DataConverter.RowToObject<Ps_pdtypenode>(row);
+                if (tln.GetValue("devicetype").ToString() == "01")
+                {
+                    //adducdevice("73");
+                    //curDevice.Add();
+                    //PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
+                    //馈线段记录
+                    dlg.InitDeviceType("01", "73");
+                }
+                else if (tln.GetValue("devicetype").ToString() == "73")
+                {
+                    dlg.InitDeviceType("73", "74", "80", "75");
+
+                }
+                else if (tln.GetValue("devicetype").ToString() == "74")
+                {
+                    dlg.InitDeviceType("06", "55");
+
+                }
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    Dictionary<string, object> dic = dlg.GetSelectedDevice();
+                    PSPDEV devzx = dic["device"] as PSPDEV;
+                    //S1 = devzx.SUID;
+                    Ps_pdtypenode pn = new Ps_pdtypenode();
+                    pn.title = devzx.Name;
+                    pn.pdreltypeid = pdreltypeid;
+                    pn.devicetype = devzx.Type;
+                    pn.DeviceID = devzx.SUID;
+                    if (devzx.Type != "01")
+                    {
+                        pn.ParentID = tln.GetValue("ID").ToString();
+                    }
+                    switch (devzx.Type)
+                    {
+                        case "73":
+                            pn.Code = (tln.Level + 1).ToString() + "1" + (tln.Nodes.Count + 1).ToString();
+                            break;
+                        case "74":
+                            pn.Code = (tln.Level + 1).ToString() + "2" + (tln.Nodes.Count + 1).ToString();
+                            break;
+                        case "80":
+                            pn.Code = (tln.Level + 1).ToString() + "3" + (tln.Nodes.Count + 1).ToString();
+                            break;
+                        case "75":
+                            pn.Code = (tln.Level + 1).ToString() + "5" + (tln.Nodes.Count + 1).ToString();
+                            break;
+                        case "06":
+                            pn.Code = (tln.Level + 1).ToString() + "4" + (tln.Nodes.Count + 1).ToString();
+                            break;
+                        case "55":
+                            pn.Code = (tln.Level + 1).ToString() + "6" + (tln.Nodes.Count + 1).ToString();
+                            break;
+                        case "01":
+                            pn.Code = treeList1.Nodes.Count.ToString();
+                            break;
+                    }
+
+                    Services.BaseService.Create<Ps_pdtypenode>(pn);
+                    dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                }
+            }
         }
 
        
