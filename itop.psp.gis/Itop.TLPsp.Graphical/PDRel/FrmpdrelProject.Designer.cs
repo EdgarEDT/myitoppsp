@@ -1,4 +1,4 @@
-﻿namespace Itop.TLPsp.Graphical.PDRel
+﻿namespace Itop.TLPsp.Graphical
 {
     partial class FrmpdrelProject
     {
