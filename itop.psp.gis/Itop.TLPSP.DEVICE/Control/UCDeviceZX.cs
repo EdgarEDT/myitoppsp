@@ -42,6 +42,19 @@ namespace Itop.TLPSP.DEVICE
             con = " Type='70'";
             base.SelDevices();
         }
+        //获得所在线路的ID
+        private string parentid;
+        public string ParentID
+        {
+            get
+            {
+                return parentid;
+            }
+            set
+            {
+                parentid = value;
+            }
+        }
         /// <summary>
         /// 设置设备显示列
         /// </summary>
@@ -107,6 +120,10 @@ namespace Itop.TLPSP.DEVICE
             frmZXdlg dlg = new frmZXdlg();
             dlg.Name = "";
             dlg.ProjectID = this.ProjectID;
+            if (!string.IsNullOrEmpty(parentid))
+            {
+                dlg.AreaID = parentid;
+            }
             Stream fs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Itop.TLPSP.DEVICE.devicetypes.xml");
             //Assembly.GetExecutingAssembly().GetManifestResourceStream
             XmlDocument xml = new XmlDocument();
