@@ -931,7 +931,7 @@ namespace Itop.TLPsp.Graphical
                 //xf.init();
                 //xf.ShowDialog();
                 //更换为元件可靠性
-                FrmpdrelProject xf = new FrmpdrelProject();
+                Itop.TLPSP.DEVICE.FrmpdrelProject xf = new Itop.TLPSP.DEVICE.FrmpdrelProject();
                 xf.init();
                 xf.ShowDialog();
             }

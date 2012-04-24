@@ -183,18 +183,6 @@
     <Compile Include="PdDateEdit.Designer.cs">
       <DependentUpon>PdDateEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="PDRel\PDreltypefrmedit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PDRel\PDreltypefrmedit.Designer.cs">
-      <DependentUpon>PDreltypefrmedit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PDRel\UcPdtypenode.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PDRel\UcPdtypenode.Designer.cs">
-      <DependentUpon>UcPdtypenode.cs</DependentUpon>
-    </Compile>
     <Compile Include="PDtypefrmedit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,12 +218,6 @@
     </Compile>
     <Compile Include="XtraPDrelfrm.Designer.cs">
       <DependentUpon>XtraPDrelfrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PDRel\UcPdreltype.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PDRel\UcPdreltype.Designer.cs">
-      <DependentUpon>UcPdreltype.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -330,12 +312,6 @@
     <EmbeddedResource Include="PdDateEdit.resx">
       <DependentUpon>PdDateEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PDRel\PDreltypefrmedit.resx">
-      <DependentUpon>PDreltypefrmedit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PDRel\UcPdtypenode.resx">
-      <DependentUpon>UcPdtypenode.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PDtypefrmedit.resx">
       <DependentUpon>PDtypefrmedit.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,9 +323,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XtraPDrelfrm.resx">
       <DependentUpon>XtraPDrelfrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PDRel\UcPdreltype.resx">
-      <DependentUpon>UcPdreltype.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
