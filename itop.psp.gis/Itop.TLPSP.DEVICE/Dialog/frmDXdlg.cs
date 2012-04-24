@@ -21,7 +21,7 @@ namespace Itop.TLPSP.DEVICE
     {
         PSPDEV dev = new PSPDEV();
         public IList<glebeProperty> glist = null;
-        
+        public bool newflag = false; //是否为新加的 false为修改 ture为新加的 创建一个可靠性分析的方案
         public PSPDEV DeviceMx
         {
             get{
@@ -692,6 +692,142 @@ namespace Itop.TLPSP.DEVICE
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
                 buttonEdit2.Text = dic["name"].ToString();
                 dev.JName = dic["id"].ToString();
+            }
+        }
+        //点击其他设备元件的时候
+        private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (xtraTabControl1.SelectedTabPage.Name == "xtraTabPage4")
+            {
+                if (newflag)
+                {
+                    //创建一个可靠性分析的方案 其id和馈线的ID相同。
+                    Ps_pdreltype pdr = new Ps_pdreltype();
+                    pdr.ID = dev.SUID;
+                    pdr.ProjectID = this.projectID;
+                    pdr.Createtime = DateTime.Now;
+                    pdr.Title = textEdit1.Text;
+                    pdr.S1 = dev.IName;
+                    //pdr.PeopleSum = PDT.Peplesum;
+                    //pdr.AreaName = PDT.Areaname;
+                    //pdr.Year = PDT.Year;
+                    Services.BaseService.Create<Ps_pdreltype>(pdr);
+                    //创建电源
+                    Ps_pdtypenode pn = new Ps_pdtypenode();
+                    pn.pdreltypeid = pdr.ID;
+                    pn.devicetype = "01";
+                    PSPDEV devzx = new PSPDEV();
+                    devzx.SUID = pdr.S1;
+                    devzx = Services.BaseService.GetOneByKey<PSPDEV>(devzx);
+                    if (devzx != null)
+                    {
+                        pn.title = devzx.Name;
+                        pn.DeviceID = devzx.SUID;
+                    }
+                    else
+                    {
+                        pn.title = "无电源"+pdr.Title;
+
+                    }
+                    pn.Code = "0";
+                    Services.BaseService.Create<Ps_pdtypenode>(pn);
+
+                   //创建自身的元件树
+                    Ps_pdtypenode pn1 = new Ps_pdtypenode();
+                    pn1.ID = dev.SUID;
+                    pn1.title = textEdit1.Text;
+                    pn1.pdreltypeid = pdr.ID;
+                    pn1.devicetype = "73";
+                    pn1.DeviceID = dev.SUID;
+                    pn1.ParentID = pn.ID;
+                    pn1.Code = "111";
+                    Services.BaseService.Create<Ps_pdtypenode>(pn1);
+
+                }
+                else
+                {
+                    Ps_pdreltype pdr = new Ps_pdreltype();
+                    pdr.ID = dev.SUID;
+                    pdr = Services.BaseService.GetOneByKey<Ps_pdreltype>(pdr);
+                    if (pdr!=null)
+                    {
+                        pdr.Title = textEdit1.Text;
+                        pdr.S1 = dev.IName;
+                        Services.BaseService.Update<Ps_pdreltype>(pdr);
+                        //修改电源信息
+                        IList<Ps_pdtypenode> list1 = Services.BaseService.GetList<Ps_pdtypenode>("SelectPs_pdtypenodeByCon", "pdreltypeid='" + pdr.ID + "' and devicetype = '01'");
+                      if (list1.Count>0)
+                      {
+                          Ps_pdtypenode pt = list1[0];
+                          pt.DeviceID = dev.IName;
+                          Services.BaseService.Update<Ps_pdtypenode>(pt);
+                      }
+                      //修改此馈线节点的信息
+                      Ps_pdtypenode pdn = new Ps_pdtypenode();
+                      pdn.ID = dev.SUID;
+                      pdn = Services.BaseService.GetOneByKey<Ps_pdtypenode>(pdn);
+                        if (pdn!=null)
+                        {
+                            pdn.title = dev.Name;
+                            pdn.devicetype = "73";
+                            Services.BaseService.Update<Ps_pdtypenode>(pdn);
+                        }
+
+                       
+                    }
+                    else
+                    {
+                        pdr = new Ps_pdreltype();
+                        pdr.ID = dev.SUID;
+                        pdr.ProjectID = this.projectID;
+                        pdr.Createtime = DateTime.Now;
+                        pdr.Title = textEdit1.Text;
+                        pdr.S1 = dev.IName;
+                        //pdr.PeopleSum = PDT.Peplesum;
+                        //pdr.AreaName = PDT.Areaname;
+                        //pdr.Year = PDT.Year;
+                        Services.BaseService.Create<Ps_pdreltype>(pdr);
+                        //创建电源
+                        Ps_pdtypenode pn = new Ps_pdtypenode();
+                        pn.pdreltypeid = pdr.ID;
+                        pn.devicetype = "01";
+                        PSPDEV devzx = new PSPDEV();
+                        devzx.SUID = pdr.S1;
+                        devzx = Services.BaseService.GetOneByKey<PSPDEV>(devzx);
+                        if (devzx != null)
+                        {
+                            pn.title = devzx.Name;
+                            pn.DeviceID = devzx.SUID;
+                        }
+                        else
+                        {
+                            pn.title = pdr.Title;
+
+                        }
+                        pn.Code = "0";
+                        Services.BaseService.Create<Ps_pdtypenode>(pn);
+                        //创建自身的元件树
+                        Ps_pdtypenode pn1 = new Ps_pdtypenode();
+                        pn1.ID = dev.SUID;
+                        pn1.title = textEdit1.Text;
+                        pn1.pdreltypeid = pdr.ID;
+                        pn1.devicetype = "73";
+                        pn1.DeviceID = dev.SUID;
+                        pn1.ParentID = pn.ID;
+                        pn1.Code = "111";
+                        Services.BaseService.Create<Ps_pdtypenode>(pn1);
+                    }
+                    
+                    //pdr.PeopleSum = PDT.Peplesum;
+                    //pdr.AreaName = PDT.Areaname;
+                    //pdr.Year = PDT.Year;
+                 
+                   
+
+                   
+                }
+                ucdxchildnode1.DXObj = dev;
+                
             }
         }
 
