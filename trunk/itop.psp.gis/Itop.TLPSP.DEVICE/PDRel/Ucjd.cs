@@ -46,7 +46,7 @@ namespace Itop.TLPSP.DEVICE
         }
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ucDeviceZX1.ProjectID = paretobj.SUID;
+            ucDeviceZX1.ParentID = paretobj.SUID;
             ucDeviceZX1.Add();
         }
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

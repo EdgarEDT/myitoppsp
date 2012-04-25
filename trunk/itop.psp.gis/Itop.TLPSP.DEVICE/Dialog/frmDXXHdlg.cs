@@ -33,6 +33,8 @@ namespace Itop.TLPSP.DEVICE
                     wc.ZeroGNDC = (double)spinEdit10.Value;
                     wc.WireLead = (Double)spinEdit2.Value;
                     wc.Type = "40";
+                    wc.gzl = Convert.ToDouble(spinEdit4.Value);
+                    wc.xftime = Convert.ToDouble(spinEdit5.Value);
                 }
                 catch (System.Exception ex)
                 {
@@ -54,6 +56,8 @@ namespace Itop.TLPSP.DEVICE
                     textBox1.Text = wc.WireType;
                     spinEdit3.Value = Convert.ToDecimal(wc.WireLevel);
                     spinEdit2.Value = (decimal)wc.WireLead;
+                    spinEdit4.Value = (decimal)wc.gzl;
+                    spinEdit5.Value = (decimal)wc.xftime;
 
                 }
                 catch (System.Exception ex)

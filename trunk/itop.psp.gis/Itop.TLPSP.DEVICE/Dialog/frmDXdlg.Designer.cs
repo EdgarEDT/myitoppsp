@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDXdlg));
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -39,7 +39,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.radioGroup3 = new DevExpress.XtraEditors.RadioGroup();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.label9 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
@@ -122,6 +124,7 @@
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.ucjd1 = new Itop.TLPSP.DEVICE.Ucjd();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucdxchildnode1 = new Itop.TLPSP.DEVICE.Ucdxchildnode();
             this.comboBoxEdit4 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -141,7 +144,6 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.label46 = new System.Windows.Forms.Label();
-            this.ucdxchildnode1 = new Itop.TLPSP.DEVICE.Ucdxchildnode();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -153,6 +155,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup3.Properties)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit2.Properties)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -329,7 +332,9 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.lookUpEdit1);
             this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.label50);
             this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.buttonEdit1);
@@ -342,26 +347,53 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "拓扑连接";
             // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.EditValue = "SUID";
+            this.lookUpEdit1.EnterMoveNextControl = true;
+            this.lookUpEdit1.Location = new System.Drawing.Point(106, 96);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SUID", "SUID", 50, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name", 41, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.lookUpEdit1.Properties.DisplayMember = "Name";
+            this.lookUpEdit1.Properties.NullText = "";
+            this.lookUpEdit1.Properties.ValueMember = "SUID";
+            this.lookUpEdit1.Size = new System.Drawing.Size(181, 21);
+            this.lookUpEdit1.TabIndex = 11;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(79, 20);
+            this.label9.Location = new System.Drawing.Point(58, 20);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 14);
             this.label9.TabIndex = 10;
             this.label9.Text = "连接母线";
             this.label9.Visible = false;
             // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.ForeColor = System.Drawing.Color.Black;
+            this.label50.Location = new System.Drawing.Point(37, 94);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(43, 14);
+            this.label50.TabIndex = 1;
+            this.label50.Text = "首节点";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(31, 91);
+            this.label8.Location = new System.Drawing.Point(31, 67);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 14);
+            this.label8.Size = new System.Drawing.Size(55, 14);
             this.label8.TabIndex = 1;
-            this.label8.Text = "j侧设备";
+            this.label8.Text = "连接主线";
             // 
             // label11
             // 
@@ -369,9 +401,9 @@
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(33, 40);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(45, 14);
+            this.label11.Size = new System.Drawing.Size(55, 14);
             this.label11.TabIndex = 0;
-            this.label11.Text = "i侧设备";
+            this.label11.Text = "连接母线";
             // 
             // buttonEdit1
             // 
@@ -385,7 +417,7 @@
             // 
             // buttonEdit2
             // 
-            this.buttonEdit2.Location = new System.Drawing.Point(106, 84);
+            this.buttonEdit2.Location = new System.Drawing.Point(106, 63);
             this.buttonEdit2.Name = "buttonEdit2";
             this.buttonEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -488,7 +520,7 @@
             this.textEdit1.Location = new System.Drawing.Point(97, 29);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, false)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, false)});
             this.textEdit1.Properties.Click += new System.EventHandler(this.mc_Properties_Click);
             this.textEdit1.Size = new System.Drawing.Size(181, 21);
             this.textEdit1.TabIndex = 0;
@@ -1405,6 +1437,16 @@
             this.xtraTabPage4.Size = new System.Drawing.Size(667, 458);
             this.xtraTabPage4.Text = "其他元件";
             // 
+            // ucdxchildnode1
+            // 
+            this.ucdxchildnode1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucdxchildnode1.DXObj = ((Itop.Domain.Graphics.PSPDEV)(resources.GetObject("ucdxchildnode1.DXObj")));
+            this.ucdxchildnode1.Location = new System.Drawing.Point(0, 0);
+            this.ucdxchildnode1.Name = "ucdxchildnode1";
+            this.ucdxchildnode1.ParentObj = ((Itop.Domain.Graphics.Ps_pdreltype)(resources.GetObject("ucdxchildnode1.ParentObj")));
+            this.ucdxchildnode1.Size = new System.Drawing.Size(667, 458);
+            this.ucdxchildnode1.TabIndex = 0;
+            // 
             // comboBoxEdit4
             // 
             this.comboBoxEdit4.Location = new System.Drawing.Point(125, 518);
@@ -1613,15 +1655,6 @@
             this.label46.Text = "所属线路";
             this.label46.Visible = false;
             // 
-            // ucdxchildnode1
-            // 
-            this.ucdxchildnode1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucdxchildnode1.Location = new System.Drawing.Point(0, 0);
-            this.ucdxchildnode1.Name = "ucdxchildnode1";
-            this.ucdxchildnode1.ParentObj = ((Itop.Domain.Graphics.Ps_pdreltype)(resources.GetObject("ucdxchildnode1.ParentObj")));
-            this.ucdxchildnode1.Size = new System.Drawing.Size(667, 458);
-            this.ucdxchildnode1.TabIndex = 0;
-            // 
             // frmDXdlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1663,6 +1696,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup3.Properties)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit2.Properties)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -1838,5 +1872,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private Ucjd ucjd1;
         private Ucdxchildnode ucdxchildnode1;
+        private System.Windows.Forms.Label label50;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
     }  
 }

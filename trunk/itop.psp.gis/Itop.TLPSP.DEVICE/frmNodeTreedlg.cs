@@ -115,7 +115,7 @@ namespace Itop.TLPSP.DEVICE
         }
 
         private void initxl() {
-            string sql = " where RateVolt=" + pspdev.RateVolt + " and type='05' and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+            string sql = " where RateVolt=" + pspdev.RateVolt + " and (type='05'or type='73') and JName='' and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
             IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", sql);
             
             foreach (PSPDEV dev in list) {
@@ -132,13 +132,14 @@ namespace Itop.TLPSP.DEVICE
             }
             if (e.Node.Nodes[0].Text == "") {
                 e.Node.Nodes.Clear();
+                //获得其支路信息
                 expand(e.Node);
             }
         }
         private void expand(TreeNode pnode) {
             if (pnode.Tag == null) return;
             PSPDEV pdev = pnode.Tag as PSPDEV;
-            string sql = " where AreaID='" + pdev.SUID + "'  and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+            string sql = " where JName='" + pdev.SUID + "'  and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
             IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", sql);
             foreach (PSPDEV dev in list) {
                 TreeNode node = new TreeNode(dev.Name);
