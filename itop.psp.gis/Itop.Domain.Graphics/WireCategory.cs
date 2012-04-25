@@ -31,6 +31,8 @@ namespace Itop.Domain.Graphics
         private double _zerogndc;
         private double _wirelead;
         private string _type;
+        private double _gzl;
+        private double _xftime;
         #endregion ◊÷∂Œ
 
         #region  Ù–‘
@@ -122,6 +124,19 @@ namespace Itop.Domain.Graphics
         {
             set { _wirelead = value; }
             get { return _wirelead; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double gzl
+        {
+            set { _gzl = value; }
+            get { return _gzl; }
+        }
+        public double xftime
+        {
+            set { _xftime= value; }
+            get { return _xftime; }
         }
         #endregion  Ù–‘
     }
