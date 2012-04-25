@@ -398,7 +398,13 @@ namespace Itop.TLPSP.DEVICE
         public  string ProjectID {
             get { return projectid; }
             set { projectid = value; }
-        } 
+        }
+        private string parentid;
+        public string ParentID
+        {
+            get { return parentid; }
+            set { parentid = value; }
+        }
         public string strCon
         {
             get {

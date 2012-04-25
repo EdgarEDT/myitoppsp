@@ -52,12 +52,16 @@ namespace Itop.TLPSP.DEVICE
                 dev.iV = (double)spinEdit21.Value;
                 dev.jV = (double)spinEdit22.Value;
                 dev.HuganTQ1 = (double)spinEdit18.Value;
+                dev.HuganTQ3 = (double)spinEdit19.Value;
+                dev.HuganTQ4 = (double)spinEdit20.Value;
                 dev.JXFS = comboBoxEdit7.Text;
                 dev.DQ = comboBoxEdit8.Text;
                 dev.LineType2 = comlinetype2.Text;
                 dev.Length2 =Convert.ToDouble(splength2.Value);
                 dev.LLFS = comllfs.Text;
                 dev.SwitchNum = Convert.ToInt32(spkg.Value);
+                dev.IName = lookUpEdit1.EditValue.ToString();
+                dev.JName = lookUpEdit2.EditValue.ToString();
                 if (comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text) != null)
                 {
                     dev.AreaID = comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text).ToString();
@@ -98,6 +102,8 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit21.Value = (decimal)dev.iV;
                 spinEdit22.Value = (decimal)dev.jV;
                 spinEdit18.Value = (decimal)dev.HuganTQ1;
+                spinEdit19.Value = (decimal)dev.HuganTQ3;
+                spinEdit20.Value = (decimal)dev.HuganTQ4;
                 comboBoxEdit7.Text = dev.JXFS;
                 comboBoxEdit8.Text = dev.DQ;
                 comboBoxEdit9.EditValue = dev.AreaID;  
@@ -107,15 +113,26 @@ namespace Itop.TLPSP.DEVICE
                 spkg.Value = Convert.ToDecimal(dev.SwitchNum);
                 setXL();
                 setLineName();
+                lookUpEdit1.EditValue = dev.IName;
+                lookUpEdit2.EditValue = dev.JName;
                 setBdzName();
                 //NodeType = f;    
             }
         }
+        private string parentid;
+        public string ParentID
+        {
+            get
+            {
+                return parentid;
+            }
+            set { parentid = value; }
+        }
         protected void setXL()
         {
             WireCategory rc = new WireCategory();
-            rc.WireLevel = DeviceMx.RateVolt.ToString();
-            rc.WireType = DeviceMx.LineType;
+            rc.WireLevel = dev.RateVolt.ToString();
+            rc.WireType = dev.LineType;
             rc.Type = "40";
             rc = (WireCategory)UCDeviceBase.DataService.GetObject("SelectWireCategoryByKeyANDWireLevel", rc);
             if (rc!=null)
@@ -127,6 +144,8 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit12.Value = (decimal)rc.ZeroTQ;
                 spinEdit10.Value = (decimal)rc.ZeroGNDC;
                 spinEdit17.Value = (decimal)rc.WireChange;
+                spinEdit19.Value = (decimal)rc.gzl;
+                spinEdit20.Value=(decimal)rc.xftime;
             }
         }
         public frmFZXdlg() {
@@ -485,6 +504,7 @@ namespace Itop.TLPSP.DEVICE
             if (comboBoxEdit2.SelectedText != null && comboBoxEdit2.SelectedText != "")
             {
                 setXL();
+
             } 
         }
 
@@ -654,10 +674,22 @@ namespace Itop.TLPSP.DEVICE
         private void setLineName()
         {
             //显示所在位置的名称
-            object obj = DeviceHelper.GetDevice<PSPDEV>(dev.JName);
+             object obj=null;
+            if (string.IsNullOrEmpty(dev.AreaID)&&!string.IsNullOrEmpty(parentid))
+            {
+                obj = DeviceHelper.GetDevice<PSPDEV>(parentid);
+                dev.AreaID = parentid;
+            }
+            else
+            obj = DeviceHelper.GetDevice<PSPDEV>(dev.AreaID);
 
             if (obj != null)
             {
+                //获得上级线路的节点信息
+                string sql = "where AreaID='" + dev.AreaID + "' and type='70' ORDER BY Number";
+                IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                lookUpEdit1.Properties.DataSource = list;
+                lookUpEdit2.Properties.DataSource = list;
                 buttonEdit2.Text = ((PSPDEV)obj).Name;
                 return;
             }
@@ -668,12 +700,17 @@ namespace Itop.TLPSP.DEVICE
             frmDeviceSelect dlg = new frmDeviceSelect();
 
 
-            dlg.InitDeviceType("05","07","54","55","56","57","62","63","64","70","71","73","74");
+            dlg.InitDeviceType("05","73");
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
                 buttonEdit1.Text = dic["name"].ToString();
-                dev.IName = dic["id"].ToString();
+                //获得上级线路的节点信息
+                string sql = "where AreaID='" + dic["id"].ToString()+"' and type='70' ORDER BY Number";
+                IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                lookUpEdit1.Properties.DataSource = list;
+                lookUpEdit2.Properties.DataSource = list;
+                dev.AreaID = dic["id"].ToString();
             }
         }
 

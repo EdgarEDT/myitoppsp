@@ -311,6 +311,12 @@ namespace Itop.TLPSP.DEVICE
         {
             return "74";
         }
+        private PSPDEV parentobj;
+        public PSPDEV ParentObj
+        {
+            get { return parentobj; }
+            set { parentobj = value; }
+        }
         #region 记录操作
         public override object SelectedDevice
         {
@@ -329,6 +335,7 @@ namespace Itop.TLPSP.DEVICE
             frmFZXdlg dlg = new frmFZXdlg();
             dlg.ProjectSUID = this.ProjectID;
             dlg.Name = "";
+            dlg.ParentID =ParentID;
             if (dlg.ShowDialog() == DialogResult.OK) {
                 //增加记录 
                 PSPDEV dev = dlg.DeviceMx;

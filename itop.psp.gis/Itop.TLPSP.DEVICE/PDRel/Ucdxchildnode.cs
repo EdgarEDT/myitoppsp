@@ -271,6 +271,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "73")
                 {
                     adducdevice("74");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
