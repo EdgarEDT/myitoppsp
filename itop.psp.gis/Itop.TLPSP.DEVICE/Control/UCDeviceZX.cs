@@ -61,7 +61,7 @@ namespace Itop.TLPSP.DEVICE
         public override void InitColumns() {            
             GridColumn column = gridView1.Columns.Add();
             column.Caption = "±àºÅ";
-            column.FieldName = "EleID";
+            column.FieldName = "Number";
             column.Width = 100;
             column.VisibleIndex = 1;
             column.OptionsColumn.AllowEdit = false;
@@ -102,6 +102,10 @@ namespace Itop.TLPSP.DEVICE
         {
             return "70";
         }
+        public int GetrowCount()
+        {
+            return gridView1.RowCount;
+        }
         #region ¼ÇÂ¼²Ù×÷
         public override object SelectedDevice
         {
@@ -120,10 +124,12 @@ namespace Itop.TLPSP.DEVICE
             frmZXdlg dlg = new frmZXdlg();
             dlg.Name = "";
             dlg.ProjectID = this.ProjectID;
+            
             if (!string.IsNullOrEmpty(parentid))
             {
                 dlg.AreaID = parentid;
             }
+            dlg.Number = GetrowCount();  //±àºÅ
             Stream fs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Itop.TLPSP.DEVICE.devicetypes.xml");
             //Assembly.GetExecutingAssembly().GetManifestResourceStream
             XmlDocument xml = new XmlDocument();

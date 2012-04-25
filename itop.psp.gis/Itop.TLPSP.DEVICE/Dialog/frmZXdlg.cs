@@ -91,7 +91,12 @@ namespace Itop.TLPSP.DEVICE
         public string AreaID
         {
             get { return dev.AreaID; }
-            set {dev.AreaID = value; }
+            set {lookUpEdit1.EditValue = value; }
+        }
+        public int Number
+        {
+            get { return (int)spinEdit1.Value; }
+            set { spinEdit1.Value = Convert.ToDecimal(value); }
         }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -124,7 +129,7 @@ namespace Itop.TLPSP.DEVICE
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             frmDeviceSelect dlg = new frmDeviceSelect();
-            dlg.InitDeviceType("70", "71", "72","57", "59", "61", "62", "63", "64");
+            dlg.InitDeviceType("70", "71", "72","57", "59", "61", "62", "63", "64"); //判断设备是否在杆塔上
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();

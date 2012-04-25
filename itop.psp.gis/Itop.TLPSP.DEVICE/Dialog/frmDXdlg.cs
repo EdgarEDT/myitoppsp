@@ -60,6 +60,7 @@ namespace Itop.TLPSP.DEVICE
                 dev.SwitchNum = Convert.ToInt32(spkg.Value);
                 dev.Date1 = date1.Text;
                 dev.Date2 = date2.Text;
+                dev.HuganLine1=lookUpEdit1.EditValue.ToString();
                 if (comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text) != null)
                 {
                     dev.AreaID = comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text).ToString();
@@ -109,8 +110,11 @@ namespace Itop.TLPSP.DEVICE
                 date1.Text = dev.Date1;
                 date2.Text = dev.Date2;
                 spkg.Value = Convert.ToDecimal(dev.SwitchNum);
+                //创建节点信息
+                ucjd1.ParentObj = dev;
                 setXL();
                 setLineName();
+                lookUpEdit1.EditValue = dev.HuganLine1;
                 setBdzName();
                 //NodeType = f;    
             }
@@ -118,8 +122,8 @@ namespace Itop.TLPSP.DEVICE
         protected void setXL()
         {
             WireCategory rc = new WireCategory();
-            rc.WireLevel = DeviceMx.RateVolt.ToString();
-            rc.WireType = DeviceMx.LineType;
+            rc.WireLevel = dev.RateVolt.ToString();
+            rc.WireType = dev.LineType;
             rc.Type = "40";
             rc = (WireCategory)UCDeviceBase.DataService.GetObject("SelectWireCategoryByKeyANDWireLevel", rc);
             if (rc!=null)
@@ -659,7 +663,10 @@ namespace Itop.TLPSP.DEVICE
         {
             //显示所在位置的名称
             object obj = DeviceHelper.GetDevice<PSPDEV>(dev.JName);
-
+            //获得上级线路的节点信息
+            string sql = "where AreaID='" + dev.JName + "' and type='70' ORDER BY Number";
+            IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+            lookUpEdit1.Properties.DataSource = list;
             if (obj != null)
             {
                 buttonEdit2.Text = ((PSPDEV)obj).Name;
@@ -672,7 +679,8 @@ namespace Itop.TLPSP.DEVICE
             frmDeviceSelect dlg = new frmDeviceSelect();
 
 
-            dlg.InitDeviceType("05","07","54","55","56","57","62","63","64","70","71","73");
+            //dlg.InitDeviceType("05","07","54","55","56","57","62","63","64","70","71","73");
+            dlg.InitDeviceType("01");
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
@@ -686,13 +694,18 @@ namespace Itop.TLPSP.DEVICE
             frmDeviceSelect dlg = new frmDeviceSelect();
 
 
-            dlg.InitDeviceType("05", "07", "54", "55", "56", "57", "62", "63", "64", "70", "71", "73");
+           // dlg.InitDeviceType("05", "07", "54", "55", "56", "57", "62", "63", "64", "70", "71", "73");
+             dlg.InitDeviceType("05","73");
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
                 buttonEdit2.Text = dic["name"].ToString();
                 dev.JName = dic["id"].ToString();
+                string sql = "where AreaID='" + dic["id"].ToString() + "' and type='70' ORDER BY Number";
+                IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                lookUpEdit1.Properties.DataSource = list;
             }
+            //此线路的节点编号 极为该线路的首节点
         }
         //点击其他设备元件的时候
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
@@ -801,7 +814,7 @@ namespace Itop.TLPSP.DEVICE
                         }
                         else
                         {
-                            pn.title = pdr.Title;
+                            pn.title = "无电源" + pdr.Title;
 
                         }
                         pn.Code = "0";

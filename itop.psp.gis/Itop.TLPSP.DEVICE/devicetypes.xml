@@ -36,8 +36,8 @@
   <device id="70" name ="杆塔(节点)" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceZX" parentid="100"></device>
   <device id="71" name ="跌落式熔断器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceRDQ" parentid="100"></device>
   <device id="72" name ="两圈变压器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQTWO" parentid="100"></device>
-  <device id="73" name ="导线" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDX" parentid="100"></device>
-  <device id="74" name ="分支线" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFZX" parentid="100"></device>
+  <device id="73" name ="配电线路" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDX" parentid="100"></device>
+  <device id="74" name ="线路段" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFZX" parentid="100"></device>
   <device id="75" name ="联络线" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceLUX" parentid="100"></device>
  
 </devicetype>
