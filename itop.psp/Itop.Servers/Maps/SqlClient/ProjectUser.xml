@@ -1,0 +1,90 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='ProjectUser' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='ProjectUser' assembly='Itop.Domain.dll' type='Itop.Domain.RightManager.ProjectUser' />
+  </alias>
+  <resultMaps>
+    <resultMap id='ProjectUserResult' class='ProjectUser'>
+      <result property='UID' column='UID' />
+      <result property='UserID' column='UserID' />
+      <result property='UserName' column='UserName' />
+      <result property='Sort' column='Sort' />
+      <result property='used' column='used' />
+      <result property='Remark' column='Remark' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertProjectUser' parameterClass='ProjectUser'>
+      INSERT INTO ProjectUser		(
+      "UID",
+      "UserID",
+      "UserName",
+      "Sort",
+      "used",
+      "Remark"
+      )
+      VALUES
+      (
+      #UID#,
+      #UserID#,
+      #UserName#,
+      #Sort#,
+      #used#,
+      #Remark#
+      )
+    </insert>
+    <delete id='DeleteProjectUser' parameterClass='ProjectUser'>
+      DELETE FROM ProjectUser
+      WHERE
+      UID = #UID#
+      and
+      UserID=#UserID#
+    </delete>
+    <update id='UpdateProjectUser' parameterClass='ProjectUser'>
+      UPDATE ProjectUser
+      SET
+      "UID" = #UID#,
+      "UserID" = #UserID#,
+      "UserName" = #UserName#,
+      "Sort" = #Sort#,
+      "used" = #used#,
+      "Remark" = #Remark#
+    </update>
+    <select id='SelectProjectUserList' resultMap='ProjectUserResult' parameterClass='ProjectUser'>
+      SELECT
+      "UID",
+      "UserID",
+      "UserName",
+      "Sort",
+      "used",
+      "Remark"
+      FROM ProjectUser
+    </select>
+    <select id='SelectProjectUserByKey' resultMap='ProjectUserResult' parameterClass='ProjectUser'>
+      SELECT
+      "UID",
+      "UserID",
+      "UserName",
+      "Sort",
+      "used",
+      "Remark"
+      FROM ProjectUser
+    </select>
+    <select id='SelectProjectbyWhere' resultMap='ProjectUserResult' parameterClass='string'>
+      SELECT
+      "UID",
+      "UserID",
+      "UserName",
+      "Sort",
+      "used",
+      "Remark"
+      FROM ProjectUser
+      where $value$
+    </select>
+    <select id='DeleteProjectUserWhere' resultMap='ProjectUserResult' parameterClass='string'>
+      DELETE FROM ProjectUser
+      WHERE
+      $value$
+    </select>
+  </statements>
+</sqlMap>
