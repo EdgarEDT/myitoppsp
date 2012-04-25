@@ -17,6 +17,8 @@
       <result property='ZeroGNDC' column='ZeroGNDC' />
       <result property='WireLead' column='WireLead'/>
       <result property='Type' column='Type' />
+      <result property='gzl' column='gzl'/>
+      <result property='xftime' column='xftime' />
     </resultMap>
   </resultMaps>
   <statements>
@@ -33,7 +35,9 @@
       "ZeroTQ",
       "ZeroGNDC",
       "WireLead",
-      "Type"
+      "Type",
+      "gzl",
+      "xftime"
       )
       VALUES
       (
@@ -48,7 +52,9 @@
       #ZeroTQ#,
       #ZeroGNDC#,
       #WireLead#,
-      #Type#
+      #Type#,
+      #gzl#,
+      #xftime#
       )
     </insert>
     <delete id='DeleteWireCategory' parameterClass='WireCategory'>
@@ -59,17 +65,19 @@
     <update id='UpdateWireCategory' parameterClass='WireCategory'>
       UPDATE WireCategory
       SET
-      "SUID"=#SUID#,
       "WireR" = #WireR#,
       "WireTQ" = #WireTQ#,
       "WireGNDC" = #WireGNDC#,
       "WireChange" = #WireChange#,
+      "WireType"=#WireType#,
       "WireLevel"=#WireLevel#,
       "ZeroR" = #ZeroR#,
       "ZeroTQ" = #ZeroTQ#,
       "ZeroGNDC" = #ZeroGNDC#,
       "WireLead"  = #WireLead#,
-      "Type" = #Type#
+      "Type" = #Type#,
+      "gzl"  = #gzl#,
+      "xftime" = #xftime#
       WHERE
       SUID = #SUID#
     </update>
@@ -86,7 +94,9 @@
       "ZeroTQ",
       "ZeroGNDC",
       "WireLead",
-      "Type"
+      "Type",
+      "gzl",
+      "xftime"
       FROM WireCategory WHERE Type = #Type# order by WireLevel,WireType
     </select>
     <select id='SelectWireCategoryListBYWireLevel' resultMap='WireCategoryResult' parameterClass='WireCategory'>
@@ -102,7 +112,9 @@
       "ZeroTQ",
       "ZeroGNDC",
       "WireLead",
-      "Type"
+      "Type",
+      "gzl",
+      "xftime"
       FROM WireCategory
       WHERE
       WireLevel=#WireLevel# and Type = #Type#
@@ -120,7 +132,9 @@
       "ZeroTQ",
       "ZeroGNDC",
       "WireLead",
-      "Type"
+      "Type",
+      "gzl",
+      "xftime"
       FROM WireCategory
       WHERE
       WireType = #WireType# and Type = #Type#
@@ -138,7 +152,9 @@
       "ZeroTQ",
       "ZeroGNDC",
       "WireLead",
-      "Type"
+      "Type",
+      "gzl",
+      "xftime"
       FROM WireCategory
       WHERE
       WireType = #WireType# AND WireLevel=#WireLevel# and Type = #Type#
