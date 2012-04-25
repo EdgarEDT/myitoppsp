@@ -82,6 +82,7 @@
       )
     </insert>
 
+
     <delete id='DeleteVsmdgroupProg' parameterClass='VsmdgroupProg'>
       DELETE FROM Smdgroup
       WHERE
@@ -154,7 +155,7 @@
       Groupno = #Groupno#
       AND Progid = #Progid#  order by SeqNo
     </select>
- 
+
     <select id='SelectVsmdgroupProgByModuleType' resultMap='VsmdgroupProgResult' parameterClass='VsmdgroupProg'>
       SELECT
       "Progid",
@@ -205,6 +206,7 @@
       where
       $value$
     </select>
+
 
     <select id='SelectVsmdgroupProgByProject' resultMap='VsmdgroupProgResult' parameterClass='VsmdgroupProg'>
       SELECT
@@ -258,7 +260,7 @@
       FROM VsmdgroupProg t1,Smugroup t2
       WHERE
       t1.groupno=t2.groupno and
-      t2.userid=#Groupno# and
+      t2.groupno=#Groupno# and
       t1.ProgId=#Progid# and
       t1.ProjectUID=#ProjectUID#
       group by t1.Progid,
