@@ -23,7 +23,7 @@
   <device id="51" name ="箱式变" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWB" parentid="100"></device>
   <device id="52" name ="柱上变" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWB" parentid="100"></device>
   <device id="54" name ="开闭所" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
-  <device id="55" name ="开关站" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
+  <device id="55" name ="隔离开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
   <device id="56" name ="环网柜" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
   <device id="57" name ="柱上开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
   <device id="58" name ="电缆分支箱" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>

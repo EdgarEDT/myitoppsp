@@ -62,10 +62,10 @@ namespace Itop.TLPSP.DEVICE
                 dev.SwitchNum = Convert.ToInt32(spkg.Value);
                 dev.IName = lookUpEdit1.EditValue.ToString();
                 dev.JName = lookUpEdit2.EditValue.ToString();
-                if (comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text) != null)
-                {
-                    dev.AreaID = comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text).ToString();
-                }
+                //if (comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text) != null)
+                //{
+                //    dev.AreaID = comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text).ToString();
+                //}
                 return dev;
             }
             set{
@@ -106,7 +106,7 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit20.Value = (decimal)dev.HuganTQ4;
                 comboBoxEdit7.Text = dev.JXFS;
                 comboBoxEdit8.Text = dev.DQ;
-                comboBoxEdit9.EditValue = dev.AreaID;  
+               // comboBoxEdit9.EditValue = dev.AreaID;  
                 comlinetype2.Text = dev.LineType2;
                 splength2.Value = Convert.ToDecimal(dev.Length2);
                 comllfs.Text = dev.LLFS;
@@ -666,7 +666,7 @@ namespace Itop.TLPSP.DEVICE
 
             if (obj != null)
             {
-                buttonEdit1.Text = ((PSPDEV)obj).Name;
+                buttonEdit2.Text = ((PSPDEV)obj).Name;
                 return;
             }
 
@@ -690,7 +690,7 @@ namespace Itop.TLPSP.DEVICE
                 IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
                 lookUpEdit1.Properties.DataSource = list;
                 lookUpEdit2.Properties.DataSource = list;
-                buttonEdit2.Text = ((PSPDEV)obj).Name;
+                buttonEdit1.Text = ((PSPDEV)obj).Name;
                 return;
             }
 

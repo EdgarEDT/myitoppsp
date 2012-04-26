@@ -568,6 +568,14 @@ namespace Itop.TLPSP.DEVICE
             }
         }
 
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+          
+            XtraPDrelfrm xf = new XtraPDrelfrm();
+            xf.init();
+            xf.ShowDialog();
+        }
+
        
    
 

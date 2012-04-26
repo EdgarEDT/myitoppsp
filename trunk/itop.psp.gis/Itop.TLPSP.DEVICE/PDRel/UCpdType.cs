@@ -19,22 +19,21 @@ using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
 namespace Itop.TLPSP.DEVICE
 {
-    public partial class UcPdreltype : DevExpress.XtraEditors.XtraUserControl {
-        public UcPdreltype()
-        {
+    public partial class UcPdtype : DevExpress.XtraEditors.XtraUserControl {
+        public UcPdtype() {
             InitializeComponent();
         }
         public delegate void SendDataEventHandler<T>(object sender,T obj);
-        public event SendDataEventHandler<Ps_pdreltype> FocusedNodeChanged;
+        public event SendDataEventHandler<PDrelregion> FocusedNodeChanged;
        
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e) {
            
             //if (FocusedNodeChanged != null)
             //{
             //    TreeListNode tn = treeList1.FocusedNode;
-            //    Ps_pdreltype pdr = new Ps_pdreltype();
+            //    PDrelregion pdr = new PDrelregion();
             //    pdr.ID = tn["ID"].ToString();
-            //    pdr = Services.BaseService.GetOneByKey<Ps_pdreltype>(pdr);
+            //    pdr = Services.BaseService.GetOneByKey<PDrelregion>(pdr);
             //    FocusedNodeChanged(treeList1, pdr);
             //}
 
@@ -50,13 +49,13 @@ namespace Itop.TLPSP.DEVICE
                     treeList1.Columns.Clear();
                 }
                 AddFixColumn();
-                Ps_pdreltype pr = new Ps_pdreltype();
+                PDrelregion pr = new PDrelregion();
                 pr.ProjectID = Itop.Client.MIS.ProgUID;
-                IList<Ps_pdreltype> listTypes = Services.BaseService.GetList<Ps_pdreltype>("SelectPs_pdreltypeByProjectID", pr);
+                IList<PDrelregion> listTypes = Services.BaseService.GetList<PDrelregion>("SelectPDrelregionByProjectID", pr);
 
 
 
-                dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_pdreltype));
+                dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(PDrelregion));
                 treeList1.BeginInit();
                 treeList1.DataSource = dataTable;
 
@@ -74,8 +73,8 @@ namespace Itop.TLPSP.DEVICE
         private void AddFixColumn()
         {
             TreeListColumn column = new TreeListColumn();
-            column.FieldName = "Title";
-            column.Caption = "线路名称";
+            column.FieldName = "AreaName";
+            column.Caption = "地区名";
             column.VisibleIndex = 0;
             column.Width = 210;
             column.OptionsColumn.AllowEdit = false;
@@ -87,43 +86,25 @@ namespace Itop.TLPSP.DEVICE
             column.VisibleIndex = -1;
             this.treeList1.Columns.AddRange(new TreeListColumn[] {
             column});
-            
+            column = new TreeListColumn();
+            column.FieldName = "PeopleSum";
+            column.Caption = "总户数";
+            this.treeList1.Columns.AddRange(new TreeListColumn[] {
+            column});
 
            
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-            PDreltypefrmedit PDT = new PDreltypefrmedit();
+            PDtypefrmedit PDT = new PDtypefrmedit();
             if (PDT.ShowDialog()==DialogResult.OK)
             {
-                Ps_pdreltype pdr = new Ps_pdreltype();
+                PDrelregion pdr = new PDrelregion();
                 pdr.ProjectID = Itop.Client.MIS.ProgUID;
-                pdr.Createtime = DateTime.Now;
-                pdr.Title = PDT.Title;
-                pdr.S1 = PDT.S1;
-                //pdr.PeopleSum = PDT.Peplesum;
-                //pdr.AreaName = PDT.Areaname;
-                //pdr.Year = PDT.Year;
-                Services.BaseService.Create<Ps_pdreltype>(pdr);
-                //创建电源
-                Ps_pdtypenode pn = new Ps_pdtypenode();
-                pn.pdreltypeid = pdr.ID;
-                pn.devicetype = "01";
-                PSPDEV devzx = new PSPDEV();
-                devzx.SUID =pdr. S1;
-                devzx = Services.BaseService.GetOneByKey<PSPDEV>(devzx);
-                if (devzx != null)
-                {
-                    pn.title = devzx.Name;
-                    pn.DeviceID = devzx.SUID;
-                }
-                else
-                {
-                    pn.title = pdr.Title;
-
-                }
-                pn.Code = "0";
-                Services.BaseService.Create<Ps_pdtypenode>(pn);
+                pdr.PeopleSum = PDT.Peplesum;
+                pdr.AreaName = PDT.Areaname;
+                pdr.Year = PDT.Year;
+                Services.BaseService.Create<PDrelregion>(pdr);
                 dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, dataTable.NewRow()));
                
                 //init();
@@ -136,35 +117,16 @@ namespace Itop.TLPSP.DEVICE
                 return;
               TreeListNode tn=treeList1.FocusedNode;
             DataRow[] dr=dataTable.Select("ID='"+tn["ID"].ToString()+"'");
-            PDreltypefrmedit PDT = new PDreltypefrmedit();
+            PDtypefrmedit PDT = new PDtypefrmedit();
             if (dr[0]!=null)
             {
-                PDT.Pdtype = Itop.Common.DataConverter.RowToObject<Ps_pdreltype>(dr[0]);
+                PDT.Pdtype = Itop.Common.DataConverter.RowToObject<PDrelregion>(dr[0]);
             }
             if (PDT.ShowDialog() == DialogResult.OK) {
                 
-                Services.BaseService.Update<Ps_pdreltype>(PDT.Pdtype);
-                treeList1.FocusedNode.SetValue("Title", PDT.Title);
-                  IList<Ps_pdtypenode>  list1 = Services.BaseService.GetList<Ps_pdtypenode>("SelectPs_pdtypenodeByCon", "pdreltypeid='" + PDT.Pdtype.ID+ "'and devicetype='01'");
-               if (list1.Count>0)
-               {
-                   Ps_pdtypenode pn = list1[0];
-                   PSPDEV devzx = new PSPDEV();
-                   devzx.SUID = PDT.Pdtype.S1;
-                   devzx = Services.BaseService.GetOneByKey<PSPDEV>(devzx);
-                   if (devzx != null)
-                   {
-                       pn.title = devzx.Name;
-                       pn.DeviceID = devzx.SUID;
-                   }
-                   else
-                   {
-                       pn.title = PDT.Pdtype.Title;
-
-                   }
-                   Services.BaseService.Create<Ps_pdtypenode>(pn);
-               }
-               
+                Services.BaseService.Update<PDrelregion>(PDT.Pdtype);
+                treeList1.FocusedNode.SetValue("AreaName", PDT.Areaname);
+                treeList1.FocusedNode.SetValue("PeopleSum", PDT.Peplesum);
             }
         }
 
@@ -196,20 +158,15 @@ namespace Itop.TLPSP.DEVICE
                 }
                 DeleteNode(tln);
             } else {
-                Ps_pdreltype pf = new Ps_pdreltype();
+                PDrelregion pf = new PDrelregion();
                 pf.ID = tln["ID"].ToString();
-                string nodestr = tln["Title"].ToString();
+                string nodestr = tln["AreaName"].ToString();
                 try {
                     TreeListNode node = tln.TreeList.FindNodeByKeyID(pf.ID);
                     if (node != null)
                         tln.TreeList.DeleteNode(node);
                     RemoveDataTableRow(dataTable, pf.ID);
-                    Ps_pdtypenode pn = new Ps_pdtypenode();
-                    pn.pdreltypeid = pf.ID;
-                    Itop.Client.Common.Services.BaseService.Update("DeletePs_pdtypepdreltypeid", pn);
-                    Itop.Client.Common.Services.BaseService.Delete<Ps_pdreltype>(pf);
-                    
-                    
+                    Itop.Client.Common.Services.BaseService.Delete<PDrelregion>(pf);
                     
                     
                 } catch (Exception e) {
@@ -237,9 +194,9 @@ namespace Itop.TLPSP.DEVICE
         private void treeList1_MouseClick(object sender, MouseEventArgs e) {
             if (FocusedNodeChanged != null) {
                 TreeListNode tn = treeList1.FocusedNode;
-                Ps_pdreltype pdr = new Ps_pdreltype();
+                PDrelregion pdr = new PDrelregion();
                 pdr.ID = tn["ID"].ToString();
-                pdr = Services.BaseService.GetOneByKey<Ps_pdreltype>(pdr);
+                pdr = Services.BaseService.GetOneByKey<PDrelregion>(pdr);
                 FocusedNodeChanged(treeList1, pdr);
             }
 

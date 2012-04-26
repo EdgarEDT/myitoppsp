@@ -222,6 +222,9 @@
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)), serializableAppearanceObject1, "选择所在线路或支线", null, null, false)});
+            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SUID", "SUID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名字")});
             this.lookUpEdit1.Properties.DisplayMember = "Name";
             this.lookUpEdit1.Properties.NullText = "";
             this.lookUpEdit1.Properties.ValueMember = "SUID";
@@ -292,7 +295,7 @@
             // 
             // txtnm
             // 
-            this.txtnm.Location = new System.Drawing.Point(125, 24);
+            this.txtnm.Location = new System.Drawing.Point(124, 20);
             this.txtnm.Name = "txtnm";
             this.txtnm.Size = new System.Drawing.Size(176, 21);
             this.txtnm.TabIndex = 1;

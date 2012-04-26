@@ -45,7 +45,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.ucPdtypenode1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(945, 469);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1102, 547);
             this.splitContainerControl1.SplitterPosition = 239;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -55,7 +55,7 @@
             this.ucPdreltype1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucPdreltype1.Location = new System.Drawing.Point(0, 0);
             this.ucPdreltype1.Name = "ucPdreltype1";
-            this.ucPdreltype1.Size = new System.Drawing.Size(239, 469);
+            this.ucPdreltype1.Size = new System.Drawing.Size(279, 638);
             this.ucPdreltype1.TabIndex = 0;
             // 
             // ucPdtypenode1
@@ -64,14 +64,14 @@
             this.ucPdtypenode1.Location = new System.Drawing.Point(0, 0);
             this.ucPdtypenode1.Name = "ucPdtypenode1";
             this.ucPdtypenode1.ParentObj = ((Itop.Domain.Graphics.Ps_pdreltype)(resources.GetObject("ucPdtypenode1.ParentObj")));
-            this.ucPdtypenode1.Size = new System.Drawing.Size(700, 469);
+            this.ucPdtypenode1.Size = new System.Drawing.Size(1000, 638);
             this.ucPdtypenode1.TabIndex = 0;
             // 
             // FrmpdrelProject
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 469);
+            this.ClientSize = new System.Drawing.Size(1102, 547);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "FrmpdrelProject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

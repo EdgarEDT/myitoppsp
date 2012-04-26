@@ -796,7 +796,20 @@ namespace Itop.TLPSP.DEVICE
                     devic.Add("device", dlg.DeviceMx);
                 }
             }
-                
+            if (GetDevice.GetType() == "73")
+            {
+                frmDXdlg dlg = new frmDXdlg();
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
+                    dlg.DeviceMx.Type = "73";
+                  
+                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+                    devic.Add("id", dlg.DeviceMx.SUID);
+                    devic.Add("name", dlg.DeviceMx.Name);
+                    devic.Add("device", dlg.DeviceMx);
+                }
+            }  
             if (GetDevice.GetType() == "75")
             {
                 frmLUXdlg dlg = new frmLUXdlg();
