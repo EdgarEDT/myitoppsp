@@ -701,6 +701,7 @@ namespace ItopVector.Tools
                             关联设备ToolStripMenuItem.Visible = false;
                             SubToolStripMenuItem.Visible = false;
                             saveImg.Visible = false;
+                            
                         }
                         else
                         {
@@ -712,7 +713,7 @@ namespace ItopVector.Tools
                             清除关联ToolStripMenuItem.Visible = true;
                             tmjxt.Visible = true;
                             关联设备ToolStripMenuItem.Visible = true;
-
+                            
                             saveImg.Visible = true;
                         }
 
@@ -729,11 +730,13 @@ namespace ItopVector.Tools
                         关联设备ToolStripMenuItem.Visible = true;
                         SubToolStripMenuItem.Visible = true;
                         saveImg.Visible = true;
+                        toolrelanalyst.Visible = true;
                     }
                     else
                     {
                         mUpdateMenuItem.Visible = false;
                         tmloctaionjxt.Visible = false;
+                        toolrelanalyst.Visible = false;
 
                     }
                     string guid = Guid.NewGuid().ToString();
@@ -3681,7 +3684,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                 DeviceHelper.Wjghflag = false;
                                 if (string.IsNullOrEmpty(deviceid))
                                 {
-                                    string[] deviceType = new string[] { "05", "74", "75" };
+                                    string[] deviceType = new string[] { "05", "73", "75" };
                                     string xlwhere = " where SUID not in (";
                                     XmlNodeList lslist = tlVectorControl1.SVGDocument.SelectNodes("svg/polyline [@IsLead='1'] [@Deviceid!=''] [@layer='" + SvgDocument.currentLayer + "']");
                                     for (int x1 = 0; x1 < lslist.Count; x1++)
@@ -12444,6 +12447,14 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                 }
                 tlVectorControl1.Refresh();
             }
+        }
+
+        private void toolrelanalyst_Click(object sender, EventArgs e)
+        {
+            //更换为元件可靠性
+            Itop.TLPSP.DEVICE.FrmpdrelProject xf = new Itop.TLPSP.DEVICE.FrmpdrelProject();
+            xf.init();
+            xf.ShowDialog();
         }
     }
 }

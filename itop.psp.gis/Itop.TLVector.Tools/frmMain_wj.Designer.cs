@@ -67,6 +67,7 @@
             this.tlVectorControl1 = new ItopVector.ItopVectorControl();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
+            this.toolrelanalyst = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupContainerEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl1)).BeginInit();
@@ -167,9 +168,10 @@
             this.mapMenu,
             this.tmjxt,
             this.tmloctaionjxt,
-            this.关联设备ToolStripMenuItem});
+            this.关联设备ToolStripMenuItem,
+            this.toolrelanalyst});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 368);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 412);
             this.contextMenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
             // 
             // dToolStripMenuItem
@@ -432,6 +434,14 @@
             this.checkEdit2.Visible = false;
             this.checkEdit2.CheckedChanged += new System.EventHandler(this.checkEdit2_CheckedChanged);
             // 
+            // toolrelanalyst
+            // 
+            this.toolrelanalyst.Name = "toolrelanalyst";
+            this.toolrelanalyst.Size = new System.Drawing.Size(166, 22);
+            this.toolrelanalyst.Text = "可靠性分析";
+            this.toolrelanalyst.Visible = false;
+            this.toolrelanalyst.Click += new System.EventHandler(this.toolrelanalyst_Click);
+            // 
             // frmMain_wj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -510,5 +520,6 @@
         private System.Windows.Forms.ToolStripMenuItem tmloctaionjxt;
         private System.Windows.Forms.ToolStripMenuItem 关联设备ToolStripMenuItem;
         private DevExpress.XtraEditors.CheckEdit checkEdit2;
+        private System.Windows.Forms.ToolStripMenuItem toolrelanalyst;
     }
 }
