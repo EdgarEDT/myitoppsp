@@ -42,6 +42,45 @@
       select #Groupno#,progid,#ProjectUID#,'0','0','0','0','0','0','0','0','0','0' from smmprog where ProgModuleType=#ProgModuleType#
       and progid not in(select progid from smdgroup where projectuid=#ProjectUID# and groupno=#Groupno#)
     </insert>
+    <!--插入数据-->
+    <!--插入值-->
+    <insert id='InsertVsmdgroupProgwithvalue' parameterClass='VsmdgroupProg'>
+      INSERT INTO Smdgroup		(
+      "Groupno",
+      "Progid",
+      "run",
+      "ins",
+      "upd",
+      "del",
+      "qry",
+      "pro",
+      "prn",
+      "filterstring",
+      "hiddencols",
+      "spec1",
+      "spec2",
+      "spec3",
+      "ProjectUID"
+      )
+      VALUES
+      (
+      #Groupno#,
+      #Progid#,
+      #run#,
+      #ins#,
+      #upd#,
+      #del#,
+      #qry#,
+      #pro#,
+      #prn#,
+      #filterstring#,
+      #hiddencols#,
+      #spec1#,
+      #spec2#,
+      #spec3#,
+      #ProjectUID#
+      )
+    </insert>
 
 
     <delete id='DeleteVsmdgroupProg' parameterClass='VsmdgroupProg'>
@@ -143,6 +182,30 @@
       groupno=#Groupno# and
       ProgModuleType=#ProgModuleType#  order by SeqNo
     </select>
+    <select id='SelectVsmdgroupProgByWhere' resultMap='VsmdgroupProgResult' parameterClass='string'>
+      SELECT
+      "Progid",
+      "Groupno",
+      "ProgName"
+      ,"run"
+      ,"ins"
+      ,"upd"
+      ,"del"
+      ,"qry"
+      ,"pro"
+      ,"prn"
+      ,"send"
+      ,"exam"
+      ,"pass"
+      ,"ProgLevel"
+      ,"ParentId"
+      ,"SeqNo"
+      ,"ProjectUID"
+      ,"ProgModuleType"
+      FROM VsmdgroupProg
+      where
+      $value$
+    </select>
 
 
     <select id='SelectVsmdgroupProgByProject' resultMap='VsmdgroupProgResult' parameterClass='VsmdgroupProg'>
@@ -197,7 +260,7 @@
       FROM VsmdgroupProg t1,Smugroup t2
       WHERE
       t1.groupno=t2.groupno and
-      t2.userid=#Groupno# and
+      t2.groupno=#Groupno# and
       t1.ProgId=#Progid# and
       t1.ProjectUID=#ProjectUID#
       group by t1.Progid,

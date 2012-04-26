@@ -9,15 +9,15 @@ using Itop.Server.Interface;
 using Itop.Domain.RightManager;
 using Itop.Common;
 using Itop.Client;
-using System.Collections;
 
 namespace Itop.RightManager.UI {
-    public partial class FrmRightManager : Itop.Client.Base.FormBase
+    public partial class FrmUserManager : Itop.Client.Base.FormBase
     {
-        public FrmRightManager() {
+        public FrmUserManager()
+        {
             InitializeComponent();
+            this.Text = "用户和组管理";
             CreateView();
-            
         }
         protected override void OnShown(EventArgs e) {
             base.OnShown(e);
@@ -59,172 +59,83 @@ namespace Itop.RightManager.UI {
         int rootimage = 49;
         int groupimage = 48;
         int un_group = 50;
-        //private void CreateView() {
-        //    treeView1.Nodes.Clear();
-        //    TreeNode node = treeView1.Nodes.Add("system", "系统用户和组", rootimage, rootimage);
-        //    node.Tag="根";
-        //    IList<Smmgroup> list = GroupService.GetStrongList<Smmgroup>();
-        //    for (int i = 0; i < list.Count; i++)
-        //    {
-        //        TreeNode tempnode = node.Nodes.Add(list[i].Groupno, list[i].Groupname, groupimage, groupimage);
-        //         tempnode.Tag="组";
-        //         IList<Smugroup> listUser = GroupService.GetList<Smugroup>("SelectSmugroupByWhere", "Groupno='" + list[i].Groupno + "'");
-        //         for (int j = 0; j < listUser.Count; j++)
-        //         {
-        //             Smmuser user = new Smmuser();
-        //             user.Userid = listUser[j].Userid;
-        //            Smmuser tempuser= GroupService.GetOneByKey<Smmuser>(user);
-        //             //tempuser.Lastlogon 存放用户图标id
-        //            if (tempuser!=null)
-        //            {
-        //                int useimage = 0;
-        //                if (int.TryParse(tempuser.Lastlogon,out useimage))
-        //                {
-        //                    useimage = int.Parse(tempuser.Lastlogon.ToString());
-        //                }
-        //                TreeNode tempnodeuser = tempnode.Nodes.Add(listUser[j].Userid, tempuser.UserName, useimage, useimage);
-        //                tempnodeuser.Tag = "用户";
-        //            }
-    			   
-        //         }
-
-        //    }
-        //    // 将未分组用户添加进一个组
-        //    IList<Smmuser> list_user = GroupService.GetStrongList<Smmuser>();
-        //    TreeNode un_groupnode = new TreeNode();
-        //    un_groupnode.Name = "未分组";
-        //    un_groupnode.Text = "未分组用户";
-        //    un_groupnode.ImageIndex = un_group;
-        //    un_groupnode.SelectedImageIndex = un_group;
-        //    un_groupnode.Tag = "未分组";
-        //    bool un_groupuser = false;
-        //    for (int k = 0; k < list_user.Count; k++)
-        //    {
-        //        string tempuserno = list_user[k].Userid;
-        //        IList<Smugroup> listUsergroup = GroupService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + tempuserno + "'");
-        //        if (listUsergroup.Count==0)
-        //        {
-        //            un_groupuser = true;
-        //            int useimage = 0;
-        //            if (int.TryParse(list_user[k].Lastlogon, out useimage))
-        //            {
-        //                useimage = int.Parse(list_user[k].Lastlogon.ToString());
-        //            }
-        //            TreeNode tempnodeuser = un_groupnode.Nodes.Add(list_user[k].Userid, list_user[k].UserName, useimage, useimage);
-        //            tempnodeuser.Tag = "用户";
-
-        //        }
-
-        //    }
-        //    if (un_groupuser)
-        //    {
-        //        node.Nodes.Add(un_groupnode);
-        //    }
-        //    node.Expand();
-        //    Btn_Show();
-        //}
-        private void CreateView()
-        {
-            Hashtable usertable = new Hashtable();
-            usertable.Add(MIS.ProgUserID, "创建人");
-            IList<ProjectUser> listuser = GroupService.GetList<ProjectUser>("SelectProjectbyWhere", " UID='" + MIS.ProgUID + "'");
-            for (int i = 0; i < listuser.Count; i++)
-            {
-                usertable.Add(listuser[i].UserID, listuser[i].UserName);               
-            }
+        private void CreateView() {
             treeView1.Nodes.Clear();
             TreeNode node = treeView1.Nodes.Add("system", "系统用户和组", rootimage, rootimage);
-            node.Tag = "根";
+            node.Tag="根";
             IList<Smmgroup> list = GroupService.GetStrongList<Smmgroup>();
             for (int i = 0; i < list.Count; i++)
-            {
+			{
                 TreeNode tempnode = node.Nodes.Add(list[i].Groupno, list[i].Groupname, groupimage, groupimage);
-                tempnode.Tag = "组";
-                     IList<Smugroup> listUser = GroupService.GetList<Smugroup>("SelectSmugroupByWhere", "Groupno='" + list[i].Groupno + "'");
-                     if ( listUser.Count>0)
-                     {
-                        
-                         for (int j = 0; j < listUser.Count; j++)
-                         {
-                             Smmuser tempuser = GroupService.GetOneByKey<Smmuser>(listUser[j].Userid);
-                            
-                             
-                             //tempuser.Lastlogon 存放用户图标id
-                             if (tempuser != null)
-                             {
-                                 if (tempuser.Userid == MIS.ProgUserID)
-                                 {
-                                     tempuser.UserName += "(项目创建人)";
-                                 }
-                                 else if (usertable.ContainsKey(tempuser.Userid))
-                                 {
-                                     tempuser.UserName += "(项目用户)";
-                                 }
-                                 int useimage = 0;
-                                 if (int.TryParse(tempuser.Lastlogon, out useimage))
-                                 {
-                                     useimage = int.Parse(tempuser.Lastlogon.ToString());
-                                 }
-                                 TreeNode tempnodeuser = tempnode.Nodes.Add(listUser[j].Userid, tempuser.UserName, useimage, useimage);
-                                 tempnodeuser.Tag = "用户";
-                             }
-
-                         }
-                     }
-                }
-                // 将未分组用户添加进一个组
-                IList<Smmuser> list_user = GroupService.GetStrongList<Smmuser>();
-                TreeNode un_groupnode = new TreeNode();
-                un_groupnode.Name = "未分组";
-                un_groupnode.Text = "未分组用户";
-                un_groupnode.ImageIndex = un_group;
-                un_groupnode.SelectedImageIndex = un_group;
-                un_groupnode.Tag = "未分组";
-                bool un_groupuser = false;
-                for (int k = 0; k < list_user.Count; k++)
-                {
-                    string tempuserno = list_user[k].Userid;
-
-                   
-
-                    IList<Smugroup> listUsergroup = GroupService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + tempuserno + "'");
-                    if (listUsergroup.Count==0)
+                 tempnode.Tag="组";
+                 IList<Smugroup> listUser = GroupService.GetList<Smugroup>("SelectSmugroupByWhere", "Groupno='" + list[i].Groupno + "'");
+                 for (int j = 0; j < listUser.Count; j++)
+		         {
+                     Smmuser user = new Smmuser();
+                     user.Userid = listUser[j].Userid;
+                    Smmuser tempuser= GroupService.GetOneByKey<Smmuser>(user);
+                     //tempuser.Lastlogon 存放用户图标id
+                    if (tempuser!=null)
                     {
-                        if (list_user[k].Userid == MIS.ProgUserID)
-                        {
-                            list_user[k].UserName += "(项目创建人)";
-                        }
-                        else if (usertable.ContainsKey(list_user[k].Userid))
-                        {
-                            list_user[k].UserName += "(项目用户)";
-                        }
-
-                        un_groupuser = true;
                         int useimage = 0;
-                        if (int.TryParse(list_user[k].Lastlogon, out useimage))
+                        if (int.TryParse(tempuser.Lastlogon,out useimage))
                         {
-                            useimage = int.Parse(list_user[k].Lastlogon.ToString());
+                            useimage = int.Parse(tempuser.Lastlogon.ToString());
                         }
-                        TreeNode tempnodeuser = un_groupnode.Nodes.Add(list_user[k].Userid, list_user[k].UserName, useimage, useimage);
+                        TreeNode tempnodeuser = tempnode.Nodes.Add(listUser[j].Userid, tempuser.UserName, useimage, useimage);
                         tempnodeuser.Tag = "用户";
-
                     }
+    			   
+		         }
 
-                }
-                if (un_groupuser)
+			}
+            // 将未分组用户添加进一个组
+            IList<Smmuser> list_user = GroupService.GetStrongList<Smmuser>();
+            TreeNode un_groupnode = new TreeNode();
+            un_groupnode.Name = "未分组";
+            un_groupnode.Text = "未分组用户";
+            un_groupnode.ImageIndex = un_group;
+            un_groupnode.SelectedImageIndex = un_group;
+            un_groupnode.Tag = "未分组";
+            bool un_groupuser = false;
+            for (int k = 0; k < list_user.Count; k++)
+            {
+                string tempuserno = list_user[k].Userid;
+                IList<Smugroup> listUsergroup = GroupService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + tempuserno + "'");
+                if (listUsergroup.Count==0)
                 {
-                    node.Nodes.Add(un_groupnode);
+                    un_groupuser = true;
+                    int useimage = 0;
+                    if (int.TryParse(list_user[k].Lastlogon, out useimage))
+                    {
+                        useimage = int.Parse(list_user[k].Lastlogon.ToString());
+                    }
+                    TreeNode tempnodeuser = un_groupnode.Nodes.Add(list_user[k].Userid, list_user[k].UserName, useimage, useimage);
+                    tempnodeuser.Tag = "用户";
+
                 }
-                node.ExpandAll();
-                Btn_Show();
 
+            }
+            if (un_groupuser)
+            {
+                node.Nodes.Add(un_groupnode);
+            }
+            node.ExpandAll();
+            Btn_Show();
+        }
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e) 
+        {
+            //string key = e.Node.Name;
+            //if (key == "user") {
+            //    userListView1.ShowType = ShowType.User;
+            //    //tsbRights.Visible = false;
+            //    tsbRights.Text = "角色";
 
-
-               
-         
-               
-           
-           
+            //} else if(key=="group") {
+            //    userListView1.ShowType = ShowType.Group;
+            //    //tsbRights.Visible = true;
+            //    tsbRights.Text = "授权";
+            //}
         }
 
         #endregion
@@ -238,7 +149,8 @@ namespace Itop.RightManager.UI {
                 Canall = DevExpress.XtraBars.BarItemVisibility.Always;
             }
             barButtonItem1.Visibility = Canall;
-          
+            barButtonItem2.Visibility = Canall;
+            barButtonItem4.Visibility = Canall;
            
         }
         //修改
@@ -315,30 +227,17 @@ namespace Itop.RightManager.UI {
         /// </summary>
         public void RightSetup()
         {
-            //管理员和项目创建人可以用
-            //系统管理员
-            bool canuse = false;
-            string strsql = "Groupno='SystemManage' and Userid='" + MIS.UserNumber + "'";
-            IList list = GroupService.GetList("SelectSmugroupByWhere", strsql);
-            if (list.Count > 0)
-            {
-                canuse = true;
-            }
-            else if (MIS.ProgUserID==MIS.UserNumber)
-            {
-                canuse = true;
-            }
-            
-            if (canuse)
-            {
-                FrmGroupRights dlg = new FrmGroupRights();
-                dlg.Groupno = treeView1.SelectedNode.Name; ;
-                dlg.ProjectUID = MIS.ProgUID;
-                dlg.ProjectName = MIS.ProgName;
-                dlg.ShowDialog();    
-            }
+            FrmProjectSelect frm = new FrmProjectSelect();
+            frm.groupno = treeView1.SelectedNode.Name;
+            frm.groupname = treeView1.SelectedNode.Text;
+            frm.ShowDialog();
 
-           
+            FrmGroupRights dlg = new FrmGroupRights();
+            dlg.Groupno = treeView1.SelectedNode.Name; ;
+            dlg.ProjectUID = MIS.ProgUID;
+            dlg.ProjectName = MIS.ProgName;
+            dlg.ShowDialog();
+
         }
         
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -493,22 +392,48 @@ namespace Itop.RightManager.UI {
             catch { MessageBox.Show("删除失败！"); }
             
         }
-        //用户和组管理
+        //添加组
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IList<Smugroup> listUsergroup = groupService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + MIS.UserNumber + "'");
-            if (listUsergroup.Count > 0)
+            AddGroup();
+        }
+        //添加用户
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddUser();
+        }
+        //修改
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (treeView1.SelectedNode == null)
             {
-                FrmUserManager frmuser = new FrmUserManager();
-                frmuser.ShowDialog();
-                CreateView();
+                return;
             }
-            else
+            if (treeView1.SelectedNode.Tag == "组")
             {
-                MsgBox.Show("您无权管理用户！如需要请找管理员协助。");
+                EditGroup();
+            }
+            else if (treeView1.SelectedNode.Tag == "用户")
+            {
+                EditUser();
             }
         }
-
+        //删除
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (treeView1.SelectedNode == null)
+            {
+                return;
+            }
+            if (treeView1.SelectedNode.Tag == "组")
+            {
+                DeleteGroup();
+            }
+            else if (treeView1.SelectedNode.Tag == "用户")
+            {
+                DeleteUser();
+            }
+        }
         //刷新
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -535,8 +460,6 @@ namespace Itop.RightManager.UI {
         {
             this.Close();
         }
-
-       
 
         
     }

@@ -198,6 +198,8 @@ namespace Itop.Client.Projects
             if (tln.ParentNode == null)
                 return;
             MIS.ProgUID = tln["UID"].ToString();
+            MIS.ProgName = tln["ProjectName"].ToString();
+            MIS.ProgUserID = tln["GuiDangName"].ToString();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -277,6 +279,8 @@ namespace Itop.Client.Projects
                 return;
 
             MIS.ProgUID = tln["UID"].ToString();
+            MIS.ProgName = tln["ProjectName"].ToString();
+            MIS.ProgUserID = tln["GuiDangName"].ToString();
             this.DialogResult = DialogResult.OK;
             this.Close();
 

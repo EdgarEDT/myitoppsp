@@ -55,6 +55,7 @@ namespace Itop.Client.Projects
             ((System.ComponentModel.ISupportInitialize)(this.ItemTextEditProjectCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTextEditProjectName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemDateEditCreateDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemDateEditCreateDate.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEdit1)).BeginInit();
             this.SuspendLayout();
@@ -66,29 +67,27 @@ namespace Itop.Client.Projects
             this.panelControl.Controls.Add(this.btnCancel);
             this.panelControl.Location = new System.Drawing.Point(0, 0);
             this.panelControl.Name = "panelControl";
-            this.panelControl.Size = new System.Drawing.Size(395, 314);
+            this.panelControl.Size = new System.Drawing.Size(461, 366);
             this.panelControl.TabIndex = 0;
-            this.panelControl.Text = "panelControl1";
             // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.xtraTabControl1.Location = new System.Drawing.Point(6, 6);
+            this.xtraTabControl1.Location = new System.Drawing.Point(7, 7);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.tabPage;
-            this.xtraTabControl1.Size = new System.Drawing.Size(384, 274);
+            this.xtraTabControl1.Size = new System.Drawing.Size(448, 320);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPage});
-            this.xtraTabControl1.Text = "xtraTabControl1";
             // 
             // tabPage
             // 
             this.tabPage.Controls.Add(this.vGridControl);
             this.tabPage.Name = "tabPage";
-            this.tabPage.Size = new System.Drawing.Size(375, 243);
+            this.tabPage.Size = new System.Drawing.Size(441, 290);
             this.tabPage.Text = "项目管理";
             // 
             // vGridControl
@@ -111,7 +110,7 @@ namespace Itop.Client.Projects
             this.rowCreateDate,
             this.editorRow1,
             this.rowProjectCode});
-            this.vGridControl.Size = new System.Drawing.Size(368, 236);
+            this.vGridControl.Size = new System.Drawing.Size(429, 275);
             this.vGridControl.TabIndex = 0;
             // 
             // ItemTextEditProjectCode
@@ -138,6 +137,8 @@ namespace Itop.Client.Projects
             this.ItemDateEditCreateDate.Mask.EditMask = "yyyy-MM-dd";
             this.ItemDateEditCreateDate.Name = "ItemDateEditCreateDate";
             this.ItemDateEditCreateDate.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.ItemDateEditCreateDate.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
             // repositoryItemMemoEdit1
             // 
@@ -159,7 +160,7 @@ namespace Itop.Client.Projects
             // 
             this.rowProjectName.Height = 25;
             this.rowProjectName.Name = "rowProjectName";
-            this.rowProjectName.Properties.Caption = "项目名称";
+            this.rowProjectName.Properties.Caption = "目录名称";
             this.rowProjectName.Properties.FieldName = "ProjectName";
             this.rowProjectName.Properties.ImageIndex = 25;
             this.rowProjectName.Properties.RowEdit = this.ItemTextEditProjectName;
@@ -186,7 +187,7 @@ namespace Itop.Client.Projects
             // 
             this.rowProjectCode.Height = 111;
             this.rowProjectCode.Name = "rowProjectCode";
-            this.rowProjectCode.Properties.Caption = "项目说明";
+            this.rowProjectCode.Properties.Caption = "目录说明";
             this.rowProjectCode.Properties.FieldName = "ProjectCode";
             this.rowProjectCode.Properties.ImageIndex = 25;
             this.rowProjectCode.Properties.RowEdit = this.repositoryItemMemoEdit1;
@@ -194,9 +195,9 @@ namespace Itop.Client.Projects
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(199, 280);
+            this.btnOK.Location = new System.Drawing.Point(232, 327);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(87, 27);
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "确定";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -205,17 +206,17 @@ namespace Itop.Client.Projects
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(303, 280);
+            this.btnCancel.Location = new System.Drawing.Point(353, 327);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(87, 27);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "取消";
             // 
             // FrmProjectDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 315);
+            this.ClientSize = new System.Drawing.Size(462, 367);
             this.Controls.Add(this.panelControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -223,7 +224,7 @@ namespace Itop.Client.Projects
             this.Name = "FrmProjectDialog";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "项目管理";
+            this.Text = "目录管理";
             this.Load += new System.EventHandler(this.FrmProjectDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl)).EndInit();
             this.panelControl.ResumeLayout(false);
@@ -233,6 +234,7 @@ namespace Itop.Client.Projects
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTextEditProjectCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTextEditProjectName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemDateEditCreateDate.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemDateEditCreateDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEdit1)).EndInit();

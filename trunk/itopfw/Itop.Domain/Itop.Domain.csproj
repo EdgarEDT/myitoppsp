@@ -53,7 +53,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\output\Client\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RightManager\Project.cs" />
+    <Compile Include="RightManager\ProjectUser.cs" />
     <Compile Include="RightManager\smdgroup.cs" />
     <Compile Include="RightManager\smduser.cs" />
     <Compile Include="RightManager\smmgroup.cs" />

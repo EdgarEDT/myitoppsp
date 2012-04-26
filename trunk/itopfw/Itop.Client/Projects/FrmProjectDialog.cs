@@ -30,10 +30,10 @@ namespace Itop.Client.Projects
         public FrmProjectDialog(string str)
         {
             InitializeComponent();
-            this.Text = "卷管理";
-            this.tabPage.Text = "卷管理";
-            this.rowProjectName.Properties.Caption = "卷名称";
-            this.rowProjectCode.Properties.Caption = "卷说明";
+            this.Text = "项目管理";
+            this.tabPage.Text = "项目管理";
+            this.rowProjectName.Properties.Caption = "项目名称";
+            this.rowProjectCode.Properties.Caption = "项目说明";
 
         }
 		#endregion

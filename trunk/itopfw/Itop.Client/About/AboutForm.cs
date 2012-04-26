@@ -19,7 +19,7 @@ namespace Itop.Client.About {
             InitializeComponent();
         }
 
-        public bool Execute() {
+        override public bool Execute() {
             ShowDialog();
             return true;
         }

@@ -134,6 +134,8 @@ namespace Itop.Client {
             }
         }
         public static string ProgUID;
+        public static string ProgName;
+        public static string ProgUserID;
 
         /// <summary>
         /// 用户名
@@ -324,12 +326,29 @@ namespace Itop.Client {
         }
 
 
-
+        //获取卷的操作权限
         public static VsmdgroupProg GetProgRight(string progid, string projectUID)
         {
             VsmdgroupProg smdgroup = new VsmdgroupProg();
+            
             smdgroup.Progid = progid;
-            smdgroup.Groupno = MIS.UserNumber;
+            IList<Smugroup> listUsergroup = smmprogService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + MIS.UserNumber + "'");
+            if (listUsergroup.Count > 0)
+            {
+                smdgroup.Groupno = listUsergroup[0].Groupno;
+            }
+            //如果是系统管员
+            if (smdgroup.Groupno == "SystemManage" && MIS.UserNumber.ToLower() == "admin")
+            {
+                smdgroup.run = "1";
+                smdgroup.ins = "1";
+                smdgroup.upd = "1";
+                smdgroup.del = "1";
+                smdgroup.qry = "1";
+                smdgroup.pro = "1";
+                smdgroup.prn = "1";
+                return smdgroup;
+            }
             smdgroup.ProjectUID = projectUID;
             VsmdgroupProg sm = new VsmdgroupProg();
             IList list = SmmprogService.GetList("SelectSmdgroupList", smdgroup);
