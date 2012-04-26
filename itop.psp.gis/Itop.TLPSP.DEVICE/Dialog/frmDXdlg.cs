@@ -153,7 +153,7 @@ namespace Itop.TLPSP.DEVICE
             WireCategory wirewire = new WireCategory();
             wirewire.Type = "40";
             IList list1 = null;
-            if (DeviceMx.RateVolt != 0)
+            if (dev.RateVolt != 0)
             {
                 wirewire.WireLevel = DeviceMx.RateVolt.ToString();
                 
@@ -183,22 +183,22 @@ namespace Itop.TLPSP.DEVICE
 
             string con = " where Type='01'and ProjectID='" + this.ProjectSUID + "' order by name";
             IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
-            foreach (PSPDEV dev in list)
+            foreach (PSPDEV dev1 in list)
             {
                 if (comboBoxEdit3.Properties.Items.IndexOf(dev.Name)==-1)
                 {
-                    comboBoxEdit3.Properties.Items.Add(dev.Name);
-                    comboBoxEdit4.Properties.Items.Add(dev.Name);
+                    comboBoxEdit3.Properties.Items.Add(dev1.Name);
+                    comboBoxEdit4.Properties.Items.Add(dev1.Name);
                 }
             }
             con = " where Type='07'and ProjectID='" + this.ProjectSUID + "' order by name";
             list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
-            foreach (PSPDEV dev in list)
+            foreach (PSPDEV dev1 in list)
             {
-                if (comboBoxEdit5.Properties.Items.IndexOf(dev.Name) == -1)
+                if (comboBoxEdit5.Properties.Items.IndexOf(dev1.Name) == -1)
                 {
-                    comboBoxEdit5.Properties.Items.Add(dev.Name);
-                    comboBoxEdit6.Properties.Items.Add(dev.Name);
+                    comboBoxEdit5.Properties.Items.Add(dev1.Name);
+                    comboBoxEdit6.Properties.Items.Add(dev1.Name);
                 }
             }
             if (DeviceHelper.xml1 == null)

@@ -249,7 +249,7 @@ namespace Itop.TLPSP.DEVICE
         /// </summary>
         public virtual void InitColumns()
         {
-
+            
         }
 
         public virtual string GetClassName()

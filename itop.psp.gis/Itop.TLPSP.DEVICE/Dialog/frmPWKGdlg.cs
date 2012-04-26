@@ -33,6 +33,12 @@ namespace Itop.TLPSP.DEVICE
                 dev.Number = (int)spinEdit1.Value;
                 dev.Date1 = date1.Text;
                 dev.Date2 = date2.Text;
+                dev.ISwitch = Iswitch.ToString();
+                dev.HuganTQ1 = (double)spinEdit2.Value;
+                dev.HuganTQ2 = (double)spinEdit3.Value;
+                dev.HuganTQ4 = (double)spinEdit4.Value;
+                dev.IName = lookUpEdit2.EditValue.ToString();
+
                 return dev;
             }
             set  
@@ -46,14 +52,32 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit1.Text = dev.OperationYear;
                 textEdit2.Text = dev.HgFlag;
                 spinEdit1.Value = (decimal)dev.Number;
+                int f = 1;
+                int.TryParse(dev.ISwitch, out f);
+                Iswitch = f;
                 date1.Text = dev.Date1;
                 date2.Text = dev.Date2;
+                spinEdit2.Value = (decimal)spinEdit2.Value;
+                spinEdit3.Value = (decimal)spinEdit3.Value;
+                spinEdit4.Value = (decimal)spinEdit4.Value;
+                lookUpEdit2.EditValue = dev.IName;
                 //sprl.Value=(decimal)dev.Burthen;
             }
         }
         public frmPWKGdlg()
         {
             InitializeComponent();
+        }
+        public int Iswitch
+        {
+            get
+            {
+                return radioGroup2.SelectedIndex;
+            }
+            set
+            {
+                radioGroup2.SelectedIndex = value;
+            }
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -63,7 +87,7 @@ namespace Itop.TLPSP.DEVICE
         }
         public void intdata()
         {
-            string sql = " where RateVolt=" + comboBox1.Text + " and (type='05' or type ='70') and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+            string sql = " where RateVolt=" + comboBox1.Text + " and (type='05' or type ='73') and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
             lookUpEdit1.Properties.DataSource = list;
 
@@ -128,5 +152,34 @@ namespace Itop.TLPSP.DEVICE
                 initList();
             }
         }
+
+        private void panelControl2_Paint(object sender, PaintEventArgs e)
+        {
+            if (radioGroup2.SelectedIndex == 0)
+            {
+                e.Graphics.Clear(Color.Red);
+            }
+            else
+            {
+                e.Graphics.Clear(Color.Green);
+            }          
+        }
+
+        private void lookUpEdit1_Properties_Click(object sender, EventArgs e)
+        {
+             frmDeviceSelect dlg = new frmDeviceSelect();
+            dlg.InitDeviceType("05", "73");
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                Dictionary<string, object> dic = dlg.GetSelectedDevice();
+                PSPDEV devzx = dic["device"] as PSPDEV;
+                lookUpEdit1.EditValue = dev.SUID;
+                string sql = " where  (type ='74') and AreaID='" + devzx.SUID+ "'";
+                IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
+                lookUpEdit2.Properties.DataSource = list;
+                
+            }
+        }
+
     }
 }

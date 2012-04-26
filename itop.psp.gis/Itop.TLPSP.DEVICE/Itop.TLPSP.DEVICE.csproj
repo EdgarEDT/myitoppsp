@@ -721,11 +721,35 @@
     <Compile Include="PDRel\FrmpdrelProject.Designer.cs">
       <DependentUpon>FrmpdrelProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="PDRel\FrmPDrelResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDRel\FrmPDrelResult.Designer.cs">
+      <DependentUpon>FrmPDrelResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDRel\fxdialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDRel\fxdialog.Designer.cs">
+      <DependentUpon>fxdialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDRel\PdDateEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDRel\PdDateEdit.Designer.cs">
+      <DependentUpon>PdDateEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="PDRel\PDreltypefrmedit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PDRel\PDreltypefrmedit.Designer.cs">
       <DependentUpon>PDreltypefrmedit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDRel\PDtypefrmedit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDRel\PDtypefrmedit.Designer.cs">
+      <DependentUpon>PDtypefrmedit.cs</DependentUpon>
     </Compile>
     <Compile Include="PDRel\Ucjd.cs">
       <SubType>UserControl</SubType>
@@ -733,11 +757,23 @@
     <Compile Include="PDRel\Ucjd.Designer.cs">
       <DependentUpon>Ucjd.cs</DependentUpon>
     </Compile>
+    <Compile Include="PDRel\UcPddate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PDRel\UcPddate.Designer.cs">
+      <DependentUpon>UcPddate.cs</DependentUpon>
+    </Compile>
     <Compile Include="PDRel\UcPdreltype.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PDRel\UcPdreltype.Designer.cs">
       <DependentUpon>UcPdreltype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDRel\UCpdType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PDRel\UCpdType.Designer.cs">
+      <DependentUpon>UCpdType.cs</DependentUpon>
     </Compile>
     <Compile Include="PDRel\UcPdtypenode.cs">
       <SubType>UserControl</SubType>
@@ -750,6 +786,12 @@
     </Compile>
     <Compile Include="PDRel\Ucdxchildnode.Designer.cs">
       <DependentUpon>Ucdxchildnode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PDRel\XtraPDrelfrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDRel\XtraPDrelfrm.Designer.cs">
+      <DependentUpon>XtraPDrelfrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmDeviceManager.resx">
@@ -1141,20 +1183,41 @@
     <EmbeddedResource Include="PDRel\FrmpdrelProject.resx">
       <DependentUpon>FrmpdrelProject.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\FrmPDrelResult.resx">
+      <DependentUpon>FrmPDrelResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\fxdialog.resx">
+      <DependentUpon>fxdialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\PdDateEdit.resx">
+      <DependentUpon>PdDateEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PDRel\PDreltypefrmedit.resx">
       <DependentUpon>PDreltypefrmedit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\PDtypefrmedit.resx">
+      <DependentUpon>PDtypefrmedit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDRel\Ucjd.resx">
       <DependentUpon>Ucjd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\UcPddate.resx">
+      <DependentUpon>UcPddate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PDRel\UcPdreltype.resx">
       <DependentUpon>UcPdreltype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\UCpdType.resx">
+      <DependentUpon>UCpdType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDRel\UcPdtypenode.resx">
       <DependentUpon>UcPdtypenode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDRel\Ucdxchildnode.resx">
       <DependentUpon>Ucdxchildnode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\XtraPDrelfrm.resx">
+      <DependentUpon>XtraPDrelfrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XtraSelectfrm.resx">
       <SubType>Designer</SubType>

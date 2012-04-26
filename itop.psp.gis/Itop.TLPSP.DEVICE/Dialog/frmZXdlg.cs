@@ -68,7 +68,7 @@ namespace Itop.TLPSP.DEVICE
         }
         public void intdata()
         {
-            string sql = " where RateVolt=" + comboBox1.Text + " and (type='05' or type ='73') and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+            string sql = " where (type='05' or type ='73') and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
             lookUpEdit1.Properties.DataSource = list;
 

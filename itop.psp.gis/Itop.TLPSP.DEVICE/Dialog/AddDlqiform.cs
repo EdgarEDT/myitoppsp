@@ -30,7 +30,10 @@ namespace Itop.TLPSP.DEVICE
                 dev.OperationYear = OperationYear;
                 dev.Type = "06";
                 dev.KSwitchStatus = KswitchStatus.ToString();
+                dev.ISwitch = Iswitch.ToString();
                 dev.DQ = comboBoxEdit8.Text;
+                 dev.HuganTQ4= (double)spinEdit1.Value;
+                dev.HuganTQ5= (double)spinEdit2.Value ;
                 if (comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text) != null)
                 {
                     dev.AreaID = comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text).ToString();
@@ -59,9 +62,14 @@ namespace Itop.TLPSP.DEVICE
                 OperationYear = dev.OperationYear;
                 MinSwitchtime = dev.HuganTQ1.ToString();
                 belongbus = dev.IName;
+                spinEdit1.Value =(decimal)dev.HuganTQ4;
+                spinEdit2.Value = (decimal)dev.HuganTQ5;
                 int f = 0;
                 int.TryParse(dev.KSwitchStatus, out f);
                 KswitchStatus = f;
+                f = 1;
+                int.TryParse(dev.ISwitch, out f);
+                Iswitch = f;
                 comboBoxEdit8.Text = dev.DQ;
                 comboBoxEdit9.EditValue = dev.AreaID;  
                 setBdzName();
@@ -112,8 +120,12 @@ namespace Itop.TLPSP.DEVICE
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit3.Properties.Items.Add(o);
             }
+            string sql = " where  (type ='70'or type='01') and ProjectID='" + this.ProjectUID + "'";
+            IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
+
+            lookUpEdit1.Properties.DataSource = list;
             string con = " where Type ='01' and ProjectID ='" + this.ProjectUID + "' order by name";
-            IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
             foreach (PSPDEV pspdev in list)
             {
                 if (comboBoxEdit4.Properties.Items.IndexOf(pspdev.Name) == -1)
@@ -241,11 +253,11 @@ namespace Itop.TLPSP.DEVICE
         {
             get
             {
-                return comboBoxEdit4.Text;
+                return lookUpEdit1.EditValue.ToString();
             }
             set 
             {
-                comboBoxEdit4.Text = value;
+                lookUpEdit1.EditValue = value;
             }
         }
         public string DlqiZl
@@ -281,6 +293,17 @@ namespace Itop.TLPSP.DEVICE
             set
             {
                 radioGroup1.SelectedIndex = value;
+            }
+        }
+        public int Iswitch
+        {
+            get
+            {
+                return radioGroup2.SelectedIndex;
+            }
+            set
+            {
+                radioGroup2.SelectedIndex = value;
             }
         }
         string projectid;
@@ -409,6 +432,7 @@ namespace Itop.TLPSP.DEVICE
             }          
         }
 
+
         private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             panelControl1.Refresh();
@@ -424,6 +448,7 @@ namespace Itop.TLPSP.DEVICE
                 dev.FirstNode = devMX.Number;
             }
         }
+
 
         private void subsedit_EditValueChanged(object sender, EventArgs e)
         {
@@ -459,6 +484,38 @@ namespace Itop.TLPSP.DEVICE
                 subsedit.Text = dic["name"].ToString();
                 dev.SvgUID = dic["id"].ToString();
             }
+        }
+
+        private void lookUpEdit1_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            frmDeviceSelect dlg = new frmDeviceSelect();
+
+
+            dlg.InitDeviceType("01","70");
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                Dictionary<string, object> dic = dlg.GetSelectedDevice();
+                lookUpEdit1.EditValue = dic["id"].ToString();
+                PSPDEV pdv=dic["device"] as PSPDEV;
+                if (pdv.Type=="01")
+                {
+                    dev.FirstNode=pdv.Number;
+                }
+                else{dev.FirstNode=pdv.FirstNode;}
+                
+            }
+        }
+
+        private void panelControl2_Paint(object sender, PaintEventArgs e)
+        {
+            if (radioGroup2.SelectedIndex == 0)
+            {
+                e.Graphics.Clear(Color.Red);
+            }
+            else
+            {
+                e.Graphics.Clear(Color.Green);
+            }          
         }
 
     }
