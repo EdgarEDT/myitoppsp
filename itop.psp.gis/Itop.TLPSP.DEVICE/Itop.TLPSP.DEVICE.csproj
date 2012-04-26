@@ -715,6 +715,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OddEven.cs" />
+    <Compile Include="PDRel\frmfxlx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDRel\frmfxlx.designer.cs">
+      <DependentUpon>frmfxlx.cs</DependentUpon>
+    </Compile>
     <Compile Include="PDRel\FrmpdrelProject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1179,6 +1185,9 @@
     <EmbeddedResource Include="Mysql\frmImport.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\frmfxlx.resx">
+      <DependentUpon>frmfxlx.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDRel\FrmpdrelProject.resx">
       <DependentUpon>FrmpdrelProject.cs</DependentUpon>

@@ -17,7 +17,6 @@ using System.Xml;
 using Itop.Client.Base;
 using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
-using Itop.TLPSP.DEVICE;
 using System.Reflection;
 namespace Itop.TLPSP.DEVICE
 {

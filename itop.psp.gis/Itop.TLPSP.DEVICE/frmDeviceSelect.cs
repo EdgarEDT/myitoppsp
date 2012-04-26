@@ -799,6 +799,11 @@ namespace Itop.TLPSP.DEVICE
             if (GetDevice.GetType() == "73")
             {
                 frmDXdlg dlg = new frmDXdlg();
+                dlg.ProjectSUID = this.ProjectID;
+                dlg.Name = "";
+                PSPDEV p = new PSPDEV();
+                p.ProjectID = this.ProjectID;
+                dlg.DeviceMx = p;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     dlg.DeviceMx.ProjectID = MIS.ProgUID;

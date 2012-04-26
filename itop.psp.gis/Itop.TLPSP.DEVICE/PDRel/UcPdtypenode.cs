@@ -576,6 +576,16 @@ namespace Itop.TLPSP.DEVICE
             xf.ShowDialog();
         }
 
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DataTable dt = new DataTable();
+            frmfxlx fm = new frmfxlx();
+            if (fm.ShowDialog()==DialogResult.OK)
+            {
+                dt = fm.DT1;
+            }
+        }
+
        
    
 
