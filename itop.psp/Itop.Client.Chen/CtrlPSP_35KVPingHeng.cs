@@ -229,4 +229,4 @@ namespace Itop.Client.Chen
 		}
 		#endregion
 	}
-}
+}
