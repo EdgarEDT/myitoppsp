@@ -54,11 +54,11 @@ namespace Itop.Client.Projects
             treeView1.Nodes.Clear();
             TreeNode node = treeView1.Nodes.Add("system", "系统用户和组", rootimage, rootimage);
             node.Tag = "根";
-            IList<Smmgroup> list = SysService.GetStrongList<Smmgroup>();
+            IList<Smmgroup> list = Services.BaseService.GetStrongList<Smmgroup>();
             for (int i = 0; i < list.Count; i++)
             {
-               
-                IList<Smugroup> listUser = SysService.GetList<Smugroup>("SelectSmugroupByWhere", "Groupno='" + list[i].Groupno + "'");
+
+                IList<Smugroup> listUser = Services.BaseService.GetList<Smugroup>("SelectSmugroupByWhere", "Groupno='" + list[i].Groupno + "'");
                 if ( listUser.Count>0)
                 {
                     TreeNode tempnode = node.Nodes.Add(list[i].Groupno, list[i].Groupname, groupimage, groupimage);
@@ -68,7 +68,7 @@ namespace Itop.Client.Projects
                     {
                         Smmuser user = new Smmuser();
                         user.Userid = listUser[j].Userid;
-                        Smmuser tempuser = SysService.GetOneByKey<Smmuser>(user);
+                        Smmuser tempuser = Services.BaseService.GetOneByKey<Smmuser>(user);
                         //tempuser.Lastlogon 存放用户图标id
                         if (tempuser != null)
                         {
@@ -88,7 +88,7 @@ namespace Itop.Client.Projects
 
             }
             // 将未分组用户添加进一个组
-            IList<Smmuser> list_user = SysService.GetStrongList<Smmuser>();
+            IList<Smmuser> list_user = Services.BaseService.GetStrongList<Smmuser>();
             TreeNode un_groupnode = new TreeNode();
             un_groupnode.Name = "未分组";
             un_groupnode.Text = "未分组用户";
@@ -99,7 +99,7 @@ namespace Itop.Client.Projects
             for (int k = 0; k < list_user.Count; k++)
             {
                 string tempuserno = list_user[k].Userid;
-                IList<Smugroup> listUsergroup = SysService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + tempuserno + "'");
+                IList<Smugroup> listUsergroup = Services.BaseService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + tempuserno + "'");
                 if (listUsergroup.Count == 0)
                 {
                     un_groupuser = true;
@@ -129,7 +129,7 @@ namespace Itop.Client.Projects
             TreeNode node = treeView2.Nodes.Add("system", "当前项目用户", groupimage, groupimage);
             node.Tag = "根";
             //添加当前用户
-            Smmuser user = sysService.GetOneByKey<Smmuser>(userid);
+            Smmuser user = Services.BaseService.GetOneByKey<Smmuser>(userid);
             int useimage = 0;
             if (int.TryParse(user.Lastlogon, out useimage))
             {
@@ -138,7 +138,7 @@ namespace Itop.Client.Projects
             TreeNode currtennode= node.Nodes.Add(user.Userid, user.UserName+"（项目创建人）", useimage, useimage);
             currtennode.Tag = "创建人";
 
-            IList<ProjectUser> list = SysService.GetList<ProjectUser>("SelectProjectbyWhere"," UID='"+projid+"'");
+            IList<ProjectUser> list = Services.BaseService.GetList<ProjectUser>("SelectProjectUserbyWhere", " UID='" + projid + "'");
             for (int i = 0; i < list.Count; i++)
             {
                 TreeNode tempnode = node.Nodes.Add(list[i].UserID, list[i].UserName, list[i].Sort, list[i].Sort);
@@ -219,7 +219,7 @@ namespace Itop.Client.Projects
         //添加所有用户
         private void btnAddAll_Click(object sender, EventArgs e)
         {
-            IList<Smmuser> list_user = SysService.GetStrongList<Smmuser>();
+            IList<Smmuser> list_user = Services.BaseService.GetStrongList<Smmuser>();
             for (int i = 0; i < list_user.Count; i++)
             {
                 if (!treeView2.Nodes[0].Nodes.ContainsKey(list_user[i].Userid))

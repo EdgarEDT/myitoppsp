@@ -595,10 +595,12 @@
             // 
             // standaloneBarDockControl1
             // 
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(3, 2);
+            this.standaloneBarDockControl1.AutoSize = true;
+            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(312, 26);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(244, 26);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // panel3
@@ -992,6 +994,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             this.splitContainer2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

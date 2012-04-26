@@ -127,7 +127,7 @@ namespace Itop.RightManager.UI {
         {
             Hashtable usertable = new Hashtable();
             usertable.Add(MIS.ProgUserID, "¥¥Ω®»À");
-            IList<ProjectUser> listuser = GroupService.GetList<ProjectUser>("SelectProjectbyWhere", " UID='" + MIS.ProgUID + "'");
+            IList<ProjectUser> listuser = GroupService.GetList<ProjectUser>("SelectProjectUserbyWhere", " UID='" + MIS.ProgUID + "'");
             for (int i = 0; i < listuser.Count; i++)
             {
                 usertable.Add(listuser[i].UserID, listuser[i].UserName);               
