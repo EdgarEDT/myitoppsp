@@ -480,7 +480,7 @@ namespace Itop.Client.Forms
 
             if (!IsSystemUser())
             {
-                IList<ProjectUser> listuser = SysService.GetList<ProjectUser>("SelectProjectbyWhere", " UserID='" + MIS.UserNumber + "'");
+                IList<ProjectUser> listuser = SysService.GetList<ProjectUser>("SelectProjectUserbyWhere", " UserID='" + MIS.UserNumber + "'");
                 Hashtable hasproj = new Hashtable();
                 for (int i = 0; i < listuser.Count; i++)
                 {
