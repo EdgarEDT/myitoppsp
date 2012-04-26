@@ -28,7 +28,8 @@ namespace Itop.Client.Forms
 
         private void InitData()
         {
-            string s = "  IsGuiDang='是' order by CreateDate";
+            //查找项目，排除目录，恢复时一旦项目恢复，目录自动恢复
+            string s = "  IsGuiDang='是' and ProjectManager!=''  order by CreateDate";
             IList<Project> list = Services.BaseService.GetList<Project>("SelectProjectByWhere", s);
             DataTable dt = Itop.Common.DataConverter.ToDataTable((IList)list, typeof(Project));
             this.gridControl1.DataSource = dt;
@@ -64,8 +65,12 @@ namespace Itop.Client.Forms
                 MessageBox.Show("请选择项目", "提示");
                 return;
             }
+            //恢复项目
             string uid = row["UID"].ToString();
             Services.BaseService.Update("UpdateProjectByGuiDangNameNo", uid);
+            //恢复目录
+            string mluid = row["ProjectManager"].ToString();
+            Services.BaseService.Update("UpdateProjectByGuiDangNameNo", mluid);
             InitData();
             this.DialogResult = DialogResult.OK;
         }

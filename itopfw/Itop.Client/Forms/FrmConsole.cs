@@ -28,6 +28,19 @@ namespace Itop.Client.Forms
         bool Isfristload = true;
         DataTable dt = new DataTable();
         string UserID = MIS.UserNumber;
+        //判断当前用户是否是管理员
+        private bool IsSystemUser()
+        {
+            bool isadmin = false;
+            //系统管理员
+            string strsql = "Groupno='SystemManage' and Userid='" + MIS.UserNumber + "'";
+            IList list = SysService.GetList("SelectSmugroupByWhere", strsql);
+            if (list.Count > 0)
+            {
+                isadmin = true;
+            }
+            return isadmin;
+        }
         FileIni User_Ini = new FileIni(Application.StartupPath + "\\User.ini");
         #region 构造方法
         Project pj = null;
@@ -43,7 +56,6 @@ namespace Itop.Client.Forms
             set { pj1 = value; }
         }
 
-        Project XMGLpj = null;
         static string XMGLGUID = "6a743afa-f166-48f1-92ea-fed929e22cee";//项目卷宗管理UID
         public FrmConsole()
         {
@@ -90,34 +102,6 @@ namespace Itop.Client.Forms
         { }
 
         bool oneload = false;
-        public void InitData()
-        {//先根据分辩率调整图标
-            oneload = true;
-            Adapt_WindowsScreen();
-            InitIco();
-            //treeView.Nodes.Clear();
-            //label3.Text = pj.ProjectName;
-            InitRightControl();
-            oneload = false;
-            InitSelect();
-            InitSelectControl();
-            //treeView.Nodes.Clear();
-            list = SysService.GetList<Smmprog>();
-            if (list != null && list.Count > 0)
-            {
-                smmprogTable = DataConverter.ToDataTable(list, typeof(Smmprog));
-                //ExpandNodes1(string.Empty);
-                //ExpandNodes(treeView.Nodes, string.Empty);
-            }
-            //treeView.SelectedNode = treeView.Nodes[0];
-
-            #region 添加左则菜单
-            //AddMainMenu(list);
-           
-
-            #endregion
-
-        }
         private void  AddMainMenu(IList list)
         {
              nbctSystem.Groups.Clear();
@@ -173,76 +157,9 @@ namespace Itop.Client.Forms
         private int Select_Type = 1;
         private int left_width = 200;
         private int down_width = 229;
-        private int right_width = 560;
+        private int right_width = 260;
         private float FontSize = 9F;
-        //存放图标尺寸
-        // 左则列表，中间小图，中间大图的尺寸
-        //分别为大中小三个尺寸的图标和文字
-        private int[] image_size_B ={ 35, 28, 70 };
-        private int[] image_size_M ={ 30, 24, 60 };
-        private int[] image_size_L ={ 25, 20, 40 };
-        private float Font_size_B = 12F;
-        private float Font_size_M = 10F;
-        private float Font_size_L = 8F;
-        private int Base_image_size = 5;
-        private float Base_font_size = 8F;
-        public void Adapt_WindowsScreen()
-        {
-            
-            int   width_screen,height_screen;
-            int Result_screen;
-            string   Resolution; 
-            width_screen=System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width; 
-            height_screen=System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
-            Result_screen = width_screen * height_screen;
-            Resolution=width_screen.ToString()+ "*"+height_screen.ToString();
-            if (Result_screen<=480000)
-            {
-                Base_image_size = 4;
-                Base_font_size = 6F;
-            }
-            if (Result_screen > 480000 && Result_screen < 1024000)
-            {
-                Base_image_size = 5;
-                Base_font_size = 8F;
-            }
-            if (Result_screen >= 1024000 && Result_screen <1764000)
-            {
-                Base_image_size = 6;
-                Base_font_size = 9F;
-            }
-            if (Result_screen >= 1764000 && Result_screen < 2304000)
-            {
-                Base_image_size = 7;
-                Base_font_size = 10F;
-            }
-            if (Result_screen > 2304000)
-            {
-                Base_image_size = 8;
-                Base_font_size = 11F;
-            }
-          
-            Change_Size();
-        }
-        private void Change_Size()
-        {
-            image_size_L[0] = Base_image_size*5;
-            image_size_L[1] = Convert.ToInt32(image_size_L[0] * 0.8);
-            image_size_L[2] = image_size_L[0] * 2;
-
-            image_size_M[0] = Base_image_size * 6;
-            image_size_M[1] = Convert.ToInt32(image_size_M[0] * 0.8);
-            image_size_M[2] = image_size_M[0] * 2;
-
-            image_size_B[0] = Base_image_size * 7;
-            image_size_B[1] = Convert.ToInt32(image_size_B[0] * 0.8);
-            image_size_B[2] = image_size_B[0] * 2;
-
-            Font_size_L = Base_font_size;
-            Font_size_M = Font_size_L + 2F;
-            Font_size_B = Font_size_L + 4F;
-           
-        }
+        //处理用户习惯记录
         private void Del_User_ini()
         {
             if (File.Exists(Application.StartupPath+"\\User.ini"))
@@ -323,129 +240,43 @@ namespace Itop.Client.Forms
             treeList1.Refresh();
 
         }
-        private void InitProRight()
+
+        public void InitData()
         {
-            添加项目ToolStripMenuItem.Visible = false;
-            添加卷宗ToolStripMenuItem.Visible = false;
-            修改ToolStripMenuItem.Visible = false;
-            删除ToolStripMenuItem.Visible = false;
-            恢复项目ToolStripMenuItem.Visible = false;
-            关联图层ToolStripMenuItem.Visible = false;
-            拷贝卷宗ToolStripMenuItem.Visible = false;
-            VsmdgroupProg smdgroup = new VsmdgroupProg();
-            //smdgroup = MIS.GetProgRight("5efeb782-6273-4734-a0ce-5588d22673a7", pj.UID);
+            oneload = true;
+            InitIco();
            
-            smdgroup = MIS.GetProgRight(MIS.ProgUID, pj.UID);
-            bool b1 = false;
-            try
+            InitRightControl();
+            oneload = false;
+           
+            InitSelectControl();
+         
+            list = SysService.GetList<Smmprog>();
+            if (list != null && list.Count > 0)
             {
-                b1 = (int.Parse(smdgroup.ins) > 0) ? true : false;
+                smmprogTable = DataConverter.ToDataTable(list, typeof(Smmprog));
             }
-            catch { }
 
-            bool b2 = false;
-            try
-            {
-                b2 = (int.Parse(smdgroup.upd) > 0) ? true : false;
-            }
-            catch { }
 
-            bool b3 = false;
-            try
-            {
-                b3 = (int.Parse(smdgroup.del) > 0) ? true : false;
-            }
-            catch { }
-
-            bool b4 = false;
-            try
-            {
-                b4 = (int.Parse(smdgroup.run) > 0) ? true : false;
-            }
-            catch { }
-
-            if (b4)
-            {
-                if (b1)
-                {
-                    添加项目ToolStripMenuItem.Visible = true;
-                    添加卷宗ToolStripMenuItem.Visible = true;
-                }
-                if (b2)
-                    修改ToolStripMenuItem.Visible = true;
-                if (b3)
-                    删除ToolStripMenuItem.Visible = true;
-            }
-            if (MIS.UserNumber.ToLower() == "admin")
-            {
-                添加项目ToolStripMenuItem.Visible = true;
-                添加卷宗ToolStripMenuItem.Visible = true;
-                修改ToolStripMenuItem.Visible = true;
-                删除ToolStripMenuItem.Visible = true;
-                恢复项目ToolStripMenuItem.Visible = true;
-                关联图层ToolStripMenuItem.Visible = true;
-                拷贝卷宗ToolStripMenuItem.Visible = true;
-            }
-        
         }
 
-        //private void ExpandNodes1(string parentid)
-        //{
-        //    DataRow[] rows = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", parentid, "m"));
-        //    foreach (DataRow row in rows)
-        //    {
-        //        //TreeNode node = treeView.Nodes.Add(row["progname"].ToString());
-        //        node.Tag = DataConverter.RowToObject<Smmprog>(row);
-        //        node.Name = row["progid"].ToString();
-        //        node.ImageKey = row["ProgIco"].ToString();
-        //        node.SelectedImageKey = row["ProgIco"].ToString();
-        //    }
-        //}
-
-        private void ExpandNodes(TreeNodeCollection parentNodes, string parentid)
-        {
-            DataRow[] rows = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", parentid, "m"));
-            foreach (DataRow row in rows)
-            {
-                TreeNode node = parentNodes.Add(row["progname"].ToString());
-                node.Tag = DataConverter.RowToObject<Smmprog>(row);
-                node.Name = row["progid"].ToString();
-                node.ImageKey = row["ProgIco"].ToString();
-                node.SelectedImageKey = row["ProgIco"].ToString();
-                ExpandNodes(node.Nodes, node.Name);
-            }
-        }
-
-
-
+        //获取图标
         private void InitForm()
         {
-            //splitContainer1.Panel1.BackgroundImage = Itop.Client.Resources.ImageListRes.GetLeftPhoto();
             picMenu.Image = Itop.Client.Resources.ImageListRes.GetLeftPhoto();
-
-            //treeView.BackColor = System.Drawing.Color.FromArgb(233, 248, 255);
-            //listViewdown.BackColor = System.Drawing.Color.FromArgb(233, 248, 255);
-           // splitContainer3.Panel1.BackColor = System.Drawing.Color.FromArgb(233, 248, 255);
-
             this.BackgroundImage = Itop.Client.Resources.ImageListRes.GetBannerPhoto();
-
-            //InitUserControldelegate ic = new InitUserControldelegate(InitUserControl);
-            //this.BeginInvoke(ic);
             InitIco();
         }
-
+        //设置图标及文字大小
         private void InitIco()
         {
             try
             {
                 IList list = SysService.GetList("SelectSmmprogByFormIco", null);
                 DataTable dt_list = DataConverter.ToDataTable(list);
-                listViewdown.SmallImageList = ImageListRes.GetimageList(image_size_M[1], dt_list);
-                listViewdown.LargeImageList = ImageListRes.GetimageList(image_size_M[2], dt_list);
-                this.listViewdown.Font = new System.Drawing.Font("宋体", Font_size_M, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-
-
-                
+                listViewdown.SmallImageList = ImageListRes.GetimageList(30, dt_list);
+                listViewdown.LargeImageList = ImageListRes.GetimageList(24, dt_list);
+                this.listViewdown.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             }
             catch (Exception ex)
             {
@@ -456,9 +287,6 @@ namespace Itop.Client.Forms
             {
                 IList list = SysService.GetList("SelectSmmprogByMeIco", null);
                 DataTable dt_list = DataConverter.ToDataTable(list);
-                //treeView.ImageList = ImageListRes.GetimageList(image_size_M[0], dt_list);
-                //this.treeView.Font = new System.Drawing.Font("宋体", Font_size_M, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-
             }
             catch (Exception ex)
             {
@@ -466,85 +294,21 @@ namespace Itop.Client.Forms
             }
      
         }
-
-        private void InitUserControl()
-        {
-
-            //加入右侧用户控件
-            this.splitContainer2.Panel2.Controls.Clear();
-
-            string strCtrlConfig = Settings.GetValue("RightPanelControl");
-            if (string.IsNullOrEmpty(strCtrlConfig))
-            {
-                return;
-            }
-
-            string[] strs = strCtrlConfig.Split(new char[] { ';' });
-            if (strs.Length != 2)
-            {
-                return;
-            }
-            
-            Assembly asm = Assembly.LoadFrom(Application.StartupPath + "\\" + strs[0]);
-            UserControl ctrl = asm.CreateInstance(strs[1]) as UserControl;
-            ctrl.Name = pj.UID;
-            ctrl.Parent = this.splitContainer2.Panel2;
-            ctrl.Dock = DockStyle.Fill;
-        }
-
-
         #endregion
 
         #region 事件处理
-        void Default_StyleChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmConsole_Load(object sender, EventArgs e)
         {
-                 
-
             InitForm();
-            InitData();
-
-
             MIS.MFrmConsole = this;
-
-            //关闭定时器
-            timer_update.Enabled = false;
-            UpdateSys update =new UpdateSys(timer_update_Tick);
-            //异步执行检查更新
-            this.BeginInvoke(update, new object[2] { null, null });
-            //InitUserControldelegate ic = new InitUserControldelegate(InitUserControl);
-            //this.BeginInvoke(ic);
             Del_User_ini();
             Isfristload = false;
+            InitData();
             InitdownItem();
         }
         //添加底部固定基础数据项
         private void InitdownItem()
         {
-            ////9844c01d-6198-4cee-9733-5160a818af1d基础数的id
-            //DataRow[] rows = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", "9844c01d-6198-4cee-9733-5160a818af1d", "f"));
-            //foreach (DataRow row in rows)
-            //{
-            //    VsmdgroupProg smdgroup = new VsmdgroupProg();
-            //    smdgroup = MIS.GetProgRight(row["ProgId"].ToString(), MIS.ProgUID);
-            //    if (smdgroup != null && Convert.ToInt32(smdgroup.run) > 0)
-            //    {
-
-            //        ListViewItem listItem = new ListViewItem();
-            //        listItem.Text = row["ProgName"].ToString();
-            //        listItem.Tag = DataConverter.RowToObject<Smmprog>(row);
-            //        listItem.ImageKey = row["ProgIco"].ToString();
-            //        if (row["Remark"] != null)
-            //        {
-            //            listItem.ToolTipText = row["Remark"].ToString();
-            //        }
-            //        listViewdown.Items.Add(listItem);
-            //    }
-            //}
             listViewdown.Items.Clear();
             SortedList<int, Smmprog> Slist = new SortedList<int, Smmprog>();
             foreach (DevExpress.XtraNavBar.NavBarItem nbi in nbctSystem.Items)
@@ -580,20 +344,15 @@ namespace Itop.Client.Forms
           
            
         }
-        private delegate void UpdateSys(object sender, EventArgs e);
-
-
+       
         private void timer_Tick(object sender, EventArgs e)
         {
             labTime.Text = DateTime.Now.ToString("yyyy年MM月dd日  HH时mm分ss秒");
         }
-
         private void labExit_Click(object sender, EventArgs e)
         {
             Itop.Client.Login.UserLogoutCommand.Execute();
         }
-
-
         private void labAbout_Click(object sender, EventArgs e)
         {
             //打开关于窗体
@@ -602,39 +361,9 @@ namespace Itop.Client.Forms
                 dlg.ShowDialog();
             }
         }
-
-
         #endregion
 
-        private void timer_update_Tick(object sender, EventArgs e) 
-        {
-            //////////string filename = Application.StartupPath + "\\Itop.UPDATE.exe";
-
-            //////////if (File.Exists(filename))
-            //////////{
-
-            //////////    if (MIS.HasNewVersion())
-            //////////    {
-            //////////        timer_update.Enabled = false;
-
-            //////////        if (MsgBox.ShowYesNo("发现新版本,是否立刻更新?") == DialogResult.Yes)
-            //////////        {
-            //////////            System.Diagnostics.Process.Start(filename, "RUN");
-            //////////            timer_update.Interval = 600000;
-            //////////        }
-            //////////        timer_update.Enabled = true;
-            //////////    }
-            //////////    else
-            //////////    {
-            //////////        timer_update.Interval = 60000;
-            //////////    }
-            //////////}
-            //////////else
-            //////////{
-            //////////    timer_update.Enabled = false;
-            //////////}
-        }
-
+        //帮助
         private void label1_Click(object sender, EventArgs e)
         {
             string tempfile = Application.StartupPath;
@@ -649,7 +378,7 @@ namespace Itop.Client.Forms
             }
 
         }
-
+        //保证左侧的导航有足够的宽度来显示
         private void FrmConsole_Resize(object sender, EventArgs e)
         {
 
@@ -659,44 +388,7 @@ namespace Itop.Client.Forms
             }
             
         }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            //Smmprog sp = treeView.SelectedNode.Tag as Smmprog;       
-
-            //listViewdown.Items.Clear();
-            //label2.Text = treeView.SelectedNode.Text;
-            ////流程图
-            //if (treeView.SelectedNode.Parent!=null)
-            //{
-            //    frmsystempic.ChangePicture(treeView.SelectedNode.Parent.Text);
-            //}
-            //else
-            //{
-            //    frmsystempic.ChangePicture(treeView.SelectedNode.Text);
-            //}
-            
-            //DataRow[] rows = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", treeView.SelectedNode.Name, "f"));
-            //foreach (DataRow row in rows)
-            //{
-            //    VsmdgroupProg smdgroup = new VsmdgroupProg();
-            //    smdgroup = MIS.GetProgRight(row["ProgId"].ToString(), MIS.ProgUID);
-            //    if (smdgroup != null && Convert.ToInt32(smdgroup.run) > 0)
-            //    {
-
-            //        ListViewItem listItem = new ListViewItem();
-            //        listItem.Text = row["ProgName"].ToString();
-            //        listItem.Tag = DataConverter.RowToObject<Smmprog>(row);
-            //        listItem.ImageKey = row["ProgIco"].ToString();
-            //        if (row["Remark"] != null)
-            //        {
-            //            listItem.ToolTipText = row["Remark"].ToString();
-            //        }
-            //        listViewdown.Items.Add(listItem);
-            //    }
-            //}
-        }
-
+        //激活底部项定项
         private void listView_ItemActivate(object sender, EventArgs e)
         {
 
@@ -754,29 +446,19 @@ namespace Itop.Client.Forms
                 MIS.SaveLog(prog.ProgName, "关闭" + prog.ProgName);
             }
         }
-
-        private void splitContainer2_Panel1_Resize(object sender, EventArgs e)
-        {
-            //listView.Height = splitContainer2.Panel1.Height - 20;
-            //listView.Width = splitContainer2.Panel1.Width - 20;
-        }
-
+        //附件
         private void label4_Click(object sender, EventArgs e)
         {
-            //InitPro();
             IList<Project> IlistProject = new List<Project>();
             IlistProject.Add(pj);
             IlistProject.Add(pj1);
             VsmdgroupProg smdgroup = new VsmdgroupProg();
             smdgroup = MIS.GetProgRight("36f9d9ad-3580-4db5-a55f-9a6fd35616e4", pj.UID);
-
             Smmprog prog = SysService.GetOneByKey<Smmprog>("36f9d9ad-3580-4db5-a55f-9a6fd35616e4");
-
             object[] para = new object[3];
             para.SetValue(IlistProject, 0);
             para.SetValue(smdgroup, 1);
             para.SetValue(prog, 2);
-
             object classInstance = null;
             //初始化标准数据
             Itop.Common.MethodInvoker.Execute("Itop.Client.Layouts.dll", "Itop.Client.Layouts.FrmFiles", "InitData", para, ref classInstance);
@@ -786,60 +468,43 @@ namespace Itop.Client.Forms
                 int dd=1;
                 dd++;
             }
-
-
-
         }
-
-        private void InitPro()
-        {
-            ProjectTreeList pl = new ProjectTreeList();
-            if (pl.ShowDialog() == DialogResult.OK)
-            {
-                //bl = true;
-                pj = pl.PJ;
-                pj1 = pl.PJ1;
-                //this.Close();
-                //return;
-
-                label3.Text = "当前项目:" + pj1.ProjectName + " - " + pj.ProjectName;
-                //InitUserControl();
-            }
-
-            
-        
-        }
-
-
+      
         private void InitRightControl()
         {
-           // string s = "  IsGuiDang!='是' order by CreateDate";
             string s = "  IsGuiDang!='是' order by SortID";
             IList<Project> list = Services.BaseService.GetList<Project>("SelectProjectByWhere", s);
             dt = Itop.Common.DataConverter.ToDataTable((IList)list, typeof(Project));
-            this.treeList1.DataSource = dt;
-        }
+            //过滤项目用户
+            //非系统管理员
 
-        private void InitSelect()
-        {
-            if (treeList1.Nodes.Count > 0)
+            if (!IsSystemUser())
             {
-                if (treeList1.Nodes[0].Nodes.Count > 0)
+                IList<ProjectUser> listuser = SysService.GetList<ProjectUser>("SelectProjectbyWhere", " UserID='" + MIS.UserNumber + "'");
+                Hashtable hasproj = new Hashtable();
+                for (int i = 0; i < listuser.Count; i++)
                 {
-                    treeList1.SetFocusedNode(treeList1.Nodes[0].Nodes[0]);
+                    hasproj.Add(listuser[i].UID, listuser[i].UserID);
                 }
-            
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    if (dt.Rows[i]["ProjectManager"].ToString() != "" && dt.Rows[i]["GuiDangName"].ToString() != MIS.UserNumber && !hasproj.ContainsKey(dt.Rows[i]["UID"].ToString()))
+                    {
+                        dt.Rows.Remove(dt.Rows[i]);
+                        i--; 
+                    }
+                }
             }
+            
+            this.treeList1.DataSource = dt;
         }
         private void InitSelectControl()
         {
             TreeListNode tln = treeList1.FocusedNode;
-            XMGLpj = null;
+         
             if (tln == null)
                 return;
-            XMGLpj = new Project();
-            XMGLpj.UID = tln["UID"].ToString();
-            XMGLpj.ProjectName = tln["ProjectName"].ToString();
+            
             if (tln.ParentNode == null)
                 return;
 
@@ -852,6 +517,8 @@ namespace Itop.Client.Forms
             pj1.ProjectName = tln.ParentNode["ProjectName"].ToString();
 
             MIS.ProgUID = tln["UID"].ToString();
+            MIS.ProgName = tln["ProjectName"].ToString();
+            MIS.ProgUserID = tln["GuiDangName"].ToString();
 
             string labeltext = "";
             labeltext = pj1.ProjectName + " - " + pj.ProjectName;
@@ -868,8 +535,7 @@ namespace Itop.Client.Forms
             label5.Tag = labeltext;
 
         }
-
-
+        //添加目录
         private void TreeAdd()
         {
             Project obj = new Project();
@@ -898,7 +564,7 @@ namespace Itop.Client.Forms
             //将新对象加入到链表中
 
         }
-
+        //添加卷
         private void TreeAdd1()
         {
             TreeListNode tln = treeList1.FocusedNode;
@@ -941,8 +607,16 @@ namespace Itop.Client.Forms
             }
             //设置授权模块的权限
             VsmdgroupProg tempvp = new VsmdgroupProg();
+            
             tempvp.Progid = "b9b2acb7-e093-4721-a92f-749c731b016e";
             tempvp.Groupno = "SystemManage";
+
+            IList<Smugroup> listUsergroup = Services.BaseService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + MIS.UserNumber + "'");
+            if (listUsergroup.Count > 0)
+            {
+                tempvp.Groupno = listUsergroup[0].Groupno;
+            }
+
             tempvp.ProjectUID = obj.UID;
             tempvp.run = "1";
             try
@@ -955,7 +629,7 @@ namespace Itop.Client.Forms
 
             }
         }
-
+        //编辑卷
         private void TreeEdit()
         {
 
@@ -1003,7 +677,7 @@ namespace Itop.Client.Forms
            
 
         }
-
+        //删除卷
         private void TreeDel()
         {
             TreeListNode tln = treeList1.FocusedNode;
@@ -1011,14 +685,23 @@ namespace Itop.Client.Forms
             {
                 return;
             }
-
+            if (!IsSystemUser())
+            {
+                MsgBox.Show("您无权删除目录！");
+                return;
+            }
+            if (tln.Nodes.Count>0)
+            {
+                MsgBox.Show("该目录不为空，不能删除，请先删除该目录下的项目！");
+                return;
+            }
             string uid = tln["UID"].ToString();
             if (MsgBox.ShowYesNo("是否删除？") != DialogResult.Yes)
             {
                 return;
             }
 
-            //Project pj = Services.BaseService.GetOneByKey<Project>(uid);
+            
 
 
             //执行删除操作
@@ -1032,8 +715,6 @@ namespace Itop.Client.Forms
                         Services.BaseService.Update("UpdateProjectByGuiDangName", uid1);
                     }
                 }
-
-
                 Services.BaseService.Update("UpdateProjectByGuiDangName", uid);
                 treeList1.Nodes.Remove(tln);
             }
@@ -1044,10 +725,7 @@ namespace Itop.Client.Forms
             }
 
         }
-
-
-        
-
+        //恢复项目卷
         private void TreeGD()
         {
             FrmProjectGD fp = new FrmProjectGD();
@@ -1057,7 +735,7 @@ namespace Itop.Client.Forms
 
             }
         }
-
+        //关联图层
         private void TreeGL()
         {
             if (treeList1.FocusedNode != null)
@@ -1072,8 +750,7 @@ namespace Itop.Client.Forms
                 p.Show();
             }
         }
-
-
+        //拷贝卷宗
         private void TreeCopy()
         {
             try
@@ -1158,69 +835,150 @@ namespace Itop.Client.Forms
             }
             catch (Exception e1) { MsgBox.Show("错误提示:" + e1.Message); }
         }
+        //项目用户
+        private void ProjUser()
+        {
+            TreeListNode tln = treeList1.FocusedNode;
+            if (tln == null)
+            {
+                return;
+            }
+            if (tln.ParentNode==null)
+            {
+                return;
+            }
+
+            string uid = tln["UID"].ToString();
+            string userid=tln["GuiDangName"].ToString();
+            frmProjUser frm = new frmProjUser(uid, userid);
+            frm.ShowDialog();
+        }
+
+        //改变按钮状态
         private void ChangeButton(bool istrue)
         {
-           
-            bbtnadd.Enabled = istrue;
-
-            bbtnAdditem.Enabled = istrue;
-
-            bbtncopy.Enabled = istrue;
             
+            bool cnnrun = false;
+            //选择为目录
+            if (treeList1.FocusedNode.ParentNode==null)
+            {
+                // 管理员
+                
+                SetBarButtonEnabled(bbtnadd, true);
+                SetBarButtonEnabled(bbtnAdditem, true);
+                SetBarButtonEnabled(bbtnEdit, true);
+                SetBarButtonEnabled(bbtndel, istrue);
+                SetBarButtonEnabled(bbtngl, false);
+                SetBarButtonEnabled(bbtnRecor, false);
+                SetBarButtonEnabled(bbtncopy, false);
+                SetBarButtonEnabled(bbtnuser, false);
 
-            bbtngl.Enabled = istrue;
-           
+                SetMeunEnabled(0, true);
+                SetMeunEnabled(1, true);
+                SetMeunEnabled(2, true);
+                SetMeunEnabled(3, istrue);
+                SetMeunEnabled(4, false);
+                SetMeunEnabled(5, false);
+                SetMeunEnabled(6, false);
+                SetMeunEnabled(7, false);
+               
+            }
+            //选择为项目
+            else
+            {
+                // 管理员
+                if (istrue)
+                {
+                    SetBarButtonEnabled(bbtnadd, true);
+                    SetBarButtonEnabled(bbtnAdditem, true);
+                    SetBarButtonEnabled(bbtnEdit, true);
+                    SetBarButtonEnabled(bbtndel, true);
+                    SetBarButtonEnabled(bbtngl, true);
+                    SetBarButtonEnabled(bbtnRecor, true);
+                    SetBarButtonEnabled(bbtncopy, true);
+                    SetBarButtonEnabled(bbtnuser, true);
 
-            bbtndel.Enabled = istrue;
-          
+                    SetMeunEnabled(0, true);
+                    SetMeunEnabled(1, true);
+                    SetMeunEnabled(2, true);
+                    SetMeunEnabled(3, true);
+                    SetMeunEnabled(4, true);
+                    SetMeunEnabled(5, true);
+                    SetMeunEnabled(6, true);
+                    SetMeunEnabled(7, true);
+                }
+                else
+                {
+                    //项目创建人，则用户管理部分不可用
+                    if (treeList1.FocusedNode["GuiDangName"].ToString()== MIS.UserNumber)
+                    {
+                        SetBarButtonEnabled(bbtnadd, true);
+                        SetBarButtonEnabled(bbtnAdditem, false);
+                        SetBarButtonEnabled(bbtnEdit, true);
+                        SetBarButtonEnabled(bbtndel, true);
+                        SetBarButtonEnabled(bbtngl, false);
+                        SetBarButtonEnabled(bbtnRecor, false);
+                        SetBarButtonEnabled(bbtncopy, true);
+                        SetBarButtonEnabled(bbtnuser, true);
 
-            bbtnRecor.Enabled = istrue;
-            
+                        SetMeunEnabled(0, true);
+                        SetMeunEnabled(1, false);
+                        SetMeunEnabled(2, true);
+                        SetMeunEnabled(3, true);
+                        SetMeunEnabled(4, false);
+                        SetMeunEnabled(5, false);
+                        SetMeunEnabled(6, true);
+                        SetMeunEnabled(7, true);
+                    }
+                    else
+                    {
 
-            bbtnEdit.Enabled = istrue;
-         
-            bbtnup.Enabled = istrue;
-            
-            bbtndown.Enabled = istrue;
-           
+                        SetBarButtonEnabled(bbtnadd, true);
+                        SetBarButtonEnabled(bbtnAdditem, false);
+                        SetBarButtonEnabled(bbtnEdit, false);
+                        SetBarButtonEnabled(bbtndel, false);
+                        SetBarButtonEnabled(bbtngl, false);
+                        SetBarButtonEnabled(bbtnRecor, false);
+                        SetBarButtonEnabled(bbtncopy, false);
+                        SetBarButtonEnabled(bbtnuser, false);
 
-
-            contextMenuStrip1.Items[0].Enabled = istrue;
-            contextMenuStrip1.Items[0].Visible = istrue;
-
-            contextMenuStrip1.Items[1].Enabled = istrue;
-            contextMenuStrip1.Items[1].Visible = istrue;
-
-
-            contextMenuStrip1.Items[2].Enabled = istrue;
-            contextMenuStrip1.Items[2].Visible = istrue;
-
-            contextMenuStrip1.Items[3].Enabled = istrue;
-            contextMenuStrip1.Items[3].Visible = istrue;
-
-            contextMenuStrip1.Items[4].Enabled = istrue;
-            contextMenuStrip1.Items[4].Visible = istrue;
-
-            contextMenuStrip1.Items[5].Enabled = istrue;
-            contextMenuStrip1.Items[5].Visible = istrue;
-
-
-
-            contextMenuStrip1.Items[6].Enabled = istrue;
-            contextMenuStrip1.Items[6].Visible = istrue;
+                        SetMeunEnabled(0, true);
+                        SetMeunEnabled(1, false);
+                        SetMeunEnabled(2, false);
+                        SetMeunEnabled(3, false);
+                        SetMeunEnabled(4, false);
+                        SetMeunEnabled(5, false);
+                        SetMeunEnabled(6, false);
+                        SetMeunEnabled(7, false);
+                    }
 
 
-            contextMenuStrip1.Items[7].Enabled = istrue;
-            contextMenuStrip1.Items[7].Visible = istrue;
+                }
 
-
-            contextMenuStrip1.Items[8].Enabled = istrue;
-            contextMenuStrip1.Items[8].Visible = istrue;
-
-            contextMenuStrip1.Items[9].Enabled = istrue;
-            contextMenuStrip1.Items[9].Visible = istrue;
+               
+            }
 
         }
+
+        private void SetBarButtonEnabled(DevExpress.XtraBars.BarButtonItem bar, bool can)
+        {
+            if (can)
+            {
+                bar.Visibility= DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+            else
+            {
+                bar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+            bar.Enabled = can;
+        }
+        private void SetMeunEnabled(int index, bool can)
+        {
+            contextMenuStrip1.Items[index].Enabled = can;
+            contextMenuStrip1.Items[index].Visible = can;
+        }
+        
+
         private void 添加项目ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeAdd();
@@ -1255,6 +1013,12 @@ namespace Itop.Client.Forms
         {
             TreeCopy();
         }
+
+        private void 项目用户ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProjUser();
+        }
+
         private void 上移ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PrevMoveNode();
@@ -1265,33 +1029,15 @@ namespace Itop.Client.Forms
             NextMoveNode();
         }
 
+        //确定按钮是否可用，只有系统管理组的人员有权对项目和卷操作
         private void initButton()
         {
-            VsmdgroupProg smdgroup = new VsmdgroupProg();
-            bool isanmin = false;
 
-            string strsql = "Groupno='SystemManage' and Userid='" + MIS.UserNumber + "'";
-            IList list = SysService.GetList("SelectSmugroupByWhere", strsql);
-            if (list.Count > 0)
-            {
-                isanmin = true;
-            }
-            if (XMGLpj == null | isanmin)
-            {
-                ChangeButton(false | isanmin);
-                return;
-            }
-            smdgroup = MIS.GetProgRight(XMGLGUID, XMGLpj.UID);
-            if (smdgroup != null && smdgroup.run == "1")
-            {
-                ChangeButton(true);
-
-            }
-            else
-            {
-                ChangeButton(false);
-            }
+            bool isadmin = IsSystemUser();
+            ChangeButton(isadmin);
+         
         }
+        //更新用户操作卷状态
         public void UpdateUserState(Project p)
         {
             Smmuser user = SysService.GetOneByKey<Smmuser>(MIS.UserNumber);
@@ -1300,20 +1046,25 @@ namespace Itop.Client.Forms
         }
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            //DevExpress.XtraNavBar.NavBarGroup  lastgroup=null;
+
+            if (treeList1.FocusedNode==null)
+            {
+                return;
+            }
+            initButton();
+            if (treeList1.FocusedNode.Nodes.Count==0&&treeList1.FocusedNode.ParentNode==null)
+            {
+                return;
+            }
             string activegroupname = "";
             if (nbctSystem.ActiveGroup!=null)
             {
-                //lastgroup=nbctSystem.ActiveGroup;
+               
                 activegroupname = nbctSystem.ActiveGroup.Name;
             }
-            //if (oneload)
-            //{
-            //    return;
-            //}
             InitSelectControl();
-            InitProRight();
-            initButton();
+         
+            
             if (e.Node == null)
                 return;
             if (e.Node.TreeList.GetDataRecordByNode(e.Node) ==null)
@@ -1321,46 +1072,9 @@ namespace Itop.Client.Forms
             DataRow row = (e.Node.TreeList.GetDataRecordByNode(e.Node) as DataRowView).Row;
             Project p = DataConverter.RowToObject<Project>(row);
             UpdateUserState(p);
-
-
-            /////////////////////////////////////
-            //if (treeView.SelectedNode == null)
-            //{
-            //    return;
-            //}
-            //Smmprog sp = treeView.SelectedNode.Tag as Smmprog;
-
             list = SysService.GetList<Smmprog>();
             AddMainMenu(list);
-
-            //listViewdown.Items.Clear();
-            //label2.Text = treeView.SelectedNode.Text;
-
             DataRow[] rows = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'",nbctSystem.ActiveGroup.Name, "f"));
-
-
-            //foreach (DataRow row2 in rows)
-            //{
-            //    VsmdgroupProg smdgroup = new VsmdgroupProg();
-            //    smdgroup = MIS.GetProgRight(row2["ProgId"].ToString(), MIS.ProgUID);
-            //    if (smdgroup != null && Convert.ToInt32(smdgroup.run) > 0)
-            //    {
-
-            //        ListViewItem listItem = new ListViewItem();
-            //        listItem.Text = row2["ProgName"].ToString();
-            //        listItem.Tag = DataConverter.RowToObject<Smmprog>(row2);
-            //        listItem.ImageKey = row2["ProgIco"].ToString();
-            //        listViewdown.Items.Add(listItem);
-            //    }
-            //}
-
-          //if (lastgroup!=null)
-          //  {
-          //    nbctSystem.ActiveGroup=lastgroup;
-              
-          //    nbctSystem.Refresh();
-              
-          //  }
             if (activegroupname!="")
             {
                 foreach (DevExpress.XtraNavBar.NavBarGroup group in nbctSystem.Groups)
@@ -1374,60 +1088,15 @@ namespace Itop.Client.Forms
             }
             InitdownItem();
         }
-
+        //拖动结点
         private void treeList1_AfterDragNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e)
         {
             string id = e.Node["UID"].ToString();
             string pid = e.Node["ProjectManager"].ToString();
             Project pj = SysService.GetOneByKey<Project>(id);
             pj.ProjectManager = pid;
-
             SysService.Update<Project>(pj);
 
-            
-        }
-
-        private void treeList1_CustomDrawNodeCell(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
-        {
-            if ((e.Node == treeList1.FocusedNode && e.Column != treeList1.FocusedColumn) || e.Node == null || e.Column == null) return;
-            bool isFocusedCell = (e.Column == treeList1.FocusedColumn && e.Node == treeList1.FocusedNode);
-            Brush brush = null;
-            Rectangle r = e.Bounds;
-            bool ellipse = false;
-
-            string id = e.Node["UID"].ToString();
-            Project pj = SysService.GetOneByKey<Project>(id);
-
-
-            int b =0;
-            string a = pj.Address;
-            if (a != "")
-            {
-                b= int.Parse(a);
-            }
-
-
-            if (e.Column.FieldName == "ProjectName" && e.CellValue != null)
-            {
-                e.Appearance.ForeColor = Color.FromArgb(b);
-                //brush = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, Color.FromArgb(b), Color.FromArgb(b), 180);
-            }
-            if (brush != null)
-            {
-                e.Graphics.FillRectangle(brush, r);
-                //r.Inflate(-2, 0);
-                //if (ellipse)
-                //{
-                //    bool check = e.Node[5].Equals(true);
-                //    Brush ellipseBrush = check ? Brushes.LightGreen : Brushes.LightSkyBlue;
-                //    if (isFocusedCell) ellipseBrush = Brushes.Yellow;
-                //    e.Graphics.FillEllipse(ellipseBrush, r);
-                //}
-                //e.Appearance.DrawString(e.Cache, e.CellText, r);
-                //if (isFocusedCell)
-                //    DevExpress.Utils.Paint.XPaint.Graphics.DrawFocusRectangle(e.Graphics, e.Bounds, SystemColors.WindowText, e.Appearance.BackColor);
-                //e.Handled = true;
-            }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -1474,6 +1143,7 @@ namespace Itop.Client.Forms
         {
             NextMoveNode();
         }
+
         //上移
         private void PrevMoveNode()
         {
@@ -1563,178 +1233,15 @@ namespace Itop.Client.Forms
 
         private void treeList1_BeforeDragNode(object sender, DevExpress.XtraTreeList.BeforeDragNodeEventArgs e)
         {
+          
+
             if (e.Node.ParentNode == null || !bbtnEdit.Enabled)
             {
                 e.CanDrag = false;
                 return;
             }
         }
-        //缩略图
-        private void toolStripMenu_Sl_Click(object sender, EventArgs e)
-        {
-            listViewdown.View = System.Windows.Forms.View.LargeIcon;
-            toolStripMenu_Sl.Checked = true;
-            toolStripMenu_PP.Checked = false;
-            toolStripMenu_TB.Checked = false;
-            toolStripMenu_LB.Checked = false;
-            User_Ini.Writue("Setting", UserID + "Select_View", "0");
-            
-        }
-        //平铺
-        private void toolStripMenu_PP_Click(object sender, EventArgs e)
-        {
-            listViewdown.View = System.Windows.Forms.View.Tile;
-            toolStripMenu_Sl.Checked = false;
-            toolStripMenu_PP.Checked = true;
-            toolStripMenu_TB.Checked = false;
-            toolStripMenu_LB.Checked = false;
-            User_Ini.Writue("Setting", UserID + "Select_View", "1");
-        }
-        //图标
-        private void toolStripMenu_TB_Click(object sender, EventArgs e)
-        {
-            listViewdown.View = System.Windows.Forms.View.SmallIcon;
-            toolStripMenu_Sl.Checked = false;
-            toolStripMenu_PP.Checked = false;
-            toolStripMenu_TB.Checked = true;
-            toolStripMenu_LB.Checked = false;
-            User_Ini.Writue("Setting", UserID + "Select_View", "2");
-        }
-        //列表
-        private void toolStripMenu_LB_Click(object sender, EventArgs e)
-        {
-            listViewdown.View = System.Windows.Forms.View.List;  
-            toolStripMenu_Sl.Checked = false;
-            toolStripMenu_PP.Checked = false;
-            toolStripMenu_TB.Checked = false;
-            toolStripMenu_LB.Checked = true;
-            User_Ini.Writue("Setting", UserID + "Select_View", "3");
-        }
-        //大图标
-        private void toolStripMenu_Big_Click(object sender, EventArgs e)
-        {
-            Adapt_WindowsScreen();
-            toolStripMenu_Big.Checked = true;
-            toolStripMenu_Mid.Checked = false;
-            toolStripMenu_Little.Checked = false;
-             try
-            {
-                IList list = SysService.GetList("SelectSmmprogByFormIco", null);
-                DataTable dt_list = DataConverter.ToDataTable(list);
-                listViewdown.SmallImageList = ImageListRes.GetimageList(image_size_B[1], dt_list);
-                listViewdown.LargeImageList = ImageListRes.GetimageList(image_size_B[2], dt_list);
-                this.listViewdown.Font = new System.Drawing.Font("宋体", Font_size_B, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            try
-            {
-                IList list = SysService.GetList("SelectSmmprogByMeIco", null);
-                DataTable dt_list = DataConverter.ToDataTable(list);
-                //treeView.ImageList = ImageListRes.GetimageList(image_size_B[0], dt_list);
-                //this.treeView.Font = new System.Drawing.Font("宋体", Font_size_B, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-            User_Ini.Writue("Setting", UserID + "Select_Type", "0");
-            
-        }
-        //中图标
-        private void toolStripMenu_Mid_Click(object sender, EventArgs e)
-        {
-            Adapt_WindowsScreen();
-            toolStripMenu_Big.Checked = false;
-            toolStripMenu_Mid.Checked = true;
-            toolStripMenu_Little.Checked = false;
-             try
-            {
-                IList list = SysService.GetList("SelectSmmprogByFormIco", null);
-                DataTable dt_list = DataConverter.ToDataTable(list);
-                listViewdown.SmallImageList = ImageListRes.GetimageList(image_size_M[1], dt_list);
-                listViewdown.LargeImageList = ImageListRes.GetimageList(image_size_M[2], dt_list);
-                this.listViewdown.Font = new System.Drawing.Font("宋体", Font_size_M, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            try
-            {
-                IList list = SysService.GetList("SelectSmmprogByMeIco", null);
-                DataTable dt_list = DataConverter.ToDataTable(list);
-                //treeView.ImageList = ImageListRes.GetimageList(image_size_M[0], dt_list);
-                //this.treeView.Font = new System.Drawing.Font("宋体", Font_size_M, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-            User_Ini.Writue("Setting", UserID + "Select_Type", "1");
-        }
-        //小图标
-        private void toolStripMenu_Little_Click(object sender, EventArgs e)
-        {
-            Adapt_WindowsScreen();
-            toolStripMenu_Big.Checked = false;
-            toolStripMenu_Mid.Checked = false;
-            toolStripMenu_Little.Checked = true;
-             try
-            {
-                IList list = SysService.GetList("SelectSmmprogByFormIco", null);
-                DataTable dt_list = DataConverter.ToDataTable(list);
-                listViewdown.SmallImageList = ImageListRes.GetimageList(image_size_L[1], dt_list);
-                listViewdown.LargeImageList = ImageListRes.GetimageList(image_size_L[2], dt_list);
-                this.listViewdown.Font = new System.Drawing.Font("宋体", Font_size_L, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            try
-            {
-                IList list = SysService.GetList("SelectSmmprogByMeIco", null);
-                DataTable dt_list = DataConverter.ToDataTable(list);
-                //treeView.ImageList = ImageListRes.GetimageList(image_size_L[0], dt_list);
-                //this.treeView.Font = new System.Drawing.Font("宋体", Font_size_L, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            User_Ini.Writue("Setting", UserID + "Select_Type", "2");
-        }
-
-        private void 放大字体ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            treeList1.Columns[0].AppearanceCell.Font =new System.Drawing.Font(treeList1.Columns[0].AppearanceCell.Font.FontFamily, treeList1.Columns[0].AppearanceCell.Font.Size + 1F);
-            treeList1.RowHeight = Convert.ToInt32(20 * treeList1.Columns[0].AppearanceCell.Font.Size / 10F);
-            treeList1.Refresh();
-            User_Ini.Writue("Setting", UserID + "FontSize", treeList1.Columns[0].AppearanceCell.Font.Size.ToString());
-            
-        }
-
-        private void 缩小字体ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            treeList1.Columns[0].AppearanceCell.Font =new  System.Drawing.Font(treeList1.Columns[0].AppearanceCell.Font.FontFamily, treeList1.Columns[0].AppearanceCell.Font.Size -1F);
-            treeList1.RowHeight = Convert.ToInt32(20 * treeList1.Columns[0].AppearanceCell.Font.Size / 10F);
-            treeList1.Refresh();
-            User_Ini.Writue("Setting", UserID + "FontSize", treeList1.Columns[0].AppearanceCell.Font.Size.ToString());
-
-        }
+       
         private void splitContainer1_Panel1_Resize(object sender, EventArgs e)
         {
             //treeView.Height = splitContainer1.Panel1.Height - 30;
@@ -1766,21 +1273,11 @@ namespace Itop.Client.Forms
             
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void nbctSystem_CustomDrawBackground(object sender, DevExpress.XtraNavBar.ViewInfo.CustomDrawObjectEventArgs e)
         {
             e.Appearance.ForeColor = Color.Black;
             e.Appearance.BackColor = Color.Navy;
             e.Appearance.BackColor2 = Color.FromArgb(192, 192, 255);
-        }
-
-        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
         }
 
         private void nbctSystem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -1789,7 +1286,7 @@ namespace Itop.Client.Forms
             ActiveItem(e.Link.Item);
             
         }
-
+        //由左侧导航激活模块
         private void ActiveItem(DevExpress.XtraNavBar.NavBarItem  nbi)
         {
             Smmprog prog = nbi.Tag as Smmprog;
@@ -1846,10 +1343,7 @@ namespace Itop.Client.Forms
                 MIS.SaveLog(prog.ProgName, "关闭" + prog.ProgName);
             }
         }
-      
-
-        
-
+        //当前活动分组分生改变
         private void nbctSystem_ActiveGroupChanged(object sender, DevExpress.XtraNavBar.NavBarGroupEventArgs e)
         {
             
@@ -1868,12 +1362,13 @@ namespace Itop.Client.Forms
             
             
         }
+        //设置网页的地址
         public void SetUrl(string url)
         {
             webBrowser1.Navigate(Application.StartupPath + "\\flowchart\\" + url);
-           
-            //this.webBrowser1.Refresh();
+
         }
+        //网页导航转向时
         private void webBrowser1_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
             if (!e.Url.ToString().Contains("htm"))
@@ -1902,7 +1397,7 @@ namespace Itop.Client.Forms
             
         }
       
-
+        //网页大小发生改变时
         private void webBrowser1_SizeChanged(object sender, EventArgs e)
         {
             HtmlDocument document = this.webBrowser1.Document;
@@ -1963,6 +1458,73 @@ namespace Itop.Client.Forms
         {
             TreeGD();
         }
+        //用户
+        private void bbtnuser_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ProjUser();
+        }
+
+
+        private void treeList1_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
+        {
+            if (e.Node.ParentNode == null)
+            {
+                e.Node.StateImageIndex = 1;
+
+            }
+            else
+            {
+                e.Node.StateImageIndex = 0;
+            }
+        }
+
+        private void treeList1_CustomDrawNodeCell(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
+        {
+            if ((e.Node == treeList1.FocusedNode && e.Column != treeList1.FocusedColumn) || e.Node == null || e.Column == null) return;
+            bool isFocusedCell = (e.Column == treeList1.FocusedColumn && e.Node == treeList1.FocusedNode);
+            Brush brush = null;
+            Rectangle r = e.Bounds;
+            bool ellipse = false;
+
+            string id = e.Node["UID"].ToString();
+            Project pj = SysService.GetOneByKey<Project>(id);
+
+
+            int b = 0;
+            string a = pj.Address;
+            if (a != "")
+            {
+                b = int.Parse(a);
+            }
+
+
+            if (e.Column.FieldName == "ProjectName" && e.CellValue != null)
+            {
+                e.Appearance.ForeColor = Color.FromArgb(b);
+                //brush = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, Color.FromArgb(b), Color.FromArgb(b), 180);
+            }
+            if (brush != null)
+            {
+                e.Graphics.FillRectangle(brush, r);
+                //r.Inflate(-2, 0);
+                //if (ellipse)
+                //{
+                //    bool check = e.Node[5].Equals(true);
+                //    Brush ellipseBrush = check ? Brushes.LightGreen : Brushes.LightSkyBlue;
+                //    if (isFocusedCell) ellipseBrush = Brushes.Yellow;
+                //    e.Graphics.FillEllipse(ellipseBrush, r);
+                //}
+                //e.Appearance.DrawString(e.Cache, e.CellText, r);
+                //if (isFocusedCell)
+                //    DevExpress.Utils.Paint.XPaint.Graphics.DrawFocusRectangle(e.Graphics, e.Bounds, SystemColors.WindowText, e.Appearance.BackColor);
+                //e.Handled = true;
+            }
+        }
+
+       
+
+      
+       
 
      
     }

@@ -41,19 +41,14 @@
             this.toolStripMenu_Mid = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenu_Little = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.添加目录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.添加项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.添加卷宗ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.恢复项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关联图层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.拷贝卷宗ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.上移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.下移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.放大字体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.缩小字体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.拷贝项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.项目用户ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -82,6 +77,8 @@
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.imageList4 = new System.Windows.Forms.ImageList(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -95,6 +92,7 @@
             this.bbtncopy = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnup = new DevExpress.XtraBars.BarButtonItem();
             this.bbtndown = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnuser = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -160,7 +158,6 @@
             // 
             this.timer_update.Enabled = true;
             this.timer_update.Interval = 60000;
-            this.timer_update.Tick += new System.EventHandler(this.timer_update_Tick);
             // 
             // contextMenuStrip2
             // 
@@ -181,28 +178,24 @@
             this.toolStripMenu_Sl.Name = "toolStripMenu_Sl";
             this.toolStripMenu_Sl.Size = new System.Drawing.Size(172, 22);
             this.toolStripMenu_Sl.Text = "缩略图";
-            this.toolStripMenu_Sl.Click += new System.EventHandler(this.toolStripMenu_Sl_Click);
             // 
             // toolStripMenu_PP
             // 
             this.toolStripMenu_PP.Name = "toolStripMenu_PP";
             this.toolStripMenu_PP.Size = new System.Drawing.Size(172, 22);
             this.toolStripMenu_PP.Text = "平铺";
-            this.toolStripMenu_PP.Click += new System.EventHandler(this.toolStripMenu_PP_Click);
             // 
             // toolStripMenu_TB
             // 
             this.toolStripMenu_TB.Name = "toolStripMenu_TB";
             this.toolStripMenu_TB.Size = new System.Drawing.Size(172, 22);
             this.toolStripMenu_TB.Text = "图标";
-            this.toolStripMenu_TB.Click += new System.EventHandler(this.toolStripMenu_TB_Click);
             // 
             // toolStripMenu_LB
             // 
             this.toolStripMenu_LB.Name = "toolStripMenu_LB";
             this.toolStripMenu_LB.Size = new System.Drawing.Size(172, 22);
             this.toolStripMenu_LB.Text = "列表";
-            this.toolStripMenu_LB.Click += new System.EventHandler(this.toolStripMenu_LB_Click);
             // 
             // toolStripSeparator1
             // 
@@ -214,54 +207,46 @@
             this.toolStripMenu_Big.Name = "toolStripMenu_Big";
             this.toolStripMenu_Big.Size = new System.Drawing.Size(172, 22);
             this.toolStripMenu_Big.Text = "模块大图标+大文本";
-            this.toolStripMenu_Big.Click += new System.EventHandler(this.toolStripMenu_Big_Click);
             // 
             // toolStripMenu_Mid
             // 
             this.toolStripMenu_Mid.Name = "toolStripMenu_Mid";
             this.toolStripMenu_Mid.Size = new System.Drawing.Size(172, 22);
             this.toolStripMenu_Mid.Text = "模块中图标+中文本";
-            this.toolStripMenu_Mid.Click += new System.EventHandler(this.toolStripMenu_Mid_Click);
             // 
             // toolStripMenu_Little
             // 
             this.toolStripMenu_Little.Name = "toolStripMenu_Little";
             this.toolStripMenu_Little.Size = new System.Drawing.Size(172, 22);
             this.toolStripMenu_Little.Text = "模块小图标+小文本";
-            this.toolStripMenu_Little.Click += new System.EventHandler(this.toolStripMenu_Little_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.添加目录ToolStripMenuItem,
             this.添加项目ToolStripMenuItem,
-            this.添加卷宗ToolStripMenuItem,
             this.修改ToolStripMenuItem,
             this.删除ToolStripMenuItem,
             this.恢复项目ToolStripMenuItem,
             this.关联图层ToolStripMenuItem,
-            this.拷贝卷宗ToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.上移ToolStripMenuItem,
-            this.下移ToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.放大字体ToolStripMenuItem,
-            this.缩小字体ToolStripMenuItem});
+            this.拷贝项目ToolStripMenuItem,
+            this.项目用户ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(119, 258);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(119, 180);
+            // 
+            // 添加目录ToolStripMenuItem
+            // 
+            this.添加目录ToolStripMenuItem.Name = "添加目录ToolStripMenuItem";
+            this.添加目录ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.添加目录ToolStripMenuItem.Text = "添加目录";
+            this.添加目录ToolStripMenuItem.Click += new System.EventHandler(this.添加项目ToolStripMenuItem_Click);
             // 
             // 添加项目ToolStripMenuItem
             // 
             this.添加项目ToolStripMenuItem.Name = "添加项目ToolStripMenuItem";
             this.添加项目ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.添加项目ToolStripMenuItem.Text = "添加项目";
-            this.添加项目ToolStripMenuItem.Click += new System.EventHandler(this.添加项目ToolStripMenuItem_Click);
-            // 
-            // 添加卷宗ToolStripMenuItem
-            // 
-            this.添加卷宗ToolStripMenuItem.Name = "添加卷宗ToolStripMenuItem";
-            this.添加卷宗ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.添加卷宗ToolStripMenuItem.Text = "添加卷宗";
-            this.添加卷宗ToolStripMenuItem.Click += new System.EventHandler(this.添加卷宗ToolStripMenuItem_Click);
+            this.添加项目ToolStripMenuItem.Click += new System.EventHandler(this.添加卷宗ToolStripMenuItem_Click);
             // 
             // 修改ToolStripMenuItem
             // 
@@ -291,54 +276,19 @@
             this.关联图层ToolStripMenuItem.Text = "关联图层";
             this.关联图层ToolStripMenuItem.Click += new System.EventHandler(this.关联图层ToolStripMenuItem_Click);
             // 
-            // 拷贝卷宗ToolStripMenuItem
+            // 拷贝项目ToolStripMenuItem
             // 
-            this.拷贝卷宗ToolStripMenuItem.Name = "拷贝卷宗ToolStripMenuItem";
-            this.拷贝卷宗ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.拷贝卷宗ToolStripMenuItem.Text = "拷贝卷宗";
-            this.拷贝卷宗ToolStripMenuItem.Click += new System.EventHandler(this.拷贝卷宗ToolStripMenuItem_Click);
+            this.拷贝项目ToolStripMenuItem.Name = "拷贝项目ToolStripMenuItem";
+            this.拷贝项目ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.拷贝项目ToolStripMenuItem.Text = "拷贝项目";
+            this.拷贝项目ToolStripMenuItem.Click += new System.EventHandler(this.拷贝卷宗ToolStripMenuItem_Click);
             // 
-            // toolStripSeparator3
+            // 项目用户ToolStripMenuItem
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(115, 6);
-            // 
-            // 上移ToolStripMenuItem
-            // 
-            this.上移ToolStripMenuItem.Enabled = false;
-            this.上移ToolStripMenuItem.Name = "上移ToolStripMenuItem";
-            this.上移ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.上移ToolStripMenuItem.Text = "上移";
-            this.上移ToolStripMenuItem.Visible = false;
-            this.上移ToolStripMenuItem.Click += new System.EventHandler(this.上移ToolStripMenuItem_Click);
-            // 
-            // 下移ToolStripMenuItem
-            // 
-            this.下移ToolStripMenuItem.Enabled = false;
-            this.下移ToolStripMenuItem.Name = "下移ToolStripMenuItem";
-            this.下移ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.下移ToolStripMenuItem.Text = "下移";
-            this.下移ToolStripMenuItem.Visible = false;
-            this.下移ToolStripMenuItem.Click += new System.EventHandler(this.下移ToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(115, 6);
-            // 
-            // 放大字体ToolStripMenuItem
-            // 
-            this.放大字体ToolStripMenuItem.Name = "放大字体ToolStripMenuItem";
-            this.放大字体ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.放大字体ToolStripMenuItem.Text = "放大字体";
-            this.放大字体ToolStripMenuItem.Click += new System.EventHandler(this.放大字体ToolStripMenuItem_Click);
-            // 
-            // 缩小字体ToolStripMenuItem
-            // 
-            this.缩小字体ToolStripMenuItem.Name = "缩小字体ToolStripMenuItem";
-            this.缩小字体ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.缩小字体ToolStripMenuItem.Text = "缩小字体";
-            this.缩小字体ToolStripMenuItem.Click += new System.EventHandler(this.缩小字体ToolStripMenuItem_Click);
+            this.项目用户ToolStripMenuItem.Name = "项目用户ToolStripMenuItem";
+            this.项目用户ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.项目用户ToolStripMenuItem.Text = "项目用户";
+            this.项目用户ToolStripMenuItem.Click += new System.EventHandler(this.项目用户ToolStripMenuItem_Click);
             // 
             // imageList2
             // 
@@ -456,7 +406,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // splitContainer2
             // 
@@ -614,7 +563,7 @@
             this.webBrowser1.MinimumSize = new System.Drawing.Size(23, 23);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(657, 287);
+            this.webBrowser1.Size = new System.Drawing.Size(676, 287);
             this.webBrowser1.TabIndex = 3;
             this.webBrowser1.WebBrowserShortcutsEnabled = false;
             this.webBrowser1.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowser1_Navigating);
@@ -646,13 +595,10 @@
             // 
             // standaloneBarDockControl1
             // 
-            this.standaloneBarDockControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.standaloneBarDockControl1.AutoSizeInLayoutControl = false;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(3, 2);
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(309, 28);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(312, 26);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // panel3
@@ -670,26 +616,84 @@
             this.treeList1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeList1.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.treeList1.Appearance.Empty.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
+            this.treeList1.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.treeList1.Appearance.Empty.BackColor2 = System.Drawing.Color.White;
             this.treeList1.Appearance.Empty.Options.UseBackColor = true;
-            this.treeList1.Appearance.EvenRow.Options.UseImage = true;
-            this.treeList1.Appearance.FocusedCell.BorderColor = System.Drawing.Color.White;
-            this.treeList1.Appearance.FocusedCell.ForeColor = System.Drawing.Color.White;
-            this.treeList1.Appearance.FocusedCell.Options.UseBorderColor = true;
+            this.treeList1.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.treeList1.Appearance.EvenRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.treeList1.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black;
+            this.treeList1.Appearance.EvenRow.Options.UseBackColor = true;
+            this.treeList1.Appearance.EvenRow.Options.UseBorderColor = true;
+            this.treeList1.Appearance.EvenRow.Options.UseForeColor = true;
+            this.treeList1.Appearance.FocusedCell.BackColor = System.Drawing.Color.White;
+            this.treeList1.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Black;
+            this.treeList1.Appearance.FocusedCell.Options.UseBackColor = true;
             this.treeList1.Appearance.FocusedCell.Options.UseForeColor = true;
-            this.treeList1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.treeList1.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(109)))), ((int)(((byte)(189)))));
+            this.treeList1.Appearance.FocusedRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(139)))), ((int)(((byte)(206)))));
+            this.treeList1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White;
+            this.treeList1.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.treeList1.Appearance.FocusedRow.Options.UseBorderColor = true;
             this.treeList1.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.treeList1.Appearance.Row.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
-            this.treeList1.Appearance.Row.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
+            this.treeList1.Appearance.FooterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.treeList1.Appearance.FooterPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.treeList1.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Black;
+            this.treeList1.Appearance.FooterPanel.Options.UseBackColor = true;
+            this.treeList1.Appearance.FooterPanel.Options.UseBorderColor = true;
+            this.treeList1.Appearance.FooterPanel.Options.UseForeColor = true;
+            this.treeList1.Appearance.GroupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.treeList1.Appearance.GroupButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.treeList1.Appearance.GroupButton.Options.UseBackColor = true;
+            this.treeList1.Appearance.GroupButton.Options.UseBorderColor = true;
+            this.treeList1.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(216)))), ((int)(((byte)(254)))));
+            this.treeList1.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(216)))), ((int)(((byte)(254)))));
+            this.treeList1.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black;
+            this.treeList1.Appearance.GroupFooter.Options.UseBackColor = true;
+            this.treeList1.Appearance.GroupFooter.Options.UseBorderColor = true;
+            this.treeList1.Appearance.GroupFooter.Options.UseForeColor = true;
+            this.treeList1.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(201)))), ((int)(((byte)(254)))));
+            this.treeList1.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(201)))), ((int)(((byte)(254)))));
+            this.treeList1.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.treeList1.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.treeList1.Appearance.HeaderPanel.Options.UseBorderColor = true;
+            this.treeList1.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.treeList1.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(170)))), ((int)(((byte)(225)))));
+            this.treeList1.Appearance.HideSelectionRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(155)))), ((int)(((byte)(215)))));
+            this.treeList1.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.treeList1.Appearance.HideSelectionRow.Options.UseBackColor = true;
+            this.treeList1.Appearance.HideSelectionRow.Options.UseBorderColor = true;
+            this.treeList1.Appearance.HideSelectionRow.Options.UseForeColor = true;
+            this.treeList1.Appearance.HorzLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.treeList1.Appearance.HorzLine.Options.UseBackColor = true;
+            this.treeList1.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.treeList1.Appearance.OddRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.treeList1.Appearance.OddRow.ForeColor = System.Drawing.Color.Black;
+            this.treeList1.Appearance.OddRow.Options.UseBackColor = true;
+            this.treeList1.Appearance.OddRow.Options.UseBorderColor = true;
+            this.treeList1.Appearance.OddRow.Options.UseForeColor = true;
+            this.treeList1.Appearance.Preview.Font = new System.Drawing.Font("Verdana", 7.5F);
+            this.treeList1.Appearance.Preview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(155)))), ((int)(((byte)(215)))));
+            this.treeList1.Appearance.Preview.Options.UseFont = true;
+            this.treeList1.Appearance.Preview.Options.UseForeColor = true;
+            this.treeList1.Appearance.Row.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.treeList1.Appearance.Row.ForeColor = System.Drawing.Color.Black;
             this.treeList1.Appearance.Row.Options.UseBackColor = true;
+            this.treeList1.Appearance.Row.Options.UseForeColor = true;
+            this.treeList1.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(155)))), ((int)(((byte)(215)))));
+            this.treeList1.Appearance.SelectedRow.ForeColor = System.Drawing.Color.White;
+            this.treeList1.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.treeList1.Appearance.SelectedRow.Options.UseForeColor = true;
+            this.treeList1.Appearance.TreeLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(133)))), ((int)(((byte)(195)))));
+            this.treeList1.Appearance.TreeLine.Options.UseBackColor = true;
+            this.treeList1.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.treeList1.Appearance.VertLine.Options.UseBackColor = true;
             this.treeList1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn2,
             this.treeListColumn3,
             this.treeListColumn1,
-            this.treeListColumn4});
-            this.treeList1.ColumnsImageList = this.imageList1;
+            this.treeListColumn4,
+            this.treeListColumn5});
             this.treeList1.ContextMenuStrip = this.contextMenuStrip1;
             this.treeList1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.treeList1.KeyFieldName = "UID";
@@ -701,21 +705,27 @@
             this.treeList1.OptionsBehavior.AutoMoveRowFocus = true;
             this.treeList1.OptionsBehavior.DragNodes = true;
             this.treeList1.OptionsBehavior.Editable = false;
+            this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
+            this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(329, 541);
+            this.treeList1.Size = new System.Drawing.Size(336, 541);
+            this.treeList1.StateImageList = this.imageList4;
             this.treeList1.TabIndex = 7;
             this.treeList1.AfterDragNode += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList1_AfterDragNode);
             this.treeList1.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.treeList1_CustomDrawNodeCell);
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
+            this.treeList1.BeforeDragNode += new DevExpress.XtraTreeList.BeforeDragNodeEventHandler(this.treeList1_BeforeDragNode);
+            this.treeList1.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.treeList1_GetStateImage);
             // 
             // treeListColumn2
             // 
             this.treeListColumn2.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.treeListColumn2.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.treeListColumn2.AppearanceCell.Options.UseBackColor = true;
-            this.treeListColumn2.Caption = "项目名称";
+            this.treeListColumn2.Caption = "项目管理";
             this.treeListColumn2.FieldName = "ProjectName";
             this.treeListColumn2.ImageIndex = 1;
+            this.treeListColumn2.MinWidth = 73;
             this.treeListColumn2.Name = "treeListColumn2";
             this.treeListColumn2.OptionsColumn.AllowEdit = false;
             this.treeListColumn2.OptionsColumn.AllowMove = false;
@@ -746,6 +756,19 @@
             this.treeListColumn4.FieldName = "SortID";
             this.treeListColumn4.Name = "treeListColumn4";
             this.treeListColumn4.SortOrder = System.Windows.Forms.SortOrder.Ascending;
+            // 
+            // treeListColumn5
+            // 
+            this.treeListColumn5.Caption = "创建用户";
+            this.treeListColumn5.FieldName = "GuiDangName";
+            this.treeListColumn5.Name = "treeListColumn5";
+            // 
+            // imageList4
+            // 
+            this.imageList4.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList4.ImageStream")));
+            this.imageList4.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList4.Images.SetKeyName(0, "application.ico");
+            this.imageList4.Images.SetKeyName(1, "folder.ico");
             // 
             // label5
             // 
@@ -798,17 +821,17 @@
             this.bbtnRecor,
             this.bbtncopy,
             this.bbtnup,
-            this.bbtndown});
-            this.barManager1.MaxItemId = 9;
+            this.bbtndown,
+            this.bbtnuser});
+            this.barManager1.MaxItemId = 12;
             // 
             // bar1
             // 
             this.bar1.BarName = "Tools";
-            this.bar1.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Standalone;
             this.bar1.DockCol = 0;
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.bar1.FloatLocation = new System.Drawing.Point(997, 500);
+            this.bar1.FloatLocation = new System.Drawing.Point(942, 179);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnadd),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnAdditem),
@@ -818,14 +841,17 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtngl),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtncopy),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnup),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtndown)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtndown),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnuser)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DisableCustomization = true;
+            this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Tools";
             // 
             // bbtnadd
             // 
-            this.bbtnadd.Hint = "添加项目";
+            this.bbtnadd.Hint = "添加目录";
             this.bbtnadd.Id = 0;
             this.bbtnadd.ImageIndex = 7;
             this.bbtnadd.Name = "bbtnadd";
@@ -833,7 +859,7 @@
             // 
             // bbtnAdditem
             // 
-            this.bbtnAdditem.Hint = "添加卷宗";
+            this.bbtnAdditem.Hint = "添加项目";
             this.bbtnAdditem.Id = 4;
             this.bbtnAdditem.ImageIndex = 8;
             this.bbtnAdditem.Name = "bbtnAdditem";
@@ -873,7 +899,7 @@
             // 
             // bbtncopy
             // 
-            this.bbtncopy.Hint = "拷贝卷宗";
+            this.bbtncopy.Hint = "拷贝项目";
             this.bbtncopy.Id = 6;
             this.bbtncopy.ImageIndex = 4;
             this.bbtncopy.Name = "bbtncopy";
@@ -894,6 +920,14 @@
             this.bbtndown.ImageIndex = 2;
             this.bbtndown.Name = "bbtndown";
             this.bbtndown.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // bbtnuser
+            // 
+            this.bbtnuser.Hint = "项目用户";
+            this.bbtnuser.Id = 9;
+            this.bbtnuser.ImageIndex = 9;
+            this.bbtnuser.Name = "bbtnuser";
+            this.bbtnuser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnuser_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -932,6 +966,7 @@
             this.imageList3.Images.SetKeyName(6, "web_layout_chart_32.png");
             this.imageList3.Images.SetKeyName(7, "add_32.png");
             this.imageList3.Images.SetKeyName(8, "activity_monitor_add.png");
+            this.imageList3.Images.SetKeyName(9, "Users.ico");
             // 
             // FrmConsole
             // 
@@ -975,7 +1010,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+}
 
       
 
@@ -996,15 +1031,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 添加目录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 添加项目ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 添加卷宗ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 恢复项目ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关联图层ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 拷贝卷宗ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 上移ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 下移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 拷贝项目ToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Sl;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_PP;
@@ -1014,10 +1047,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Big;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Mid;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu_Little;
-        private System.Windows.Forms.ToolStripMenuItem 放大字体ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 缩小字体ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private CSharpWin.SplitContainerEx splitContainer2;
         private CSharpWin.SplitContainerEx splitContainer1;
         private DevExpress.XtraNavBar.NavBarControl nbctSystem;
@@ -1055,6 +1084,11 @@
         private DevExpress.XtraBars.BarButtonItem bbtnup;
         private DevExpress.XtraBars.BarButtonItem bbtndown;
         private DevExpress.XtraBars.Bar bar1;
+        private System.Windows.Forms.ImageList imageList4;
+        private DevExpress.XtraBars.BarButtonItem bbtnuser;
+        private System.Windows.Forms.ToolStripMenuItem 项目用户ToolStripMenuItem;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn5;
+       
 
     }
 }
