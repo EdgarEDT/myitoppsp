@@ -70,7 +70,7 @@
       "Remark"
       FROM ProjectUser
     </select>
-    <select id='SelectProjectbyWhere' resultMap='ProjectUserResult' parameterClass='string'>
+    <select id='SelectProjectUserbyWhere' resultMap='ProjectUserResult' parameterClass='string'>
       SELECT
       "UID",
       "UserID",
