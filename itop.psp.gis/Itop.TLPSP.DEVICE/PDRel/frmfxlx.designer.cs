@@ -117,7 +117,7 @@
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "人员";
+            this.gridColumn3.Caption = "配电方式";
             this.gridColumn3.FieldName = "A";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
@@ -165,7 +165,7 @@
             this.MinimizeBox = false;
             this.Name = "frmfxlx";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "人员选择器";
+            this.Text = "配电方式";
             this.Load += new System.EventHandler(this.frmorgRySelect_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
