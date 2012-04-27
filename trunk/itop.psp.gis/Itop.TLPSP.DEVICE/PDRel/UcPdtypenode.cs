@@ -225,6 +225,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "01" || tln.GetValue("devicetype").ToString() == "73")
                 {
                     adducdevice("73");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
@@ -257,6 +258,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "73")
                 {
                     adducdevice("74");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
@@ -290,6 +292,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "73")
                 {
                     adducdevice("80");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
@@ -323,6 +326,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "73")
                 {
                     adducdevice("75");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
@@ -356,6 +360,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "74")
                 {
                     adducdevice("06");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
@@ -389,6 +394,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "74")
                 {
                     adducdevice("55");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;

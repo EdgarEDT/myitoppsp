@@ -144,7 +144,7 @@
             this.groupBox5.Controls.Add(this.comboBoxEdit4);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.groupBox5.Location = new System.Drawing.Point(335, 154);
+            this.groupBox5.Location = new System.Drawing.Point(335, 129);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(310, 66);
             this.groupBox5.TabIndex = 3;
@@ -251,6 +251,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "不计入")});
             this.radioGroup2.Size = new System.Drawing.Size(98, 72);
             this.radioGroup2.TabIndex = 3;
+            this.radioGroup2.SelectedIndexChanged += new System.EventHandler(this.radioGroup2_SelectedIndexChanged);
             // 
             // spinEdit2
             // 

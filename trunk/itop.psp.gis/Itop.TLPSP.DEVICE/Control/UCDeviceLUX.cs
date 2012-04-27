@@ -328,6 +328,7 @@ namespace Itop.TLPSP.DEVICE
         public override void Add() {
             frmLUXdlg dlg = new frmLUXdlg();
             dlg.ProjectSUID = this.ProjectID;
+            dlg.ParentID = ParentID;
             dlg.Name = "";
             if (dlg.ShowDialog() == DialogResult.OK) {
                 //Ôö¼Ó¼ÇÂ¼ 

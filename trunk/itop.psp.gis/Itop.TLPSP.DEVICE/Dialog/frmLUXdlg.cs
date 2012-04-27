@@ -58,6 +58,19 @@ namespace Itop.TLPSP.DEVICE
                 dev.Length2 =Convert.ToDouble(splength2.Value);
                 dev.LLFS = comllfs.Text;
                 dev.SwitchNum = Convert.ToInt32(spkg.Value);
+                if (KswitchStatus==0)
+                {
+                    dev.HuganTQ3 = Convert.ToDouble(spinEdit19.Value);
+                }
+                
+                if (lookUpEdit1.EditValue!=null)
+                {
+                    dev.HuganLine1 = lookUpEdit1.EditValue.ToString();
+                }
+                if (lookUpEdit2.EditValue!=null)
+                {
+                    dev.HuganLine2 = lookUpEdit2.EditValue.ToString();
+                }
                 if (comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text) != null)
                 {
                     dev.AreaID = comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text).ToString();
@@ -100,14 +113,22 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit18.Value = (decimal)dev.HuganTQ1;
                 comboBoxEdit7.Text = dev.JXFS;
                 comboBoxEdit8.Text = dev.DQ;
-                comboBoxEdit9.EditValue = dev.AreaID;  
+                comboBoxEdit9.EditValue = dev.AreaID;
+                if (f==0)
+                {
+                    spinEdit19.Value = (decimal)dev.HuganTQ3;
+                }
+                
                 comlinetype2.Text = dev.LineType2;
                 splength2.Value = Convert.ToDecimal(dev.Length2);
                 comllfs.Text = dev.LLFS;
                 spkg.Value = Convert.ToDecimal(dev.SwitchNum);
+                lookUpEdit1.EditValue = dev.HuganLine1;
+                lookUpEdit2.EditValue = dev.HuganLine2;
                 setXL();
                 setLineName();
                 setBdzName();
+
                 //NodeType = f;    
             }
         }
@@ -129,6 +150,16 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit17.Value = (decimal)rc.WireChange;
             }
         }
+        private string parentid;
+        public string ParentID
+        {
+            get
+            {
+                return parentid;
+            }
+            set { parentid = value; }
+        }
+
         public frmLUXdlg() {
             InitializeComponent();           
             radioGroup1.SelectedIndexChanged += new EventHandler(radioGroup1_SelectedIndexChanged);
@@ -197,6 +228,10 @@ namespace Itop.TLPSP.DEVICE
             {
                 textEdit1.Properties.Buttons[0].Visible = false;
             }
+            string sql = "where type='70' and ProjectID='" + this.ProjectSUID + "' ";
+            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", sql);
+            lookUpEdit1.Properties.DataSource = list;
+            lookUpEdit2.Properties.DataSource = list;
         }
         private void panelControl1_Paint(object sender, PaintEventArgs e)
         {
@@ -219,6 +254,14 @@ namespace Itop.TLPSP.DEVICE
         void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             panelControl1.Refresh();
+            if (radioGroup1.SelectedIndex==0)
+            {
+                spinEdit19.Enabled = true;
+            }
+            else
+            {
+                spinEdit19.Enabled = false;
+            }
         }
         #region 属性
         /// <summary>
@@ -511,7 +554,7 @@ namespace Itop.TLPSP.DEVICE
                 dev.LastNode = devMX.Number;
             }
         }
-
+       
         private void mc_Properties_Click(object sender, EventArgs e)
         {
            
@@ -638,15 +681,24 @@ namespace Itop.TLPSP.DEVICE
         {
 
         }
+        bool xzfz = false;
         private void setBdzName()
         {
             //显示所在位置的名称
             //显示所在位置的名称
+            if (string.IsNullOrEmpty(dev.IName) && !string.IsNullOrEmpty(parentid))
+            {
+                dev.IName = parentid;
+                xzfz = true;
+            }
             object obj = DeviceHelper.GetDevice<PSPDEV>(dev.IName);
-
+           
             if (obj != null)
             {
                 buttonEdit1.Text = ((PSPDEV)obj).Name;
+                string sql = "where AreaID='" + ((PSPDEV)obj).SUID+ "' and type='70' ORDER BY Number";
+                IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                lookUpEdit1.Properties.DataSource = list;
                 return;
             }
 
@@ -654,11 +706,19 @@ namespace Itop.TLPSP.DEVICE
         private void setLineName()
         {
             //显示所在位置的名称
+            if (string.IsNullOrEmpty(dev.IName) && (!string.IsNullOrEmpty(parentid)&&!xzfz))
+            {
+                dev.JName = parentid;
+                xzfz = true;
+            }
             object obj = DeviceHelper.GetDevice<PSPDEV>(dev.JName);
 
             if (obj != null)
             {
                 buttonEdit2.Text = ((PSPDEV)obj).Name;
+                string sql = "where AreaID='" + ((PSPDEV)obj).SUID+"' and type='70' ORDER BY Number";
+                IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                lookUpEdit2.Properties.DataSource = list;
                 return;
             }
 
@@ -668,12 +728,15 @@ namespace Itop.TLPSP.DEVICE
             frmDeviceSelect dlg = new frmDeviceSelect();
 
 
-            dlg.InitDeviceType("05","07","54","55","56","57","62","63","64","70","71","73");
+            dlg.InitDeviceType("05","73");
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
                 buttonEdit1.Text = dic["name"].ToString();
                 dev.IName = dic["id"].ToString();
+                string sql = "where AreaID='" + dic["id"].ToString() + "' and type='70' ORDER BY Number";
+                IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                lookUpEdit1.Properties.DataSource = list;
             }
         }
 
@@ -682,13 +745,26 @@ namespace Itop.TLPSP.DEVICE
             frmDeviceSelect dlg = new frmDeviceSelect();
 
 
-            dlg.InitDeviceType("05", "07", "54", "55", "56", "57", "62", "63", "64", "70", "71", "73");
+            dlg.InitDeviceType("05","73");
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
                 buttonEdit2.Text = dic["name"].ToString();
                 dev.JName = dic["id"].ToString();
+                string sql = "where AreaID='" + dic["id"].ToString() + "' and type='70' ORDER BY Number";
+                IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                lookUpEdit2.Properties.DataSource = list;
             }
+        }
+
+        private void lookUpEdit1_Properties_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label50_Click(object sender, EventArgs e)
+        {
+
         }
 
         /// <summary>

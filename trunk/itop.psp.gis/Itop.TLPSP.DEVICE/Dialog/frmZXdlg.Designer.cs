@@ -145,9 +145,9 @@
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(237, 341);
+            this.simpleButton2.Location = new System.Drawing.Point(522, 341);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(87, 35);
+            this.simpleButton2.Size = new System.Drawing.Size(87, 24);
             this.simpleButton2.TabIndex = 11;
             this.simpleButton2.Text = "取消";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
@@ -157,9 +157,9 @@
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.simpleButton1.Location = new System.Drawing.Point(139, 341);
+            this.simpleButton1.Location = new System.Drawing.Point(420, 341);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(87, 35);
+            this.simpleButton1.Size = new System.Drawing.Size(87, 24);
             this.simpleButton1.TabIndex = 10;
             this.simpleButton1.Text = "确认";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -338,7 +338,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(17, 95);
+            this.label2.Location = new System.Drawing.Point(17, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 14);
             this.label2.TabIndex = 15;

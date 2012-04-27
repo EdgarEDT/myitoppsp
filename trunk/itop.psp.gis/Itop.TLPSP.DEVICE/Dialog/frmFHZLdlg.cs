@@ -57,6 +57,15 @@ namespace Itop.TLPSP.DEVICE
                 txtnm.Text=dev.Name ;
                 spts.Value=(decimal)dev.Num1;
                 comboBox1.Text=dev.RateVolt.ToString();
+                if (string.IsNullOrEmpty(dev.AreaID)&&!string.IsNullOrEmpty(parentid))
+                {
+                    dev.AreaID = parentid;
+                }
+                {
+                  string  sql = "type ='70' and ProjectID='" + Itop.Client.MIS.ProgUID + "'and AreaID='" + dev.AreaID + "'";
+                   IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
+                    lookUpEdit2.Properties.DataSource = list;
+                }
                 lookUpEdit1.EditValue = dev.AreaID;
                 lookUpEdit2.EditValue = dev.IName;
                 comboBoxEdit1.Text = dev.OperationYear;
@@ -133,7 +142,12 @@ namespace Itop.TLPSP.DEVICE
             get { return projectid; }
             set { projectid = value; }
         }
-
+        string parentid;
+        public string ParentID
+        {
+            get { return parentid; }
+            set { parentid = value; }
+        }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
@@ -206,6 +220,28 @@ namespace Itop.TLPSP.DEVICE
                 lookUpEdit2.Properties.DataSource = list;
                 
             }
+        }
+
+        private void radioGroup2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panelControl2.Refresh();
+        }
+
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panelControl1.Refresh();
+        }
+
+        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        {
+            if (radioGroup1.SelectedIndex == 0)
+            {
+                e.Graphics.Clear(Color.Red);
+            }
+            else
+            {
+                e.Graphics.Clear(Color.Green);
+            }          
         }
 
     }

@@ -68,6 +68,10 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit2.Value = (decimal)spinEdit2.Value;
                 spinEdit3.Value = (decimal)spinEdit3.Value;
                 spinEdit4.Value = (decimal)spinEdit4.Value;
+                if (string.IsNullOrEmpty(dev.IName)&&!string.IsNullOrEmpty(parentid))
+                {
+                    dev.IName = parentid;
+                }
                 lookUpEdit2.EditValue = dev.IName;
                 //sprl.Value=(decimal)dev.Burthen;
             }
@@ -114,7 +118,13 @@ namespace Itop.TLPSP.DEVICE
             get { return projectid; }
             set { projectid = value; }
         }
-
+        //ÏßÂ·¶Î
+        public string parentid;
+        public string ParentID
+        {
+            get { return parentid; }
+            set { parentid = value; }
+        }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
@@ -187,6 +197,11 @@ namespace Itop.TLPSP.DEVICE
                 lookUpEdit2.Properties.DataSource = list;
                 
             }
+        }
+
+        private void radioGroup2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panelControl2.Refresh();
         }
 
     }
