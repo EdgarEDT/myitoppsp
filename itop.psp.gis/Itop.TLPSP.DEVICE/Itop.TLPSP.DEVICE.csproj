@@ -243,6 +243,12 @@
     <Compile Include="Control\UCDeviceLUX.Designer.cs">
       <DependentUpon>UCDeviceLUX.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\UCDevicePWFHZL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\UCDevicePWFHZL.Designer.cs">
+      <DependentUpon>UCDevicePWFHZL.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeviceType.cs" />
     <Compile Include="Control\UCDeviceBDZ.cs">
       <SubType>UserControl</SubType>
@@ -532,6 +538,12 @@
     </Compile>
     <Compile Include="Dialog\frmLUXdlg.Designer.cs">
       <DependentUpon>frmLUXdlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmFHZLdlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmFHZLdlg.Designer.cs">
+      <DependentUpon>frmFHZLdlg.cs</DependentUpon>
     </Compile>
     <Compile Include="ELC\complex.cs" />
     <Compile Include="ELC\CtrlDlqicheck.cs">
@@ -943,6 +955,10 @@
       <DependentUpon>UCDeviceLUX.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\UCDevicePWFHZL.resx">
+      <DependentUpon>UCDevicePWFHZL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="devicetypes.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1072,6 +1088,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\frmLUXdlg.resx">
       <DependentUpon>frmLUXdlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmFHZLdlg.resx">
+      <DependentUpon>frmFHZLdlg.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ELC\CtrlDlqicheck.resx">

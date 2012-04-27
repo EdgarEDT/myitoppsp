@@ -308,7 +308,7 @@
             // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "添加负荷之路";
+            this.barButtonItem3.Caption = "添加负荷支路";
             this.barButtonItem3.Id = 5;
             this.barButtonItem3.ImageIndex = 30;
             this.barButtonItem3.Name = "barButtonItem3";

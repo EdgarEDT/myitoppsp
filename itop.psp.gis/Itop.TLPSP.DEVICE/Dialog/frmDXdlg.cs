@@ -60,7 +60,11 @@ namespace Itop.TLPSP.DEVICE
                 dev.SwitchNum = Convert.ToInt32(spkg.Value);
                 dev.Date1 = date1.Text;
                 dev.Date2 = date2.Text;
-                dev.HuganLine1=lookUpEdit1.EditValue.ToString();
+                if (lookUpEdit1.EditValue!=null)
+                {
+                    dev.HuganLine1 = lookUpEdit1.EditValue.ToString();
+                }
+              
                 if (comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text) != null)
                 {
                     dev.AreaID = comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text).ToString();

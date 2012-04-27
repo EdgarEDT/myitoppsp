@@ -39,5 +39,5 @@
   <device id="73" name ="配电线路" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDX" parentid="100"></device>
   <device id="74" name ="线路段" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFZX" parentid="100"></device>
   <device id="75" name ="联络线" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceLUX" parentid="100"></device>
- 
+  <device id="80" name ="负荷支路" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceLUX" parentid="100"></device>
 </devicetype>
