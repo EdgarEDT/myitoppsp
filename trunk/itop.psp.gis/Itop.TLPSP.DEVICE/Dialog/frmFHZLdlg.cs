@@ -24,7 +24,7 @@ namespace Itop.TLPSP.DEVICE
             {
                 dev.EleID =txtbh.Text;
                 dev.Name = txtnm.Text;
-                dev.Flag = (int)spts.Value;
+                dev.Num1 = (double)spts.Value;
                 dev.RateVolt = Convert.ToDouble(comboBox1.Text);
                 if (lookUpEdit1.EditValue!=null)
                 {
@@ -55,7 +55,7 @@ namespace Itop.TLPSP.DEVICE
                 dev = value;
                 txtbh.Text=dev.EleID;
                 txtnm.Text=dev.Name ;
-                spts.Value=(decimal)dev.Flag;
+                spts.Value=(decimal)dev.Num1;
                 comboBox1.Text=dev.RateVolt.ToString();
                 lookUpEdit1.EditValue = dev.AreaID;
                 lookUpEdit2.EditValue = dev.IName;
