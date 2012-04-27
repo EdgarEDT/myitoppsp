@@ -293,7 +293,7 @@ namespace Itop.TLPSP.DEVICE
                 }
             }
         }
-        //添加负荷之路
+        //添加负荷支路
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TreeListNode tln = treeList1.FocusedNode;
@@ -305,6 +305,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "73")
                 {
                     adducdevice("80");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
@@ -338,6 +339,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "73")
                 {
                     adducdevice("75");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
@@ -371,6 +373,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "74")
                 {
                     adducdevice("06");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
@@ -404,6 +407,7 @@ namespace Itop.TLPSP.DEVICE
                 if (tln.GetValue("devicetype").ToString() == "74")
                 {
                     adducdevice("55");
+                    curDevice.ParentID = v.DeviceID;
                     curDevice.Add();
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;

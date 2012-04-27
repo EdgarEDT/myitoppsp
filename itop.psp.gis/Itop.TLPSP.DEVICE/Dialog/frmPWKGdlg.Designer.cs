@@ -31,6 +31,9 @@
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.date2 = new DevExpress.XtraEditors.DateEdit();
             this.label20 = new System.Windows.Forms.Label();
@@ -44,11 +47,19 @@
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.spinEdit4 = new DevExpress.XtraEditors.SpinEdit();
+            this.spinEdit2 = new DevExpress.XtraEditors.SpinEdit();
+            this.spinEdit3 = new DevExpress.XtraEditors.SpinEdit();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtnm = new DevExpress.XtraEditors.TextEdit();
@@ -58,21 +69,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.spinEdit2 = new DevExpress.XtraEditors.SpinEdit();
-            this.spinEdit3 = new DevExpress.XtraEditors.SpinEdit();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.spinEdit4 = new DevExpress.XtraEditors.SpinEdit();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).BeginInit();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.date2.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date2.Properties)).BeginInit();
@@ -81,19 +84,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnm.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spts.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit4.Properties)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl2
@@ -139,13 +139,51 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "设备列表";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.panelControl2);
+            this.groupBox3.Controls.Add(this.radioGroup2);
+            this.groupBox3.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.groupBox3.Location = new System.Drawing.Point(10, 127);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(275, 93);
+            this.groupBox3.TabIndex = 32;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "是否计入故障中";
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Appearance.BackColor = System.Drawing.Color.Red;
+            this.panelControl2.Appearance.Options.UseBackColor = true;
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.panelControl2.Location = new System.Drawing.Point(36, 44);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(78, 14);
+            this.panelControl2.TabIndex = 2;
+            this.panelControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl2_Paint);
+            // 
+            // radioGroup2
+            // 
+            this.radioGroup2.EditValue = "1";
+            this.radioGroup2.Location = new System.Drawing.Point(147, 14);
+            this.radioGroup2.Name = "radioGroup2";
+            this.radioGroup2.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.radioGroup2.Properties.Appearance.Options.UseBackColor = true;
+            this.radioGroup2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.radioGroup2.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "计入"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "不计入")});
+            this.radioGroup2.Size = new System.Drawing.Size(98, 72);
+            this.radioGroup2.TabIndex = 3;
+            this.radioGroup2.SelectedIndexChanged += new System.EventHandler(this.radioGroup2_SelectedIndexChanged);
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.date2);
             this.groupBox7.Controls.Add(this.label20);
             this.groupBox7.Controls.Add(this.date1);
             this.groupBox7.Controls.Add(this.label19);
-            this.groupBox7.Location = new System.Drawing.Point(3, 181);
+            this.groupBox7.Location = new System.Drawing.Point(4, 24);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(285, 90);
             this.groupBox7.TabIndex = 0;
@@ -205,6 +243,7 @@
             this.simpleButton5.Size = new System.Drawing.Size(78, 26);
             this.simpleButton5.TabIndex = 7;
             this.simpleButton5.Text = "选择设备";
+            this.simpleButton5.Visible = false;
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // simpleButton4
@@ -215,6 +254,7 @@
             this.simpleButton4.Size = new System.Drawing.Size(78, 26);
             this.simpleButton4.TabIndex = 8;
             this.simpleButton4.Text = "删除设备";
+            this.simpleButton4.Visible = false;
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // listBoxControl1
@@ -228,6 +268,7 @@
             this.listBoxControl1.Size = new System.Drawing.Size(275, 197);
             this.listBoxControl1.TabIndex = 0;
             this.listBoxControl1.ValueMember = "SUID";
+            this.listBoxControl1.Visible = false;
             // 
             // simpleButton2
             // 
@@ -303,6 +344,84 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // spinEdit4
+            // 
+            this.spinEdit4.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit4.Location = new System.Drawing.Point(124, 344);
+            this.spinEdit4.Name = "spinEdit4";
+            this.spinEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit4.Properties.IsFloatValue = false;
+            this.spinEdit4.Properties.Mask.EditMask = "N00";
+            this.spinEdit4.Size = new System.Drawing.Size(176, 21);
+            this.spinEdit4.TabIndex = 39;
+            // 
+            // spinEdit2
+            // 
+            this.spinEdit2.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit2.Location = new System.Drawing.Point(124, 277);
+            this.spinEdit2.Name = "spinEdit2";
+            this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit2.Properties.IsFloatValue = false;
+            this.spinEdit2.Properties.Mask.EditMask = "N00";
+            this.spinEdit2.Size = new System.Drawing.Size(176, 21);
+            this.spinEdit2.TabIndex = 39;
+            // 
+            // spinEdit3
+            // 
+            this.spinEdit3.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit3.Location = new System.Drawing.Point(124, 310);
+            this.spinEdit3.Name = "spinEdit3";
+            this.spinEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit3.Properties.IsFloatValue = false;
+            this.spinEdit3.Properties.Mask.EditMask = "N00";
+            this.spinEdit3.Size = new System.Drawing.Size(176, 21);
+            this.spinEdit3.TabIndex = 40;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(17, 343);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 14);
+            this.label10.TabIndex = 37;
+            this.label10.Text = "动作时间";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(17, 313);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(55, 14);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "修复时间";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(19, 280);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 14);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "故障率";
+            // 
             // spinEdit1
             // 
             this.spinEdit1.EditValue = new decimal(new int[] {
@@ -327,6 +446,23 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEdit1.Size = new System.Drawing.Size(176, 21);
             this.comboBoxEdit1.TabIndex = 5;
+            // 
+            // lookUpEdit2
+            // 
+            this.lookUpEdit2.EditValue = "SUID";
+            this.lookUpEdit2.Location = new System.Drawing.Point(124, 179);
+            this.lookUpEdit2.Name = "lookUpEdit2";
+            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SUID", "", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "线路名称")});
+            this.lookUpEdit2.Properties.DisplayMember = "Name";
+            this.lookUpEdit2.Properties.NullText = "";
+            this.lookUpEdit2.Properties.ValueMember = "SUID";
+            this.lookUpEdit2.Properties.Click += new System.EventHandler(this.lookUpEdit1_Properties_Click);
+            this.lookUpEdit2.Size = new System.Drawing.Size(176, 21);
+            this.lookUpEdit2.TabIndex = 4;
             // 
             // lookUpEdit1
             // 
@@ -364,6 +500,16 @@
             this.label1.Size = new System.Drawing.Size(55, 14);
             this.label1.TabIndex = 34;
             this.label1.Text = "投产年份";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(18, 181);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(67, 14);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "所在线路段";
             // 
             // label4
             // 
@@ -459,148 +605,6 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "名称";
             // 
-            // spinEdit2
-            // 
-            this.spinEdit2.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spinEdit2.Location = new System.Drawing.Point(124, 277);
-            this.spinEdit2.Name = "spinEdit2";
-            this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spinEdit2.Properties.IsFloatValue = false;
-            this.spinEdit2.Properties.Mask.EditMask = "N00";
-            this.spinEdit2.Size = new System.Drawing.Size(176, 21);
-            this.spinEdit2.TabIndex = 39;
-            // 
-            // spinEdit3
-            // 
-            this.spinEdit3.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spinEdit3.Location = new System.Drawing.Point(124, 310);
-            this.spinEdit3.Name = "spinEdit3";
-            this.spinEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spinEdit3.Properties.IsFloatValue = false;
-            this.spinEdit3.Properties.Mask.EditMask = "N00";
-            this.spinEdit3.Size = new System.Drawing.Size(176, 21);
-            this.spinEdit3.TabIndex = 40;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(17, 313);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 14);
-            this.label9.TabIndex = 37;
-            this.label9.Text = "修复时间";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(19, 280);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 14);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "故障率";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(17, 343);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 14);
-            this.label10.TabIndex = 37;
-            this.label10.Text = "动作时间";
-            // 
-            // spinEdit4
-            // 
-            this.spinEdit4.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spinEdit4.Location = new System.Drawing.Point(124, 344);
-            this.spinEdit4.Name = "spinEdit4";
-            this.spinEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spinEdit4.Properties.IsFloatValue = false;
-            this.spinEdit4.Properties.Mask.EditMask = "N00";
-            this.spinEdit4.Size = new System.Drawing.Size(176, 21);
-            this.spinEdit4.TabIndex = 39;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.panelControl2);
-            this.groupBox3.Controls.Add(this.radioGroup2);
-            this.groupBox3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.groupBox3.Location = new System.Drawing.Point(9, 275);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(275, 93);
-            this.groupBox3.TabIndex = 32;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "是否计入故障中";
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.Appearance.BackColor = System.Drawing.Color.Red;
-            this.panelControl2.Appearance.Options.UseBackColor = true;
-            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.panelControl2.Location = new System.Drawing.Point(36, 44);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(78, 14);
-            this.panelControl2.TabIndex = 2;
-            this.panelControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl2_Paint);
-            // 
-            // radioGroup2
-            // 
-            this.radioGroup2.EditValue = "1";
-            this.radioGroup2.Location = new System.Drawing.Point(147, 14);
-            this.radioGroup2.Name = "radioGroup2";
-            this.radioGroup2.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.radioGroup2.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroup2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.radioGroup2.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "计入"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "不计入")});
-            this.radioGroup2.Size = new System.Drawing.Size(98, 72);
-            this.radioGroup2.TabIndex = 3;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(23, 181);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(55, 14);
-            this.label12.TabIndex = 32;
-            this.label12.Text = "所在线路";
-            // 
-            // lookUpEdit2
-            // 
-            this.lookUpEdit2.EditValue = "SUID";
-            this.lookUpEdit2.Location = new System.Drawing.Point(124, 179);
-            this.lookUpEdit2.Name = "lookUpEdit2";
-            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SUID", "", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "线路名称")});
-            this.lookUpEdit2.Properties.DisplayMember = "Name";
-            this.lookUpEdit2.Properties.NullText = "";
-            this.lookUpEdit2.Properties.ValueMember = "SUID";
-            this.lookUpEdit2.Properties.Click += new System.EventHandler(this.lookUpEdit1_Properties_Click);
-            this.lookUpEdit2.Size = new System.Drawing.Size(176, 21);
-            this.lookUpEdit2.TabIndex = 4;
-            // 
             // frmPWKGdlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -618,6 +622,9 @@
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.date2.Properties.VistaTimeProperties)).EndInit();
@@ -628,19 +635,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnm.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spts.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit4.Properties)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

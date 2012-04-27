@@ -204,6 +204,7 @@ namespace Itop.TLPSP.DEVICE
             {
                 dlg.SetEnable();
             }
+            dlg.ParentID = ParentID;
             dlg.Name = "";
             dlg.ProjectID = this.ProjectID;
             Stream fs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Itop.TLPSP.DEVICE.devicetypes.xml");

@@ -152,6 +152,7 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(78, 14);
             this.panelControl1.TabIndex = 2;
+            this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
             // radioGroup1
             // 
@@ -166,6 +167,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "不计入")});
             this.radioGroup1.Size = new System.Drawing.Size(98, 72);
             this.radioGroup1.TabIndex = 3;
+            this.radioGroup1.SelectedIndexChanged += new System.EventHandler(this.radioGroup1_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -203,6 +205,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "不计入")});
             this.radioGroup2.Size = new System.Drawing.Size(98, 72);
             this.radioGroup2.TabIndex = 3;
+            this.radioGroup2.SelectedIndexChanged += new System.EventHandler(this.radioGroup2_SelectedIndexChanged);
             // 
             // simpleButton2
             // 
@@ -384,7 +387,7 @@
             // lookUpEdit2
             // 
             this.lookUpEdit2.EditValue = "SUID";
-            this.lookUpEdit2.Location = new System.Drawing.Point(124, 179);
+            this.lookUpEdit2.Location = new System.Drawing.Point(124, 181);
             this.lookUpEdit2.Name = "lookUpEdit2";
             this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -439,7 +442,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(23, 181);
+            this.label12.Location = new System.Drawing.Point(23, 184);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(55, 14);
             this.label12.TabIndex = 32;

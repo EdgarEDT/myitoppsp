@@ -102,6 +102,19 @@ namespace Itop.TLPSP.DEVICE
             column.Width = 100;
             column.VisibleIndex = 9;
             column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "π ’œ¬ ";
+            column.FieldName = "HuganTQ3";
+            column.Width = 100;
+            column.VisibleIndex =10;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "–ﬁ∏¥ ±º‰";
+            column.FieldName = "HuganTQ4";
+            column.Width = 100;
+            column.VisibleIndex = 11;
+            column.OptionsColumn.AllowEdit = false;
+
           
            
         }

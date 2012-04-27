@@ -61,6 +61,10 @@ namespace Itop.TLPSP.DEVICE
                 DlqiType = dev.HuganLine2;
                 OperationYear = dev.OperationYear;
                 MinSwitchtime = dev.HuganTQ1.ToString();
+                if (string.IsNullOrEmpty(dev.IName)&&!string.IsNullOrEmpty(parentid))
+                {
+                    dev.IName = parentid;
+                }
                 belongbus = dev.IName;
                 spinEdit1.Value =(decimal)dev.HuganTQ4;
                 spinEdit2.Value = (decimal)dev.HuganTQ5;
@@ -281,6 +285,7 @@ namespace Itop.TLPSP.DEVICE
                 projectID = value;
             }
         }
+
         /// <summary>
         /// ÔËÐÐ×´Ì¬
         /// </summary>
@@ -311,7 +316,13 @@ namespace Itop.TLPSP.DEVICE
         {
             get { return projectid; }
             set { projectid = value; }
-        } 
+        }
+        string parentid;
+        public string ParentID
+        {
+            get { return parentid; }
+            set { parentid = value; }
+        }
         private void textEdit1_KeyPress(object sender, KeyPressEventArgs e)
         {
             string str = this.textEdit1.Text;
@@ -516,6 +527,11 @@ namespace Itop.TLPSP.DEVICE
             {
                 e.Graphics.Clear(Color.Green);
             }          
+        }
+
+        private void radioGroup2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panelControl2.Refresh();
         }
 
     }

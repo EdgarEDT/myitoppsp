@@ -231,6 +231,7 @@ namespace Itop.TLPSP.DEVICE
         void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             panelControl1.Refresh();
+           
         }
         #region 属性
         /// <summary>
@@ -256,6 +257,12 @@ namespace Itop.TLPSP.DEVICE
             set {
                 projectID = value;
             }
+        }
+        string parentid;
+        public string ParentID
+        {
+            get { return parentid; }
+            set { parentid = value; }
         }
         /// <summary>
         /// 母线编号
@@ -666,6 +673,10 @@ namespace Itop.TLPSP.DEVICE
         private void setLineName()
         {
             //显示所在位置的名称
+            if (string.IsNullOrEmpty(dev.JName)&&!string.IsNullOrEmpty(parentid))
+            {
+                dev.JName = parentid;
+            }
             object obj = DeviceHelper.GetDevice<PSPDEV>(dev.JName);
             //获得上级线路的节点信息
             string sql = "where AreaID='" + dev.JName + "' and type='70' ORDER BY Number";
@@ -759,7 +770,25 @@ namespace Itop.TLPSP.DEVICE
                     pn1.ParentID = pn.ID;
                     pn1.Code = "111";
                     Services.BaseService.Create<Ps_pdtypenode>(pn1);
-
+                    //如果是支路信息 则找到它的父类 创建到父类上
+                    if (!string.IsNullOrEmpty(dev.JName))
+                    {
+                        pn = new Ps_pdtypenode();
+                        pn.ID = dev.JName;
+                        pn = Services.BaseService.GetOneByKey<Ps_pdtypenode>(pn);
+                        if (pn!=null)
+                        {
+                            pn1 = new Ps_pdtypenode();
+                           
+                            pn1.title = textEdit1.Text;
+                            pn1.pdreltypeid =pn.pdreltypeid;
+                            pn1.devicetype = "73";
+                            pn1.DeviceID = dev.SUID;
+                            pn1.ParentID = pn.ID;
+                            pn1.Code = "211";
+                            Services.BaseService.Create<Ps_pdtypenode>(pn1);
+                        }
+                    }
                 }
                 else
                 {
@@ -833,6 +862,24 @@ namespace Itop.TLPSP.DEVICE
                         pn1.ParentID = pn.ID;
                         pn1.Code = "111";
                         Services.BaseService.Create<Ps_pdtypenode>(pn1);
+                        if (!string.IsNullOrEmpty(dev.JName))
+                        {
+                            pn = new Ps_pdtypenode();
+                            pn.ID = dev.JName;
+                            pn = Services.BaseService.GetOneByKey<Ps_pdtypenode>(pn);
+                            if (pn != null)
+                            {
+                                pn1 = new Ps_pdtypenode();
+
+                                pn1.title = textEdit1.Text;
+                                pn1.pdreltypeid = pn.pdreltypeid;
+                                pn1.devicetype = "73";
+                                pn1.DeviceID = dev.SUID;
+                                pn1.ParentID = pn.ID;
+                                pn1.Code = "211";
+                                Services.BaseService.Create<Ps_pdtypenode>(pn1);
+                            }
+                        }
                     }
                     
                     //pdr.PeopleSum = PDT.Peplesum;
