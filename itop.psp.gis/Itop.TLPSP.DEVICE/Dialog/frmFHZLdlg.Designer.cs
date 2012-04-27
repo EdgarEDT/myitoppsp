@@ -34,6 +34,9 @@
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
@@ -64,13 +67,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).BeginInit();
@@ -86,9 +89,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtnm.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spts.Properties)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl2
@@ -130,6 +130,42 @@
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "设备列表";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.panelControl1);
+            this.groupBox2.Controls.Add(this.radioGroup1);
+            this.groupBox2.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.groupBox2.Location = new System.Drawing.Point(6, 138);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(275, 93);
+            this.groupBox2.TabIndex = 33;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "是否有变压器";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.Red;
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.panelControl1.Location = new System.Drawing.Point(36, 44);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(78, 14);
+            this.panelControl1.TabIndex = 2;
+            // 
+            // radioGroup1
+            // 
+            this.radioGroup1.EditValue = "1";
+            this.radioGroup1.Location = new System.Drawing.Point(147, 14);
+            this.radioGroup1.Name = "radioGroup1";
+            this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
+            this.radioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "计入"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "不计入")});
+            this.radioGroup1.Size = new System.Drawing.Size(98, 72);
+            this.radioGroup1.TabIndex = 3;
             // 
             // groupBox3
             // 
@@ -481,7 +517,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 14);
             this.label2.TabIndex = 15;
-            this.label2.Text = "开关数";
+            this.label2.Text = "用户数";
             // 
             // label8
             // 
@@ -503,42 +539,6 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "名称";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.panelControl1);
-            this.groupBox2.Controls.Add(this.radioGroup1);
-            this.groupBox2.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.groupBox2.Location = new System.Drawing.Point(6, 138);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(275, 93);
-            this.groupBox2.TabIndex = 33;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "是否有变压器";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Appearance.BackColor = System.Drawing.Color.Red;
-            this.panelControl1.Appearance.Options.UseBackColor = true;
-            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.panelControl1.Location = new System.Drawing.Point(36, 44);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(78, 14);
-            this.panelControl1.TabIndex = 2;
-            // 
-            // radioGroup1
-            // 
-            this.radioGroup1.EditValue = "1";
-            this.radioGroup1.Location = new System.Drawing.Point(147, 14);
-            this.radioGroup1.Name = "radioGroup1";
-            this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "计入"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "不计入")});
-            this.radioGroup1.Size = new System.Drawing.Size(98, 72);
-            this.radioGroup1.TabIndex = 3;
-            // 
             // frmFHZLdlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -556,6 +556,9 @@
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).EndInit();
@@ -572,9 +575,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtnm.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtbh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spts.Properties)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
