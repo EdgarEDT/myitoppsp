@@ -124,7 +124,7 @@ namespace Itop.TLPSP.DEVICE
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit3.Properties.Items.Add(o);
             }
-            string sql = " where  (type ='70'or type='01') and ProjectID='" + this.ProjectUID + "'";
+            string sql = " where  (type ='74'or type='01') and ProjectID='" + this.ProjectUID + "'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
 
             lookUpEdit1.Properties.DataSource = list;
@@ -502,7 +502,7 @@ namespace Itop.TLPSP.DEVICE
             frmDeviceSelect dlg = new frmDeviceSelect();
 
 
-            dlg.InitDeviceType("01","70");
+            dlg.InitDeviceType("01","74");
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
