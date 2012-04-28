@@ -210,6 +210,7 @@ namespace Itop.Client.History
                 }
             }
             dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_History));
+            
             treeList1.BeginInit();
             treeList1.DataSource = dataTable;
             treeList1.Columns["Sort"].SortOrder = SortOrder.Ascending;
@@ -1189,8 +1190,10 @@ namespace Itop.Client.History
             psp_Type2.Forecast = type;
             psp_Type2.Col4 = ProjectUID;
             Services.BaseService.Update("DeletePs_HistoryBy", psp_Type2);
-            LoadData();
-            b();
+            treeList1.Nodes.Clear();
+            
+            //LoadData();
+            //b();
         }
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1664,7 +1667,7 @@ namespace Itop.Client.History
         {
             
 
-          List<int> li = new List<int>();
+            List<int> li = new List<int>();
             for (int i = firstyear; i <= endyear; i++)
             {
                 li.Add(i);
@@ -1676,6 +1679,7 @@ namespace Itop.Client.History
                 return;
             Hashtable ht = new Hashtable();
             Hashtable ht1 = new Hashtable();
+            Hashtable ht2 = new Hashtable();
             foreach (DataRow a in cy.DT.Rows)
             {
                 if (a["B"].ToString() == "True")
@@ -1683,11 +1687,15 @@ namespace Itop.Client.History
 
                 if (a["C"].ToString() == "True")
                     ht1.Add(Guid.NewGuid().ToString(), Convert.ToInt32(a["A"].ToString().Replace("Äê", "")));
+
+                if (a["D"].ToString() == "True")
+                    ht2.Add(Guid.NewGuid().ToString(), Convert.ToInt32(a["A"].ToString().Replace("Äê", "")));
             }
             FormHisView fgv = new FormHisView();
             fgv.ProjectUID = ProjectUID;
             fgv.HT = ht;
             fgv.HT1 = ht1;
+            fgv.HT2 = ht2;
             fgv.ShowDialog();
         
 

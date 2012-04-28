@@ -20,6 +20,7 @@ namespace Itop.Client.History
     {
         Hashtable ht = new Hashtable();
         Hashtable ht1 = new Hashtable();
+        Hashtable ht2 = new Hashtable();
         bool IsFist = true;
         int  RealFistYear = 0;
         string projectUID = ""; 
@@ -47,6 +48,10 @@ namespace Itop.Client.History
         public Hashtable HT1
         {
             set { ht1 = value; }
+        }
+        public Hashtable HT2
+        {
+            set { ht2 = value; }
         }
         public FormHisView()
         {
@@ -152,7 +157,7 @@ namespace Itop.Client.History
             this.gridControl1.BeginUpdate();
             for (int i = firstyear; i <= endyear; i++)
             {
-               
+                dt.Columns.Add("y" + i, typeof(double));
                 if (!ht.ContainsValue(i))
                     continue;
                 if (IsFist)
@@ -161,7 +166,7 @@ namespace Itop.Client.History
                     IsFist = false;
                 }
                 m++;
-                dt.Columns.Add("y" + i, typeof(double));
+                //dt.Columns.Add("y" + i, typeof(double));
                 GridColumn gridColumn = new GridColumn();
                 gridColumn.Caption = i+"年";
                 gridColumn.FieldName = "y" + i;
@@ -172,19 +177,36 @@ namespace Itop.Client.History
                 gridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
                 gridView1.Columns.Add(gridColumn);
 
-                if (!ht1.ContainsValue(i))
-                    continue;
-                gridColumn = new GridColumn();
-                gridColumn.Caption = "年增长率(%)";
-                gridColumn.FieldName = "m" + i;
-                gridColumn.Visible = true;
-                gridColumn.Width = 130;
-                gridColumn.VisibleIndex = 2 * m + 11;
-                gridColumn.DisplayFormat.FormatString = "n2";
-                gridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridView1.Columns.Add(gridColumn);
-                dt.Columns.Add("m" + i, typeof(double));
+                if (ht1.ContainsValue(i))
+                {
+                    gridColumn = new GridColumn();
+                    gridColumn.Caption = "年均增长率(%)";
+                    gridColumn.FieldName = "m" + i;
+                    gridColumn.Visible = true;
+                    gridColumn.Width = 130;
+                    gridColumn.VisibleIndex = 2 * m + 11;
+                    gridColumn.DisplayFormat.FormatString = "n2";
+                    gridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns.Add(gridColumn);
+                    dt.Columns.Add("m" + i, typeof(double));
+                }
 
+                if (ht2.ContainsValue(i))
+                {
+
+                    gridColumn = new GridColumn();
+                    gridColumn.Caption = "逐年增长率(%)";
+                    gridColumn.FieldName = "n" + i;
+                    gridColumn.Visible = true;
+                    gridColumn.Width = 130;
+                    gridColumn.VisibleIndex = 2 * m + 12;
+                    gridColumn.DisplayFormat.FormatString = "n2";
+                    gridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns.Add(gridColumn);
+                    dt.Columns.Add("n" + i, typeof(double));
+
+                }
+            
             }
 
             this.gridControl1.EndUpdate();
@@ -230,8 +252,8 @@ namespace Itop.Client.History
 
                 for (int j = firstyear; j <= endyear; j++)
                 {
-                    if (!ht.ContainsValue(j))
-                        continue;
+                    //if (!ht.ContainsValue(j)) lyh
+                    //    continue;
                     try { sum1 = Convert.ToDouble(rows1[0]["y" + j]); }
                     catch { }
                     row["y" + j] = sum1;
@@ -475,9 +497,6 @@ namespace Itop.Client.History
             row9["Title"] = "GDP单耗（千瓦时/万元）";
             dt.Rows.Add(row9);
 
-
-
-
             for (int k = 0; k < rows6.Length; k++)
             {
                 double su1 = 0;
@@ -518,13 +537,10 @@ namespace Itop.Client.History
 
 
             double d = 0;
+            //年均增长率
             foreach(DataRow drw1 in dt.Rows)
             {
-                try
-                {
-                    d = (double)drw1["y" + RealFistYear];
-                }
-                catch { }
+               
                 foreach (DataColumn dc in dt.Columns)
                 {
                     if (dc.ColumnName.IndexOf("m") >= 0)
@@ -537,16 +553,62 @@ namespace Itop.Client.History
                             d1 = (double)drw1["y" + s];
                         }
                         catch { }
+                        int peryear = 0;
+                        for (int i = y1-1; i >0; i--)
+                        {
+                            if ( ht.ContainsValue(i))
+                            {
+                                peryear = i;
+                                break;
+                            }
+                        }
+                        try
+                        {
+                            d = (double)drw1["y" + peryear];
+                        }
+                        catch { }
 
-                        double sss = Math.Round(Math.Pow(d1 / d, 1.0 / (y1 - RealFistYear)) - 1, 4);
 
-                        if (sss.ToString() == "非数字")
+                        double sss = Math.Round(Math.Pow(d1 / d, 1.0 / (y1 - peryear)) - 1, 4);
+                        sss *= 100;
+
+                        if (sss.ToString() == "非数字" || sss.ToString() == "正无穷大")
                             sss = 0;
                         drw1["m" + s]=sss;
                     }
                 }
             }
+            //逐年增长率
+            double dd = 0;
+            foreach (DataRow drw1 in dt.Rows)
+            {
+                
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    if (dc.ColumnName.IndexOf("n") >= 0)
+                    {
+                        string s = dc.ColumnName.Replace("n", "");
+                        int y1 = int.Parse(s);
+                        double d1 = 0;
+                        try
+                        {
+                            d1 = (double)drw1["y" + s];
+                        }
+                        catch { }
+                        try
+                        {
+                            dd = (double)drw1["y" + (y1-1)];
+                        }
+                        catch { }
 
+                        double sss = Math.Round(Math.Pow(d1 / dd, 1.0 / 1) - 1, 4);
+                        sss *=100;
+                        if (sss.ToString() == "非数字" || sss.ToString() == "正无穷大")
+                            sss = 0;
+                        drw1["n" + s] = sss;
+                    }
+                }
+            }
 
 
 
