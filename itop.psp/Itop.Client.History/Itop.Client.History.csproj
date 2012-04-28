@@ -301,6 +301,12 @@
     <Compile Include="FormFqHistoryDF_Edit2.Designer.cs">
       <DependentUpon>FormFqHistoryDF_Edit2.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFqHisView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFqHisView.Designer.cs">
+      <DependentUpon>FormFqHisView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Itop.Domain.Forecast\Itop.Domain.Forecast.csproj">
@@ -445,6 +451,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormFqHistoryDF_Edit2.resx">
       <DependentUpon>FormFqHistoryDF_Edit2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFqHisView.resx">
+      <DependentUpon>FormFqHisView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

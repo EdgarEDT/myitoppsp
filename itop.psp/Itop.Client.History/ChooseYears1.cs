@@ -54,6 +54,7 @@ namespace Itop.Client.History
             dataTable.Columns.Add("A", typeof(string));
             dataTable.Columns.Add("B", typeof(bool));
             dataTable.Columns.Add("C", typeof(bool));
+            dataTable.Columns.Add("D", typeof(bool));
 
             foreach(int i in listYearsForChoose)
             {
@@ -61,6 +62,7 @@ namespace Itop.Client.History
                 newRow["A"] = i + "年";
                 newRow["B"] = false;
                 newRow["C"] = false;
+                newRow["D"] = false;
                 dataTable.Rows.Add(newRow);
             }
 
@@ -107,6 +109,28 @@ namespace Itop.Client.History
                     e.Cancel = true;
                 }
             }
+            if (gridView1.FocusedColumn.FieldName == "D")
+            {
+                if ((bool)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "B") == false)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                int nSelectedBefore = 0;
+                for (int i = 0; i < gridView1.FocusedRowHandle; i++)
+                {
+                    if ((bool)gridView1.GetRowCellValue(i, "B"))
+                    {
+                        nSelectedBefore++;
+                    }
+                }
+
+                if (nSelectedBefore < 1)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
 
         private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -115,7 +139,9 @@ namespace Itop.Client.History
             if(e.Column.FieldName == "B" && (bool)e.Value == false)
             {
                 gridView1.SetRowCellValue(e.RowHandle, "C", false);
+                gridView1.SetRowCellValue(e.RowHandle, "D", false);
             }
+           
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -130,7 +156,8 @@ namespace Itop.Client.History
                 gridView1.SetRowCellValue(i, "B", checkEdit1.Checked);
                 if (!checkEdit1.Checked)
                 {
-                    gridView1.SetRowCellValue(i, "C", false);
+                    gridView1.SetRowCellValue(i, "C", false); 
+                    gridView1.SetRowCellValue(i, "D", false);
                 }
             }
         }
@@ -140,6 +167,18 @@ namespace Itop.Client.History
             for (int i = 1; i < gridView1.RowCount; i++)
             {
                 gridView1.SetRowCellValue(i, "C", checkEdit2.Checked);
+                //if (!checkEdit1.Checked)
+                //{
+                //    gridView1.SetRowCellValue(i, "C", false);
+                //}
+            }
+        }
+
+        private void checkEdit3_CheckedChanged(object sender, EventArgs e)
+        {
+            for (int i = 1; i < gridView1.RowCount; i++)
+            {
+                gridView1.SetRowCellValue(i, "D", checkEdit2.Checked);
                 //if (!checkEdit1.Checked)
                 //{
                 //    gridView1.SetRowCellValue(i, "C", false);

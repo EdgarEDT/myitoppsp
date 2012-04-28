@@ -118,7 +118,7 @@ namespace Itop.Client.History
                 barButtonItem7.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem10.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-                barButtonItem11.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barSubItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!EditRight)
             {
@@ -128,14 +128,14 @@ namespace Itop.Client.History
                 barButtonItem4.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                
                 barButtonItem10.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-                barButtonItem11.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barSubItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!DeleteRight)
             {
                 barButtonItem8.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem10.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-                barButtonItem11.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barSubItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
 
@@ -1171,12 +1171,58 @@ namespace Itop.Client.History
         //导出数据
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //FileClass.ExportToExcelOld(this.forecastReport.Title, "", this.gridControl1);
+
+          
+          
+
+        }
+        //直接导出数据
+        private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
             FormResult fr = new FormResult();
             fr.LI = this.treeList1;
             fr.Text = this.Text;
             fr.ShowDialog();
         }
+        //选择年份和增长率
+        private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            List<int> li = new List<int>();
+            for (int i = firstyear; i <= endyear; i++)
+            {
+                li.Add(i);
+            }
+
+            FormChooseYears1 cy = new FormChooseYears1();
+            cy.ListYearsForChoose = li;
+            if (cy.ShowDialog() != DialogResult.OK)
+                return;
+            Hashtable ht = new Hashtable();
+            Hashtable ht1 = new Hashtable();
+            Hashtable ht2 = new Hashtable();
+            foreach (DataRow a in cy.DT.Rows)
+            {
+                if (a["B"].ToString() == "True")
+                    ht.Add(Guid.NewGuid().ToString(), Convert.ToInt32(a["A"].ToString().Replace("年", "")));
+
+                if (a["C"].ToString() == "True")
+                    ht1.Add(Guid.NewGuid().ToString(), Convert.ToInt32(a["A"].ToString().Replace("年", "")));
+
+                if (a["D"].ToString() == "True")
+                    ht2.Add(Guid.NewGuid().ToString(), Convert.ToInt32(a["A"].ToString().Replace("年", "")));
+            }
+            FormFqHisView fgv = new FormFqHisView();
+            fgv.datatable = dataTable;
+            fgv.LI = treeList1;
+            fgv.ProjectUID = ProjectUID;
+            fgv.HT = ht;
+            fgv.HT1 = ht1;
+            fgv.HT2 = ht2;
+            fgv.Text = "分区数据导出";
+            fgv.ShowDialog();
+
+        }
+
 
         private void treeList1_CellValueChanged_1(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
         {
@@ -1367,6 +1413,9 @@ namespace Itop.Client.History
             }
         }
 
+      
+        
+       
 
 
 
