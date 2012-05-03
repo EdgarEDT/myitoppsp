@@ -576,10 +576,17 @@ namespace Itop.TLPSP.DEVICE
 
         private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            PSPDEV psd = new PSPDEV();
+            psd.SUID = parentobj.ID;
+            psd = Services.BaseService.GetOneByKey<PSPDEV>(psd);
+            if (psd!=null)
+            {
+                XtraPDrelfrm xf = new XtraPDrelfrm();
+                xf.ParentObj = psd;
+                xf.init();
+                xf.ShowDialog();
+            }
           
-            XtraPDrelfrm xf = new XtraPDrelfrm();
-            xf.init();
-            xf.ShowDialog();
         }
 
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

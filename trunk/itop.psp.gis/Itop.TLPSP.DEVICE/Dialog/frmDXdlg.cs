@@ -64,7 +64,7 @@ namespace Itop.TLPSP.DEVICE
                 {
                     dev.HuganLine1 = lookUpEdit1.EditValue.ToString();
                 }
-              
+                getLineName();
                 if (comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text) != null)
                 {
                     dev.AreaID = comboBoxEdit9.Properties.GetKeyValueByDisplayText(comboBoxEdit9.Text).ToString();
@@ -670,6 +670,19 @@ namespace Itop.TLPSP.DEVICE
             }
 
         }
+        private void getLineName()
+        {
+            string sql = "where Name='" + buttonEdit2.Text+ "' and type in('73','05') and ProjectID='"+projectID+"'";
+            IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+            if (list.Count>0)
+            {
+                dev.JName = list[0].SUID;
+            }
+            else
+            {
+                dev.JName = "";
+            }
+        }
         private void setLineName()
         {
             //显示所在位置的名称
@@ -714,11 +727,21 @@ namespace Itop.TLPSP.DEVICE
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
-                buttonEdit2.Text = dic["name"].ToString();
-                dev.JName = dic["id"].ToString();
-                string sql = "where AreaID='" + dic["id"].ToString() + "' and type='70' ORDER BY Number";
-                IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
-                lookUpEdit1.Properties.DataSource = list;
+
+                if (!string.IsNullOrEmpty(dic["id"].ToString()))
+                {
+                    if (dic["id"].ToString()==dev.SUID)
+                    {
+                        MessageBox.Show("不能选自己作为父节支路！请重新选择");
+                        return;
+                    }
+                    buttonEdit2.Text = dic["name"].ToString();
+                    dev.JName = dic["id"].ToString();
+                    string sql = "where AreaID='" + dic["id"].ToString() + "' and type='70' ORDER BY Number";
+                    IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                    lookUpEdit1.Properties.DataSource = list;
+                }
+               
             }
             //此线路的节点编号 极为该线路的首节点
         }
@@ -803,12 +826,35 @@ namespace Itop.TLPSP.DEVICE
                         Services.BaseService.Update<Ps_pdreltype>(pdr);
                         //修改电源信息
                         IList<Ps_pdtypenode> list1 = Services.BaseService.GetList<Ps_pdtypenode>("SelectPs_pdtypenodeByCon", "pdreltypeid='" + pdr.ID + "' and devicetype = '01'");
-                      if (list1.Count>0)
+                        Ps_pdtypenode pn = new Ps_pdtypenode();
+                        if (list1.Count>0)
                       {
                           Ps_pdtypenode pt = list1[0];
                           pt.DeviceID = dev.IName;
                           Services.BaseService.Update<Ps_pdtypenode>(pt);
                       }
+                        else
+                      {
+                        
+                          pn.pdreltypeid = pdr.ID;
+                          pn.devicetype = "01";
+                          PSPDEV devzx = new PSPDEV();
+                          devzx.SUID = pdr.S1;
+                          devzx = Services.BaseService.GetOneByKey<PSPDEV>(devzx);
+                          if (devzx != null)
+                          {
+                              pn.title = devzx.Name;
+                              pn.DeviceID = devzx.SUID;
+                          }
+                          else
+                          {
+                              pn.title = "无电源" + pdr.Title;
+
+                          }
+                          pn.Code = "0";
+                          Services.BaseService.Create<Ps_pdtypenode>(pn);
+                      }
+                      
                       //修改此馈线节点的信息
                       Ps_pdtypenode pdn = new Ps_pdtypenode();
                       pdn.ID = dev.SUID;
@@ -818,6 +864,18 @@ namespace Itop.TLPSP.DEVICE
                             pdn.title = dev.Name;
                             pdn.devicetype = "73";
                             Services.BaseService.Update<Ps_pdtypenode>(pdn);
+                        }
+                        else
+                        {
+                            pdn = new Ps_pdtypenode();
+                            pdn.ID = dev.SUID;
+                            pdn.title = textEdit1.Text;
+                            pdn.pdreltypeid = pdr.ID;
+                            pdn.devicetype = "73";
+                            pdn.DeviceID = dev.SUID;
+                            pdn.ParentID = pn.ID;
+                            pdn.Code = "111";
+                            Services.BaseService.Create<Ps_pdtypenode>(pdn);
                         }
                      //找到子类信息 修改子类信息
                         DeleteNode(pdn);
@@ -954,7 +1012,7 @@ namespace Itop.TLPSP.DEVICE
         {
             //查找子线路
             int count = 0;
-            string sql = "where JName='" + parentid + "'and type='73'";
+            string sql = "where JName='" + parenid + "'and type='73'";
             IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
             foreach (PSPDEV ps in list)
             {
@@ -964,22 +1022,23 @@ namespace Itop.TLPSP.DEVICE
                 if (ptn == null)
                 {
                     count++;
-                    Ps_pdtypenode pn1 = new Ps_pdtypenode();
+                   ptn = new Ps_pdtypenode();
 
-                    pn1.title = ps.Name;
-                    pn1.pdreltypeid = pdreltype;
-                    pn1.devicetype = "73";
-                    pn1.DeviceID = ps.SUID;
-                    pn1.ParentID = parenid;
-                    pn1.Code = level + "1" + count.ToString();
-                    Services.BaseService.Create<Ps_pdtypenode>(pn1);
-                    //加入它的下层元件
-                    AddPDtypenode(pn1.DeviceID, (Convert.ToInt32(level) + 1).ToString(), pdreltype);
+                    ptn.title = ps.Name;
+                    ptn.pdreltypeid = pdreltype;
+                    ptn.devicetype = "73";
+                    ptn.DeviceID = ps.SUID;
+                    ptn.ParentID = parenid;
+                    ptn.Code = level + "1" + count.ToString();
+                    Services.BaseService.Create<Ps_pdtypenode>(ptn);
+                  
                 }
+                //加入它的下层元件
+                AddPDtypenode(ptn.DeviceID, (Convert.ToInt32(level) + 1).ToString(), pdreltype);
             }
             //查找线路段
-     
-           sql = "where AreaID='"+parentid+"'and type='74'";
+
+            sql = "where AreaID='" + parenid + "'and type='74'";
             list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
             foreach (PSPDEV ps in list)
             {
@@ -1036,7 +1095,7 @@ namespace Itop.TLPSP.DEVICE
                 }
             }
             //查找负荷支路
-            sql = "where AreaID='" + parentid + "'and type='80'";
+            sql = "where AreaID='" + parenid + "'and type='80'";
             list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
             foreach (PSPDEV ps in list)
             {
@@ -1058,7 +1117,7 @@ namespace Itop.TLPSP.DEVICE
                 }
             }
             //添加联络线
-            sql = "where IName='" + parentid + "'or JName='"+parentid+"'and type='75'";
+            sql = "where IName='" + parenid + "'or JName='" + parenid + "'and type='75'";
             list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
             foreach (PSPDEV ps in list)
             {

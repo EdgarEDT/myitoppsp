@@ -41,7 +41,35 @@ namespace Itop.TLPSP.DEVICE
         }
 
         DataTable dataTable = new DataTable();
-        public void init()
+        private PSPDEV parentobj;
+        public PSPDEV ParentObj
+        {
+            get
+            {
+                return parentobj;
+            }
+            set
+            {
+                parentobj = value;
+                PDrelregion pd=new PDrelregion();
+                pd.ID=parentobj.SUID;
+               pd = Services.BaseService.GetOneByKey<PDrelregion>(pd);
+                if (pd==null)
+                {
+                    pd = new PDrelregion();
+                    pd.ID = parentobj.SUID;
+                    pd.AreaName = parentobj.Name;
+                    pd.ProjectID = parentobj.ProjectID;
+                    pd.PeopleSum = Convert.ToInt32(parentobj.Num1);
+                    pd.Year = Convert.ToDateTime(parentobj.OperationYear).Year;
+                    pd.S1 = "80";
+                    Services.BaseService.Create<PDrelregion>(pd);
+                }
+                init("ID='"+pd.ID+"'");
+
+            }
+        }
+        public void init(string where )
         {
             try {
                 if (dataTable != null) {
@@ -49,9 +77,9 @@ namespace Itop.TLPSP.DEVICE
                     treeList1.Columns.Clear();
                 }
                 AddFixColumn();
-                PDrelregion pr = new PDrelregion();
-                pr.ProjectID = Itop.Client.MIS.ProgUID;
-                IList<PDrelregion> listTypes = Services.BaseService.GetList<PDrelregion>("SelectPDrelregionByProjectID", pr);
+                //PDrelregion pr = new PDrelregion();
+                //pr.ProjectID = Itop.Client.MIS.ProgUID;
+                IList<PDrelregion> listTypes = Services.BaseService.GetList<PDrelregion>("SelectPDrelregionByWhere", where);
 
 
 

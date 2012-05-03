@@ -27,9 +27,18 @@ namespace Itop.TLPSP.DEVICE
         {
            ucPddate1.ParentObj = e;
         }
+        private PSPDEV parentobj;
+        public PSPDEV ParentObj
+        {
+            get
+            {
+                return parentobj;
+            }
+            set { parentobj = value; }
+        }
         public void init()
         {
-            ucPdtype1.init();
+            ucPdtype1.ParentObj=parentobj;
         }
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
