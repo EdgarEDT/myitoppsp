@@ -45,7 +45,7 @@
             // comboBoxEdit2
             // 
             this.comboBoxEdit2.EditValue = "2000";
-            this.comboBoxEdit2.Location = new System.Drawing.Point(111, 73);
+            this.comboBoxEdit2.Location = new System.Drawing.Point(111, 46);
             this.comboBoxEdit2.Name = "comboBoxEdit2";
             this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -63,11 +63,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEdit1.Size = new System.Drawing.Size(156, 21);
             this.comboBoxEdit1.TabIndex = 4;
+            this.comboBoxEdit1.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 80);
+            this.label2.Location = new System.Drawing.Point(14, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 14);
             this.label2.TabIndex = 1;
@@ -75,7 +76,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(79, 168);
+            this.simpleButton1.Location = new System.Drawing.Point(79, 142);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(87, 27);
             this.simpleButton1.TabIndex = 2;
@@ -96,7 +97,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(309, 209);
+            this.groupControl1.Size = new System.Drawing.Size(309, 191);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "类型";
             // 
@@ -107,7 +108,7 @@
             0,
             0,
             0});
-            this.spinEdit1.Location = new System.Drawing.Point(111, 111);
+            this.spinEdit1.Location = new System.Drawing.Point(111, 84);
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -117,7 +118,7 @@
             // simpleButton2
             // 
             this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(194, 168);
+            this.simpleButton2.Location = new System.Drawing.Point(194, 142);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(87, 27);
             this.simpleButton2.TabIndex = 2;
@@ -126,7 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 111);
+            this.label3.Location = new System.Drawing.Point(14, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 14);
             this.label3.TabIndex = 1;
@@ -140,6 +141,7 @@
             this.label1.Size = new System.Drawing.Size(67, 14);
             this.label1.TabIndex = 1;
             this.label1.Text = "分类名称：";
+            this.label1.Visible = false;
             // 
             // textEdit1
             // 
@@ -147,12 +149,13 @@
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(156, 21);
             this.textEdit1.TabIndex = 0;
+            this.textEdit1.Visible = false;
             // 
             // PDtypefrmedit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 209);
+            this.ClientSize = new System.Drawing.Size(309, 191);
             this.Controls.Add(this.groupControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
