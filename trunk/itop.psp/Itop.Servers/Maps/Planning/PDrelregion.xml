@@ -111,5 +111,21 @@
     WHERE
     ProjectID = #ProjectID#
   </select>
+   <select id='SelectPDrelregionByWhere' resultMap='PDrelregionResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "AreaName",
+      "PeopleSum",
+      "Year",
+      "Title",
+      "ProjectID",
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+      FROM PDrelregion
+      WHERE
+      $value$
+    </select>
 </statements>
 </sqlMap>
