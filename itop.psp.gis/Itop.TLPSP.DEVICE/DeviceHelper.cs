@@ -507,4 +507,12 @@ namespace Itop.TLPSP.DEVICE
             }
         }
     }
+  public struct rresult
+  {
+      public Ps_pdtypenode deviceid;  //各段故障设备的节点
+      public double gzl ;              //对应的故障率
+      public double tysj ;          //每次故障对应的停运时间
+      public double ntysj;    //年停运时间
+
+  }
 }
