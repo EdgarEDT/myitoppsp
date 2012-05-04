@@ -591,18 +591,46 @@ namespace Itop.TLPSP.DEVICE
 
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Init();  //刷新元件树
             DataTable dt = new DataTable();
             frmfxlx fm = new frmfxlx();
             if (fm.ShowDialog()==DialogResult.OK)
             {
                 dt = fm.DT1;
             }
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (Convert.ToInt32(dr["B"])==1)
+                {
+                    TreeListNode tln = treeList1.FindNodeByKeyID(pdreltypeid);
+                    relanalsy(tln,Convert.ToInt32(dr["D"]));
+                }
+            }
+        }
+        //XL为分析的线路 
+        private void relanalsy(TreeListNode xl, int fxtype)
+        {
+            //判断是否有分支线 替代等值过程 将其分支线路的 停电率和故障时间等效到此节点上类型 关系表的S1=‘1’表示上行 S1=‘2’代表下行 D1 D2 D3 等效的值
+            foreach (TreeListNode tln in xl.Nodes)
+            {
+                if (tln.GetValue("devicetype").ToString() == "73" && string.IsNullOrEmpty(tln.GetValue("S1").ToString()))
+                {
+                    tln.SetValue("S1", "1");
+                   
+                    relanalsy(tln, fxtype);
+                   //判断支路信息将其等值化
+                    Zxdzh(tln,fxtype);
+                }
+
+            }
+            //都等值化后分析各个线路段对其分析
+
         }
 
-       
-   
+        private void Zxdzh(TreeListNode zxl,int fxtype)
+        {
 
-
+        }
 
     }
 }

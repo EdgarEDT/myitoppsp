@@ -29,6 +29,10 @@ namespace Itop.Domain.Graphics
 		private string _s2="";
 		private double _d1;
 		private double _d2;
+        private double _d3;
+        private double _d4; 
+        private double _d5;
+        private double _d6;
 		#endregion ◊÷∂Œ
 
 		#region  Ù–‘
@@ -120,6 +124,38 @@ namespace Itop.Domain.Graphics
 			set{ _d2=value;}
 			get{return _d2;}
 		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public double D3
+        {
+            set { _d3 = value; }
+            get { return _d3; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double D4
+        {
+            set { _d4 = value; }
+            get { return _d4; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double D5
+        {
+            set { _d5 = value; }
+            get { return _d5; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double D6
+        {
+            set { _d6 = value; }
+            get { return _d6; }
+        }
 		#endregion  Ù–‘
 	}
 }
