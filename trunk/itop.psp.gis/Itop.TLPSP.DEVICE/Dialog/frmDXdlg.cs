@@ -1033,6 +1033,11 @@ namespace Itop.TLPSP.DEVICE
                     Services.BaseService.Create<Ps_pdtypenode>(ptn);
                   
                 }
+                else{
+                    ptn.ParentID = parenid;
+                    ptn.Code = level + "1" + count.ToString();
+                    Services.BaseService.Update<Ps_pdtypenode>(ptn);
+                }
                 //加入它的下层元件
                 AddPDtypenode(ptn.DeviceID, (Convert.ToInt32(level) + 1).ToString(), pdreltype);
             }
