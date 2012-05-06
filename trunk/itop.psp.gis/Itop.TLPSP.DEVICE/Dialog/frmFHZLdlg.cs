@@ -62,7 +62,7 @@ namespace Itop.TLPSP.DEVICE
                     dev.AreaID = parentid;
                 }
                 {
-                  string  sql = "type ='70' and ProjectID='" + Itop.Client.MIS.ProgUID + "'and AreaID='" + dev.AreaID + "'";
+                  string  sql = "where type ='70' and ProjectID='" + Itop.Client.MIS.ProgUID + "'and AreaID='" + dev.AreaID + "'";
                    IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
                     lookUpEdit2.Properties.DataSource = list;
                 }
