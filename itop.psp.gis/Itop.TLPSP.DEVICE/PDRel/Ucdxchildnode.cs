@@ -242,6 +242,8 @@ namespace Itop.TLPSP.DEVICE
                     curDevice.Add();
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
+                    if (pd == null)
+                        return;
                     Ps_pdtypenode pn = new Ps_pdtypenode();
                     pn.title = pd.Name;
                     pn.pdreltypeid = pdreltypeid;
@@ -276,15 +278,19 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
-                    Ps_pdtypenode pn = new Ps_pdtypenode();
-                    pn.title = pd.Name;
-                    pn.pdreltypeid = pdreltypeid;
-                    pn.devicetype = "74";
-                    pn.DeviceID = pd.SUID;
-                    pn.ParentID = tln.GetValue("ID").ToString();
-                    pn.Code = (tln.Level + 1).ToString() + "2" + (tln.Nodes.Count + 1).ToString();
-                    Services.BaseService.Create<Ps_pdtypenode>(pn);
-                    dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                    if (pd!=null)
+                    {
+                        Ps_pdtypenode pn = new Ps_pdtypenode();
+                        pn.title = pd.Name;
+                        pn.pdreltypeid = pdreltypeid;
+                        pn.devicetype = "74";
+                        pn.DeviceID = pd.SUID;
+                        pn.ParentID = tln.GetValue("ID").ToString();
+                        pn.Code = (tln.Level + 1).ToString() + "2" + (tln.Nodes.Count + 1).ToString();
+                        Services.BaseService.Create<Ps_pdtypenode>(pn);
+                        dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                    }
+                  
                 }
                 else
                 {
@@ -310,15 +316,19 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
-                    Ps_pdtypenode pn = new Ps_pdtypenode();
-                    pn.title = pd.Name;
-                    pn.pdreltypeid = pdreltypeid;
-                    pn.devicetype = "80";
-                    pn.DeviceID = pd.SUID;
-                    pn.ParentID = tln.GetValue("ID").ToString();
-                    pn.Code = (tln.Level + 1).ToString() + "3" + (tln.Nodes.Count + 1).ToString();
-                    Services.BaseService.Create<Ps_pdtypenode>(pn);
-                    dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                    if (pd!=null)
+                    {
+                        Ps_pdtypenode pn = new Ps_pdtypenode();
+                        pn.title = pd.Name;
+                        pn.pdreltypeid = pdreltypeid;
+                        pn.devicetype = "80";
+                        pn.DeviceID = pd.SUID;
+                        pn.ParentID = tln.GetValue("ID").ToString();
+                        pn.Code = (tln.Level + 1).ToString() + "3" + (tln.Nodes.Count + 1).ToString();
+                        Services.BaseService.Create<Ps_pdtypenode>(pn);
+                        dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                    }
+                   
                 }
                 else
                 {
@@ -344,15 +354,19 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
-                    Ps_pdtypenode pn = new Ps_pdtypenode();
-                    pn.title = pd.Name;
-                    pn.pdreltypeid = pdreltypeid;
-                    pn.devicetype = "75";
-                    pn.DeviceID = pd.SUID;
-                    pn.ParentID = tln.GetValue("ID").ToString();
-                    pn.Code = (tln.Level + 1).ToString() + "5" + (tln.Nodes.Count + 1).ToString();
-                    Services.BaseService.Create<Ps_pdtypenode>(pn);
-                    dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                    if (pd!=null)
+                    {
+                        Ps_pdtypenode pn = new Ps_pdtypenode();
+                        pn.title = pd.Name;
+                        pn.pdreltypeid = pdreltypeid;
+                        pn.devicetype = "75";
+                        pn.DeviceID = pd.SUID;
+                        pn.ParentID = tln.GetValue("ID").ToString();
+                        pn.Code = (tln.Level + 1).ToString() + "5" + (tln.Nodes.Count + 1).ToString();
+                        Services.BaseService.Create<Ps_pdtypenode>(pn);
+                        dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                    }
+                   
                 }
                 else
                 {
@@ -378,16 +392,20 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
-                    Ps_pdtypenode pn = new Ps_pdtypenode();
-                    pn.title = pd.Name;
-                    pn.pdreltypeid = pdreltypeid;
-                    pn.devicetype = "06";
-                    pn.DeviceID = pd.SUID;
-                    pn.ParentID = tln.GetValue("ID").ToString();
-                    pn.Code = (tln.Level + 1).ToString() + "4" + (tln.Nodes.Count + 1).ToString();
-                    Services.BaseService.Create<Ps_pdtypenode>(pn);
-                    dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
-                }
+                    if (pd!=null)
+                    {
+                        Ps_pdtypenode pn = new Ps_pdtypenode();
+                        pn.title = pd.Name;
+                        pn.pdreltypeid = pdreltypeid;
+                        pn.devicetype = "06";
+                        pn.DeviceID = pd.SUID;
+                        pn.ParentID = tln.GetValue("ID").ToString();
+                        pn.Code = (tln.Level + 1).ToString() + "4" + (tln.Nodes.Count + 1).ToString();
+                        Services.BaseService.Create<Ps_pdtypenode>(pn);
+                        dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                    }
+                    }
+                   
                 else
                 {
                     MsgBox.Show("请选择馈线段，再操作！");
@@ -412,15 +430,19 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
-                    Ps_pdtypenode pn = new Ps_pdtypenode();
-                    pn.title = pd.Name;
-                    pn.pdreltypeid = pdreltypeid;
-                    pn.devicetype = "55";
-                    pn.DeviceID = pd.SUID;
-                    pn.ParentID = tln.GetValue("ID").ToString();
-                    pn.Code = (tln.Level + 1).ToString() + "6" + (tln.Nodes.Count + 1).ToString();
-                    Services.BaseService.Create<Ps_pdtypenode>(pn);
-                    dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                    if (pd!=null)
+                    {
+                        Ps_pdtypenode pn = new Ps_pdtypenode();
+                        pn.title = pd.Name;
+                        pn.pdreltypeid = pdreltypeid;
+                        pn.devicetype = "55";
+                        pn.DeviceID = pd.SUID;
+                        pn.ParentID = tln.GetValue("ID").ToString();
+                        pn.Code = (tln.Level + 1).ToString() + "6" + (tln.Nodes.Count + 1).ToString();
+                        Services.BaseService.Create<Ps_pdtypenode>(pn);
+                        dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pn, dt.NewRow()));
+                    }
+                   
                 }
                 else
                 {

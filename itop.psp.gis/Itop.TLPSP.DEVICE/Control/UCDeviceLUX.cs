@@ -329,7 +329,11 @@ namespace Itop.TLPSP.DEVICE
             frmLUXdlg dlg = new frmLUXdlg();
             dlg.ProjectSUID = this.ProjectID;
             dlg.ParentID = ParentID;
+            PSPDEV pd = new PSPDEV();
+            pd.IName = ParentID;
+            pd.ProjectID = ProjectID;
             dlg.Name = "";
+            dlg.DeviceMx = pd;
             if (dlg.ShowDialog() == DialogResult.OK) {
                 //Ôö¼Ó¼ÇÂ¼ 
                 PSPDEV dev = dlg.DeviceMx;

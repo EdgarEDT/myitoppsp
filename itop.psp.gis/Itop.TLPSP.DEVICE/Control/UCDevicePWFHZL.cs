@@ -207,6 +207,10 @@ namespace Itop.TLPSP.DEVICE
             dlg.ParentID = ParentID;
             dlg.Name = "";
             dlg.ProjectID = this.ProjectID;
+            PSPDEV pd = new PSPDEV();
+            pd.AreaID = ParentID;
+            pd.ProjectID = ProjectID;
+            
             Stream fs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Itop.TLPSP.DEVICE.devicetypes.xml");
             //Assembly.GetExecutingAssembly().GetManifestResourceStream
             XmlDocument xml = new XmlDocument();
@@ -216,6 +220,7 @@ namespace Itop.TLPSP.DEVICE
             {
                 dlg.Text = node.Attributes["name"].Value.ToString() + "信息";
             }
+            dlg.DeviceMx = pd;
             //if(ID=="55"){
             //    dlg.Text = "开关站信息";
             //}

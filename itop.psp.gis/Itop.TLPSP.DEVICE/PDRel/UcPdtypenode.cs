@@ -229,6 +229,8 @@ namespace Itop.TLPSP.DEVICE
                     curDevice.Add();
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
+                    if (pd == null)
+                        return;
                     Ps_pdtypenode pn = new Ps_pdtypenode();
                     pn.title = pd.Name;
                     pn.pdreltypeid = pdreltypeid;
@@ -263,6 +265,8 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
+                    if (pd == null)
+                        return;
                     Ps_pdtypenode pn = new Ps_pdtypenode();
                     pn.title = pd.Name;
                     pn.pdreltypeid = pdreltypeid;
@@ -297,6 +301,8 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
+                    if (pd == null)
+                        return;
                     Ps_pdtypenode pn = new Ps_pdtypenode();
                     pn.title = pd.Name;
                     pn.pdreltypeid = pdreltypeid;
@@ -331,6 +337,8 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
+                    if (pd == null)
+                        return;
                     Ps_pdtypenode pn = new Ps_pdtypenode();
                     pn.title = pd.Name;
                     pn.pdreltypeid = pdreltypeid;
@@ -365,6 +373,8 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
+                    if (pd == null)
+                        return;
                     Ps_pdtypenode pn = new Ps_pdtypenode();
                     pn.title = pd.Name;
                     pn.pdreltypeid = pdreltypeid;
@@ -399,6 +409,8 @@ namespace Itop.TLPSP.DEVICE
 
                     PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
                     //馈线段记录
+                    if (pd == null)
+                        return;
                     Ps_pdtypenode pn = new Ps_pdtypenode();
                     pn.title = pd.Name;
                     pn.pdreltypeid = pdreltypeid;
@@ -610,23 +622,38 @@ namespace Itop.TLPSP.DEVICE
         //XL为分析的线路 
         private void relanalsy(TreeListNode xl, int fxtype)
         {
+            foreach (TreeListNode tln in xl.Nodes)
+            {
+                if (tln.GetValue("devicetype").ToString() == "73" && string.IsNullOrEmpty(tln.GetValue("S1").ToString()))
+                {
+                    //对子线路进行等值分析
+                    dzanalsy(tln, fxtype);
+                }
+            }
+            
+            //求取主线相关联的负荷节点的 停电率 停电时间等
+
+
+        }
+        //等值化分析
+        private void dzanalsy(TreeListNode xl, int fxtype)
+        {
             //判断是否有分支线 替代等值过程 将其分支线路的 停电率和故障时间等效到此节点上类型 关系表的S1=‘1’表示上行 S1=‘2’代表下行 D1 D2 D3 等效的值
             foreach (TreeListNode tln in xl.Nodes)
             {
                 if (tln.GetValue("devicetype").ToString() == "73" && string.IsNullOrEmpty(tln.GetValue("S1").ToString()))
                 {
                     tln.SetValue("S1", "1");
-                   
-                    relanalsy(tln, fxtype);
-                   //判断支路信息将其等值化
-                    Zxdzh(tln,fxtype);
+
+                    dzanalsy(tln, fxtype);
+                 
                 }
 
             }
-            //都等值化后分析各个线路段对其分析
-
+            //判断支路信息将其等值化
+            Zxdzh(xl, fxtype);
+           
         }
-
         private void Zxdzh(TreeListNode zxl,int fxtype)
         {
 
