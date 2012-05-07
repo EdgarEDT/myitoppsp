@@ -656,7 +656,83 @@ namespace Itop.TLPSP.DEVICE
         }
         private void Zxdzh(TreeListNode zxl,int fxtype)
         {
+            double gzl = 0, U=0, gztime = 0,dklv=0;
+          //找到第一个线路段判断是否有断路器
+            bool glkgflag = false;
+            for (int i = 0; i < zxl.Nodes.Count;i++ )
+            {
+                if (zxl.Nodes[i].GetValue("devicetype").ToString()=="74")
+                {
+                    if (zxl.Nodes[i].Nodes.Count>0)
+                    {
+                        glkgflag = true;
+                        PSPDEV pd =new PSPDEV();
+                        pd.SUID=zxl.Nodes[i].Nodes[0].GetValue("DeviceID").ToString();
+                         pd=Services.BaseService.GetOneByKey<PSPDEV>(pd);
+                        if (pd!=null)
+                        {
+                            if (pd.Type=="06")
+                            {
+                                dklv=Convert.ToDouble(pd.HuganFirst);
+                                gztime = pd.HuganTQ2;
+                            }
+                            else if (pd.Type=="55")
+                            {
+                                dklv = pd.HuganTQ4;
+                                gztime = pd.HuganTQ1;
+                            }
+                          
+                        }
+                        
+                    }
+                    break;
+                }
+            }
+            //如果首段存在断路器进行等值 第一种情况
+            foreach (TreeListNode tln in zxl.Nodes)
+            {
+                if (tln.GetValue("devicetype").ToString() == "74")
+                {
+                    PSPDEV pd = new PSPDEV();
+                    pd.SUID = tln.GetValue("DeviceID").ToString();
+                    pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
+                    if (pd != null)
+                    {
+                        gzl += pd.HuganTQ3;
+                        U += (pd.HuganTQ3 * pd.HuganTQ4);
+                    }
 
+                }
+                if (tln.GetValue("devicetype").ToString() == "80")
+                {
+                    PSPDEV pd = new PSPDEV();
+                    pd.SUID = tln.GetValue("DeviceID").ToString();
+                    pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
+                    if (pd != null)
+                    {
+                        gzl += pd.HuganTQ2;
+                        U += (pd.HuganTQ2 * pd.HuganTQ3);
+                    }
+                }
+                if (tln.GetValue("devicetype").ToString() == "73" && tln.GetValue("S1").ToString() == "1")
+                {
+                    gzl += Convert.ToDouble(tln.GetValue("D1"));
+                    U += Convert.ToDouble(tln.GetValue("D1")) * Convert.ToDouble(tln.GetValue("D2"));
+                }
+            }
+            //等值的过程
+            if (glkgflag)
+            {
+              
+                zxl.SetValue("D1", (1 - dklv) * gzl);
+                zxl.SetValue("D2", gztime);
+            }
+            else
+            {
+                zxl.SetValue("D1", gzl);
+                zxl.SetValue("D2", U/gzl);
+            }
+           
         }
 
     }

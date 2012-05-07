@@ -33,6 +33,13 @@ namespace Itop.TLPSP.DEVICE
                 if (lookUpEdit2.EditValue!=null)
                 {
                     dev.IName = lookUpEdit2.EditValue.ToString();
+                    PSPDEV pd = new PSPDEV();
+                    pd.SUID = lookUpEdit2.EditValue.ToString();
+                    pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
+                    if (pd!=null)
+                    {
+                        dev.FirstNode = pd.Number;
+                    }
                 }
              
                 dev.OperationYear = comboBoxEdit1.Text;
@@ -215,7 +222,7 @@ namespace Itop.TLPSP.DEVICE
                 Dictionary<string, object> dic = dlg.GetSelectedDevice();
                 PSPDEV devzx = dic["device"] as PSPDEV;
                 lookUpEdit1.EditValue = dev.SUID;
-                string sql = " where  (type ='70') and AreaID='" + devzx.SUID+ "'";
+                string sql = " where  (type ='70') and AreaID='" + devzx.SUID+ "'order by number";
                 IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
                 lookUpEdit2.Properties.DataSource = list;
                 
