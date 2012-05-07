@@ -36,6 +36,7 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.barButtonItemIn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemOut = new DevExpress.XtraBars.BarButtonItem();
@@ -65,7 +66,10 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn6 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn7 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn8 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -101,7 +105,11 @@
             this.treeListColumn1,
             this.treeListColumn2,
             this.treeListColumn3,
-            this.treeListColumn4});
+            this.treeListColumn4,
+            this.treeListColumn5,
+            this.treeListColumn6,
+            this.treeListColumn7,
+            this.treeListColumn8});
             this.treeList1.ColumnsImageList = this.imageList1;
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Location = new System.Drawing.Point(0, 0);
@@ -144,6 +152,12 @@
             this.treeListColumn3.Caption = "设备ID";
             this.treeListColumn3.FieldName = "DeviceID";
             this.treeListColumn3.Name = "treeListColumn3";
+            // 
+            // treeListColumn4
+            // 
+            this.treeListColumn4.Caption = "等值替换类型";
+            this.treeListColumn4.FieldName = "S1";
+            this.treeListColumn4.Name = "treeListColumn4";
             // 
             // imageList1
             // 
@@ -449,11 +463,29 @@
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // treeListColumn4
+            // treeListColumn5
             // 
-            this.treeListColumn4.Caption = "等值替换类型";
-            this.treeListColumn4.FieldName = "S1";
-            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn5.Caption = "上行故障率";
+            this.treeListColumn5.FieldName = "D1";
+            this.treeListColumn5.Name = "treeListColumn5";
+            // 
+            // treeListColumn6
+            // 
+            this.treeListColumn6.Caption = "上行修复时间";
+            this.treeListColumn6.FieldName = "D2";
+            this.treeListColumn6.Name = "treeListColumn6";
+            // 
+            // treeListColumn7
+            // 
+            this.treeListColumn7.Caption = "下行故障率";
+            this.treeListColumn7.FieldName = "D3";
+            this.treeListColumn7.Name = "treeListColumn7";
+            // 
+            // treeListColumn8
+            // 
+            this.treeListColumn8.Caption = "下行修复时间";
+            this.treeListColumn8.FieldName = "D4";
+            this.treeListColumn8.Name = "treeListColumn8";
             // 
             // UcPdtypenode
             // 
@@ -513,5 +545,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn5;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn6;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn7;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn8;
     }
 }
