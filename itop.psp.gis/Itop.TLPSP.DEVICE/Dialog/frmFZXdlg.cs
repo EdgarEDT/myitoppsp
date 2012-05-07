@@ -144,7 +144,7 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit12.Value = (decimal)rc.ZeroTQ;
                 spinEdit10.Value = (decimal)rc.ZeroGNDC;
                 spinEdit17.Value = (decimal)rc.WireChange;
-                spinEdit19.Value = (decimal)rc.gzl;
+                spinEdit19.Value = (decimal)(rc.gzl) * spinEdit6.Value;
                 spinEdit20.Value=(decimal)rc.xftime;
             }
         }

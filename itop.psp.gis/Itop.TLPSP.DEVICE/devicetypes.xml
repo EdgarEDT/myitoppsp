@@ -32,7 +32,7 @@
   <device id="62" name ="联络开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
   <device id="63" name ="分段开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
   <device id="64" name ="支线开关" visible="true" class="Itop.TLPSP.DEVICE.UCDevicePWKG" parentid="100"></device>
-  <device id="65" name ="电容器型号" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDRHXH" parentid="100"></device>
+  <device id="65" name ="电容器型号" visible="false" class="Itop.TLPSP.DEVICE.UCDeviceDRHXH" parentid="100"></device>
   <device id="70" name ="杆塔(节点)" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceZX" parentid="100"></device>
   <device id="71" name ="跌落式熔断器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceRDQ" parentid="100"></device>
   <device id="72" name ="两圈变压器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQTWO" parentid="100"></device>

@@ -81,6 +81,7 @@ namespace Itop.TLPSP.DEVICE
             }
             //comboBoxEdit1.Text = DateTime.Today.Year.ToString();
         }
+        public bool newflag = false;
         string projectid;
         public string ProjectID
         {
@@ -100,6 +101,7 @@ namespace Itop.TLPSP.DEVICE
         }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+
             this.DialogResult = DialogResult.OK;
         }
 

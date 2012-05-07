@@ -106,6 +106,20 @@ namespace Itop.TLPSP.DEVICE
         {
             return gridView1.RowCount;
         }
+        public PSPDEV GetLastObj()
+        {
+          
+            DataRow row = gridView1.GetDataRow(gridView1.RowCount-1);
+
+            if (row != null)
+            {
+                return Itop.Common.DataConverter.RowToObject<PSPDEV>(row);
+            }
+           else
+            {
+                return null;
+            }
+        }
         #region 记录操作
         public override object SelectedDevice
         {
@@ -130,6 +144,8 @@ namespace Itop.TLPSP.DEVICE
                 dlg.AreaID = parentid;
             }
             dlg.Number = GetrowCount();  //编号
+           
+            
             Stream fs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Itop.TLPSP.DEVICE.devicetypes.xml");
             //Assembly.GetExecutingAssembly().GetManifestResourceStream
             XmlDocument xml = new XmlDocument();
@@ -144,6 +160,52 @@ namespace Itop.TLPSP.DEVICE
                 dev.Type = ID;
                 dev.ProjectID = this.ProjectID;
                 UCDeviceBase.DataService.Create("InsertPSPDEV", dev);
+                //增加相应的馈线段
+                PSPDEV parentobj = new PSPDEV();
+                parentobj.SUID = dev.AreaID;
+                parentobj = Services.BaseService.GetOneByKey<PSPDEV>(parentobj);
+                 PSPDEV firstnodeobj =null;
+                if (parentobj!=null)
+                {
+                    string sql = "where AreaID='" + parentobj.SUID + "'and Type='70' and projectid='" + ProjectID + "'order by number";
+                    IList<PSPDEV> list1 = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                    if (list1.Count>1)
+                    {
+                        firstnodeobj = list1[list1.Count - 2];
+                    }
+                  
+                }
+              
+                if (firstnodeobj!=null&&parentobj!=null)
+                {
+                    PSPDEV pv = new PSPDEV();
+                    pv.Name = parentobj.Name + "_线路段" + (dev.Number).ToString();
+                    pv.AreaID = parentid;
+                    pv.Type = "74";
+                    pv.FirstNode = firstnodeobj.Number;
+                    pv.LastNode = dev.Number;
+                    pv.IName = firstnodeobj.SUID;
+                    pv.JName = dev.SUID;
+                    pv.LineType = parentobj.LineType;
+                    pv.RateVolt=parentobj.RateVolt;
+                    pv.LineLength = 1;
+                    pv.ProjectID = ProjectID;
+                    if (!string.IsNullOrEmpty(parentobj.LineType))
+                    {
+                        WireCategory rc = new WireCategory();
+                        rc.WireLevel = parentobj.RateVolt.ToString();
+                        rc.WireType = parentobj.LineType;
+                        rc.Type = "40";
+                        rc = (WireCategory)UCDeviceBase.DataService.GetObject("SelectWireCategoryByKeyANDWireLevel", rc);
+                        if (rc != null)
+                        {
+                            pv.HuganTQ3 = rc.gzl*pv.LineLength;
+                            pv.HuganTQ4 = rc.xftime;
+                        }
+                    }
+                    Services.BaseService.Create<PSPDEV>(pv);
+
+                }
                 DataRow row=datatable1.NewRow();
              
                 Itop.Common.DataConverter.ObjectToRow(dev, row);
