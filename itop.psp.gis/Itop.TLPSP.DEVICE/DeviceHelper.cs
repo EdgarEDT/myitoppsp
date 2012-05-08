@@ -509,10 +509,37 @@ namespace Itop.TLPSP.DEVICE
     }
   public struct rresult
   {
-      public Ps_pdtypenode deviceid;  //各段故障设备的节点
+      public PSPDEV deviceid;  //各段故障设备的节点
       public double gzl ;              //对应的故障率
       public double tysj ;          //每次故障对应的停运时间
       public double ntysj;    //年停运时间
 
   }
+    public struct yjandjd
+    {
+        private PSPDEV yj;
+        private PSPDEV firstjd;
+        private PSPDEV lastjd;
+        public yjandjd(PSPDEV _yj,PSPDEV _fir,PSPDEV _last)
+        {
+            yj = _yj;
+            firstjd = _fir;
+            lastjd = _last;
+        }
+        public PSPDEV YJ
+        {
+            get { return yj; }
+            set { yj = value; }
+        }
+        public PSPDEV FirstNode
+        {
+            get { return firstjd; }
+            set { firstjd = value; }
+        }
+        public PSPDEV LastNode
+        {
+            get { return lastjd; }
+            set {lastjd = value; }
+        }
+    }
 }
