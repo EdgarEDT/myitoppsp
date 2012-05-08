@@ -128,10 +128,10 @@ namespace Itop.TLPSP.DEVICE
         }
         public void intdata()
         {
-            string sql = " where RateVolt=" + comboBox1.Text + " and (type='05' or type ='73') and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+            string sql = " where  (type='05' or type ='73') and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
             lookUpEdit1.Properties.DataSource = list;
-            sql = "type ='70' and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+            sql = "where type ='70' and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
              list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
             lookUpEdit2.Properties.DataSource = list;
             object o = new object();
@@ -173,7 +173,7 @@ namespace Itop.TLPSP.DEVICE
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sql = " where RateVolt=" + comboBox1.Text + " and type='05' and ProjectID='"+Itop.Client.MIS.ProgUID+"'";
+            string sql = " where RateVolt=" + comboBox1.Text + " and (type='05' or type ='73')and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
             lookUpEdit1.Properties.DataSource = list;
 

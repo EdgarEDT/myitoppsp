@@ -292,6 +292,11 @@
             this.spinEdit4.Name = "spinEdit4";
             this.spinEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit4.Properties.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.spinEdit4.Properties.IsFloatValue = false;
             this.spinEdit4.Properties.Mask.EditMask = "N00";
             this.spinEdit4.Size = new System.Drawing.Size(176, 21);
@@ -308,6 +313,11 @@
             this.spinEdit2.Name = "spinEdit2";
             this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit2.Properties.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.spinEdit2.Properties.IsFloatValue = false;
             this.spinEdit2.Properties.Mask.EditMask = "N00";
             this.spinEdit2.Size = new System.Drawing.Size(176, 21);
@@ -324,6 +334,11 @@
             this.spinEdit3.Name = "spinEdit3";
             this.spinEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit3.Properties.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.spinEdit3.Properties.IsFloatValue = false;
             this.spinEdit3.Properties.Mask.EditMask = "N00";
             this.spinEdit3.Size = new System.Drawing.Size(176, 21);
@@ -397,7 +412,6 @@
             this.lookUpEdit2.Properties.DisplayMember = "Name";
             this.lookUpEdit2.Properties.NullText = "";
             this.lookUpEdit2.Properties.ValueMember = "SUID";
-            this.lookUpEdit2.Properties.Click += new System.EventHandler(this.lookUpEdit1_Properties_Click);
             this.lookUpEdit2.Size = new System.Drawing.Size(176, 21);
             this.lookUpEdit2.TabIndex = 4;
             // 
@@ -485,6 +499,7 @@
             this.txtbh.Name = "txtbh";
             this.txtbh.Size = new System.Drawing.Size(176, 21);
             this.txtbh.TabIndex = 0;
+            this.txtbh.Visible = false;
             // 
             // spts
             // 
@@ -531,6 +546,7 @@
             this.label8.Size = new System.Drawing.Size(31, 14);
             this.label8.TabIndex = 22;
             this.label8.Text = "编号";
+            this.label8.Visible = false;
             // 
             // label11
             // 
