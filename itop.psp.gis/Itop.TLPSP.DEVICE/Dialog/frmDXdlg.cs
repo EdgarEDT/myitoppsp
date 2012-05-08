@@ -1083,7 +1083,7 @@ namespace Itop.TLPSP.DEVICE
                             pn2.devicetype = "06";
                             pn2.DeviceID = ps1.SUID;
                             pn2.ParentID = pn1.ID;
-                            pn2.Code = (Convert.ToInt32(level) + 1).ToString() + "4" + count.ToString();
+                            pn2.Code = (Convert.ToInt32(level) + 1).ToString() + "4" + num.ToString();
                             Services.BaseService.Create<Ps_pdtypenode>(pn2);
                         }
 
@@ -1101,7 +1101,7 @@ namespace Itop.TLPSP.DEVICE
                             pn2.devicetype = "55";
                             pn2.DeviceID = ps1.SUID;
                             pn2.ParentID = pn1.ID;
-                            pn2.Code = (Convert.ToInt32(level) + 1).ToString() + "6" + count.ToString();
+                            pn2.Code = (Convert.ToInt32(level) + 1).ToString() + "6" + num.ToString();
                             Services.BaseService.Create<Ps_pdtypenode>(pn2);
                         }
                         xgxlsuid += "'" + ps.SUID + "',";
@@ -1196,7 +1196,7 @@ namespace Itop.TLPSP.DEVICE
                         pn2.devicetype = "06";
                         pn2.DeviceID = ps1.SUID;
                         pn2.ParentID = pn1.ID;
-                        pn2.Code = (Convert.ToInt32(level) + 1).ToString() + "4" + count.ToString();
+                        pn2.Code = (Convert.ToInt32(level) + 1).ToString() + "4" + num.ToString();
                         Services.BaseService.Create<Ps_pdtypenode>(pn2);
                     }
 
@@ -1214,7 +1214,7 @@ namespace Itop.TLPSP.DEVICE
                         pn2.devicetype = "55";
                         pn2.DeviceID = ps1.SUID;
                         pn2.ParentID = pn1.ID;
-                        pn2.Code = (Convert.ToInt32(level) + 1).ToString() + "6" + count.ToString();
+                        pn2.Code = (Convert.ToInt32(level) + 1).ToString() + "6" + num.ToString();
                         Services.BaseService.Create<Ps_pdtypenode>(pn2);
                     }
                 }
