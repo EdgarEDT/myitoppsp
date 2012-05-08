@@ -77,7 +77,7 @@ namespace Itop.TLPSP.DEVICE
            //column1, column});
             treeList1.KeyFieldName = "ID";
             treeList1.ParentFieldName = "ParentID";
-            IList<Ps_pdtypenode> list1 = Services.BaseService.GetList<Ps_pdtypenode>("SelectPs_pdtypenodeByCon", "pdreltypeid='" + pdreltypeid + "' order by Code");
+            IList<Ps_pdtypenode> list1 = Services.BaseService.GetList<Ps_pdtypenode>("SelectPs_pdtypenodeByCon", "pdreltypeid='" + pdreltypeid + "' ORDER BY SUBSTRING(Code, 3, 1)");
             dt = Itop.Common.DataConverter.ToDataTable((IList)list1, typeof(Ps_pdtypenode));
             this.treeList1.DataSource = dt;
         }
