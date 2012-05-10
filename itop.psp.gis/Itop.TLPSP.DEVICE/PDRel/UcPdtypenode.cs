@@ -633,17 +633,17 @@ namespace Itop.TLPSP.DEVICE
             
             //求取主线相关联的负荷节点的 停电率 停电时间等
             //各个线路段对该层负荷点的 故障率和停运时间的影响
-            Dictionary<string ,List<rresult>> rescol=new Dictionary<string,List<rresult>>();
+            Dictionary<PSPDEV ,List<rresult>> rescol=new Dictionary<PSPDEV,List<rresult>>();
 
 
         }
         //各个元件对负荷点的影响分析
-        private void yjfx(TreeListNode xl,ref  Dictionary<string ,List<rresult>> rescol,int fxtype)
+        private void yjfx(TreeListNode xl,ref  Dictionary<PSPDEV ,List<rresult>> rescol,int fxtype)
         {
             rresult rs = new rresult();
             List<yjandjd> xldcol = new List<yjandjd>();  //线路段集合
             List<yjandjd> fhzlcol = new List<yjandjd>();  //负荷支路集合
-            List<PSPDEV> xlcol = new List<PSPDEV>();    //分支线路
+            List<yjandjd> xlcol = new List<yjandjd>();    //分支线路
             List<yjandjd> luxcol = new List<yjandjd>();//联络线集合
             
             for (int i = 0; i < xl.Nodes.Count;i++ )
@@ -709,12 +709,18 @@ namespace Itop.TLPSP.DEVICE
                     pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
                     if (pd != null)
                     {
-                        xlcol.Add(pd);
+                        string sql = "where SUID='" +pd.HuganLine1+ "'and AreaID='" + xl.GetValue("ID").ToString() + "'and type='70'";
+                        PSPDEV firstnode = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", sql) as PSPDEV;
+
+                        yjandjd jd = new yjandjd(pd, firstnode, null);
+                        xlcol.Add(jd); ;
                     }
                 }
 
             }
-            //然后依次的分析
+            //然后依次的分析 
+#region  线路段的对负荷的影响
+
             for (int i = 0; i < xldcol.Count;i++ )
             {
                 //判断该线路段是否有开关 如果有则直接进行
@@ -728,7 +734,7 @@ namespace Itop.TLPSP.DEVICE
                 {
                   for (int j=0;j<fhzlcol.Count;j++)
                   {
-                      if (xldcol[i].FirstNode.Number>=fhzlcol[i].FirstNode.Number)          //负荷支路比起元件更靠近电源  停电方式都是一个样
+                      if (xldcol[i].FirstNode.Number>=fhzlcol[j].FirstNode.Number)          //负荷支路比起元件更靠近电源  停电方式都是一个样
                       {
                           result.deviceid=fhzlcol[j].YJ;
                           result.gzl=xldcol[i].YJ.HuganTQ3;
@@ -743,7 +749,7 @@ namespace Itop.TLPSP.DEVICE
 
                          
                       }
-                      else if (xldcol[i].LastNode.Number<fhzlcol[i].FirstNode.Number)
+                      else if (xldcol[i].LastNode.Number<fhzlcol[j].FirstNode.Number)
                       {
                          switch (fxtype)
                           {
@@ -887,13 +893,579 @@ namespace Itop.TLPSP.DEVICE
                 }
                 else  //如果没有 找到前后线路段具有开关的
                 {
+                    yjandjd curpsp = xldcol[i];  //当前的线路段
+                    yjandjd prepsp = xldcol[i]; //前面的线路段
+                    yjandjd lastpsp = xldcol[i]; //后面的线路段
+                    IList<PSPDEV> listkg1 = new List<PSPDEV>();  //前段线路段的开关
+                    IList<PSPDEV> listkg2 = new List<PSPDEV>();  //后段线路段的开关
+                    if (i<xlcol.Count-1)
+                    {
+                       
+                        for (int j = i + 1; j < xldcol.Count; j++)
+                        {
+                        
+                         sql = "where IName='" + xldcol[j].YJ.SUID + "'and (type='06'or type='55')"; 
+                        listkg1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+               
+                         if (listkg1.Count>0)    //线路段有开关
+                         {
+                             lastpsp = xldcol[j];
+                             break;
+                         }
+                        }
+                        
+                    }
+                    if (i>0)
+                    {
+                        for (int j = 0; j < i;j++ )
+                        {
+                            sql = "where IName='" + xldcol[j].YJ.SUID + "'and (type='06'or type='55')";
+                            listkg2 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+
+                            if (listkg2.Count > 0)    //线路段有开关
+                            {
+                                prepsp = xldcol[j];
+                                break;
+                            }
+                        }
+                    }
+                    //进行几个指标的判断
+                    for (int j = 0; j < fhzlcol.Count; j++)
+                    {
+                        if (fhzlcol[j].FirstNode.Number <= prepsp.FirstNode.Number)          //负荷支路比起元件更靠近电源  停电方式都是一个样
+                        {
+                            if (prepsp.Equals(curpsp))
+                            {
+                                result.deviceid = fhzlcol[j].YJ;
+                                result.gzl = curpsp.YJ.HuganTQ3;
+                                result.tysj = curpsp.YJ.HuganTQ4;
+                                result.ntysj = result.gzl * result.tysj;
+                                listfhtyl.Add(result);
+                            }
+                            else
+                            {
+                                result.deviceid = fhzlcol[j].YJ;
+                                result.gzl = curpsp.YJ.HuganTQ3;
+
+                                if (listkg1[0].Type == "06")
+                                {
+                                    result.tysj = listkg1[0].HuganTQ2;
+                                }
+                                else
+                                    result.tysj = listkg1[0].HuganTQ1;
+                                result.ntysj = result.gzl * result.tysj;
+                                listfhtyl.Add(result);
+                            }
+                         
+
+
+                        }
+
+                        if (prepsp.LastNode.Number <= fhzlcol[j].FirstNode.Number && fhzlcol[j].FirstNode.Number <= lastpsp.FirstNode.Number)  //在中间
+                        {
+                            result.deviceid = fhzlcol[j].YJ;
+                            result.gzl = curpsp.YJ.HuganTQ3;
+                            result.tysj = curpsp.YJ.HuganTQ4;
+                            result.ntysj = result.gzl * result.tysj;
+                            listfhtyl.Add(result);
+                        }
+                        if (fhzlcol[j].FirstNode.Number>=lastpsp.LastNode.Number)
+                        {
+                            if (lastpsp.Equals(curpsp))
+                            {
+                                result.deviceid = fhzlcol[j].YJ;
+                                result.gzl = curpsp.YJ.HuganTQ3;
+                                result.tysj = curpsp.YJ.HuganTQ4;
+                                result.ntysj = result.gzl * result.tysj;
+                                listfhtyl.Add(result);
+                            }
+                            else
+                            {
+                                switch (fxtype)
+                                {
+                                    case 1:  //第一种方式
+                                        result.deviceid = fhzlcol[j].YJ;
+                                        result.gzl = curpsp.YJ.HuganTQ3;
+                                        result.tysj = curpsp.YJ.HuganTQ4;
+                                        result.ntysj = result.gzl * result.tysj;
+                                        listfhtyl.Add(result);
+                                        break;
+                                    case 2:  //第二种方式  判断联络线的节点的编号和firstnode的比较 如果大于它则影响不了前面 如果小于的话
+                                        if (luxcol.Count > 0)
+                                        {
+                                            if (luxcol[0].FirstNode.Number < curpsp.LastNode.Number)
+                                            {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = curpsp.YJ.HuganTQ3;
+                                                result.tysj = curpsp.YJ.HuganTQ4;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+                                            else
+                                            {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = curpsp.YJ.HuganTQ3;
+                                                if (listkg2[0].Type == "06")
+                                                {
+                                                    result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                                }
+                                                else
+                                                    result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = curpsp.YJ.HuganTQ3;
+                                            if (listkg2[0].Type == "06")
+                                            {
+                                                result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                            }
+                                            else
+                                                result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+
+
+                                        break;
+                                    case 3:  //第三种方式  判断联络线的节点的编号和firstnode的比较 如果大于它则影响不了前面 如果小于的话
+                                        result.deviceid = fhzlcol[j].YJ;
+                                        result.gzl = curpsp.YJ.HuganTQ3;
+                                        result.tysj = curpsp.YJ.HuganTQ4 * 0.5;
+                                        result.ntysj = result.gzl * result.tysj;
+                                        listfhtyl.Add(result);
+
+                                        break;
+                                    case 4:       //第四种方式
+                                        if (luxcol.Count > 0)
+                                        {
+                                            if (luxcol[0].FirstNode.Number < curpsp.LastNode.Number)
+                                            {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = curpsp.YJ.HuganTQ3;
+                                                result.tysj = curpsp.YJ.HuganTQ4;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+                                            else
+                                            {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = xldcol[i].YJ.HuganTQ3;
+                                                if (listkg2[0].Type == "06")
+                                                {
+                                                    result.tysj = listkg2[0].HuganTQ2;
+                                                }
+                                                else
+                                                    result.tysj = listkg2[0].HuganTQ1;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = curpsp.YJ.HuganTQ3;
+                                            if (listkg2[0].Type == "06")
+                                            {
+                                                result.tysj = listkg2[0].HuganTQ2;
+                                            }
+                                            else
+                                                result.tysj = listkg2[0].HuganTQ1;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                        break;
+                                    case 5:      //第五种方式
+                                        if (luxcol.Count > 0)
+                                        {
+                                            if (luxcol[0].FirstNode.Number < curpsp.LastNode.Number)
+                                            {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = curpsp.YJ.HuganTQ3;
+                                                result.tysj = curpsp.YJ.HuganTQ4;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+                                            else
+                                            {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = curpsp.YJ.HuganTQ3;
+                                                if (listkg2[0].Type == "06")
+                                                {
+                                                    result.tysj = listkg2[0].HuganTQ2;
+                                                }
+                                                else
+                                                    result.tysj = listkg2[0].HuganTQ1;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = curpsp.YJ.HuganTQ3;
+                                            if (listkg2[0].Type == "06")
+                                            {
+                                                result.tysj = listkg2[0].HuganTQ2;
+                                            }
+                                            else
+                                                result.tysj = listkg2[0].HuganTQ1;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                        break;
+                                }
+                            }
+                        }
+                    
+                    }
+                    
+                    
+                }
+                rescol[xldcol[i].YJ] = listfhtyl;  //添加到容器中
+
+            }
+#endregion
+#region   负荷支路对负荷的影响
+            for (int i = 0; i < fhzlcol.Count;i++ )
+            {
+                List<rresult> listfhtyl = new List<rresult>();   //记录元件对本线路各个负荷的影响
+                rresult result = new rresult();
+                PSPDEV ps=fhzlcol[i].YJ;
+                //找到负荷支路前面的线路段和后面的线路段
+               
+                int prenum = 0;
+                int lastnum = 0;
+                yjandjd prexld = new yjandjd();
+                yjandjd lastxld =new yjandjd();
+                for (int j = 0; j < xldcol.Count;j++ )
+                {
+                    if (xldcol[j].YJ.IName == fhzlcol[i].YJ.IName && xldcol[j].YJ.AreaID == fhzlcol[i].YJ.AreaID)
+                    {
+                        lastxld = xldcol[j];
+                        lastnum = j;
+                        continue;
+                    }
+                    if (xldcol[j].YJ.JName == fhzlcol[i].YJ.IName && xldcol[j].YJ.AreaID == fhzlcol[i].YJ.AreaID)
+                    {
+                        prexld = xldcol[j];
+                        prenum = j;
+                        continue;
+                    }
 
                 }
-               
-                for (int j = i + 1; j < xlcol.Count;j++ )
+                //需找前后第一个带隔离开关的线路段
+                IList<PSPDEV> listkg1 = new List<PSPDEV>();  //前段线路段的开关
+                IList<PSPDEV> listkg2 = new List<PSPDEV>();  //后段线路段的开关
+               string sql = "where IName='" + prexld.YJ.SUID + "'and (type='06'or type='55')";
+                listkg1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                if (listkg1.Count==0)
                 {
+                    for (int j = 0; j< prenum;j++ )
+                    {
+                        sql = "where IName='" + xldcol[j].YJ.SUID + "'and (type='06'or type='55')";
+                        listkg1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+
+                        if (listkg1.Count > 0)    //线路段有开关
+                        {
+                            prexld = xldcol[j];
+                            break;
+                        }
+                    }
+                }
+                sql = "where IName='" + lastxld.YJ.SUID + "'and (type='06'or type='55')";
+                listkg2= UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                if (listkg1.Count == 0)
+                {
+                    for (int j = lastnum; j < xldcol.Count; j++)
+                    {
+                        sql = "where IName='" + xldcol[j].YJ.SUID + "'and (type='06'or type='55')";
+                        listkg2 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+
+                        if (listkg2.Count > 0)    //线路段有开关
+                        {
+                            lastxld = xldcol[j];
+                            break;
+                        }
+                    }
+                }
+               
+
+                for (int j = 0; j < fhzlcol.Count;j++ )
+                {
+                    if (i==j)   //自己本身的负荷
+                    {
+                        result.deviceid = fhzlcol[j].YJ;
+                        result.gzl = fhzlcol[i].YJ.Vi0;
+                        result.tysj = fhzlcol[i].YJ.Vj0;
+                        result.ntysj = result.gzl * result.tysj;
+                        listfhtyl.Add(result);
+
+                    }
+                    else
+                    {
+                        
+                            switch (fxtype)   //一二三种类型不会影响其他负荷支路 所以不用计算
+                            {
+                         
+                                
+                                case 4:       //第四种方式  死接在负荷支路上
+                                    if (listkg1.Count>0)
+                                    {
+                                        
+                                      
+                                            if (fhzlcol[j].FirstNode.Number<=prexld.FirstNode.Number)
+                                           {
+                                                 result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                                if (listkg1[0].Type == "06")
+                                                {
+                                                    result.tysj = listkg1[0].HuganTQ2;
+                                                }
+                                                else
+                                                    result.tysj = listkg1[0].HuganTQ1;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+
+                                           if (fhzlcol[j].FirstNode.Number<=fhzlcol[i].FirstNode.Number&&fhzlcol[j].FirstNode.Number>prexld.FirstNode.Number)
+                                           {
+                                                 result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                             
+                                                result.tysj = fhzlcol[i].YJ.Vj0;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+
+                                           }
+                                   
+                                        
+                                    }
+                                    else
+                                    {
+                                       if (fhzlcol[j].FirstNode.Number<=fhzlcol[i].FirstNode.Number)
+                                       {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                             
+                                                result.tysj = fhzlcol[i].YJ.Vj0;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                       }
+                                    }
+                                    if (listkg2.Count>0)
+                                    {
+                                          if (fhzlcol[j].FirstNode.Number>=lastxld.LastNode.Number)
+                                           {
+                                                 result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                                if (listkg2[0].Type == "06")
+                                                {
+                                                    result.tysj = listkg1[0].HuganTQ2;
+                                                }
+                                                else
+                                                    result.tysj = listkg2[0].HuganTQ1;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+
+                                           if (fhzlcol[j].FirstNode.Number>=fhzlcol[i].FirstNode.Number&&fhzlcol[j].FirstNode.Number<lastxld.LastNode.Number)
+                                           {
+                                                 result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                             
+                                                result.tysj = fhzlcol[i].YJ.Vj0;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+
+                                           }
+                                    }
+                                    else
+                                    {
+                                         if (fhzlcol[j].FirstNode.Number>fhzlcol[i].FirstNode.Number)
+                                       {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                             
+                                                result.tysj = fhzlcol[i].YJ.Vj0;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                       }
+                                    }
+                                    break;
+                                case 5:      //第五种方式
+                                    if (listkg1.Count > 0)
+                                    {
+
+
+                                        if (fhzlcol[j].FirstNode.Number <= prexld.FirstNode.Number)
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = fhzlcol[i].YJ.Vi0;
+                                            if (listkg1[0].Type == "06")
+                                            {
+                                                result.tysj = listkg1[0].HuganTQ2;
+                                            }
+                                            else
+                                                result.tysj = listkg1[0].HuganTQ1;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+
+                                        if (fhzlcol[j].FirstNode.Number <= fhzlcol[i].FirstNode.Number && fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number)
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = fhzlcol[i].YJ.Vi0;
+
+                                            result.tysj = fhzlcol[i].YJ.Vj0;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        if (fhzlcol[j].FirstNode.Number <= fhzlcol[i].FirstNode.Number)
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = fhzlcol[i].YJ.Vi0;
+
+                                            result.tysj = fhzlcol[i].YJ.Vj0;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                    }
+                                    if (listkg2.Count > 0)
+                                    {
+                                        if (fhzlcol[j].FirstNode.Number >= lastxld.LastNode.Number)
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = fhzlcol[i].YJ.Vi0;
+                                            if (listkg2[0].Type == "06")
+                                            {
+                                                result.tysj = listkg1[0].HuganTQ2;
+                                            }
+                                            else
+                                                result.tysj = listkg2[0].HuganTQ1;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+
+                                        if (fhzlcol[j].FirstNode.Number >= fhzlcol[i].FirstNode.Number && fhzlcol[j].FirstNode.Number < lastxld.LastNode.Number)
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = fhzlcol[i].YJ.Vi0;
+
+                                            result.tysj = fhzlcol[i].YJ.Vj0;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (fhzlcol[j].FirstNode.Number > fhzlcol[i].FirstNode.Number)
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = fhzlcol[i].YJ.Vi0;
+
+                                            result.tysj = fhzlcol[i].YJ.Vj0;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                    }
+                                    break;
+                            }
+                       
+                    }
                 }
             }
+#endregion
+#region //如果存在支路的话要看做一个元件来等值化处理
+            for (int i = 0; i < xlcol.Count; i++)
+            {
+                List<rresult> listfhtyl = new List<rresult>();   //记录元件对本线路各个负荷的影响
+                rresult result = new rresult();
+                PSPDEV ps = xlcol[i].YJ;
+                TreeListNode tln = null;
+                  for (int j= 0; i < xl.Nodes.Count;i++ )
+                  {
+                      if (xl.Nodes[j].GetValue("DeviceID").ToString()==ps.SUID)
+                      {
+                          tln = xl.Nodes[j];
+                      }
+                      
+                  }
+               
+                //找到负荷支路前面的线路段和后面的线路段
+
+                int prenum = 0;
+                int lastnum = 0;
+                yjandjd prexld = new yjandjd();
+                yjandjd lastxld = new yjandjd();
+                for (int j = 0; j < xldcol.Count; j++)
+                {
+                    if (xldcol[j].YJ.IName == xlcol[i].YJ.HuganLine1 && xldcol[j].YJ.AreaID == xlcol[i].YJ.IName)
+                    {
+                        lastxld = xldcol[j];
+                        lastnum = j;
+                        continue;
+                    }
+                    if (xldcol[j].YJ.JName == xlcol[i].YJ.HuganLine1 && xldcol[j].YJ.AreaID == xlcol[i].YJ.IName)
+                    {
+                        prexld = xldcol[j];
+                        prenum = j;
+                        continue;
+                    }
+
+                }
+                //需找前后第一个带隔离开关的线路段
+                IList<PSPDEV> listkg1 = new List<PSPDEV>();  //前段线路段的开关
+                IList<PSPDEV> listkg2 = new List<PSPDEV>();  //后段线路段的开关
+                string sql = "where IName='" + prexld.YJ.SUID + "'and (type='06'or type='55')";
+                listkg1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                if (listkg1.Count == 0)
+                {
+                    for (int j = 0; j < prenum; j++)
+                    {
+                        sql = "where IName='" + xldcol[j].YJ.SUID + "'and (type='06'or type='55')";
+                        listkg1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+
+                        if (listkg1.Count > 0)    //线路段有开关
+                        {
+                            prexld = xldcol[j];
+                            break;
+                        }
+                    }
+                }
+                sql = "where IName='" + lastxld.YJ.SUID + "'and (type='06'or type='55')";
+                listkg2 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                if (listkg1.Count == 0)
+                {
+                    for (int j = lastnum; j < xldcol.Count; j++)
+                    {
+                        sql = "where IName='" + xldcol[j].YJ.SUID + "'and (type='06'or type='55')";
+                        listkg2 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+
+                        if (listkg2.Count > 0)    //线路段有开关
+                        {
+                            lastxld = xldcol[j];
+                            break;
+                        }
+                    }
+                }
+                //进行判断参照负荷的过程
+                for (int j = 0; j < fhzlcol.Count;j++ )
+                {
+                 
+                }
+            }
+#endregion
         }
         //等值化分析
         private void dzanalsy(TreeListNode xl, int fxtype)
