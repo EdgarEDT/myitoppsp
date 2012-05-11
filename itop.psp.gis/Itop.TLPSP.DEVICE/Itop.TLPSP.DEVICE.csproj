@@ -745,6 +745,12 @@
     <Compile Include="PDRel\FrmPDrelResult.Designer.cs">
       <DependentUpon>FrmPDrelResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="PDRel\FrmResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDRel\FrmResult.Designer.cs">
+      <DependentUpon>FrmResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="PDRel\fxdialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1214,6 +1220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PDRel\FrmPDrelResult.resx">
       <DependentUpon>FrmPDrelResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDRel\FrmResult.resx">
+      <DependentUpon>FrmResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDRel\fxdialog.resx">
       <DependentUpon>fxdialog.cs</DependentUpon>

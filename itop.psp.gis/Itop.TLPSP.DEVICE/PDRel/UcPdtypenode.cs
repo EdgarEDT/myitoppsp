@@ -30,6 +30,7 @@ namespace Itop.TLPSP.DEVICE
         private Ps_pdreltype parentobj=new Ps_pdreltype();
         private string pdreltypeid;
         DataTable dt = new DataTable();
+        DataTable resulttb = new DataTable();
         public Ps_pdreltype ParentObj
         {
             get
@@ -604,6 +605,14 @@ namespace Itop.TLPSP.DEVICE
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Init();  //刷新元件树
+            resulttb = new DataTable();
+            resulttb.Columns.Add("fhname", typeof(string));
+            resulttb.Columns.Add("zbname", typeof(string));
+            resulttb.Columns.Add("result", typeof(double));
+            resulttb.Columns.Add("pdfs", typeof(string));
+            resulttb.Columns.Add("A", typeof(string));
+            resulttb.Columns.Add("B", typeof(string));
+         
             DataTable dt = new DataTable();
             frmfxlx fm = new frmfxlx();
             if (fm.ShowDialog()==DialogResult.OK)
@@ -624,7 +633,7 @@ namespace Itop.TLPSP.DEVICE
         {
             foreach (TreeListNode tln in xl.Nodes)
             {
-                if (tln.GetValue("devicetype").ToString() == "73" && string.IsNullOrEmpty(tln.GetValue("S1").ToString()))
+                if (tln.GetValue("devicetype").ToString() == "73" && string.IsNullOrEmpty(tln.GetValue("S1").ToString()) && !tln.GetValue("title").ToString().Contains("节点有问题"))
                 {
                     //对子线路进行等值分析
                     dzanalsy(tln, fxtype);
@@ -634,17 +643,103 @@ namespace Itop.TLPSP.DEVICE
             //求取主线相关联的负荷节点的 停电率 停电时间等
             //各个线路段对该层负荷点的 故障率和停运时间的影响
             Dictionary<PSPDEV ,List<rresult>> rescol=new Dictionary<PSPDEV,List<rresult>>();
+            //主线路各负荷点的影响分析
+            //下行等值化
+            xxanaly(xl);
+            
+            //负荷分析
+            everyxlanalyst(xl, ref rescol, fxtype);
 
+            //对其结果进行处理分析
+            Dictionary<string, rresult> fhjg = new Dictionary<string, rresult>();
+            foreach (KeyValuePair<PSPDEV,List<rresult>> kp in rescol)
+            {
+                foreach (rresult re in kp.Value)
+                {
+                    if (!fhjg.ContainsKey(re.deviceid.SUID))
+                    {
+                        fhjg.Add(re.deviceid.SUID, re);
+                    }
+                    else
+                    {
+                        rresult r = fhjg[re.deviceid.SUID];
+                        r.gzl += re.gzl;
+                        r.ntysj+=re.ntysj;
 
+                        fhjg[re.deviceid.SUID] = r;
+                       
+                    }
+                }
+                
+
+            }
+            foreach (KeyValuePair<string ,rresult> kp in fhjg)
+            {
+                rresult r=kp.Value;
+                r.tysj=r.ntysj/r.gzl;
+                fhjg[kp.Key]=r;  //重新赋其值
+            }
+
+          //输出结果
+           resulttb.Columns.Add("fhname", typeof(string));
+            resulttb.Columns.Add("zbname", typeof(string));
+            resulttb.Columns.Add("result", typeof(double));
+            resulttb.Columns.Add("pdfs", typeof(string));
+            resulttb.Columns.Add("A", typeof(int));
+            resulttb.Columns.Add("B", typeof(string));
+            int order=0;
+            foreach (KeyValuePair<string, rresult> kp in fhjg)
+            {
+                order++;
+                DataRow row = resulttb.NewRow();
+                row["fhname"] = kp.Value.deviceid.Name;
+                row["zbname"] = "λ（次/年）";
+                row["result"] = kp.Value.gzl;
+                row["pdfs"] = "方式" + fxtype.ToString();
+                row["A"] = order;
+                resulttb.Rows.Add(row);
+                row = resulttb.NewRow();
+                row["fhname"] = kp.Value.deviceid.Name;
+                row["zbname"] = "t（h）";
+                row["result"] = kp.Value.tysj;
+                row["pdfs"] = "方式" + fxtype.ToString();
+                row["A"] = order;
+                resulttb.Rows.Add(row);
+                row = resulttb.NewRow();
+                row["fhname"] = kp.Value.deviceid.Name;
+                row["zbname"] = "T（h/年）";
+                row["result"] = kp.Value.ntysj;
+                row["pdfs"] = "方式" + fxtype.ToString();
+                row["A"] = order;
+                resulttb.Rows.Add(row);
+            }
+
+        }
+
+       //对各个线路进行负荷分析
+        private void everyxlanalyst(TreeListNode xl,ref  Dictionary<PSPDEV ,List<rresult>> rescol,int fxtype)
+        {
+            //对本支路负荷分析
+            yjfx(xl, ref rescol, fxtype);
+            foreach (TreeListNode tln in xl.Nodes)
+            {
+                if (tln.GetValue("devicetype").ToString() == "73" && tln.GetValue("S1").ToString() == "1")
+               {
+                    //对下一层线路的负荷进行分析
+                   everyxlanalyst(tln,ref rescol,fxtype);
+               }
+                
+            }
         }
         //各个元件对负荷点的影响分析
         private void yjfx(TreeListNode xl,ref  Dictionary<PSPDEV ,List<rresult>> rescol,int fxtype)
         {
-            rresult rs = new rresult();
+           
             List<yjandjd> xldcol = new List<yjandjd>();  //线路段集合
             List<yjandjd> fhzlcol = new List<yjandjd>();  //负荷支路集合
             List<yjandjd> xlcol = new List<yjandjd>();    //分支线路
             List<yjandjd> luxcol = new List<yjandjd>();//联络线集合
+            List<yjandjd> fxlcol = new List<yjandjd>(); //如果有父线路看成 为此线路的首节点 的影响所有的都会受到影响 除非存在备用电源找到第一个线路段的开关
             
             for (int i = 0; i < xl.Nodes.Count;i++ )
             {
@@ -717,6 +812,30 @@ namespace Itop.TLPSP.DEVICE
                     }
                 }
 
+
+            }
+            if (xl.ParentNode.GetValue("devicetype").ToString() == "73")   //存在父支路
+            {
+                PSPDEV ps = new PSPDEV();
+                ps.SUID = xl.ParentNode.GetValue("DeviceID").ToString();
+                ps = Services.BaseService.GetOneByKey<PSPDEV>(ps);
+                PSPDEV xld=new PSPDEV();
+                PSPDEV firstjd=new PSPDEV();
+                //  
+                for (int i = 0; i < xldcol.Count;i++ )
+                {
+                    string sql = "where IName='" + xldcol[i].YJ.SUID + "'and (type='06'or type='55')";
+                    IList<PSPDEV> listkg = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                    if (listkg.Count>0)
+                    {
+                        xld = xldcol[i].YJ;
+                        firstjd = xldcol[i].FirstNode;
+                        yjandjd jd = new yjandjd(ps, listkg[0], firstjd);
+                        fxlcol.Add(jd);
+                        break;
+                    }
+                }
+              
             }
             //然后依次的分析 
 #region  线路段的对负荷的影响
@@ -1021,10 +1140,10 @@ namespace Itop.TLPSP.DEVICE
                                             result.gzl = curpsp.YJ.HuganTQ3;
                                             if (listkg2[0].Type == "06")
                                             {
-                                                result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                                result.tysj = listkg2[0].HuganTQ2 ;
                                             }
                                             else
-                                                result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                                result.tysj = listkg2[0].HuganTQ1 ;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
                                         }
@@ -1384,6 +1503,7 @@ namespace Itop.TLPSP.DEVICE
                        
                     }
                 }
+                rescol[fhzlcol[i].YJ] = listfhtyl;  //添加到容器中
             }
 #endregion
 #region //如果存在支路的话要看做一个元件来等值化处理
@@ -1462,60 +1582,468 @@ namespace Itop.TLPSP.DEVICE
                 //进行判断参照负荷的过程
                 for (int j = 0; j < fhzlcol.Count;j++ )
                 {
-                 
+                 switch(fxtype)
+                 {
+                     case 1:
+                         if (fhzlcol[j].FirstNode.Number<=prexld.FirstNode.Number)
+                         {
+                             if (listkg1.Count>0)   //存在开关
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl =Convert.ToDouble(tln.GetValue("D1")) ;
+                                 if (listkg1[0].Type == "06")
+                                 {
+                                     result.tysj = listkg1[0].HuganTQ2;
+                                 }
+                                 else
+                                     result.tysj = listkg1[0].HuganTQ1;
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                             else
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+                                
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                         }
+                         else
+                         {
+                             result.deviceid = fhzlcol[j].YJ;
+                             result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                             result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                             result.ntysj = result.gzl * result.tysj;
+                             listfhtyl.Add(result);
+                         }
+                         break;
+                     case 2:
+                         if (fhzlcol[j].FirstNode.Number <= prexld.FirstNode.Number)
+                         {
+                             if (listkg1.Count > 0)   //存在开关
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 if (listkg1[0].Type == "06")
+                                 {
+                                     result.tysj = listkg1[0].HuganTQ2;
+                                 }
+                                 else
+                                     result.tysj = listkg1[0].HuganTQ1;
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                             else
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                         }
+                         if (fhzlcol[j].FirstNode.Number>prexld.FirstNode.Number&&fhzlcol[j].FirstNode.Number<=lastxld.FirstNode.Number)
+                         {
+                             result.deviceid = fhzlcol[j].YJ;
+                             result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                             result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                             result.ntysj = result.gzl * result.tysj;
+                             listfhtyl.Add(result);
+                         }
+                         if (fhzlcol[j].FirstNode.Number>=lastxld.FirstNode.Number)
+                         {
+                             if (listkg2.Count>0)
+                             {
+                                 if (luxcol.Count>0)
+                                 {
+                                     if (luxcol[0].FirstNode.Number < lastxld.FirstNode.Number)
+                                     {
+                                         result.deviceid = fhzlcol[j].YJ;
+                                         result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                         result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                         result.ntysj = result.gzl * result.tysj;
+                                         listfhtyl.Add(result);
+                                     }
+                                     else
+                                     {
+                                         result.deviceid = fhzlcol[j].YJ;
+                                         result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                         if (listkg2[0].Type == "06")
+                                         {
+                                             result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                         }
+                                         else
+                                             result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                         result.ntysj = result.gzl * result.tysj;
+                                         listfhtyl.Add(result);
+                                     }
+                                 }
+                                 else
+                                 {
+                                     result.deviceid = fhzlcol[j].YJ;
+                                     result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                     if (listkg2[0].Type == "06")
+                                     {
+                                         result.tysj = listkg2[0].HuganTQ2;
+                                     }
+                                     else
+                                         result.tysj = listkg2[0].HuganTQ1;
+                                     result.ntysj = result.gzl * result.tysj;
+                                     listfhtyl.Add(result);
+                                 }
+                                
+                             }
+                             else
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                         }
+                      
+                         break;
+                     case 3:
+                         if (fhzlcol[j].FirstNode.Number<=prexld.FirstNode.Number)
+                         {
+                             if (listkg1.Count>0)
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 if (listkg1[0].Type == "06")
+                                 {
+                                     result.tysj = listkg1[0].HuganTQ2;
+                                 }
+                                 else
+                                     result.tysj = listkg1[0].HuganTQ1;
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                             else
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                         }
+                         if (fhzlcol[j].FirstNode.Number>prexld.FirstNode.Number&&fhzlcol[j].FirstNode.Number<=lastxld.FirstNode.Number)
+                         {
+                             result.deviceid = fhzlcol[j].YJ;
+                             result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                             result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                             result.ntysj = result.gzl * result.tysj;
+                             listfhtyl.Add(result);
+                         }
+                         if (fhzlcol[j].FirstNode.Number>lastxld.FirstNode.Number)
+                         {
+                             if (listkg2.Count>0)
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"))*0.5;
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                             else
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                         }
+                         break;
+                     case 4:
+                         if (fhzlcol[j].FirstNode.Number <= prexld.FirstNode.Number)
+                         {
+                             if (listkg1.Count > 0)   //存在开关
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 if (listkg1[0].Type == "06")
+                                 {
+                                     result.tysj = listkg1[0].HuganTQ2;
+                                 }
+                                 else
+                                     result.tysj = listkg1[0].HuganTQ1;
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                             else
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                         }
+                         if (fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number && fhzlcol[j].FirstNode.Number <= lastxld.FirstNode.Number)
+                         {
+                             result.deviceid = fhzlcol[j].YJ;
+                             result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                             result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                             result.ntysj = result.gzl * result.tysj;
+                             listfhtyl.Add(result);
+                         }
+                         if (fhzlcol[j].FirstNode.Number >= lastxld.FirstNode.Number)
+                         {
+                             if (listkg2.Count > 0)
+                             {
+                                 if (luxcol.Count > 0)
+                                 {
+                                     if (luxcol[0].FirstNode.Number < lastxld.FirstNode.Number)
+                                     {
+                                         result.deviceid = fhzlcol[j].YJ;
+                                         result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                         result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                         result.ntysj = result.gzl * result.tysj;
+                                         listfhtyl.Add(result);
+                                     }
+                                     else
+                                     {
+                                         result.deviceid = fhzlcol[j].YJ;
+                                         result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                         if (listkg2[0].Type == "06")
+                                         {
+                                             result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                         }
+                                         else
+                                             result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                         result.ntysj = result.gzl * result.tysj;
+                                         listfhtyl.Add(result);
+                                     }
+                                 }
+                                 else
+                                 {
+                                     result.deviceid = fhzlcol[j].YJ;
+                                     result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                     if (listkg2[0].Type == "06")
+                                     {
+                                         result.tysj = listkg2[0].HuganTQ2;
+                                     }
+                                     else
+                                         result.tysj = listkg2[0].HuganTQ1;
+                                     result.ntysj = result.gzl * result.tysj;
+                                     listfhtyl.Add(result);
+                                 }
+
+                             }
+                             else
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                         }
+                         break;
+                     case 5:
+                         if (fhzlcol[j].FirstNode.Number <= prexld.FirstNode.Number)
+                         {
+                             if (listkg1.Count > 0)   //存在开关
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 if (listkg1[0].Type == "06")
+                                 {
+                                     result.tysj = listkg1[0].HuganTQ2;
+                                 }
+                                 else
+                                     result.tysj = listkg1[0].HuganTQ1;
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                             else
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                         }
+                         if (fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number && fhzlcol[j].FirstNode.Number <= lastxld.FirstNode.Number)
+                         {
+                             result.deviceid = fhzlcol[j].YJ;
+                             result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                             result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                             result.ntysj = result.gzl * result.tysj;
+                             listfhtyl.Add(result);
+                         }
+                         if (fhzlcol[j].FirstNode.Number >= lastxld.FirstNode.Number)
+                         {
+                             if (listkg2.Count > 0)
+                             {
+                                 if (luxcol.Count > 0)
+                                 {
+                                     if (luxcol[0].FirstNode.Number < lastxld.FirstNode.Number)
+                                     {
+                                         result.deviceid = fhzlcol[j].YJ;
+                                         result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                         result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                         result.ntysj = result.gzl * result.tysj;
+                                         listfhtyl.Add(result);
+                                     }
+                                     else
+                                     {
+                                         result.deviceid = fhzlcol[j].YJ;
+                                         result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                         if (listkg2[0].Type == "06")
+                                         {
+                                             result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                         }
+                                         else
+                                             result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                         result.ntysj = result.gzl * result.tysj;
+                                         listfhtyl.Add(result);
+                                     }
+                                 }
+                                 else
+                                 {
+                                     result.deviceid = fhzlcol[j].YJ;
+                                     result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                     if (listkg2[0].Type == "06")
+                                     {
+                                         result.tysj = listkg2[0].HuganTQ2;
+                                     }
+                                     else
+                                         result.tysj = listkg2[0].HuganTQ1;
+                                     result.ntysj = result.gzl * result.tysj;
+                                     listfhtyl.Add(result);
+                                 }
+
+                             }
+                             else
+                             {
+                                 result.deviceid = fhzlcol[j].YJ;
+                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"));
+                                 result.tysj = Convert.ToDouble(tln.GetValue("D2"));
+
+                                 result.ntysj = result.gzl * result.tysj;
+                                 listfhtyl.Add(result);
+                             }
+                         }
+                         break;
+                 }
                 }
+                rescol[xlcol[i].YJ] = listfhtyl;  //添加到容器中
+            }
+#endregion
+#region  父线路对本线路负荷的影响
+            for (int i = 0; i < fxlcol.Count;i++ )
+            {
+                List<rresult> listfhtyl = new List<rresult>();   //记录元件对本线路各个负荷的影响
+                rresult result = new rresult();
+                for (int j = 0; j < fhzlcol.Count;j++ )
+                {
+                    if (fhzlcol[j].FirstNode.Number<=fxlcol[i].LastNode.Number)
+                    {
+                       
+                            result.deviceid = fhzlcol[j].YJ;
+                            result.gzl =Convert.ToDouble(xl.GetValue("D3"));
+                            result.tysj = Convert.ToDouble(xl.GetValue("D4"));
+
+                            result.ntysj = result.gzl * result.tysj;
+                            listfhtyl.Add(result);
+                      
+                    
+                    }
+                    else
+                    {
+                        
+                            result.deviceid = fhzlcol[j].YJ;
+                            result.gzl = Convert.ToDouble(xl.GetValue("D3")); ;
+                            if (fxlcol[i].FirstNode.Type == "06")
+                            {
+                                result.tysj = fxlcol[i].FirstNode.HuganTQ2 ;
+                            }
+                            else
+                                result.tysj = fxlcol[i].FirstNode.HuganTQ1 ;
+                            result.ntysj = result.gzl * result.tysj;
+                            listfhtyl.Add(result);
+                     
+                    }
+                }
+                rescol[xlcol[i].YJ] = listfhtyl;  //添加到容器中
             }
 #endregion
         }
-        //等值化分析
+        //上行等值化分析
+     
+#region //上行分析
         private void dzanalsy(TreeListNode xl, int fxtype)
         {
             //判断是否有分支线 替代等值过程 将其分支线路的 停电率和故障时间等效到此节点上类型 关系表的S1=‘1’表示上行 S1=‘2’代表下行 D1 D2 D3 等效的值
             foreach (TreeListNode tln in xl.Nodes)
             {
-                if (tln.GetValue("devicetype").ToString() == "73" && string.IsNullOrEmpty(tln.GetValue("S1").ToString()))
+                if (tln.GetValue("devicetype").ToString() == "73" && string.IsNullOrEmpty(tln.GetValue("S1").ToString()) && !tln.GetValue("title").ToString().Contains("节点有问题"))
                 {
                     tln.SetValue("S1", "1");
 
                     dzanalsy(tln, fxtype);
-                 
+
                 }
 
             }
             //判断支路信息将其等值化
-            Zxdzh(xl, fxtype);
            
+            Zxdzh(xl, fxtype);
+            
         }
-        private void Zxdzh(TreeListNode zxl,int fxtype)
+        private void Zxdzh(TreeListNode zxl, int fxtype)
         {
-            double gzl = 0, U=0, gztime = 0,dklv=0;
-          //找到第一个线路段判断是否有断路器
+            double gzl = 0, U = 0, gztime = 0, dklv = 0;
+            //找到第一个线路段判断是否有断路器
             bool glkgflag = false;
-            for (int i = 0; i < zxl.Nodes.Count;i++ )
+            for (int i = 0; i < zxl.Nodes.Count; i++)
             {
-                if (zxl.Nodes[i].GetValue("devicetype").ToString()=="74")
+                if (zxl.Nodes[i].GetValue("devicetype").ToString() == "74")
                 {
-                    if (zxl.Nodes[i].Nodes.Count>0)
+                    if (zxl.Nodes[i].Nodes.Count > 0)
                     {
                         glkgflag = true;
-                        PSPDEV pd =new PSPDEV();
-                        pd.SUID=zxl.Nodes[i].Nodes[0].GetValue("DeviceID").ToString();
-                         pd=Services.BaseService.GetOneByKey<PSPDEV>(pd);
-                        if (pd!=null)
+                        PSPDEV pd = new PSPDEV();
+                        pd.SUID = zxl.Nodes[i].Nodes[0].GetValue("DeviceID").ToString();
+                        pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
+                        if (pd != null)
                         {
-                            if (pd.Type=="06")
+                            if (pd.Type == "06")
                             {
-                                dklv=Convert.ToDouble(pd.HuganFirst);
+                                dklv = Convert.ToDouble(pd.HuganFirst);
                                 gztime = pd.HuganTQ2;
                             }
-                            else if (pd.Type=="55")
+                            else if (pd.Type == "55")
                             {
                                 dklv = pd.HuganTQ4;
                                 gztime = pd.HuganTQ1;
                             }
-                          
+
                         }
-                        
+
                     }
                     break;
                 }
@@ -1555,17 +2083,80 @@ namespace Itop.TLPSP.DEVICE
             //等值的过程
             if (glkgflag)
             {
-              
+
                 zxl.SetValue("D1", (1 - dklv) * gzl);
                 zxl.SetValue("D2", gztime);
             }
             else
             {
                 zxl.SetValue("D1", gzl);
-                zxl.SetValue("D2", U/gzl);
+                zxl.SetValue("D2", U / gzl);
             }
-           
-        }
 
+        }
+#endregion
+   
+#region   下行等值化
+        private void xxanaly(TreeListNode tln )
+        {
+            //在分析中将其值写到子支路D3 D4 中
+            double gzl = 0, U = 0;
+            List<TreeListNode> zxlcol = new List<TreeListNode>();
+            for (int i = 0; i < tln.Nodes.Count;i++ )
+            {
+                if (tln.Nodes[i].GetValue("devicetype").ToString() == "73" && tln.Nodes[i].GetValue("S1").ToString() == "1")
+                {
+                    zxlcol.Add(tln.Nodes[i]);
+                }
+
+            }
+            for (int i = 0; i < zxlcol.Count;i++ )
+            {
+                for (int j = 0; j < tln.Nodes.Count; j++)
+                {
+                    if (tln.Nodes[j].GetValue("devicetype").ToString() == "74")
+                    {
+                        PSPDEV pd = new PSPDEV();
+                        pd.SUID = tln.Nodes[j].GetValue("DeviceID").ToString();
+                        pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
+                        if (pd != null)
+                        {
+                            gzl += pd.HuganTQ3;
+                            U+= (pd.HuganTQ3 * pd.HuganTQ4);
+                        }
+
+                    }
+                    if (tln.Nodes[j].GetValue("devicetype").ToString() == "80")
+                    {
+                        PSPDEV pd = new PSPDEV();
+                        pd.SUID = tln.Nodes[j].GetValue("DeviceID").ToString();
+                        pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
+                        if (pd != null)
+                        {
+                            gzl += pd.HuganTQ2;
+                            U += (pd.HuganTQ2 * pd.HuganTQ3);
+                        }
+                    }
+                    if (tln.Nodes[j].GetValue("devicetype").ToString() == "73" && tln.GetValue("S1").ToString() == "1" && !tln.Nodes[j].Equals(zxlcol[i]))
+                    {
+                        gzl += Convert.ToDouble(tln.Nodes[j].GetValue("D1"));
+                        U += Convert.ToDouble(tln.Nodes[j].GetValue("D1")) * Convert.ToDouble(tln.Nodes[j].GetValue("D2"));
+                    }
+
+                }
+                if (tln.ParentNode.GetValue("devicetype").ToString() == "73")
+                {
+                    gzl += Convert.ToDouble(tln.GetValue("D3"));
+                    U += Convert.ToDouble(tln.GetValue("D3")) * Convert.ToDouble(tln.GetValue("D4"));
+                }
+                //将其等值化的值写入其中
+                zxlcol[i].SetValue("D3",gzl) ;
+                zxlcol[i].SetValue("D4",U/gzl);
+                //进入子路分析
+                xxanaly(zxlcol[i]);
+            }
+        }
+#endregion
+       
     }
 }
