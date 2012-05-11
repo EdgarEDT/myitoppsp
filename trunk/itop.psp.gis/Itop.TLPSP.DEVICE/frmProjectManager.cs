@@ -257,15 +257,40 @@ namespace Itop.TLPSP.DEVICE {
         }
         //排除设备
         void barDeleteDevice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-            if (strID == null) {
-                MessageBox.Show("请先选择电气计算方案！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (strID == null||curDevice==null) {
+                MessageBox.Show("选择有问题！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            PSPDEV dev = curDevice.SelectedDevice as PSPDEV;
-            PSP_ElcDevice elcdevice = new PSP_ElcDevice();
-            elcdevice.ProjectSUID = strID;
-            elcdevice.DeviceSUID = dev.SUID;
-            Services.BaseService.Delete<PSP_ElcDevice>(elcdevice);
+         if (curDevice.SelectedDevice!=null)
+         {
+             if (curDevice.SelectedDevice.GetType() == typeof(PSPDEV))
+             {
+                 PSPDEV dev = curDevice.SelectedDevice as PSPDEV;
+                 PSP_ElcDevice elcdevice = new PSP_ElcDevice();
+                 elcdevice.ProjectSUID = strID;
+                 elcdevice.DeviceSUID = dev.SUID;
+                 Services.BaseService.Delete<PSP_ElcDevice>(elcdevice);
+
+             }
+             else if (curDevice.SelectedDevice.GetType() == typeof(PSP_Substation_Info))
+             {
+                 PSP_Substation_Info dev = curDevice.SelectedDevice as PSP_Substation_Info;
+                 PSP_ElcDevice elcdevice = new PSP_ElcDevice();
+                 elcdevice.ProjectSUID = strID;
+                 elcdevice.DeviceSUID = dev.UID;
+                 Services.BaseService.Delete<PSP_ElcDevice>(elcdevice);
+             }
+             else if (curDevice.SelectedDevice.GetType() == typeof(PSP_PowerSubstation_Info))
+             {
+                 PSP_PowerSubstation_Info dev = curDevice.SelectedDevice as PSP_PowerSubstation_Info;
+                 PSP_ElcDevice elcdevice = new PSP_ElcDevice();
+                 elcdevice.ProjectSUID = strID;
+                 elcdevice.DeviceSUID = dev.UID;
+                 Services.BaseService.Delete<PSP_ElcDevice>(elcdevice);
+             }
+         }
+           
+         
             if (curDevice != null) {
                 curDevice.strCon = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and ";
                 curDevice.Init();
