@@ -151,7 +151,7 @@ namespace Itop.TLPSP.DEVICE
         
         private void barButtonItemIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.treeList1.FocusedNode!=null)
+            if (this.treeList1.FocusedNode != null && curDevice!=null)
             {
                 IList<string> filedList = new List<string>();
                 IList<string> capList = new List<string>();
@@ -188,12 +188,20 @@ namespace Itop.TLPSP.DEVICE
 
         private void AllDele_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            curDevice.Alldel();
+            if (curDevice!=null)
+            {
+                curDevice.Alldel();
+            }
+            
         }
         private void UpdateNumber_ItemClick(object sender,DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            curDevice.updatenumberflag = true;
-            curDevice.UpdateNumber();
+            if (curDevice!=null)
+            {
+                curDevice.updatenumberflag = true;
+                curDevice.UpdateNumber();
+            }
+          
         }
 
         private void barImportPsasp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
