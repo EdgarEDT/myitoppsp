@@ -218,6 +218,15 @@ namespace Itop.TLPSP.DEVICE
             string strID = node["id"].ToString();
             string dtype = node["class"].ToString();
             //UCDeviceBase device = null;
+            //主网的设备取消新建功能
+            if (Convert.ToInt32(strID) <= 15)
+            {
+                simpleButton4.Enabled = false;
+            }
+            else
+            {
+                simpleButton4.Enabled = true;
+            }
             if (devicTypes.ContainsKey(dtype))
             {
                 device = devicTypes[dtype];
@@ -225,6 +234,7 @@ namespace Itop.TLPSP.DEVICE
                 try
                 {
                     device.Show();
+                    
                 }
                 catch { }
             }
