@@ -10,7 +10,7 @@
   <device id="04" name ="发电机" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFDJ" parentid="300"></device>
   <device id="05" name ="线路" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceXL" parentid="200"></device>
   <device id="06" name ="断路器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDLQ" parentid="300"></device>
-  <device id="07" name ="开关" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceKG" parentid="300"></device>
+  <device id="07" name ="开关" visible="false" class="Itop.TLPSP.DEVICE.UCDeviceKG" parentid="300"></device>
   <device id="08" name ="串联电容器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceCLDR" parentid="300"></device>
   <device id="09" name ="并联电容器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBLDR" parentid="300"></device>
   <device id="10" name ="串联电抗器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceCLDK" parentid="300"></device>

@@ -26,7 +26,60 @@ namespace Itop.TLPSP.DEVICE
         /// </summary>
         public override void Init() {
             con = " Type='07'";
-            base.Init();         
+            base.Init(); 
+            //创建一条数据
+            if (gridView1.RowCount==0)
+            {
+                PSPDEV dev = new PSPDEV();
+                dev.Name = "1";
+                dev.Number = 1;
+                dev.Type = "07";
+                dev.KSwitchStatus = "0";
+                dev.ProjectID = this.ProjectID;
+                UCDeviceBase.DataService.Create("InsertPSPDEV", dev);
+                DataRow row = datatable1.NewRow();
+                if (dev.NodeType == "0")
+                {
+                    dev.NodeType = "平衡节点";
+                }
+                else if (dev.NodeType == "1")
+                {
+                    dev.NodeType = "PQ节点";
+                }
+                else if (dev.NodeType == "2")
+                {
+                    dev.NodeType = "PV节点";
+                }
+                else
+                {
+                    dev.NodeType = null;
+                }
+                if (dev.KSwitchStatus == "1")
+                {
+                    dev.KSwitchStatus = "退出运行";
+                }
+                else
+                {
+                    dev.KSwitchStatus = "投入运行";
+                }
+                if (dev.UnitFlag == "0")
+                {
+                    dev.UnitFlag = "p.u.";
+                }
+                else
+                {
+                    if (dev.Type == "01" || dev.Type == "04" || dev.Type == "12")
+                    {
+                        dev.UnitFlag = "kV/MW/MVar";
+                    }
+                    else
+                    {
+                        dev.UnitFlag = "Ohm/10-6Siem";
+                    }
+                }
+                Itop.Common.DataConverter.ObjectToRow(dev, row);
+                datatable1.Rows.Add(row); 
+            }
         }
         /// <summary>
         /// 检索设备

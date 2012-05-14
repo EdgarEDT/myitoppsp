@@ -240,6 +240,14 @@ namespace Itop.TLPSP.DEVICE
                     comboBoxEdit6.Properties.Items.Add(dev.Name);
                 }
             }
+            //没有的话 给赋一个初值
+            if (list.Count>0)
+            {
+                comboBoxEdit5.Text = (list[0] as PSPDEV).Name;
+                comboBoxEdit6.Text = (list[0] as PSPDEV).Name;
+            }
+            
+
             if (DeviceHelper.xml1 == null)
             {
                 textEdit1.Properties.Buttons[0].Visible = false;

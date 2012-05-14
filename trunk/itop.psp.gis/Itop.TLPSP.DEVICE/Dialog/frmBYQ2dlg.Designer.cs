@@ -485,6 +485,7 @@
             this.label10.Size = new System.Drawing.Size(55, 14);
             this.label10.TabIndex = 11;
             this.label10.Text = "连接开关";
+            this.label10.Visible = false;
             // 
             // label9
             // 
@@ -504,6 +505,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEdit6.Size = new System.Drawing.Size(111, 21);
             this.comboBoxEdit6.TabIndex = 6;
+            this.comboBoxEdit6.Visible = false;
             // 
             // comboBoxEdit5
             // 
@@ -513,6 +515,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboBoxEdit5.Size = new System.Drawing.Size(111, 21);
             this.comboBoxEdit5.TabIndex = 4;
+            this.comboBoxEdit5.Visible = false;
             // 
             // comboBoxEdit4
             // 
