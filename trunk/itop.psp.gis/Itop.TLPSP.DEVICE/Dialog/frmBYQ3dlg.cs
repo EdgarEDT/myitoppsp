@@ -630,5 +630,10 @@ namespace Itop.TLPSP.DEVICE
         {
 
         }
+
+        private void comboBoxEdit1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            date1.Text = comboBoxEdit1.Text;
+        }
     }
 }

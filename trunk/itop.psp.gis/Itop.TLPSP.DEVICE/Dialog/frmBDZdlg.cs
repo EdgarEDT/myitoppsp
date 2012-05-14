@@ -153,6 +153,7 @@ namespace Itop.TLPSP.DEVICE
 
             }
             comboBoxEdit1.Text = DateTime.Today.Year.ToString();
+            date1.Text = DateTime.Today.Year.ToString();
             if (DeviceHelper.xml1 == null)
             {
                 textEdit1.Properties.Buttons[0].Visible = false;
@@ -387,6 +388,19 @@ namespace Itop.TLPSP.DEVICE
         private void ucGraph1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxEdit1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            date1.Text = comboBoxEdit1.Text;
+            if (Convert.ToInt32(comboBoxEdit1.Text)<=DateTime.Now.Year)
+            {
+                comboBoxEdit2.Text = "ÏÖ×´";
+            }
+            else
+            {
+                comboBoxEdit2.Text = "¹æ»®";
+            }
         }
        
     }

@@ -82,6 +82,7 @@ namespace Itop.TLPSP.DEVICE
 
             }
             comboBoxEdit1.Text = DateTime.Today.Year.ToString();
+           date1.Text= DateTime.Today.Year.ToString();
             string ss = " ProjectID='" + Itop.Client.MIS.ProgUID + "' ";
             IList listq = UCDeviceBase.DataService.GetList("SelectPS_Table_AreaWHByConn", ss);
             Area.Properties.DataSource = listq;
@@ -154,6 +155,19 @@ namespace Itop.TLPSP.DEVICE
                         listBoxControl1.Items.RemoveAt(listBoxControl1.SelectedIndex);
                     }
                 }
+            }
+        }
+
+        private void comboBoxEdit1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            date1.Text = comboBoxEdit1.Text;
+            if (Convert.ToInt32(comboBoxEdit1.Text) <= DateTime.Now.Year)
+            {
+                comboBoxEdit2.Text = "ÏÖ×´";
+            }
+            else
+            {
+                comboBoxEdit2.Text = "¹æ»®";
             }
         }
     }

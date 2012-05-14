@@ -189,6 +189,8 @@ namespace Itop.TLPSP.DEVICE
                 o = System.DateTime.Now.Year + i;
                 date2.Properties.Items.Add(o);
             }
+            comboBoxEdit1.Text = DateTime.Today.Year.ToString();
+            date1.Text = DateTime.Today.Year.ToString();
             WireCategory wirewire = new WireCategory();
             wirewire.Type = "40";
             IList list1 = null;
@@ -823,6 +825,24 @@ namespace Itop.TLPSP.DEVICE
            //bool flag= textEdit1.Focus();
            //textEdit1.SelectAll();
 
+        }
+
+        private void comboBoxEdit1_Properties_SelectedValueChanged(object sender, EventArgs e)
+        {
+            date1.Text = comboBoxEdit1.Text;
+        }
+
+        private void comboBoxEdit1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            date1.Text = comboBoxEdit1.Text;
+            if (Convert.ToInt32(comboBoxEdit1.Text) <= DateTime.Now.Year)
+            {
+                comboBoxEdit2.Text = "ÏÖ×´";
+            }
+            else
+            {
+                comboBoxEdit2.Text = "¹æ»®";
+            }
         }
 
         /// <summary>
