@@ -120,6 +120,19 @@ namespace Itop.TLPSP.DEVICE
             gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
             gridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             gridControl1.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            //创建一条开关数据 为了短路计算所用 如果没有则创建
+           string sql = " where Type='07'and ProjectID='" + this.ProjectID + "' order by name";
+            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", sql);
+            if (list.Count==0)
+            {
+                PSPDEV dev = new PSPDEV();
+                dev.Type = "07";
+                dev.Name = "1";
+                dev.Number = 1;
+                dev.KSwitchStatus = "0";
+                dev.ProjectID = this.ProjectID;
+                UCDeviceBase.DataService.Create("InsertPSPDEV", dev);
+            }
         }
         /// <summary>
         /// 设备初始化

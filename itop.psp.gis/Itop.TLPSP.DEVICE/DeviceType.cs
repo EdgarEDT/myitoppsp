@@ -51,12 +51,16 @@ namespace Itop.TLPSP.DEVICE
             table.Columns.Add("class",typeof(string));
             table.Columns.Add("parentid", typeof(string));
             foreach (XmlNode node in nodes) {
-                DataRow row = table.NewRow();
-                row["id"] = node.Attributes["id"].Value;
-                row["name"] = node.Attributes["name"].Value;
-                row["class"] = node.Attributes["class"].Value;
-                row["parentid"] = node.Attributes["parentid"].Value;
-                table.Rows.Add(row);
+                if (node.Attributes["visible"].Value=="true")
+                {
+                    DataRow row = table.NewRow();
+                    row["id"] = node.Attributes["id"].Value;
+                    row["name"] = node.Attributes["name"].Value;
+                    row["class"] = node.Attributes["class"].Value;
+                    row["parentid"] = node.Attributes["parentid"].Value;
+                    table.Rows.Add(row);
+                }
+               
             }
             return table;
         }
