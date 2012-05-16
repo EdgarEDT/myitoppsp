@@ -9,9 +9,9 @@ using DevExpress.XtraEditors;
 
 namespace Itop.TLPSP.DEVICE
 {
-    public partial class FrmResult1 : DevExpress.XtraEditors.XtraForm
+    public partial class FrmResult: DevExpress.XtraEditors.XtraForm
     {
-        public FrmResult1()
+        public FrmResult()
         {
             InitializeComponent();
         }
