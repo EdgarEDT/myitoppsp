@@ -52,14 +52,18 @@ namespace Itop.TLPSP.DEVICE
                 dev.iV = (double)spinEdit21.Value;
                 dev.jV = (double)spinEdit22.Value;
                 dev.HuganTQ1 = (double)spinEdit18.Value;
+                dev.HuganTQ4 = (double)spinEdit19.Value;
+                dev.HuganTQ5 = (double)spinEdit20.Value;
+                dev.HuganTQ2 = (double)spinEdit23.Value;
+                dev.HuganTQ3 = (double)spinEdit24.Value;
                 dev.JXFS = comboBoxEdit7.Text;
                 dev.DQ = comboBoxEdit8.Text;
                 dev.LineType2 = comlinetype2.Text;
                 dev.Length2 =Convert.ToDouble(splength2.Value);
                 dev.LLFS = comllfs.Text;
                 dev.SwitchNum = Convert.ToInt32(spkg.Value);
-                dev.Date1 = date1.Text;
-                dev.Date2 = date2.Text;
+                dev.Date1 = comboBoxEdit10.Text;
+                dev.Date2 = comboBoxEdit10.Text;
                 if (lookUpEdit1.EditValue!=null)
                 {
                     dev.HuganLine1 = lookUpEdit1.EditValue.ToString();
@@ -105,14 +109,18 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit21.Value = (decimal)dev.iV;
                 spinEdit22.Value = (decimal)dev.jV;
                 spinEdit18.Value = (decimal)dev.HuganTQ1;
+                spinEdit19.Value = (decimal)dev.HuganTQ4;
+                spinEdit20.Value = (decimal)dev.HuganTQ5;
+                spinEdit23.Value = (decimal)dev.HuganTQ2;
+                spinEdit24.Value = (decimal)dev.HuganTQ3;
                 comboBoxEdit7.Text = dev.JXFS;
                 comboBoxEdit8.Text = dev.DQ;
                 comboBoxEdit9.EditValue = dev.AreaID;  
                 comlinetype2.Text = dev.LineType2;
                 splength2.Value = Convert.ToDecimal(dev.Length2);
                 comllfs.Text = dev.LLFS;
-                date1.Text = dev.Date1;
-                date2.Text = dev.Date2;
+                comboBoxEdit10.Text = dev.Date1;
+                comboBoxEdit11.Text = dev.Date2;
                 spkg.Value = Convert.ToDecimal(dev.SwitchNum);
                 //创建节点信息
                 ucjd1.ParentObj = dev;
@@ -139,6 +147,9 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit12.Value = (decimal)rc.ZeroTQ;
                 spinEdit10.Value = (decimal)rc.ZeroGNDC;
                 spinEdit17.Value = (decimal)rc.WireChange;
+                spinEdit19.Value = (decimal)rc.gzl;
+                spinEdit20.Value = (decimal)rc.xftime;
+
             }
         }
         public frmDXdlg() {
@@ -149,11 +160,15 @@ namespace Itop.TLPSP.DEVICE
         protected void Init()
         {
             object o = new object();
-            for (int i = -30; i <= 30; i++)
+            for (int i = -10; i <= 30; i++)
             {
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit1.Properties.Items.Add(o);
+                comboBoxEdit10.Properties.Items.Add(o);
+                comboBoxEdit11.Properties.Items.Add(o);
             }
+            comboBoxEdit10.Text = DateTime.Now.Year.ToString();
+            comboBoxEdit1.Text = DateTime.Now.Year.ToString();
             WireCategory wirewire = new WireCategory();
             wirewire.Type = "40";
             IList list1 = null;
@@ -1078,7 +1093,7 @@ namespace Itop.TLPSP.DEVICE
                             num++;
                             Ps_pdtypenode pn2 = new Ps_pdtypenode();
 
-                            pn2.title = ps.Name;
+                            pn2.title = ps1.Name;
                             pn2.pdreltypeid = pdreltype;
                             pn2.devicetype = "06";
                             pn2.DeviceID = ps1.SUID;
@@ -1096,7 +1111,7 @@ namespace Itop.TLPSP.DEVICE
                             num++;
                             Ps_pdtypenode pn2 = new Ps_pdtypenode();
 
-                            pn2.title = ps.Name;
+                            pn2.title = ps1.Name;
                             pn2.pdreltypeid = pdreltype;
                             pn2.devicetype = "55";
                             pn2.DeviceID = ps1.SUID;
@@ -1191,7 +1206,7 @@ namespace Itop.TLPSP.DEVICE
                         num++;
                         Ps_pdtypenode pn2 = new Ps_pdtypenode();
 
-                        pn2.title = ps.Name;
+                        pn2.title = ps1.Name;
                         pn2.pdreltypeid = pdreltype;
                         pn2.devicetype = "06";
                         pn2.DeviceID = ps1.SUID;
@@ -1209,7 +1224,7 @@ namespace Itop.TLPSP.DEVICE
                         num++;
                         Ps_pdtypenode pn2 = new Ps_pdtypenode();
 
-                        pn2.title = ps.Name;
+                        pn2.title = ps1.Name;
                         pn2.pdreltypeid = pdreltype;
                         pn2.devicetype = "55";
                         pn2.DeviceID = ps1.SUID;
@@ -1265,6 +1280,11 @@ namespace Itop.TLPSP.DEVICE
             }
 
 
+        }
+
+        private void comboBoxEdit1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            comboBoxEdit10.Text = comboBoxEdit1.Text;
         }
         /// <summary>
         /// 母线类型

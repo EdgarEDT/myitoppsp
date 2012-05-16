@@ -31,6 +31,7 @@ namespace Itop.TLPSP.DEVICE
         private string pdreltypeid;
         DataTable dt = new DataTable();
         DataTable resulttb = new DataTable();
+        DataTable resultzbtb = new DataTable();
         public Ps_pdreltype ParentObj
         {
             get
@@ -601,7 +602,7 @@ namespace Itop.TLPSP.DEVICE
             }
           
         }
-
+        int order = 0;
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Init();  //刷新元件树
@@ -612,6 +613,14 @@ namespace Itop.TLPSP.DEVICE
             resulttb.Columns.Add("pdfs", typeof(string));
             resulttb.Columns.Add("A", typeof(string));
             resulttb.Columns.Add("B", typeof(string));
+            order = 0;
+            resultzbtb = new DataTable();
+            resultzbtb.Columns.Add("fhname", typeof(string));
+            resultzbtb.Columns.Add("zbname", typeof(string));
+            resultzbtb.Columns.Add("result", typeof(double));
+            resultzbtb.Columns.Add("pdfs", typeof(string));
+            resultzbtb.Columns.Add("A", typeof(string));
+            resultzbtb.Columns.Add("B", typeof(string));
          
             DataTable dt = new DataTable();
             frmfxlx fm = new frmfxlx();
@@ -627,6 +636,10 @@ namespace Itop.TLPSP.DEVICE
                     relanalsy(tln,Convert.ToInt32(dr["D"]));
                 }
             }
+            FrmResult FR = new FrmResult();
+            FR.DT = resulttb;
+            FR.DT1 = resultzbtb;
+            FR.ShowDialog();
         }
         //XL为分析的线路 
         private void relanalsy(TreeListNode xl, int fxtype)
@@ -673,22 +686,19 @@ namespace Itop.TLPSP.DEVICE
                 
 
             }
+            Dictionary<string, rresult> fhjg1 = new Dictionary<string, rresult>();
             foreach (KeyValuePair<string ,rresult> kp in fhjg)
             {
                 rresult r=kp.Value;
                 r.tysj=r.ntysj/r.gzl;
-                fhjg[kp.Key]=r;  //重新赋其值
+               //重新赋其值
+                fhjg1[kp.Key] = r;
             }
 
           //输出结果
-           resulttb.Columns.Add("fhname", typeof(string));
-            resulttb.Columns.Add("zbname", typeof(string));
-            resulttb.Columns.Add("result", typeof(double));
-            resulttb.Columns.Add("pdfs", typeof(string));
-            resulttb.Columns.Add("A", typeof(int));
-            resulttb.Columns.Add("B", typeof(string));
-            int order=0;
-            foreach (KeyValuePair<string, rresult> kp in fhjg)
+        
+           
+            foreach (KeyValuePair<string, rresult> kp in fhjg1)
             {
                 order++;
                 DataRow row = resulttb.NewRow();
@@ -713,6 +723,80 @@ namespace Itop.TLPSP.DEVICE
                 row["A"] = order;
                 resulttb.Rows.Add(row);
             }
+            //求结果
+            double ACI = 0, CID = 0, SAIFI = 0, SAIDI = 0, CAIDI = 0, ASAI = 0, ASUI = 0, ASCI = 0,sumyh=0;
+            foreach (KeyValuePair<string, rresult> kp in fhjg1)
+           {
+               ACI += kp.Value.deviceid.Num1 * kp.Value.gzl;
+               sumyh += kp.Value.deviceid.Num1;
+               CID += kp.Value.deviceid.Num1 * kp.Value.ntysj;
+               ASCI += kp.Value.deviceid.HuganTQ4 * kp.Value.ntysj;
+           }
+            SAIFI = ACI / sumyh;
+            SAIDI = CID / sumyh;
+            CAIDI = CID / ACI;
+            ASAI = ((sumyh * 8760) - 605) / (sumyh * 8760);
+            ASUI = 1 - ASAI;
+            ASCI = ASCI / sumyh;
+            order++;
+            DataRow row1 = resultzbtb.NewRow();
+          
+            row1["zbname"] = "用户全年总停电次数ACI(次/年)";
+            row1["result"] = ACI;
+            row1["pdfs"] = "方式" + fxtype.ToString();
+            row1["A"] = order;
+            resultzbtb.Rows.Add(row1);
+            row1 = resultzbtb.NewRow();
+
+            row1["zbname"] = "用户总全年停电时间CID（h）";
+            row1["result"] = CID;
+            row1["pdfs"] = "方式" + fxtype.ToString();
+            row1["A"] = order;
+            resultzbtb.Rows.Add(row1);
+            row1 = resultzbtb.NewRow();
+
+            row1["zbname"] = "系统平均停电频率SAIFI（次/户·年）";
+            row1["result"] =SAIFI;
+            row1["pdfs"] = "方式" + fxtype.ToString();
+            row1["A"] = order;
+            resultzbtb.Rows.Add(row1);
+
+            row1 = resultzbtb.NewRow();
+            row1["zbname"] = "系统平均停电持续时间SAIDI（h/户·年）";
+            row1["result"] = SAIDI;
+            row1["pdfs"] = "方式" + fxtype.ToString();
+            row1["A"] = order;
+            resultzbtb.Rows.Add(row1);
+
+            row1 = resultzbtb.NewRow();
+            row1["zbname"] = "用户平均停电时间CAIDI（h/户·年）";
+            row1["result"] = CAIDI;
+            row1["pdfs"] = "方式" + fxtype.ToString();
+            row1["A"] = order;
+            resultzbtb.Rows.Add(row1);
+
+            row1 = resultzbtb.NewRow();
+            row1["zbname"] = "平均供电可用率ASAI";
+            row1["result"] = ASAI;
+            row1["pdfs"] = "方式" + fxtype.ToString();
+            row1["A"] = order;
+            resultzbtb.Rows.Add(row1);
+
+            row1 = resultzbtb.NewRow();
+            row1["zbname"] = "平均供电不可用率ASUI";
+            row1["result"] = ASUI;
+            row1["pdfs"] = "方式" + fxtype.ToString();
+            row1["A"] = order;
+            resultzbtb.Rows.Add(row1);
+
+            row1 = resultzbtb.NewRow();
+            row1["zbname"] = "平均系统缺电指标ASCI";
+            row1["result"] = ASCI;
+            row1["pdfs"] = "方式" + fxtype.ToString();
+            row1["A"] = order;
+            resultzbtb.Rows.Add(row1);
+
+
 
         }
 
@@ -862,13 +946,13 @@ namespace Itop.TLPSP.DEVICE
                                  result.tysj=listkg[0].HuganTQ2;
                           }
                           else
-                             result.tysj=listkg[0].HuganTQ1;
+                             result.tysj=listkg[0].HuganTQ4;
                           result.ntysj=result.gzl*result.tysj; 
                           listfhtyl.Add(result);
 
                          
                       }
-                      else if (xldcol[i].LastNode.Number<fhzlcol[j].FirstNode.Number)
+                      else if (xldcol[i].FirstNode.Number<fhzlcol[j].FirstNode.Number)
                       {
                          switch (fxtype)
                           {
@@ -899,7 +983,7 @@ namespace Itop.TLPSP.DEVICE
                                               result.tysj=listkg[0].HuganTQ2>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ2:luxcol[0].YJ.HuganTQ3;
                                           }
                                           else
-                                             result.tysj=listkg[0].HuganTQ1>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ1:luxcol[0].YJ.HuganTQ3;
+                                             result.tysj=listkg[0].HuganTQ4>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ4:luxcol[0].YJ.HuganTQ3;
                                           result.ntysj=result.gzl*result.tysj; 
                                           listfhtyl.Add(result);
                                      }
@@ -913,7 +997,7 @@ namespace Itop.TLPSP.DEVICE
                                               result.tysj=listkg[0].HuganTQ2>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ2:luxcol[0].YJ.HuganTQ3;
                                           }
                                           else
-                                             result.tysj=listkg[0].HuganTQ1>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ1:luxcol[0].YJ.HuganTQ3;
+                                             result.tysj=listkg[0].HuganTQ4>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ4:luxcol[0].YJ.HuganTQ3;
                                           result.ntysj=result.gzl*result.tysj; 
                                           listfhtyl.Add(result);
                                  }
@@ -948,7 +1032,7 @@ namespace Itop.TLPSP.DEVICE
                                               result.tysj=listkg[0].HuganTQ2;
                                           }
                                           else
-                                             result.tysj=listkg[0].HuganTQ1;
+                                             result.tysj=listkg[0].HuganTQ4;
                                           result.ntysj=result.gzl*result.tysj; 
                                           listfhtyl.Add(result);
                                      }
@@ -962,7 +1046,7 @@ namespace Itop.TLPSP.DEVICE
                                               result.tysj=listkg[0].HuganTQ2;
                                           }
                                           else
-                                             result.tysj=listkg[0].HuganTQ1;
+                                             result.tysj=listkg[0].HuganTQ4;
                                           result.ntysj=result.gzl*result.tysj; 
                                           listfhtyl.Add(result);
                                  }
@@ -987,7 +1071,7 @@ namespace Itop.TLPSP.DEVICE
                                               result.tysj=listkg[0].HuganTQ2;
                                           }
                                           else
-                                             result.tysj=listkg[0].HuganTQ1;
+                                             result.tysj=listkg[0].HuganTQ4;
                                           result.ntysj=result.gzl*result.tysj; 
                                           listfhtyl.Add(result);
                                      }
@@ -1001,7 +1085,7 @@ namespace Itop.TLPSP.DEVICE
                                               result.tysj=listkg[0].HuganTQ2;
                                           }
                                           else
-                                             result.tysj=listkg[0].HuganTQ1;
+                                             result.tysj=listkg[0].HuganTQ4;
                                           result.ntysj=result.gzl*result.tysj; 
                                           listfhtyl.Add(result);
                                  }
@@ -1017,7 +1101,7 @@ namespace Itop.TLPSP.DEVICE
                     yjandjd lastpsp = xldcol[i]; //后面的线路段
                     IList<PSPDEV> listkg1 = new List<PSPDEV>();  //前段线路段的开关
                     IList<PSPDEV> listkg2 = new List<PSPDEV>();  //后段线路段的开关
-                    if (i<xlcol.Count-1)
+                    if (i<xldcol.Count-1)
                     {
                        
                         for (int j = i + 1; j < xldcol.Count; j++)
@@ -1071,7 +1155,7 @@ namespace Itop.TLPSP.DEVICE
                                     result.tysj = listkg1[0].HuganTQ2;
                                 }
                                 else
-                                    result.tysj = listkg1[0].HuganTQ1;
+                                    result.tysj = listkg1[0].HuganTQ4;
                                 result.ntysj = result.gzl * result.tysj;
                                 listfhtyl.Add(result);
                             }
@@ -1129,7 +1213,7 @@ namespace Itop.TLPSP.DEVICE
                                                     result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
                                                 }
                                                 else
-                                                    result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                                    result.tysj = listkg2[0].HuganTQ4 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ4 : luxcol[0].YJ.HuganTQ3;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
                                             }
@@ -1143,7 +1227,7 @@ namespace Itop.TLPSP.DEVICE
                                                 result.tysj = listkg2[0].HuganTQ2 ;
                                             }
                                             else
-                                                result.tysj = listkg2[0].HuganTQ1 ;
+                                                result.tysj = listkg2[0].HuganTQ4 ;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
                                         }
@@ -1178,7 +1262,7 @@ namespace Itop.TLPSP.DEVICE
                                                     result.tysj = listkg2[0].HuganTQ2;
                                                 }
                                                 else
-                                                    result.tysj = listkg2[0].HuganTQ1;
+                                                    result.tysj = listkg2[0].HuganTQ4;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
                                             }
@@ -1192,7 +1276,7 @@ namespace Itop.TLPSP.DEVICE
                                                 result.tysj = listkg2[0].HuganTQ2;
                                             }
                                             else
-                                                result.tysj = listkg2[0].HuganTQ1;
+                                                result.tysj = listkg2[0].HuganTQ4;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
                                         }
@@ -1217,7 +1301,7 @@ namespace Itop.TLPSP.DEVICE
                                                     result.tysj = listkg2[0].HuganTQ2;
                                                 }
                                                 else
-                                                    result.tysj = listkg2[0].HuganTQ1;
+                                                    result.tysj = listkg2[0].HuganTQ4;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
                                             }
@@ -1231,7 +1315,7 @@ namespace Itop.TLPSP.DEVICE
                                                 result.tysj = listkg2[0].HuganTQ2;
                                             }
                                             else
-                                                result.tysj = listkg2[0].HuganTQ1;
+                                                result.tysj = listkg2[0].HuganTQ4;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
                                         }
@@ -1265,7 +1349,7 @@ namespace Itop.TLPSP.DEVICE
                     if (xldcol[j].YJ.IName == fhzlcol[i].YJ.IName && xldcol[j].YJ.AreaID == fhzlcol[i].YJ.AreaID)
                     {
                         lastxld = xldcol[j];
-                        lastnum = j;
+                        lastnum =j;
                         continue;
                     }
                     if (xldcol[j].YJ.JName == fhzlcol[i].YJ.IName && xldcol[j].YJ.AreaID == fhzlcol[i].YJ.AreaID)
@@ -1275,6 +1359,10 @@ namespace Itop.TLPSP.DEVICE
                         continue;
                     }
 
+                }
+                if (prenum==xldcol.Count-1)
+                {
+                    lastxld = prexld;
                 }
                 //需找前后第一个带隔离开关的线路段
                 IList<PSPDEV> listkg1 = new List<PSPDEV>();  //前段线路段的开关
@@ -1318,8 +1406,8 @@ namespace Itop.TLPSP.DEVICE
                     if (i==j)   //自己本身的负荷
                     {
                         result.deviceid = fhzlcol[j].YJ;
-                        result.gzl = fhzlcol[i].YJ.Vi0;
-                        result.tysj = fhzlcol[i].YJ.Vj0;
+                        result.gzl = fhzlcol[i].YJ.HuganTQ1;
+                        result.tysj = fhzlcol[i].YJ.HuganTQ2;
                         result.ntysj = result.gzl * result.tysj;
                         listfhtyl.Add(result);
 
@@ -1339,13 +1427,13 @@ namespace Itop.TLPSP.DEVICE
                                             if (fhzlcol[j].FirstNode.Number<=prexld.FirstNode.Number)
                                            {
                                                  result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                                result.gzl = fhzlcol[i].YJ.HuganTQ1;
                                                 if (listkg1[0].Type == "06")
                                                 {
                                                     result.tysj = listkg1[0].HuganTQ2;
                                                 }
                                                 else
-                                                    result.tysj = listkg1[0].HuganTQ1;
+                                                    result.tysj = listkg1[0].HuganTQ4;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
                                             }
@@ -1353,9 +1441,9 @@ namespace Itop.TLPSP.DEVICE
                                            if (fhzlcol[j].FirstNode.Number<=fhzlcol[i].FirstNode.Number&&fhzlcol[j].FirstNode.Number>prexld.FirstNode.Number)
                                            {
                                                  result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                                result.gzl = fhzlcol[i].YJ.HuganTQ1;
                                              
-                                                result.tysj = fhzlcol[i].YJ.Vj0;
+                                                result.tysj = fhzlcol[i].YJ.HuganTQ2;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
 
@@ -1368,35 +1456,35 @@ namespace Itop.TLPSP.DEVICE
                                        if (fhzlcol[j].FirstNode.Number<=fhzlcol[i].FirstNode.Number)
                                        {
                                                 result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                                result.gzl = fhzlcol[i].YJ.HuganTQ1;
                                              
-                                                result.tysj = fhzlcol[i].YJ.Vj0;
+                                                result.tysj = fhzlcol[i].YJ.HuganTQ2;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
                                        }
                                     }
                                     if (listkg2.Count>0)
                                     {
-                                          if (fhzlcol[j].FirstNode.Number>=lastxld.LastNode.Number)
+                                          if (fhzlcol[j].FirstNode.Number>=lastxld.LastNode.Number&&!lastxld.Equals(prexld))
                                            {
                                                  result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                                result.gzl = fhzlcol[i].YJ.HuganTQ1;
                                                 if (listkg2[0].Type == "06")
                                                 {
                                                     result.tysj = listkg1[0].HuganTQ2;
                                                 }
                                                 else
-                                                    result.tysj = listkg2[0].HuganTQ1;
+                                                    result.tysj = listkg2[0].HuganTQ4;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
                                             }
 
-                                           if (fhzlcol[j].FirstNode.Number>=fhzlcol[i].FirstNode.Number&&fhzlcol[j].FirstNode.Number<lastxld.LastNode.Number)
+                                          if (fhzlcol[j].FirstNode.Number >= fhzlcol[i].FirstNode.Number && fhzlcol[j].FirstNode.Number < lastxld.LastNode.Number && !lastxld.Equals(prexld))
                                            {
                                                  result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                                result.gzl = fhzlcol[i].YJ.HuganTQ1;
                                              
-                                                result.tysj = fhzlcol[i].YJ.Vj0;
+                                                result.tysj = fhzlcol[i].YJ.HuganTQ2;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
 
@@ -1407,9 +1495,9 @@ namespace Itop.TLPSP.DEVICE
                                          if (fhzlcol[j].FirstNode.Number>fhzlcol[i].FirstNode.Number)
                                        {
                                                 result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = fhzlcol[i].YJ.Vi0;
+                                                result.gzl = fhzlcol[i].YJ.HuganTQ1;
                                              
-                                                result.tysj = fhzlcol[i].YJ.Vj0;
+                                                result.tysj = fhzlcol[i].YJ.HuganTQ2;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
                                        }
@@ -1423,13 +1511,13 @@ namespace Itop.TLPSP.DEVICE
                                         if (fhzlcol[j].FirstNode.Number <= prexld.FirstNode.Number)
                                         {
                                             result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = fhzlcol[i].YJ.Vi0;
+                                            result.gzl = fhzlcol[i].YJ.HuganTQ1;
                                             if (listkg1[0].Type == "06")
                                             {
                                                 result.tysj = listkg1[0].HuganTQ2;
                                             }
                                             else
-                                                result.tysj = listkg1[0].HuganTQ1;
+                                                result.tysj = listkg1[0].HuganTQ4;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
                                         }
@@ -1437,9 +1525,9 @@ namespace Itop.TLPSP.DEVICE
                                         if (fhzlcol[j].FirstNode.Number <= fhzlcol[i].FirstNode.Number && fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number)
                                         {
                                             result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = fhzlcol[i].YJ.Vi0;
+                                            result.gzl = fhzlcol[i].YJ.HuganTQ1;
 
-                                            result.tysj = fhzlcol[i].YJ.Vj0;
+                                            result.tysj = fhzlcol[i].YJ.HuganTQ2;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
 
@@ -1452,35 +1540,35 @@ namespace Itop.TLPSP.DEVICE
                                         if (fhzlcol[j].FirstNode.Number <= fhzlcol[i].FirstNode.Number)
                                         {
                                             result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = fhzlcol[i].YJ.Vi0;
+                                            result.gzl = fhzlcol[i].YJ.HuganTQ1;
 
-                                            result.tysj = fhzlcol[i].YJ.Vj0;
+                                            result.tysj = fhzlcol[i].YJ.HuganTQ2;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
                                         }
                                     }
                                     if (listkg2.Count > 0)
                                     {
-                                        if (fhzlcol[j].FirstNode.Number >= lastxld.LastNode.Number)
+                                        if (fhzlcol[j].FirstNode.Number >= lastxld.LastNode.Number && !lastxld.Equals(prexld))
                                         {
                                             result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = fhzlcol[i].YJ.Vi0;
+                                            result.gzl = fhzlcol[i].YJ.HuganTQ1;
                                             if (listkg2[0].Type == "06")
                                             {
                                                 result.tysj = listkg1[0].HuganTQ2;
                                             }
                                             else
-                                                result.tysj = listkg2[0].HuganTQ1;
+                                                result.tysj = listkg2[0].HuganTQ4;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
                                         }
 
-                                        if (fhzlcol[j].FirstNode.Number >= fhzlcol[i].FirstNode.Number && fhzlcol[j].FirstNode.Number < lastxld.LastNode.Number)
+                                        if (fhzlcol[j].FirstNode.Number >= fhzlcol[i].FirstNode.Number && fhzlcol[j].FirstNode.Number < lastxld.LastNode.Number && !lastxld.Equals(prexld))
                                         {
                                             result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = fhzlcol[i].YJ.Vi0;
+                                            result.gzl = fhzlcol[i].YJ.HuganTQ1;
 
-                                            result.tysj = fhzlcol[i].YJ.Vj0;
+                                            result.tysj = fhzlcol[i].YJ.HuganTQ2;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
 
@@ -1491,9 +1579,9 @@ namespace Itop.TLPSP.DEVICE
                                         if (fhzlcol[j].FirstNode.Number > fhzlcol[i].FirstNode.Number)
                                         {
                                             result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = fhzlcol[i].YJ.Vi0;
+                                            result.gzl = fhzlcol[i].YJ.HuganTQ1;
 
-                                            result.tysj = fhzlcol[i].YJ.Vj0;
+                                            result.tysj = fhzlcol[i].YJ.HuganTQ2;
                                             result.ntysj = result.gzl * result.tysj;
                                             listfhtyl.Add(result);
                                         }
@@ -1544,6 +1632,10 @@ namespace Itop.TLPSP.DEVICE
                     }
 
                 }
+               if (prenum==xldcol.Count-1)
+               {
+                   lastxld = prexld;
+               }
                 //需找前后第一个带隔离开关的线路段
                 IList<PSPDEV> listkg1 = new List<PSPDEV>();  //前段线路段的开关
                 IList<PSPDEV> listkg2 = new List<PSPDEV>();  //后段线路段的开关
@@ -1596,7 +1688,7 @@ namespace Itop.TLPSP.DEVICE
                                      result.tysj = listkg1[0].HuganTQ2;
                                  }
                                  else
-                                     result.tysj = listkg1[0].HuganTQ1;
+                                     result.tysj = listkg1[0].HuganTQ4;
                                  result.ntysj = result.gzl * result.tysj;
                                  listfhtyl.Add(result);
                              }
@@ -1632,7 +1724,7 @@ namespace Itop.TLPSP.DEVICE
                                      result.tysj = listkg1[0].HuganTQ2;
                                  }
                                  else
-                                     result.tysj = listkg1[0].HuganTQ1;
+                                     result.tysj = listkg1[0].HuganTQ4;
                                  result.ntysj = result.gzl * result.tysj;
                                  listfhtyl.Add(result);
                              }
@@ -1646,7 +1738,7 @@ namespace Itop.TLPSP.DEVICE
                                  listfhtyl.Add(result);
                              }
                          }
-                         if (fhzlcol[j].FirstNode.Number>prexld.FirstNode.Number&&fhzlcol[j].FirstNode.Number<=lastxld.FirstNode.Number)
+                         if (fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number && fhzlcol[j].FirstNode.Number <= lastxld.FirstNode.Number && !lastxld.Equals(prexld))
                          {
                              result.deviceid = fhzlcol[j].YJ;
                              result.gzl = Convert.ToDouble(tln.GetValue("D1"));
@@ -1655,13 +1747,13 @@ namespace Itop.TLPSP.DEVICE
                              result.ntysj = result.gzl * result.tysj;
                              listfhtyl.Add(result);
                          }
-                         if (fhzlcol[j].FirstNode.Number>=lastxld.FirstNode.Number)
+                         if (fhzlcol[j].FirstNode.Number >= lastxld.FirstNode.Number && !lastxld.Equals(prexld))
                          {
                              if (listkg2.Count>0)
                              {
                                  if (luxcol.Count>0)
                                  {
-                                     if (luxcol[0].FirstNode.Number < lastxld.FirstNode.Number)
+                                     if (luxcol[0].FirstNode.Number < lastxld.FirstNode.Number )
                                      {
                                          result.deviceid = fhzlcol[j].YJ;
                                          result.gzl = Convert.ToDouble(tln.GetValue("D1"));
@@ -1679,7 +1771,7 @@ namespace Itop.TLPSP.DEVICE
                                              result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
                                          }
                                          else
-                                             result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                             result.tysj = listkg2[0].HuganTQ4 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ4 : luxcol[0].YJ.HuganTQ3;
                                          result.ntysj = result.gzl * result.tysj;
                                          listfhtyl.Add(result);
                                      }
@@ -1693,7 +1785,7 @@ namespace Itop.TLPSP.DEVICE
                                          result.tysj = listkg2[0].HuganTQ2;
                                      }
                                      else
-                                         result.tysj = listkg2[0].HuganTQ1;
+                                         result.tysj = listkg2[0].HuganTQ4;
                                      result.ntysj = result.gzl * result.tysj;
                                      listfhtyl.Add(result);
                                  }
@@ -1723,7 +1815,7 @@ namespace Itop.TLPSP.DEVICE
                                      result.tysj = listkg1[0].HuganTQ2;
                                  }
                                  else
-                                     result.tysj = listkg1[0].HuganTQ1;
+                                     result.tysj = listkg1[0].HuganTQ4;
                                  result.ntysj = result.gzl * result.tysj;
                                  listfhtyl.Add(result);
                              }
@@ -1737,7 +1829,7 @@ namespace Itop.TLPSP.DEVICE
                                  listfhtyl.Add(result);
                              }
                          }
-                         if (fhzlcol[j].FirstNode.Number>prexld.FirstNode.Number&&fhzlcol[j].FirstNode.Number<=lastxld.FirstNode.Number)
+                         if (fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number && fhzlcol[j].FirstNode.Number <= lastxld.FirstNode.Number && !lastxld.Equals(prexld))
                          {
                              result.deviceid = fhzlcol[j].YJ;
                              result.gzl = Convert.ToDouble(tln.GetValue("D1"));
@@ -1746,7 +1838,7 @@ namespace Itop.TLPSP.DEVICE
                              result.ntysj = result.gzl * result.tysj;
                              listfhtyl.Add(result);
                          }
-                         if (fhzlcol[j].FirstNode.Number>lastxld.FirstNode.Number)
+                         if (fhzlcol[j].FirstNode.Number > lastxld.FirstNode.Number && !lastxld.Equals(prexld))
                          {
                              if (listkg2.Count>0)
                              {
@@ -1780,7 +1872,7 @@ namespace Itop.TLPSP.DEVICE
                                      result.tysj = listkg1[0].HuganTQ2;
                                  }
                                  else
-                                     result.tysj = listkg1[0].HuganTQ1;
+                                     result.tysj = listkg1[0].HuganTQ4;
                                  result.ntysj = result.gzl * result.tysj;
                                  listfhtyl.Add(result);
                              }
@@ -1794,7 +1886,7 @@ namespace Itop.TLPSP.DEVICE
                                  listfhtyl.Add(result);
                              }
                          }
-                         if (fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number && fhzlcol[j].FirstNode.Number <= lastxld.FirstNode.Number)
+                         if (fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number && fhzlcol[j].FirstNode.Number <= lastxld.FirstNode.Number && !lastxld.Equals(prexld))
                          {
                              result.deviceid = fhzlcol[j].YJ;
                              result.gzl = Convert.ToDouble(tln.GetValue("D1"));
@@ -1803,7 +1895,7 @@ namespace Itop.TLPSP.DEVICE
                              result.ntysj = result.gzl * result.tysj;
                              listfhtyl.Add(result);
                          }
-                         if (fhzlcol[j].FirstNode.Number >= lastxld.FirstNode.Number)
+                         if (fhzlcol[j].FirstNode.Number >= lastxld.FirstNode.Number && !lastxld.Equals(prexld))
                          {
                              if (listkg2.Count > 0)
                              {
@@ -1827,7 +1919,7 @@ namespace Itop.TLPSP.DEVICE
                                              result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
                                          }
                                          else
-                                             result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                             result.tysj = listkg2[0].HuganTQ4 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ4 : luxcol[0].YJ.HuganTQ3;
                                          result.ntysj = result.gzl * result.tysj;
                                          listfhtyl.Add(result);
                                      }
@@ -1841,7 +1933,7 @@ namespace Itop.TLPSP.DEVICE
                                          result.tysj = listkg2[0].HuganTQ2;
                                      }
                                      else
-                                         result.tysj = listkg2[0].HuganTQ1;
+                                         result.tysj = listkg2[0].HuganTQ4;
                                      result.ntysj = result.gzl * result.tysj;
                                      listfhtyl.Add(result);
                                  }
@@ -1870,7 +1962,7 @@ namespace Itop.TLPSP.DEVICE
                                      result.tysj = listkg1[0].HuganTQ2;
                                  }
                                  else
-                                     result.tysj = listkg1[0].HuganTQ1;
+                                     result.tysj = listkg1[0].HuganTQ4;
                                  result.ntysj = result.gzl * result.tysj;
                                  listfhtyl.Add(result);
                              }
@@ -1884,7 +1976,7 @@ namespace Itop.TLPSP.DEVICE
                                  listfhtyl.Add(result);
                              }
                          }
-                         if (fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number && fhzlcol[j].FirstNode.Number <= lastxld.FirstNode.Number)
+                         if (fhzlcol[j].FirstNode.Number > prexld.FirstNode.Number && fhzlcol[j].FirstNode.Number <= lastxld.FirstNode.Number && !lastxld.Equals(prexld))
                          {
                              result.deviceid = fhzlcol[j].YJ;
                              result.gzl = Convert.ToDouble(tln.GetValue("D1"));
@@ -1893,7 +1985,7 @@ namespace Itop.TLPSP.DEVICE
                              result.ntysj = result.gzl * result.tysj;
                              listfhtyl.Add(result);
                          }
-                         if (fhzlcol[j].FirstNode.Number >= lastxld.FirstNode.Number)
+                         if (fhzlcol[j].FirstNode.Number >= lastxld.FirstNode.Number && !lastxld.Equals(prexld))
                          {
                              if (listkg2.Count > 0)
                              {
@@ -1917,7 +2009,7 @@ namespace Itop.TLPSP.DEVICE
                                              result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
                                          }
                                          else
-                                             result.tysj = listkg2[0].HuganTQ1 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ1 : luxcol[0].YJ.HuganTQ3;
+                                             result.tysj = listkg2[0].HuganTQ4>= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ4 : luxcol[0].YJ.HuganTQ3;
                                          result.ntysj = result.gzl * result.tysj;
                                          listfhtyl.Add(result);
                                      }
@@ -1931,7 +2023,7 @@ namespace Itop.TLPSP.DEVICE
                                          result.tysj = listkg2[0].HuganTQ2;
                                      }
                                      else
-                                         result.tysj = listkg2[0].HuganTQ1;
+                                         result.tysj = listkg2[0].HuganTQ4;
                                      result.ntysj = result.gzl * result.tysj;
                                      listfhtyl.Add(result);
                                  }
@@ -1982,7 +2074,7 @@ namespace Itop.TLPSP.DEVICE
                                 result.tysj = fxlcol[i].FirstNode.HuganTQ2 ;
                             }
                             else
-                                result.tysj = fxlcol[i].FirstNode.HuganTQ1 ;
+                                result.tysj = fxlcol[i].FirstNode.HuganTQ4 ;
                             result.ntysj = result.gzl * result.tysj;
                             listfhtyl.Add(result);
                      

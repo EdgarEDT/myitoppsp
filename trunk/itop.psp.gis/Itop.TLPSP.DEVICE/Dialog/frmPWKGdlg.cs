@@ -71,8 +71,15 @@ namespace Itop.TLPSP.DEVICE
                 if (string.IsNullOrEmpty(dev.IName)&&!string.IsNullOrEmpty(parentid))
                 {
                     dev.IName = parentid;
+                    
                 }
                 lookUpEdit2.EditValue = dev.IName;
+                Parentxl = dev.IName;
+                if (!string.IsNullOrEmpty(Parentxl))
+                {
+                    lookUpEdit1.EditValue = Parentxl;
+                }
+                
                 //sprl.Value=(decimal)dev.Burthen;
             }
         }
@@ -99,17 +106,23 @@ namespace Itop.TLPSP.DEVICE
         }
         public void intdata()
         {
-            string sql = " where RateVolt=" + comboBox1.Text + " and (type='05' or type ='73') and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+            string sql = " where (type='05' or type ='73') and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
             lookUpEdit1.Properties.DataSource = list;
 
             object o = new object();
-            for (int i = -30; i <= 30; i++)
+            for (int i = -10; i <= 30; i++)
             {
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit1.Properties.Items.Add(o);
 
             }
+            comboBoxEdit1.Text = DateTime.Now.Year.ToString();
+            sql = " where type ='74' and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+            list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
+            lookUpEdit2.Properties.DataSource = list;
+
+          
             //comboBoxEdit1.Text = DateTime.Today.Year.ToString();
         }
         string projectid;
@@ -124,6 +137,31 @@ namespace Itop.TLPSP.DEVICE
         {
             get { return parentid; }
             set { parentid = value; }
+        }
+        //ÏßÂ·
+        public string parentxl;
+        public string Parentxl
+        {
+            get { return parentxl; }
+            set {
+                 if (!string.IsNullOrEmpty(value))
+                 {
+                     object obj = null;
+                     if (string.IsNullOrEmpty(dev.IName) && !string.IsNullOrEmpty(parentid))
+                     {
+                         obj = DeviceHelper.GetDevice<PSPDEV>(parentid);
+
+                     }
+                     else
+                         obj = DeviceHelper.GetDevice<PSPDEV>(dev.IName);
+                     if (obj != null)
+                     {
+                         PSPDEV xl= DeviceHelper.GetDevice<PSPDEV>(((PSPDEV)obj).AreaID);
+                         parentxl = xl.SUID;
+                     }
+                 }
+                
+                 }
         }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -185,18 +223,9 @@ namespace Itop.TLPSP.DEVICE
 
         private void lookUpEdit1_Properties_Click(object sender, EventArgs e)
         {
-             frmDeviceSelect dlg = new frmDeviceSelect();
-            dlg.InitDeviceType("05", "73");
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                Dictionary<string, object> dic = dlg.GetSelectedDevice();
-                PSPDEV devzx = dic["device"] as PSPDEV;
-                lookUpEdit1.EditValue = dev.SUID;
-                string sql = " where  (type ='74') and AreaID='" + devzx.SUID+ "'";
-                IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
-                lookUpEdit2.Properties.DataSource = list;
-                
-            }
+            string sql = " where  (type ='74') and AreaID='" +lookUpEdit1.EditValue.ToString() + "'";
+            IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
+            lookUpEdit2.Properties.DataSource = list;
         }
 
         private void radioGroup2_SelectedIndexChanged(object sender, EventArgs e)

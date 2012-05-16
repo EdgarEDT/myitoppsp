@@ -691,6 +691,8 @@ namespace Itop.TLPSP.DEVICE
                 lookUpEdit1.Properties.DataSource = list;
                 lookUpEdit2.Properties.DataSource = list;
                 buttonEdit1.Text = ((PSPDEV)obj).Name;
+                spinEdit19.Value = (decimal)((PSPDEV)obj).HuganTQ4 * spinEdit6.Value;
+                spinEdit20.Value = (decimal)((PSPDEV)obj).HuganTQ5;
                 return;
             }
 
@@ -726,6 +728,41 @@ namespace Itop.TLPSP.DEVICE
                 buttonEdit2.Text = dic["name"].ToString();
                 dev.JName = dic["id"].ToString();
             }
+        }
+
+        private void spinEdit6_EditValueChanged(object sender, EventArgs e)
+        {
+             //显示所在位置的名称
+             object obj=null;
+            if (string.IsNullOrEmpty(dev.AreaID)&&!string.IsNullOrEmpty(parentid))
+            {
+                obj = DeviceHelper.GetDevice<PSPDEV>(parentid);
+                dev.AreaID = parentid;
+            }
+            else
+            obj = DeviceHelper.GetDevice<PSPDEV>(dev.AreaID);
+
+            if (obj != null)
+            {
+                spinEdit19.Value = (decimal)((PSPDEV)obj).HuganTQ4 * spinEdit6.Value;
+                spinEdit20.Value = (decimal)((PSPDEV)obj).HuganTQ5;
+            }
+
+            WireCategory rc = new WireCategory();
+            rc.WireLevel = dev.RateVolt.ToString();
+            rc.WireType = dev.LineType;
+            rc.Type = "40";
+            rc = (WireCategory)UCDeviceBase.DataService.GetObject("SelectWireCategoryByKeyANDWireLevel", rc);
+            if (rc != null)
+            {
+                spinEdit19.Value = (decimal)(rc.gzl) * spinEdit6.Value;
+                spinEdit20.Value = (decimal)rc.xftime;
+            }
+        }
+
+        private void comboBoxEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         /// <summary>

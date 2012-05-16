@@ -61,6 +61,7 @@ namespace Itop.TLPSP.DEVICE
                 DlqiType = dev.HuganLine2;
                 OperationYear = dev.OperationYear;
                 MinSwitchtime = dev.HuganTQ1.ToString();
+                ProjectID = dev.ProjectID;
                 if (string.IsNullOrEmpty(dev.IName)&&!string.IsNullOrEmpty(parentid))
                 {
                     dev.IName = parentid;
@@ -150,10 +151,14 @@ namespace Itop.TLPSP.DEVICE
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit3.Properties.Items.Add(o);
             }
+            string sql = " where  (type ='74'or type='01') and ProjectID='" + this.ProjectID + "'";
+            IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
+
+            lookUpEdit1.Properties.DataSource = list;
             string con = " where Type ='01'and ProjectID ='" + this.ProjectSUID + "'";
-            IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
             foreach (PSPDEV pspdev in list)
-            {
+            { 
                 if (comboBoxEdit4.Properties.Items.IndexOf(pspdev.Name) == -1)
                 {
                     comboBoxEdit4.Properties.Items.Add(pspdev.Name);

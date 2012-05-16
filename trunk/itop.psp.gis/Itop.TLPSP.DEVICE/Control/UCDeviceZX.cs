@@ -158,6 +158,7 @@ namespace Itop.TLPSP.DEVICE
                 //增加记录 
                 PSPDEV dev = dlg.DeviceMx;
                 dev.Type = ID;
+ 
                 dev.ProjectID = this.ProjectID;
                 UCDeviceBase.DataService.Create("InsertPSPDEV", dev);
                 //增加相应的馈线段
@@ -182,6 +183,7 @@ namespace Itop.TLPSP.DEVICE
                     pv.Name = parentobj.Name + "_线路段" + (dev.Number).ToString();
                     pv.AreaID = parentid;
                     pv.Type = "74";
+                    pv.OperationYear = dev.OperationYear;
                     pv.FirstNode = firstnodeobj.Number;
                     pv.LastNode = dev.Number;
                     pv.IName = firstnodeobj.SUID;

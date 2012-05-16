@@ -42,6 +42,38 @@ namespace Itop.TLPSP.DEVICE
         }
 
         DataTable dataTable = new DataTable();
+        public void init(PSPDEV psxl)
+        {
+            try
+            {
+                if (dataTable != null)
+                {
+                    dataTable.Columns.Clear();
+                    treeList1.Columns.Clear();
+                }
+                AddFixColumn();
+                Ps_pdreltype pr = new Ps_pdreltype();
+                pr.ProjectID = Itop.Client.MIS.ProgUID;
+                pr.ID = psxl.SUID;
+                string con = "ID='" + psxl.SUID + "'AND projectid='" + Itop.Client.MIS.ProgUID + "'";
+                IList<Ps_pdreltype> listTypes = Services.BaseService.GetList<Ps_pdreltype>("SelectPs_pdreltypeByCon", con);
+                barButtonItem1.Enabled = false;
+                bar2.Visible = false;
+
+                dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_pdreltype));
+                treeList1.BeginInit();
+                treeList1.DataSource = dataTable;
+
+                //treeList1.Columns["Sort"].SortOrder = SortOrder.Ascending;
+                treeList1.EndInit();
+                Application.DoEvents();
+                treeList1.ExpandAll();
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+        }
         public void init()
         {
             try {

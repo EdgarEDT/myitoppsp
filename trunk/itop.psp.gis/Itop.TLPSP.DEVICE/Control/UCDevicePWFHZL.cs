@@ -174,6 +174,12 @@ namespace Itop.TLPSP.DEVICE
             column.Width = 100;
             column.VisibleIndex = 10;
             column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "Á¬½Ó¸ººÉ£¨kW£©";
+            column.FieldName = "HuganTQ4";
+            column.Width = 100;
+            column.VisibleIndex = 11;
+            column.OptionsColumn.AllowEdit = false;
         }
         #endregion
         public override string GetClassName()

@@ -41,7 +41,7 @@ namespace Itop.TLPSP.DEVICE
                         dev.FirstNode = pd.Number;
                     }
                 }
-             
+               
                 dev.OperationYear = comboBoxEdit1.Text;
                 //dev.Burthen = Convert.ToDecimal(sprl.Value);             
                 dev.HgFlag = textEdit2.Text;
@@ -52,8 +52,9 @@ namespace Itop.TLPSP.DEVICE
                 dev.JSwitch = Jswitch.ToString();
                 dev.HuganTQ1 = (double)spinEdit2.Value;
                 dev.HuganTQ2 = (double)spinEdit3.Value;
-                dev.HuganTQ4 = (double)spinEdit4.Value;
-          
+                dev.HuganTQ3 = (double)spinEdit4.Value;
+                dev.HuganTQ4 = (double)spinEdit6.Value;
+                dev.LineLength = (double)spinEdit5.Value;
 
                 return dev;
             }
@@ -78,6 +79,7 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit1.Text = dev.OperationYear;
                 textEdit2.Text = dev.HgFlag;
                 spinEdit1.Value = (decimal)dev.Number;
+                spinEdit5.Value = (decimal)dev.LineLength;
                 int f = 1;
                 int.TryParse(dev.ISwitch, out f);
                 Iswitch = f;
@@ -87,10 +89,10 @@ namespace Itop.TLPSP.DEVICE
 
                 //date1.Text = dev.Date1;
                 //date2.Text = dev.Date2;
-                spinEdit2.Value = (decimal)spinEdit2.Value;
-                spinEdit3.Value = (decimal)spinEdit3.Value;
-                spinEdit4.Value = (decimal)spinEdit4.Value;
-             
+                spinEdit2.Value = (decimal)dev.HuganTQ1;
+                spinEdit3.Value = (decimal)dev.HuganTQ2;
+                spinEdit4.Value = (decimal)dev.HuganTQ3;
+                spinEdit6.Value = (decimal)dev.HuganTQ4;
                 //sprl.Value=(decimal)dev.Burthen;
             }
         }
@@ -131,9 +133,15 @@ namespace Itop.TLPSP.DEVICE
             string sql = " where  (type='05' or type ='73') and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
             lookUpEdit1.Properties.DataSource = list;
-            sql = "where type ='70' and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
-             list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
-            lookUpEdit2.Properties.DataSource = list;
+            if (!string.IsNullOrEmpty(dev.AreaID))
+            {
+
+                sql = "where type ='70' and ProjectID='" + Itop.Client.MIS.ProgUID + "'and AreaID='" + dev.AreaID + "'";
+                list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
+                lookUpEdit2.Properties.DataSource = list;
+            }
+            
+
             object o = new object();
             for (int i = -30; i <= 30; i++)
             {
@@ -141,6 +149,7 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit1.Properties.Items.Add(o);
 
             }
+            comboBoxEdit1.Text = DateTime.Now.Year.ToString();
             //comboBoxEdit1.Text = DateTime.Today.Year.ToString();
         }
         string projectid;
@@ -173,7 +182,7 @@ namespace Itop.TLPSP.DEVICE
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sql = " where RateVolt=" + comboBox1.Text + " and (type='05' or type ='73')and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+            string sql = " where (type='05' or type ='73')and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
             lookUpEdit1.Properties.DataSource = list;
 
@@ -249,6 +258,24 @@ namespace Itop.TLPSP.DEVICE
             {
                 e.Graphics.Clear(Color.Green);
             }          
+        }
+
+        private void spinEdit5_EditValueChanged(object sender, EventArgs e)
+        {
+            object obj = null;
+            if (string.IsNullOrEmpty(dev.AreaID) && !string.IsNullOrEmpty(parentid))
+            {
+                obj = DeviceHelper.GetDevice<PSPDEV>(parentid);
+                dev.AreaID = parentid;
+            }
+            else
+                obj = DeviceHelper.GetDevice<PSPDEV>(dev.AreaID);
+
+            if (obj != null)
+            {
+                spinEdit2.Value = (decimal)((PSPDEV)obj).HuganTQ2 * spinEdit5.Value;
+                spinEdit3.Value = (decimal)((PSPDEV)obj).HuganTQ3;
+            }
         }
 
     }
