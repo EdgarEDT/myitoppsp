@@ -3398,6 +3398,31 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
         {
             try
             {
+                if (e.ClickedItem.Text=="可靠性分析")
+                {
+                    XmlElement xml1 = (XmlElement)tlVectorControl1.SVGDocument.CurrentElement;
+                    if (tlVectorControl1.SVGDocument.CurrentElement.GetType().ToString() == "ItopVector.Core.Figure.Polyline")
+                    {
+                        string deviceid = xml1.GetAttribute("Deviceid");
+                        if (!string.IsNullOrEmpty(deviceid))
+                            {
+                                DeviceHelper.uid = tlVectorControl1.SVGDocument.SvgdataUid;
+                                DeviceHelper.layerid = tlVectorControl1.SVGDocument.CurrentLayer.ID;
+                                DeviceHelper.eleid = tlVectorControl1.SVGDocument.CurrentElement.ID;
+
+                               PSPDEV obj = (PSPDEV)DeviceHelper.GetDevice<PSPDEV>(deviceid);
+                                if (obj != null&&obj.Type=="73")
+                                {
+                                    //更换为元件可靠性
+                                    Itop.TLPSP.DEVICE.FrmpdrelProject xf = new Itop.TLPSP.DEVICE.FrmpdrelProject();
+                                    xf.init(obj);
+                                    xf.ShowDialog();
+                                }
+           
+                              }
+                       }
+                       
+                       }
                 if (e.ClickedItem.Text == "属性")
                 {
                     XmlElement xml1 = (XmlElement)tlVectorControl1.SVGDocument.CurrentElement;
@@ -12451,10 +12476,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
 
         private void toolrelanalyst_Click(object sender, EventArgs e)
         {
-            //更换为元件可靠性
-            Itop.TLPSP.DEVICE.FrmpdrelProject xf = new Itop.TLPSP.DEVICE.FrmpdrelProject();
-            xf.init();
-            xf.ShowDialog();
+           
         }
     }
 }
