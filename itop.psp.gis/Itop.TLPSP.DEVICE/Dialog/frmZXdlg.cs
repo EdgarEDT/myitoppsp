@@ -51,13 +51,13 @@ namespace Itop.TLPSP.DEVICE
         public frmZXdlg()
         {
             InitializeComponent();
+            intdata();
             initList();
         }
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            intdata();
-            initList();
+           
         }
         private void initList()
         {
@@ -73,7 +73,7 @@ namespace Itop.TLPSP.DEVICE
             lookUpEdit1.Properties.DataSource = list;
 
             object o = new object();
-            for (int i = -30; i <= 30; i++)
+            for (int i = -10; i <= 30; i++)
             {
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit1.Properties.Items.Add(o);
@@ -112,7 +112,7 @@ namespace Itop.TLPSP.DEVICE
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sql = " where RateVolt=" + comboBox1.Text + " and type in('05','73')and ProjectID='"+Itop.Client.MIS.ProgUID+"'";
+            string sql = " where type in('05','73')and ProjectID='"+Itop.Client.MIS.ProgUID+"'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", sql);
             lookUpEdit1.Properties.DataSource = list;
 
@@ -152,6 +152,11 @@ namespace Itop.TLPSP.DEVICE
                     }
                 }
             }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

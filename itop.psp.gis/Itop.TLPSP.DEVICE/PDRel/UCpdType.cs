@@ -61,7 +61,7 @@ namespace Itop.TLPSP.DEVICE
                     pd.AreaName = parentobj.Name;
                     pd.ProjectID = parentobj.ProjectID;
                     pd.PeopleSum = Convert.ToInt32(parentobj.Num1);
-                    pd.Year = Convert.ToDateTime(parentobj.OperationYear).Year;
+                    pd.Year = Convert.ToInt32(parentobj.OperationYear);
                     pd.S1 = "80";
                     Services.BaseService.Create<PDrelregion>(pd);
                 }

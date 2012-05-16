@@ -154,8 +154,11 @@ namespace Itop.TLPSP.DEVICE
             //    datatable1.Rows.Add(row); 
             //}
             AddDlqiform dlg = new AddDlqiform();
-            dlg.Name = "";
-            dlg.ProjectSUID = this.ProjectID;
+            PSPDEV pd = new PSPDEV();
+            pd.Type = "06";
+            pd.IName = ParentID;
+            pd.ProjectID = this.ProjectID;
+            dlg.DeviceMx = pd;
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 //Ôö¼Ó¼ÇÂ¼ 
