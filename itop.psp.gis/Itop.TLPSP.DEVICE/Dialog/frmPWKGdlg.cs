@@ -65,9 +65,9 @@ namespace Itop.TLPSP.DEVICE
                 Iswitch = f;
                 date1.Text = dev.Date1;
                 date2.Text = dev.Date2;
-                spinEdit2.Value = (decimal)spinEdit2.Value;
-                spinEdit3.Value = (decimal)spinEdit3.Value;
-                spinEdit4.Value = (decimal)spinEdit4.Value;
+                spinEdit2.Value = (decimal)dev.HuganTQ1;
+                spinEdit3.Value = (decimal)dev.HuganTQ2;
+                spinEdit4.Value = (decimal)dev.HuganTQ4;
                 if (string.IsNullOrEmpty(dev.IName)&&!string.IsNullOrEmpty(parentid))
                 {
                     dev.IName = parentid;
