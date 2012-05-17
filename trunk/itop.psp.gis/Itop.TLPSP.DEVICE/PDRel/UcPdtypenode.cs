@@ -964,130 +964,177 @@ namespace Itop.TLPSP.DEVICE
                                  listfhtyl.Add(result);
                             break;
                               case 2:  //第二种方式  判断联络线的节点的编号和firstnode的比较 如果大于它则影响不了前面 如果小于的话
-                                 if (luxcol.Count>0)
-                                 {
-                                     if (luxcol[0].FirstNode.Number<xldcol[i].LastNode.Number)
-                                     {
-                                          result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                         result.tysj=xldcol[i].YJ.HuganTQ4;
-                                         result.ntysj=result.gzl*result.tysj; 
-                                         listfhtyl.Add(result);
-                                     }
-                                     else
-                                     {
-                                          result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                          if (listkg[0].Type=="06")
-                                          {
-                                              result.tysj=listkg[0].HuganTQ2>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ2:luxcol[0].YJ.HuganTQ3;
-                                          }
-                                          else
-                                             result.tysj=listkg[0].HuganTQ4>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ4:luxcol[0].YJ.HuganTQ3;
-                                          result.ntysj=result.gzl*result.tysj; 
-                                          listfhtyl.Add(result);
-                                     }
-                                 }
-                                 else
-                                 {
-                                          result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                          if (listkg[0].Type=="06")
-                                          {
-                                              result.tysj=listkg[0].HuganTQ2>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ2:luxcol[0].YJ.HuganTQ3;
-                                          }
-                                          else
-                                             result.tysj=listkg[0].HuganTQ4>=luxcol[0].YJ.HuganTQ3?listkg[0].HuganTQ4:luxcol[0].YJ.HuganTQ3;
-                                          result.ntysj=result.gzl*result.tysj; 
-                                          listfhtyl.Add(result);
-                                 }
+                                    if (fhzlcol[j].FirstNode.Number <= xldcol[i].LastNode.Number)
+                                    {
+                                        result.deviceid = fhzlcol[j].YJ;
+                                        result.gzl = xldcol[i].YJ.HuganTQ3;
+                                        result.tysj = xldcol[i].YJ.HuganTQ4;
+                                        result.ntysj = result.gzl * result.tysj;
+                                        listfhtyl.Add(result);
+                                    }
+                                    else
+                                    {
+                                        if (luxcol.Count > 0)
+                                        {
+                                            if (luxcol[0].FirstNode.Number < xldcol[i].LastNode.Number)
+                                            {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = xldcol[i].YJ.HuganTQ3;
+                                                result.tysj = xldcol[i].YJ.HuganTQ4;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+                                            else
+                                            {
+                                                result.deviceid = fhzlcol[j].YJ;
+                                                result.gzl = xldcol[i].YJ.HuganTQ3;
+                                                if (listkg[0].Type == "06")
+                                                {
+                                                    result.tysj = listkg[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                                }
+                                                else
+                                                    result.tysj = listkg[0].HuganTQ4 >= luxcol[0].YJ.HuganTQ3 ? listkg[0].HuganTQ4 : luxcol[0].YJ.HuganTQ3;
+                                                result.ntysj = result.gzl * result.tysj;
+                                                listfhtyl.Add(result);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = xldcol[i].YJ.HuganTQ3;
+                                            if (listkg[0].Type == "06")
+                                            {
+                                                result.tysj = listkg[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                            }
+                                            else
+                                                result.tysj = listkg[0].HuganTQ4 >= luxcol[0].YJ.HuganTQ3 ? listkg[0].HuganTQ4 : luxcol[0].YJ.HuganTQ3;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                    }
+                            
                                   
                                 
                                   break;
                                case 3:  //第三种方式  判断联络线的节点的编号和firstnode的比较 如果大于它则影响不了前面 如果小于的话
-                                           result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                         result.tysj=xldcol[i].YJ.HuganTQ4*0.5;
-                                         result.ntysj=result.gzl*result.tysj; 
-                                         listfhtyl.Add(result);
+                                  if (fhzlcol[j].FirstNode.Number <= xldcol[i].LastNode.Number)
+                                  {
+                                      result.deviceid = fhzlcol[j].YJ;
+                                      result.gzl = xldcol[i].YJ.HuganTQ3;
+                                      result.tysj = xldcol[i].YJ.HuganTQ4;
+                                      result.ntysj = result.gzl * result.tysj;
+                                      listfhtyl.Add(result);
+                                  }
+                                  else
+                                  {
+                                      result.deviceid = fhzlcol[j].YJ;
+                                      result.gzl = xldcol[i].YJ.HuganTQ3;
+                                      result.tysj = fhzlcol[j].YJ.HuganTQ2 * 2;
+                                      result.ntysj = result.gzl * result.tysj;
+                                      listfhtyl.Add(result);
+                                  }
+                                   
                             
                               break;
                              case 4:       //第四种方式
-                                    if (luxcol.Count>0)
-                                 {
-                                     if (luxcol[0].FirstNode.Number<xldcol[i].LastNode.Number)
-                                     {
-                                          result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                         result.tysj=xldcol[i].YJ.HuganTQ4;
-                                         result.ntysj=result.gzl*result.tysj; 
-                                         listfhtyl.Add(result);
-                                     }
-                                     else
-                                     {
-                                          result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                          if (listkg[0].Type=="06")
+                                      if (fhzlcol[j].FirstNode.Number <= xldcol[i].LastNode.Number)
+                                      {
+                                          result.deviceid = fhzlcol[j].YJ;
+                                          result.gzl = xldcol[i].YJ.HuganTQ3;
+                                          result.tysj = xldcol[i].YJ.HuganTQ4;
+                                          result.ntysj = result.gzl * result.tysj;
+                                          listfhtyl.Add(result);
+                                      }
+                                      else
+                                      {
+                                          if (luxcol.Count > 0)
                                           {
-                                              result.tysj=listkg[0].HuganTQ2;
+                                              if (luxcol[0].FirstNode.Number < xldcol[i].LastNode.Number)
+                                              {
+                                                  result.deviceid = fhzlcol[j].YJ;
+                                                  result.gzl = xldcol[i].YJ.HuganTQ3;
+                                                  result.tysj = xldcol[i].YJ.HuganTQ4;
+                                                  result.ntysj = result.gzl * result.tysj;
+                                                  listfhtyl.Add(result);
+                                              }
+                                              else
+                                              {
+                                                  result.deviceid = fhzlcol[j].YJ;
+                                                  result.gzl = xldcol[i].YJ.HuganTQ3;
+                                                  if (listkg[0].Type == "06")
+                                                  {
+                                                      result.tysj = listkg[0].HuganTQ2;
+                                                  }
+                                                  else
+                                                      result.tysj = listkg[0].HuganTQ4;
+                                                  result.ntysj = result.gzl * result.tysj;
+                                                  listfhtyl.Add(result);
+                                              }
                                           }
                                           else
-                                             result.tysj=listkg[0].HuganTQ4;
-                                          result.ntysj=result.gzl*result.tysj; 
-                                          listfhtyl.Add(result);
-                                     }
-                                 }
-                                 else
-                                 {
-                                          result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                          if (listkg[0].Type=="06")
                                           {
-                                              result.tysj=listkg[0].HuganTQ2;
+                                              result.deviceid = fhzlcol[j].YJ;
+                                              result.gzl = xldcol[i].YJ.HuganTQ3;
+                                              if (listkg[0].Type == "06")
+                                              {
+                                                  result.tysj = listkg[0].HuganTQ2;
+                                              }
+                                              else
+                                                  result.tysj = listkg[0].HuganTQ4;
+                                              result.ntysj = result.gzl * result.tysj;
+                                              listfhtyl.Add(result);
                                           }
-                                          else
-                                             result.tysj=listkg[0].HuganTQ4;
-                                          result.ntysj=result.gzl*result.tysj; 
-                                          listfhtyl.Add(result);
-                                 }
+                                      }
+                                  
                                  break;
                              case 5:      //第五种方式
-                                   if (luxcol.Count>0)
+                                 if (fhzlcol[j].FirstNode.Number <= xldcol[i].LastNode.Number)
                                  {
-                                     if (luxcol[0].FirstNode.Number<xldcol[i].LastNode.Number)
-                                     {
-                                          result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                         result.tysj=xldcol[i].YJ.HuganTQ4;
-                                         result.ntysj=result.gzl*result.tysj; 
-                                         listfhtyl.Add(result);
-                                     }
-                                     else
-                                     {
-                                          result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                          if (listkg[0].Type=="06")
-                                          {
-                                              result.tysj=listkg[0].HuganTQ2;
-                                          }
-                                          else
-                                             result.tysj=listkg[0].HuganTQ4;
-                                          result.ntysj=result.gzl*result.tysj; 
-                                          listfhtyl.Add(result);
-                                     }
+                                     result.deviceid = fhzlcol[j].YJ;
+                                     result.gzl = xldcol[i].YJ.HuganTQ3;
+                                     result.tysj = xldcol[i].YJ.HuganTQ4;
+                                     result.ntysj = result.gzl * result.tysj;
+                                     listfhtyl.Add(result);
                                  }
                                  else
                                  {
-                                          result.deviceid=fhzlcol[j].YJ;
-                                          result.gzl=xldcol[i].YJ.HuganTQ3;
-                                          if (listkg[0].Type=="06")
-                                          {
-                                              result.tysj=listkg[0].HuganTQ2;
-                                          }
-                                          else
-                                             result.tysj=listkg[0].HuganTQ4;
-                                          result.ntysj=result.gzl*result.tysj; 
-                                          listfhtyl.Add(result);
+                                     if (luxcol.Count > 0)
+                                     {
+                                         if (luxcol[0].FirstNode.Number < xldcol[i].LastNode.Number)
+                                         {
+                                             result.deviceid = fhzlcol[j].YJ;
+                                             result.gzl = xldcol[i].YJ.HuganTQ3;
+                                             result.tysj = xldcol[i].YJ.HuganTQ4;
+                                             result.ntysj = result.gzl * result.tysj;
+                                             listfhtyl.Add(result);
+                                         }
+                                         else
+                                         {
+                                             result.deviceid = fhzlcol[j].YJ;
+                                             result.gzl = xldcol[i].YJ.HuganTQ3;
+                                             if (listkg[0].Type == "06")
+                                             {
+                                                 result.tysj = listkg[0].HuganTQ2;
+                                             }
+                                             else
+                                                 result.tysj = listkg[0].HuganTQ4;
+                                             result.ntysj = result.gzl * result.tysj;
+                                             listfhtyl.Add(result);
+                                         }
+                                     }
+                                     else
+                                     {
+                                         result.deviceid = fhzlcol[j].YJ;
+                                         result.gzl = xldcol[i].YJ.HuganTQ3;
+                                         if (listkg[0].Type == "06")
+                                         {
+                                             result.tysj = listkg[0].HuganTQ2;
+                                         }
+                                         else
+                                             result.tysj = listkg[0].HuganTQ4;
+                                         result.ntysj = result.gzl * result.tysj;
+                                         listfhtyl.Add(result);
+                                     }
                                  }
                                  break;
                           }
@@ -1108,9 +1155,9 @@ namespace Itop.TLPSP.DEVICE
                         {
                         
                          sql = "where IName='" + xldcol[j].YJ.SUID + "'and (type='06'or type='55')"; 
-                        listkg1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                        listkg2 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
                
-                         if (listkg1.Count>0)    //线路段有开关
+                         if (listkg2.Count>0)    //线路段有开关
                          {
                              lastpsp = xldcol[j];
                              break;
@@ -1123,9 +1170,9 @@ namespace Itop.TLPSP.DEVICE
                         for (int j = 0; j < i;j++ )
                         {
                             sql = "where IName='" + xldcol[j].YJ.SUID + "'and (type='06'or type='55')";
-                            listkg2 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+                            listkg1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
 
-                            if (listkg2.Count > 0)    //线路段有开关
+                            if (listkg1.Count > 0)    //线路段有开关
                             {
                                 prepsp = xldcol[j];
                                 break;
@@ -1148,6 +1195,7 @@ namespace Itop.TLPSP.DEVICE
                             else
                             {
                                 result.deviceid = fhzlcol[j].YJ;
+                           
                                 result.gzl = curpsp.YJ.HuganTQ3;
 
                                 if (listkg1[0].Type == "06")
@@ -1172,7 +1220,7 @@ namespace Itop.TLPSP.DEVICE
                             result.ntysj = result.gzl * result.tysj;
                             listfhtyl.Add(result);
                         }
-                        if (fhzlcol[j].FirstNode.Number>=lastpsp.LastNode.Number)
+                        if (fhzlcol[j].FirstNode.Number>lastpsp.FirstNode.Number)
                         {
                             if (lastpsp.Equals(curpsp))
                             {
@@ -1194,15 +1242,39 @@ namespace Itop.TLPSP.DEVICE
                                         listfhtyl.Add(result);
                                         break;
                                     case 2:  //第二种方式  判断联络线的节点的编号和firstnode的比较 如果大于它则影响不了前面 如果小于的话
-                                        if (luxcol.Count > 0)
+                                        if (fhzlcol[j].FirstNode.Number <= xldcol[i].LastNode.Number)
                                         {
-                                            if (luxcol[0].FirstNode.Number < curpsp.LastNode.Number)
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = xldcol[i].YJ.HuganTQ3;
+                                            result.tysj = xldcol[i].YJ.HuganTQ4;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                        else
+                                        {
+                                            if (luxcol.Count > 0)
                                             {
-                                                result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = curpsp.YJ.HuganTQ3;
-                                                result.tysj = curpsp.YJ.HuganTQ4;
-                                                result.ntysj = result.gzl * result.tysj;
-                                                listfhtyl.Add(result);
+                                                if (luxcol[0].FirstNode.Number < curpsp.LastNode.Number)
+                                                {
+                                                    result.deviceid = fhzlcol[j].YJ;
+                                                    result.gzl = curpsp.YJ.HuganTQ3;
+                                                    result.tysj = curpsp.YJ.HuganTQ4;
+                                                    result.ntysj = result.gzl * result.tysj;
+                                                    listfhtyl.Add(result);
+                                                }
+                                                else
+                                                {
+                                                    result.deviceid = fhzlcol[j].YJ;
+                                                    result.gzl = curpsp.YJ.HuganTQ3;
+                                                    if (listkg2[0].Type == "06")
+                                                    {
+                                                        result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                                    }
+                                                    else
+                                                        result.tysj = listkg2[0].HuganTQ4 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ4 : luxcol[0].YJ.HuganTQ3;
+                                                    result.ntysj = result.gzl * result.tysj;
+                                                    listfhtyl.Add(result);
+                                                }
                                             }
                                             else
                                             {
@@ -1210,53 +1282,77 @@ namespace Itop.TLPSP.DEVICE
                                                 result.gzl = curpsp.YJ.HuganTQ3;
                                                 if (listkg2[0].Type == "06")
                                                 {
-                                                    result.tysj = listkg2[0].HuganTQ2 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ2 : luxcol[0].YJ.HuganTQ3;
+                                                    result.tysj = listkg2[0].HuganTQ2;
                                                 }
                                                 else
-                                                    result.tysj = listkg2[0].HuganTQ4 >= luxcol[0].YJ.HuganTQ3 ? listkg2[0].HuganTQ4 : luxcol[0].YJ.HuganTQ3;
+                                                    result.tysj = listkg2[0].HuganTQ4;
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
                                             }
-                                        }
-                                        else
-                                        {
-                                            result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = curpsp.YJ.HuganTQ3;
-                                            if (listkg2[0].Type == "06")
-                                            {
-                                                result.tysj = listkg2[0].HuganTQ2 ;
-                                            }
-                                            else
-                                                result.tysj = listkg2[0].HuganTQ4 ;
-                                            result.ntysj = result.gzl * result.tysj;
-                                            listfhtyl.Add(result);
-                                        }
 
+                                        }
+                                        
 
                                         break;
                                     case 3:  //第三种方式  判断联络线的节点的编号和firstnode的比较 如果大于它则影响不了前面 如果小于的话
-                                        result.deviceid = fhzlcol[j].YJ;
-                                        result.gzl = curpsp.YJ.HuganTQ3;
-                                        result.tysj = curpsp.YJ.HuganTQ4 * 0.5;
-                                        result.ntysj = result.gzl * result.tysj;
-                                        listfhtyl.Add(result);
+                                        if (luxcol[0].FirstNode.Number <= curpsp.LastNode.Number)
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = curpsp.YJ.HuganTQ3;
+                                            result.tysj = curpsp.YJ.HuganTQ4;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                        else
+                                        {
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = curpsp.YJ.HuganTQ3;
+                                            result.tysj = fhzlcol[j].YJ.HuganTQ2 * 2;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                       
 
                                         break;
                                     case 4:       //第四种方式
-                                        if (luxcol.Count > 0)
+                                        if (luxcol[0].FirstNode.Number <= curpsp.LastNode.Number)
                                         {
-                                            if (luxcol[0].FirstNode.Number < curpsp.LastNode.Number)
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = curpsp.YJ.HuganTQ3;
+                                            result.tysj = curpsp.YJ.HuganTQ4;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                        else
+                                        {
+                                            if (luxcol.Count > 0)
                                             {
-                                                result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = curpsp.YJ.HuganTQ3;
-                                                result.tysj = curpsp.YJ.HuganTQ4;
-                                                result.ntysj = result.gzl * result.tysj;
-                                                listfhtyl.Add(result);
+                                                if (luxcol[0].FirstNode.Number < curpsp.LastNode.Number)
+                                                {
+                                                    result.deviceid = fhzlcol[j].YJ;
+                                                    result.gzl = curpsp.YJ.HuganTQ3;
+                                                    result.tysj = curpsp.YJ.HuganTQ4;
+                                                    result.ntysj = result.gzl * result.tysj;
+                                                    listfhtyl.Add(result);
+                                                }
+                                                else
+                                                {
+                                                    result.deviceid = fhzlcol[j].YJ;
+                                                    result.gzl = xldcol[i].YJ.HuganTQ3;
+                                                    if (listkg2[0].Type == "06")
+                                                    {
+                                                        result.tysj = listkg2[0].HuganTQ2;
+                                                    }
+                                                    else
+                                                        result.tysj = listkg2[0].HuganTQ4;
+                                                    result.ntysj = result.gzl * result.tysj;
+                                                    listfhtyl.Add(result);
+                                                }
                                             }
                                             else
                                             {
                                                 result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = xldcol[i].YJ.HuganTQ3;
+                                                result.gzl = curpsp.YJ.HuganTQ3;
                                                 if (listkg2[0].Type == "06")
                                                 {
                                                     result.tysj = listkg2[0].HuganTQ2;
@@ -1267,30 +1363,42 @@ namespace Itop.TLPSP.DEVICE
                                                 listfhtyl.Add(result);
                                             }
                                         }
-                                        else
-                                        {
-                                            result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = curpsp.YJ.HuganTQ3;
-                                            if (listkg2[0].Type == "06")
-                                            {
-                                                result.tysj = listkg2[0].HuganTQ2;
-                                            }
-                                            else
-                                                result.tysj = listkg2[0].HuganTQ4;
-                                            result.ntysj = result.gzl * result.tysj;
-                                            listfhtyl.Add(result);
-                                        }
+                                       
                                         break;
                                     case 5:      //第五种方式
-                                        if (luxcol.Count > 0)
+                                        if (luxcol[0].FirstNode.Number <= curpsp.LastNode.Number)
                                         {
-                                            if (luxcol[0].FirstNode.Number < curpsp.LastNode.Number)
+                                            result.deviceid = fhzlcol[j].YJ;
+                                            result.gzl = curpsp.YJ.HuganTQ3;
+                                            result.tysj = curpsp.YJ.HuganTQ4;
+                                            result.ntysj = result.gzl * result.tysj;
+                                            listfhtyl.Add(result);
+                                        }
+                                        else
+                                        {
+                                            if (luxcol.Count > 0)
                                             {
-                                                result.deviceid = fhzlcol[j].YJ;
-                                                result.gzl = curpsp.YJ.HuganTQ3;
-                                                result.tysj = curpsp.YJ.HuganTQ4;
-                                                result.ntysj = result.gzl * result.tysj;
-                                                listfhtyl.Add(result);
+                                                if (luxcol[0].FirstNode.Number < curpsp.LastNode.Number)
+                                                {
+                                                    result.deviceid = fhzlcol[j].YJ;
+                                                    result.gzl = curpsp.YJ.HuganTQ3;
+                                                    result.tysj = curpsp.YJ.HuganTQ4;
+                                                    result.ntysj = result.gzl * result.tysj;
+                                                    listfhtyl.Add(result);
+                                                }
+                                                else
+                                                {
+                                                    result.deviceid = fhzlcol[j].YJ;
+                                                    result.gzl = xldcol[i].YJ.HuganTQ3;
+                                                    if (listkg2[0].Type == "06")
+                                                    {
+                                                        result.tysj = listkg2[0].HuganTQ2;
+                                                    }
+                                                    else
+                                                        result.tysj = listkg2[0].HuganTQ4;
+                                                    result.ntysj = result.gzl * result.tysj;
+                                                    listfhtyl.Add(result);
+                                                }
                                             }
                                             else
                                             {
@@ -1305,19 +1413,6 @@ namespace Itop.TLPSP.DEVICE
                                                 result.ntysj = result.gzl * result.tysj;
                                                 listfhtyl.Add(result);
                                             }
-                                        }
-                                        else
-                                        {
-                                            result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = curpsp.YJ.HuganTQ3;
-                                            if (listkg2[0].Type == "06")
-                                            {
-                                                result.tysj = listkg2[0].HuganTQ2;
-                                            }
-                                            else
-                                                result.tysj = listkg2[0].HuganTQ4;
-                                            result.ntysj = result.gzl * result.tysj;
-                                            listfhtyl.Add(result);
                                         }
                                         break;
                                 }
@@ -1385,7 +1480,7 @@ namespace Itop.TLPSP.DEVICE
                 }
                 sql = "where IName='" + lastxld.YJ.SUID + "'and (type='06'or type='55')";
                 listkg2= UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
-                if (listkg1.Count == 0)
+                if (listkg2.Count == 0)
                 {
                     for (int j = lastnum; j < xldcol.Count; j++)
                     {
@@ -1471,7 +1566,7 @@ namespace Itop.TLPSP.DEVICE
                                                 result.gzl = fhzlcol[i].YJ.HuganTQ1;
                                                 if (listkg2[0].Type == "06")
                                                 {
-                                                    result.tysj = listkg1[0].HuganTQ2;
+                                                    result.tysj = listkg2[0].HuganTQ2;
                                                 }
                                                 else
                                                     result.tysj = listkg2[0].HuganTQ4;
@@ -1511,7 +1606,7 @@ namespace Itop.TLPSP.DEVICE
                                         if (fhzlcol[j].FirstNode.Number <= prexld.FirstNode.Number)
                                         {
                                             result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = fhzlcol[i].YJ.HuganTQ1;
+                                            result.gzl = fhzlcol[i].YJ.HuganTQ1*0.1;
                                             if (listkg1[0].Type == "06")
                                             {
                                                 result.tysj = listkg1[0].HuganTQ2;
@@ -1552,10 +1647,10 @@ namespace Itop.TLPSP.DEVICE
                                         if (fhzlcol[j].FirstNode.Number >= lastxld.LastNode.Number && !lastxld.Equals(prexld))
                                         {
                                             result.deviceid = fhzlcol[j].YJ;
-                                            result.gzl = fhzlcol[i].YJ.HuganTQ1;
+                                            result.gzl = fhzlcol[i].YJ.HuganTQ1*0.1;
                                             if (listkg2[0].Type == "06")
                                             {
-                                                result.tysj = listkg1[0].HuganTQ2;
+                                                result.tysj = listkg2[0].HuganTQ2;
                                             }
                                             else
                                                 result.tysj = listkg2[0].HuganTQ4;
@@ -1843,7 +1938,7 @@ namespace Itop.TLPSP.DEVICE
                              if (listkg2.Count>0)
                              {
                                  result.deviceid = fhzlcol[j].YJ;
-                                 result.gzl = Convert.ToDouble(tln.GetValue("D1"))*0.5;
+                                 result.gzl = fhzlcol[j].YJ .HuganTQ2*2;
                                  result.tysj = Convert.ToDouble(tln.GetValue("D2"));
 
                                  result.ntysj = result.gzl * result.tysj;
