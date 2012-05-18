@@ -835,13 +835,24 @@ namespace Itop.TLPSP.DEVICE
                     pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
                     if (pd!=null)
                     {
-                       string sql = "where SUID='" +pd.IName+ "'and AreaID='" +xl.GetValue("ID").ToString() + "'and type='70'";
+                        string sql = "where SUID='" + pd.IName + "'and AreaID='" + xl.GetValue("DeviceID").ToString() + "'and type='70'";
                         PSPDEV firstnode = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", sql) as PSPDEV;
-                        sql = "where SUID='" + pd.JName + "'and AreaID='" + xl.GetValue("ID").ToString() + "'and type='70'";
+                        sql = "where SUID='" + pd.JName + "'and AreaID='" + xl.GetValue("DeviceID").ToString() + "'and type='70'";
                         PSPDEV lastnode = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", sql) as PSPDEV;
                         yjandjd jd = new yjandjd(pd, firstnode, lastnode);
                         xldcol.Add(jd);
+                        if (firstnode==null)
+                        {
+                            MessageBox.Show("线路段" + pd.Name + "首节点有问题！请检查后再操作。");
+                            return;
+                        }
+                        if (lastnode == null)
+                        {
+                            MessageBox.Show("线路段" + pd.Name + "末节点有问题！请检查后再操作。");
+                            return;
+                        }
                     }
+                    
                 }
                 else if (xl.Nodes[i].GetValue("devicetype").ToString() == "80" && !xl.Nodes[i].GetValue("title").ToString().Contains("节点有问题"))
                 {
@@ -850,11 +861,16 @@ namespace Itop.TLPSP.DEVICE
                     pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
                     if (pd != null)
                     {
-                        string sql = "where SUID='" + pd.IName + "'and AreaID='" + xl.GetValue("ID").ToString() + "'and type='70'";
+                        string sql = "where SUID='" + pd.IName + "'and AreaID='" + xl.GetValue("DeviceID").ToString() + "'and type='70'";
                         PSPDEV firstnode = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", sql) as PSPDEV;
                        
                         yjandjd jd = new yjandjd(pd, firstnode, null);
                         fhzlcol.Add(jd);
+                        if (firstnode == null)
+                        {
+                            MessageBox.Show("负荷支路" + pd.Name + "所在节点有问题！请检查后再操作。");
+                            return;
+                        }
                     }
                 }
                 else if (xl.Nodes[i].GetValue("devicetype").ToString() == "75" && !xl.Nodes[i].GetValue("title").ToString().Contains("节点有问题"))
@@ -865,17 +881,21 @@ namespace Itop.TLPSP.DEVICE
                     if (pd != null)
                     {
                         PSPDEV firstnode=new PSPDEV();
-                        if (pd.IName == xl.GetValue("ID").ToString())
+                        if (pd.IName == xl.GetValue("DeviceID").ToString())
                         {
-                            string sql = "where SUID='" + pd.HuganLine1 + "'and AreaID='" + xl.GetValue("ID").ToString() + "'and type='70'";
+                            string sql = "where SUID='" + pd.HuganLine1 + "'and AreaID='" + xl.GetValue("DeviceID").ToString() + "'and type='70'";
                             firstnode = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", sql) as PSPDEV;
                         }
-                        if (pd.JName == xl.GetValue("ID").ToString())
+                        if (pd.JName == xl.GetValue("DeviceID").ToString())
                         {
-                            string sql = "where SUID='" + pd.HuganLine2 + "'and AreaID='" + xl.GetValue("ID").ToString() + "'and type='70'";
+                            string sql = "where SUID='" + pd.HuganLine2 + "'and AreaID='" + xl.GetValue("DeviceID").ToString() + "'and type='70'";
                             firstnode = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", sql) as PSPDEV;
                         }
-
+                        if (firstnode == null)
+                        {
+                            MessageBox.Show("联络线" + pd.Name + "节点有问题！请检查后再操作。");
+                            return;
+                        }
                        
                         yjandjd jd = new yjandjd(pd, firstnode, null);
                         luxcol.Add(jd);
@@ -888,11 +908,16 @@ namespace Itop.TLPSP.DEVICE
                     pd = Services.BaseService.GetOneByKey<PSPDEV>(pd);
                     if (pd != null)
                     {
-                        string sql = "where SUID='" +pd.HuganLine1+ "'and AreaID='" + xl.GetValue("ID").ToString() + "'and type='70'";
+                        string sql = "where SUID='" + pd.HuganLine1 + "'and AreaID='" + xl.GetValue("DeviceID").ToString() + "'and type='70'";
                         PSPDEV firstnode = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", sql) as PSPDEV;
 
                         yjandjd jd = new yjandjd(pd, firstnode, null);
-                        xlcol.Add(jd); ;
+                        xlcol.Add(jd);
+                        if (firstnode == null)
+                        {
+                            MessageBox.Show("支线路" + pd.Name + "连接父节点有问题！请检查后再操作。");
+                            return;
+                        }
                     }
                 }
 
@@ -1444,18 +1469,18 @@ namespace Itop.TLPSP.DEVICE
                     if (xldcol[j].YJ.IName == fhzlcol[i].YJ.IName && xldcol[j].YJ.AreaID == fhzlcol[i].YJ.AreaID)
                     {
                         lastxld = xldcol[j];
-                        lastnum =j;
+                        lastnum =lastxld.FirstNode.Number;
                         continue;
                     }
                     if (xldcol[j].YJ.JName == fhzlcol[i].YJ.IName && xldcol[j].YJ.AreaID == fhzlcol[i].YJ.AreaID)
                     {
                         prexld = xldcol[j];
-                        prenum = j;
+                        prenum = prexld.LastNode.Number;
                         continue;
                     }
 
                 }
-                if (prenum==xldcol.Count-1)
+                if (prenum==xldcol.Count)
                 {
                     lastxld = prexld;
                 }
@@ -1696,11 +1721,12 @@ namespace Itop.TLPSP.DEVICE
                 rresult result = new rresult();
                 PSPDEV ps = xlcol[i].YJ;
                 TreeListNode tln = null;
-                  for (int j= 0; i < xl.Nodes.Count;i++ )
+                  for (int j= 0; j < xl.Nodes.Count;j++ )
                   {
                       if (xl.Nodes[j].GetValue("DeviceID").ToString()==ps.SUID)
                       {
                           tln = xl.Nodes[j];
+                          break;
                       }
                       
                   }
@@ -1713,21 +1739,21 @@ namespace Itop.TLPSP.DEVICE
                 yjandjd lastxld = new yjandjd();
                 for (int j = 0; j < xldcol.Count; j++)
                 {
-                    if (xldcol[j].YJ.IName == xlcol[i].YJ.HuganLine1 && xldcol[j].YJ.AreaID == xlcol[i].YJ.IName)
+                    if (xldcol[j].YJ.IName == xlcol[i].YJ.HuganLine1 && xldcol[j].YJ.AreaID == xlcol[i].YJ.JName)
                     {
                         lastxld = xldcol[j];
-                        lastnum = j;
+                        lastnum = lastxld.FirstNode.Number;
                         continue;
                     }
-                    if (xldcol[j].YJ.JName == xlcol[i].YJ.HuganLine1 && xldcol[j].YJ.AreaID == xlcol[i].YJ.IName)
+                    if (xldcol[j].YJ.JName == xlcol[i].YJ.HuganLine1 && xldcol[j].YJ.AreaID == xlcol[i].YJ.JName)
                     {
                         prexld = xldcol[j];
-                        prenum = j;
+                        prenum = prexld.LastNode.Number;
                         continue;
                     }
 
                 }
-               if (prenum==xldcol.Count-1)
+               if (prenum==xldcol.Count)
                {
                    lastxld = prexld;
                }
@@ -2175,7 +2201,7 @@ namespace Itop.TLPSP.DEVICE
                      
                     }
                 }
-                rescol[xlcol[i].YJ] = listfhtyl;  //添加到容器中
+                rescol[fxlcol[i].YJ] = listfhtyl;  //添加到容器中
             }
 #endregion
         }
@@ -2189,7 +2215,7 @@ namespace Itop.TLPSP.DEVICE
             {
                 if (tln.GetValue("devicetype").ToString() == "73" && string.IsNullOrEmpty(tln.GetValue("S1").ToString()) && !tln.GetValue("title").ToString().Contains("节点有问题"))
                 {
-                    tln.SetValue("S1", "1");
+                    
 
                     dzanalsy(tln, fxtype);
 
@@ -2197,7 +2223,7 @@ namespace Itop.TLPSP.DEVICE
 
             }
             //判断支路信息将其等值化
-           
+            xl.SetValue("S1", "1");
             Zxdzh(xl, fxtype);
             
         }
