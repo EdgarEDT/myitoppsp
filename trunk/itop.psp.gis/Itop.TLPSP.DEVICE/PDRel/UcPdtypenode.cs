@@ -19,6 +19,8 @@ using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
 using Itop.TLPSP.DEVICE;
 using System.Reflection;
+using Excel = Microsoft.Office.Interop.Excel;
+using Office = Microsoft.Office.Core;
 namespace Itop.TLPSP.DEVICE
 {
     public partial class UcPdtypenode : DevExpress.XtraEditors.XtraUserControl
@@ -600,6 +602,7 @@ namespace Itop.TLPSP.DEVICE
                 xf.init();
                 xf.ShowDialog();
             }
+
           
         }
         int order = 0;
@@ -621,28 +624,72 @@ namespace Itop.TLPSP.DEVICE
             resultzbtb.Columns.Add("pdfs", typeof(string));
             resultzbtb.Columns.Add("A", typeof(string));
             resultzbtb.Columns.Add("B", typeof(string));
-         
+           ExportExcel("指标");
             DataTable dt = new DataTable();
             frmfxlx fm = new frmfxlx();
             if (fm.ShowDialog()==DialogResult.OK)
             {
                 dt = fm.DT1;
             }
+            int columnscount = 0;
             foreach (DataRow dr in dt.Rows)
             {
                 if (Convert.ToInt32(dr["B"])==1)
                 {
+                   
                     TreeListNode tln = treeList1.FindNodeByKeyID(pdreltypeid);
-                    relanalsy(tln,Convert.ToInt32(dr["D"]));
+                    relanalsy(tln, Convert.ToInt32(dr["D"]), columnscount);
+                    columnscount++;
                 }
             }
-            FrmResult FR = new FrmResult();
-            FR.DT = resulttb;
-            FR.DT1 = resultzbtb;
-            FR.ShowDialog();
+            //FrmResult FR = new FrmResult();
+            //FR.DT = resulttb;
+            //FR.DT1 = resultzbtb;
+            //FR.ShowDialog();
+
+            ex.UnitCells(1, 3, 1, 2 + columnscount);
+            ex.AlignmentCells(1, 3, 1, 2 + columnscount, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+            ex.SetFontStyle(1, 3, 1, 2 + columnscount, true, false, ExcelStyle.UnderlineStyle.无下划线);
+            ex.CellsBackColor(1, 3, 1, 2 + columnscount, ExcelStyle.ColorIndex.黄色);
+            ex.ShowExcel();
+        }
+        ExcelAccess ex = new ExcelAccess();
+        //以报表的形式输出结果
+        private void ExportExcel(string name)
+        {
+
+            if (File.Exists(System.Windows.Forms.Application.StartupPath + "\\temp.xls"))
+            {
+                File.Delete(System.Windows.Forms.Application.StartupPath + "\\temp.xls");
+            }
+            FileStream fs = new FileStream(System.Windows.Forms.Application.StartupPath + "\\temp.xls", FileMode.CreateNew);
+            fs.Dispose();
+          //  ex = new ExcelAccess();
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            string fname = Application.StartupPath + "\\tempt.xls";
+            ex.Open(fname);
+            //ex.ActiveSheet(1);
+            try
+            {
+                ex.SetCellValue(name, 1, 1);
+                ex.SetCellValue("不同的配点方式", 1, 3);
+                ex.AlignmentCells(1, 1, 1, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                ex.SetFontStyle(1, 1, 1, 1, true, false, ExcelStyle.UnderlineStyle.无下划线);
+                ex.CellsBackColor(1, 1, 1, 1, ExcelStyle.ColorIndex.黄色);
+                ex.UnitCells(1, 1, 2, 2);
+                
+            }
+            catch (System.Exception e)
+            {
+            	
+            }
+            
+            
+            
+           
         }
         //XL为分析的线路 
-        private void relanalsy(TreeListNode xl, int fxtype)
+        private void relanalsy(TreeListNode xl, int fxtype,int columncounts)
         {
             foreach (TreeListNode tln in xl.Nodes)
             {
@@ -697,32 +744,63 @@ namespace Itop.TLPSP.DEVICE
 
           //输出结果
         
-           
+           int rownum=0;
             foreach (KeyValuePair<string, rresult> kp in fhjg1)
             {
                 order++;
-                DataRow row = resulttb.NewRow();
-                row["fhname"] = kp.Value.deviceid.Name;
-                row["zbname"] = "λ（次/年）";
-                row["result"] = kp.Value.gzl;
-                row["pdfs"] = "方式" + fxtype.ToString();
-                row["A"] = order;
-                resulttb.Rows.Add(row);
-                row = resulttb.NewRow();
-                row["fhname"] = kp.Value.deviceid.Name;
-                row["zbname"] = "t（h）";
-                row["result"] = kp.Value.tysj;
-                row["pdfs"] = "方式" + fxtype.ToString();
-                row["A"] = order;
-                resulttb.Rows.Add(row);
-                row = resulttb.NewRow();
-                row["fhname"] = kp.Value.deviceid.Name;
-                row["zbname"] = "T（h/年）";
-                row["result"] = kp.Value.ntysj;
-                row["pdfs"] = "方式" + fxtype.ToString();
-                row["A"] = order;
-                resulttb.Rows.Add(row);
+               
+                //DataRow row = resulttb.NewRow();
+                //row["fhname"] = kp.Value.deviceid.Name;
+                //row["zbname"] = "λ（次/年）";
+                //row["result"] = kp.Value.gzl;
+                //row["pdfs"] = "方式" + fxtype.ToString();
+                //row["A"] = order;
+                //resulttb.Rows.Add(row);
+                //row = resulttb.NewRow();
+                //row["fhname"] = kp.Value.deviceid.Name;
+                //row["zbname"] = "t（h）";
+                //row["result"] = kp.Value.tysj;
+                //row["pdfs"] = "方式" + fxtype.ToString();
+                //row["A"] = order;
+                //resulttb.Rows.Add(row);
+                //row = resulttb.NewRow();
+                //row["fhname"] = kp.Value.deviceid.Name;
+                //row["zbname"] = "T（h/年）";
+                //row["result"] = kp.Value.ntysj;
+                //row["pdfs"] = "方式" + fxtype.ToString();
+                //row["A"] = order;
+                //resulttb.Rows.Add(row);
+                //写到excel
+                if (columncounts == 0)
+                {
+                    ex.SetCellValue(kp.Value.deviceid.Name, 3 + 3 * rownum, 1);
+                    
+                    ex.UnitCells(3 + 3 * rownum, 1, 5 + 3 * rownum, 1);
+                    ex.SetCellValue("λ（次/年）", 3 + 3 * rownum, 2);
+                    ex.SetCellValue("t（h）", 4 + 3 * rownum, 2);
+                    ex.SetCellValue("T（h/年）", 5 + 3 * rownum, 2);
+                    ex.SetFontStyle(3 + 3 * rownum, 1, 5 + 3 * rownum, 1, true, true, ExcelStyle.UnderlineStyle.无下划线);
+                    ex.AlignmentCells(3 + 3 * rownum, 1, 5 + 3 * rownum, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                    ex.CellsBackColor(3 + 3 * rownum, 1, 5 + 3 * rownum, 1, ExcelStyle.ColorIndex.绿色);
+                    ex.SetCellValue("方式" + fxtype.ToString(), 2, columncounts + 3);
+                    ex.SetFontStyle(2, columncounts + 3, 2, columncounts + 3, true, true, ExcelStyle.UnderlineStyle.无下划线);
+                    ex.CellsBackColor(2, columncounts + 3, 2, columncounts + 3, ExcelStyle.ColorIndex.黄色);
+                    ex.SetCellValue(kp.Value.gzl.ToString(), 3 + 3 * rownum, columncounts + 3);
+                    ex.SetCellValue(kp.Value.tysj.ToString(), 4 + 3 * rownum, columncounts + 3);
+                    ex.SetCellValue(kp.Value.ntysj.ToString(), 5 + 3 * rownum, columncounts + 3);
+                }
+                else
+                {
+                    ex.SetCellValue("方式" + fxtype.ToString(),2, columncounts + 3);
+                    ex.SetFontStyle(2, columncounts + 3, 2, columncounts + 3, true, true, ExcelStyle.UnderlineStyle.无下划线);
+                    ex.CellsBackColor(2, columncounts + 3, 2, columncounts + 3, ExcelStyle.ColorIndex.黄色);
+                    ex.SetCellValue(kp.Value.gzl.ToString(), 3 + 3 * rownum, columncounts + 3);
+                    ex.SetCellValue(kp.Value.tysj.ToString(), 4 + 3 * rownum, columncounts + 3);
+                    ex.SetCellValue(kp.Value.ntysj.ToString(), 5 + 3 * rownum, columncounts + 3);
+                }
+                 rownum++;
             }
+           
             //求结果
             double ACI = 0, CID = 0, SAIFI = 0, SAIDI = 0, CAIDI = 0, ASAI = 0, ASUI = 0, ASCI = 0,sumyh=0;
             foreach (KeyValuePair<string, rresult> kp in fhjg1)
@@ -739,64 +817,102 @@ namespace Itop.TLPSP.DEVICE
             ASUI = 1 - ASAI;
             ASCI = ASCI / sumyh;
             order++;
-            DataRow row1 = resultzbtb.NewRow();
+            //DataRow row1 = resultzbtb.NewRow();
           
-            row1["zbname"] = "用户全年总停电次数ACI(次/年)";
-            row1["result"] = ACI;
-            row1["pdfs"] = "方式" + fxtype.ToString();
-            row1["A"] = order;
-            resultzbtb.Rows.Add(row1);
-            row1 = resultzbtb.NewRow();
+            //row1["zbname"] = "用户全年总停电次数ACI(次/年)";
+            //row1["result"] = ACI;
+            //row1["pdfs"] = "方式" + fxtype.ToString();
+            //row1["A"] = order;
+            //resultzbtb.Rows.Add(row1);
+            //row1 = resultzbtb.NewRow();
 
-            row1["zbname"] = "用户总全年停电时间CID（h）";
-            row1["result"] = CID;
-            row1["pdfs"] = "方式" + fxtype.ToString();
-            row1["A"] = order;
-            resultzbtb.Rows.Add(row1);
-            row1 = resultzbtb.NewRow();
+            //row1["zbname"] = "用户总全年停电时间CID（h）";
+            //row1["result"] = CID;
+            //row1["pdfs"] = "方式" + fxtype.ToString();
+            //row1["A"] = order;
+            //resultzbtb.Rows.Add(row1);
+            //row1 = resultzbtb.NewRow();
 
-            row1["zbname"] = "系统平均停电频率SAIFI（次/户·年）";
-            row1["result"] =SAIFI;
-            row1["pdfs"] = "方式" + fxtype.ToString();
-            row1["A"] = order;
-            resultzbtb.Rows.Add(row1);
+            //row1["zbname"] = "系统平均停电频率SAIFI（次/户·年）";
+            //row1["result"] =SAIFI;
+            //row1["pdfs"] = "方式" + fxtype.ToString();
+            //row1["A"] = order;
+            //resultzbtb.Rows.Add(row1);
 
-            row1 = resultzbtb.NewRow();
-            row1["zbname"] = "系统平均停电持续时间SAIDI（h/户·年）";
-            row1["result"] = SAIDI;
-            row1["pdfs"] = "方式" + fxtype.ToString();
-            row1["A"] = order;
-            resultzbtb.Rows.Add(row1);
+            //row1 = resultzbtb.NewRow();
+            //row1["zbname"] = "系统平均停电持续时间SAIDI（h/户·年）";
+            //row1["result"] = SAIDI;
+            //row1["pdfs"] = "方式" + fxtype.ToString();
+            //row1["A"] = order;
+            //resultzbtb.Rows.Add(row1);
 
-            row1 = resultzbtb.NewRow();
-            row1["zbname"] = "用户平均停电时间CAIDI（h/户·年）";
-            row1["result"] = CAIDI;
-            row1["pdfs"] = "方式" + fxtype.ToString();
-            row1["A"] = order;
-            resultzbtb.Rows.Add(row1);
+            //row1 = resultzbtb.NewRow();
+            //row1["zbname"] = "用户平均停电时间CAIDI（h/户·年）";
+            //row1["result"] = CAIDI;
+            //row1["pdfs"] = "方式" + fxtype.ToString();
+            //row1["A"] = order;
+            //resultzbtb.Rows.Add(row1);
 
-            row1 = resultzbtb.NewRow();
-            row1["zbname"] = "平均供电可用率ASAI";
-            row1["result"] = ASAI;
-            row1["pdfs"] = "方式" + fxtype.ToString();
-            row1["A"] = order;
-            resultzbtb.Rows.Add(row1);
+            //row1 = resultzbtb.NewRow();
+            //row1["zbname"] = "平均供电可用率ASAI";
+            //row1["result"] = ASAI;
+            //row1["pdfs"] = "方式" + fxtype.ToString();
+            //row1["A"] = order;
+            //resultzbtb.Rows.Add(row1);
 
-            row1 = resultzbtb.NewRow();
-            row1["zbname"] = "平均供电不可用率ASUI";
-            row1["result"] = ASUI;
-            row1["pdfs"] = "方式" + fxtype.ToString();
-            row1["A"] = order;
-            resultzbtb.Rows.Add(row1);
+            //row1 = resultzbtb.NewRow();
+            //row1["zbname"] = "平均供电不可用率ASUI";
+            //row1["result"] = ASUI;
+            //row1["pdfs"] = "方式" + fxtype.ToString();
+            //row1["A"] = order;
+            //resultzbtb.Rows.Add(row1);
 
-            row1 = resultzbtb.NewRow();
-            row1["zbname"] = "平均系统缺电指标ASCI";
-            row1["result"] = ASCI;
-            row1["pdfs"] = "方式" + fxtype.ToString();
-            row1["A"] = order;
-            resultzbtb.Rows.Add(row1);
+            //row1 = resultzbtb.NewRow();
+            //row1["zbname"] = "平均系统缺电指标ASCI";
+            //row1["result"] = ASCI;
+            //row1["pdfs"] = "方式" + fxtype.ToString();
+            //row1["A"] = order;
+            //resultzbtb.Rows.Add(row1);
 
-
+            //写到excel中
+            if (columncounts == 0)
+            {
+                ex.SetCellValue("系统", 3 + 3 * rownum, 1);
+                ex.UnitCells(3+ 3 * rownum, 1,10 + 3 * rownum, 1);
+                ex.SetFontStyle(3 + 3 * rownum, 1, 10 + 3 * rownum, 1, true, true, ExcelStyle.UnderlineStyle.无下划线);
+               
+                ex.AlignmentCells(3 + 3 * rownum, 1, 10 + 3 * rownum, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                ex.CellsBackColor(3 + 3 * rownum, 1, 10 + 3 * rownum, 1, ExcelStyle.ColorIndex.绿色);
+                ex.SetCellValue("用户全年总停电次数ACI(次/年)",3 + 3 * rownum, 2);
+                ex.SetCellValue("用户总全年停电时间CID（h）", 4 + 3 * rownum, 2);
+                ex.SetCellValue("系统平均停电频率SAIFI（次/户·年）", 5 + 3 * rownum, 2);
+                ex.SetCellValue("系统平均停电持续时间SAIDI（h/户·年）", 6 + 3 * rownum, 2);
+                ex.SetCellValue("系用户平均停电时间CAIDI（h/户·年）", 7 + 3 * rownum, 2);
+                ex.SetCellValue("平均供电可用率ASAI", 8 + 3 * rownum, 2);
+                ex.SetCellValue("平均供电不可用率ASUI", 9 + 3 * rownum, 2);
+                ex.SetCellValue("平均系统缺电指标ASCI", 10 + 3 * rownum, 2);
+                // ex.SetCellValue("方式" + fxtype.ToString(), 1, columncounts + 2);
+                ex.SetCellValue(ACI.ToString(), 3 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(CID.ToString(), 4 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(SAIFI.ToString(), 5 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(SAIDI.ToString(), 6+ 3 * rownum, columncounts + 3);
+                ex.SetCellValue(CAIDI.ToString(), 7 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(ASAI.ToString(), 8 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(ASUI.ToString(), 9 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(ASCI.ToString(), 10 + 3 * rownum, columncounts + 3);
+               
+            }
+            else
+            {
+                ex.SetCellValue(ACI.ToString(), 3 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(CID.ToString(), 4 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(SAIFI.ToString(), 5 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(SAIDI.ToString(), 6 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(CAIDI.ToString(), 7 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(ASAI.ToString(), 8 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(ASUI.ToString(), 9 + 3 * rownum, columncounts + 3);
+                ex.SetCellValue(ASCI.ToString(), 10 + 3 * rownum, columncounts + 3);
+            }
 
         }
 
