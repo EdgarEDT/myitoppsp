@@ -96,7 +96,7 @@
     <Reference Include="Itop.Domain.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Client\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
@@ -665,6 +665,8 @@
     <Compile Include="ELC\OuptResultForm.Designer.cs">
       <DependentUpon>OuptResultForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExcelAccess.cs" />
+    <Compile Include="ExcelStyle.cs" />
     <Compile Include="FileClass.cs" />
     <Compile Include="frmAutojxt.cs">
       <SubType>Form</SubType>
