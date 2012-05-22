@@ -65,6 +65,7 @@
     <Compile Include="PDrelcontent.cs" />
     <Compile Include="PDrelregion.cs" />
     <Compile Include="PrintInfo.cs" />
+    <Compile Include="Psp_Attachtable.cs" />
     <Compile Include="PSP_ElcDevice.cs" />
     <Compile Include="PSP_ELCPROJECT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
