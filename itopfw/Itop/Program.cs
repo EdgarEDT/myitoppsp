@@ -91,15 +91,23 @@ namespace Itop {
                 // 如果登录成功，则进入主界面
                 UserLoginCommand login = new UserLoginCommand();
                 if (login.Execute()) {
-                    //LoadSkin();//加载皮肤方案
-                    MIS.MainForm = new MainForm();
 
+                    MIS.MainForm = new MainForm();
 
                     if (!(MIS.MainForm as MainForm).IsClose)
                     {
                         LoadSkin();//加载皮肤方案
                         Application.Run(MIS.MainForm);
                     }
+
+
+                   
+                    //LoadSkin();//加载皮肤方案
+                    //Application.Run(new FrmMain());
+                  
+                
+
+                   
                     
                 }
             //} catch (System.Net.Sockets.SocketException) {
