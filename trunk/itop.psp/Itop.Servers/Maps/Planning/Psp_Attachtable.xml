@@ -17,6 +17,7 @@
 			<result property='D1' column='D1' />
 			<result property='D2' column='D2' />
 			<result property='D3' column='D3' />
+			<result property='RelatetableID' column='RelatetableID' />
 		</resultMap>
 	</resultMaps>
 <statements>
@@ -33,7 +34,8 @@
 			"S3",
 			"D1",
 			"D2",
-			"D3"
+			"D3",
+			"RelatetableID"
 		)
 		VALUES
 		(
@@ -48,7 +50,8 @@
 			#S3#,
 			#D1#,
 			#D2#,
-			#D3#
+			#D3#,
+			#RelatetableID#
 		)
 	</insert>
 	<delete id='DeletePsp_Attachtable' parameterClass='Psp_Attachtable'>
@@ -69,7 +72,8 @@
 			"S3" = #S3#,
 			"D1" = #D1#,
 			"D2" = #D2#,
-			"D3" = #D3#
+			"D3" = #D3#,
+			"RelatetableID" = #RelatetableID#
 		WHERE
 			ID = #ID#
 	</update>
@@ -86,7 +90,8 @@
 			"S3",
 			"D1",
 			"D2",
-			"D3"
+			"D3",
+			"RelatetableID"
 		FROM Psp_Attachtable
 	</select>
 	<select id='SelectPsp_AttachtableByKey' resultMap='Psp_AttachtableResult' parameterClass='Psp_Attachtable'>
@@ -102,10 +107,30 @@
 			"S3",
 			"D1",
 			"D2",
-			"D3"
+			"D3",
+			"RelatetableID"
 		FROM Psp_Attachtable
 		WHERE
 			ID = #ID#
 	</select>
+	<select id='SelectPsp_AttachtableByCont' resultMap='Psp_AttachtableResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "ZHI",
+      "startYear",
+      "endYear",
+      "Relatetable",
+      "Type",
+      "S1",
+      "S2",
+      "S3",
+      "D1",
+      "D2",
+      "D3",
+      "RelatetableID"
+      FROM Psp_Attachtable
+      WHERE
+      $value$
+    </select>
 </statements>
 </sqlMap>
