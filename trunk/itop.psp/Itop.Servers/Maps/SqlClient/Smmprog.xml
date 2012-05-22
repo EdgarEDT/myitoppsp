@@ -11,7 +11,7 @@
       <result property='ProgLevel' column='ProgLevel' />
       <result property='AssemblyName' column='AssemblyName' />
       <result property='ClassName' column='ClassName' />
-      <result property='MethodName' column='MethodName' /> 
+      <result property='MethodName' column='MethodName' />
       <result property='ParentId' column='ParentId' />
       <result property='Index' column='SeqNo' />
       <result property='ProgType' column='ProgType' />
@@ -51,7 +51,7 @@
       #ProgModuleType#,#ProgIco#
       )
     </insert>
-    
+
     <delete id='DeleteSmmprog' parameterClass='Smmprog'>
       DELETE FROM Smmprog
       WHERE
@@ -123,9 +123,9 @@
       t1.ParentId=#ParentId# and
       t1.ProgType='f'
       order by SeqNo
-    </select> 
-    
-    
+    </select>
+
+
 
 
     <select id='SelectSmmprogByModuleType' resultMap='SmmprogResult' parameterClass='string'>
@@ -166,7 +166,7 @@
       ProgType,
       '' ProgModuleType,
       ProgIco
-      FROM Smmprog where ProgType='m' order by SeqNo
+      FROM Smmprog order by SeqNo
     </select>
     <select id='SelectSmmprogByMeIcoall' resultMap='SmmprogResult' parameterClass='Smmprog'>
       SELECT
@@ -186,6 +186,7 @@
       '' ProgModuleType,
       ProgIco
       FROM Smmprog  order by SeqNo
+
     </select>
     <select id='SelectSmmprogByFormIco' resultMap='SmmprogResult' parameterClass='Smmprog'>
       SELECT
@@ -204,7 +205,7 @@
       ProgType,
       '' ProgModuleType,
       ProgIco
-      FROM Smmprog where ProgType='f' order by SeqNo
+      FROM Smmprog  order by SeqNo
     </select>
     <!--************-->
     <select id='SelectSmmprogByKey' resultMap='SmmprogResult' parameterClass='Smmprog'>
@@ -228,11 +229,11 @@
       ProgId = #ProgId#
       order by SeqNo
     </select>
-    
 
-    
-    
-    
+
+
+
+
     <select id='SelectSmmprogCount' resultClass='int' parameterClass='string'>
       SELECT
       count(*) as nums
@@ -243,7 +244,7 @@
       SELECT
       count(*) as num1
       FROM Smmprog
-      WHERE 
+      WHERE
       Parentid = #ProgId#
     </select>
 
