@@ -166,7 +166,7 @@
       ProgType,
       '' ProgModuleType,
       ProgIco
-      FROM Smmprog where ProgType='m' order by SeqNo
+      FROM Smmprog order by SeqNo
     </select>
     <select id='SelectSmmprogByMeIcoall' resultMap='SmmprogResult' parameterClass='Smmprog'>
       SELECT
@@ -205,7 +205,7 @@
       ProgType,
       '' ProgModuleType,
       ProgIco
-      FROM Smmprog where ProgType='f' order by SeqNo
+      FROM Smmprog  order by SeqNo
     </select>
     <!--************-->
     <select id='SelectSmmprogByKey' resultMap='SmmprogResult' parameterClass='Smmprog'>
