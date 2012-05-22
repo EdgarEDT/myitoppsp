@@ -1,111 +1,136 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <sqlMap namespace='Psp_Attachtable' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-<alias>
-	<typeAlias alias='Psp_Attachtable' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.Psp_Attachtable' />
-</alias>
-	<resultMaps>
-		<resultMap id='Psp_AttachtableResult' class='Psp_Attachtable'>
-			<result property='ID' column='ID' />
-			<result property='ZHI' column='ZHI' />
-			<result property='startYear' column='startYear' />
-			<result property='endYear' column='endYear' />
-			<result property='Relatetable' column='Relatetable' />
-			<result property='Type' column='Type' />
-			<result property='S1' column='S1' />
-			<result property='S2' column='S2' />
-			<result property='S3' column='S3' />
-			<result property='D1' column='D1' />
-			<result property='D2' column='D2' />
-			<result property='D3' column='D3' />
-		</resultMap>
-	</resultMaps>
-<statements>
-	<insert id='InsertPsp_Attachtable' parameterClass='Psp_Attachtable'>
-		INSERT INTO Psp_Attachtable		(
-			"ID",
-			"ZHI",
-			"startYear",
-			"endYear",
-			"Relatetable",
-			"Type",
-			"S1",
-			"S2",
-			"S3",
-			"D1",
-			"D2",
-			"D3"
-		)
-		VALUES
-		(
-			#ID#,
-			#ZHI#,
-			#startYear#,
-			#endYear#,
-			#Relatetable#,
-			#Type#,
-			#S1#,
-			#S2#,
-			#S3#,
-			#D1#,
-			#D2#,
-			#D3#
-		)
-	</insert>
-	<delete id='DeletePsp_Attachtable' parameterClass='Psp_Attachtable'>
-		DELETE FROM Psp_Attachtable
-		WHERE
-			ID = #ID#
-	</delete>
-	<update id='UpdatePsp_Attachtable' parameterClass='Psp_Attachtable'>
-		UPDATE Psp_Attachtable
-		SET
-			"ZHI" = #ZHI#,
-			"startYear" = #startYear#,
-			"endYear" = #endYear#,
-			"Relatetable" = #Relatetable#,
-			"Type" = #Type#,
-			"S1" = #S1#,
-			"S2" = #S2#,
-			"S3" = #S3#,
-			"D1" = #D1#,
-			"D2" = #D2#,
-			"D3" = #D3#
-		WHERE
-			ID = #ID#
-	</update>
-	<select id='SelectPsp_AttachtableList' resultMap='Psp_AttachtableResult' parameterClass='Psp_Attachtable'>
-		SELECT
-			"ID",
-			"ZHI",
-			"startYear",
-			"endYear",
-			"Relatetable",
-			"Type",
-			"S1",
-			"S2",
-			"S3",
-			"D1",
-			"D2",
-			"D3"
-		FROM Psp_Attachtable
-	</select>
-	<select id='SelectPsp_AttachtableByKey' resultMap='Psp_AttachtableResult' parameterClass='Psp_Attachtable'>
-		SELECT
-			"ID",
-			"ZHI",
-			"startYear",
-			"endYear",
-			"Relatetable",
-			"Type",
-			"S1",
-			"S2",
-			"S3",
-			"D1",
-			"D2",
-			"D3"
-		FROM Psp_Attachtable
-		WHERE
-			ID = #ID#
-	</select>
-</statements>
+  <alias>
+    <typeAlias alias='Psp_Attachtable' assembly='Itop.Domain.Graphics.dll' type='Itop.Domain.Graphics.Psp_Attachtable' />
+  </alias>
+  <resultMaps>
+    <resultMap id='Psp_AttachtableResult' class='Psp_Attachtable'>
+      <result property='ID' column='ID' />
+      <result property='ZHI' column='ZHI' />
+      <result property='startYear' column='startYear' />
+      <result property='endYear' column='endYear' />
+      <result property='Relatetable' column='Relatetable' />
+      <result property='Type' column='Type' />
+      <result property='S1' column='S1' />
+      <result property='S2' column='S2' />
+      <result property='S3' column='S3' />
+      <result property='D1' column='D1' />
+      <result property='D2' column='D2' />
+      <result property='D3' column='D3' />
+      <result property='RelatetableID' column='RelatetableID' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertPsp_Attachtable' parameterClass='Psp_Attachtable'>
+      INSERT INTO Psp_Attachtable		(
+      "ID",
+      "ZHI",
+      "startYear",
+      "endYear",
+      "Relatetable",
+      "Type",
+      "S1",
+      "S2",
+      "S3",
+      "D1",
+      "D2",
+      "D3",
+      "RelatetableID"
+      )
+      VALUES
+      (
+      #ID#,
+      #ZHI#,
+      #startYear#,
+      #endYear#,
+      #Relatetable#,
+      #Type#,
+      #S1#,
+      #S2#,
+      #S3#,
+      #D1#,
+      #D2#,
+      #D3#,
+      #RelatetableID#
+      )
+    </insert>
+    <delete id='DeletePsp_Attachtable' parameterClass='Psp_Attachtable'>
+      DELETE FROM Psp_Attachtable
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdatePsp_Attachtable' parameterClass='Psp_Attachtable'>
+      UPDATE Psp_Attachtable
+      SET
+      "ZHI" = #ZHI#,
+      "startYear" = #startYear#,
+      "endYear" = #endYear#,
+      "Relatetable" = #Relatetable#,
+      "Type" = #Type#,
+      "S1" = #S1#,
+      "S2" = #S2#,
+      "S3" = #S3#,
+      "D1" = #D1#,
+      "D2" = #D2#,
+      "D3" = #D3#,
+      "RelatetableID" = #RelatetableID#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectPsp_AttachtableList' resultMap='Psp_AttachtableResult' parameterClass='Psp_Attachtable'>
+      SELECT
+      "ID",
+      "ZHI",
+      "startYear",
+      "endYear",
+      "Relatetable",
+      "Type",
+      "S1",
+      "S2",
+      "S3",
+      "D1",
+      "D2",
+      "D3",
+      "RelatetableID"
+      FROM Psp_Attachtable
+    </select>
+    <select id='SelectPsp_AttachtableByKey' resultMap='Psp_AttachtableResult' parameterClass='Psp_Attachtable'>
+      SELECT
+      "ID",
+      "ZHI",
+      "startYear",
+      "endYear",
+      "Relatetable",
+      "Type",
+      "S1",
+      "S2",
+      "S3",
+      "D1",
+      "D2",
+      "D3",
+      "RelatetableID"
+      FROM Psp_Attachtable
+      WHERE
+      ID = #ID#
+    </select>
+    <select id='SelectPsp_AttachtableByCont' resultMap='Psp_AttachtableResult' parameterClass='string'>
+      SELECT
+      "ID",
+      "ZHI",
+      "startYear",
+      "endYear",
+      "Relatetable",
+      "Type",
+      "S1",
+      "S2",
+      "S3",
+      "D1",
+      "D2",
+      "D3",
+      "RelatetableID"
+      FROM Psp_Attachtable
+      WHERE
+      $value$
+    </select>
+  </statements>
 </sqlMap>
