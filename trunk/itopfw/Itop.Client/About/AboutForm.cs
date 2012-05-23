@@ -16,7 +16,10 @@ namespace Itop.Client.About {
     /// </summary>
     public partial class AboutForm : Itop.Client.Base.DialogForm, IMenuCommand {
         public AboutForm() {
+           
             InitializeComponent();
+            FormView.Paint(this);
+            this.BackgroundImage = Itop.Client.Resources.ImageListRes.GetAboutPhoto();
         }
 
         override public bool Execute() {
@@ -28,5 +31,11 @@ namespace Itop.Client.About {
         {
 
         }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+            
     }
 }

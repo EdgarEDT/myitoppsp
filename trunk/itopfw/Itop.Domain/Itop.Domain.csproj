@@ -75,6 +75,7 @@
     <Compile Include="RightManager\smmuser.cs" />
     <Compile Include="RightManager\smugroup.cs" />
     <Compile Include="RightManager\VsmdgroupProg.cs" />
+    <Compile Include="RightManager\SysDataServer.cs" />
     <Compile Include="SAppProps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RightManager\Smmprog.cs" />

@@ -43,6 +43,7 @@ namespace Itop.Server {
         private static string database = string.Empty;// 数据库名
         private static string uid = string.Empty;// 用户
         private static string pwd = string.Empty;// 口令
+        private static string isOneServer = string.Empty;//单实例
         private static XmlElement channelElement;
         /// <summary>
         /// 保存配置
@@ -148,7 +149,25 @@ namespace Itop.Server {
                 dbDictionary["password"].Attributes["value"].Value = value;
             }
         }
-        
+        /// <summary>
+        ///  单实例
+        /// </summary>
+        public static string  IsOneServer
+        {
+            get
+            {
+                if (isOneServer == string.Empty)
+                {
+                    isOneServer = dbDictionary["isOneServer"].Attributes["value"].Value;
+                }
+                return Settings.isOneServer;
+            }
+            set
+            {
+                Settings.isOneServer = value;
+                dbDictionary["isOneServer"].Attributes["value"].Value = value;
+            }
+        }
         #endregion
     }
 }

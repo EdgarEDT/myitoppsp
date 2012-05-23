@@ -30,7 +30,11 @@ namespace Itop.Client {
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.m_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tooluser_image = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toldate = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toltime = new System.Windows.Forms.ToolStripStatusLabel();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,7 +42,7 @@ namespace Itop.Client {
             // 
             this.m_mainMenu.Location = new System.Drawing.Point(0, 0);
             this.m_mainMenu.Name = "m_mainMenu";
-            this.m_mainMenu.Size = new System.Drawing.Size(689, 24);
+            this.m_mainMenu.Size = new System.Drawing.Size(1050, 24);
             this.m_mainMenu.TabIndex = 0;
             this.m_mainMenu.Text = "menuStrip1";
             // 
@@ -47,12 +51,16 @@ namespace Itop.Client {
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.m_statusLabel,
-            this.tooluser_image});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 441);
+            this.tooluser_image,
+            this.toolStripStatusLabel1,
+            this.toldate,
+            this.toltime});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 541);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(689, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1050, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Visible = false;
             // 
             // m_statusLabel
             // 
@@ -68,6 +76,30 @@ namespace Itop.Client {
             this.tooluser_image.Name = "tooluser_image";
             this.tooluser_image.Size = new System.Drawing.Size(0, 17);
             this.tooluser_image.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(626, 17);
+            this.toolStripStatusLabel1.Spring = true;
+            // 
+            // toldate
+            // 
+            this.toldate.BackColor = System.Drawing.Color.Transparent;
+            this.toldate.ForeColor = System.Drawing.Color.White;
+            this.toldate.Name = "toldate";
+            this.toldate.Size = new System.Drawing.Size(131, 17);
+            this.toldate.Text = "toolStripStatusLabel2";
+            // 
+            // toltime
+            // 
+            this.toltime.BackColor = System.Drawing.Color.Transparent;
+            this.toltime.ForeColor = System.Drawing.Color.White;
+            this.toltime.Image = global::Itop.Client.Properties.Resources.time;
+            this.toltime.Name = "toltime";
+            this.toltime.Size = new System.Drawing.Size(147, 17);
+            this.toltime.Text = "toolStripStatusLabel2";
             // 
             // imageList2
             // 
@@ -125,19 +157,23 @@ namespace Itop.Client {
             this.imageList2.Images.SetKeyName(49, "ICS client.ico");
             this.imageList2.Images.SetKeyName(50, "user.png");
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainForm
             // 
             this.Appearance.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 463);
+            this.ClientSize = new System.Drawing.Size(1050, 563);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.m_mainMenu);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.m_mainMenu;
             this.Name = "MainForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -152,6 +188,10 @@ namespace Itop.Client {
         private System.Windows.Forms.ToolStripStatusLabel m_statusLabel;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.ToolStripStatusLabel tooluser_image;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toldate;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripStatusLabel toltime;
     }
 }
 

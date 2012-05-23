@@ -424,6 +424,13 @@ namespace Itop.Client.Resources.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap a5 {
+            get {
+                object obj = ResourceManager.GetObject("a5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap about {
             get {
                 object obj = ResourceManager.GetObject("about", resourceCulture);

@@ -14,6 +14,7 @@ namespace Itop.Client.Resources
         public FrmAbout()
         {
             InitializeComponent();
+            
             this.BackgroundImage = Itop.Client.Resources.ImageListRes.GetAboutPhoto();
         }
 

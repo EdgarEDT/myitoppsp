@@ -124,6 +124,9 @@
   <data name="right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\right.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="time" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\time.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,9 +136,7 @@
   <data name="bgcolor3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bgcolor3.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Top" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Top.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  
   <data name="butyl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\butyl.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,10 +173,14 @@
   <data name="复制" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\复制.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\20.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Left.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sysbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sysbg.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  
 </root>

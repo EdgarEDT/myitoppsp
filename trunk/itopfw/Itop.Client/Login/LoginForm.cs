@@ -16,7 +16,7 @@ namespace Itop.Client.Login {
     public partial class LoginForm : Itop.Client.Base.DialogForm {
         public LoginForm() {
             InitializeComponent();
-
+            FormView.Paint(this);
             //this.Text = string.Format("登录 {0}", MIS.ApplicationCaption);
 
             // 通常的Dialog是不需要ShowInTaskbar，
@@ -24,14 +24,30 @@ namespace Itop.Client.Login {
             // 把它显示在Taskbar上，充当主窗体
             this.ShowInTaskbar = true;
 
-            txtUserid.Text = Itop.Client.Option.Settings.GetLastLoginUserNumber();
+            utxtuser.tbox.Text = Itop.Client.Option.Settings.GetLastLoginUserNumber();
+            IniImage();
+            ubmin.BarClick += new UserBar.barClick(ubmin_BarClick);
+            ubclose.BarClick += new UserBar.barClick(ubclose_BarClick);
         }
+
+        
+
+       
 
         public LoginForm(bool reLogin)
             : this() {
             m_reLogin = reLogin;
-
+           
             this.ShowInTaskbar = !m_reLogin;
+            this.TopMost = true;
+        }
+        private void IniImage()
+        {
+            utxtuser.image = imageList1.Images[0];
+            utxtpwd.image = imageList1.Images[1];
+            utxtpwd.tbox.PasswordChar = '*';
+            
+           
         }
 
         /// <summary>
@@ -52,9 +68,9 @@ namespace Itop.Client.Login {
         /// 执行登录
         /// </summary>
         private void DoLogin() {
-            if (txtUserid.Text == string.Empty) {
+            if (utxtuser.tbox.Text == string.Empty) {
                 MsgBox.Show("工号没有输入");
-                txtUserid.Focus();
+                utxtuser.Focus();
                 return;
             }
 
@@ -65,15 +81,15 @@ namespace Itop.Client.Login {
             }
 
             string token;
-            string userNumber = txtUserid.Text.Trim();
-            string password = txtPassword.Text;
+            string userNumber = utxtuser.tbox.Text.Trim();
+            string password = utxtpwd.tbox.Text;
             LoginData data = new LoginData(userNumber, password);
             LoginStatus status;
             try {
                 loginAction.Login(data, out token, out status);
             } catch (System.Net.Sockets.SocketException) {
                 MsgBox.Show("无法连接服务器，请稍候重试");
-                txtPassword.Focus();
+                utxtpwd.tbox.Focus();
                 return;
             }
             switch (status) {
@@ -82,7 +98,7 @@ namespace Itop.Client.Login {
                         // 原来的用户退出
                         if (!UserLogoutCommand.Exec(false)) {
                             MsgBox.Show("无法连接服务器，请稍候重试");
-                            txtPassword.Focus();
+                            utxtpwd.tbox.Focus();
                             return;
 
                         }
@@ -100,7 +116,7 @@ namespace Itop.Client.Login {
                     break;
                 case LoginStatus.InvalidUser:
                     MsgBox.Show("工号输入错误");
-                    txtUserid.Focus();
+                    utxtuser.tbox.Focus();
                     break;
                 case LoginStatus.InvalidPassword:
                     if (m_error.ContainsKey(userNumber)) {
@@ -122,8 +138,8 @@ namespace Itop.Client.Login {
                     } else {
                         MsgBox.Show("密码输入错误，请重新输入密码");
                     }
-                    txtPassword.Text = "";
-                    txtPassword.Focus();
+                    utxtpwd.tbox.Text = "";
+                    utxtpwd.tbox.Focus();
                     break;
                 default:
                     break;
@@ -133,7 +149,7 @@ namespace Itop.Client.Login {
         private void txtUserid_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Return) {
                 e.Handled = true;
-                txtPassword.Focus();
+                utxtpwd.tbox.Focus();
             }
         }
 
@@ -145,8 +161,8 @@ namespace Itop.Client.Login {
         }
 
         private void LoginForm_Shown(object sender, EventArgs e) {
-            if (txtUserid.Text != string.Empty)
-                txtPassword.Focus();
+            if (utxtuser.tbox.Text != string.Empty)
+                utxtpwd.SetFocx();
         }
 
         private void txtUserid_TextChanged(object sender, EventArgs e) {
@@ -193,6 +209,63 @@ namespace Itop.Client.Login {
         {
             DoLogin();
         }
+
+        #region 窗体美化w
+        private bool m_isMouseDown = false;
+        private Point m_mousePos = new Point();
+        private void labtop_MouseEnter(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void labtop_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+        private void labtop_MouseMove(object sender, MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            if (m_isMouseDown)
+            {
+                Point tempPos = Cursor.Position;
+                this.Location = new Point(Location.X + (tempPos.X - m_mousePos.X), Location.Y + (tempPos.Y - m_mousePos.Y));
+                m_mousePos = Cursor.Position;
+            }
+        }
+        private void labtop_MouseDown(object sender, MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+            m_mousePos = Cursor.Position;
+            m_isMouseDown = true;
+        }
+
+        private void labtop_MouseUp(object sender, MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+            m_isMouseDown = false;
+        }
+        void ubclose_BarClick()
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        void ubmin_BarClick()
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        void userBar1_BarMin()
+        {
+           
+        }
+           #endregion
+
+        private void sbtnData_Click(object sender, EventArgs e)
+        {
+            FrmSysData frm = new FrmSysData();
+            frm.Show();
+        }
+
 
 
 
