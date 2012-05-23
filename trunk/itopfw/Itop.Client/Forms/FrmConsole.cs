@@ -18,7 +18,7 @@ using System.Diagnostics;
 using Itop.Client.Projects;
 using DevExpress.XtraTreeList.Nodes;
 using System.Globalization;
-
+using Itop.Client.About;
 namespace Itop.Client.Forms
 {
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -69,7 +69,8 @@ namespace Itop.Client.Forms
             {
                 e.Cancel = e.CloseReason != CloseReason.MdiFormClosing;
             };
-
+            PictureViewup.Paint(pictureBox1);
+            PictureViewdown.Paint(pictureBox2);
         }
         #endregion
         
@@ -118,10 +119,10 @@ namespace Itop.Client.Forms
             DataRow[] rows = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", string.Empty, "m"));
             IList list = SysService.GetList("SelectSmmprogByMeIco", null);
             DataTable dt_list = DataConverter.ToDataTable(list);
-            nbctSystem.LargeImages = ImageListRes.GetimageList(38, dt_list);
+            nbctSystem.LargeImages = ImageListRes.GetimageList(24, dt_list);
             IList list2 = SysService.GetList("SelectSmmprogByFormIco", null);
             DataTable dt_list2 = DataConverter.ToDataTable(list2);
-            nbctSystem.SmallImages = ImageListRes.GetimageList(28, dt_list2);
+            nbctSystem.SmallImages = ImageListRes.GetimageList(18, dt_list2);
             foreach (DataRow row in rows)
             {
                
@@ -130,9 +131,7 @@ namespace Itop.Client.Forms
                 nbg.Tag = DataConverter.RowToObject<Smmprog>(row);
                 nbg.Caption = row["progname"].ToString();
                 nbg.LargeImage = ((ImageList)nbctSystem.LargeImages).Images[row["ProgIco"].ToString()];
-
-
-                DataRow[] childrows = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", row["progid"].ToString(), "f"));
+                DataRow[] childrows = smmprogTable.Select(string.Format("parentid='{0}'", row["progid"].ToString()));
                 foreach (DataRow itemrow in childrows)
                 {
                     VsmdgroupProg smdgroup2 = new VsmdgroupProg();
@@ -144,7 +143,7 @@ namespace Itop.Client.Forms
                     nbi.Tag = DataConverter.RowToObject<Smmprog>(itemrow);
                     nbi.Caption = itemrow["progname"].ToString();
                     nbi.SmallImage = ((ImageList)nbctSystem.SmallImages).Images[itemrow["ProgIco"].ToString()];
-                    nbi.Hint = row["Index"].ToString();
+                    nbi.Hint = row["Remark"].ToString();
                     nbctSystem.Items.Add(nbi);
                     nbg.ItemLinks.Add(nbi);
                 }
@@ -233,7 +232,7 @@ namespace Itop.Client.Forms
                     break;
             }
             splitContainer1.SplitterDistance = left_width;
-            splitContainer3.SplitterDistance = down_width;
+          
             splitContainer2.SplitterDistance = right_width;
             treeList1.Columns[0].AppearanceCell.Font = new System.Drawing.Font(treeList1.Columns[0].AppearanceCell.Font.FontFamily, FontSize);
             treeList1.RowHeight = Convert.ToInt32(20 * treeList1.Columns[0].AppearanceCell.Font.Size / 10F);
@@ -263,8 +262,9 @@ namespace Itop.Client.Forms
         //获取图标
         private void InitForm()
         {
-            picMenu.Image = Itop.Client.Resources.ImageListRes.GetLeftPhoto();
-            this.BackgroundImage = Itop.Client.Resources.ImageListRes.GetBannerPhoto();
+            this.pictureBox1.Image = Itop.Client.Resources.ImageListRes.GetBannerPhoto();
+            this.pictureBox2.Image = Itop.Client.Resources.ImageListRes.GetBottomPhoto();
+
             InitIco();
         }
         //设置图标及文字大小
@@ -274,8 +274,8 @@ namespace Itop.Client.Forms
             {
                 IList list = SysService.GetList("SelectSmmprogByFormIco", null);
                 DataTable dt_list = DataConverter.ToDataTable(list);
-                listViewdown.SmallImageList = ImageListRes.GetimageList(30, dt_list);
-                listViewdown.LargeImageList = ImageListRes.GetimageList(24, dt_list);
+                listViewdown.SmallImageList = ImageListRes.GetimageList(48, dt_list);
+                listViewdown.LargeImageList = ImageListRes.GetimageList(52, dt_list);
                 this.listViewdown.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             }
             catch (Exception ex)
@@ -299,55 +299,30 @@ namespace Itop.Client.Forms
         #region 事件处理
         private void FrmConsole_Load(object sender, EventArgs e)
         {
+            labuser.Text = "当前用户：" +MIS.UserName;
+            PictureViewup.Paint(pictureBox1);
             InitForm();
             MIS.MFrmConsole = this;
             Del_User_ini();
             Isfristload = false;
             InitData();
-            InitdownItem();
+            treeList1.Focus();
+            labAbout.Parent = pictureBox1;
+            labExit.Parent = pictureBox1;
+            labuser.Parent = pictureBox2;
+            labDate.Parent = pictureBox2;
+            labTime.Parent = pictureBox2;
         }
-        //添加底部固定基础数据项
-        private void InitdownItem()
-        {
-            listViewdown.Items.Clear();
-            SortedList<int, Smmprog> Slist = new SortedList<int, Smmprog>();
-            foreach (DevExpress.XtraNavBar.NavBarItem nbi in nbctSystem.Items)
-            {
-                Smmprog prog = nbi.Tag as Smmprog;
-                if (prog!=null)
-                {
-
-                    if (!string.IsNullOrEmpty(prog.Remark))
-                    {
-                        if (prog.Remark.Contains("fixed"))
-                        {
-                            int a = Convert.ToInt32(nbi.Hint.ToString());
-                            int num = a * 50 + prog.Index;
-                            Slist.Add(num, prog);
-                          
-                        }
-
-                    }
-                }
-            }
-
-            foreach (KeyValuePair<int, Smmprog> item in Slist)
-            {
-                    Smmprog prog = item.Value;
-                    ListViewItem listItem = new ListViewItem();
-                    listItem.Text = prog.ProgName;
-                    listItem.Tag = prog;
-                    listItem.ImageKey = prog.ProgIco;
-                    listViewdown.Items.Add(listItem);
-            }
-
-          
-           
-        }
+        
+       
        
         private void timer_Tick(object sender, EventArgs e)
         {
-            labTime.Text = DateTime.Now.ToString("yyyy年MM月dd日  HH时mm分ss秒");
+            //labTime.Text = DateTime.Now.ToString("yyyy年MM月dd日  HH时mm分ss秒");
+
+            //labTime.Text = DateTime.Now.ToString("D") + " " + DateTime.Now.ToString("dddd") + GetCNDate() + " " + DateTime.Now.ToString("  HH时mm分ss秒");
+            labDate.Text = DateTime.Now.ToString("D") + " " + DateTime.Now.ToString("dddd") + "  " + GetCNDate() + " ";
+            labTime.Text ="      " +  DateTime.Now.ToString("HH时mm分ss秒"); 
         }
         private void labExit_Click(object sender, EventArgs e)
         {
@@ -356,7 +331,7 @@ namespace Itop.Client.Forms
         private void labAbout_Click(object sender, EventArgs e)
         {
             //打开关于窗体
-            using (FrmAbout dlg = new FrmAbout())
+            using (AboutForm dlg = new AboutForm())
             {
                 dlg.ShowDialog();
             }
@@ -381,7 +356,8 @@ namespace Itop.Client.Forms
         //保证左侧的导航有足够的宽度来显示
         private void FrmConsole_Resize(object sender, EventArgs e)
         {
-
+            PictureViewup.Paint(pictureBox1);
+            PictureViewdown.Paint(pictureBox2);
             if (this.splitContainer1.SplitterDistance < 190)
             {
                 this.splitContainer1.SplitterDistance = 220;
@@ -389,63 +365,6 @@ namespace Itop.Client.Forms
             
         }
         //激活底部项定项
-        private void listView_ItemActivate(object sender, EventArgs e)
-        {
-
-            Smmprog prog = listViewdown.FocusedItem.Tag as Smmprog;
-            if (prog == null || string.IsNullOrEmpty(prog.AssemblyName))
-                return;
-
-            IList<Project> IlistProject = new List<Project>();
-            VsmdgroupProg smdgroup = new VsmdgroupProg();
-            //string projectuid = "";
-            IlistProject.Add(pj);
-            IlistProject.Add(pj1);
-            smdgroup = MIS.GetProgRight(prog.ProgId, pj.UID);
-            bool bl = true;
-            if (Itop.Client.MIS.UserNumber.ToLower() == "admin")
-                bl = false;
-
-            if (bl)
-            {
-                if (smdgroup.run == null)
-                {
-                    MsgBox.Show("您无权浏览！");
-                    return;
-                }
-
-                if (int.Parse(smdgroup.run) <= 0)
-                {
-                    MsgBox.Show("您无权浏览！");
-                    return;
-                }
-            }
-            if (prog.AssemblyName.ToLower().Contains(".exe") && prog.ClassName == "")
-            {
-                int pos = prog.AssemblyName.ToLower().LastIndexOf(".exe");
-                string param = prog.AssemblyName.Substring(pos + 4).Trim();
-                string exe = prog.AssemblyName.Substring(0, pos) + ".exe";
-                System.Diagnostics.Process.Start(Application.StartupPath + "\\" + exe, param);
-                return;
-            }
-
-            object[] para = new object[3];
-            para.SetValue(IlistProject, 0);
-            para.SetValue(smdgroup, 1);
-            para.SetValue(prog, 2);
-
-            object classInstance = null;
-            //初始化标准数据
-            Itop.Common.MethodInvoker.Execute(prog.AssemblyName, prog.ClassName, "InitData", para, ref classInstance);
-
-            para = new object[0];
-
-            if (Itop.Common.MethodInvoker.Execute(prog.AssemblyName, prog.ClassName, prog.MethodName, para, ref classInstance) != null)
-            {
-                //InitUserControl();
-                MIS.SaveLog(prog.ProgName, "关闭" + prog.ProgName);
-            }
-        }
         //附件
         private void label4_Click(object sender, EventArgs e)
         {
@@ -854,6 +773,53 @@ namespace Itop.Client.Forms
             frm.ShowDialog();
         }
 
+        #region 显示农历日期
+        string GetCNDate()
+        {
+            DateTime m_Date; //今天的日期
+            int cny; //农历的年月日
+            int cnm; //农历的年月日
+            int cnd; //农历的年月日
+            int icnm; //农历闰月
+
+            m_Date = DateTime.Today;
+            ChineseLunisolarCalendar cnCalendar = new ChineseLunisolarCalendar();
+            cny = cnCalendar.GetSexagenaryYear(m_Date);
+            cnm = cnCalendar.GetMonth(m_Date);
+            cnd = cnCalendar.GetDayOfMonth(m_Date);
+            icnm = cnCalendar.GetLeapMonth(cnCalendar.GetYear(m_Date));
+
+
+            string txcns = "农历";
+            const string szText1 = "癸甲乙丙丁戊己庚辛壬";
+            const string szText2 = "亥子丑寅卯辰巳午未申酉戌";
+            const string szText3 = "猪鼠牛虎免龙蛇马羊猴鸡狗";
+            int tn = cny % 10; //天干
+            int dn = cny % 12;  //地支
+            //txcns += szText1.Substring(tn, 1);
+            //txcns += szText2.Substring(dn, 1);
+            //txcns += "(" + szText3.Substring(dn, 1) + ")年";
+
+            //格式化月份显示
+            string[] cnMonth ={ "", "正月", "二月", "三月", "四月", "五月", "六月"
+                , "七月", "八月", "九月", "十月", "十一月", "十二月", "十二月" };
+            if (icnm > 0)
+            {
+                for (int i = icnm + 1; i < 13; i++)
+                    cnMonth[icnm] = cnMonth[icnm - 1];
+                cnMonth[icnm] = "闰" + cnMonth[icnm];
+            }
+            txcns += cnMonth[cnm];
+            string[] cnDay ={ "", "初一", "初二", "初三", "初四", "初五", "初六", "初七"
+                , "初八", "初九", "初十", "十一", "十二", "十三"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   , "十四", "十五", "十六"
+                , "十七", "十八", "十九", "二十", "廿一", "廿二", "廿三", "廿四", "廿五"
+                , "廿六", "廿七", "廿八", "廿九", "三十" };
+            txcns += cnDay[cnd];
+            return txcns;
+        }
+        #endregion
+
+
         //改变按钮状态
         private void ChangeButton(bool istrue)
         {
@@ -1047,55 +1013,49 @@ namespace Itop.Client.Forms
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
 
-            if (treeList1.FocusedNode==null)
+            if (treeList1.FocusedNode == null)
             {
                 return;
             }
             initButton();
-            if (treeList1.FocusedNode.Nodes.Count==0&&treeList1.FocusedNode.ParentNode==null)
+            if (treeList1.FocusedNode.Nodes.Count == 0 && treeList1.FocusedNode.ParentNode == null)
             {
                 return;
             }
             string activegroupname = "";
-            if (nbctSystem.ActiveGroup!=null)
+            if (nbctSystem.ActiveGroup != null)
             {
-               
+
                 activegroupname = nbctSystem.ActiveGroup.Name;
             }
             InitSelectControl();
-         
-            
+
+
             if (e.Node == null)
                 return;
-            if (e.Node.TreeList.GetDataRecordByNode(e.Node) ==null)
+            if (e.Node.TreeList.GetDataRecordByNode(e.Node) == null)
                 return;
             DataRow row = (e.Node.TreeList.GetDataRecordByNode(e.Node) as DataRowView).Row;
             Project p = DataConverter.RowToObject<Project>(row);
             UpdateUserState(p);
             list = SysService.GetList<Smmprog>();
             AddMainMenu(list);
-            DataRow[] rows = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'",nbctSystem.ActiveGroup.Name, "f"));
-            if (activegroupname!="")
+            DataRow[] rows = smmprogTable.Select(string.Format("parentid='{0}'", nbctSystem.ActiveGroup.Name));
+            if (activegroupname != "")
             {
                 foreach (DevExpress.XtraNavBar.NavBarGroup group in nbctSystem.Groups)
                 {
-                    if (activegroupname==group.Name)
+                    if (activegroupname == group.Name)
                     {
                         nbctSystem.ActiveGroup = group;
                         break;
                     }
                 }
             }
-            InitdownItem();
         }
         //拖动结点
         private void treeList1_AfterDragNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e)
         {
-            string id = e.Node["UID"].ToString();
-            string pid = e.Node["ProjectManager"].ToString();
-            Project pj = SysService.GetOneByKey<Project>(id);
-            pj.ProjectManager = pid;
-            SysService.Update<Project>(pj);
 
         }
 
@@ -1233,13 +1193,7 @@ namespace Itop.Client.Forms
 
         private void treeList1_BeforeDragNode(object sender, DevExpress.XtraTreeList.BeforeDragNodeEventArgs e)
         {
-          
 
-            if (e.Node.ParentNode == null || !bbtnEdit.Enabled)
-            {
-                e.CanDrag = false;
-                return;
-            }
         }
        
         private void splitContainer1_Panel1_Resize(object sender, EventArgs e)
@@ -1253,15 +1207,7 @@ namespace Itop.Client.Forms
 
         }
 
-        private void splitContainer3_Panel2_Resize(object sender, EventArgs e)
-        {
-            if (Isfristload)
-            {
-                return;
-            }
-            User_Ini.Writue("Setting", UserID + "down_width", splitContainer3.SplitterDistance.ToString());
-            
-        }
+       
 
         private void splitContainer2_Panel2_Resize(object sender, EventArgs e)
         {
@@ -1278,13 +1224,6 @@ namespace Itop.Client.Forms
             e.Appearance.ForeColor = Color.Black;
             e.Appearance.BackColor = Color.Navy;
             e.Appearance.BackColor2 = Color.FromArgb(192, 192, 255);
-        }
-
-        private void nbctSystem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-
-            ActiveItem(e.Link.Item);
-            
         }
         //由左侧导航激活模块
         private void ActiveItem(DevExpress.XtraNavBar.NavBarItem  nbi)
@@ -1343,76 +1282,115 @@ namespace Itop.Client.Forms
                 MIS.SaveLog(prog.ProgName, "关闭" + prog.ProgName);
             }
         }
-        //当前活动分组分生改变
-        private void nbctSystem_ActiveGroupChanged(object sender, DevExpress.XtraNavBar.NavBarGroupEventArgs e)
+       
+        private void SetListView(Smmprog prog,int m)
         {
-            
-            Smmprog prog = e.Group.Tag as Smmprog;
+          
             if (prog == null)
                 return;
-            label2.Text = prog.ProgName.ToString();
-            if (!string.IsNullOrEmpty(prog.Remark))
+            listViewdown.Groups.Clear();
+            listViewdown.Items.Clear();
+            IList list = SysService.GetList<Smmprog>();
+            DataRow[] rowsf = null;
+            if (m==3)
             {
-                if (prog.Remark.Contains("htm"))
-                {
-                    SetUrl(prog.Remark.ToString());
-                }
+                rowsf = smmprogTable.Select(string.Format("ProgId='{0}' and ProgType='{1}'", prog.ProgId, "f"));
             }
-
-            
-            
-        }
-        //设置网页的地址
-        public void SetUrl(string url)
-        {
-            webBrowser1.Navigate(Application.StartupPath + "\\flowchart\\" + url);
-
-        }
-        //网页导航转向时
-        private void webBrowser1_Navigating(object sender, WebBrowserNavigatingEventArgs e)
-        {
-            if (!e.Url.ToString().Contains("htm"))
+            else
             {
-                e.Cancel = true;
-                try
+                rowsf = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", prog.ProgId, "f"));
+            }
+            DataRow[] rowsm = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", prog.ProgId, "m"));
+            if (rowsm.Length > 0)
+            {
+                ListViewGroup listgroup = listViewdown.Groups.Add(prog.ProgId, prog.ProgName);
+                foreach (DataRow rows1 in rowsf)
                 {
-                    string tempusee = e.Url.ToString();
-                    tempusee = tempusee.Substring(tempusee.LastIndexOf('/') + 1, tempusee.Length - tempusee.LastIndexOf('/') - 1);
-                    foreach (DevExpress.XtraNavBar.NavBarItem nbi in nbctSystem.Items)
+                    ListViewItem item = new ListViewItem();
+                    item.Text = rows1["progname"].ToString();
+                    item.Tag = DataConverter.RowToObject<Smmprog>(rows1);
+                    item.ToolTipText = rows1["progname"].ToString();
+                    item.ImageKey = rows1["ProgIco"].ToString();
+                    item.ToolTipText = rows1["Remark"].ToString();
+                    item.Group = listgroup;
+                    listViewdown.Items.Add(item);
+                }
+                foreach (DataRow rows2 in rowsm)
+                {
+                    ListViewGroup listgroupm = listViewdown.Groups.Add(rows2["ProgId"].ToString(), prog.ProgName+">>"+rows2["progname"].ToString());
+                    DataRow[] rowsmf = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", rows2["ProgId"].ToString(), "f"));
+                    foreach (DataRow rows3 in rowsmf)
                     {
-                        if (nbi.Caption == tempusee)
-                        {
-                            ActiveItem(nbi);
-                            break;
-                        }
+                        ListViewItem item = new ListViewItem();
+                        item.Text = rows3["progname"].ToString();
+                        item.Tag = DataConverter.RowToObject<Smmprog>(rows3);
+                        item.ToolTipText = rows3["progname"].ToString();
+                        item.ImageKey = rows3["ProgIco"].ToString();
+                        item.ToolTipText = rows3["Remark"].ToString();
+                        item.Group = listgroupm;
+                        listViewdown.Items.Add(item);
                     }
 
                 }
-                catch 
-                {
-                    
-                }
-                
+
             }
-            
-        }
-      
-        //网页大小发生改变时
-        private void webBrowser1_SizeChanged(object sender, EventArgs e)
-        {
-            HtmlDocument document = this.webBrowser1.Document;
-            if (document != null && document.Body != null)
+            else
             {
-                if (document.Body.ScrollRectangle.Size.Width > webBrowser1.Size.Width || document.Body.ScrollRectangle.Height > webBrowser1.Size.Height)
+                if (m==1)
                 {
-                    webBrowser1.ScrollBarsEnabled = true;
+                    ListViewGroup listgroup = listViewdown.Groups.Add(prog.ProgId, prog.ProgName);
+                    foreach (DataRow rows1 in rowsf)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Text = rows1["progname"].ToString();
+                        item.Tag = DataConverter.RowToObject<Smmprog>(rows1);
+                        item.ToolTipText = rows1["progname"].ToString();
+                        item.ImageKey = rows1["ProgIco"].ToString();
+                        item.ToolTipText = rows1["Remark"].ToString();
+                        item.Group = listgroup;
+                        listViewdown.Items.Add(item);
+                    }
+                }
+                else if(m==2)
+                {
+                    ListViewGroup listgroup = listViewdown.Groups.Add(prog.ProgId, nbctSystem.ActiveGroup.Caption + ">>" + prog.ProgName);
+                    
+                    foreach (DataRow rows1 in rowsf)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Text = rows1["progname"].ToString();
+                        item.Tag = DataConverter.RowToObject<Smmprog>(rows1);
+                        item.ToolTipText = rows1["progname"].ToString();
+                        item.ImageKey = rows1["ProgIco"].ToString();
+                        item.ToolTipText = rows1["Remark"].ToString();
+                        item.Group = listgroup;
+                        listViewdown.Items.Add(item);
+                    }
+                    
                 }
                 else
                 {
-                    webBrowser1.ScrollBarsEnabled = false;
+                    ListViewGroup listgroup = listViewdown.Groups.Add(prog.ProgId, nbctSystem.ActiveGroup.Caption );
+
+                    foreach (DataRow rows1 in rowsf)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Text = rows1["progname"].ToString();
+                        item.Tag = DataConverter.RowToObject<Smmprog>(rows1);
+                        item.ToolTipText = rows1["progname"].ToString();
+                        item.ImageKey = rows1["ProgIco"].ToString();
+                        item.ToolTipText = rows1["Remark"].ToString();
+                        item.Group = listgroup;
+                        listViewdown.Items.Add(item);
+                    }
                 }
+               
             }
         }
+       
+      
+      
+      
         //添加项目
         private void bbtnadd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -1480,52 +1458,99 @@ namespace Itop.Client.Forms
 
         private void treeList1_CustomDrawNodeCell(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
         {
-            if ((e.Node == treeList1.FocusedNode && e.Column != treeList1.FocusedColumn) || e.Node == null || e.Column == null) return;
-            bool isFocusedCell = (e.Column == treeList1.FocusedColumn && e.Node == treeList1.FocusedNode);
-            Brush brush = null;
-            Rectangle r = e.Bounds;
-            bool ellipse = false;
 
-            string id = e.Node["UID"].ToString();
-            Project pj = SysService.GetOneByKey<Project>(id);
+        }
 
+        private void nbctSystem_ActiveGroupChanged(object sender, DevExpress.XtraNavBar.NavBarGroupEventArgs e)
+        {
+              Smmprog prog = e.Group.Tag as Smmprog;
+            if (prog == null)
+                return;
+            label2.Text = prog.ProgName.ToString();
 
-            int b = 0;
-            string a = pj.Address;
-            if (a != "")
-            {
-                b = int.Parse(a);
-            }
-
-
-            if (e.Column.FieldName == "ProjectName" && e.CellValue != null)
-            {
-                e.Appearance.ForeColor = Color.FromArgb(b);
-                //brush = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, Color.FromArgb(b), Color.FromArgb(b), 180);
-            }
-            if (brush != null)
-            {
-                e.Graphics.FillRectangle(brush, r);
-                //r.Inflate(-2, 0);
-                //if (ellipse)
-                //{
-                //    bool check = e.Node[5].Equals(true);
-                //    Brush ellipseBrush = check ? Brushes.LightGreen : Brushes.LightSkyBlue;
-                //    if (isFocusedCell) ellipseBrush = Brushes.Yellow;
-                //    e.Graphics.FillEllipse(ellipseBrush, r);
-                //}
-                //e.Appearance.DrawString(e.Cache, e.CellText, r);
-                //if (isFocusedCell)
-                //    DevExpress.Utils.Paint.XPaint.Graphics.DrawFocusRectangle(e.Graphics, e.Bounds, SystemColors.WindowText, e.Appearance.BackColor);
-                //e.Handled = true;
-            }
+            SetListView(prog,1);
         }
 
        
 
-      
        
 
-     
+        private void listViewdown_ItemActivate(object sender, EventArgs e)
+        {
+
+            Smmprog prog = listViewdown.FocusedItem.Tag as Smmprog;
+            if (prog == null || string.IsNullOrEmpty(prog.AssemblyName))
+                return;
+
+            IList<Project> IlistProject = new List<Project>();
+            VsmdgroupProg smdgroup = new VsmdgroupProg();
+            //string projectuid = "";
+            IlistProject.Add(pj);
+            IlistProject.Add(pj1);
+            smdgroup = MIS.GetProgRight(prog.ProgId, pj.UID);
+            bool bl = true;
+            if (Itop.Client.MIS.UserNumber.ToLower() == "admin")
+                bl = false;
+
+            if (bl)
+            {
+                if (smdgroup.run == null)
+                {
+                    MsgBox.Show("您无权浏览！");
+                    return;
+                }
+
+                if (int.Parse(smdgroup.run) <= 0)
+                {
+                    MsgBox.Show("您无权浏览！");
+                    return;
+                }
+            }
+            if (prog.AssemblyName.ToLower().Contains(".exe") && prog.ClassName == "")
+            {
+                int pos = prog.AssemblyName.ToLower().LastIndexOf(".exe");
+                string param = prog.AssemblyName.Substring(pos + 4).Trim();
+                string exe = prog.AssemblyName.Substring(0, pos) + ".exe";
+                System.Diagnostics.Process.Start(Application.StartupPath + "\\" + exe, param);
+                return;
+            }
+
+            object[] para = new object[3];
+            para.SetValue(IlistProject, 0);
+            para.SetValue(smdgroup, 1);
+            para.SetValue(prog, 2);
+
+            object classInstance = null;
+            //初始化标准数据
+            Itop.Common.MethodInvoker.Execute(prog.AssemblyName, prog.ClassName, "InitData", para, ref classInstance);
+
+            para = new object[0];
+
+            if (Itop.Common.MethodInvoker.Execute(prog.AssemblyName, prog.ClassName, prog.MethodName, para, ref classInstance) != null)
+            {
+                //InitUserControl();
+                MIS.SaveLog(prog.ProgName, "关闭" + prog.ProgName);
+            }
+
+        }
+
+        private void nbctSystem_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Smmprog prog = e.Link.Item.Tag as Smmprog;
+            
+            if (prog.ProgType=="m")
+            {
+                SetListView(prog,2);
+            }
+            if (prog.ProgType=="f")
+            {
+                SetListView(prog,3);
+            }
+           
+        }
+        
+
+       
+        
     }
 }
