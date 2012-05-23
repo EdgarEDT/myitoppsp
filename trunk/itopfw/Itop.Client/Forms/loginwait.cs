@@ -7,13 +7,14 @@ using System.Text;
 using System.Windows.Forms;
 using Itop.Client.Base;
 
-namespace Itop.Client.Forms
+namespace Itop.Client
 {
     public partial class loginwait : FormBase
     {
         public loginwait()
         {
             InitializeComponent();
+            FormView.Paint(this);
         }
 
         private void loginwait_Load(object sender, EventArgs e)

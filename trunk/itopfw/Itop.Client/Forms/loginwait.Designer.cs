@@ -1,4 +1,4 @@
-﻿namespace Itop.Client.Forms
+﻿namespace Itop.Client
 {
     partial class loginwait
     {
@@ -48,7 +48,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(182, 367);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(168, 14);
-            this.linkLabel1.TabIndex = 26;
+            this.linkLabel1.TabIndex = 1;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "http://www.zgaodian.com";
             // 
@@ -61,7 +61,7 @@
             this.labelControl1.Location = new System.Drawing.Point(19, 367);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(114, 17);
-            this.labelControl1.TabIndex = 27;
+            this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "0451-87110948";
             // 
             // loginwait
