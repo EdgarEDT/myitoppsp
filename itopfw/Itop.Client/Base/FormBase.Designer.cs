@@ -32,9 +32,9 @@
             // 
             // FormBase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 266);
+            this.ClientSize = new System.Drawing.Size(341, 310);
             this.Name = "FormBase";
             this.Text = "FormBase";
             this.Load += new System.EventHandler(this.FormBase_Load);
@@ -43,5 +43,6 @@
         }
 
         #endregion
+
     }
 }

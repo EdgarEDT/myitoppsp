@@ -118,6 +118,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\output\Client\DevExpress.XtraVerticalGrid.v10.1.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.SQLDMO, Version=8.5.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
@@ -189,6 +190,12 @@
     <Compile Include="Forms\FrmConsole.Designer.cs">
       <DependentUpon>FrmConsole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmOption.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +226,13 @@
     <Compile Include="Forms\userOption2.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Forms\副本 FrmConsole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\副本 FrmConsole.Designer.cs">
+      <DependentUpon>副本 FrmConsole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormView.cs" />
     <Compile Include="IFrmConsole.cs" />
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
@@ -329,6 +343,27 @@
     <Compile Include="SplitContainerEx\SpliterPanelState.cs" />
     <Compile Include="SplitContainerEx\TextRenderingHintGraphics.cs" />
     <Compile Include="SplitContainerEx\ThumbArrowDirection.cs" />
+    <Compile Include="SysDataServer\FormDataSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysDataServer\FormDataSetup.designer.cs">
+      <DependentUpon>FormDataSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysDataServer\FrmSysData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysDataServer\FrmSysData.Designer.cs">
+      <DependentUpon>FrmSysData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysDataServer\FrmSysDataAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysDataServer\FrmSysDataAdd.Designer.cs">
+      <DependentUpon>FrmSysDataAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysDataServer\SqlCode.cs" />
+    <Compile Include="SysDataServer\SQLDMOHelper.cs" />
+    <Compile Include="SysDataServer\SqlLocator.cs" />
     <Compile Include="SystemFlowChart\flowchart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -339,7 +374,21 @@
     <Compile Include="Tree\TreeViewGenerator.cs" />
     <Compile Include="Option\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserBar.Designer.cs">
+      <DependentUpon>UserBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserText.Designer.cs">
+      <DependentUpon>UserText.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserToolDataSet.cs" />
+    <Compile Include="PictureViewup.cs" />
+    <Compile Include="PictureViewdown.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="About\AboutForm.resx">
@@ -374,6 +423,9 @@
       <DependentUpon>FrmConsole.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmOption.resx">
       <DependentUpon>frmOption.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -395,6 +447,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\userOption2.resx">
       <DependentUpon>userOption2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\副本 FrmConsole.resx">
+      <DependentUpon>副本 FrmConsole.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
@@ -437,8 +493,24 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SysDataServer\FormDataSetup.resx">
+      <DependentUpon>FormDataSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysDataServer\FrmSysData.resx">
+      <DependentUpon>FrmSysData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysDataServer\FrmSysDataAdd.resx">
+      <DependentUpon>FrmSysDataAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SystemFlowChart\flowchart.resx">
       <DependentUpon>flowchart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserBar.resx">
+      <DependentUpon>UserBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserText.resx">
+      <DependentUpon>UserText.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -467,6 +539,7 @@
   <ItemGroup>
     <None Include="Resources\bgcolor2.jpg" />
     <None Include="Resources\bgcolor3.jpg" />
+    <None Include="Resources\20.jpg" />
     <Content Include="Resources\Bottom.png" />
     <None Include="app.config" />
     <None Include="Resources\butyl.bmp" />
@@ -492,7 +565,7 @@
     <None Include="Resources\ItopSystemPic\SystemPic.jpg" />
     <None Include="Resources\sysbg.jpg" />
     <None Include="Resources\sysbg1.jpg" />
-    <Content Include="Resources\Top.png" />
+    <None Include="Resources\time.png" />
     <Content Include="Resources\TurnOffButton.bmp" />
     <Content Include="SystemFlowChart\sjgl.htm" />
     <None Include="Resources\user.png" />

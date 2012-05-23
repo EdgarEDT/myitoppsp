@@ -159,7 +159,7 @@ namespace Itop.Client {
         /// <summary>
         /// 已经打开的模块的主窗口
         /// </summary>
-        private static Dictionary<string, Form> m_formsOpened = new Dictionary<string, Form>();
+        public  static Dictionary<string, Form> m_formsOpened = new Dictionary<string, Form>();
 
         /// <summary>
         /// 判断窗体是否已经被打开
@@ -332,7 +332,7 @@ namespace Itop.Client {
             VsmdgroupProg smdgroup = new VsmdgroupProg();
             
             smdgroup.Progid = progid;
-            IList<Smugroup> listUsergroup = smmprogService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + MIS.UserNumber + "'");
+            IList<Smugroup> listUsergroup = SmmprogService.GetList<Smugroup>("SelectSmugroupByWhere", "Userid='" + MIS.UserNumber + "'");
             if (listUsergroup.Count > 0)
             {
                 smdgroup.Groupno = listUsergroup[0].Groupno;

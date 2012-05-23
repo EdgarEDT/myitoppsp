@@ -64,11 +64,18 @@ namespace Itop.Server {
             Application.SetCompatibleTextRenderingDefault(false);
 
             Process instance = RunningInstance();
-            if (instance != null) {
-                HandleRunningInstance(instance);
-                Application.Exit();
-                return;
+            //全局服务端只准运行一个实例
+            if (Settings.IsOneServer=="1")
+            {
+                if (instance != null)
+                {
+                    HandleRunningInstance(instance);
+                    Application.Exit();
+                    return;
+                }
+                
             }
+            
        
         reg:
             //RegistryKey rk = Registry.Users.CreateSubKey(".DEFAULT\\Software\\Itopsoft\\sbxj");

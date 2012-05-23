@@ -311,7 +311,8 @@ namespace Itop.Client.Resources
 
         public static Bitmap GetBottomPhoto()
         {
-            return Itop.Client.Resources.Properties.Resources.a3;
+            //return Itop.Client.Resources.Properties.Resources.a3;
+            return Itop.Client.Resources.Properties.Resources.a5;
         }
 
         public static Bitmap GetMainPhoto()

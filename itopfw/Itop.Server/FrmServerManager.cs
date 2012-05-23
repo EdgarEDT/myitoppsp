@@ -15,8 +15,18 @@ using System.Diagnostics;
 
 namespace Itop.Server {
     public partial class FrmServerManager : Form{
+        public bool hide = false;
         public FrmServerManager() {
             InitializeComponent();
+        }
+        public string ServerAddress
+        {
+            set
+            {
+                 Settings.DataServer = this.txtDataServer.Text;
+                 Settings.Save();
+            }
+
         }
         protected override void OnClosing(CancelEventArgs e) {
             if (base.Visible) {
@@ -32,6 +42,10 @@ namespace Itop.Server {
             this.notifyIcon1.Visible = true;
         }
         protected override void OnLoad(EventArgs e) {
+            if (hide)
+            {
+                this.notifyIcon1.Visible = false;
+            }
             base.OnLoad(e);
             this.cbbProtocol.Text = Settings.RemotingProtocol;
             this.txtPort.Text = Settings.RemotingPort;

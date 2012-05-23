@@ -24,115 +24,128 @@ namespace Itop.Client.Login {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ubclose = new Itop.Client.UserBar();
+            this.ubmin = new Itop.Client.UserBar();
+            this.utxtpwd = new Itop.Client.UserText();
+            this.utxtuser = new Itop.Client.UserText();
+            this.labtop = new DevExpress.XtraEditors.LabelControl();
             this.sbtnSetting = new DevExpress.XtraEditors.SimpleButton();
-            this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.sbtnExit = new DevExpress.XtraEditors.SimpleButton();
             this.sbtnOk = new DevExpress.XtraEditors.SimpleButton();
-            this.txtUserid = new DevExpress.XtraEditors.TextEdit();
             this.m_labelUserNumber = new System.Windows.Forms.Label();
             this.m_labelPassword = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pnlLogo = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.sbtnData = new DevExpress.XtraEditors.SimpleButton();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUserid.Properties)).BeginInit();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.pnlLogo.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Location = new System.Drawing.Point(4, 14);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(28, 37);
-            this.panel3.TabIndex = 5;
-            this.panel3.Visible = false;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.sbtnData);
+            this.panel2.Controls.Add(this.ubclose);
+            this.panel2.Controls.Add(this.ubmin);
+            this.panel2.Controls.Add(this.utxtpwd);
+            this.panel2.Controls.Add(this.utxtuser);
+            this.panel2.Controls.Add(this.labtop);
             this.panel2.Controls.Add(this.sbtnSetting);
-            this.panel2.Controls.Add(this.txtPassword);
             this.panel2.Controls.Add(this.sbtnExit);
             this.panel2.Controls.Add(this.sbtnOk);
-            this.panel2.Controls.Add(this.txtUserid);
             this.panel2.Controls.Add(this.m_labelUserNumber);
             this.panel2.Controls.Add(this.m_labelPassword);
-            this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 58);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(500, 242);
+            this.panel2.Size = new System.Drawing.Size(500, 300);
             this.panel2.TabIndex = 5;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // ubclose
+            // 
+            this.ubclose.BackColor = System.Drawing.Color.Transparent;
+            this.ubclose.BarType = Itop.Client.UserBar.bartype.close;
+            this.ubclose.Location = new System.Drawing.Point(465, 0);
+            this.ubclose.Name = "ubclose";
+            this.ubclose.Size = new System.Drawing.Size(32, 20);
+            this.ubclose.TabIndex = 13;
+            // 
+            // ubmin
+            // 
+            this.ubmin.BackColor = System.Drawing.Color.Transparent;
+            this.ubmin.BarType = Itop.Client.UserBar.bartype.min;
+            this.ubmin.Location = new System.Drawing.Point(434, 0);
+            this.ubmin.Name = "ubmin";
+            this.ubmin.Size = new System.Drawing.Size(32, 20);
+            this.ubmin.TabIndex = 12;
+            // 
+            // utxtpwd
+            // 
+            this.utxtpwd.Location = new System.Drawing.Point(105, 119);
+            this.utxtpwd.Name = "utxtpwd";
+            this.utxtpwd.Size = new System.Drawing.Size(161, 22);
+            this.utxtpwd.TabIndex = 1;
+            // 
+            // utxtuser
+            // 
+            this.utxtuser.Location = new System.Drawing.Point(105, 85);
+            this.utxtuser.Name = "utxtuser";
+            this.utxtuser.Size = new System.Drawing.Size(161, 22);
+            this.utxtuser.TabIndex = 0;
+            // 
+            // labtop
+            // 
+            this.labtop.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.labtop.Appearance.Options.UseBackColor = true;
+            this.labtop.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labtop.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.labtop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labtop.Location = new System.Drawing.Point(0, 0);
+            this.labtop.Name = "labtop";
+            this.labtop.Size = new System.Drawing.Size(500, 66);
+            this.labtop.TabIndex = 11;
+            this.labtop.MouseLeave += new System.EventHandler(this.labtop_MouseLeave);
+            this.labtop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labtop_MouseMove);
+            this.labtop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labtop_MouseDown);
+            this.labtop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.labtop_MouseUp);
+            this.labtop.MouseEnter += new System.EventHandler(this.labtop_MouseEnter);
+            // 
             // sbtnSetting
             // 
-            this.sbtnSetting.Location = new System.Drawing.Point(68, 139);
+            this.sbtnSetting.Location = new System.Drawing.Point(68, 167);
             this.sbtnSetting.Name = "sbtnSetting";
             this.sbtnSetting.Size = new System.Drawing.Size(58, 23);
-            this.sbtnSetting.TabIndex = 1;
+            this.sbtnSetting.TabIndex = 2;
             this.sbtnSetting.Text = "设 置";
             this.sbtnSetting.Click += new System.EventHandler(this.sbtnSetting_Click);
             // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(112, 91);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Properties.Appearance.BorderColor = System.Drawing.SystemColors.Desktop;
-            this.txtPassword.Properties.Appearance.Options.UseBorderColor = true;
-            this.txtPassword.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.txtPassword.Properties.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(141, 21);
-            this.txtPassword.TabIndex = 1;
-            // 
             // sbtnExit
             // 
-            this.sbtnExit.Location = new System.Drawing.Point(195, 139);
+            this.sbtnExit.Location = new System.Drawing.Point(195, 167);
             this.sbtnExit.Name = "sbtnExit";
             this.sbtnExit.Size = new System.Drawing.Size(58, 23);
-            this.sbtnExit.TabIndex = 2;
+            this.sbtnExit.TabIndex = 4;
             this.sbtnExit.Text = "退 出";
             this.sbtnExit.Click += new System.EventHandler(this.sbtnExit_Click);
             // 
             // sbtnOk
             // 
-            this.sbtnOk.Location = new System.Drawing.Point(131, 139);
+            this.sbtnOk.Location = new System.Drawing.Point(131, 167);
             this.sbtnOk.Name = "sbtnOk";
             this.sbtnOk.Size = new System.Drawing.Size(58, 23);
-            this.sbtnOk.TabIndex = 0;
+            this.sbtnOk.TabIndex = 3;
             this.sbtnOk.Text = "登 录";
             this.sbtnOk.Click += new System.EventHandler(this.sbtnOk_Click);
-            // 
-            // txtUserid
-            // 
-            this.txtUserid.Location = new System.Drawing.Point(112, 57);
-            this.txtUserid.Name = "txtUserid";
-            this.txtUserid.Properties.Appearance.BorderColor = System.Drawing.SystemColors.Desktop;
-            this.txtUserid.Properties.Appearance.Options.UseBorderColor = true;
-            this.txtUserid.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.txtUserid.Size = new System.Drawing.Size(141, 21);
-            this.txtUserid.TabIndex = 0;
             // 
             // m_labelUserNumber
             // 
             this.m_labelUserNumber.AutoSize = true;
             this.m_labelUserNumber.BackColor = System.Drawing.Color.Transparent;
             this.m_labelUserNumber.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelUserNumber.Location = new System.Drawing.Point(63, 62);
+            this.m_labelUserNumber.Location = new System.Drawing.Point(57, 90);
             this.m_labelUserNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelUserNumber.Name = "m_labelUserNumber";
             this.m_labelUserNumber.Size = new System.Drawing.Size(41, 12);
@@ -144,117 +157,28 @@ namespace Itop.Client.Login {
             this.m_labelPassword.AutoSize = true;
             this.m_labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.m_labelPassword.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelPassword.Location = new System.Drawing.Point(63, 94);
+            this.m_labelPassword.Location = new System.Drawing.Point(57, 122);
             this.m_labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelPassword.Name = "m_labelPassword";
             this.m_labelPassword.Size = new System.Drawing.Size(41, 12);
             this.m_labelPassword.TabIndex = 3;
             this.m_labelPassword.Text = "密  码";
             // 
-            // panel4
+            // imageList1
             // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.panel3);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 183);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(500, 59);
-            this.panel4.TabIndex = 10;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "male.ico");
+            this.imageList1.Images.SetKeyName(1, "key.ico");
             // 
-            // panel5
+            // sbtnData
             // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel5.BackColor = System.Drawing.Color.Transparent;
-            this.panel5.Controls.Add(this.label3);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(-83, 62);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(311, 239);
-            this.panel5.TabIndex = 9;
-            this.panel5.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label3.Location = new System.Drawing.Point(51, 17);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(223, 78);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Itop MIS";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label4.Location = new System.Drawing.Point(9, 146);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(279, 54);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "请输入您的用户名和密码";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // pnlLogo
-            // 
-            this.pnlLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.Controls.Add(this.label1);
-            this.pnlLogo.Controls.Add(this.label2);
-            this.pnlLogo.Location = new System.Drawing.Point(-83, 62);
-            this.pnlLogo.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(311, 239);
-            this.pnlLogo.TabIndex = 9;
-            this.pnlLogo.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Location = new System.Drawing.Point(51, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 78);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Itop MIS";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label2.Location = new System.Drawing.Point(9, 146);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(279, 54);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "请输入您的用户名和密码";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.pnlLogo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 58);
-            this.panel1.TabIndex = 4;
+            this.sbtnData.Location = new System.Drawing.Point(407, 251);
+            this.sbtnData.Name = "sbtnData";
+            this.sbtnData.Size = new System.Drawing.Size(75, 23);
+            this.sbtnData.TabIndex = 14;
+            this.sbtnData.Text = "数据库";
+            this.sbtnData.Click += new System.EventHandler(this.sbtnData_Click);
             // 
             // LoginForm
             // 
@@ -264,7 +188,6 @@ namespace Itop.Client.Login {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(500, 300);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "LoginForm";
@@ -273,12 +196,6 @@ namespace Itop.Client.Login {
             this.Shown += new System.EventHandler(this.LoginForm_Shown);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUserid.Properties)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.pnlLogo.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -287,20 +204,16 @@ namespace Itop.Client.Login {
 
         private System.Windows.Forms.Label m_labelUserNumber;
         private System.Windows.Forms.Label m_labelPassword;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel pnlLogo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private DevExpress.XtraEditors.SimpleButton sbtnExit;
         private DevExpress.XtraEditors.SimpleButton sbtnSetting;
         private DevExpress.XtraEditors.SimpleButton sbtnOk;
-        private DevExpress.XtraEditors.TextEdit txtPassword;
-        private DevExpress.XtraEditors.TextEdit txtUserid;
+        private DevExpress.XtraEditors.LabelControl labtop;
+        private System.Windows.Forms.ImageList imageList1;
+        private UserText utxtpwd;
+        private UserText utxtuser;
+        private UserBar ubmin;
+        private UserBar ubclose;
+        private DevExpress.XtraEditors.SimpleButton sbtnData;
     }
 }
