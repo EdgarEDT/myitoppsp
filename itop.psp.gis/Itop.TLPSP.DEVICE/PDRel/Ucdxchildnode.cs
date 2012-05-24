@@ -464,10 +464,13 @@ namespace Itop.TLPSP.DEVICE
 
                 curDevice.Edit();
 
-                PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
-                v.title = pd.Name;
-                Services.BaseService.Update<Ps_pdtypenode>(v);
-                tln.SetValue("title", v.title);       
+                if (curDevice.SelectedDevice != null)
+                {
+                    PSPDEV pd = curDevice.SelectedDevice as PSPDEV;
+                    v.title = pd.Name;
+                    Services.BaseService.Update<Ps_pdtypenode>(v);
+                    tln.SetValue("title", v.title);
+                }       
             }
         }
         //删除元件
