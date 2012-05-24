@@ -188,18 +188,24 @@ namespace Itop.TLPSP.DEVICE.Mysql
                     ie = importBLDR();
                     break;
             }
-            ncount = (gridControl1.DataSource as DataTable).Rows.Count;
-            ncurrent = 0;
-            if (ie != null) {
-                WaitDialogForm msgbox = new WaitDialogForm("","导入数据，请稍候。。。");
-                msgbox.Show();
-                
-                while (ie.MoveNext()) {
-                    msgbox.SetCaption(string.Format("已完成{0}/{1}" , ncurrent , ncount));
+            if (gridControl1.DataSource!=null)
+            {
+                ncount = (gridControl1.DataSource as DataTable).Rows.Count;
+                ncurrent = 0;
+                if (ie != null)
+                {
+                    WaitDialogForm msgbox = new WaitDialogForm("", "导入数据，请稍候。。。");
+                    msgbox.Show();
+
+                    while (ie.MoveNext())
+                    {
+                        msgbox.SetCaption(string.Format("已完成{0}/{1}", ncurrent, ncount));
+                    }
+                    Thread.Sleep(1000);
+                    msgbox.Close();
                 }
-                Thread.Sleep(1000);
-                msgbox.Close();
             }
+          
        
         }
 
