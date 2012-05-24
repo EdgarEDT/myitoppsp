@@ -691,10 +691,12 @@ namespace Itop.TLPSP.DEVICE
         {
             if (myWorkBook != null)
             {
+                
                 myWorkBook.Close(isTrue, oMissing, oMissing);
             }
             if (myExcel != null)
             {
+                myExcel.Workbooks.Close();
                 myExcel.Quit();
             }
         }

@@ -627,9 +627,22 @@ namespace Itop.TLPSP.DEVICE
             resultzbtb.Columns.Add("pdfs", typeof(string));
             resultzbtb.Columns.Add("A", typeof(string));
             resultzbtb.Columns.Add("B", typeof(string));
-           ExportExcel("指标");
+           
+
+             ExcelAccess ex = new ExcelAccess();
             try
             {
+              
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                string fname = Application.StartupPath + "\\xls\\tempt.xls";
+                ex.Open(fname);
+                //ex.ActiveSheet(1);
+                ex.SetCellValue("指标", 1, 1);
+                ex.SetCellValue("不同的配点方式", 1, 3);
+                ex.AlignmentCells(1, 1, 1, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                ex.SetFontStyle(1, 1, 1, 1, true, false, ExcelStyle.UnderlineStyle.无下划线);
+                ex.CellsBackColor(1, 1, 1, 1, ExcelStyle.ColorIndex.黄色);
+                ex.UnitCells(1, 1, 2, 2);
                 DataTable dt = new DataTable();
                 frmfxlx fm = new frmfxlx();
                 if (fm.ShowDialog() == DialogResult.OK)
@@ -643,7 +656,7 @@ namespace Itop.TLPSP.DEVICE
                     {
 
                         TreeListNode tln = treeList1.FindNodeByKeyID(pdreltypeid);
-                       bool flag= relanalsy(tln, Convert.ToInt32(dr["D"]), columnscount);
+                       bool flag= relanalsy(tln, Convert.ToInt32(dr["D"]), columnscount,ex);
                         columnscount++;
                         if (!flag)
                         {
@@ -670,43 +683,43 @@ namespace Itop.TLPSP.DEVICE
             }
            
         }
-        ExcelAccess ex = new ExcelAccess();
+       
         //以报表的形式输出结果
-        private void ExportExcel(string name)
-        {
+        //private void ExportExcel(string name)
+        //{
 
-            //if (File.Exists(System.Windows.Forms.Application.StartupPath + "\\temp.xls"))
-            //{
-            //    File.Delete(System.Windows.Forms.Application.StartupPath + "\\temp.xls");
-            //}
-            //FileStream fs = new FileStream(System.Windows.Forms.Application.StartupPath + "\\temp.xls", FileMode.CreateNew);
-            //fs.Dispose();
-          //  ex = new ExcelAccess();
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            string fname = Application.StartupPath + "\\xls\\tempt.xls";
-            ex.Open(fname);
-            //ex.ActiveSheet(1);
-            try
-            {
-                ex.SetCellValue(name, 1, 1);
-                ex.SetCellValue("不同的配点方式", 1, 3);
-                ex.AlignmentCells(1, 1, 1, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
-                ex.SetFontStyle(1, 1, 1, 1, true, false, ExcelStyle.UnderlineStyle.无下划线);
-                ex.CellsBackColor(1, 1, 1, 1, ExcelStyle.ColorIndex.黄色);
-                ex.UnitCells(1, 1, 2, 2);
+        //    //if (File.Exists(System.Windows.Forms.Application.StartupPath + "\\temp.xls"))
+        //    //{
+        //    //    File.Delete(System.Windows.Forms.Application.StartupPath + "\\temp.xls");
+        //    //}
+        //    //FileStream fs = new FileStream(System.Windows.Forms.Application.StartupPath + "\\temp.xls", FileMode.CreateNew);
+        //    //fs.Dispose();
+        //   ex = new ExcelAccess();
+        //    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+        //    string fname = Application.StartupPath + "\\xls\\tempt.xls";
+        //    ex.Open(fname);
+        //    //ex.ActiveSheet(1);
+        //    try
+        //    {
+        //        ex.SetCellValue(name, 1, 1);
+        //        ex.SetCellValue("不同的配点方式", 1, 3);
+        //        ex.AlignmentCells(1, 1, 1, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+        //        ex.SetFontStyle(1, 1, 1, 1, true, false, ExcelStyle.UnderlineStyle.无下划线);
+        //        ex.CellsBackColor(1, 1, 1, 1, ExcelStyle.ColorIndex.黄色);
+        //        ex.UnitCells(1, 1, 2, 2);
                 
-            }
-            catch (System.Exception e)
-            {
+        //    }
+        //    catch (System.Exception e)
+        //    {
             	
-            }
+        //    }
             
             
             
            
-        }
+        //}
         //XL为分析的线路 
-        private bool relanalsy(TreeListNode xl, int fxtype,int columncounts)
+        private bool relanalsy(TreeListNode xl, int fxtype,int columncounts,ExcelAccess ex)
         {
             foreach (TreeListNode tln in xl.Nodes)
             {
