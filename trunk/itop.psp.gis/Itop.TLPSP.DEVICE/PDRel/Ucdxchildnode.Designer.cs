@@ -106,6 +106,7 @@
             this.treeList1.Size = new System.Drawing.Size(241, 317);
             this.treeList1.StateImageList = this.imageList1;
             this.treeList1.TabIndex = 0;
+            this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
             this.treeList1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeList1_MouseClick);
             this.treeList1.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.treeList1_GetStateImage);
             // 
@@ -130,6 +131,7 @@
             this.treeListColumn2.FieldName = "title";
             this.treeListColumn2.MinWidth = 27;
             this.treeListColumn2.Name = "treeListColumn2";
+            this.treeListColumn2.OptionsColumn.AllowEdit = false;
             this.treeListColumn2.Visible = true;
             this.treeListColumn2.VisibleIndex = 0;
             this.treeListColumn2.Width = 100;

@@ -402,6 +402,35 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit2.Text = "规划";
             }
         }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            double rl = 0;
+            int bts = 0;
+            FrmAttachtable frm = new FrmAttachtable();
+            frm.ParentObj = bdz;
+            if (frm.ShowDialog()==DialogResult.OK)
+            {
+                DataTable dt = frm.datatable;
+                if (dt.Rows.Count>0)
+                {
+                    for (int i = 0; i < dt.Rows.Count;i++ )
+                    {
+                        if (dt.Rows[i]["S2"].ToString() == "新建" || dt.Rows[i]["S2"].ToString() == "扩容" || dt.Rows[i]["S2"].ToString() == "投产")
+                        {
+                            if (Convert.ToInt32(dt.Rows[i]["startYear"]) >= Convert.ToInt32(bdz.L28) && Convert.ToInt32(dt.Rows[i]["startYear"]) <= Convert.ToInt32(bdz.L29))
+                            {
+                                rl+=Convert.ToDouble(dt.Rows[i]["ZHI"]);
+                                bts++;
+                            }
+                        }
+                    }
+                    
+                }
+               spinEdit2.Value=(decimal)rl;
+              spinEdit4.Value =(decimal)bts;
+            }
+        }
        
     }
 }

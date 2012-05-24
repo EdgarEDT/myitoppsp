@@ -14,12 +14,14 @@ namespace Itop.Domain.Graphics
     public class Psp_Attachtable
     {
         public Psp_Attachtable()
-        { }
+        {
+            ID = Guid.NewGuid().ToString();
+        }
         #region ×Ö¶Î
         private string _id = "";
         private double _zhi;
-        private int _startyear;
-        private int _endyear;
+        private string _startyear;
+        private string _endyear;
         private string _relatetable = "";
         private string _type = "";
         private string _s1 = "";
@@ -51,7 +53,7 @@ namespace Itop.Domain.Graphics
         /// <summary>
         /// 
         /// </summary>
-        public int startYear
+        public string startYear
         {
             set { _startyear = value; }
             get { return _startyear; }
@@ -59,7 +61,7 @@ namespace Itop.Domain.Graphics
         /// <summary>
         /// 
         /// </summary>
-        public int endYear
+        public string endYear
         {
             set { _endyear = value; }
             get { return _endyear; }

@@ -140,48 +140,48 @@ namespace Itop.TLPSP.DEVICE
         }
         private void treeList1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right) return;
-            TreeListNode node = treeList1.FocusedNode;
-            if (node == null) return;
-            string deviceid = node["DeviceID"].ToString();
-            string strID = node["devicetype"].ToString();
-            string dtype = DeviceTypeHelper.DeviceClassbyType(strID);
-            if (string.IsNullOrEmpty(dtype))
-            {
-                if (curDevice != null)
-                {
-                    curDevice.Hide();
-                }
-                return;
-            }
+            //if (e.Button == MouseButtons.Right) return;
+            //TreeListNode node = treeList1.FocusedNode;
+            //if (node == null) return;
+            //string deviceid = node["DeviceID"].ToString();
+            //string strID = node["devicetype"].ToString();
+            //string dtype = DeviceTypeHelper.DeviceClassbyType(strID);
+            //if (string.IsNullOrEmpty(dtype))
+            //{
+            //    if (curDevice != null)
+            //    {
+            //        curDevice.Hide();
+            //    }
+            //    return;
+            //}
 
-            UCDeviceBase device = null;
-            if (devicTypes.ContainsKey(dtype))
-            {
-                device = devicTypes[dtype];
-                device.ID = strID;
-                try
-                {
-                    device.Show();
-                }
-                catch { }
-            }
-            else
-            {
-                device = createInstance(dtype);
-                device.ID = strID;
-                device.ProjectID = Itop.Client.MIS.ProgUID;
-                devicTypes.Add(dtype, device);
-                showDevice(device);
-            }
+            //UCDeviceBase device = null;
+            //if (devicTypes.ContainsKey(dtype))
+            //{
+            //    device = devicTypes[dtype];
+            //    device.ID = strID;
+            //    try
+            //    {
+            //        device.Show();
+            //    }
+            //    catch { }
+            //}
+            //else
+            //{
+            //    device = createInstance(dtype);
+            //    device.ID = strID;
+            //    device.ProjectID = Itop.Client.MIS.ProgUID;
+            //    devicTypes.Add(dtype, device);
+            //    showDevice(device);
+            //}
 
-            if (curDevice != null && curDevice != device) curDevice.Hide();
-            curDevice = device;
-            if (curDevice != null)
-            {
-                curDevice.strCon = " where 1=1 and suid='" + deviceid + "'and ";
-                curDevice.Init();
-            }
+            //if (curDevice != null && curDevice != device) curDevice.Hide();
+            //curDevice = device;
+            //if (curDevice != null)
+            //{
+            //    curDevice.strCon = " where 1=1 and suid='" + deviceid + "'and ";
+            //    curDevice.Init();
+            //}
         }
 
         private void treeList1_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
@@ -658,15 +658,15 @@ namespace Itop.TLPSP.DEVICE
         private void ExportExcel(string name)
         {
 
-            if (File.Exists(System.Windows.Forms.Application.StartupPath + "\\temp.xls"))
-            {
-                File.Delete(System.Windows.Forms.Application.StartupPath + "\\temp.xls");
-            }
-            FileStream fs = new FileStream(System.Windows.Forms.Application.StartupPath + "\\temp.xls", FileMode.CreateNew);
-            fs.Dispose();
+            //if (File.Exists(System.Windows.Forms.Application.StartupPath + "\\temp.xls"))
+            //{
+            //    File.Delete(System.Windows.Forms.Application.StartupPath + "\\temp.xls");
+            //}
+            //FileStream fs = new FileStream(System.Windows.Forms.Application.StartupPath + "\\temp.xls", FileMode.CreateNew);
+            //fs.Dispose();
           //  ex = new ExcelAccess();
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            string fname = Application.StartupPath + "\\tempt.xls";
+            string fname = Application.StartupPath + "\\xls\\tempt.xls";
             ex.Open(fname);
             //ex.ActiveSheet(1);
             try
@@ -2486,6 +2486,52 @@ namespace Itop.TLPSP.DEVICE
             }
         }
 #endregion
+
+        private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            //if (e.Button == MouseButtons.Right) return;
+            TreeListNode node = treeList1.FocusedNode;
+            if (node == null) return;
+            string deviceid = node["DeviceID"].ToString();
+            string strID = node["devicetype"].ToString();
+            string dtype = DeviceTypeHelper.DeviceClassbyType(strID);
+            if (string.IsNullOrEmpty(dtype))
+            {
+                if (curDevice != null)
+                {
+                    curDevice.Hide();
+                }
+                return;
+            }
+
+            UCDeviceBase device = null;
+            if (devicTypes.ContainsKey(dtype))
+            {
+                device = devicTypes[dtype];
+                device.ID = strID;
+                try
+                {
+                    device.Show();
+                }
+                catch { }
+            }
+            else
+            {
+                device = createInstance(dtype);
+                device.ID = strID;
+                device.ProjectID = Itop.Client.MIS.ProgUID;
+                devicTypes.Add(dtype, device);
+                showDevice(device);
+            }
+
+            if (curDevice != null && curDevice != device) curDevice.Hide();
+            curDevice = device;
+            if (curDevice != null)
+            {
+                curDevice.strCon = " where 1=1 and suid='" + deviceid + "'and ";
+                curDevice.Init();
+            }
+        }
        
     }
 }

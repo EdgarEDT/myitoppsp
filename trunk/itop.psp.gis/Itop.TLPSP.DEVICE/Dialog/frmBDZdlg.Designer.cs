@@ -41,6 +41,7 @@
             this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.comboBoxEdit8 = new DevExpress.XtraEditors.LookUpEdit();
             this.comboBoxEdit9 = new DevExpress.XtraEditors.LookUpEdit();
             this.label37 = new System.Windows.Forms.Label();
@@ -237,6 +238,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.simpleButton4);
             this.groupBox1.Controls.Add(this.comboBoxEdit8);
             this.groupBox1.Controls.Add(this.comboBoxEdit9);
             this.groupBox1.Controls.Add(this.label37);
@@ -266,6 +268,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "基本信息";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(226, 89);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(52, 23);
+            this.simpleButton4.TabIndex = 20;
+            this.simpleButton4.Text = "详情";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // comboBoxEdit8
             // 
@@ -469,11 +480,11 @@
             0,
             0,
             0});
-            this.spinEdit2.Location = new System.Drawing.Point(97, 91);
+            this.spinEdit2.Location = new System.Drawing.Point(97, 90);
             this.spinEdit2.Name = "spinEdit2";
             this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spinEdit2.Size = new System.Drawing.Size(181, 21);
+            this.spinEdit2.Size = new System.Drawing.Size(131, 21);
             this.spinEdit2.TabIndex = 2;
             // 
             // label16
@@ -926,5 +937,6 @@
         private System.Windows.Forms.Label label9;
         private DevExpress.XtraEditors.ComboBoxEdit date2;
         private DevExpress.XtraEditors.ComboBoxEdit date1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
     }
 }
