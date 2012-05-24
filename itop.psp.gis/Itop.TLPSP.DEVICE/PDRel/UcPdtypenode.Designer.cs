@@ -37,6 +37,10 @@
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn6 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn7 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn8 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.barButtonItemIn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemOut = new DevExpress.XtraBars.BarButtonItem();
@@ -66,10 +70,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn6 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn7 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn8 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -119,6 +119,7 @@
             this.treeList1.Size = new System.Drawing.Size(241, 317);
             this.treeList1.StateImageList = this.imageList1;
             this.treeList1.TabIndex = 0;
+            this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
             this.treeList1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeList1_MouseClick);
             this.treeList1.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.treeList1_GetStateImage);
             // 
@@ -143,6 +144,7 @@
             this.treeListColumn2.FieldName = "title";
             this.treeListColumn2.MinWidth = 27;
             this.treeListColumn2.Name = "treeListColumn2";
+            this.treeListColumn2.OptionsColumn.AllowEdit = false;
             this.treeListColumn2.Visible = true;
             this.treeListColumn2.VisibleIndex = 0;
             this.treeListColumn2.Width = 100;
@@ -158,6 +160,30 @@
             this.treeListColumn4.Caption = "等值替换类型";
             this.treeListColumn4.FieldName = "S1";
             this.treeListColumn4.Name = "treeListColumn4";
+            // 
+            // treeListColumn5
+            // 
+            this.treeListColumn5.Caption = "上行故障率";
+            this.treeListColumn5.FieldName = "D1";
+            this.treeListColumn5.Name = "treeListColumn5";
+            // 
+            // treeListColumn6
+            // 
+            this.treeListColumn6.Caption = "上行修复时间";
+            this.treeListColumn6.FieldName = "D2";
+            this.treeListColumn6.Name = "treeListColumn6";
+            // 
+            // treeListColumn7
+            // 
+            this.treeListColumn7.Caption = "下行故障率";
+            this.treeListColumn7.FieldName = "D3";
+            this.treeListColumn7.Name = "treeListColumn7";
+            // 
+            // treeListColumn8
+            // 
+            this.treeListColumn8.Caption = "下行修复时间";
+            this.treeListColumn8.FieldName = "D4";
+            this.treeListColumn8.Name = "treeListColumn8";
             // 
             // imageList1
             // 
@@ -462,30 +488,6 @@
             this.barButtonItem4.ImageIndex = 31;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // treeListColumn5
-            // 
-            this.treeListColumn5.Caption = "上行故障率";
-            this.treeListColumn5.FieldName = "D1";
-            this.treeListColumn5.Name = "treeListColumn5";
-            // 
-            // treeListColumn6
-            // 
-            this.treeListColumn6.Caption = "上行修复时间";
-            this.treeListColumn6.FieldName = "D2";
-            this.treeListColumn6.Name = "treeListColumn6";
-            // 
-            // treeListColumn7
-            // 
-            this.treeListColumn7.Caption = "下行故障率";
-            this.treeListColumn7.FieldName = "D3";
-            this.treeListColumn7.Name = "treeListColumn7";
-            // 
-            // treeListColumn8
-            // 
-            this.treeListColumn8.Caption = "下行修复时间";
-            this.treeListColumn8.FieldName = "D4";
-            this.treeListColumn8.Name = "treeListColumn8";
             // 
             // UcPdtypenode
             // 
