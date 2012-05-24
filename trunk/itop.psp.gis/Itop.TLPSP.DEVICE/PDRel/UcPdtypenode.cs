@@ -647,6 +647,7 @@ namespace Itop.TLPSP.DEVICE
                         columnscount++;
                         if (!flag)
                         {
+                            ex.DisPoseExcel();
                             return;
                         }
                     }
@@ -662,8 +663,9 @@ namespace Itop.TLPSP.DEVICE
                 ex.CellsBackColor(1, 3, 1, 2 + columnscount, ExcelStyle.ColorIndex.黄色);
                 ex.ShowExcel();
             }
-            catch (System.Exception ex)
+            catch (System.Exception exe)
             {
+                ex.DisPoseExcel();
                 MessageBox.Show("存在问题！请检查数据后再计算");
             }
            
