@@ -16,7 +16,7 @@ namespace Itop.TLPSP.DEVICE
         public Psp_AttachtableEdit()
         {
             InitializeComponent();
-            Init();
+           
         }
         public Psp_Attachtable parentobj = new Psp_Attachtable();
         private Psp_Attachtable rowdate = new Psp_Attachtable();
@@ -82,10 +82,21 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit3.Properties.Items.Add(s);
 
             }
-            string sql = "where type='02'or type='03'and projectid='"+ Itop.Client.MIS.ProgUID+"' ORDER BY Number";
-            IList<PSPDEV> list1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
-            List<PSPDEV> list=list1 as List<PSPDEV>;
-            comboBoxEdit1.Properties.Items.AddRange(list.ToArray());
+            //string sql = "where type='02'or type='03'and projectid='"+ Itop.Client.MIS.ProgUID+"' ORDER BY Number";
+            //IList<PSPDEV> list1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+            //foreach (PSPDEV ps in list1)
+            //{
+            //    comboBoxEdit1.Properties.Items.Add(ps.Name);
+            //}
+            string sql = "c.UID='" + rowdate.RelatetableID + "'";
+            IList<string> list1 = UCDeviceBase.DataService.GetList<string>("SelectPSPDEV_byqSUID", sql);
+            foreach (string ps in list1)
+            {
+                PSPDEV pd = new PSPDEV();
+                pd.SUID = ps;
+                pd = UCDeviceBase.DataService.GetOneByKey<PSPDEV>(pd);
+                comboBoxEdit1.Properties.Items.Add(pd.Name);
+            }
         }
         private void simpleButton1_Click(object sender, EventArgs e) {
             this.DialogResult = DialogResult.OK;
@@ -94,6 +105,26 @@ namespace Itop.TLPSP.DEVICE
         private void groupControl1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        protected override void  OnLoad(EventArgs e)
+            {
+ 	             base.OnLoad(e);
+                 Init();
+            }
+        private void comboBoxEdit1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string sql = "where name='" + comboBoxEdit1.EditValue.ToString() + "'and (type='02'or type='03') and projectid='" + Itop.Client.MIS.ProgUID + "'";
+            PSPDEV pd = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", sql) as PSPDEV;
+            if (pd!=null)
+            {
+                if (pd.Type == "02")
+                {
+                    spinEdit1.Value = (decimal)pd.Burthen;
+                }
+                else
+                    spinEdit1.Value = (decimal)pd.SiN;
+                
+            }
         }
     }
 }
