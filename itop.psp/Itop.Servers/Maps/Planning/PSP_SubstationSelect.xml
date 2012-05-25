@@ -117,5 +117,22 @@
     SName = #SName# and 
     SvgID= #SvgID#
   </select>
+   <select id='SelectPSP_SubstationSelectByEleID' resultMap='PSP_SubstationSelectResult' parameterClass='PSP_SubstationSelect'>
+    SELECT
+    "UID",
+    "SName",
+    "EleID",
+    "SvgID",
+    "Remark",
+    "col1",
+    "col2",
+    "col3",
+    "col4",
+    "col5"
+    FROM PSP_SubstationSelect
+    WHERE
+    EleID = #EleID# and
+    SvgID= #SvgID#
+  </select>
 </statements>
 </sqlMap>
