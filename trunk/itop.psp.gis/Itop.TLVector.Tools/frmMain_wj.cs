@@ -924,6 +924,7 @@ namespace ItopVector.Tools
                                     e0.SetAttribute("xlink:href", str_sub);
                                     e0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                     e0.SetAttribute("layer", SvgDocument.currentLayer);
+                                    e0.SetAttribute("subname", "1号");
                                     tlVectorControl1.SVGDocument.RootElement.AppendChild(e0);
                                     tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e0);
                                     //获得此变电站的最小半径的圆 生成辐射线
@@ -971,6 +972,7 @@ namespace ItopVector.Tools
                                         e1.SetAttribute("xlink:href", str_sub);
                                         e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                         e1.SetAttribute("layer", SvgDocument.currentLayer);
+                                        e1.SetAttribute("subname", Convert.ToString(k) + "号");
                                         tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
                                         tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
                                         //获得此变电站的最小半径的圆 生成辐射线
@@ -1004,6 +1006,29 @@ namespace ItopVector.Tools
                                         t1.SetAttribute("font-size", "54");
                                         t1.InnerText = Convert.ToString((k)) + "号";
                                         tlVectorControl1.SVGDocument.RootElement.AppendChild(t1);
+                                    }
+                                    //给已有变电站创建
+                                    for (int j = 0; j < useList.Count; j++)
+                                    {
+                                        XmlElement e2 = (XmlElement)useList[j];
+                                        PSP_Substation_Info _sub1 = new PSP_Substation_Info();
+
+                                        _sub1.EleID = e2.GetAttribute("id");
+                                        _sub1.AreaID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                        _sub1 = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoListByEleID", _sub1);
+                                        if (_sub1 != null)
+                                        {
+                                            e2.SetAttribute("subname", _sub1.Title);
+                                        }
+                                        XmlElement n2 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                        n2.SetAttribute("cx", e2.GetAttribute("x").ToString());
+                                        n2.SetAttribute("cy", e2.GetAttribute("y").ToString());
+                                        n2.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
+
+                                        n2.SetAttribute("layer", SvgDocument.currentLayer);
+                                        n2.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                        SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n2, polylist), e2);
+                                        CreateSubline(sf1);
                                     }
                                     return;
                                 }
@@ -1042,6 +1067,7 @@ namespace ItopVector.Tools
                                     e0.SetAttribute("xlink:href", str_sub);
                                     e0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                     e0.SetAttribute("layer", SvgDocument.currentLayer);
+                                    e0.SetAttribute("subname","1号");
                                     tlVectorControl1.SVGDocument.RootElement.AppendChild(e0);
                                     tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e0);
                                     //获得此变电站的最小半径的圆 生成辐射线
@@ -1089,6 +1115,7 @@ namespace ItopVector.Tools
                                         e1.SetAttribute("xlink:href", str_sub);
                                         e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                         e1.SetAttribute("layer", SvgDocument.currentLayer);
+                                        e1.SetAttribute("subname", Convert.ToString(k) + "号");
                                         tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
                                         tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
                                         //获得此变电站的最小半径的圆 生成辐射线
@@ -1123,6 +1150,29 @@ namespace ItopVector.Tools
                                         t1.InnerText = Convert.ToString((k)) + "号";
                                         tlVectorControl1.SVGDocument.RootElement.AppendChild(t1);
                                     }
+                                    //给已有变电站创建
+                                    for (int j = 0; j < useList.Count; j++)
+                                    {
+                                        XmlElement e1 = (XmlElement)useList[j];
+                                        PSP_Substation_Info _sub1 = new PSP_Substation_Info();
+
+                                        _sub1.EleID = e1.GetAttribute("id"); ;
+                                        _sub1.AreaID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                        _sub1 = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoListByEleID", _sub1);
+                                        if (_sub1 != null)
+                                        {
+                                            e1.SetAttribute("subname", _sub1.Title);
+                                        }
+                                        XmlElement n2 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                        n2.SetAttribute("cx", e1.GetAttribute("x").ToString());
+                                        n2.SetAttribute("cy", e1.GetAttribute("y").ToString());
+                                        n2.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
+
+                                        n2.SetAttribute("layer", SvgDocument.currentLayer);
+                                        n2.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                        SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n2, polylist), e1);
+                                        CreateSubline(sf1);
+                                    }
                                     return;
                                 }
                                 else
@@ -1155,6 +1205,7 @@ namespace ItopVector.Tools
                                 n1.SetAttribute("r", D_TIN.DS.radius.ToString());
                                 n1.SetAttribute("r", D_TIN.DS.radius.ToString());
                                 n1.SetAttribute("layer", SvgDocument.currentLayer);
+                              ;
                                 n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
 
@@ -1167,6 +1218,7 @@ namespace ItopVector.Tools
                                 e1.SetAttribute("xlink:href", str_sub);
                                 e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                 e1.SetAttribute("layer", SvgDocument.currentLayer);
+                                e1.SetAttribute("subname", "1号");
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
                                 tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
                                 //获得此变电站的最小半径的圆 生成辐射线
@@ -1200,6 +1252,29 @@ namespace ItopVector.Tools
 
 
                                 bdz_xz = "";
+                                //给已有变电站创建
+                                for (int j = 0; j < useList.Count; j++)
+                                {
+                                    XmlElement e2 = (XmlElement)useList[j];
+                                    PSP_Substation_Info _sub1 = new PSP_Substation_Info();
+
+                                    _sub1.EleID = e2.GetAttribute("id"); ;
+                                    _sub1.AreaID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                    _sub1 = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoListByEleID", _sub1);
+                                    if (_sub1 != null)
+                                    {
+                                        e2.SetAttribute("subname", _sub1.Title);
+                                    }
+                                    XmlElement n2 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                    n2.SetAttribute("cx", e2.GetAttribute("x").ToString());
+                                    n2.SetAttribute("cy", e2.GetAttribute("y").ToString());
+                                    n2.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
+
+                                    n2.SetAttribute("layer", SvgDocument.currentLayer);
+                                    n2.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                    SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n2, polylist), e2);
+                                    CreateSubline(sf1);
+                                }
                                 return;
                             }
                             else
@@ -1207,6 +1282,29 @@ namespace ItopVector.Tools
                                // ShowTriangle(polylist, poly1);    //王哥写的
                                 ShowTriangle1(polylist, poly1);
                                 bdz_xz = "";
+                                //给已有变电站创建
+                                for (int j = 0; j < useList.Count; j++)
+                                {
+                                    XmlElement e1 = (XmlElement)useList[j];
+                                    PSP_Substation_Info _sub1 = new PSP_Substation_Info();
+
+                                    _sub1.EleID = e1.GetAttribute("id"); ;
+                                   _sub1.AreaID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                   _sub1 = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoListByEleID", _sub1);
+                                    if (_sub1!=null)
+                                    {
+                                        e1.SetAttribute("subname", _sub1.Title);
+                                    }
+                                    XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                    n1.SetAttribute("cx", e1.GetAttribute("x").ToString());
+                                    n1.SetAttribute("cy", e1.GetAttribute("y").ToString());
+                                    n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
+
+                                    n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                    n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                    SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
+                                    CreateSubline(sf);
+                                }
                                 return;
                             }
                         }
@@ -1215,6 +1313,7 @@ namespace ItopVector.Tools
                             bdz_xz = "";
                             return;
                         }
+                      
                     }
                     if (tlVectorControl1.Operation == ToolOperation.InterEnclosure && !SubPrint)
                     {
@@ -1840,6 +1939,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
              e1.SetAttribute("xlink:href", str_sub);
              e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
              e1.SetAttribute("layer", SvgDocument.currentLayer);
+             e1.SetAttribute("subname", Convert.ToString(k + 1) + "号");
              SubandFHcollect _subandfh = new SubandFHcollect(FHandPointF, e1);
              tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
              tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
@@ -1905,6 +2005,19 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                     n1.SetAttribute("xz", "1");
                     tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
                     tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)n1);
+                    glebeProperty pl = new glebeProperty();
+                    pl.EleID = _x.GetAttribute("id");
+                    pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                    pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
+                     if (pl!=null)
+                     {
+                         string sname = sub.GetAttribute("subname");
+                         if (!string.IsNullOrEmpty(sname))
+                         {
+                             pl.ObligateField7 = sname;
+                             Services.BaseService.Update<PSP_SubstationSelect>(pl);
+                         }
+                     }
                  }
 
                  

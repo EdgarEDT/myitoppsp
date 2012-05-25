@@ -46,6 +46,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xyxs.Properties)).BeginInit();
@@ -56,10 +58,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.fh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mj.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bh.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.comboBoxEdit1);
             this.panelControl1.Controls.Add(this.xyxs);
             this.panelControl1.Controls.Add(this.lx);
             this.panelControl1.Controls.Add(this.remark);
@@ -73,6 +77,7 @@
             this.panelControl1.Controls.Add(this.label6);
             this.panelControl1.Controls.Add(this.label7);
             this.panelControl1.Controls.Add(this.label5);
+            this.panelControl1.Controls.Add(this.label8);
             this.panelControl1.Controls.Add(this.label4);
             this.panelControl1.Controls.Add(this.label3);
             this.panelControl1.Controls.Add(this.label2);
@@ -80,7 +85,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(423, 304);
+            this.panelControl1.Size = new System.Drawing.Size(423, 341);
             this.panelControl1.TabIndex = 0;
             // 
             // xyxs
@@ -128,7 +133,7 @@
             // simpleButton2
             // 
             this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(331, 267);
+            this.simpleButton2.Location = new System.Drawing.Point(330, 296);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(55, 27);
             this.simpleButton2.TabIndex = 11;
@@ -136,7 +141,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(265, 267);
+            this.simpleButton1.Location = new System.Drawing.Point(264, 296);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(55, 27);
             this.simpleButton1.TabIndex = 10;
@@ -265,11 +270,29 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "面积(KM²)：";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 253);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 14);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "供电变电站：";
+            // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.Location = new System.Drawing.Point(112, 253);
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(272, 21);
+            this.comboBoxEdit1.TabIndex = 16;
+            // 
             // frmProperty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 304);
+            this.ClientSize = new System.Drawing.Size(423, 341);
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -289,6 +312,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.fh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mj.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bh.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -313,6 +337,8 @@
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.ComboBoxEdit xyxs;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
 
     }
 }

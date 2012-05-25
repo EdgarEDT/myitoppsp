@@ -67,6 +67,7 @@ namespace ItopVector.Tools
                 dl.DataBindings.Add("Text", gPro, "Number");
                 xyxs.DataBindings.Add("Text", gPro, "ObligateField11");
                 remark.DataBindings.Add("Text", gPro, "Remark");
+               comboBoxEdit1.DataBindings.Add("EditValue", gPro, "ObligateField7");
                // comboBoxEdit1.DataBindings.Add("Text", gPro, "ObligateField12");
                //comboBoxEdit2.DataBindings.Add("Text", gPro, "ObligateField13");
             }
@@ -124,6 +125,13 @@ namespace ItopVector.Tools
             lx.Properties.DataSource = dt;
             bh.Focus();
             string DQ = "市区";
+           string con = "AreaID = '" + Itop.Client.MIS.ProgUID + "'";
+           IList<PSP_Substation_Info> list = Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", con);
+            foreach (PSP_Substation_Info psu in list)
+            {
+                comboBoxEdit1.Properties.Items.Add(psu.Title);
+            }
+           
             //string conn = "ProjectID='" + Itop.Client.MIS.ProgUID + "' and Col1='" + DQ + "' order by Sort";
             //IList<PS_Table_AreaWH> list = Services.BaseService.GetList<PS_Table_AreaWH>("SelectPS_Table_AreaWHByConn", conn);
             //foreach (PS_Table_AreaWH area in list) {
@@ -143,6 +151,7 @@ namespace ItopVector.Tools
                 dl.Properties.ReadOnly = true;
                 xyxs.Properties.ReadOnly = true;
                 remark.Properties.ReadOnly = true;
+                comboBoxEdit1.Properties.ReadOnly = true;
                 simpleButton1.Visible = false;
                 simpleButton2.Text = "关闭";
             }
@@ -195,6 +204,11 @@ namespace ItopVector.Tools
             }
             catch{
             }
+        }
+
+        private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
