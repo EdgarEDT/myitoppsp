@@ -235,10 +235,12 @@ namespace Itop.Client.Login {
                 MessageBox.Show("无法连接到服务器！请确保服务器参数正确并确认服务器已启动");
                 return;
             }
-            
-           
-           
+
+
+                MIS.DataServer = ds;
                 MIS.CityName = ds.CityName;
+                MIS.JD = ds.CityJD;
+                MIS.WD = ds.CityWD;
                 int port=int.Parse(RemotingHelper.ServerPortSys);
                 port++;
                 ServerSettings.RemotingProtocol = RemotingHelper.ServerProtocolSys;
