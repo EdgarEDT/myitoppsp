@@ -98,6 +98,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.labCity = new System.Windows.Forms.Label();
             this.labDate = new System.Windows.Forms.Label();
             this.labTime = new System.Windows.Forms.Label();
             this.labuser = new System.Windows.Forms.Label();
@@ -634,7 +635,7 @@
             this.splitContainer2.Panel2.Resize += new System.EventHandler(this.splitContainer2_Panel2_Resize);
             this.splitContainer2.Panel2MinSize = 0;
             this.splitContainer2.Size = new System.Drawing.Size(989, 550);
-            this.splitContainer2.SplitterDistance = 490;
+            this.splitContainer2.SplitterDistance = 466;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 13;
             // 
@@ -645,7 +646,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 25);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(10);
-            this.panel6.Size = new System.Drawing.Size(490, 525);
+            this.panel6.Size = new System.Drawing.Size(466, 525);
             this.panel6.TabIndex = 1;
             // 
             // listViewdown
@@ -659,7 +660,7 @@
             this.listViewdown.Location = new System.Drawing.Point(10, 10);
             this.listViewdown.Name = "listViewdown";
             this.listViewdown.ShowItemToolTips = true;
-            this.listViewdown.Size = new System.Drawing.Size(470, 505);
+            this.listViewdown.Size = new System.Drawing.Size(446, 505);
             this.listViewdown.TabIndex = 0;
             this.listViewdown.UseCompatibleStateImageBehavior = false;
             this.listViewdown.ItemActivate += new System.EventHandler(this.listViewdown_ItemActivate);
@@ -674,7 +675,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(490, 25);
+            this.panel5.Size = new System.Drawing.Size(466, 25);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -818,7 +819,7 @@
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(480, 525);
+            this.treeList1.Size = new System.Drawing.Size(504, 525);
             this.treeList1.StateImageList = this.imageList4;
             this.treeList1.TabIndex = 0;
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
@@ -932,6 +933,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel7.Controls.Add(this.labCity);
             this.panel7.Controls.Add(this.labDate);
             this.panel7.Controls.Add(this.labTime);
             this.panel7.Controls.Add(this.labuser);
@@ -942,6 +944,18 @@
             this.panel7.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.panel7.Size = new System.Drawing.Size(1199, 31);
             this.panel7.TabIndex = 1;
+            // 
+            // labCity
+            // 
+            this.labCity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labCity.AutoSize = true;
+            this.labCity.BackColor = System.Drawing.Color.Transparent;
+            this.labCity.ForeColor = System.Drawing.Color.White;
+            this.labCity.Location = new System.Drawing.Point(13, 3);
+            this.labCity.Name = "labCity";
+            this.labCity.Size = new System.Drawing.Size(31, 14);
+            this.labCity.TabIndex = 27;
+            this.labCity.Text = "城市";
             // 
             // labDate
             // 
@@ -976,11 +990,11 @@
             this.labuser.AutoSize = true;
             this.labuser.BackColor = System.Drawing.Color.Transparent;
             this.labuser.ForeColor = System.Drawing.Color.White;
-            this.labuser.Location = new System.Drawing.Point(25, 2);
+            this.labuser.Location = new System.Drawing.Point(147, 3);
             this.labuser.Name = "labuser";
             this.labuser.Size = new System.Drawing.Size(31, 14);
             this.labuser.TabIndex = 26;
-            this.labuser.Text = "时间";
+            this.labuser.Text = "用户";
             // 
             // pictureBox2
             // 
@@ -1116,6 +1130,7 @@
         private System.Windows.Forms.Label labDate;
         private System.Windows.Forms.Label labTime;
         private System.Windows.Forms.Label labuser;
+        private System.Windows.Forms.Label labCity;
        
 
     }

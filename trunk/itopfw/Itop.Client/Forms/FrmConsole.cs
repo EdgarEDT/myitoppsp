@@ -300,6 +300,7 @@ namespace Itop.Client.Forms
         private void FrmConsole_Load(object sender, EventArgs e)
         {
             labuser.Text = "当前用户：" +MIS.UserName;
+            labCity.Text = "当前城市：" + MIS.CityName;
             PictureViewup.Paint(pictureBox1);
             InitForm();
             MIS.MFrmConsole = this;
@@ -310,6 +311,7 @@ namespace Itop.Client.Forms
             labAbout.Parent = pictureBox1;
             labExit.Parent = pictureBox1;
             labuser.Parent = pictureBox2;
+            labCity.Parent = pictureBox2;
             labDate.Parent = pictureBox2;
             labTime.Parent = pictureBox2;
         }

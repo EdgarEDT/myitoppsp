@@ -24,6 +24,25 @@ namespace Itop.Client.Common
                 sysService = value;
             }
         }
-
+    }
+    public class ServicesSys
+    {
+        private static IBaseService sysService;
+        public static IBaseService BaseService
+        {
+            get
+            {
+                if (sysService == null)
+                {
+                    sysService = RemotingHelper.GetRemotingServiceSys<IBaseService>();
+                }
+                if (sysService == null) MsgBox.Show("IBaseService服务没有注册");
+                return sysService;
+            }
+            set
+            {
+                sysService = value;
+            }
+        }
     }
 }

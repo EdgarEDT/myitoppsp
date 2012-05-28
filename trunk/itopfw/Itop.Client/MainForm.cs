@@ -156,5 +156,11 @@ namespace Itop.Client {
             toldate.Text =  DateTime.Now.ToString("D") + " " + DateTime.Now.ToString("dddd") +"  "+ GetCNDate() +"     ";
             toltime.Text =  DateTime.Now.ToString("HH时mm分ss秒"); 
         }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //关闭服务
+            MIS.curpro.Kill();  
+        }
     }
 }

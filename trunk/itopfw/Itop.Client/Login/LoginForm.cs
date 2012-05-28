@@ -11,7 +11,10 @@ using Itop.Common;
 using Itop.Server.Interface.Login;
 using Itop.Client.Option;
 using System.Reflection;
-
+using Itop.Domain;
+using Itop.Client.Projects;
+using Itop.Server;
+using System.Diagnostics;
 namespace Itop.Client.Login {
     public partial class LoginForm : Itop.Client.Base.DialogForm {
         public LoginForm() {
@@ -207,7 +210,68 @@ namespace Itop.Client.Login {
 
         private void sbtnOk_Click(object sender, EventArgs e)
         {
+            StartServer();
             DoLogin();
+        }
+        /// <summary>
+        /// 启动本机服务
+        /// </summary>
+        private void StartServer()
+        {
+            string cityid = RemotingHelper.CityName;
+            SysDataServer ds = null;
+            try
+            {
+               ds = ServicesSys.BaseService.GetOneByKey<SysDataServer>(cityid);
+                 if (ds == null)
+                {
+                    MsgBox.Show("请您点设置选择正确的城市！");
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("无法连接到服务器！请确保服务器参数正确并确认服务器已启动");
+                return;
+            }
+            
+           
+           
+                MIS.CityName = ds.CityName;
+                int port=int.Parse(RemotingHelper.ServerPortSys);
+                port++;
+                ServerSettings.RemotingProtocol = RemotingHelper.ServerProtocolSys;
+                ServerSettings.RemotingPort =port.ToString();
+                ServerSettings.Pwd = ds.ServerPwd;
+                ServerSettings.Uid = ds.ServerUser;
+                ServerSettings.Database = ds.ServerName;
+                ServerSettings.DataServer = ds.ServerAddress;
+                ServerSettings.IsOneServer = "two";
+                ServerSettings.Save();
+                RemotingHelper.ServerAddress = "localhost";
+                RemotingHelper.ServerPort = ServerSettings.RemotingPort;
+                RemotingHelper.ServerProtocol = ServerSettings.RemotingProtocol;
+                if (MIS.curpro!=null)
+                {
+                    MIS.curpro.Kill();
+                }
+                try
+                {
+                    ProcessStartInfo sysserver = new ProcessStartInfo(Application.StartupPath + "\\Server\\Itop.Server.exe");
+                    sysserver.WorkingDirectory = Application.StartupPath + "\\Server";
+                    MIS.curpro = System.Diagnostics.Process.Start(sysserver);
+                   
+                    //MIS.curpro = System.Diagnostics.Process.Start("C:\\Program Files\\Tencent\\QQ\\Bin\\QQ.exe");
+                    
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+                
+           
         }
 
         #region 窗体美化w

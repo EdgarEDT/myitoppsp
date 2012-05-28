@@ -133,6 +133,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
@@ -328,6 +329,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ServerSettings.cs" />
     <Compile Include="SplitContainerEx\CollapsePanel.cs" />
     <Compile Include="SplitContainerEx\ControlPaintEx.cs" />
     <Compile Include="SplitContainerEx\ControlState.cs" />
@@ -349,6 +351,12 @@
     <Compile Include="SysDataServer\FormDataSetup.designer.cs">
       <DependentUpon>FormDataSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="SysDataServer\FrmDirTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysDataServer\FrmDirTree.Designer.cs">
+      <DependentUpon>FrmDirTree.cs</DependentUpon>
+    </Compile>
     <Compile Include="SysDataServer\FrmSysData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,9 +369,21 @@
     <Compile Include="SysDataServer\FrmSysDataAdd.Designer.cs">
       <DependentUpon>FrmSysDataAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="SysDataServer\FrmSysDataFileAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysDataServer\FrmSysDataFileAdd.Designer.cs">
+      <DependentUpon>FrmSysDataFileAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="SysDataServer\SqlCode.cs" />
     <Compile Include="SysDataServer\SQLDMOHelper.cs" />
     <Compile Include="SysDataServer\SqlLocator.cs" />
+    <Compile Include="SysDataServer\FrmSysDataFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysDataServer\FrmSysDataFiles.Designer.cs">
+      <DependentUpon>FrmSysDataFiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemFlowChart\flowchart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -496,12 +516,22 @@
     <EmbeddedResource Include="SysDataServer\FormDataSetup.resx">
       <DependentUpon>FormDataSetup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SysDataServer\FrmDirTree.resx">
+      <DependentUpon>FrmDirTree.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SysDataServer\FrmSysData.resx">
       <DependentUpon>FrmSysData.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SysDataServer\FrmSysDataAdd.resx">
       <DependentUpon>FrmSysDataAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysDataServer\FrmSysDataFileAdd.resx">
+      <DependentUpon>FrmSysDataFileAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysDataServer\FrmSysDataFiles.resx">
+      <DependentUpon>FrmSysDataFiles.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SystemFlowChart\flowchart.resx">
       <DependentUpon>flowchart.cs</DependentUpon>

@@ -45,6 +45,7 @@ namespace Itop.Server.Impl {
             }
             return config;
         }
+        
         public bool SetDataConfig(DataConfig data) {
             DataConfig config = new DataConfig();
             XmlDocument xml = new XmlDocument();

@@ -34,54 +34,47 @@ using System.Collections;
 using System.Windows.Forms;
 using System.Data;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace Itop.Client
 {
+    
+         
+        
     public partial class SQLDMOHelper
     {
+        public static void MesShow(string mes)
+        {
+           MessageBox.Show(mes, "提示");
+        }
+
         string ServerName = "";
         string UserName = "";
         string Password = "";
-        /// <summary>
-        /// 获取指定数据库服务器的数据库列表 
-        /// </summary>
-        /// <param name="strServerName"></param>
-        /// <param name="strUserName"></param>
-        /// <param name="strPwd"></param>
-        /// <returns></returns>
-        /// 
+
+      
+      
         #region 构造函数
-        public SQLDMOHelper(string strServerName)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ServerAddress">服务器地址</param>
+        /// <param name="Uid">登录用户名</param>
+        /// <param name="Pwd">登录密码</param>
+        public SQLDMOHelper(string ServerAddress, string Uid, string Pwd)
         {
-            ServerName = strServerName;
-            InitData(strServerName);
-        }
-
-
-        private void InitData(string strServerName)
-        {
-            DataSet ds = new DataSet();
-            try
-            {
-                ds.ReadXml(Application.StartupPath + "\\CONFIG.XML");
-            }
-            catch
-            {
-                return;
-            }
-            foreach (DataRow dr in ds.Tables[0].Rows)
-            {
-                if (dr["Server"].ToString() == strServerName)
-                {
-                    UserName = dr["UserID"].ToString();
-                    Password = dr["PassWord"].ToString();
-                }
-            }
+            ServerName = ServerAddress;
+            UserName = Uid;
+            Password = Pwd;
         }
         #endregion
 
 
         #region 返回数据库列表
+        /// <summary>
+        /// 返回数据库列表
+        /// </summary>
+        /// <returns></returns>
         public ArrayList GetDbList()
         {
             ArrayList alDbs = new ArrayList();
@@ -102,7 +95,7 @@ namespace Itop.Client
             }
             finally
             {
-                svr.DisConnect();
+                svr.Close();
                 sqlApp.Quit();
             }
             return alDbs;
@@ -430,17 +423,19 @@ namespace Itop.Client
         }
         #endregion
 
-
         #region 创建库
 
         public bool CreateDB(string dbName, string path)
         {
+            //SQLDMO.SQLServer.EnumDirectories(string path);
+
             // 创建数据库文件
             SQLDMO.SQLServer svr = new SQLDMO.SQLServerClass();
             SQLDMO.DBFile dbFile = new SQLDMO.DBFileClass();
             try
             {
                 svr.Connect(ServerName, UserName, Password);
+                svr.EnumDirectories("c:");
                 dbFile.Name = dbName + "_Data";
                 dbFile.PhysicalName = Path.Combine(path, dbName + "_Data.MDF");
                 dbFile.PrimaryFile = true;
@@ -881,66 +876,80 @@ namespace Itop.Client
             MessageBox.Show(err, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #region 读取slq文件
+        public static ArrayList GetSqlFile(string varFileName, string dbname)
+        {
+            ArrayList alSql = new ArrayList();
+            if (!File.Exists(varFileName))
+            {
+                return alSql;
+            }
+            StreamReader rs = new StreamReader(varFileName, System.Text.Encoding.Default);//注意编码
+            string commandText = "";
+            string varLine = "";
+            while (rs.Peek() > -1)
+            {
+                varLine = rs.ReadLine();
+                if (varLine == "")
+                {
+                    continue;
+                }
+                if (varLine != "GO" && varLine != "go")
+                {
+                    commandText += varLine;
+                    commandText = commandText.Replace("@database_name=N'dbhr'", string.Format("@database_name=N'{0}'", dbname));
+                    commandText += "\r\n";
+                }
+                else
+                {
+                    alSql.Add(commandText);
+                    commandText = "";
+                }
+            }
+
+            rs.Close();
+            return alSql;
+        }
+
+        #endregion
+
+        #region 执行sql文件
+        public static bool ExecuteCommand(ArrayList varSqlList, SqlConnection MyConnection)
+        {
+            bool result = true;
+            if (MyConnection.State==ConnectionState.Closed)
+            {
+                MyConnection.Open();
+            }
+            
+            SqlTransaction varTrans = MyConnection.BeginTransaction();
+            SqlCommand command = new SqlCommand();
+            command.Connection = MyConnection;
+            command.Transaction = varTrans;
+            try
+            {
+                foreach (string varcommandText in varSqlList)
+                {
+                    command.CommandText = varcommandText;
+                    command.ExecuteNonQuery();
+                }
+                varTrans.Commit();
+            }
+            catch (Exception ex)
+            {
+                varTrans.Rollback();
+                result = false;
+                throw ex;
+            }
+            finally
+            {
+                MyConnection.Close();
+            }
+            return result;
+        }
+        #endregion
 
 
 
-
-         ////////////switch (dr["ColumnType"].ToString())
-         ////////////           {
-         ////////////               case "bigint":
-                            
-         ////////////                   break;
-         ////////////               case "binary":
-
-         ////////////                   break;
-         ////////////               case "bit":
-                            
-         ////////////                   break;
-         ////////////               case "char":
-
-         ////////////                   break;
-         ////////////               case "datetime":
-
-         ////////////                   break;
-         ////////////               case "decimal":
-
-         ////////////                   break;
-         ////////////               case "float":
-
-         ////////////                   break;
-         ////////////               case "image":
-
-         ////////////                   break;
-         ////////////               case "int":
-
-         ////////////                   break;
-         ////////////               case "money":
-
-         ////////////                   break;
-         ////////////               case "nchar":
-
-         ////////////                   break;
-         ////////////               case "ntext":
-
-         ////////////                   break;
-         ////////////               case "numeric":
-
-         ////////////                   break;
-         ////////////               case "nvarchar":
-
-         ////////////                   break;
-         ////////////               case "real":
-
-         ////////////                   break;
-         ////////////               case "text":
-
-         ////////////                   break;
-         ////////////               case "timestamp":
-
-         ////////////                   break;
-         ////////////               case "varchar":
-
-         ////////////                   break;
-         ////////////           }
     }
 }
