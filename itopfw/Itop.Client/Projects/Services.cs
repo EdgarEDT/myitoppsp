@@ -6,6 +6,7 @@ using Itop.Common;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Drawing;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using Itop.Domain;
 
 namespace Itop.Client.Projects
 {
@@ -27,11 +28,73 @@ namespace Itop.Client.Projects
                 sysService = value;
             }
         }
-
-
-
-
     }
+    public class ServicesSys
+    {
+        private static IBaseService sysService;
+        public static IBaseService BaseService
+        {
+            get
+            {
+                if (sysService == null)
+                {
+                    sysService = RemotingHelper.GetRemotingServiceSys<IBaseService>();
+                }
+                if (sysService == null) MsgBox.Show("IBaseService服务没有注册");
+                return sysService;
+            }
+            set
+            {
+                sysService = value;
+            }
+        }
+        private static DataConfig dataconfig;
+        private static DataConfig DataConfig
+        {
+            get
+            {
+                if (dataconfig==null)
+	            {
+                    dataconfig=RemotingHelper.GetRemotingServiceSys<Itop.Server.Interface.IConfigService>().GetDataConfig();
+	            }
+                return dataconfig;
+            }
+        }
+       // RemotingHelper.GetRemotingService<Itop.Server.Interface.IConfigService>();
+       
+        public string GetServerAddress
+        {
+            get
+            {
+                
+                return DataConfig.Datasource;
+            }
+        }
+        public string GetServerName
+        {
+            get
+            {
+               
+                return DataConfig.Database;
+            }
+        }
+        public string GetUid
+        {
+            get
+            {
+                return DataConfig.Userid;
+            }
+        }
+        public string GetPwd
+        {
+            get
+            {
+                return DataConfig.Password;
+            }
+        }
+    }
+
+    
 
     public class Common
     {

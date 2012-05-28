@@ -65,7 +65,7 @@ namespace Itop.Server {
 
             Process instance = RunningInstance();
             //全局服务端只准运行一个实例
-            if (Settings.IsOneServer=="1")
+            if (Settings.IsOneServer == "one")
             {
                 if (instance != null)
                 {
@@ -73,7 +73,7 @@ namespace Itop.Server {
                     Application.Exit();
                     return;
                 }
-                
+
             }
             
        

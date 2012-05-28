@@ -37,19 +37,21 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtCityName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCanser = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.btnDelData = new DevExpress.XtraEditors.SimpleButton();
             this.btnCreateData = new DevExpress.XtraEditors.SimpleButton();
             this.btnConnect = new DevExpress.XtraEditors.SimpleButton();
             this.txtServerPwd = new DevExpress.XtraEditors.TextEdit();
             this.txtServerUser = new DevExpress.XtraEditors.TextEdit();
             this.txtServerName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.txtServerAddress = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCanser = new DevExpress.XtraEditors.SimpleButton();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCityDesc.Properties)).BeginInit();
@@ -154,101 +156,6 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "城市名称：";
             // 
-            // groupControl2
-            // 
-            this.groupControl2.Controls.Add(this.btnCreateData);
-            this.groupControl2.Controls.Add(this.btnConnect);
-            this.groupControl2.Controls.Add(this.txtServerPwd);
-            this.groupControl2.Controls.Add(this.txtServerUser);
-            this.groupControl2.Controls.Add(this.txtServerName);
-            this.groupControl2.Controls.Add(this.labelControl8);
-            this.groupControl2.Controls.Add(this.labelControl5);
-            this.groupControl2.Controls.Add(this.labelControl6);
-            this.groupControl2.Controls.Add(this.txtServerAddress);
-            this.groupControl2.Controls.Add(this.labelControl7);
-            this.groupControl2.Location = new System.Drawing.Point(288, 15);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(269, 209);
-            this.groupControl2.TabIndex = 1;
-            this.groupControl2.Text = "数据库信息";
-            // 
-            // btnCreateData
-            // 
-            this.btnCreateData.Location = new System.Drawing.Point(91, 167);
-            this.btnCreateData.Name = "btnCreateData";
-            this.btnCreateData.Size = new System.Drawing.Size(75, 23);
-            this.btnCreateData.TabIndex = 16;
-            this.btnCreateData.Text = "创建数据库";
-            // 
-            // btnConnect
-            // 
-            this.btnConnect.Location = new System.Drawing.Point(13, 167);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(75, 23);
-            this.btnConnect.TabIndex = 15;
-            this.btnConnect.Text = "连接测试";
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
-            // txtServerPwd
-            // 
-            this.txtServerPwd.Location = new System.Drawing.Point(91, 121);
-            this.txtServerPwd.Name = "txtServerPwd";
-            this.txtServerPwd.Size = new System.Drawing.Size(160, 21);
-            this.txtServerPwd.TabIndex = 14;
-            // 
-            // txtServerUser
-            // 
-            this.txtServerUser.Location = new System.Drawing.Point(91, 91);
-            this.txtServerUser.Name = "txtServerUser";
-            this.txtServerUser.Size = new System.Drawing.Size(160, 21);
-            this.txtServerUser.TabIndex = 13;
-            // 
-            // txtServerName
-            // 
-            this.txtServerName.Location = new System.Drawing.Point(91, 62);
-            this.txtServerName.Name = "txtServerName";
-            this.txtServerName.Size = new System.Drawing.Size(160, 21);
-            this.txtServerName.TabIndex = 12;
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Location = new System.Drawing.Point(25, 122);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(60, 14);
-            this.labelControl8.TabIndex = 11;
-            this.labelControl8.Text = "登录密码：";
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(13, 94);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(72, 14);
-            this.labelControl5.TabIndex = 10;
-            this.labelControl5.Text = "登录用户名：";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(13, 63);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(72, 14);
-            this.labelControl6.TabIndex = 9;
-            this.labelControl6.Text = "数据库名称：";
-            // 
-            // txtServerAddress
-            // 
-            this.txtServerAddress.Location = new System.Drawing.Point(91, 32);
-            this.txtServerAddress.Name = "txtServerAddress";
-            this.txtServerAddress.Size = new System.Drawing.Size(160, 21);
-            this.txtServerAddress.TabIndex = 8;
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(13, 34);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(72, 14);
-            this.labelControl7.TabIndex = 7;
-            this.labelControl7.Text = "服务器名称：";
-            // 
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(352, 234);
@@ -266,6 +173,112 @@
             this.btnCanser.TabIndex = 3;
             this.btnCanser.Text = "取 消";
             this.btnCanser.Click += new System.EventHandler(this.btnCanser_Click);
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.btnDelData);
+            this.groupControl2.Controls.Add(this.btnCreateData);
+            this.groupControl2.Controls.Add(this.btnConnect);
+            this.groupControl2.Controls.Add(this.txtServerPwd);
+            this.groupControl2.Controls.Add(this.txtServerUser);
+            this.groupControl2.Controls.Add(this.txtServerName);
+            this.groupControl2.Controls.Add(this.labelControl6);
+            this.groupControl2.Controls.Add(this.labelControl8);
+            this.groupControl2.Controls.Add(this.labelControl5);
+            this.groupControl2.Controls.Add(this.txtServerAddress);
+            this.groupControl2.Controls.Add(this.labelControl7);
+            this.groupControl2.Location = new System.Drawing.Point(288, 15);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(269, 209);
+            this.groupControl2.TabIndex = 1;
+            this.groupControl2.Text = "数据库信息";
+            // 
+            // btnDelData
+            // 
+            this.btnDelData.Location = new System.Drawing.Point(145, 181);
+            this.btnDelData.Name = "btnDelData";
+            this.btnDelData.Size = new System.Drawing.Size(66, 23);
+            this.btnDelData.TabIndex = 17;
+            this.btnDelData.Text = "删除数据库";
+            this.btnDelData.Click += new System.EventHandler(this.btnDelData_Click);
+            // 
+            // btnCreateData
+            // 
+            this.btnCreateData.Location = new System.Drawing.Point(73, 181);
+            this.btnCreateData.Name = "btnCreateData";
+            this.btnCreateData.Size = new System.Drawing.Size(66, 23);
+            this.btnCreateData.TabIndex = 16;
+            this.btnCreateData.Text = "创建数据库";
+            this.btnCreateData.Click += new System.EventHandler(this.btnCreateData_Click);
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(5, 181);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(62, 23);
+            this.btnConnect.TabIndex = 15;
+            this.btnConnect.Text = "连接测试";
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // txtServerPwd
+            // 
+            this.txtServerPwd.Location = new System.Drawing.Point(91, 89);
+            this.txtServerPwd.Name = "txtServerPwd";
+            this.txtServerPwd.Size = new System.Drawing.Size(160, 21);
+            this.txtServerPwd.TabIndex = 14;
+            // 
+            // txtServerUser
+            // 
+            this.txtServerUser.Location = new System.Drawing.Point(91, 59);
+            this.txtServerUser.Name = "txtServerUser";
+            this.txtServerUser.Size = new System.Drawing.Size(160, 21);
+            this.txtServerUser.TabIndex = 13;
+            // 
+            // txtServerName
+            // 
+            this.txtServerName.Location = new System.Drawing.Point(91, 119);
+            this.txtServerName.Name = "txtServerName";
+            this.txtServerName.Size = new System.Drawing.Size(160, 21);
+            this.txtServerName.TabIndex = 12;
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(13, 120);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(72, 14);
+            this.labelControl6.TabIndex = 9;
+            this.labelControl6.Text = "数据库名称：";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(25, 90);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(60, 14);
+            this.labelControl8.TabIndex = 11;
+            this.labelControl8.Text = "登录密码：";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(13, 62);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(72, 14);
+            this.labelControl5.TabIndex = 10;
+            this.labelControl5.Text = "登录用户名：";
+            // 
+            // txtServerAddress
+            // 
+            this.txtServerAddress.Location = new System.Drawing.Point(91, 32);
+            this.txtServerAddress.Name = "txtServerAddress";
+            this.txtServerAddress.Size = new System.Drawing.Size(160, 21);
+            this.txtServerAddress.TabIndex = 8;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(13, 34);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(72, 14);
+            this.labelControl7.TabIndex = 7;
+            this.labelControl7.Text = "服务器名称：";
             // 
             // FrmSysDataAdd
             // 
@@ -308,20 +321,22 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtCityName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.MemoEdit txtCityDesc;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit txtServerAddress;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.SimpleButton btnOk;
+        private DevExpress.XtraEditors.SimpleButton btnCanser;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.SimpleButton btnCreateData;
+        private DevExpress.XtraEditors.SimpleButton btnConnect;
         private DevExpress.XtraEditors.TextEdit txtServerPwd;
         private DevExpress.XtraEditors.TextEdit txtServerUser;
         private DevExpress.XtraEditors.TextEdit txtServerName;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.SimpleButton btnOk;
-        private DevExpress.XtraEditors.SimpleButton btnCanser;
-        private DevExpress.XtraEditors.SimpleButton btnConnect;
-        private DevExpress.XtraEditors.SimpleButton btnCreateData;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.TextEdit txtServerAddress;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private DevExpress.XtraEditors.SimpleButton btnDelData;
 
     }
 }

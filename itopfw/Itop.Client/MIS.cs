@@ -29,8 +29,12 @@ namespace Itop.Client {
             // 注册服务
             Itop.Client.Service.ServiceBus.RegisterService<Itop.Client.Service.IMis>(new MisService());
         }
+        public static System.Diagnostics.Process curpro = null;
+        private static SysDataServer dataserver = null;
         private static string username = "";
-        
+        private static string cityName = "";
+        private static double jd = 0;
+        private static double wd = 0;
         static private Dictionary<string, string> m_props = new Dictionary<string, string>();
 
         static private string GetUserName() {
@@ -154,6 +158,53 @@ namespace Itop.Client {
             get
             {
                 return SmmprogService.GetOneByKey<Smmuser>(UserNumber).Lastlogon;
+            }
+        }
+        /// <summary>
+        /// 城市名称
+        /// </summary>
+        public static string CityName
+        {
+            set
+            {
+                cityName = value;
+            }
+            get
+            {
+                return cityName;
+            }
+        }
+        public static Double JD
+        {
+            set
+            {
+                jd = value;
+            }
+            get
+            {
+                return jd;
+            }
+        }
+        public static Double WD
+        {
+            set
+            {
+                wd = value;
+            }
+            get
+            {
+                return wd;
+            }
+        }
+        public static SysDataServer DataServer
+        {
+            set
+            {
+                dataserver = value;
+            }
+            get
+            {
+                return dataserver;
             }
         }
         /// <summary>

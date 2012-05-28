@@ -9,6 +9,10 @@ using DevExpress.XtraEditors;
 using Itop.Client.Base;
 using Itop.Domain;
 using System.Data.SqlClient;
+using System.Collections;
+using System.IO;
+using DevExpress.Utils;
+using Itop.Client.Projects;
 
 namespace Itop.Client
 {
@@ -18,7 +22,6 @@ namespace Itop.Client
         public FrmSysDataAdd()
         {
             InitializeComponent();
-           
         }
         private void FrmSysDataAdd_Load(object sender, EventArgs e)
         {
@@ -48,11 +51,12 @@ namespace Itop.Client
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            if (!CheckForm())
+            this.Enabled = false;
+            if (CheckForm())
             {
-                //return false;
+                CheckDataCnn();
             }
-
+            this.Enabled = true;
 
         }
         #region 数据库部分
@@ -61,43 +65,53 @@ namespace Itop.Client
             bool result = true;
             if (txtServerAddress.Text.Trim().Length == 0)
             {
-                MessageBox.Show("请输入服务器名称!");
+                SQLDMOHelper.MesShow("请输入服务器名称!");
                 result = false;
             }
             if (txtServerUser.Text.Trim().Length == 0)
             {
-                MessageBox.Show("请输入登录用户名称!");
+                SQLDMOHelper.MesShow("请输入登录用户名称!");
                 result = false;
 
             }
             if (txtServerPwd.Text.Trim().Length == 0)
             {
-                MessageBox.Show("请输入登录密码!");
+                SQLDMOHelper.MesShow("请输入登录密码!");
                 result = false;
 
             }
             return result;
         }
-        private void CheckData()
+        private void  CheckDataCnn()
         {
-            string connstr1 = "server=" + txtServerAddress.Text.Trim() + ";database=Master;uid=" + txtServerName.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
-            string connstr2 = "server=" + txtServerAddress.Text.Trim() + ";database=" + txtServerName + ";uid=" + txtServerName.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
+
+            string connstr1 = " Connection Timeout=2; Pooling=False; server=" + txtServerAddress.Text.Trim() + ";database=Master;uid=" + txtServerUser.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
+            string connstr2 = "Connection Timeout=2;  Pooling=False;server=" + txtServerAddress.Text.Trim() + ";database=" + txtServerName.Text.Trim() + ";uid=" + txtServerUser.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
+            if (!CheckForm())
+            {
+                return;
+            }
 
             if (CheckConn(connstr1))
             {
-                if (CheckConn(connstr1))
+                if (CheckConn(connstr2))
                 {
-
+                    SQLDMOHelper.MesShow("数据库连接畅通!");
+                }
+                else
+                {
+                    SQLDMOHelper.MesShow(txtServerName.Text.Trim() + "此数据库不能登录!");
                 }
             }
             else
             {
-
+                SQLDMOHelper.MesShow("无法连接到服务器，请确认服务器信息!");
             }
         }
         private bool CheckConn(string connstr)
         {
             SqlConnection conn = new SqlConnection(connstr);
+            
             try
             {
                 conn.Open();
@@ -108,9 +122,164 @@ namespace Itop.Client
             {
                 return false;
             }
+            finally
+            {
+                conn.Dispose();
+                GC.Collect();
+               
+            }
         }
         #endregion
-        
+        /// <summary>
+        ///  创建数据库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCreateData_Click(object sender, EventArgs e)
+        {
+            if (!CheckForm())
+            {
+                return;
+            }
+
+            string connstr1 = " Connection Timeout=2; server=" + txtServerAddress.Text.Trim() + ";database=Master;uid=" + txtServerUser.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
+            if (!CheckConn(connstr1))
+            {
+                SQLDMOHelper.MesShow("无法连接到服务器，请确认服务器信息!");
+                return;
+            }
+            SQLDMOHelper smh = new SQLDMOHelper(txtServerAddress.Text.Trim(),txtServerUser.Text.Trim(),txtServerPwd.Text.Trim());
+            ArrayList datalist = smh.GetDbList();
+            if (datalist.Contains(txtServerName.Text.Trim()))
+            {
+                SQLDMOHelper.MesShow("该服务器中已在名为 " + txtServerName.Text.Trim() + " 的数据库");
+                return;
+            }
+            FrmDirTree frmd = new FrmDirTree();
+             SQLDMO.SQLServer svr = new SQLDMO.SQLServerClass();
+             svr.Connect(txtServerAddress.Text.Trim(), txtServerUser.Text.Trim(), txtServerPwd.Text.Trim());
+            frmd.svr=svr;
+            frmd.Text = txtServerAddress.Text.Trim() + "选择路径";
+            string FilePath="";
+            if (frmd.ShowDialog()==DialogResult.OK)
+            {
+                FilePath = frmd.SelectPaht;
+            }
+            else
+            {
+                return;
+            }
+            WaitDialogForm frm = new WaitDialogForm("","正在创建数据库，请稍后...");
+            frm.Show();
+            
+            if (smh.CreateDB(txtServerName.Text.Trim(), FilePath))
+            {
+                //读取配置数据表.sql文件
+       
+                IList<SysDataFiles> sdflist = ServicesSys.BaseService.GetList<SysDataFiles>("SelectSysDataFilesList", "");
+                if (sdflist.Count==0)
+                {
+                    frm.Hide();
+                    SQLDMOHelper.MesShow("服务器中创建数据库文件不存在，请管管员先添加该文件！ ");
+                    return;
+                }
+                SysDataFiles file = sdflist[0];
+                string path = Application.StartupPath + "\\BlogData";
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                string filepath = path + "\\" + file.FileName;
+                if (File.Exists(filepath))
+                {
+                    File.Delete(filepath);
+                }
+                getfile(file.Files, filepath);
+
+
+                ArrayList alist = SQLDMOHelper.GetSqlFile(filepath, txtServerName.Text.Trim());
+                if (File.Exists(filepath))
+                {
+                    File.Delete(filepath);
+                }
+                string connstr2 = "Pooling=False ; server=" + txtServerAddress.Text.Trim() + ";database=" + txtServerName.Text.Trim() + ";uid=" + txtServerUser.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
+                SqlConnection conn = new SqlConnection(connstr2);
+                if (SQLDMOHelper.ExecuteCommand(alist,conn))
+                {
+                    frm.Hide();
+                    SQLDMOHelper.MesShow("数据库 " + txtServerName.Text.Trim() + " 已成功创建");
+                }
+                else
+                {
+                    frm.Hide();
+                    SQLDMOHelper.MesShow("创建数据库表失败，请检查服务器中创建数据库文件是否损坏");
+                }
+            }
+            frm.Hide();
+            
+        }
+        public  void getfile(byte[] bt, string filename)
+        {
+            BinaryWriter bw;
+            FileStream fs;
+            try
+            {
+                fs = new FileStream(filename, FileMode.Create, FileAccess.Write);
+                bw = new BinaryWriter(fs);
+                bw.Write(bt);
+                bw.Flush();
+                bw.Close();
+                fs.Close();
+
+            }
+            catch
+            {
+
+            }
+
+        }
+        /// <summary>
+        /// 删除数据库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelData_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定要删除当前数据库吗？（不可恢复，请慎重操作）", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+            WaitDialogForm frm = new WaitDialogForm("", "正在删除数据库，请稍后...");
+            frm.Show();
+            string connstr1 = " Connection Timeout=2; server=" + txtServerAddress.Text.Trim() + ";database=Master;uid=" + txtServerUser.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
+            if (!CheckConn(connstr1))
+            {
+                frm.Hide();
+                SQLDMOHelper.MesShow("无法连接到服务器，请确认服务器信息!");
+                return;
+            }
+            SQLDMOHelper smh = new SQLDMOHelper(txtServerAddress.Text.Trim(), txtServerUser.Text.Trim(), txtServerPwd.Text.Trim());
+            ArrayList datalist = smh.GetDbList();
+            if (datalist.Contains(txtServerName.Text.Trim()))
+            {
+                if (smh.KillDB(txtServerName.Text.Trim()))
+                {
+                    frm.Hide();
+                    SQLDMOHelper.MesShow("已成功删除 " + txtServerName.Text.Trim() + " 数据库");
+                }
+
+            }
+            else
+            {
+                frm.Hide();
+                SQLDMOHelper.MesShow("该服务器中不存在名为 " + txtServerName.Text.Trim() + " 的数据库");
+            }
+            frm.Hide();
+        }
+
+     
+      
+       
        
     }
 }

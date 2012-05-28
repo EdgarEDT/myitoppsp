@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SysDataFiles' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='SysDataFiles' assembly='Itop.Domain.dll' type='Itop.Domain.SysDataFiles' />
+  </alias>
+  <resultMaps>
+    <resultMap id='SysDataFilesResult' class='SysDataFiles'>
+      <result property='ID' column='ID' />
+      <result property='FileName' column='FileName' />
+      <result property='FileSize' column='FileSize' />
+      <result property='Files' column='Files' />
+      <result property='FileDesc' column='FileDesc' />
+      <result property='Sort' column='Sort' />
+      <result property='Remark' column='Remark' />
+      <result property='CreateDate' column='CreateDate' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertSysDataFiles' parameterClass='SysDataFiles'>
+      INSERT INTO SysDataFiles		(
+      "ID",
+      "FileName",
+      "FileSize",
+      "Files",
+      "FileDesc",
+      "Sort",
+      "Remark",
+      "CreateDate"
+      )
+      VALUES
+      (
+      #ID#,
+      #FileName#,
+      #FileSize#,
+      #Files#,
+      #FileDesc#,
+      #Sort#,
+      #Remark#,
+      #CreateDate#
+      )
+    </insert>
+    <delete id='DeleteSysDataFiles' parameterClass='SysDataFiles'>
+      DELETE FROM SysDataFiles
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdateSysDataFiles' parameterClass='SysDataFiles'>
+      UPDATE SysDataFiles
+      SET
+      "FileName" = #FileName#,
+      "FileSize" = #FileSize#,
+      "Files" = #Files#,
+      "FileDesc" = #FileDesc#,
+      "Sort" = #Sort#,
+      "Remark" = #Remark#,
+      "CreateDate" = #CreateDate#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectSysDataFilesList' resultMap='SysDataFilesResult' parameterClass='SysDataFiles'>
+      SELECT
+      "ID",
+      "FileName",
+      "FileSize",
+      "Files",
+      "FileDesc",
+      "Sort",
+      "Remark",
+      "CreateDate"
+      FROM SysDataFiles
+    </select>
+    <select id='SelectSysDataFilesByKey' resultMap='SysDataFilesResult' parameterClass='SysDataFiles'>
+      SELECT
+      "ID",
+      "FileName",
+      "FileSize",
+      "Files",
+      "FileDesc",
+      "Sort",
+      "Remark",
+      "CreateDate"
+      FROM SysDataFiles
+      WHERE
+      ID = #ID#
+    </select>
+  </statements>
+</sqlMap>

@@ -15,19 +15,11 @@ using System.Diagnostics;
 
 namespace Itop.Server {
     public partial class FrmServerManager : Form{
-        public bool hide = false;
+       
         public FrmServerManager() {
             InitializeComponent();
         }
-        public string ServerAddress
-        {
-            set
-            {
-                 Settings.DataServer = this.txtDataServer.Text;
-                 Settings.Save();
-            }
-
-        }
+      
         protected override void OnClosing(CancelEventArgs e) {
             if (base.Visible) {
                 e.Cancel = true;
@@ -40,12 +32,13 @@ namespace Itop.Server {
             base.OnShown(e);
             base.Hide();
             this.notifyIcon1.Visible = true;
-        }
-        protected override void OnLoad(EventArgs e) {
-            if (hide)
+            if (Settings.IsOneServer == "two")
             {
                 this.notifyIcon1.Visible = false;
             }
+        }
+        protected override void OnLoad(EventArgs e) {
+           
             base.OnLoad(e);
             this.cbbProtocol.Text = Settings.RemotingProtocol;
             this.txtPort.Text = Settings.RemotingPort;
@@ -53,7 +46,8 @@ namespace Itop.Server {
             this.txtUid.Text = Settings.Uid;
             this.txtDatabase.Text = Settings.Database;
             this.txtDataServer.Text = Settings.DataServer;
-            Start();            
+            Start();
+            
         }
         
 
