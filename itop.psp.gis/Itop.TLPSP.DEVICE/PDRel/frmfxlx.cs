@@ -45,7 +45,7 @@ namespace Itop.TLPSP.DEVICE
             row["D"] = 1;
             dt1.Rows.Add(row);
             row = dt1.NewRow();
-            row["A"] = "有手动投入备用电源，并没倒闸操作时间为1h";
+            row["A"] = "手动投入备用电源";
             row["B"] = false;
             row["C"] = "方式2";
             row["D"] = 2;

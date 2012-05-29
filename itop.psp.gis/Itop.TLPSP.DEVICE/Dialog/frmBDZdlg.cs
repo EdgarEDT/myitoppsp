@@ -75,6 +75,8 @@ namespace Itop.TLPSP.DEVICE
                 checkBox1.Checked = value;
             }
         }
+        //判断图层传过来的是哪一年的数据
+        public string StartYear = "";
         public PSP_Substation_Info DeviceMx {
             get {
 
@@ -119,6 +121,26 @@ namespace Itop.TLPSP.DEVICE
                 ucGraph1.Open(value.UID);
                 ucGraph2.Open(value.UID+Itop.Client.MIS.ProgUID.Substring(0,8));
                 freshxl();
+                if (!string.IsNullOrEmpty(StartYear))
+                {
+                    string sql = "RelatetableID='" + bdz.UID + "' order by startYear";
+                    IList<Psp_Attachtable> pl = Itop.Client.Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", sql);
+                    if (pl.Count > 0)
+                    {
+                        double rl = 0;
+                        int ts = 0;
+                        foreach (Psp_Attachtable pa in pl)
+                        {
+                            if (Convert.ToInt32(pa.startYear) <= Convert.ToInt32(StartYear) && Convert.ToInt32(pa.endYear) >= Convert.ToInt32(StartYear))
+                            {
+                                rl += Convert.ToDouble(pa.ZHI);
+                                ts++;
+                            }
+                        }
+                        spinEdit2.Value = (decimal)rl;
+                        spinEdit4.Value=(decimal)ts;
+                    }
+                }
             }
         }
         /// <summary>
@@ -199,6 +221,7 @@ namespace Itop.TLPSP.DEVICE
                     burthen = burthen + ((PSPDEV)l3[j]).Burthen;
                 }
             }
+            StartYear = "";
             //spinEdit3.Text = burthen.ToString();
             spinEdit3.Text =DeviceMx.L9.ToString();
         }
@@ -418,11 +441,20 @@ namespace Itop.TLPSP.DEVICE
                     {
                         if (dt.Rows[i]["S2"].ToString() == "新建" || dt.Rows[i]["S2"].ToString() == "扩容" || dt.Rows[i]["S2"].ToString() == "投产")
                         {
-                            if (Convert.ToInt32(dt.Rows[i]["startYear"]) >= Convert.ToInt32(bdz.L28) && Convert.ToInt32(dt.Rows[i]["startYear"]) <= Convert.ToInt32(bdz.L29))
+                            if (!string.IsNullOrEmpty(bdz.L28) && !string.IsNullOrEmpty(bdz.L28))
                             {
-                                rl+=Convert.ToDouble(dt.Rows[i]["ZHI"]);
+                                if (Convert.ToInt32(dt.Rows[i]["startYear"]) >= Convert.ToInt32(bdz.L28) && Convert.ToInt32(dt.Rows[i]["startYear"]) <= Convert.ToInt32(bdz.L29))
+                                {
+                                    rl += Convert.ToDouble(dt.Rows[i]["ZHI"]);
+                                    bts++;
+                                }
+                            }
+                            else
+                            {
+                                rl += Convert.ToDouble(dt.Rows[i]["ZHI"]);
                                 bts++;
                             }
+                           
                         }
                     }
                     
