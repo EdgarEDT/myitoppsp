@@ -4124,6 +4124,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                         deviceid = ((PSP_Substation_Info)obj).UID;
                                         ((PSP_Substation_Info)obj).LayerID = tlVectorControl1.SVGDocument.CurrentLayer.ID;
                                         ((PSP_Substation_Info)obj).EleID = tlVectorControl1.SVGDocument.CurrentElement.ID;
+                                       
                                         Services.BaseService.Update<PSP_Substation_Info>(((PSP_Substation_Info)obj));
                                         xml1.SetAttribute("Deviceid", deviceid);
                                         xml1.SetAttribute("info-name", ((PSP_Substation_Info)obj).Title);
@@ -4235,6 +4236,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                     obj = DeviceHelper.GetDevice<PSP_Substation_Info>(deviceid);
                                     if (obj != null)
                                     {
+                                        DeviceHelper.StartYear = startyear;
                                         //XmlElement n1 = tlVectorControl1.SVGDocument.SelectSingleNode("/text[@ParentUID='" + xml1.GetAttribute("id") + "']");
                                         if (DeviceHelper.ShowDeviceDlg(DeviceType.BDZ, deviceid, false))
                                         {
@@ -10598,7 +10600,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             }
             this.tlVectorControl1.Size = new Size((Screen.PrimaryScreen.WorkingArea.Height - 258), (Screen.PrimaryScreen.WorkingArea.Width - 176));
         }
-
+        private string startyear="";
         public void LayerManagerShow()
         {
             frmlar.SymbolDoc = tlVectorControl1.SVGDocument;
@@ -10626,7 +10628,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                 LayerGrade lar = new LayerGrade();
                 lar.SUID = y[1];
                 lar = (LayerGrade)Services.BaseService.GetObject("SelectLayerGradeByKey", lar);
-                frmlar.StrYear = lar.Name.Substring(0, 4);
+                startyear = frmlar.StrYear = lar.Name.Substring(0, 4);
+                
             }
             frmlar.Show();
         }

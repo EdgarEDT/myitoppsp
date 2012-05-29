@@ -75,6 +75,7 @@ namespace Itop.TLPSP.DEVICE
             string stype = ((int)type).ToString("00");
             return ShowDeviceDlg(stype, uid, isread);
         }
+        public static string StartYear = "";
         public static bool ShowDeviceDlg(string stype, string uid, bool isread)
         {
             object dev = null;
@@ -98,6 +99,7 @@ namespace Itop.TLPSP.DEVICE
                 case "20"://±‰µÁ’æ
 
                     frmBDZdlg dlg = new frmBDZdlg();
+                    dlg.StartYear = StartYear;
                     dlg.DeviceMx = dev as PSP_Substation_Info;
                     dlg.IsRead = isread;
                     if (dlg.ShowDialog() == DialogResult.OK && !isread)
