@@ -126,6 +126,9 @@
     <None Include="App.config" />
     <Content Include="App.ico" />
     <Content Include="App2.ico" />
+    <Content Include="map\city1\city1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
