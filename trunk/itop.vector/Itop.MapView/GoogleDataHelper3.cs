@@ -51,10 +51,15 @@ namespace Itop.MapView
         }
         string GetDatabse() {
             string database = string.Empty;
+            string dic = string.Empty;
             try {
                 database = ConfigurationManager.AppSettings["database3"];
             } catch { }
+            try {
+                dic = ConfigurationManager.AppSettings["CityName"];
+            } catch { }
             if (string.IsNullOrEmpty(database)) database = storeImgPath;
+            if (!string.IsNullOrEmpty(dic)) database = "map\\" + dic + "\\" + database;
             return database;
         }
         public GoogleDataHelper3()
