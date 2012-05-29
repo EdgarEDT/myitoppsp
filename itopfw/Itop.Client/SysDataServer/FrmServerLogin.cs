@@ -22,6 +22,7 @@ namespace Itop.Client
             FormView.Paint(this);
             utxtuser.image = imageList1.Images[0];
             utxtpwd.image = imageList1.Images[1];
+            utxtpwd.tbox.PasswordChar = '*';
         }
        
         //服务
