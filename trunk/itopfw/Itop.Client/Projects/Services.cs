@@ -36,10 +36,11 @@ namespace Itop.Client.Projects
         {
             get
             {
-                if (sysService == null)
-                {
-                    sysService = RemotingHelper.GetRemotingServiceSys<IBaseService>();
-                }
+                //if (sysService == null)
+                //{
+                //    sysService = RemotingHelper.GetRemotingServiceSys<IBaseService>();
+                //}
+                sysService = RemotingHelper.GetRemotingServiceSys<IBaseService>();
                 if (sysService == null) MsgBox.Show("IBaseService服务没有注册");
                 return sysService;
             }
@@ -62,7 +63,7 @@ namespace Itop.Client.Projects
         }
        // RemotingHelper.GetRemotingService<Itop.Server.Interface.IConfigService>();
        
-        public string GetServerAddress
+        public static string GetServerAddress
         {
             get
             {
@@ -70,7 +71,7 @@ namespace Itop.Client.Projects
                 return DataConfig.Datasource;
             }
         }
-        public string GetServerName
+        public static string GetServerName
         {
             get
             {
@@ -78,14 +79,14 @@ namespace Itop.Client.Projects
                 return DataConfig.Database;
             }
         }
-        public string GetUid
+        public static string GetUid
         {
             get
             {
                 return DataConfig.Userid;
             }
         }
-        public string GetPwd
+        public static string GetPwd
         {
             get
             {

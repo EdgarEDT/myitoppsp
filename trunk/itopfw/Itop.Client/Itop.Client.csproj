@@ -597,6 +597,7 @@
     <None Include="Resources\sysbg1.jpg" />
     <None Include="Resources\time.png" />
     <Content Include="Resources\TurnOffButton.bmp" />
+    <None Include="Resources\初始登录.png" />
     <Content Include="SystemFlowChart\sjgl.htm" />
     <None Include="Resources\user.png" />
     <None Include="Resources\复制.ico" />

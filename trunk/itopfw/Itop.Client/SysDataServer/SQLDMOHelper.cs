@@ -48,9 +48,9 @@ namespace Itop.Client
            MessageBox.Show(mes, "提示");
         }
 
-        string ServerName = "";
-        string UserName = "";
-        string Password = "";
+       static  string ServerName = "";
+       static  string UserName = "";
+       static  string Password = "";
 
       
       
@@ -877,7 +877,7 @@ namespace Itop.Client
         }
 
         #region 读取slq文件
-        public static ArrayList GetSqlFile(string varFileName, string dbname)
+        public  ArrayList GetSqlFile(string varFileName, string dbname)
         {
             ArrayList alSql = new ArrayList();
             if (!File.Exists(varFileName))
@@ -914,7 +914,7 @@ namespace Itop.Client
         #endregion
 
         #region 执行sql文件
-        public static bool ExecuteCommand(ArrayList varSqlList, SqlConnection MyConnection)
+        public  bool ExecuteCommand(ArrayList varSqlList, SqlConnection MyConnection)
         {
             bool result = true;
             if (MyConnection.State==ConnectionState.Closed)
@@ -949,7 +949,55 @@ namespace Itop.Client
         }
         #endregion
 
+        #region 开启远程复制
+        public  void StartSweet()
+        {
+            string connstr1 = " Connection Timeout=2; Pooling=False ;server=" + ServerName + ";database=Master;uid=" + UserName + ";pwd=" + Password + ";";
 
+            SqlConnection conn = new SqlConnection(connstr1);
+            try
+            {
+                conn.Open();
+                string commtext = "exec sp_configure 'show advanced options',1  reconfigure  exec sp_configure 'Ad Hoc Distributed Queries',1  reconfigure  ";
+                SqlCommand com = new SqlCommand(commtext, conn);
+                com.ExecuteNonQuery();               
+            }
+            catch (Exception err)
+            {
+                //throw (new Exception("！" + err.Message));
+                ShowError("开启远程复制数据失败" + err.Message);
+                
+            }
+            finally
+            {
+                conn.Close();   
+            }
+        }
+        #endregion
+        #region 关闭远程复制
+        public void CloseSweet()
+        {
+            string connstr1 = " Connection Timeout=2; Pooling=False ;server=" + ServerName + ";database=Master;uid=" + UserName + ";pwd=" + Password + ";";
 
+            SqlConnection conn = new SqlConnection(connstr1);
+            try
+            {
+                conn.Open();
+                string commtext = "exec sp_configure 'Ad Hoc Distributed Queries',0  reconfigure  exec sp_configure 'show advanced options',0  reconfigure   ";
+                SqlCommand com = new SqlCommand(commtext, conn);
+                com.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+                //throw (new Exception("！" + err.Message));
+                ShowError("关闭远程复制数据失败" + err.Message);
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        #endregion
     }
 }

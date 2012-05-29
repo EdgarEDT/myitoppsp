@@ -38,6 +38,32 @@ namespace Itop.Client.Option {
             
         }
         /// <summary>
+        /// 设置经伟度
+        /// </summary>
+        /// <param name="jd"></param>
+        /// <param name="wd"></param>
+        static public void SetJWDvalue(double jd, double wd)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings["jd"] != null)
+                config.AppSettings.Settings.Remove("jd");
+            config.AppSettings.Settings.Add("jd", jd.ToString());
+
+            if (config.AppSettings.Settings["wd"] != null)
+                config.AppSettings.Settings.Remove("wd");
+            config.AppSettings.Settings.Add("wd", wd.ToString());
+
+            config.Save();
+        }
+        static public void SetCityName(string cityname)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings["CityName"] != null)
+                config.AppSettings.Settings.Remove("jd");
+            config.AppSettings.Settings.Add("CityName", cityname);        
+            config.Save();
+        }
+        /// <summary>
         /// 设置键值
         /// </summary>
         /// <param name="key">键</param>

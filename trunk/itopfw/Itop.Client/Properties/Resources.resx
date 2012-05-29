@@ -136,7 +136,9 @@
   <data name="bgcolor3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bgcolor3.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  
+  <data name="复制" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\复制.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="butyl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\butyl.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -170,9 +172,6 @@
   <data name="SystemPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ItopSystemPic\SystemPic.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="复制" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\复制.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\20.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -182,5 +181,7 @@
   <data name="sysbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sysbg.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  
+  <data name="初始登录" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\初始登录.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

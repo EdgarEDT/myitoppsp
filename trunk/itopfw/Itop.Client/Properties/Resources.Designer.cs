@@ -193,6 +193,13 @@ namespace Itop.Client.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap 初始登录 {
+            get {
+                object obj = ResourceManager.GetObject("初始登录", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap 复制 {
             get {
                 object obj = ResourceManager.GetObject("复制", resourceCulture);

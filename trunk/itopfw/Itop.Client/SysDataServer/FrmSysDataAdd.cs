@@ -19,6 +19,9 @@ namespace Itop.Client
     public partial class FrmSysDataAdd : FormBase
     {
         public SysDataServer sds = null;
+        //系统中不能删除的表名
+        string[] ObjectTable = new string[] { "Smugroup", "Smmuser", "Smmproject", "Smmprog", "Smmlog", "Smmgroup", "smdgroup", "SAppProps", "glebeType", "glebeProperty", "LineType", "PS_Table_Area_TYPE", "Ps_HistoryType", "WireCategory", "PSP_Project_Sum" };
+
         public FrmSysDataAdd()
         {
             InitializeComponent();
@@ -142,13 +145,14 @@ namespace Itop.Client
                 return;
             }
 
-            string connstr1 = " Connection Timeout=2; server=" + txtServerAddress.Text.Trim() + ";database=Master;uid=" + txtServerUser.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
+            string connstr1 = " Connection Timeout=2; Pooling=False ;server=" + txtServerAddress.Text.Trim() + ";database=Master;uid=" + txtServerUser.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
             if (!CheckConn(connstr1))
             {
                 SQLDMOHelper.MesShow("无法连接到服务器，请确认服务器信息!");
                 return;
             }
             SQLDMOHelper smh = new SQLDMOHelper(txtServerAddress.Text.Trim(),txtServerUser.Text.Trim(),txtServerPwd.Text.Trim());
+
             ArrayList datalist = smh.GetDbList();
             if (datalist.Contains(txtServerName.Text.Trim()))
             {
@@ -169,7 +173,7 @@ namespace Itop.Client
             {
                 return;
             }
-            WaitDialogForm frm = new WaitDialogForm("","正在创建数据库，请稍后...");
+            WaitDialogForm frm = new WaitDialogForm("正在创建数据库，请稍后...");
             frm.Show();
             
             if (smh.CreateDB(txtServerName.Text.Trim(), FilePath))
@@ -197,17 +201,30 @@ namespace Itop.Client
                 getfile(file.Files, filepath);
 
 
-                ArrayList alist = SQLDMOHelper.GetSqlFile(filepath, txtServerName.Text.Trim());
+                ArrayList alist = smh.GetSqlFile(filepath, txtServerName.Text.Trim());
                 if (File.Exists(filepath))
                 {
                     File.Delete(filepath);
                 }
                 string connstr2 = "Pooling=False ; server=" + txtServerAddress.Text.Trim() + ";database=" + txtServerName.Text.Trim() + ";uid=" + txtServerUser.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
                 SqlConnection conn = new SqlConnection(connstr2);
-                if (SQLDMOHelper.ExecuteCommand(alist,conn))
+                frm.Caption = "正在创建数据表，请稍后...";
+                if (smh.ExecuteCommand(alist,conn))
                 {
-                    frm.Hide();
-                    SQLDMOHelper.MesShow("数据库 " + txtServerName.Text.Trim() + " 已成功创建");
+                    frm.Caption = "正在初始化数据，请稍后...";
+
+                    //添加数据
+                    if (CopyData(smh))
+                    {
+                        frm.Hide();
+                        SQLDMOHelper.MesShow("数据库 " + txtServerName.Text.Trim() + " 已成功创建");
+                    }
+                    else
+                    {
+                        frm.Hide();
+                        SQLDMOHelper.MesShow("数据库 " + txtServerName.Text.Trim() + " 已成功创建,初始化数据败");
+                    }
+                    
                 }
                 else
                 {
@@ -217,6 +234,34 @@ namespace Itop.Client
             }
             frm.Hide();
             
+        }
+        //从主库复制数据
+        public bool CopyData(SQLDMOHelper smh)
+        {
+            bool result = false;
+            string SysServerAddress=ServicesSys.GetServerAddress;
+            string SysServerName=ServicesSys.GetServerName;
+            string SysUid=ServicesSys.GetUid;
+            string SysPwd=ServicesSys.GetPwd;
+            string connstr2 = "Pooling=False ; server=" + txtServerAddress.Text.Trim() + ";database=" + txtServerName.Text.Trim() + ";uid=" + txtServerUser.Text.Trim() + ";pwd=" + txtServerPwd.Text.Trim() + ";";
+            SqlConnection conn = new SqlConnection(connstr2);
+            ArrayList list=new ArrayList ();
+
+            for (int i = 0; i < ObjectTable.Length; i++)
+			{
+                string insertsql = "insert  " + ObjectTable[i] + " select *  from openrowset( 'SQLOLEDB ', '" + SysServerAddress + "'; '" + SysUid + "'; '" + SysPwd + "'," + SysServerName + ".dbo." + ObjectTable[i] + ") ";
+                list.Add(insertsql);
+			}
+            smh.StartSweet();
+            if (smh.ExecuteCommand(list, conn))
+            {
+                smh.CloseSweet();
+                result = true;
+                
+            }
+            return result;
+            
+
         }
         public  void getfile(byte[] bt, string filename)
         {
