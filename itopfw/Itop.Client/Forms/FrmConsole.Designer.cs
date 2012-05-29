@@ -55,7 +55,6 @@
             this.bbtnAdditem = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbtndel = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnRecor = new DevExpress.XtraBars.BarButtonItem();
             this.bbtngl = new DevExpress.XtraBars.BarButtonItem();
             this.bbtncopy = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnup = new DevExpress.XtraBars.BarButtonItem();
@@ -67,6 +66,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
+            this.bbtnRecor = new DevExpress.XtraBars.BarButtonItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labExit = new System.Windows.Forms.Label();
             this.labAbout = new System.Windows.Forms.Label();
@@ -103,6 +103,7 @@
             this.labTime = new System.Windows.Forms.Label();
             this.labuser = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController(this.components);
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -123,6 +124,7 @@
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -290,6 +292,7 @@
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.bar1});
+            this.barManager1.Controller = this.barAndDockingController1;
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -323,7 +326,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnAdditem),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnEdit),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtndel),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnRecor),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtngl),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtncopy),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnup),
@@ -366,14 +368,6 @@
             this.bbtndel.ImageIndex = 1;
             this.bbtndel.Name = "bbtndel";
             this.bbtndel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtndel_ItemClick);
-            // 
-            // bbtnRecor
-            // 
-            this.bbtnRecor.Hint = "恢复项目";
-            this.bbtnRecor.Id = 5;
-            this.bbtnRecor.ImageIndex = 5;
-            this.bbtnRecor.Name = "bbtnRecor";
-            this.bbtnRecor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnRecor_ItemClick);
             // 
             // bbtngl
             // 
@@ -422,7 +416,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 2);
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(268, 26);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(220, 26);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -463,6 +457,14 @@
             this.imageList3.Images.SetKeyName(7, "add_32.png");
             this.imageList3.Images.SetKeyName(8, "activity_monitor_add.png");
             this.imageList3.Images.SetKeyName(9, "Users.ico");
+            // 
+            // bbtnRecor
+            // 
+            this.bbtnRecor.Hint = "恢复项目";
+            this.bbtnRecor.Id = 5;
+            this.bbtnRecor.ImageIndex = 5;
+            this.bbtnRecor.Name = "bbtnRecor";
+            this.bbtnRecor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnRecor_ItemClick);
             // 
             // panel1
             // 
@@ -571,6 +573,7 @@
             this.nbctSystem.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItem1});
             this.nbctSystem.Location = new System.Drawing.Point(10, 0);
+            this.nbctSystem.LookAndFeel.UseDefaultLookAndFeel = false;
             this.nbctSystem.Name = "nbctSystem";
             this.nbctSystem.OptionsNavPane.ExpandedWidth = 233;
             this.nbctSystem.OptionsNavPane.ShowExpandButton = false;
@@ -635,7 +638,7 @@
             this.splitContainer2.Panel2.Resize += new System.EventHandler(this.splitContainer2_Panel2_Resize);
             this.splitContainer2.Panel2MinSize = 0;
             this.splitContainer2.Size = new System.Drawing.Size(989, 550);
-            this.splitContainer2.SplitterDistance = 460;
+            this.splitContainer2.SplitterDistance = 394;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 13;
             // 
@@ -646,7 +649,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 25);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(10);
-            this.panel6.Size = new System.Drawing.Size(460, 525);
+            this.panel6.Size = new System.Drawing.Size(394, 525);
             this.panel6.TabIndex = 1;
             // 
             // listViewdown
@@ -660,7 +663,7 @@
             this.listViewdown.Location = new System.Drawing.Point(10, 10);
             this.listViewdown.Name = "listViewdown";
             this.listViewdown.ShowItemToolTips = true;
-            this.listViewdown.Size = new System.Drawing.Size(440, 505);
+            this.listViewdown.Size = new System.Drawing.Size(374, 505);
             this.listViewdown.TabIndex = 0;
             this.listViewdown.UseCompatibleStateImageBehavior = false;
             this.listViewdown.ItemActivate += new System.EventHandler(this.listViewdown_ItemActivate);
@@ -675,7 +678,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(460, 25);
+            this.panel5.Size = new System.Drawing.Size(394, 25);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -819,7 +822,7 @@
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(510, 525);
+            this.treeList1.Size = new System.Drawing.Size(576, 525);
             this.treeList1.StateImageList = this.imageList4;
             this.treeList1.TabIndex = 0;
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
@@ -1005,6 +1008,13 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // barAndDockingController1
+            // 
+            this.barAndDockingController1.LookAndFeel.SkinName = "Blue";
+            this.barAndDockingController1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.barAndDockingController1.PaintStyleName = "Skin";
+            this.barAndDockingController1.PropertiesBar.AllowLinkLighting = false;
+            // 
             // FrmConsole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1017,6 +1027,8 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.LookAndFeel.SkinName = "Blue";
+            this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmConsole";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -1046,6 +1058,7 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).EndInit();
             this.ResumeLayout(false);
 
 }
@@ -1131,6 +1144,7 @@
         private System.Windows.Forms.Label labTime;
         private System.Windows.Forms.Label labuser;
         private System.Windows.Forms.Label labCity;
+        private DevExpress.XtraBars.BarAndDockingController barAndDockingController1;
        
 
     }

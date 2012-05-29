@@ -357,6 +357,12 @@
     <Compile Include="SysDataServer\FrmDirTree.Designer.cs">
       <DependentUpon>FrmDirTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="SysDataServer\FrmServerLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysDataServer\FrmServerLogin.Designer.cs">
+      <DependentUpon>FrmServerLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="SysDataServer\FrmSysData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -519,6 +525,9 @@
     <EmbeddedResource Include="SysDataServer\FrmDirTree.resx">
       <DependentUpon>FrmDirTree.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SysDataServer\FrmServerLogin.resx">
+      <DependentUpon>FrmServerLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SysDataServer\FrmSysData.resx">
       <DependentUpon>FrmSysData.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -582,6 +591,7 @@
     <None Include="Resources\LeftFrame.png" />
     <None Include="Resources\left1.jpg" />
     <Content Include="Resources\LightBlue.bmp" />
+    <None Include="Resources\loginbg.jpg" />
     <Content Include="Resources\LoginBox.jpg" />
     <Content Include="Resources\LoginButton.jpg" />
     <Content Include="Resources\LoginButton1.jpg" />

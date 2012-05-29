@@ -27,9 +27,11 @@
             // 
             // MDIChildForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 508);
+            this.ClientSize = new System.Drawing.Size(796, 593);
+            this.LookAndFeel.SkinName = "Blue";
+            this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Name = "MDIChildForm";
             this.Text = "控制台";
             this.ResumeLayout(false);

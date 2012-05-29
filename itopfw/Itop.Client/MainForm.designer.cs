@@ -32,9 +32,9 @@ namespace Itop.Client {
             this.tooluser_image = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toldate = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toltime = new System.Windows.Forms.ToolStripStatusLabel();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toltime = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,15 +91,6 @@ namespace Itop.Client {
             this.toldate.Name = "toldate";
             this.toldate.Size = new System.Drawing.Size(131, 17);
             this.toldate.Text = "toolStripStatusLabel2";
-            // 
-            // toltime
-            // 
-            this.toltime.BackColor = System.Drawing.Color.Transparent;
-            this.toltime.ForeColor = System.Drawing.Color.White;
-            this.toltime.Image = global::Itop.Client.Properties.Resources.time;
-            this.toltime.Name = "toltime";
-            this.toltime.Size = new System.Drawing.Size(147, 17);
-            this.toltime.Text = "toolStripStatusLabel2";
             // 
             // imageList2
             // 
@@ -161,6 +152,15 @@ namespace Itop.Client {
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // toltime
+            // 
+            this.toltime.BackColor = System.Drawing.Color.Transparent;
+            this.toltime.ForeColor = System.Drawing.Color.White;
+            this.toltime.Image = global::Itop.Client.Properties.Resources.time;
+            this.toltime.Name = "toltime";
+            this.toltime.Size = new System.Drawing.Size(147, 16);
+            this.toltime.Text = "toolStripStatusLabel2";
+            // 
             // MainForm
             // 
             this.Appearance.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -171,6 +171,7 @@ namespace Itop.Client {
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.m_mainMenu);
             this.IsMdiContainer = true;
+            this.LookAndFeel.SkinName = "Blue";
             this.MainMenuStrip = this.m_mainMenu;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -44,18 +44,18 @@ namespace Itop.Client
         {
             IList<SysDataServer> syslist = ServicesSys.BaseService.GetList<SysDataServer>("SelectSysDataServerList","");
             //因时间原因，调试时暂时关闭此代码，正式运行时请打开
-            //foreach (SysDataServer ds in syslist)
-            //{
-            //    string connsql = "Connection Timeout=2; server=" + ds.ServerAddress + ";database=" + ds.ServerName + ";uid=" + ds.ServerUser + ";pwd=" + ds.ServerPwd + ";";
-            //    if (CheckConn(connsql))
-            //    {
-            //        ds.ByCol1 = "1";
-            //    }
-            //    else
-            //    {
-            //        ds.ByCol1 = "0";
-            //    }
-            //}
+            foreach (SysDataServer ds in syslist)
+            {
+                string connsql = "Connection Timeout=2; server=" + ds.ServerAddress + ";database=" + ds.ServerName + ";uid=" + ds.ServerUser + ";pwd=" + ds.ServerPwd + ";";
+                if (CheckConn(connsql))
+                {
+                    ds.ByCol1 = "1";
+                }
+                else
+                {
+                    ds.ByCol1 = "0";
+                }
+            }
             gridControl1.DataSource = syslist;
         }
         private bool CheckConn(string connstr)

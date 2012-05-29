@@ -49,13 +49,13 @@
             this.barAdd = new DevExpress.XtraBars.BarButtonItem();
             this.barEdit = new DevExpress.XtraBars.BarButtonItem();
             this.barDel = new DevExpress.XtraBars.BarButtonItem();
+            this.benSet = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
-            this.benSet = new DevExpress.XtraBars.BarButtonItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -70,7 +70,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(782, 335);
+            this.panel1.Size = new System.Drawing.Size(727, 317);
             this.panel1.TabIndex = 2;
             // 
             // gridControl1
@@ -83,7 +83,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageEdit1,
             this.repositoryItemImageComboBox1});
-            this.gridControl1.Size = new System.Drawing.Size(782, 335);
+            this.gridControl1.Size = new System.Drawing.Size(727, 317);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -294,29 +294,37 @@
             this.barDel.Name = "barDel";
             this.barDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barDel_ItemClick);
             // 
+            // benSet
+            // 
+            this.benSet.Caption = "配置";
+            this.benSet.Id = 10;
+            this.benSet.ImageIndex = 20;
+            this.benSet.Name = "benSet";
+            this.benSet.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.benSet_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(782, 34);
+            this.barDockControlTop.Size = new System.Drawing.Size(727, 34);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 369);
-            this.barDockControlBottom.Size = new System.Drawing.Size(782, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 351);
+            this.barDockControlBottom.Size = new System.Drawing.Size(727, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 34);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 335);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 317);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(782, 34);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 335);
+            this.barDockControlRight.Location = new System.Drawing.Point(727, 34);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 317);
             // 
             // imageList1
             // 
@@ -365,24 +373,19 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
             // 
-            // benSet
-            // 
-            this.benSet.Caption = "配置";
-            this.benSet.Id = 10;
-            this.benSet.ImageIndex = 20;
-            this.benSet.Name = "benSet";
-            this.benSet.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.benSet_ItemClick);
-            // 
             // FrmSysData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 369);
+            this.ClientSize = new System.Drawing.Size(727, 351);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSysData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "城市与数据库管理";

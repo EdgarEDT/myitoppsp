@@ -72,6 +72,7 @@ namespace Itop.Client.Forms
             PictureViewup.Paint(pictureBox1);
             PictureViewdown.Paint(pictureBox2);
         }
+        
         #endregion
         
         #region ×Ö¶Î

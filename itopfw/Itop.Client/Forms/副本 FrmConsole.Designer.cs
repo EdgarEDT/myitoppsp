@@ -619,7 +619,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(268, 26);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(312, 26);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // panel3
