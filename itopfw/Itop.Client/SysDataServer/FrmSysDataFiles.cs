@@ -99,7 +99,7 @@ namespace Itop.Client
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 ds = frm.file;
-                ServicesSys.BaseService.Update<FrmSysDataFileAdd>(ds);
+                ServicesSys.BaseService.Update<SysDataFiles>(ds);
                 InitData();
 
             }

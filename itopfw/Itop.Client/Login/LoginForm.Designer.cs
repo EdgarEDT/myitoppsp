@@ -27,6 +27,9 @@ namespace Itop.Client.Login {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lablogin = new System.Windows.Forms.Label();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.sbtnData = new DevExpress.XtraEditors.SimpleButton();
             this.ubclose = new Itop.Client.UserBar();
             this.ubmin = new Itop.Client.UserBar();
             this.utxtpwd = new Itop.Client.UserText();
@@ -38,13 +41,13 @@ namespace Itop.Client.Login {
             this.m_labelUserNumber = new System.Windows.Forms.Label();
             this.m_labelPassword = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.sbtnData = new DevExpress.XtraEditors.SimpleButton();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.lablogin);
             this.panel2.Controls.Add(this.sbtnData);
             this.panel2.Controls.Add(this.ubclose);
             this.panel2.Controls.Add(this.ubmin);
@@ -63,6 +66,37 @@ namespace Itop.Client.Login {
             this.panel2.Size = new System.Drawing.Size(500, 300);
             this.panel2.TabIndex = 5;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // lablogin
+            // 
+            this.lablogin.ImageIndex = 0;
+            this.lablogin.ImageList = this.imageList2;
+            this.lablogin.Location = new System.Drawing.Point(276, 167);
+            this.lablogin.Name = "lablogin";
+            this.lablogin.Size = new System.Drawing.Size(58, 23);
+            this.lablogin.TabIndex = 15;
+            this.lablogin.MouseLeave += new System.EventHandler(this.lablogin_MouseLeave);
+            this.lablogin.Click += new System.EventHandler(this.lablogin_Click);
+            this.lablogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lablogin_MouseDown);
+            this.lablogin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lablogin_MouseUp);
+            this.lablogin.MouseEnter += new System.EventHandler(this.lablogin_MouseEnter);
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "初始登录.png");
+            this.imageList2.Images.SetKeyName(1, "滑动登录.png");
+            this.imageList2.Images.SetKeyName(2, "点击登录.png");
+            // 
+            // sbtnData
+            // 
+            this.sbtnData.Location = new System.Drawing.Point(407, 251);
+            this.sbtnData.Name = "sbtnData";
+            this.sbtnData.Size = new System.Drawing.Size(75, 23);
+            this.sbtnData.TabIndex = 14;
+            this.sbtnData.Text = "数据库";
+            this.sbtnData.Click += new System.EventHandler(this.sbtnData_Click);
             // 
             // ubclose
             // 
@@ -84,14 +118,14 @@ namespace Itop.Client.Login {
             // 
             // utxtpwd
             // 
-            this.utxtpwd.Location = new System.Drawing.Point(105, 119);
+            this.utxtpwd.Location = new System.Drawing.Point(305, 132);
             this.utxtpwd.Name = "utxtpwd";
             this.utxtpwd.Size = new System.Drawing.Size(161, 22);
             this.utxtpwd.TabIndex = 1;
             // 
             // utxtuser
             // 
-            this.utxtuser.Location = new System.Drawing.Point(105, 85);
+            this.utxtuser.Location = new System.Drawing.Point(305, 98);
             this.utxtuser.Name = "utxtuser";
             this.utxtuser.Size = new System.Drawing.Size(161, 22);
             this.utxtuser.TabIndex = 0;
@@ -115,7 +149,7 @@ namespace Itop.Client.Login {
             // 
             // sbtnSetting
             // 
-            this.sbtnSetting.Location = new System.Drawing.Point(68, 167);
+            this.sbtnSetting.Location = new System.Drawing.Point(281, 196);
             this.sbtnSetting.Name = "sbtnSetting";
             this.sbtnSetting.Size = new System.Drawing.Size(58, 23);
             this.sbtnSetting.TabIndex = 2;
@@ -124,7 +158,7 @@ namespace Itop.Client.Login {
             // 
             // sbtnExit
             // 
-            this.sbtnExit.Location = new System.Drawing.Point(195, 167);
+            this.sbtnExit.Location = new System.Drawing.Point(408, 196);
             this.sbtnExit.Name = "sbtnExit";
             this.sbtnExit.Size = new System.Drawing.Size(58, 23);
             this.sbtnExit.TabIndex = 4;
@@ -133,7 +167,7 @@ namespace Itop.Client.Login {
             // 
             // sbtnOk
             // 
-            this.sbtnOk.Location = new System.Drawing.Point(131, 167);
+            this.sbtnOk.Location = new System.Drawing.Point(344, 196);
             this.sbtnOk.Name = "sbtnOk";
             this.sbtnOk.Size = new System.Drawing.Size(58, 23);
             this.sbtnOk.TabIndex = 3;
@@ -145,7 +179,7 @@ namespace Itop.Client.Login {
             this.m_labelUserNumber.AutoSize = true;
             this.m_labelUserNumber.BackColor = System.Drawing.Color.Transparent;
             this.m_labelUserNumber.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelUserNumber.Location = new System.Drawing.Point(57, 90);
+            this.m_labelUserNumber.Location = new System.Drawing.Point(257, 103);
             this.m_labelUserNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelUserNumber.Name = "m_labelUserNumber";
             this.m_labelUserNumber.Size = new System.Drawing.Size(41, 12);
@@ -157,7 +191,7 @@ namespace Itop.Client.Login {
             this.m_labelPassword.AutoSize = true;
             this.m_labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.m_labelPassword.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelPassword.Location = new System.Drawing.Point(57, 122);
+            this.m_labelPassword.Location = new System.Drawing.Point(257, 135);
             this.m_labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelPassword.Name = "m_labelPassword";
             this.m_labelPassword.Size = new System.Drawing.Size(41, 12);
@@ -170,15 +204,6 @@ namespace Itop.Client.Login {
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "male.ico");
             this.imageList1.Images.SetKeyName(1, "key.ico");
-            // 
-            // sbtnData
-            // 
-            this.sbtnData.Location = new System.Drawing.Point(407, 251);
-            this.sbtnData.Name = "sbtnData";
-            this.sbtnData.Size = new System.Drawing.Size(75, 23);
-            this.sbtnData.TabIndex = 14;
-            this.sbtnData.Text = "数据库";
-            this.sbtnData.Click += new System.EventHandler(this.sbtnData_Click);
             // 
             // LoginForm
             // 
@@ -215,5 +240,7 @@ namespace Itop.Client.Login {
         private UserBar ubmin;
         private UserBar ubclose;
         private DevExpress.XtraEditors.SimpleButton sbtnData;
+        private System.Windows.Forms.Label lablogin;
+        private System.Windows.Forms.ImageList imageList2;
     }
 }

@@ -1278,6 +1278,13 @@ namespace Itop.Client.Resources.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap loginwait1 {
+            get {
+                object obj = ResourceManager.GetObject("loginwait1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap ma {
             get {
                 object obj = ResourceManager.GetObject("ma", resourceCulture);

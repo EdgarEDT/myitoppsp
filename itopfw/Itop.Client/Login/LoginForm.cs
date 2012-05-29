@@ -241,6 +241,8 @@ namespace Itop.Client.Login {
                 MIS.CityName = ds.CityName;
                 MIS.JD = ds.CityJD;
                 MIS.WD = ds.CityWD;
+                Itop.Client.Option.Settings.SetJWDvalue(ds.CityJD, ds.CityWD);
+                Itop.Client.Option.Settings.SetCityName(ds.CityName);
                 int port=int.Parse(RemotingHelper.ServerPortSys);
                 port++;
                 ServerSettings.RemotingProtocol = RemotingHelper.ServerProtocolSys;
@@ -330,6 +332,31 @@ namespace Itop.Client.Login {
         {
             FrmSysData frm = new FrmSysData();
             frm.Show();
+        }
+
+        private void lablogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lablogin_MouseEnter(object sender, EventArgs e)
+        {
+            lablogin.ImageIndex = 1;
+        }
+
+        private void lablogin_MouseLeave(object sender, EventArgs e)
+        {
+            lablogin.ImageIndex = 0;
+        }
+
+        private void lablogin_MouseDown(object sender, MouseEventArgs e)
+        {
+            lablogin.ImageIndex = 2;
+        }
+
+        private void lablogin_MouseUp(object sender, MouseEventArgs e)
+        {
+            lablogin.ImageIndex = 1;
         }
 
 

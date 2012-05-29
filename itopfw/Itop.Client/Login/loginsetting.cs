@@ -78,6 +78,7 @@ namespace Itop.Client.Login
         }
         private void btnRefreshCity_Click(object sender, EventArgs e)
         {
+            updateConfig();
             try
             {
                 IList<SysDataServer> dslist = ServicesSys.BaseService.GetList<SysDataServer>("SelectSysDataServerList", "");
@@ -89,7 +90,7 @@ namespace Itop.Client.Login
                 return;
             }
             
-            updateConfig();
+          
         }
     }
 }
