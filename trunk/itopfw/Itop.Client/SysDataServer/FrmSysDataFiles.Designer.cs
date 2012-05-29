@@ -39,6 +39,7 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barAdd = new DevExpress.XtraBars.BarButtonItem();
             this.barEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.barSave = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -47,7 +48,6 @@
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.barSave = new DevExpress.XtraBars.BarButtonItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -185,6 +185,14 @@
             this.barEdit.Name = "barEdit";
             this.barEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barEdit_ItemClick);
             // 
+            // barSave
+            // 
+            this.barSave.Caption = "导出";
+            this.barSave.Id = 11;
+            this.barSave.ImageIndex = 3;
+            this.barSave.Name = "barSave";
+            this.barSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barSave_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -273,14 +281,6 @@
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList2.Images.SetKeyName(0, "0");
             this.imageList2.Images.SetKeyName(1, "1");
-            // 
-            // barSave
-            // 
-            this.barSave.Caption = "导出";
-            this.barSave.Id = 11;
-            this.barSave.ImageIndex = 3;
-            this.barSave.Name = "barSave";
-            this.barSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barSave_ItemClick);
             // 
             // FrmSysDataFiles
             // 

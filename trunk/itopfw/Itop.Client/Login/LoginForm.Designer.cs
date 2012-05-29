@@ -26,27 +26,58 @@ namespace Itop.Client.Login {
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lablogin = new System.Windows.Forms.Label();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.sbtnOk = new DevExpress.XtraEditors.SimpleButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labSetServer = new DevExpress.XtraEditors.LabelControl();
+            this.labSetData = new System.Windows.Forms.Label();
+            this.labSet = new System.Windows.Forms.Label();
+            this.lablogin = new System.Windows.Forms.Label();
             this.sbtnData = new DevExpress.XtraEditors.SimpleButton();
             this.ubclose = new Itop.Client.UserBar();
             this.ubmin = new Itop.Client.UserBar();
             this.utxtpwd = new Itop.Client.UserText();
             this.utxtuser = new Itop.Client.UserText();
             this.labtop = new DevExpress.XtraEditors.LabelControl();
-            this.sbtnSetting = new DevExpress.XtraEditors.SimpleButton();
-            this.sbtnExit = new DevExpress.XtraEditors.SimpleButton();
-            this.sbtnOk = new DevExpress.XtraEditors.SimpleButton();
             this.m_labelUserNumber = new System.Windows.Forms.Label();
             this.m_labelPassword = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "初始登录300.png");
+            this.imageList2.Images.SetKeyName(1, "滑动登录300.png");
+            this.imageList2.Images.SetKeyName(2, "点击登录300.png");
+            this.imageList2.Images.SetKeyName(3, "初始设置500.png");
+            this.imageList2.Images.SetKeyName(4, "滑动设置500.png");
+            this.imageList2.Images.SetKeyName(5, "点击设置500.png");
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "male.ico");
+            this.imageList1.Images.SetKeyName(1, "key.ico");
+            // 
+            // sbtnOk
+            // 
+            this.sbtnOk.Location = new System.Drawing.Point(292, 209);
+            this.sbtnOk.Name = "sbtnOk";
+            this.sbtnOk.Size = new System.Drawing.Size(37, 15);
+            this.sbtnOk.TabIndex = 3;
+            this.sbtnOk.Text = "登 录";
+            this.sbtnOk.Click += new System.EventHandler(this.sbtnOk_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.labSetServer);
+            this.panel2.Controls.Add(this.labSetData);
+            this.panel2.Controls.Add(this.labSet);
             this.panel2.Controls.Add(this.lablogin);
             this.panel2.Controls.Add(this.sbtnData);
             this.panel2.Controls.Add(this.ubclose);
@@ -54,11 +85,9 @@ namespace Itop.Client.Login {
             this.panel2.Controls.Add(this.utxtpwd);
             this.panel2.Controls.Add(this.utxtuser);
             this.panel2.Controls.Add(this.labtop);
-            this.panel2.Controls.Add(this.sbtnSetting);
-            this.panel2.Controls.Add(this.sbtnExit);
-            this.panel2.Controls.Add(this.sbtnOk);
             this.panel2.Controls.Add(this.m_labelUserNumber);
             this.panel2.Controls.Add(this.m_labelPassword);
+            this.panel2.Controls.Add(this.sbtnOk);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -67,27 +96,54 @@ namespace Itop.Client.Login {
             this.panel2.TabIndex = 5;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // labSetServer
+            // 
+            this.labSetServer.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labSetServer.Location = new System.Drawing.Point(57, 37);
+            this.labSetServer.Name = "labSetServer";
+            this.labSetServer.Size = new System.Drawing.Size(63, 43);
+            this.labSetServer.TabIndex = 18;
+            this.labSetServer.ToolTip = "双击进入城市数据库管理";
+            this.labSetServer.ToolTipTitle = "提示：";
+            this.labSetServer.DoubleClick += new System.EventHandler(this.labSetServer_DoubleClick);
+            this.labSetServer.MouseLeave += new System.EventHandler(this.labSetServer_MouseLeave);
+            this.labSetServer.MouseEnter += new System.EventHandler(this.labSetServer_MouseEnter);
+            // 
+            // labSetData
+            // 
+            this.labSetData.ImageList = this.imageList2;
+            this.labSetData.Location = new System.Drawing.Point(70, 37);
+            this.labSetData.Name = "labSetData";
+            this.labSetData.Size = new System.Drawing.Size(81, 58);
+            this.labSetData.TabIndex = 17;
+            // 
+            // labSet
+            // 
+            this.labSet.ImageIndex = 3;
+            this.labSet.ImageList = this.imageList2;
+            this.labSet.Location = new System.Drawing.Point(357, 205);
+            this.labSet.Name = "labSet";
+            this.labSet.Size = new System.Drawing.Size(58, 23);
+            this.labSet.TabIndex = 3;
+            this.labSet.MouseLeave += new System.EventHandler(this.labSet_MouseLeave);
+            this.labSet.Click += new System.EventHandler(this.labSet_Click);
+            this.labSet.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labSet_MouseDown);
+            this.labSet.MouseUp += new System.Windows.Forms.MouseEventHandler(this.labSet_MouseUp);
+            this.labSet.MouseEnter += new System.EventHandler(this.labSet_MouseEnter);
+            // 
             // lablogin
             // 
             this.lablogin.ImageIndex = 0;
             this.lablogin.ImageList = this.imageList2;
-            this.lablogin.Location = new System.Drawing.Point(276, 167);
+            this.lablogin.Location = new System.Drawing.Point(279, 205);
             this.lablogin.Name = "lablogin";
             this.lablogin.Size = new System.Drawing.Size(58, 23);
-            this.lablogin.TabIndex = 15;
+            this.lablogin.TabIndex = 2;
             this.lablogin.MouseLeave += new System.EventHandler(this.lablogin_MouseLeave);
             this.lablogin.Click += new System.EventHandler(this.lablogin_Click);
             this.lablogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lablogin_MouseDown);
             this.lablogin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lablogin_MouseUp);
             this.lablogin.MouseEnter += new System.EventHandler(this.lablogin_MouseEnter);
-            // 
-            // imageList2
-            // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "初始登录.png");
-            this.imageList2.Images.SetKeyName(1, "滑动登录.png");
-            this.imageList2.Images.SetKeyName(2, "点击登录.png");
             // 
             // sbtnData
             // 
@@ -96,13 +152,14 @@ namespace Itop.Client.Login {
             this.sbtnData.Size = new System.Drawing.Size(75, 23);
             this.sbtnData.TabIndex = 14;
             this.sbtnData.Text = "数据库";
+            this.sbtnData.Visible = false;
             this.sbtnData.Click += new System.EventHandler(this.sbtnData_Click);
             // 
             // ubclose
             // 
             this.ubclose.BackColor = System.Drawing.Color.Transparent;
             this.ubclose.BarType = Itop.Client.UserBar.bartype.close;
-            this.ubclose.Location = new System.Drawing.Point(465, 0);
+            this.ubclose.Location = new System.Drawing.Point(469, 0);
             this.ubclose.Name = "ubclose";
             this.ubclose.Size = new System.Drawing.Size(32, 20);
             this.ubclose.TabIndex = 13;
@@ -111,21 +168,21 @@ namespace Itop.Client.Login {
             // 
             this.ubmin.BackColor = System.Drawing.Color.Transparent;
             this.ubmin.BarType = Itop.Client.UserBar.bartype.min;
-            this.ubmin.Location = new System.Drawing.Point(434, 0);
+            this.ubmin.Location = new System.Drawing.Point(438, 0);
             this.ubmin.Name = "ubmin";
             this.ubmin.Size = new System.Drawing.Size(32, 20);
             this.ubmin.TabIndex = 12;
             // 
             // utxtpwd
             // 
-            this.utxtpwd.Location = new System.Drawing.Point(305, 132);
+            this.utxtpwd.Location = new System.Drawing.Point(271, 171);
             this.utxtpwd.Name = "utxtpwd";
             this.utxtpwd.Size = new System.Drawing.Size(161, 22);
             this.utxtpwd.TabIndex = 1;
             // 
             // utxtuser
             // 
-            this.utxtuser.Location = new System.Drawing.Point(305, 98);
+            this.utxtuser.Location = new System.Drawing.Point(271, 137);
             this.utxtuser.Name = "utxtuser";
             this.utxtuser.Size = new System.Drawing.Size(161, 22);
             this.utxtuser.TabIndex = 0;
@@ -147,39 +204,12 @@ namespace Itop.Client.Login {
             this.labtop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.labtop_MouseUp);
             this.labtop.MouseEnter += new System.EventHandler(this.labtop_MouseEnter);
             // 
-            // sbtnSetting
-            // 
-            this.sbtnSetting.Location = new System.Drawing.Point(281, 196);
-            this.sbtnSetting.Name = "sbtnSetting";
-            this.sbtnSetting.Size = new System.Drawing.Size(58, 23);
-            this.sbtnSetting.TabIndex = 2;
-            this.sbtnSetting.Text = "设 置";
-            this.sbtnSetting.Click += new System.EventHandler(this.sbtnSetting_Click);
-            // 
-            // sbtnExit
-            // 
-            this.sbtnExit.Location = new System.Drawing.Point(408, 196);
-            this.sbtnExit.Name = "sbtnExit";
-            this.sbtnExit.Size = new System.Drawing.Size(58, 23);
-            this.sbtnExit.TabIndex = 4;
-            this.sbtnExit.Text = "退 出";
-            this.sbtnExit.Click += new System.EventHandler(this.sbtnExit_Click);
-            // 
-            // sbtnOk
-            // 
-            this.sbtnOk.Location = new System.Drawing.Point(344, 196);
-            this.sbtnOk.Name = "sbtnOk";
-            this.sbtnOk.Size = new System.Drawing.Size(58, 23);
-            this.sbtnOk.TabIndex = 3;
-            this.sbtnOk.Text = "登 录";
-            this.sbtnOk.Click += new System.EventHandler(this.sbtnOk_Click);
-            // 
             // m_labelUserNumber
             // 
             this.m_labelUserNumber.AutoSize = true;
             this.m_labelUserNumber.BackColor = System.Drawing.Color.Transparent;
             this.m_labelUserNumber.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelUserNumber.Location = new System.Drawing.Point(257, 103);
+            this.m_labelUserNumber.Location = new System.Drawing.Point(223, 142);
             this.m_labelUserNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelUserNumber.Name = "m_labelUserNumber";
             this.m_labelUserNumber.Size = new System.Drawing.Size(41, 12);
@@ -191,19 +221,12 @@ namespace Itop.Client.Login {
             this.m_labelPassword.AutoSize = true;
             this.m_labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.m_labelPassword.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelPassword.Location = new System.Drawing.Point(257, 135);
+            this.m_labelPassword.Location = new System.Drawing.Point(223, 174);
             this.m_labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelPassword.Name = "m_labelPassword";
             this.m_labelPassword.Size = new System.Drawing.Size(41, 12);
             this.m_labelPassword.TabIndex = 3;
             this.m_labelPassword.Text = "密  码";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "male.ico");
-            this.imageList1.Images.SetKeyName(1, "key.ico");
             // 
             // LoginForm
             // 
@@ -230,8 +253,6 @@ namespace Itop.Client.Login {
         private System.Windows.Forms.Label m_labelUserNumber;
         private System.Windows.Forms.Label m_labelPassword;
         private System.Windows.Forms.Panel panel2;
-        private DevExpress.XtraEditors.SimpleButton sbtnExit;
-        private DevExpress.XtraEditors.SimpleButton sbtnSetting;
         private DevExpress.XtraEditors.SimpleButton sbtnOk;
         private DevExpress.XtraEditors.LabelControl labtop;
         private System.Windows.Forms.ImageList imageList1;
@@ -242,5 +263,8 @@ namespace Itop.Client.Login {
         private DevExpress.XtraEditors.SimpleButton sbtnData;
         private System.Windows.Forms.Label lablogin;
         private System.Windows.Forms.ImageList imageList2;
+        private System.Windows.Forms.Label labSet;
+        private System.Windows.Forms.Label labSetData;
+        private DevExpress.XtraEditors.LabelControl labSetServer;
     }
 }

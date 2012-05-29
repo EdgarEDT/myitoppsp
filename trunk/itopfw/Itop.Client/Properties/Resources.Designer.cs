@@ -130,6 +130,13 @@ namespace Itop.Client.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap loginbg {
+            get {
+                object obj = ResourceManager.GetObject("loginbg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap Middle {
             get {
                 object obj = ResourceManager.GetObject("Middle", resourceCulture);

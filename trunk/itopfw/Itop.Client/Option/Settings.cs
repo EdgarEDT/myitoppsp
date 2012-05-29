@@ -59,7 +59,7 @@ namespace Itop.Client.Option {
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             if (config.AppSettings.Settings["CityName"] != null)
-                config.AppSettings.Settings.Remove("jd");
+                config.AppSettings.Settings.Remove("CityName");
             config.AppSettings.Settings.Add("CityName", cityname);        
             config.Save();
         }

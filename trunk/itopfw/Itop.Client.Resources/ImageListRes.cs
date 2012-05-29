@@ -283,7 +283,7 @@ namespace Itop.Client.Resources
 
         public static Bitmap GetLoginWaitPhoto()
         {
-            return Itop.Client.Resources.Properties.Resources.loginwait;
+            return Itop.Client.Resources.Properties.Resources.loginwait1;
         }
         public static Bitmap GetAboutPhoto()
         {

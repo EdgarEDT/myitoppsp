@@ -433,8 +433,8 @@
     <None Include="Resources\about.jpg" />
     <None Include="Resources\maintop1.jpg" />
     <None Include="Resources\a5.jpg" />
-    <None Include="Resources\loginbg.jpg" />
     <None Include="Resources\loginwait.jpg" />
+    <None Include="Resources\loginbg.jpg" />
     <Content Include="Resources\作废.ico" />
     <None Include="Resources\供电范围与负荷平衡0.png" />
     <None Include="Resources\供电范围与负荷平衡.png" />

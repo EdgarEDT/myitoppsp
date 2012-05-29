@@ -336,9 +336,15 @@ namespace Itop.Client.Login {
 
         private void lablogin_Click(object sender, EventArgs e)
         {
-
+            StartServer();
+            DoLogin();
         }
-
+        private void labSet_Click(object sender, EventArgs e)
+        {
+            lablogin.ImageIndex = 0;
+            loginsetting lst = new loginsetting();
+            lst.ShowDialog();
+        }
         private void lablogin_MouseEnter(object sender, EventArgs e)
         {
             lablogin.ImageIndex = 1;
@@ -357,6 +363,51 @@ namespace Itop.Client.Login {
         private void lablogin_MouseUp(object sender, MouseEventArgs e)
         {
             lablogin.ImageIndex = 1;
+        }
+
+       
+
+        private void labSet_MouseEnter(object sender, EventArgs e)
+        {
+            labSet.ImageIndex = 4;
+
+        }
+
+        private void labSet_MouseLeave(object sender, EventArgs e)
+        {
+            labSet.ImageIndex = 3;
+        }
+
+        private void labSet_MouseUp(object sender, MouseEventArgs e)
+        {
+            labSet.ImageIndex = 4;
+        }
+
+        private void labSet_MouseDown(object sender, MouseEventArgs e)
+        {
+            labSet.ImageIndex = 5;
+        }
+
+        private void labSetServer_DoubleClick(object sender, EventArgs e)
+        {
+            FrmServerLogin frml=new FrmServerLogin ();
+            
+            if (frml.ShowDialog()==DialogResult.OK)
+            {
+                FrmSysData frm = new FrmSysData();
+                frm.Show();
+            }
+           
+        }
+
+        private void labSetServer_MouseEnter(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void labSetServer_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
 
 
