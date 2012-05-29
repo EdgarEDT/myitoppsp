@@ -52,10 +52,15 @@ namespace Itop.MapView
         }
         string GetDatabse() {
             string database = string.Empty;
+            string dic = string.Empty;
             try {
                 database = ConfigurationManager.AppSettings["database2"];
             } catch { }
+            try {
+                dic = ConfigurationManager.AppSettings["CityName"];
+            } catch { }
             if (string.IsNullOrEmpty(database)) database = storeImgPath;
+            if (!string.IsNullOrEmpty(dic)) database = "map\\" + dic + "\\" + database;
             return database;
         }
         public GoogleDataHelper2()
@@ -176,7 +181,7 @@ namespace Itop.MapView
             string url = "cookie=" + opt_authtoken + "&" + src;           
             Uri strU = new Uri(strImgsvrUrl + src);
             try {
-                strImgsvrUrl = "http://khm1.google.cn/kh/v=80&";
+                //strImgsvrUrl = "http://khm1.google.cn/kh/v=80&";
                 //webClient = new System.Net.WebClient();
                 //byte[] buff = webClient.DownloadData(strImgsvrUrl + url);       
                 HttpProc.WebClient client = new HttpProc.WebClient();

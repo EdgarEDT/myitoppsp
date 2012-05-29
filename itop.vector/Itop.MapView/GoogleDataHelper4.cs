@@ -51,10 +51,15 @@ namespace Itop.MapView
         }
         string GetDatabse() {
             string database = string.Empty;
+            string dic = string.Empty;
             try {
                 database = ConfigurationManager.AppSettings["database4"];
             } catch { }
+            try {
+                dic = ConfigurationManager.AppSettings["CityName"];
+            } catch { }
             if (string.IsNullOrEmpty(database)) database = storeImgPath;
+            if (!string.IsNullOrEmpty(dic)) database ="map\\"+ dic + "\\" + database;
             return database;
         }
         public GoogleDataHelper4()
@@ -173,7 +178,7 @@ namespace Itop.MapView
         private Image downloadmap(string src) {
             Image img = null;
             try {
-                strImgsvrUrl = "http://mt3.google.cn/vt/lyrs=t@126,r@139&hl=zh-CN&gl=cn&";
+                //strImgsvrUrl = "http://mt3.google.cn/vt/lyrs=t@126,r@139&hl=zh-CN&gl=cn&";
                 HttpProc.WebClient client = new HttpProc.WebClient();
                 Stream stream = client.DownloadData(strImgsvrUrl + src);
                 byte[] buff = new byte[stream.Length];

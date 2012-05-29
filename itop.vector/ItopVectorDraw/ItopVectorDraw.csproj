@@ -87,7 +87,9 @@
       <Name>Interop.QuartzTypeLib</Name>
       <HintPath>..\bin\Interop.QuartzTypeLib.dll</HintPath>
     </Reference>
-    <Reference Include="Itop.CADConvert, Version=1.0.4269.23920, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.CADConvert, Version=1.0.4269.23920, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="Itop.MapView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.MapView.Tables, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System">

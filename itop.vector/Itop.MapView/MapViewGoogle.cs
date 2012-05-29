@@ -50,10 +50,10 @@ namespace Itop.MapView
             : this("") {
         }
         public MapViewGoogle(string mapfile) {
-            dataHelper = new GoogleDataHelper(mapfile, "m1_");
-            dataHelper2 = new GoogleDataHelper2("mapdata2.map", "m2_");
-            dataHelper3 = new GoogleDataHelper3("mapdata3.map", "m3_");
-            dataHelper4 = new GoogleDataHelper4("mapdata4.map", "m4_");
+            dataHelper = new GoogleDataHelper("", "m1_");
+            dataHelper2 = new GoogleDataHelper2("", "m2_");
+            dataHelper3 = new GoogleDataHelper3("", "m3_");
+            dataHelper4 = new GoogleDataHelper4("", "m4_");
             dataHelper.OnDownCompleted += new DownCompleteEventHandler(dataHelper_OnDownCompleted);
             dataHelper2.OnDownCompleted += new DownCompleteEventHandler(dataHelper_OnDownCompleted);
             dataHelper3.OnDownCompleted += new DownCompleteEventHandler(dataHelper_OnDownCompleted);
