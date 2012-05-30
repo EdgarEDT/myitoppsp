@@ -121,20 +121,23 @@
   <data name="butyl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\butyl.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="500300蓝1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\500300蓝1.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="初始登录" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\初始登录.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\right.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="time" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\time.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="500300蓝" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\500300蓝.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgcolor3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bgcolor3.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,14 +148,20 @@
   <data name="butyl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\butyl.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="loginbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loginbg.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TurnOffButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TurnOffButton.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="explorer_exe_62_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\explorer_exe_62_16.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="head" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\head.JPG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="500300蓝2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\500300蓝2.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="time" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\time.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgcolor2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bgcolor2.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -162,6 +171,9 @@
   </data>
   <data name="sysbg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sysbg1.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="500300蓝3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\500300蓝3.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="综合信息管理系统logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\综合信息管理系统logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,13 +190,16 @@
   <data name="20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\20.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="head" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\head.JPG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Left.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sysbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sysbg.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="loginbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\loginbg.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="500300" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\500300.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

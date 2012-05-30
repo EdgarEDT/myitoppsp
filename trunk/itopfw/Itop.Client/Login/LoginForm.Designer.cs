@@ -65,7 +65,7 @@ namespace Itop.Client.Login {
             // 
             // sbtnOk
             // 
-            this.sbtnOk.Location = new System.Drawing.Point(292, 209);
+            this.sbtnOk.Location = new System.Drawing.Point(292, 193);
             this.sbtnOk.Name = "sbtnOk";
             this.sbtnOk.Size = new System.Drawing.Size(37, 15);
             this.sbtnOk.TabIndex = 3;
@@ -99,7 +99,7 @@ namespace Itop.Client.Login {
             // labSetServer
             // 
             this.labSetServer.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labSetServer.Location = new System.Drawing.Point(57, 37);
+            this.labSetServer.Location = new System.Drawing.Point(62, 33);
             this.labSetServer.Name = "labSetServer";
             this.labSetServer.Size = new System.Drawing.Size(63, 43);
             this.labSetServer.TabIndex = 18;
@@ -121,7 +121,7 @@ namespace Itop.Client.Login {
             // 
             this.labSet.ImageIndex = 3;
             this.labSet.ImageList = this.imageList2;
-            this.labSet.Location = new System.Drawing.Point(357, 205);
+            this.labSet.Location = new System.Drawing.Point(357, 187);
             this.labSet.Name = "labSet";
             this.labSet.Size = new System.Drawing.Size(58, 23);
             this.labSet.TabIndex = 3;
@@ -135,7 +135,7 @@ namespace Itop.Client.Login {
             // 
             this.lablogin.ImageIndex = 0;
             this.lablogin.ImageList = this.imageList2;
-            this.lablogin.Location = new System.Drawing.Point(279, 205);
+            this.lablogin.Location = new System.Drawing.Point(279, 187);
             this.lablogin.Name = "lablogin";
             this.lablogin.Size = new System.Drawing.Size(58, 23);
             this.lablogin.TabIndex = 2;
@@ -159,7 +159,7 @@ namespace Itop.Client.Login {
             // 
             this.ubclose.BackColor = System.Drawing.Color.Transparent;
             this.ubclose.BarType = Itop.Client.UserBar.bartype.close;
-            this.ubclose.Location = new System.Drawing.Point(469, 0);
+            this.ubclose.Location = new System.Drawing.Point(470, -2);
             this.ubclose.Name = "ubclose";
             this.ubclose.Size = new System.Drawing.Size(32, 20);
             this.ubclose.TabIndex = 13;
@@ -168,21 +168,21 @@ namespace Itop.Client.Login {
             // 
             this.ubmin.BackColor = System.Drawing.Color.Transparent;
             this.ubmin.BarType = Itop.Client.UserBar.bartype.min;
-            this.ubmin.Location = new System.Drawing.Point(438, 0);
+            this.ubmin.Location = new System.Drawing.Point(439, -2);
             this.ubmin.Name = "ubmin";
             this.ubmin.Size = new System.Drawing.Size(32, 20);
             this.ubmin.TabIndex = 12;
             // 
             // utxtpwd
             // 
-            this.utxtpwd.Location = new System.Drawing.Point(271, 171);
+            this.utxtpwd.Location = new System.Drawing.Point(271, 153);
             this.utxtpwd.Name = "utxtpwd";
             this.utxtpwd.Size = new System.Drawing.Size(161, 22);
             this.utxtpwd.TabIndex = 1;
             // 
             // utxtuser
             // 
-            this.utxtuser.Location = new System.Drawing.Point(271, 137);
+            this.utxtuser.Location = new System.Drawing.Point(271, 119);
             this.utxtuser.Name = "utxtuser";
             this.utxtuser.Size = new System.Drawing.Size(161, 22);
             this.utxtuser.TabIndex = 0;
@@ -209,7 +209,7 @@ namespace Itop.Client.Login {
             this.m_labelUserNumber.AutoSize = true;
             this.m_labelUserNumber.BackColor = System.Drawing.Color.Transparent;
             this.m_labelUserNumber.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelUserNumber.Location = new System.Drawing.Point(223, 142);
+            this.m_labelUserNumber.Location = new System.Drawing.Point(223, 124);
             this.m_labelUserNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelUserNumber.Name = "m_labelUserNumber";
             this.m_labelUserNumber.Size = new System.Drawing.Size(41, 12);
@@ -221,7 +221,7 @@ namespace Itop.Client.Login {
             this.m_labelPassword.AutoSize = true;
             this.m_labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.m_labelPassword.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelPassword.Location = new System.Drawing.Point(223, 174);
+            this.m_labelPassword.Location = new System.Drawing.Point(223, 156);
             this.m_labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelPassword.Name = "m_labelPassword";
             this.m_labelPassword.Size = new System.Drawing.Size(41, 12);
@@ -237,6 +237,7 @@ namespace Itop.Client.Login {
             this.ClientSize = new System.Drawing.Size(500, 300);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "LoginForm";
             this.Text = "电网规划-登录";

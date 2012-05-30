@@ -580,6 +580,11 @@
     <None Include="Resources\bgcolor3.jpg" />
     <None Include="Resources\20.jpg" />
     <Content Include="dwgh2.ico" />
+    <None Include="Resources\500300蓝.jpg" />
+    <None Include="Resources\500300蓝1.jpg" />
+    <None Include="Resources\500300蓝2.jpg" />
+    <None Include="Resources\500300蓝3.jpg" />
+    <None Include="Resources\500300.jpg" />
     <Content Include="Resources\Bottom.png" />
     <None Include="app.config" />
     <None Include="Resources\butyl.bmp" />

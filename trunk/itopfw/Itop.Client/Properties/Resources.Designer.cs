@@ -67,6 +67,41 @@ namespace Itop.Client.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap _500300 {
+            get {
+                object obj = ResourceManager.GetObject("500300", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap _500300蓝 {
+            get {
+                object obj = ResourceManager.GetObject("500300蓝", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap _500300蓝1 {
+            get {
+                object obj = ResourceManager.GetObject("500300蓝1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap _500300蓝2 {
+            get {
+                object obj = ResourceManager.GetObject("500300蓝2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap _500300蓝3 {
+            get {
+                object obj = ResourceManager.GetObject("500300蓝3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap bgcolor2 {
             get {
                 object obj = ResourceManager.GetObject("bgcolor2", resourceCulture);
