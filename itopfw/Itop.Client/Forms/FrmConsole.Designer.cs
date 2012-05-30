@@ -61,6 +61,7 @@
             this.bbtndown = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnuser = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -103,10 +104,10 @@
             this.labTime = new System.Windows.Forms.Label();
             this.labuser = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController(this.components);
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -124,7 +125,6 @@
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -416,8 +416,15 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 2);
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(220, 26);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(244, 26);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // barAndDockingController1
+            // 
+            this.barAndDockingController1.LookAndFeel.SkinName = "Blue";
+            this.barAndDockingController1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.barAndDockingController1.PaintStyleName = "Skin";
+            this.barAndDockingController1.PropertiesBar.AllowLinkLighting = false;
             // 
             // barDockControlTop
             // 
@@ -638,7 +645,7 @@
             this.splitContainer2.Panel2.Resize += new System.EventHandler(this.splitContainer2_Panel2_Resize);
             this.splitContainer2.Panel2MinSize = 0;
             this.splitContainer2.Size = new System.Drawing.Size(989, 550);
-            this.splitContainer2.SplitterDistance = 394;
+            this.splitContainer2.SplitterDistance = 388;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 13;
             // 
@@ -649,7 +656,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 25);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(10);
-            this.panel6.Size = new System.Drawing.Size(394, 525);
+            this.panel6.Size = new System.Drawing.Size(388, 525);
             this.panel6.TabIndex = 1;
             // 
             // listViewdown
@@ -663,7 +670,7 @@
             this.listViewdown.Location = new System.Drawing.Point(10, 10);
             this.listViewdown.Name = "listViewdown";
             this.listViewdown.ShowItemToolTips = true;
-            this.listViewdown.Size = new System.Drawing.Size(374, 505);
+            this.listViewdown.Size = new System.Drawing.Size(368, 505);
             this.listViewdown.TabIndex = 0;
             this.listViewdown.UseCompatibleStateImageBehavior = false;
             this.listViewdown.ItemActivate += new System.EventHandler(this.listViewdown_ItemActivate);
@@ -678,7 +685,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(394, 25);
+            this.panel5.Size = new System.Drawing.Size(388, 25);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -822,7 +829,7 @@
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(576, 525);
+            this.treeList1.Size = new System.Drawing.Size(582, 525);
             this.treeList1.StateImageList = this.imageList4;
             this.treeList1.TabIndex = 0;
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
@@ -1008,13 +1015,6 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // barAndDockingController1
-            // 
-            this.barAndDockingController1.LookAndFeel.SkinName = "Blue";
-            this.barAndDockingController1.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.barAndDockingController1.PaintStyleName = "Skin";
-            this.barAndDockingController1.PropertiesBar.AllowLinkLighting = false;
-            // 
             // FrmConsole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1037,6 +1037,7 @@
             this.contextMenuStrip2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -1058,7 +1059,6 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).EndInit();
             this.ResumeLayout(false);
 
 }

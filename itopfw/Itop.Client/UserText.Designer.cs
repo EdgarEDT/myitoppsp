@@ -52,11 +52,10 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbox.Location = new System.Drawing.Point(32, 1);
+            this.txtbox.Location = new System.Drawing.Point(32, 4);
             this.txtbox.MaxLength = 20;
-            this.txtbox.Multiline = true;
             this.txtbox.Name = "txtbox";
-            this.txtbox.Size = new System.Drawing.Size(177, 20);
+            this.txtbox.Size = new System.Drawing.Size(177, 14);
             this.txtbox.TabIndex = 0;
             // 
             // label1
