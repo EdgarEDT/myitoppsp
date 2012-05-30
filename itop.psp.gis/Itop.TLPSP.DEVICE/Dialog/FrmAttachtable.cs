@@ -39,24 +39,24 @@ namespace Itop.TLPSP.DEVICE
                 }
             }
         }
-        PSP_Substation_Info parentObj = new PSP_Substation_Info();
-        public PSP_Substation_Info ParentObj
-        {
-            get { return parentObj; }
-            set
-            {
+        //PSP_Substation_Info parentObj = new PSP_Substation_Info();
+        //public PSP_Substation_Info ParentObj
+        //{
+        //    get { return parentObj; }
+        //    set
+        //    {
 
-                parentObj = value;
-                if (value == null)
-                {
-                    parentID = null;
-                }
-                else
-                {
-                    ParentID = value.UID;
-                }
-            }
-        }
+        //        parentObj = value;
+        //        if (value == null)
+        //        {
+        //            parentID = null;
+        //        }
+        //        else
+        //        {
+        //            ParentID = value.UID;
+        //        }
+        //    }
+        //}
         private void RefreshData(string con)
         {
             if (datatable != null)
@@ -109,21 +109,43 @@ namespace Itop.TLPSP.DEVICE
             this.gridView1.Columns.Add(column);
 
         }
-
+        private string startyear;
+        public string StartYear
+        {
+            get
+            {
+                return startyear;
+            }
+            set{
+                startyear = value;
+            }
+        }
+        private string endyear;
+        public string EndYear
+        {
+            get { return endyear; }
+            set { endyear = value; }
+        }
+        private string relatetable;
+        public string RelateTable
+        {
+            get { return relatetable; }
+            set { relatetable = value; }
+        }
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Psp_AttachtableEdit PDT = new Psp_AttachtableEdit();
-            if (ParentObj == null)
+            if (string.IsNullOrEmpty(parentID))
             {
-                Itop.Common.MsgBox.ShowYesNo("变电站为空！");
+                Itop.Common.MsgBox.ShowYesNo("变电站或电源为空！");
                 return;
             }
             // PDT.parentobj = ParentObj;
             Psp_Attachtable pdr = new Psp_Attachtable();
-            pdr.Relatetable = "PSP_Substation_Info";
+            pdr.Relatetable = relatetable;
             pdr.RelatetableID = parentID;
-            pdr.startYear = ParentObj.L28;
-            pdr.endYear = ParentObj.L29;
+            pdr.startYear = startyear;
+            pdr.endYear = endyear;
             pdr.S2 = "新建";
             PDT.RowData = pdr;
             if (PDT.ShowDialog() == DialogResult.OK)

@@ -23,6 +23,8 @@ namespace Itop.TLPSP.DEVICE
             xtraTabPage2.PageVisible = false;//隐
         }
         PSP_PowerSubstation_Info devObj = new PSP_PowerSubstation_Info();
+        //判断图层传过来的是哪一年的数据
+        public string StartYear = "";
         public PSP_PowerSubstation_Info DeviceMx {
             get {
 
@@ -59,6 +61,27 @@ namespace Itop.TLPSP.DEVICE
                 type2.Text = devObj.S8;
                 date1.Text = devObj.S29;
                 date2.Text = devObj.S30;
+
+                if (!string.IsNullOrEmpty(StartYear))
+                {
+                    string sql = "RelatetableID='" + DeviceMx.UID + "' order by startYear";
+                    IList<Psp_Attachtable> pl = Itop.Client.Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", sql);
+                    if (pl.Count > 0)
+                    {
+                        double rl = 0;
+                        int ts = 0;
+                        foreach (Psp_Attachtable pa in pl)
+                        {
+                            if (Convert.ToInt32(pa.startYear) <= Convert.ToInt32(StartYear) && Convert.ToInt32(pa.endYear) >= Convert.ToInt32(StartYear))
+                            {
+                                rl += Convert.ToDouble(pa.ZHI);
+                                ts++;
+                            }
+                        }
+                        spinEdit2.Value = (decimal)rl;
+                        
+                    }
+                }
             }
         }
         protected void Init()
@@ -168,6 +191,47 @@ namespace Itop.TLPSP.DEVICE
             else
             {
                 comboBoxEdit2.Text = "规划";
+            }
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            double rl = 0;
+            int bts = 0;
+            FrmAttachtable frm = new FrmAttachtable();
+            frm.ParentID= DeviceMx.UID;
+            frm.StartYear = DeviceMx.S29;
+            frm.EndYear = DeviceMx.S30;
+            frm.RelateTable = "PSP_PowerSubstation_Info";
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                DataTable dt = frm.datatable;
+                if (dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if (dt.Rows[i]["S2"].ToString() == "新建" || dt.Rows[i]["S2"].ToString() == "扩容" || dt.Rows[i]["S2"].ToString() == "投产")
+                        {
+                            if (!string.IsNullOrEmpty(DeviceMx.S29) && !string.IsNullOrEmpty(DeviceMx.S30))
+                            {
+                                if (Convert.ToInt32(dt.Rows[i]["startYear"]) >= Convert.ToInt32(DeviceMx.S29) && Convert.ToInt32(dt.Rows[i]["startYear"]) <= Convert.ToInt32(DeviceMx.S30))
+                                {
+                                    rl += Convert.ToDouble(dt.Rows[i]["ZHI"]);
+                                    bts++;
+                                }
+                            }
+                            else
+                            {
+                                rl += Convert.ToDouble(dt.Rows[i]["ZHI"]);
+                                bts++;
+                            }
+
+                        }
+                    }
+
+                }
+                spinEdit2.Value = (decimal)rl;
+               
             }
         }
     }

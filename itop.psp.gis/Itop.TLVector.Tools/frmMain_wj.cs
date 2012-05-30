@@ -4181,7 +4181,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                     obj = DeviceHelper.GetDevice<PSP_PowerSubstation_Info>(deviceid);
                                     if (obj != null)
                                     {
-
+                                        DeviceHelper.StartYear = startyear;
                                         //XmlElement n1 = tlVectorControl1.SVGDocument.SelectSingleNode("/text[@ParentUID='" + xml1.GetAttribute("id") + "']");
                                         if (DeviceHelper.ShowDeviceDlg(DeviceType.DY, deviceid, false))
                                         {

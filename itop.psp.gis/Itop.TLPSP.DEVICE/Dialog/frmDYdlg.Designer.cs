@@ -68,6 +68,7 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -206,6 +207,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.simpleButton4);
             this.groupBox1.Controls.Add(this.nylx);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.Area);
@@ -459,7 +461,7 @@
             this.spinEdit2.Name = "spinEdit2";
             this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spinEdit2.Size = new System.Drawing.Size(181, 21);
+            this.spinEdit2.Size = new System.Drawing.Size(113, 21);
             this.spinEdit2.TabIndex = 2;
             // 
             // label7
@@ -582,6 +584,15 @@
             this.simpleButton2.TabIndex = 15;
             this.simpleButton2.Text = "取消";
             // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(227, 87);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(62, 23);
+            this.simpleButton4.TabIndex = 25;
+            this.simpleButton4.Text = "详情";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
             // frmDYdlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -666,5 +677,6 @@
         private System.Windows.Forms.Label label19;
         private DevExpress.XtraEditors.ComboBoxEdit date2;
         private DevExpress.XtraEditors.ComboBoxEdit date1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
     }
 }

@@ -117,6 +117,7 @@ namespace Itop.TLPSP.DEVICE
                     frmDYdlg dlg21 = new frmDYdlg();
                     dlg21.DeviceMx = dev as PSP_PowerSubstation_Info;
                     dlg21.IsRead = isread;
+                    dlg21.StartYear = StartYear;
                     if (dlg21.ShowDialog() == DialogResult.OK && !isread)
                     {
                         UCDeviceBase.DataService.Update<PSP_PowerSubstation_Info>(dlg21.DeviceMx);

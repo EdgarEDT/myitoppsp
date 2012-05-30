@@ -431,7 +431,10 @@ namespace Itop.TLPSP.DEVICE
             double rl = 0;
             int bts = 0;
             FrmAttachtable frm = new FrmAttachtable();
-            frm.ParentObj = bdz;
+            frm.ParentID = bdz.UID;
+            frm.StartYear = bdz.L28;
+            frm.EndYear = bdz.L29;
+            frm.RelateTable = "PSP_Substation_Info";
             if (frm.ShowDialog()==DialogResult.OK)
             {
                 DataTable dt = frm.datatable;
