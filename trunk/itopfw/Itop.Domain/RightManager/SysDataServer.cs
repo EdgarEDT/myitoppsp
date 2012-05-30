@@ -1,7 +1,7 @@
 //********************************************************************************/
 //
 //此代码由TONLI.NET代码生成器自动生成.
-//生成时间:2012-5-23 10:02:01
+//生成时间:2012-5-30 9:34:54
 //
 //********************************************************************************/
 using System;
@@ -16,7 +16,7 @@ namespace Itop.Domain
         public SysDataServer()
         { }
         #region 字段
-        private string _id = Guid.NewGuid().ToString();
+        private string _id = "";
         private int _sort;
         private string _serveraddress = "";
         private string _servername = "";
@@ -25,6 +25,9 @@ namespace Itop.Domain
         private string _cityname = "";
         private double _cityjd;
         private double _citywd;
+        private double _citypyjd;
+        private double _citypywd;
+        private double _citypyarea;
         private string _citydesc = "";
         private string _remark = "";
         private string _bycol1 = "";
@@ -111,6 +114,30 @@ namespace Itop.Domain
         {
             set { _citywd = value; }
             get { return _citywd; }
+        }
+        /// <summary>
+        /// 偏移经度
+        /// </summary>
+        public double CityPYJD
+        {
+            set { _citypyjd = value; }
+            get { return _citypyjd; }
+        }
+        /// <summary>
+        /// 偏移纬度
+        /// </summary>
+        public double CityPYWD
+        {
+            set { _citypywd = value; }
+            get { return _citypywd; }
+        }
+        /// <summary>
+        /// 计算地块面积变量
+        /// </summary>
+        public double CityPYArea
+        {
+            set { _citypyarea = value; }
+            get { return _citypyarea; }
         }
         /// <summary>
         /// 城市描述

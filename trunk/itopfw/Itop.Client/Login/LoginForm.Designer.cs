@@ -242,6 +242,7 @@ namespace Itop.Client.Login {
             this.Text = "电网规划-登录";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.Shown += new System.EventHandler(this.LoginForm_Shown);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

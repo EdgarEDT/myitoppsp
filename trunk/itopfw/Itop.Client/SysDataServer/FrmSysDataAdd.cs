@@ -36,6 +36,10 @@ namespace Itop.Client
             sCityJd.DataBindings.Add("EditValue", sds, "CityJD");
             sCityWd.DataBindings.Add("EditValue", sds, "CityWD");
             txtCityDesc.DataBindings.Add("EditValue", sds, "CityDesc");
+            sCityPYJD.DataBindings.Add("EditValue", sds, "CityPYJD");
+            sCityPYWD.DataBindings.Add("EditValue", sds, "CityPYWD");
+            sCityPYArea.DataBindings.Add("EditValue", sds, "CityPYArea");
+
 
             txtServerAddress.DataBindings.Add("EditValue", sds, "ServerAddress");
             txtServerName.DataBindings.Add("EditValue", sds, "ServerName");

@@ -57,7 +57,7 @@ namespace Itop.Common {
                 serverAddressSys = config.AppSettings.Settings["serverAddressSys"].Value;
                 serverPortSys = config.AppSettings.Settings["serverPortSys"].Value;
                 serverProtocolSys = config.AppSettings.Settings["serverProtocolSys"].Value;
-                cityname = config.AppSettings.Settings["cityname"].Value;
+                cityname = config.AppSettings.Settings["cityid"].Value;
                
             }
             catch
@@ -71,7 +71,7 @@ namespace Itop.Common {
                     config.AppSettings.Settings.Add("serverAddressSys", serverAddressSys);
                     config.AppSettings.Settings.Add("serverPortSys", serverPortSys);
                     config.AppSettings.Settings.Add("serverProtocolSys", serverProtocolSys);
-                    config.AppSettings.Settings.Add("cityname", cityname);
+                    config.AppSettings.Settings.Add("cityid", cityname);
                     config.Save();
                 }
                 catch { }
@@ -154,7 +154,7 @@ namespace Itop.Common {
                     config.AppSettings.Settings["serverAddress"].Value = serverAddress;
                     config.AppSettings.Settings["serverPort"].Value = serverPort;
                     config.AppSettings.Settings["serverProtocol"].Value = serverProtocol;
-                    config.AppSettings.Settings["cityname"].Value = cityname;
+                    config.AppSettings.Settings["cityid"].Value = cityname;
                     config.Save();
                 } catch { }
             }

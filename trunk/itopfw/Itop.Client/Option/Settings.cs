@@ -55,6 +55,40 @@ namespace Itop.Client.Option {
 
             config.Save();
         }
+        /// <summary>
+        /// 设置偏移经伟度
+        /// </summary>
+        /// <param name="pyjd"></param>
+        /// <param name="pywd"></param>
+        static public void SetPYJWDvalue(double pyjd, double pywd)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings["offsizejd"] != null)
+                config.AppSettings.Settings.Remove("offsizejd");
+            config.AppSettings.Settings.Add("offsizejd", pyjd.ToString());
+
+            if (config.AppSettings.Settings["offsizewd"] != null)
+                config.AppSettings.Settings.Remove("offsizewd");
+            config.AppSettings.Settings.Add("offsizewd", pywd.ToString());
+
+            config.Save();
+        }
+        /// <summary>
+        /// 设置面积调整值
+        /// </summary>
+        /// <param name="citypyarea"></param>
+        static public void SetCityPYArea(double  citypyarea)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings["AreaOption"] != null)
+                config.AppSettings.Settings.Remove("AreaOption");
+            config.AppSettings.Settings.Add("AreaOption", citypyarea.ToString());
+            config.Save();
+        }
+        /// <summary>
+        /// 设置城市名称
+        /// </summary>
+        /// <param name="cityname"></param>
         static public void SetCityName(string cityname)
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);

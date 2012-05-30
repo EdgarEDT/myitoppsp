@@ -275,9 +275,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Location = new System.Drawing.Point(-500, -500);
             this.MaximizeBox = false;
             this.Name = "FrmServerManager";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "智高点软件应用服务器";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

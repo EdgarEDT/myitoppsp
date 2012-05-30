@@ -64,7 +64,7 @@ namespace Itop.Client.Login
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CityName", "城市名称")});
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
