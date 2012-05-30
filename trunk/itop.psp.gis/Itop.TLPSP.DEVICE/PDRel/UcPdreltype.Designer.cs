@@ -93,6 +93,7 @@
             this.barButtonItem1.ImageIndex = 4;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
@@ -102,6 +103,7 @@
             this.barButtonItem2.ImageIndex = 5;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem3
@@ -176,7 +178,7 @@
             this.imageList1.Images.SetKeyName(20, "FillUpHS.png");
             this.imageList1.Images.SetKeyName(21, "FillDownHS.png");
             // 
-            // UcPdtype
+            // UcPdreltype
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

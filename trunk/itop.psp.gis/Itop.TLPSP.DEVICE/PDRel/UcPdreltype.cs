@@ -108,6 +108,7 @@ namespace Itop.TLPSP.DEVICE
             TreeListColumn column = new TreeListColumn();
             column.FieldName = "Title";
             column.Caption = "线路名称";
+            column.SortOrder = SortOrder.Ascending;
             column.VisibleIndex = 0;
             column.Width = 210;
             column.OptionsColumn.AllowEdit = false;

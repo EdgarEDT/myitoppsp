@@ -58,18 +58,33 @@ namespace Itop.TLPSP.DEVICE
         /// <summary>
         /// 设置设备显示列
         /// </summary>
-        public override void InitColumns() {            
+        public override void InitColumns() {
             GridColumn column = gridView1.Columns.Add();
+            column.Caption = "所在线路";
+            column.FieldName = "AreaID";
+            column.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+            column.Width = 100;
+            column.VisibleIndex = 1;
+            column.OptionsColumn.AllowEdit = false;
+            DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit comboBox = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+           column.ColumnEdit = comboBox;
+           string sql = "where Type in('05','73')";
+           IList<PSPDEV> xl_list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+            comboBox.DataSource = xl_list;
+            comboBox.DisplayMember = "Name";
+            comboBox.ValueMember = "SUID";
+
+            column = gridView1.Columns.Add();
             column.Caption = "编号";
             column.FieldName = "Number";
             column.Width = 100;
-            column.VisibleIndex = 1;
+            column.VisibleIndex = 2;
             column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
             column.Caption = "名称";
             column.FieldName = "Name";
             column.Width = 100;
-            column.VisibleIndex = 2;
+            column.VisibleIndex = 3;
             column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
  
