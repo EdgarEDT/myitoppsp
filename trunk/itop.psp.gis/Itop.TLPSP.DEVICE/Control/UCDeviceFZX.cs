@@ -165,18 +165,63 @@ namespace Itop.TLPSP.DEVICE
             repositoryItemLookUpEdit1.NullText = "";
             repositoryItemLookUpEdit1.ValueMember = "ID";
             repositoryItemLookUpEdit1.DataSource = list;
-
+           
             GridColumn column = gridView1.Columns.Add();
-            column.Caption = "线路名称";
-            column.FieldName = "Name";
+            column.Caption = "所在线路";
+            column.FieldName = "AreaID";
+            column.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
             column.Width = 100;
             column.VisibleIndex = 1;
+            column.OptionsColumn.AllowEdit = false;
+            DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit comboBox = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            column.ColumnEdit = comboBox;
+            string sql = "where Type in('05','73')";
+            IList<PSPDEV> xl_list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+            comboBox.DataSource = xl_list;
+            comboBox.DisplayMember = "Name";
+            comboBox.ValueMember = "SUID";
+
+            column = gridView1.Columns.Add();
+            column.Caption = "首节点";
+            column.FieldName = "IName";
+            
+            column.Width = 100;
+            column.VisibleIndex = 2;
+            column.OptionsColumn.AllowEdit = false;
+            comboBox = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            column.ColumnEdit = comboBox;
+            sql = "where Type in('70')";
+             xl_list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+            comboBox.DataSource = xl_list;
+            comboBox.DisplayMember = "Name";
+            comboBox.ValueMember = "SUID";
+
+            column = gridView1.Columns.Add();
+            column.Caption = "末节点";
+            column.FieldName = "JName";
+
+            column.Width = 100;
+            column.VisibleIndex = 3;
+            column.OptionsColumn.AllowEdit = false;
+            comboBox = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            column.ColumnEdit = comboBox;
+            sql = "where Type in('70')";
+            xl_list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
+            comboBox.DataSource = xl_list;
+            comboBox.DisplayMember = "Name";
+            comboBox.ValueMember = "SUID";
+
+            column = gridView1.Columns.Add();
+            column.Caption = "线路段名称";
+            column.FieldName = "Name";
+            column.Width = 100;
+            column.VisibleIndex =4;
             column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
             column.Caption = "线路编号";
             column.FieldName = "Number";
             column.Width = 100;
-            column.VisibleIndex = 2;
+            column.VisibleIndex = 5;
             column.OptionsColumn.AllowEdit = false;
             //column = gridView1.Columns.Add();
             //column.Caption = "i侧母线名";
@@ -211,7 +256,7 @@ namespace Itop.TLPSP.DEVICE
             column.Caption = "导线型号";
             column.FieldName = "LineType";
             column.Width = 100;
-            column.VisibleIndex = 8;
+            column.VisibleIndex =9;
             column.OptionsColumn.AllowEdit = false;
             //column = gridView1.Columns.Add();
             //column.Caption = "电阻";
@@ -256,10 +301,23 @@ namespace Itop.TLPSP.DEVICE
             column.VisibleIndex = 16;
             column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
+            column.Caption = "故障率";
+            column.FieldName = "HuganTQ3";
+            column.Width = 100;
+            column.VisibleIndex = 17;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "修复时间";
+            column.FieldName = "HuganTQ4";
+            column.Width = 100;
+            column.VisibleIndex = 18;
+            column.OptionsColumn.AllowEdit = false;
+
+            column = gridView1.Columns.Add();
             column.Caption = "运行状态";
             column.FieldName = "KSwitchStatus";
             column.Width = 100;
-            column.VisibleIndex = 17;
+            column.VisibleIndex = 19;
             column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
             column.Caption = "单位";
@@ -271,8 +329,10 @@ namespace Itop.TLPSP.DEVICE
             column.Caption = "投产年份";
             column.FieldName = "OperationYear";
             column.Width = 100;
-            column.VisibleIndex = 19;
+            column.VisibleIndex = 20;
             column.OptionsColumn.AllowEdit = false;
+
+
             //column = gridView1.Columns.Add();
             //column.Caption = "一次侧连接开关";
             //column.FieldName = "ISwitch";
