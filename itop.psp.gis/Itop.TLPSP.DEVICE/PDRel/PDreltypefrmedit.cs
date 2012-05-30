@@ -103,6 +103,11 @@ namespace Itop.TLPSP.DEVICE
         }
 
         private void simpleButton1_Click(object sender, EventArgs e) {
+            if (string.IsNullOrEmpty(comboBoxEdit1.Text))
+            {
+                MessageBox.Show("线路名称不能为空！");
+                return;
+            }
             this.DialogResult = DialogResult.OK;
         }
 

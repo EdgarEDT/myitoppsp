@@ -282,9 +282,13 @@ namespace Itop.TLPSP.DEVICE
 
           private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
               FrmPDrelResult fr = new FrmPDrelResult();
-              fr.datatable = (DataTable)gridControl1.DataSource;
-              fr.ParentObj = ParentObj;
-              fr.ShowDialog();
+              if (gridControl1.DataSource!=null)
+              {
+                  fr.datatable = (DataTable)gridControl1.DataSource;
+                  fr.ParentObj = ParentObj;
+                  fr.ShowDialog();
+              }
+             
               //if (fr.ShowDialog()==DialogResult.OK)
               //{
 

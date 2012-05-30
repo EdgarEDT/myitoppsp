@@ -648,33 +648,37 @@ namespace Itop.TLPSP.DEVICE
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     dt = fm.DT1;
-                }
-                int columnscount = 0;
-                foreach (DataRow dr in dt.Rows)
-                {
-                    if (Convert.ToInt32(dr["B"]) == 1)
+                    int columnscount = 0;
+                    foreach (DataRow dr in dt.Rows)
                     {
-
-                        TreeListNode tln = treeList1.FindNodeByKeyID(pdreltypeid);
-                       bool flag= relanalsy(tln, Convert.ToInt32(dr["D"]), columnscount,ex);
-                        columnscount++;
-                        if (!flag)
+                        if (Convert.ToInt32(dr["B"]) == 1)
                         {
-                            ex.DisPoseExcel();
-                            return;
+
+                            TreeListNode tln = treeList1.FindNodeByKeyID(pdreltypeid);
+                            bool flag = relanalsy(tln, Convert.ToInt32(dr["D"]), columnscount, ex);
+                            columnscount++;
+                            if (!flag)
+                            {
+                                ex.DisPoseExcel();
+                                return;
+                            }
                         }
                     }
+                    //FrmResult FR = new FrmResult();
+                    //FR.DT = resulttb;
+                    //FR.DT1 = resultzbtb;
+                    //FR.ShowDialog();
+                    if (columnscount==0)
+                    {
+                        return;
+                    }
+                    ex.UnitCells(1, 3, 1, 2 + columnscount);
+                    ex.AlignmentCells(1, 3, 1, 2 + columnscount, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                    ex.SetFontStyle(1, 3, 1, 2 + columnscount, true, false, ExcelStyle.UnderlineStyle.无下划线);
+                    ex.CellsBackColor(1, 3, 1, 2 + columnscount, ExcelStyle.ColorIndex.黄色);
+                    ex.ShowExcel();
                 }
-                //FrmResult FR = new FrmResult();
-                //FR.DT = resulttb;
-                //FR.DT1 = resultzbtb;
-                //FR.ShowDialog();
-
-                ex.UnitCells(1, 3, 1, 2 + columnscount);
-                ex.AlignmentCells(1, 3, 1, 2 + columnscount, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
-                ex.SetFontStyle(1, 3, 1, 2 + columnscount, true, false, ExcelStyle.UnderlineStyle.无下划线);
-                ex.CellsBackColor(1, 3, 1, 2 + columnscount, ExcelStyle.ColorIndex.黄色);
-                ex.ShowExcel();
+               
             }
             catch (System.Exception exe)
             {

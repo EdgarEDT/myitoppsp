@@ -768,7 +768,25 @@ namespace Itop.TLPSP.DEVICE
                 if (newflag)
                 {
                     //创建一个可靠性分析的方案 其id和馈线的ID相同。
+                    //首先判断此数据中数据库有没有
+                    PSPDEV obj = Services.BaseService.GetOneByKey<PSPDEV>(dev);
+                    if (obj==null)
+                    {
+                        MessageBox.Show("此线路还没有保存到数据库中，请保存后再操作！");
+                        return;
+                    }
+                    //如果存在相同主键的则删除原来的
                     Ps_pdreltype pdr = new Ps_pdreltype();
+                    pdr.ID = dev.SUID;
+                    pdr = Services.BaseService.GetOneByKey<Ps_pdreltype>(pdr);
+                    if (pdr!=null)
+                    {
+                        Ps_pdtypenode pn2 = new Ps_pdtypenode();
+                        pn2.pdreltypeid = pdr.ID;
+                        Services.BaseService.Update("DeletePs_pdtypepdreltypeid", pn2);
+                        Services.BaseService.Delete<Ps_pdreltype>(pdr);
+                    }
+                    pdr = new Ps_pdreltype();
                     pdr.ID = dev.SUID;
                     pdr.ProjectID = this.projectID;
                     pdr.Createtime = DateTime.Now;
