@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sqlMap namespace='SysDataServer' xmlns='http://ibatis.apache.org/mapping' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <alias>
+    <typeAlias alias='SysDataServer' assembly='Itop.Domain.dll' type='Itop.Domain.SysDataServer' />
+  </alias>
+  <resultMaps>
+    <resultMap id='SysDataServerResult' class='SysDataServer'>
+      <result property='ID' column='ID' />
+      <result property='Sort' column='Sort' />
+      <result property='ServerAddress' column='ServerAddress' />
+      <result property='ServerName' column='ServerName' />
+      <result property='ServerUser' column='ServerUser' />
+      <result property='ServerPwd' column='ServerPwd' />
+      <result property='CityName' column='CityName' />
+      <result property='CityJD' column='CityJD' />
+      <result property='CityWD' column='CityWD' />
+      <result property='CityDesc' column='CityDesc' />
+      <result property='Remark' column='Remark' />
+      <result property='ByCol1' column='ByCol1' />
+      <result property='ByCol2' column='ByCol2' />
+      <result property='ByCol3' column='ByCol3' />
+      <result property='ByCol4' column='ByCol4' />
+      <result property='ByCol5' column='ByCol5' />
+      <result property='ByCol6' column='ByCol6' />
+      <result property='ByCol7' column='ByCol7' />
+      <result property='ByCol8' column='ByCol8' />
+      <result property='ByCol9' column='ByCol9' />
+      <result property='ByCol10' column='ByCol10' />
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id='InsertSysDataServer' parameterClass='SysDataServer'>
+      INSERT INTO SysDataServer		(
+      "ID",
+      "Sort",
+      "ServerAddress",
+      "ServerName",
+      "ServerUser",
+      "ServerPwd",
+      "CityName",
+      "CityJD",
+      "CityWD",
+      "CityDesc",
+      "Remark",
+      "ByCol1",
+      "ByCol2",
+      "ByCol3",
+      "ByCol4",
+      "ByCol5",
+      "ByCol6",
+      "ByCol7",
+      "ByCol8",
+      "ByCol9",
+      "ByCol10"
+      )
+      VALUES
+      (
+      #ID#,
+      #Sort#,
+      #ServerAddress#,
+      #ServerName#,
+      #ServerUser#,
+      #ServerPwd#,
+      #CityName#,
+      #CityJD#,
+      #CityWD#,
+      #CityDesc#,
+      #Remark#,
+      #ByCol1#,
+      #ByCol2#,
+      #ByCol3#,
+      #ByCol4#,
+      #ByCol5#,
+      #ByCol6#,
+      #ByCol7#,
+      #ByCol8#,
+      #ByCol9#,
+      #ByCol10#
+      )
+    </insert>
+    <delete id='DeleteSysDataServer' parameterClass='SysDataServer'>
+      DELETE FROM SysDataServer
+      WHERE
+      ID = #ID#
+    </delete>
+    <update id='UpdateSysDataServer' parameterClass='SysDataServer'>
+      UPDATE SysDataServer
+      SET
+      "Sort" = #Sort#,
+      "ServerAddress" = #ServerAddress#,
+      "ServerName" = #ServerName#,
+      "ServerUser" = #ServerUser#,
+      "ServerPwd" = #ServerPwd#,
+      "CityName" = #CityName#,
+      "CityJD" = #CityJD#,
+      "CityWD" = #CityWD#,
+      "CityDesc" = #CityDesc#,
+      "Remark" = #Remark#,
+      "ByCol1" = #ByCol1#,
+      "ByCol2" = #ByCol2#,
+      "ByCol3" = #ByCol3#,
+      "ByCol4" = #ByCol4#,
+      "ByCol5" = #ByCol5#,
+      "ByCol6" = #ByCol6#,
+      "ByCol7" = #ByCol7#,
+      "ByCol8" = #ByCol8#,
+      "ByCol9" = #ByCol9#,
+      "ByCol10" = #ByCol10#
+      WHERE
+      ID = #ID#
+    </update>
+    <select id='SelectSysDataServerList' resultMap='SysDataServerResult' parameterClass='SysDataServer'>
+      SELECT
+      "ID",
+      "Sort",
+      "ServerAddress",
+      "ServerName",
+      "ServerUser",
+      "ServerPwd",
+      "CityName",
+      "CityJD",
+      "CityWD",
+      "CityDesc",
+      "Remark",
+      "ByCol1",
+      "ByCol2",
+      "ByCol3",
+      "ByCol4",
+      "ByCol5",
+      "ByCol6",
+      "ByCol7",
+      "ByCol8",
+      "ByCol9",
+      "ByCol10"
+      FROM SysDataServer
+    </select>
+    <select id='SelectSysDataServerByKey' resultMap='SysDataServerResult' parameterClass='SysDataServer'>
+      SELECT
+      "ID",
+      "Sort",
+      "ServerAddress",
+      "ServerName",
+      "ServerUser",
+      "ServerPwd",
+      "CityName",
+      "CityJD",
+      "CityWD",
+      "CityDesc",
+      "Remark",
+      "ByCol1",
+      "ByCol2",
+      "ByCol3",
+      "ByCol4",
+      "ByCol5",
+      "ByCol6",
+      "ByCol7",
+      "ByCol8",
+      "ByCol9",
+      "ByCol10"
+      FROM SysDataServer
+      WHERE
+      ID = #ID#
+    </select>
+  </statements>
+</sqlMap>
