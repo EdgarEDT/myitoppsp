@@ -14,6 +14,9 @@
       <result property='CityName' column='CityName' />
       <result property='CityJD' column='CityJD' />
       <result property='CityWD' column='CityWD' />
+      <result property='CityPYJD' column='CityPYJD' />
+      <result property='CityPYWD' column='CityPYWD' />
+      <result property='CityPYArea' column='CityPYArea' />
       <result property='CityDesc' column='CityDesc' />
       <result property='Remark' column='Remark' />
       <result property='ByCol1' column='ByCol1' />
@@ -40,6 +43,9 @@
       "CityName",
       "CityJD",
       "CityWD",
+      "CityPYJD",
+      "CityPYWD",
+      "CityPYArea",
       "CityDesc",
       "Remark",
       "ByCol1",
@@ -64,6 +70,9 @@
       #CityName#,
       #CityJD#,
       #CityWD#,
+      #CityPYJD#,
+      #CityPYWD#,
+      #CityPYArea#,
       #CityDesc#,
       #Remark#,
       #ByCol1#,
@@ -94,6 +103,9 @@
       "CityName" = #CityName#,
       "CityJD" = #CityJD#,
       "CityWD" = #CityWD#,
+      "CityPYJD" = #CityPYJD#,
+      "CityPYWD" = #CityPYWD#,
+      "CityPYArea" = #CityPYArea#,
       "CityDesc" = #CityDesc#,
       "Remark" = #Remark#,
       "ByCol1" = #ByCol1#,
@@ -120,6 +132,9 @@
       "CityName",
       "CityJD",
       "CityWD",
+      "CityPYJD",
+      "CityPYWD",
+      "CityPYArea",
       "CityDesc",
       "Remark",
       "ByCol1",
@@ -145,6 +160,9 @@
       "CityName",
       "CityJD",
       "CityWD",
+      "CityPYJD",
+      "CityPYWD",
+      "CityPYArea",
       "CityDesc",
       "Remark",
       "ByCol1",
