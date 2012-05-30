@@ -279,7 +279,9 @@
     <Content Include="Maps\Planning\PSPDIR.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Maps\Planning\Psp_Attachtable.xml" />
+    <Content Include="Maps\Planning\Psp_Attachtable.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\Planning\PSP_bdz_type.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
