@@ -18,6 +18,7 @@ namespace Itop.Server {
        
         public FrmServerManager() {
             InitializeComponent();
+           
         }
       
         protected override void OnClosing(CancelEventArgs e) {
@@ -38,7 +39,6 @@ namespace Itop.Server {
             }
         }
         protected override void OnLoad(EventArgs e) {
-           
             base.OnLoad(e);
             this.cbbProtocol.Text = Settings.RemotingProtocol;
             this.txtPort.Text = Settings.RemotingPort;
@@ -47,7 +47,7 @@ namespace Itop.Server {
             this.txtDatabase.Text = Settings.Database;
             this.txtDataServer.Text = Settings.DataServer;
             Start();
-            
+           
         }
         
 
@@ -102,11 +102,15 @@ namespace Itop.Server {
 
         }
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e) {
+            this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width / 2 - this.Width/2, Screen.PrimaryScreen.WorkingArea.Height/2-this.Height/2);
+            
+
             base.Show();
             this.notifyIcon1.Visible = false;
             if (base.WindowState == FormWindowState.Minimized) {
                 base.WindowState = FormWindowState.Normal;
             }
+            
         }
 
   

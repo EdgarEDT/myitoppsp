@@ -243,6 +243,8 @@ namespace Itop.Client.Login {
                 MIS.WD = ds.CityWD;
                 Itop.Client.Option.Settings.SetJWDvalue(ds.CityJD, ds.CityWD);
                 Itop.Client.Option.Settings.SetCityName(ds.CityName);
+                Itop.Client.Option.Settings.SetPYJWDvalue(ds.CityPYJD, ds.CityPYWD);
+                Itop.Client.Option.Settings.SetCityPYArea(ds.CityPYArea);
                 int port=int.Parse(RemotingHelper.ServerPortSys);
                 port++;
                 ServerSettings.RemotingProtocol = RemotingHelper.ServerProtocolSys;
@@ -408,6 +410,18 @@ namespace Itop.Client.Login {
         private void labSetServer_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this.DialogResult!=DialogResult.OK)
+            {
+                if (MIS.curpro != null)
+                {
+                    MIS.curpro.Kill();
+                }
+            }
+            
         }
 
 

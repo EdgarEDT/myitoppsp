@@ -52,6 +52,12 @@
             this.txtServerAddress = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.sCityPYWD = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.sCityPYJD = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.sCityPYArea = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCityDesc.Properties)).BeginInit();
@@ -64,10 +70,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtServerUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerAddress.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sCityPYWD.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sCityPYJD.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sCityPYArea.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.sCityPYArea);
+            this.groupControl1.Controls.Add(this.labelControl11);
+            this.groupControl1.Controls.Add(this.sCityPYWD);
+            this.groupControl1.Controls.Add(this.labelControl9);
+            this.groupControl1.Controls.Add(this.sCityPYJD);
+            this.groupControl1.Controls.Add(this.labelControl10);
             this.groupControl1.Controls.Add(this.txtCityDesc);
             this.groupControl1.Controls.Add(this.sCityWd);
             this.groupControl1.Controls.Add(this.labelControl4);
@@ -78,15 +93,15 @@
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Location = new System.Drawing.Point(10, 15);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(256, 209);
+            this.groupControl1.Size = new System.Drawing.Size(256, 234);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "城市信息";
             // 
             // txtCityDesc
             // 
-            this.txtCityDesc.Location = new System.Drawing.Point(83, 123);
+            this.txtCityDesc.Location = new System.Drawing.Point(83, 183);
             this.txtCityDesc.Name = "txtCityDesc";
-            this.txtCityDesc.Size = new System.Drawing.Size(160, 67);
+            this.txtCityDesc.Size = new System.Drawing.Size(160, 44);
             this.txtCityDesc.TabIndex = 8;
             // 
             // sCityWd
@@ -96,7 +111,7 @@
             0,
             0,
             0});
-            this.sCityWd.Location = new System.Drawing.Point(83, 89);
+            this.sCityWd.Location = new System.Drawing.Point(83, 81);
             this.sCityWd.Name = "sCityWd";
             this.sCityWd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -105,7 +120,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(16, 89);
+            this.labelControl4.Location = new System.Drawing.Point(16, 81);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(60, 14);
             this.labelControl4.TabIndex = 6;
@@ -113,7 +128,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(16, 122);
+            this.labelControl3.Location = new System.Drawing.Point(16, 178);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(60, 14);
             this.labelControl3.TabIndex = 4;
@@ -126,7 +141,7 @@
             0,
             0,
             0});
-            this.sCityJd.Location = new System.Drawing.Point(83, 58);
+            this.sCityJd.Location = new System.Drawing.Point(83, 53);
             this.sCityJd.Name = "sCityJd";
             this.sCityJd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -135,7 +150,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(16, 58);
+            this.labelControl2.Location = new System.Drawing.Point(16, 53);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(60, 14);
             this.labelControl2.TabIndex = 2;
@@ -158,7 +173,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(352, 234);
+            this.btnOk.Location = new System.Drawing.Point(383, 282);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 2;
@@ -167,7 +182,7 @@
             // 
             // btnCanser
             // 
-            this.btnCanser.Location = new System.Drawing.Point(443, 234);
+            this.btnCanser.Location = new System.Drawing.Point(464, 282);
             this.btnCanser.Name = "btnCanser";
             this.btnCanser.Size = new System.Drawing.Size(75, 23);
             this.btnCanser.TabIndex = 3;
@@ -189,13 +204,13 @@
             this.groupControl2.Controls.Add(this.labelControl7);
             this.groupControl2.Location = new System.Drawing.Point(288, 15);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(269, 209);
+            this.groupControl2.Size = new System.Drawing.Size(269, 234);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "数据库信息";
             // 
             // btnDelData
             // 
-            this.btnDelData.Location = new System.Drawing.Point(145, 181);
+            this.btnDelData.Location = new System.Drawing.Point(176, 178);
             this.btnDelData.Name = "btnDelData";
             this.btnDelData.Size = new System.Drawing.Size(66, 23);
             this.btnDelData.TabIndex = 17;
@@ -204,7 +219,7 @@
             // 
             // btnCreateData
             // 
-            this.btnCreateData.Location = new System.Drawing.Point(73, 181);
+            this.btnCreateData.Location = new System.Drawing.Point(104, 178);
             this.btnCreateData.Name = "btnCreateData";
             this.btnCreateData.Size = new System.Drawing.Size(66, 23);
             this.btnCreateData.TabIndex = 16;
@@ -213,7 +228,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(5, 181);
+            this.btnConnect.Location = new System.Drawing.Point(36, 178);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(62, 23);
             this.btnConnect.TabIndex = 15;
@@ -280,11 +295,77 @@
             this.labelControl7.TabIndex = 7;
             this.labelControl7.Text = "服务器名称：";
             // 
+            // sCityPYWD
+            // 
+            this.sCityPYWD.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.sCityPYWD.Location = new System.Drawing.Point(83, 133);
+            this.sCityPYWD.Name = "sCityPYWD";
+            this.sCityPYWD.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.sCityPYWD.Size = new System.Drawing.Size(160, 21);
+            this.sCityPYWD.TabIndex = 12;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(16, 133);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(60, 14);
+            this.labelControl9.TabIndex = 11;
+            this.labelControl9.Text = "纬度偏移：";
+            // 
+            // sCityPYJD
+            // 
+            this.sCityPYJD.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.sCityPYJD.Location = new System.Drawing.Point(83, 107);
+            this.sCityPYJD.Name = "sCityPYJD";
+            this.sCityPYJD.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.sCityPYJD.Size = new System.Drawing.Size(160, 21);
+            this.sCityPYJD.TabIndex = 10;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(16, 107);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(60, 14);
+            this.labelControl10.TabIndex = 9;
+            this.labelControl10.Text = "经度偏移：";
+            // 
+            // sCityPYArea
+            // 
+            this.sCityPYArea.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.sCityPYArea.Location = new System.Drawing.Point(83, 158);
+            this.sCityPYArea.Name = "sCityPYArea";
+            this.sCityPYArea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.sCityPYArea.Size = new System.Drawing.Size(160, 21);
+            this.sCityPYArea.TabIndex = 14;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(16, 158);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(60, 14);
+            this.labelControl11.TabIndex = 13;
+            this.labelControl11.Text = "面积参数：";
+            // 
             // FrmSysDataAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 266);
+            this.ClientSize = new System.Drawing.Size(579, 314);
             this.Controls.Add(this.btnCanser);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupControl2);
@@ -307,6 +388,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtServerUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerAddress.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sCityPYWD.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sCityPYJD.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sCityPYArea.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -337,6 +421,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private DevExpress.XtraEditors.SimpleButton btnDelData;
+        private DevExpress.XtraEditors.SpinEdit sCityPYArea;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.SpinEdit sCityPYWD;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.SpinEdit sCityPYJD;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
 
     }
 }
