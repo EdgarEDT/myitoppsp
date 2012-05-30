@@ -92,7 +92,10 @@
     <Reference Include="Itop.Client.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Server\Itop.Domain.Graphics.dll</HintPath>
+    </Reference>
     <Reference Include="Itop.Domain.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
