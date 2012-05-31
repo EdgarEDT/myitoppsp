@@ -104,7 +104,7 @@ namespace Itop.TLPSP.DEVICE
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "D1";
-            column.Caption = "丰水期出律率";
+            column.Caption = "丰水期出力率";
             column.VisibleIndex = 4;
             column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             column.DisplayFormat.FormatString = "n3";
@@ -112,7 +112,7 @@ namespace Itop.TLPSP.DEVICE
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "D2";
-            column.Caption = "枯水期出律率";
+            column.Caption = "枯水期出力率";
             column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             column.DisplayFormat.FormatString = "n3";
             column.VisibleIndex = 5;

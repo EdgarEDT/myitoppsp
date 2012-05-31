@@ -34,7 +34,7 @@ namespace Itop.TLPSP.DEVICE
                 devObj.S3 = comboBoxEdit1.Text;
                 devObj.Flag = comboBoxEdit2.Text == "规划" ? "2" : "1";
                 devObj.S5 = dq.Text;
-                devObj.S9 = Area.Text;
+                devObj.S9 = Area.EditValue.ToString();
                 devObj.S10 = nylx.Text;
                 devObj.S11 = fdl.Text;
                 devObj.S12 = fdxss.Text;
@@ -52,7 +52,7 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit1.Text = devObj.S3;
                 comboBoxEdit2.Text = devObj.Flag == "2" ? "规划" :"现状" ;
                 dq.Text= devObj.S5;
-                Area.Text = devObj.S9;
+                Area.EditValue= devObj.S9;
                 nylx.Text = devObj.S10;
                 fdl.Text = devObj.S11;
                 fdxss.Text = devObj.S12;

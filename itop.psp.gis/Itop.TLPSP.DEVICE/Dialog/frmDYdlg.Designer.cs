@@ -39,6 +39,7 @@
             this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.nylx = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label5 = new System.Windows.Forms.Label();
             this.Area = new DevExpress.XtraEditors.LookUpEdit();
@@ -68,7 +69,6 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -242,6 +242,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "基本信息";
             // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(227, 87);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(62, 23);
+            this.simpleButton4.TabIndex = 25;
+            this.simpleButton4.Text = "详情";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
             // nylx
             // 
             this.nylx.EditValue = "煤电";
@@ -272,7 +281,6 @@
             // 
             // Area
             // 
-            this.Area.EditValue = "ID";
             this.Area.Location = new System.Drawing.Point(110, 370);
             this.Area.Name = "Area";
             this.Area.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -282,7 +290,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Title", "区域名称")});
             this.Area.Properties.DisplayMember = "Title";
             this.Area.Properties.NullText = "";
-            this.Area.Properties.ValueMember = "ID";
+            this.Area.Properties.ValueMember = "Title";
             this.Area.Size = new System.Drawing.Size(181, 21);
             this.Area.TabIndex = 11;
             // 
@@ -583,15 +591,6 @@
             this.simpleButton2.Size = new System.Drawing.Size(87, 29);
             this.simpleButton2.TabIndex = 15;
             this.simpleButton2.Text = "取消";
-            // 
-            // simpleButton4
-            // 
-            this.simpleButton4.Location = new System.Drawing.Point(227, 87);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(62, 23);
-            this.simpleButton4.TabIndex = 25;
-            this.simpleButton4.Text = "详情";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // frmDYdlg
             // 
