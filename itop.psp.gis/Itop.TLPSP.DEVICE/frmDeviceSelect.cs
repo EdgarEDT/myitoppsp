@@ -41,6 +41,7 @@ namespace Itop.TLPSP.DEVICE
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+           
             treeList1.FocusedNode = null;
             if (bdzwhere != "" && xlwhere != "")
             {
@@ -48,6 +49,7 @@ namespace Itop.TLPSP.DEVICE
                 simpleButton3.Visible = false;
                 simpleButton4.Visible = false;
             }
+            simpleButton4.Enabled = subflag;
         }
         protected void Init()
         {
@@ -210,6 +212,7 @@ namespace Itop.TLPSP.DEVICE
                 return device;
             }
         }
+        public bool subflag = true;
         private void treeList1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right) return;

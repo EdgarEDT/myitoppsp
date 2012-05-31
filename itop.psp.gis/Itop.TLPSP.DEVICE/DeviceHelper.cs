@@ -284,6 +284,7 @@ namespace Itop.TLPSP.DEVICE
             dlg.pspflag = pspflag;
             dlg.wjghflag = Wjghflag;
             dlg.wjghuid = wjghuid;
+            dlg.subflag = subflag;
             dlg.InitDeviceType(type);
             dlg.BdzWhere = bdzwhere;
             if (dlg.ShowDialog() == DialogResult.OK)
@@ -318,6 +319,7 @@ namespace Itop.TLPSP.DEVICE
             dlg.wjghuid = wjghuid;
             dlg.BdzWhere = bdzwhere;
             dlg.XlWhere = xlwhere;
+            
             dlg.InitDeviceType(type);
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -326,6 +328,7 @@ namespace Itop.TLPSP.DEVICE
             }
             return null;
         }
+        public static bool subflag = true;
         public static DialogResult SelectDeviceDLG(string projectID, params string[] type)
         {
             frmDeviceSelect dlg = new frmDeviceSelect();
@@ -335,6 +338,7 @@ namespace Itop.TLPSP.DEVICE
             dlg.wjghuid = wjghuid;
             dlg.BdzWhere = bdzwhere;
             dlg.XlWhere = xlwhere;
+           
             dlg.InitDeviceType(type);
             return dlg.ShowDialog();
 

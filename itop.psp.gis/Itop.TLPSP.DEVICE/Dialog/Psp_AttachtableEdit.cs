@@ -29,7 +29,8 @@ namespace Itop.TLPSP.DEVICE
                 rowdate.ZHI = zhi;
                 rowdate.S1 = S1;
                 rowdate.S2= S2;
-               
+                rowdate.D1 = (double)spinEdit2.Value;
+                rowdate.D2 = (double)spinEdit3.Value;
                 return rowdate;
             }
             set
@@ -40,7 +41,50 @@ namespace Itop.TLPSP.DEVICE
                 zhi = rowdate.ZHI;
                 S1 = rowdate.S1;
                 S2 = rowdate.S2;
-               
+                spinEdit2.Value = (decimal)rowdate.D1;
+                spinEdit3.Value = (decimal)rowdate.D2;
+            }
+        }
+        private string satetype;
+        public string SateType
+        {
+            get { return satetype; }
+            set{switch (value)
+            {
+            case "扩容" :
+                  comboBoxEdit4.Properties.Items.Clear();
+                 comboBoxEdit4.Properties.Items.Add("扩容");
+            	break;
+            case "新建":
+                comboBoxEdit4.Properties.Items.Clear();
+                comboBoxEdit4.Properties.Items.Add("新建");
+                comboBoxEdit4.Properties.Items.Add("投产");
+            break;
+             }
+            satetype = value;
+            }
+        }
+        private string _type = "1";
+        public string type
+        {
+            get
+            {
+                return _type;
+            }
+            set{
+               switch (value)
+               {
+               case "1":
+                       this.label1.Text = "变压器名称：";
+               	break;
+                case"0":
+                this.label1.Text = "机组名称：";
+                break;
+                default:
+                this.label1.Text = "变压器名称：";
+                break;
+               }
+               _type = value;
             }
         }
         public string startyear
@@ -72,12 +116,17 @@ namespace Itop.TLPSP.DEVICE
             set { comboBoxEdit1.Text = value; }
         }
         protected void Init() {
-            comboBoxEdit4.Properties.Items.Add("投产");
-            comboBoxEdit4.Properties.Items.Add("退出");
-            comboBoxEdit4.Properties.Items.Add("扩容");
+            //comboBoxEdit4.Properties.Items.Add("投产");
+            //comboBoxEdit4.Properties.Items.Add("退出");
+            //comboBoxEdit4.Properties.Items.Add("扩容");
             for (int i = 0; i < 30;i++ )
             {
                 string s = (2000 + i).ToString();
+                if (!string.IsNullOrEmpty(startyear))
+                {
+                    s =(Convert.ToInt32(startyear) + i).ToString() ;
+                }
+                
                 comboBoxEdit2.Properties.Items.Add(s);
                 comboBoxEdit3.Properties.Items.Add(s);
 
