@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -234,7 +234,7 @@
             this.groupBox3.Location = new System.Drawing.Point(331, 105);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(310, 85);
-            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "单位";
             // 
@@ -246,7 +246,7 @@
             this.label5.Location = new System.Drawing.Point(155, 44);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 14);
-            this.label5.TabIndex = 7;
+            this.label5.TabIndex = 1;
             this.label5.Text = "-6";
             // 
             // radioGroup3
@@ -261,7 +261,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "p.u."),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "Ohm/10     Siem")});
             this.radioGroup3.Size = new System.Drawing.Size(147, 63);
-            this.radioGroup3.TabIndex = 1;
+            this.radioGroup3.TabIndex = 0;
             // 
             // label8
             // 
@@ -270,7 +270,7 @@
             this.label8.Location = new System.Drawing.Point(350, 419);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 14);
-            this.label8.TabIndex = 1;
+            this.label8.TabIndex = 5;
             this.label8.Text = "j侧设备";
             this.label8.Visible = false;
             // 
@@ -287,7 +287,7 @@
             this.groupBox5.Location = new System.Drawing.Point(331, 201);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(310, 189);
-            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "拓扑连接";
             // 
@@ -306,7 +306,7 @@
             this.lookUpEdit2.Properties.NullText = "";
             this.lookUpEdit2.Properties.ValueMember = "SUID";
             this.lookUpEdit2.Size = new System.Drawing.Size(181, 21);
-            this.lookUpEdit2.TabIndex = 13;
+            this.lookUpEdit2.TabIndex = 2;
             // 
             // lookUpEdit1
             // 
@@ -323,7 +323,7 @@
             this.lookUpEdit1.Properties.NullText = "";
             this.lookUpEdit1.Properties.ValueMember = "SUID";
             this.lookUpEdit1.Size = new System.Drawing.Size(181, 21);
-            this.lookUpEdit1.TabIndex = 12;
+            this.lookUpEdit1.TabIndex = 1;
             // 
             // label9
             // 
@@ -373,7 +373,7 @@
             this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.buttonEdit1.Size = new System.Drawing.Size(181, 21);
-            this.buttonEdit1.TabIndex = 9;
+            this.buttonEdit1.TabIndex = 0;
             this.buttonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
             // 
             // groupBox4
@@ -384,7 +384,7 @@
             this.groupBox4.Location = new System.Drawing.Point(331, 7);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(310, 89);
-            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "运行状态";
             // 
@@ -411,7 +411,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "投入运行"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "退出运行")});
             this.radioGroup1.Size = new System.Drawing.Size(118, 72);
-            this.radioGroup1.TabIndex = 3;
+            this.radioGroup1.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -450,7 +450,7 @@
             this.textEdit1.Location = new System.Drawing.Point(97, 29);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, false)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, false)});
             this.textEdit1.Properties.Click += new System.EventHandler(this.mc_Properties_Click);
             this.textEdit1.Size = new System.Drawing.Size(181, 21);
             this.textEdit1.TabIndex = 0;
@@ -553,7 +553,7 @@
             0,
             0});
             this.spinEdit20.Size = new System.Drawing.Size(181, 21);
-            this.spinEdit20.TabIndex = 6;
+            this.spinEdit20.TabIndex = 10;
             // 
             // spinEdit19
             // 
@@ -577,7 +577,7 @@
             0,
             0});
             this.spinEdit19.Size = new System.Drawing.Size(181, 21);
-            this.spinEdit19.TabIndex = 6;
+            this.spinEdit19.TabIndex = 9;
             // 
             // splength2
             // 
@@ -779,7 +779,7 @@
             this.buttonEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.buttonEdit2.Size = new System.Drawing.Size(181, 21);
-            this.buttonEdit2.TabIndex = 10;
+            this.buttonEdit2.TabIndex = 4;
             this.buttonEdit2.Visible = false;
             this.buttonEdit2.Click += new System.EventHandler(this.buttonEdit2_Click);
             // 
