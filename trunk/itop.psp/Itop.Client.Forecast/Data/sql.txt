@@ -1,0 +1,111 @@
+﻿
+GO
+/****** 对象:  Table [dbo].[SysDataServer]    脚本日期: 05/31/2012 14:51:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SysDataServer](
+	[ID] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Sort] [int] NULL,
+	[ServerAddress] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ServerName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ServerUser] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ServerPwd] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CityName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CityJD] [float] NULL,
+	[CityWD] [float] NULL,
+	[CityPYJD] [float] NULL,
+	[CityPYWD] [float] NULL,
+	[CityPYArea] [float] NULL,
+	[CityDesc] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Remark] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol1] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol2] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol3] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol4] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol5] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol6] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol7] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol8] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol9] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ByCol10] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_SysDataServer] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ID'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'序号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'Sort'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务器地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ServerAddress'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ServerName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库登录用户名' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ServerUser'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库登录密码' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ServerPwd'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'城市名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'CityName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'经度' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'CityJD'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'纬度' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'CityWD'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'偏移经度' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'CityPYJD'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'偏移纬度' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'CityPYWD'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'计算地块面积变量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'CityPYArea'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'城市描述' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'CityDesc'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备注' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'Remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用1' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol1'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用2' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol2'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用3' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol3'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用4' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol4'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用5' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol5'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用6' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol6'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用7' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol7'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用8' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol8'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用9' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol9'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备用10' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysDataServer', @level2type=N'COLUMN',@level2name=N'ByCol10'
+
+
+
+
+
+GO
+/****** 对象:  Table [dbo].[SysDataFiles]    脚本日期: 05/31/2012 14:51:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SysDataFiles](
+	[ID] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[FileName] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[FileSize] [int] NULL,
+	[Files] [image] NULL,
+	[FileDesc] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[Sort] [int] NULL,
+	[Remark] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[CreateDate] [datetime] NULL,
+ CONSTRAINT [PK_SysDataFiles] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
