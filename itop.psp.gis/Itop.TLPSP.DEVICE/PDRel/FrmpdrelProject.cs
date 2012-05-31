@@ -37,7 +37,11 @@ namespace Itop.TLPSP.DEVICE
         }
         public void init(PSPDEV psxl)
         {
-            ucPdreltype1.init(psxl);
+            if (psxl!=null)
+            {
+                ucPdreltype1.init(psxl);
+            }
+            
         }
         protected override void OnLoad(EventArgs e)
         {
