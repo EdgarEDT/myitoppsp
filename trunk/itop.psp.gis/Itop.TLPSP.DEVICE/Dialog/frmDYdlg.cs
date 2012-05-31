@@ -199,6 +199,7 @@ namespace Itop.TLPSP.DEVICE
             double rl = 0;
             int bts = 0;
             FrmAttachtable frm = new FrmAttachtable();
+            frm.Type = "0";
             frm.ParentID= DeviceMx.UID;
             frm.StartYear = DeviceMx.S29;
             frm.EndYear = DeviceMx.S30;

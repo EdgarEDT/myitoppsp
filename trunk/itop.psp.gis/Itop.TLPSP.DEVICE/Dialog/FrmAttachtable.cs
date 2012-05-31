@@ -57,6 +57,7 @@ namespace Itop.TLPSP.DEVICE
         //        }
         //    }
         //}
+        public string Type = "1";
         private void RefreshData(string con)
         {
             if (datatable != null)
@@ -102,9 +103,25 @@ namespace Itop.TLPSP.DEVICE
             column.Width = 120;
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
+            column.FieldName = "D1";
+            column.Caption = "丰水期出律率";
+            column.VisibleIndex = 4;
+            column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            column.DisplayFormat.FormatString = "n3";
+            column.Width = 120;
+            this.gridView1.Columns.Add(column);
+            column = new GridColumn();
+            column.FieldName = "D2";
+            column.Caption = "枯水期出律率";
+            column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            column.DisplayFormat.FormatString = "n3";
+            column.VisibleIndex = 5;
+            column.Width = 120;
+            this.gridView1.Columns.Add(column);
+            column = new GridColumn();
             column.FieldName = "S2";
             column.Caption = "状态";
-            column.VisibleIndex = 4;
+            column.VisibleIndex =6;
             column.Width = 120;
             this.gridView1.Columns.Add(column);
 
@@ -146,7 +163,11 @@ namespace Itop.TLPSP.DEVICE
             pdr.RelatetableID = parentID;
             pdr.startYear = startyear;
             pdr.endYear = endyear;
+            pdr.D1 = 1;
+            pdr.D2 = 1;
             pdr.S2 = "新建";
+            PDT.SateType = "新建";
+            PDT.type = Type;
             PDT.RowData = pdr;
             if (PDT.ShowDialog() == DialogResult.OK)
             {
@@ -190,7 +211,8 @@ namespace Itop.TLPSP.DEVICE
                 pr.S2 = "扩容";
                 PD.S2 = "作废";
                 Psp_AttachtableEdit PDT = new Psp_AttachtableEdit();
-                
+                PDT.SateType = "扩容";
+                PDT.type = Type;
                 PDT.RowData = pr;
                 if (PDT.ShowDialog() == DialogResult.OK)
                 {
