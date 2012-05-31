@@ -806,6 +806,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\sql.txt" />
     <Content Include="系统流程图\TonliSystemPic\SystemPic.jpg" />
     <Content Include="系统流程图\TonliSystemPic\地理信息.jpg" />
     <Content Include="系统流程图\TonliSystemPic\基础数据.jpg" />
