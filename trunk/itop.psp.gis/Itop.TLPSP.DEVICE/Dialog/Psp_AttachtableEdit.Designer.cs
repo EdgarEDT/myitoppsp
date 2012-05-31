@@ -216,7 +216,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 14);
             this.label7.TabIndex = 1;
-            this.label7.Text = "丰水期出律率：";
+            this.label7.Text = "丰水期出力率：";
             // 
             // spinEdit2
             // 
@@ -249,7 +249,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 14);
             this.label8.TabIndex = 1;
-            this.label8.Text = "枯水期出律率：";
+            this.label8.Text = "枯水期出力率：";
             // 
             // spinEdit3
             // 
