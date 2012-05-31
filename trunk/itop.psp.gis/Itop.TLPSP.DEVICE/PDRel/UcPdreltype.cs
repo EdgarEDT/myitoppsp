@@ -86,11 +86,15 @@ namespace Itop.TLPSP.DEVICE
                 pr.ProjectID = Itop.Client.MIS.ProgUID;
                 IList<Ps_pdreltype> listTypes = Services.BaseService.GetList<Ps_pdreltype>("SelectPs_pdreltypeByProjectID", pr);
 
-
+             
 
                 dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_pdreltype));
                 treeList1.BeginInit();
-                treeList1.DataSource = dataTable;
+                if (dataTable!=null)
+                {
+                    treeList1.DataSource = dataTable;
+                }
+               
 
                 //treeList1.Columns["Sort"].SortOrder = SortOrder.Ascending;
                 treeList1.EndInit();
