@@ -57,6 +57,7 @@ namespace ItopVector.Tools
                     gPro.Area = Convert.ToDecimal(Area);
                     gPro.UID = Guid.NewGuid().ToString();
                     gPro.ObligateField11 = "是";
+                   
                     gPro.LayerID = layerID;
                 }
                 
@@ -67,6 +68,19 @@ namespace ItopVector.Tools
                 dl.DataBindings.Add("Text", gPro, "Number");
                 xyxs.DataBindings.Add("Text", gPro, "ObligateField11");
                 remark.DataBindings.Add("Text", gPro, "Remark");
+                if (string.IsNullOrEmpty(gPro.ObligateField16))
+                {
+                    checkEdit1.Checked = false;
+                }
+                else
+                {
+                    if (gPro.ObligateField16=="True")
+                    {
+                        checkEdit1.Checked =true;
+                    }
+                   else
+                        checkEdit1.Checked = false;
+                }
                comboBoxEdit1.DataBindings.Add("EditValue", gPro, "ObligateField7");
                // comboBoxEdit1.DataBindings.Add("Text", gPro, "ObligateField12");
                //comboBoxEdit2.DataBindings.Add("Text", gPro, "ObligateField13");
@@ -87,7 +101,7 @@ namespace ItopVector.Tools
                 MessageBox.Show("地块类型不能为空。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-         
+            gPro.ObligateField16 = checkEdit1.Checked.ToString();
 
             if (IsCreate)
             {
@@ -131,7 +145,19 @@ namespace ItopVector.Tools
             {
                 comboBoxEdit1.Properties.Items.Add(psu.Title);
             }
-           
+            if (string.IsNullOrEmpty(gPro.ObligateField16))
+            {
+                checkEdit1.Checked = false;
+            }
+            else
+            {
+                if (gPro.ObligateField16 == "True")
+                {
+                    checkEdit1.Checked = true;
+                }
+                else
+                    checkEdit1.Checked = false;
+            }
             //string conn = "ProjectID='" + Itop.Client.MIS.ProgUID + "' and Col1='" + DQ + "' order by Sort";
             //IList<PS_Table_AreaWH> list = Services.BaseService.GetList<PS_Table_AreaWH>("SelectPS_Table_AreaWHByConn", conn);
             //foreach (PS_Table_AreaWH area in list) {
@@ -152,6 +178,7 @@ namespace ItopVector.Tools
                 xyxs.Properties.ReadOnly = true;
                 remark.Properties.ReadOnly = true;
                 comboBoxEdit1.Properties.ReadOnly = true;
+                checkEdit1.Properties.ReadOnly = true;
                 simpleButton1.Visible = false;
                 simpleButton2.Text = "关闭";
             }
@@ -167,9 +194,18 @@ namespace ItopVector.Tools
                     string md = rowView.Row["TypeStyle"].ToString();
                     string xs = rowView.Row["ObligateField2"].ToString();
                     string rjl = rowView.Row["ObligateField3"].ToString();
-
-                    fh.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs)* Convert.ToDouble(rjl));
-                    dl.Text = Convert.ToString( Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb));
+                    string dxmd = rowView.Row["ObligateField6"].ToString();
+                    if (checkEdit1.Checked)
+                    {
+                        fh.Text = Convert.ToString(((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl)) + (Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd)));
+                        dl.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb))+(Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd) * Convert.ToDouble(rzb)));
+                    }
+                    else
+                    {
+                        fh.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl));
+                        dl.Text = Convert.ToString(Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb));
+                    }
+                    
                     gPro.Burthen =Convert.ToDecimal( fh.Text);
                     gPro.Number = Convert.ToDecimal(dl.Text);
                     gPro.ObligateField1 = rowView.Row["ObligateField1"].ToString();
@@ -189,14 +225,21 @@ namespace ItopVector.Tools
                     string md = rowView.Row["TypeStyle"].ToString();
                     string xs = rowView.Row["ObligateField2"].ToString();
                     string rjl = rowView.Row["ObligateField3"].ToString();
+                    string dxmd = rowView.Row["ObligateField6"].ToString();
+                    double fhz = 0;
                     if (xyxs.Text == "是")
                     {
-                        fh.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl));
+                        fhz = (Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl);
                     }
                     else
                     {
-                        fh.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md))  * Convert.ToDouble(rjl));
+                        fhz= (Convert.ToDouble(mj.Text) * Convert.ToDouble(md))  * Convert.ToDouble(rjl);
                     }
+                    if (checkEdit1.Checked)
+                    {
+                        fhz += Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd);
+                    }
+                    fh.Text=fhz.ToString();
                     gPro.Burthen = Convert.ToDecimal(fh.Text);
                     //dl.Text = Convert.ToString( Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb));
                     //gPro.Burthen =Convert.ToDecimal( fh.Text);
@@ -208,6 +251,41 @@ namespace ItopVector.Tools
 
         private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void checkEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string uid = lx.EditValue.ToString();
+                DataRowView rowView = (DataRowView)lx.Properties.GetDataSourceRowByKeyValue(uid);
+                if (rowView != null)
+                {
+                    string md = rowView.Row["TypeStyle"].ToString();
+                    string xs = rowView.Row["ObligateField2"].ToString();
+                    string rjl = rowView.Row["ObligateField3"].ToString();
+                    string dxmd = rowView.Row["ObligateField6"].ToString();
+                    if (checkEdit1.Checked)
+                    {
+                        fh.Text = Convert.ToString(((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl)) + (Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd)));
+                        dl.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb)) + (Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd) * Convert.ToDouble(rzb)));
+                    }
+                    else
+                    {
+                        fh.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl));
+                        dl.Text = Convert.ToString(Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb));
+                    }
+                    gPro.Burthen = Convert.ToDecimal(fh.Text);
+                    gPro.Number = Convert.ToDecimal(dl.Text);
+                    gPro.ObligateField1 = rowView.Row["ObligateField1"].ToString();
+                }        
+            }
+            catch (System.Exception ex)
+            {
+            	
+            }
+
 
         }
     }
