@@ -15,6 +15,7 @@ using Itop.Domain;
 using Itop.Client.Projects;
 using Itop.Server;
 using System.Diagnostics;
+using System.IO;
 namespace Itop.Client.Login {
     public partial class LoginForm : Itop.Client.Base.DialogForm {
         public LoginForm() {
@@ -190,6 +191,30 @@ namespace Itop.Client.Login {
             DevExpress.XtraVerticalGrid.Localization.VGridLocalizer.Active = new DevExpress.LocalizationCHS.DevExpressXtraVerticalGridLocalizationCHS();
             DevExpress.XtraBars.Localization.BarLocalizer.Active = new DevExpress.LocalizationCHS.DevExpressXtraBarsLocalizationCHS();
             DevExpress.XtraEditors.Controls.Localizer.Active = new DevExpress.LocalizationCHS.DevExpressXtraEditorsLocalizationCHS();
+            SetComboData();
+            combCity.EditValue = RemotingHelper.CityName;
+
+        }
+        private void SetComboData()
+        {
+            try
+            {
+                IList<SysDataServer> dslist = ServicesSys.BaseService.GetList<SysDataServer>("SelectSysDataServerList", "");
+                combCity.Properties.Columns.Clear();
+                combCity.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+                combCity.Properties.DataSource = dslist;
+                combCity.Properties.DisplayMember = "CityName";
+                combCity.Properties.ValueMember = "ID";
+                combCity.Properties.NullText = "请选择城市";
+                combCity.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CityName", "城市名称")});
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -210,35 +235,41 @@ namespace Itop.Client.Login {
 
         private void sbtnOk_Click(object sender, EventArgs e)
         {
-            StartServer();
-            DoLogin();
+            if (StartServer())
+            {
+                DoLogin();
+            }
+           
+           
         }
         /// <summary>
         /// 启动本机服务
         /// </summary>
-        private void StartServer()
+        private bool StartServer()
         {
             string cityid = RemotingHelper.CityName;
             SysDataServer ds = null;
             try
             {
                ds = ServicesSys.BaseService.GetOneByKey<SysDataServer>(cityid);
-                 if (ds == null)
-                {
-                    MsgBox.Show("请您点设置选择正确的城市！");
-                    return;
-                }
+               if (combCity.EditValue==null)
+               {
+                   MsgBox.Show("请您选择正确的城市！");
+                   return false;
+               }
+               
             }
             catch (Exception)
             {
 
                 MessageBox.Show("无法连接到服务器！请确保服务器参数正确并确认服务器已启动");
-                return;
+                return false;
             }
 
 
                 MIS.DataServer = ds;
                 MIS.CityName = ds.CityName;
+                CreateDir(ds.CityName);
                 MIS.JD = ds.CityJD;
                 MIS.WD = ds.CityWD;
                 Itop.Client.Option.Settings.SetJWDvalue(ds.CityJD, ds.CityWD);
@@ -267,13 +298,13 @@ namespace Itop.Client.Login {
                     ProcessStartInfo sysserver = new ProcessStartInfo(Application.StartupPath + "\\Server\\Itop.Server.exe");
                     sysserver.WorkingDirectory = Application.StartupPath + "\\Server";
                     MIS.curpro = System.Diagnostics.Process.Start(sysserver);
-                   
+                    return true;
                     //MIS.curpro = System.Diagnostics.Process.Start("C:\\Program Files\\Tencent\\QQ\\Bin\\QQ.exe");
                     
                 }
                 catch (Exception)
                 {
-                    
+                    return false;
                     throw;
                 }
                 
@@ -329,23 +360,48 @@ namespace Itop.Client.Login {
            
         }
            #endregion
-
         private void sbtnData_Click(object sender, EventArgs e)
         {
             FrmSysData frm = new FrmSysData();
             frm.Show();
         }
 
+        //判断地图文件夹是否存在，不存在创建
+        private void CreateDir(string cityname)
+        {
+            string mappath=Application.StartupPath+"\\map";
+            string citypath=mappath+"\\"+cityname;
+            if (!Directory.Exists(mappath))
+            {
+                Directory.CreateDirectory(mappath);
+                if (!Directory.Exists(citypath))
+                {
+                    Directory.CreateDirectory(citypath);
+                }
+            }
+            else
+            {
+                if (!Directory.Exists(citypath))
+                {
+                    Directory.CreateDirectory(citypath);
+                }
+
+            }
+        }
         private void lablogin_Click(object sender, EventArgs e)
         {
-            StartServer();
-            DoLogin();
+            if (StartServer())
+            {
+                DoLogin();
+            }
         }
         private void labSet_Click(object sender, EventArgs e)
         {
             lablogin.ImageIndex = 0;
             loginsetting lst = new loginsetting();
             lst.ShowDialog();
+            SetComboData();
+            combCity.EditValue = RemotingHelper.CityName;
         }
         private void lablogin_MouseEnter(object sender, EventArgs e)
         {
@@ -364,7 +420,7 @@ namespace Itop.Client.Login {
 
         private void lablogin_MouseUp(object sender, MouseEventArgs e)
         {
-            lablogin.ImageIndex = 1;
+            lablogin.ImageIndex = 0;
         }
 
        
@@ -382,7 +438,7 @@ namespace Itop.Client.Login {
 
         private void labSet_MouseUp(object sender, MouseEventArgs e)
         {
-            labSet.ImageIndex = 4;
+            labSet.ImageIndex = 3;
         }
 
         private void labSet_MouseDown(object sender, MouseEventArgs e)
@@ -422,6 +478,11 @@ namespace Itop.Client.Login {
                 }
             }
             
+        }
+
+        private void combCity_EditValueChanged(object sender, EventArgs e)
+        {
+            RemotingHelper.CityName = combCity.EditValue.ToString();
         }
 
 

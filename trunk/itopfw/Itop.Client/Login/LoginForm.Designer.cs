@@ -30,6 +30,8 @@ namespace Itop.Client.Login {
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.sbtnOk = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.combCity = new DevExpress.XtraEditors.LookUpEdit();
             this.labSetServer = new DevExpress.XtraEditors.LabelControl();
             this.labSetData = new System.Windows.Forms.Label();
             this.labSet = new System.Windows.Forms.Label();
@@ -43,6 +45,7 @@ namespace Itop.Client.Login {
             this.m_labelUserNumber = new System.Windows.Forms.Label();
             this.m_labelPassword = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.combCity.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList2
@@ -60,12 +63,12 @@ namespace Itop.Client.Login {
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "male.ico");
-            this.imageList1.Images.SetKeyName(1, "key.ico");
+            this.imageList1.Images.SetKeyName(0, "User.ico");
+            this.imageList1.Images.SetKeyName(1, "key.png");
             // 
             // sbtnOk
             // 
-            this.sbtnOk.Location = new System.Drawing.Point(292, 193);
+            this.sbtnOk.Location = new System.Drawing.Point(295, 212);
             this.sbtnOk.Name = "sbtnOk";
             this.sbtnOk.Size = new System.Drawing.Size(37, 15);
             this.sbtnOk.TabIndex = 3;
@@ -75,6 +78,8 @@ namespace Itop.Client.Login {
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.combCity);
             this.panel2.Controls.Add(this.labSetServer);
             this.panel2.Controls.Add(this.labSetData);
             this.panel2.Controls.Add(this.labSet);
@@ -95,6 +100,30 @@ namespace Itop.Client.Login {
             this.panel2.Size = new System.Drawing.Size(500, 300);
             this.panel2.TabIndex = 5;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label1.Location = new System.Drawing.Point(201, 179);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 12);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "城  市:";
+            // 
+            // combCity
+            // 
+            this.combCity.Location = new System.Drawing.Point(256, 174);
+            this.combCity.Name = "combCity";
+            this.combCity.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.combCity.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.combCity.Properties.NullText = "请选择城市";
+            this.combCity.Size = new System.Drawing.Size(195, 23);
+            this.combCity.TabIndex = 41;
+            this.combCity.EditValueChanged += new System.EventHandler(this.combCity_EditValueChanged);
             // 
             // labSetServer
             // 
@@ -121,7 +150,7 @@ namespace Itop.Client.Login {
             // 
             this.labSet.ImageIndex = 3;
             this.labSet.ImageList = this.imageList2;
-            this.labSet.Location = new System.Drawing.Point(357, 187);
+            this.labSet.Location = new System.Drawing.Point(366, 206);
             this.labSet.Name = "labSet";
             this.labSet.Size = new System.Drawing.Size(58, 23);
             this.labSet.TabIndex = 3;
@@ -135,7 +164,7 @@ namespace Itop.Client.Login {
             // 
             this.lablogin.ImageIndex = 0;
             this.lablogin.ImageList = this.imageList2;
-            this.lablogin.Location = new System.Drawing.Point(279, 187);
+            this.lablogin.Location = new System.Drawing.Point(282, 206);
             this.lablogin.Name = "lablogin";
             this.lablogin.Size = new System.Drawing.Size(58, 23);
             this.lablogin.TabIndex = 2;
@@ -175,16 +204,16 @@ namespace Itop.Client.Login {
             // 
             // utxtpwd
             // 
-            this.utxtpwd.Location = new System.Drawing.Point(271, 153);
+            this.utxtpwd.Location = new System.Drawing.Point(256, 143);
             this.utxtpwd.Name = "utxtpwd";
-            this.utxtpwd.Size = new System.Drawing.Size(161, 22);
+            this.utxtpwd.Size = new System.Drawing.Size(195, 23);
             this.utxtpwd.TabIndex = 1;
             // 
             // utxtuser
             // 
-            this.utxtuser.Location = new System.Drawing.Point(271, 119);
+            this.utxtuser.Location = new System.Drawing.Point(256, 113);
             this.utxtuser.Name = "utxtuser";
-            this.utxtuser.Size = new System.Drawing.Size(161, 22);
+            this.utxtuser.Size = new System.Drawing.Size(195, 23);
             this.utxtuser.TabIndex = 0;
             // 
             // labtop
@@ -209,24 +238,24 @@ namespace Itop.Client.Login {
             this.m_labelUserNumber.AutoSize = true;
             this.m_labelUserNumber.BackColor = System.Drawing.Color.Transparent;
             this.m_labelUserNumber.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelUserNumber.Location = new System.Drawing.Point(223, 124);
+            this.m_labelUserNumber.Location = new System.Drawing.Point(201, 118);
             this.m_labelUserNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelUserNumber.Name = "m_labelUserNumber";
-            this.m_labelUserNumber.Size = new System.Drawing.Size(41, 12);
+            this.m_labelUserNumber.Size = new System.Drawing.Size(47, 12);
             this.m_labelUserNumber.TabIndex = 2;
-            this.m_labelUserNumber.Text = "用户名";
+            this.m_labelUserNumber.Text = "用户名:";
             // 
             // m_labelPassword
             // 
             this.m_labelPassword.AutoSize = true;
             this.m_labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.m_labelPassword.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelPassword.Location = new System.Drawing.Point(223, 156);
+            this.m_labelPassword.Location = new System.Drawing.Point(201, 148);
             this.m_labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelPassword.Name = "m_labelPassword";
-            this.m_labelPassword.Size = new System.Drawing.Size(41, 12);
+            this.m_labelPassword.Size = new System.Drawing.Size(47, 12);
             this.m_labelPassword.TabIndex = 3;
-            this.m_labelPassword.Text = "密  码";
+            this.m_labelPassword.Text = "密  码:";
             // 
             // LoginForm
             // 
@@ -246,6 +275,7 @@ namespace Itop.Client.Login {
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.combCity.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,5 +298,7 @@ namespace Itop.Client.Login {
         private System.Windows.Forms.Label labSet;
         private System.Windows.Forms.Label labSetData;
         private DevExpress.XtraEditors.LabelControl labSetServer;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.LookUpEdit combCity;
     }
 }

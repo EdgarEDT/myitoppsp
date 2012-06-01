@@ -36,6 +36,7 @@
             // 
             // panel1
             // 
+            this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.txtbox);
@@ -43,7 +44,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(219, 26);
+            this.panel1.Size = new System.Drawing.Size(219, 23);
             this.panel1.TabIndex = 0;
             // 
             // txtbox
@@ -52,18 +53,18 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbox.Location = new System.Drawing.Point(32, 4);
+            this.txtbox.Location = new System.Drawing.Point(26, 2);
             this.txtbox.MaxLength = 20;
             this.txtbox.Name = "txtbox";
-            this.txtbox.Size = new System.Drawing.Size(177, 14);
+            this.txtbox.Size = new System.Drawing.Size(189, 14);
             this.txtbox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(4, 1);
+            this.label1.Location = new System.Drawing.Point(-2, -1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 18);
+            this.label1.Size = new System.Drawing.Size(30, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "   ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -74,11 +75,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "UserText";
-            this.Size = new System.Drawing.Size(219, 26);
+            this.Size = new System.Drawing.Size(219, 23);
             this.Enter += new System.EventHandler(this.UserText_Enter);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -41,16 +41,16 @@
             // 
             // utxtpwd
             // 
-            this.utxtpwd.Location = new System.Drawing.Point(81, 63);
+            this.utxtpwd.Location = new System.Drawing.Point(70, 60);
             this.utxtpwd.Name = "utxtpwd";
-            this.utxtpwd.Size = new System.Drawing.Size(161, 22);
+            this.utxtpwd.Size = new System.Drawing.Size(174, 26);
             this.utxtpwd.TabIndex = 5;
             // 
             // utxtuser
             // 
-            this.utxtuser.Location = new System.Drawing.Point(81, 29);
+            this.utxtuser.Location = new System.Drawing.Point(70, 21);
             this.utxtuser.Name = "utxtuser";
-            this.utxtuser.Size = new System.Drawing.Size(161, 22);
+            this.utxtuser.Size = new System.Drawing.Size(174, 26);
             this.utxtuser.TabIndex = 4;
             // 
             // m_labelUserNumber
@@ -58,7 +58,7 @@
             this.m_labelUserNumber.AutoSize = true;
             this.m_labelUserNumber.BackColor = System.Drawing.Color.Transparent;
             this.m_labelUserNumber.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelUserNumber.Location = new System.Drawing.Point(33, 34);
+            this.m_labelUserNumber.Location = new System.Drawing.Point(23, 26);
             this.m_labelUserNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelUserNumber.Name = "m_labelUserNumber";
             this.m_labelUserNumber.Size = new System.Drawing.Size(43, 14);
@@ -70,7 +70,7 @@
             this.m_labelPassword.AutoSize = true;
             this.m_labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.m_labelPassword.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.m_labelPassword.Location = new System.Drawing.Point(33, 66);
+            this.m_labelPassword.Location = new System.Drawing.Point(23, 64);
             this.m_labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_labelPassword.Name = "m_labelPassword";
             this.m_labelPassword.Size = new System.Drawing.Size(39, 14);
@@ -79,7 +79,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(59, 104);
+            this.btnLogin.Location = new System.Drawing.Point(59, 99);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 8;
@@ -89,7 +89,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(150, 104);
+            this.btnCancel.Location = new System.Drawing.Point(150, 99);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 9;
@@ -99,8 +99,8 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "male.ico");
-            this.imageList1.Images.SetKeyName(1, "key.ico");
+            this.imageList1.Images.SetKeyName(0, "User.ico");
+            this.imageList1.Images.SetKeyName(1, "key.png");
             // 
             // FrmServerLogin
             // 

@@ -345,6 +345,7 @@
     <Compile Include="SplitContainerEx\SpliterPanelState.cs" />
     <Compile Include="SplitContainerEx\TextRenderingHintGraphics.cs" />
     <Compile Include="SplitContainerEx\ThumbArrowDirection.cs" />
+    <Compile Include="SysDataServer\CreatPinYin.cs" />
     <Compile Include="SysDataServer\FormDataSetup.cs">
       <SubType>Form</SubType>
     </Compile>

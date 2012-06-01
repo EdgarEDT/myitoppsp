@@ -80,6 +80,10 @@ namespace Itop.Client
         {
             SysDataServer ds = new SysDataServer();
             ds.Sort = gridView1.RowCount + 1;
+            ds.ServerAddress = ServicesSys.GetServerAddress;
+            ds.ServerUser=ServicesSys.GetUid;
+            ds.ServerPwd = ServicesSys.GetPwd;
+
             FrmSysDataAdd frm = new FrmSysDataAdd();
             frm.sds = ds;
             frm.Text = "新增城市";
