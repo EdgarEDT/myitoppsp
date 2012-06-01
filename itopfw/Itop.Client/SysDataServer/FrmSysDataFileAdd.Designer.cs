@@ -85,6 +85,7 @@
             // 
             this.txtFileDesc.Location = new System.Drawing.Point(98, 63);
             this.txtFileDesc.Name = "txtFileDesc";
+            this.txtFileDesc.Properties.ReadOnly = true;
             this.txtFileDesc.Size = new System.Drawing.Size(224, 21);
             this.txtFileDesc.TabIndex = 8;
             // 
@@ -108,6 +109,9 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.labelControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSysDataFileAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSysDataFileAdd";

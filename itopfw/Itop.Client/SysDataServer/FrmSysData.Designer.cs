@@ -140,7 +140,7 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 68;
+            this.gridColumn2.Width = 81;
             // 
             // gridColumn3
             // 
@@ -150,7 +150,7 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 62;
+            this.gridColumn3.Width = 74;
             // 
             // gridColumn4
             // 
@@ -170,7 +170,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 91;
+            this.gridColumn5.Width = 94;
             // 
             // gridColumn6
             // 
@@ -180,7 +180,7 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;
-            this.gridColumn6.Width = 91;
+            this.gridColumn6.Width = 84;
             // 
             // gridColumn12
             // 
@@ -189,7 +189,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 5;
-            this.gridColumn12.Width = 60;
+            this.gridColumn12.Width = 111;
             // 
             // gridColumn7
             // 
@@ -199,7 +199,7 @@
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
-            this.gridColumn7.Width = 71;
+            this.gridColumn7.Width = 68;
             // 
             // gridColumn11
             // 
@@ -210,7 +210,7 @@
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 7;
-            this.gridColumn11.Width = 48;
+            this.gridColumn11.Width = 103;
             // 
             // gridColumn8
             // 
@@ -224,8 +224,6 @@
             this.gridColumn9.FieldName = "Remark";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
             this.gridColumn9.Width = 179;
             // 
             // gridColumn10

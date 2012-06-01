@@ -326,6 +326,16 @@ namespace Itop.Client
             frm.Hide();
         }
 
+       
+
+        private void txtCityName_Properties_Leave(object sender, EventArgs e)
+        {
+            if (sds.ServerName == string.Empty)
+            {
+                sds.ServerName ="Itop_" +CreatPinYin.Convert(txtCityName.Text.Trim());
+            }
+        }
+
      
       
        

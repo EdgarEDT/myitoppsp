@@ -217,7 +217,7 @@
             this.拷贝项目ToolStripMenuItem,
             this.项目用户ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(119, 180);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 202);
             // 
             // 添加目录ToolStripMenuItem
             // 
@@ -257,8 +257,9 @@
             // 关联图层ToolStripMenuItem
             // 
             this.关联图层ToolStripMenuItem.Name = "关联图层ToolStripMenuItem";
-            this.关联图层ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.关联图层ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关联图层ToolStripMenuItem.Text = "关联图层";
+            this.关联图层ToolStripMenuItem.Visible = false;
             this.关联图层ToolStripMenuItem.Click += new System.EventHandler(this.关联图层ToolStripMenuItem_Click);
             // 
             // 拷贝项目ToolStripMenuItem
@@ -375,6 +376,7 @@
             this.bbtngl.Id = 3;
             this.bbtngl.ImageIndex = 6;
             this.bbtngl.Name = "bbtngl";
+            this.bbtngl.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bbtngl.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtngl_ItemClick);
             // 
             // bbtncopy
@@ -416,7 +418,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 2);
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(244, 26);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(242, 26);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barAndDockingController1
@@ -645,7 +647,7 @@
             this.splitContainer2.Panel2.Resize += new System.EventHandler(this.splitContainer2_Panel2_Resize);
             this.splitContainer2.Panel2MinSize = 0;
             this.splitContainer2.Size = new System.Drawing.Size(989, 550);
-            this.splitContainer2.SplitterDistance = 388;
+            this.splitContainer2.SplitterDistance = 727;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 13;
             // 
@@ -656,7 +658,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 25);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(10);
-            this.panel6.Size = new System.Drawing.Size(388, 525);
+            this.panel6.Size = new System.Drawing.Size(727, 525);
             this.panel6.TabIndex = 1;
             // 
             // listViewdown
@@ -670,7 +672,7 @@
             this.listViewdown.Location = new System.Drawing.Point(10, 10);
             this.listViewdown.Name = "listViewdown";
             this.listViewdown.ShowItemToolTips = true;
-            this.listViewdown.Size = new System.Drawing.Size(368, 505);
+            this.listViewdown.Size = new System.Drawing.Size(707, 505);
             this.listViewdown.TabIndex = 0;
             this.listViewdown.UseCompatibleStateImageBehavior = false;
             this.listViewdown.ItemActivate += new System.EventHandler(this.listViewdown_ItemActivate);
@@ -685,7 +687,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(388, 25);
+            this.panel5.Size = new System.Drawing.Size(727, 25);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -829,7 +831,7 @@
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(582, 525);
+            this.treeList1.Size = new System.Drawing.Size(243, 525);
             this.treeList1.StateImageList = this.imageList4;
             this.treeList1.TabIndex = 0;
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);

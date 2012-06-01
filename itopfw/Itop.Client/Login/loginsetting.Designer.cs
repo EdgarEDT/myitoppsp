@@ -83,7 +83,7 @@
             // 
             // sbtnOk
             // 
-            this.sbtnOk.Location = new System.Drawing.Point(195, 193);
+            this.sbtnOk.Location = new System.Drawing.Point(194, 152);
             this.sbtnOk.Name = "sbtnOk";
             this.sbtnOk.Size = new System.Drawing.Size(87, 27);
             this.sbtnOk.TabIndex = 17;
@@ -92,7 +92,7 @@
             // 
             // sbtnCanser
             // 
-            this.sbtnCanser.Location = new System.Drawing.Point(290, 193);
+            this.sbtnCanser.Location = new System.Drawing.Point(289, 152);
             this.sbtnCanser.Name = "sbtnCanser";
             this.sbtnCanser.Size = new System.Drawing.Size(87, 27);
             this.sbtnCanser.TabIndex = 17;
@@ -142,6 +142,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.combCity.Size = new System.Drawing.Size(227, 21);
             this.combCity.TabIndex = 39;
+            this.combCity.Visible = false;
             this.combCity.EditValueChanged += new System.EventHandler(this.combCity_EditValueChanged);
             // 
             // label1
@@ -155,6 +156,7 @@
             this.label1.Size = new System.Drawing.Size(43, 14);
             this.label1.TabIndex = 40;
             this.label1.Text = "城  市:";
+            this.label1.Visible = false;
             // 
             // btnRefreshCity
             // 
@@ -163,13 +165,14 @@
             this.btnRefreshCity.Size = new System.Drawing.Size(38, 23);
             this.btnRefreshCity.TabIndex = 41;
             this.btnRefreshCity.Text = "更新";
+            this.btnRefreshCity.Visible = false;
             this.btnRefreshCity.Click += new System.EventHandler(this.btnRefreshCity_Click);
             // 
             // loginsetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 232);
+            this.ClientSize = new System.Drawing.Size(409, 200);
             this.Controls.Add(this.btnRefreshCity);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.combCity);

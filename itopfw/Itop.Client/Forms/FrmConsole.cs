@@ -233,8 +233,15 @@ namespace Itop.Client.Forms
                     break;
             }
             splitContainer1.SplitterDistance = left_width;
-          
+
+            if (splitContainer2.Width-right_width <= 30)
+            {
+                right_width = splitContainer2.Width-218;
+            }
             splitContainer2.SplitterDistance = right_width;
+       
+
+
             treeList1.Columns[0].AppearanceCell.Font = new System.Drawing.Font(treeList1.Columns[0].AppearanceCell.Font.FontFamily, FontSize);
             treeList1.RowHeight = Convert.ToInt32(20 * treeList1.Columns[0].AppearanceCell.Font.Size / 10F);
             treeList1.Refresh();
@@ -837,7 +844,7 @@ namespace Itop.Client.Forms
                 SetBarButtonEnabled(bbtnAdditem, true);
                 SetBarButtonEnabled(bbtnEdit, true);
                 SetBarButtonEnabled(bbtndel, istrue);
-                SetBarButtonEnabled(bbtngl, false);
+                //SetBarButtonEnabled(bbtngl, false);
                 SetBarButtonEnabled(bbtnRecor, false);
                 SetBarButtonEnabled(bbtncopy, false);
                 SetBarButtonEnabled(bbtnuser, false);
@@ -847,7 +854,7 @@ namespace Itop.Client.Forms
                 SetMeunEnabled(2, true);
                 SetMeunEnabled(3, istrue);
                 SetMeunEnabled(4, false);
-                SetMeunEnabled(5, false);
+                //SetMeunEnabled(5, false);
                 SetMeunEnabled(6, false);
                 SetMeunEnabled(7, false);
                
@@ -862,7 +869,7 @@ namespace Itop.Client.Forms
                     SetBarButtonEnabled(bbtnAdditem, true);
                     SetBarButtonEnabled(bbtnEdit, true);
                     SetBarButtonEnabled(bbtndel, true);
-                    SetBarButtonEnabled(bbtngl, true);
+                    //SetBarButtonEnabled(bbtngl, true);
                     SetBarButtonEnabled(bbtnRecor, true);
                     SetBarButtonEnabled(bbtncopy, true);
                     SetBarButtonEnabled(bbtnuser, true);
@@ -872,7 +879,7 @@ namespace Itop.Client.Forms
                     SetMeunEnabled(2, true);
                     SetMeunEnabled(3, true);
                     SetMeunEnabled(4, true);
-                    SetMeunEnabled(5, true);
+                    //SetMeunEnabled(5, true);
                     SetMeunEnabled(6, true);
                     SetMeunEnabled(7, true);
                 }
@@ -885,7 +892,7 @@ namespace Itop.Client.Forms
                         SetBarButtonEnabled(bbtnAdditem, false);
                         SetBarButtonEnabled(bbtnEdit, true);
                         SetBarButtonEnabled(bbtndel, true);
-                        SetBarButtonEnabled(bbtngl, false);
+                        //SetBarButtonEnabled(bbtngl, false);
                         SetBarButtonEnabled(bbtnRecor, false);
                         SetBarButtonEnabled(bbtncopy, true);
                         SetBarButtonEnabled(bbtnuser, true);
@@ -895,7 +902,7 @@ namespace Itop.Client.Forms
                         SetMeunEnabled(2, true);
                         SetMeunEnabled(3, true);
                         SetMeunEnabled(4, false);
-                        SetMeunEnabled(5, false);
+                        //SetMeunEnabled(5, false);
                         SetMeunEnabled(6, true);
                         SetMeunEnabled(7, true);
                     }
@@ -906,7 +913,7 @@ namespace Itop.Client.Forms
                         SetBarButtonEnabled(bbtnAdditem, false);
                         SetBarButtonEnabled(bbtnEdit, false);
                         SetBarButtonEnabled(bbtndel, false);
-                        SetBarButtonEnabled(bbtngl, false);
+                        //SetBarButtonEnabled(bbtngl, false);
                         SetBarButtonEnabled(bbtnRecor, false);
                         SetBarButtonEnabled(bbtncopy, false);
                         SetBarButtonEnabled(bbtnuser, false);
@@ -916,7 +923,7 @@ namespace Itop.Client.Forms
                         SetMeunEnabled(2, false);
                         SetMeunEnabled(3, false);
                         SetMeunEnabled(4, false);
-                        SetMeunEnabled(5, false);
+                        //SetMeunEnabled(5, false);
                         SetMeunEnabled(6, false);
                         SetMeunEnabled(7, false);
                     }
