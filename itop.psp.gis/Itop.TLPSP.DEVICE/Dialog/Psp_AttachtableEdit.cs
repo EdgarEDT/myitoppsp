@@ -29,6 +29,7 @@ namespace Itop.TLPSP.DEVICE
                 rowdate.ZHI = zhi;
                 rowdate.S1 = S1;
                 rowdate.S2= S2;
+                rowdate.S3= S3;
                 rowdate.D1 = (double)spinEdit2.Value;
                 rowdate.D2 = (double)spinEdit3.Value;
                 return rowdate;
@@ -41,6 +42,7 @@ namespace Itop.TLPSP.DEVICE
                 zhi = rowdate.ZHI;
                 S1 = rowdate.S1;
                 S2 = rowdate.S2;
+                S3 = rowdate.S3;
                 spinEdit2.Value = (decimal)rowdate.D1;
                 spinEdit3.Value = (decimal)rowdate.D2;
             }
@@ -60,6 +62,11 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit4.Properties.Items.Add("新建");
                 comboBoxEdit4.Properties.Items.Add("投产");
             break;
+            case "修改":
+            comboBoxEdit4.Properties.Items.Clear();
+            comboBoxEdit4.Properties.Items.Add("投产");
+            comboBoxEdit4.Properties.Items.Add("退出");
+            break;
              }
             satetype = value;
             }
@@ -76,12 +83,26 @@ namespace Itop.TLPSP.DEVICE
                {
                case "1":
                        this.label1.Text = "变压器名称：";
+                       this.label7.Visible = false;
+                       this.label8.Visible = false;
+                       this.spinEdit2.Visible = false;
+                       this.spinEdit3.Visible = false;
+
                	break;
                 case"0":
                 this.label1.Text = "机组名称：";
+                this.label7.Visible = true;
+                this.label8.Visible = true;
+                this.spinEdit2.Visible = true;
+                this.spinEdit3.Visible = true;
+
                 break;
                 default:
                 this.label1.Text = "变压器名称：";
+                this.label7.Visible = false;
+                this.label8.Visible = false;
+                this.spinEdit2.Visible = false;
+                this.spinEdit3.Visible = false;
                 break;
                }
                _type = value;
@@ -115,6 +136,11 @@ namespace Itop.TLPSP.DEVICE
             get { return comboBoxEdit1.Text; }
             set { comboBoxEdit1.Text = value; }
         }
+        public string S3
+        {
+            get { return comboBoxEdit5.Text; }
+            set { comboBoxEdit5.Text = value; }
+        }
         protected void Init() {
             //comboBoxEdit4.Properties.Items.Add("投产");
             //comboBoxEdit4.Properties.Items.Add("退出");
@@ -129,7 +155,7 @@ namespace Itop.TLPSP.DEVICE
                 
                 comboBoxEdit2.Properties.Items.Add(s);
                 comboBoxEdit3.Properties.Items.Add(s);
-
+                comboBoxEdit5.Properties.Items.Add(s);
             }
             //string sql = "where type='02'or type='03'and projectid='"+ Itop.Client.MIS.ProgUID+"' ORDER BY Number";
             //IList<PSPDEV> list1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
