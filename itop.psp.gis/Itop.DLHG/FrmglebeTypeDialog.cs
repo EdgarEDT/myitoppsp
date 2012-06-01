@@ -56,9 +56,12 @@ namespace Itop.DLGH
             TypeStyle.DataBindings.Add("Text", _obj, "TypeStyle");
             txtxs.DataBindings.Add("Text", _obj, "ObligateField2");
             txtrjl.DataBindings.Add("Text", _obj, "ObligateField3");
+           zbfw.DataBindings.Add("Text", _obj, "ObligateField5");
+            dxfhzb.DataBindings.Add("Text", _obj, "ObligateField6");
             if (_obj.ObligateField1 == "") { _obj.ObligateField1 = Color.Black.ToArgb().ToString(); }
             if (_obj.ObligateField2 == "" || _obj.ObligateField2==null) { _obj.ObligateField2 = "1"; txtxs.Text = _obj.ObligateField2; }
             if (_obj.ObligateField3 == "" || _obj.ObligateField3 == null) { _obj.ObligateField3 = "1"; txtrjl.Text = _obj.ObligateField3; }
+            if (_obj.ObligateField6 == "" || _obj.ObligateField6 == null) { _obj.ObligateField6 = "1"; txtrjl.Text = _obj.ObligateField6; }
             TypeColor.Color = Color.FromArgb(Convert.ToInt32(_obj.ObligateField1));
             if (_obj.UID == "6ab9af7b-3d97-4e6c-8ed7-87b76950b90b")
             {
