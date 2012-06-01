@@ -13,6 +13,8 @@
       <result property='ObligateField2' column='ObligateField2' />
       <result property='ObligateField3' column='ObligateField3' />
       <result property='ObligateField4' column='ObligateField4' />
+      <result property='ObligateField5' column='ObligateField5' />
+      <result property='ObligateField6' column='ObligateField6' />
     </resultMap>
   </resultMaps>
   <statements>
@@ -25,7 +27,10 @@
       "ObligateField1",
       "ObligateField2",
       "ObligateField3",
-      "ObligateField4"
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6"
+
       )
       VALUES
       (
@@ -36,7 +41,9 @@
       #ObligateField1#,
       #ObligateField2#,
       #ObligateField3#,
-      #ObligateField4#
+      #ObligateField4#,
+      #ObligateField5#,
+      #ObligateField6#
       )
     </insert>
     <delete id='DeleteglebeType' parameterClass='glebeType'>
@@ -53,7 +60,9 @@
       "ObligateField1"= #ObligateField1#,
       "ObligateField2"= #ObligateField2#,
       "ObligateField3"= #ObligateField3#,
-      "ObligateField4"= #ObligateField4#
+      "ObligateField4"= #ObligateField4#,
+      "ObligateField5"= #ObligateField5#,
+      "ObligateField6"= #ObligateField6#
       WHERE
       UID = #UID#
     </update>
@@ -66,7 +75,9 @@
       "ObligateField1",
       "ObligateField2",
       "ObligateField3",
-      "ObligateField4"
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6"
       FROM glebeType
     </select>
     <select id='SelectglebeTypeByKey' resultMap='glebeTypeResult' parameterClass='glebeType'>
@@ -78,7 +89,9 @@
       "ObligateField1",
       "ObligateField2",
       "ObligateField3",
-      "ObligateField4"
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6"
       FROM glebeType
       WHERE
       UID = #UID#
