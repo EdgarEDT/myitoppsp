@@ -126,7 +126,8 @@ namespace ItopVector.Tools
         }
         public void InitData(string svgDataUid)
         {
-            //treeList1.ClearNodes();
+            #region MyRegion
+            /* 原有区分关联图层功能代码 _lgm
             ilist2.Clear();
             strSvgDataUid = svgDataUid;
             LayerGrade lg = new LayerGrade();
@@ -147,6 +148,25 @@ namespace ItopVector.Tools
                     }
                 }
             }
+            */
+
+            ilist2.Clear();
+            strSvgDataUid = svgDataUid;
+            LayerGrade lg = new LayerGrade();
+            lg.SvgDataUid = svgDataUid;
+            ilist = Services.BaseService.GetList("SelectLayerGradeListBySvgDataUid", lg);
+            //----------------按项目关联年份分级-------------------
+            Psp_ProgLayerList p = new Psp_ProgLayerList();
+            p.ProgUID = MIS.ProgUID;
+            IList<Psp_ProgLayerList> _plist = Services.BaseService.GetList<Psp_ProgLayerList>("SelectPsp_ProgLayerListListByProgUID", p);
+            for (int i = 0; i < ilist.Count; i++)
+            {
+                
+               ilist2.Add(ilist[i]);
+                     
+            }
+            #endregion
+           
             
             //-----------------------------------------------------
             //ilist = Services.BaseService.GetList<PspType>();
