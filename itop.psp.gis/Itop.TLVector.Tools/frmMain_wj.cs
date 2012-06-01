@@ -3997,7 +3997,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
 
                             float x = 0f;
                             float y = 0f;
-
+                           //判断电压等级
+                              int   dyinfo = Convert.ToInt32(getDY(lab));
                             x = ((Use)xml1).X;
 
                             y = ((Use)xml1).Y;
@@ -4028,6 +4029,12 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                             string deviceid = xml1.GetAttribute("Deviceid");
                             DeviceHelper.pspflag = false;
                             DeviceHelper.Wjghflag = false;
+                            if (dyinfo >= 66)
+                            {
+                                DeviceHelper.subflag = false;
+                            }
+                            else
+                                DeviceHelper.subflag = true;
                         Lab1://变电站、电源属性
                             if (string.IsNullOrEmpty(deviceid))
                             {
