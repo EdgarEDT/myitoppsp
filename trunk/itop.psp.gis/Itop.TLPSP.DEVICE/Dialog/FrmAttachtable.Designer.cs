@@ -208,7 +208,7 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 5;
-            this.simpleButton1.Text = "确定";
+            this.simpleButton1.Text = "确认";
             // 
             // simpleButton2
             // 
