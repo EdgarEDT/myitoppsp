@@ -114,7 +114,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "投产";
+            this.barButtonItem1.Caption = "修改";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.ImageIndex = 5;
             this.barButtonItem1.Name = "barButtonItem1";
@@ -128,15 +128,17 @@
             this.barButtonItem3.ImageIndex = 7;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem3.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // barButtonItem4
             // 
-            this.barButtonItem4.Caption = "修改（扩容/减少）";
+            this.barButtonItem4.Caption = "扩容/减少";
             this.barButtonItem4.Id = 3;
             this.barButtonItem4.ImageIndex = 18;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem4.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick_1);
             // 
             // barButtonItem5

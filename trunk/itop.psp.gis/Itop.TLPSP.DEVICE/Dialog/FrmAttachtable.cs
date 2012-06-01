@@ -91,14 +91,20 @@ namespace Itop.TLPSP.DEVICE
             column.Width = 100;
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
-            column.FieldName = "startYear";
-            column.Caption = "开始时间";
+            column.FieldName = "S3";
+            column.Caption = "新建时间";
             column.VisibleIndex = 2;
-            column.Width = 70;
+            column.Width = 100;
+            this.gridView1.Columns.Add(column);
+            column = new GridColumn();
+            column.FieldName = "startYear";
+            column.Caption = "投产时间";
+            column.VisibleIndex = 2;
+            column.Width =100;
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "endYear";
-            column.Caption = "结束时间";
+            column.Caption = "退出时间";
             column.VisibleIndex = 3;
             column.Width = 120;
             this.gridView1.Columns.Add(column);
@@ -121,7 +127,7 @@ namespace Itop.TLPSP.DEVICE
             column = new GridColumn();
             column.FieldName = "S2";
             column.Caption = "状态";
-            column.VisibleIndex =6;
+            column.VisibleIndex =-1;
             column.Width = 120;
             this.gridView1.Columns.Add(column);
 
@@ -167,6 +173,7 @@ namespace Itop.TLPSP.DEVICE
             pdr.D2 = 1;
             pdr.S2 = "新建";
             PDT.SateType = "新建";
+            pdr.S3 = DateTime.Now.Year.ToString();
             PDT.type = Type;
             PDT.RowData = pdr;
             if (PDT.ShowDialog() == DialogResult.OK)
@@ -186,7 +193,23 @@ namespace Itop.TLPSP.DEVICE
         {
              DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
              if (row != null) {
-                 row["S2"] = "投产";
+                 Psp_Attachtable PD = Itop.Common.DataConverter.RowToObject<Psp_Attachtable>(row);
+                 Psp_AttachtableEdit PDT = new Psp_AttachtableEdit();
+                 PDT.SateType = "修改";
+                 PDT.type = Type;
+                 PDT.RowData =PD;
+                 if (PDT.ShowDialog() == DialogResult.OK)
+                 {
+
+                    
+                     Itop.Client.Common.Services.BaseService.Update<Psp_Attachtable>(PDT.RowData);
+                     datatable.Rows.Remove(row);
+                     ((DataTable)gridControl1.DataSource).Rows.Add(Itop.Common.DataConverter.ObjectToRow(PDT.RowData, datatable.NewRow()));
+                     //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
+                     
+
+                     //gridControl1.DataSource = datatable;
+                 }
              }
         }
 
