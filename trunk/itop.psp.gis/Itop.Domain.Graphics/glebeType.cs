@@ -25,6 +25,8 @@ namespace Itop.Domain.Graphics
         private string _obligatefield2 = "";
         private string _obligatefield3 = "";
         private string _obligatefield4 = "";
+        private string _obligatefield5 = "";
+        private string _obligatefield6 = "";
         private Color _objcolor;
        
 
@@ -83,7 +85,16 @@ namespace Itop.Domain.Graphics
             get { return _obligatefield4; }
             set { _obligatefield4 = value; }
         }
-        
+        public string ObligateField5
+        {
+            get { return _obligatefield5; }
+            set { _obligatefield5 = value; }
+        }
+        public string ObligateField6
+        {
+            get { return _obligatefield6; }
+            set { _obligatefield6= value; }
+        }
         public Color ObjColor
         {
             get { return _objcolor; }
