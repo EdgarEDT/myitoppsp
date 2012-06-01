@@ -187,7 +187,11 @@ namespace Itop.DLGH
 			//用副本更新焦点对象
             //DataConverter.CopyTo<glebeType>(objCopy, obj);
 			//刷新表格
+            Services.BaseService.Update<glebeType>(obj);
 			gridControl.RefreshDataSource();
+            
+
+           
 		}
 
 		/// <summary>
