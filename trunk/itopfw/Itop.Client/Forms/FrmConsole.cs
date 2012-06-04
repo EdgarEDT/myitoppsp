@@ -236,7 +236,7 @@ namespace Itop.Client.Forms
 
             if (splitContainer2.Width-right_width <= 30)
             {
-                right_width = splitContainer2.Width-218;
+                right_width = splitContainer2.Width-216;
             }
             splitContainer2.SplitterDistance = right_width;
        
