@@ -36,7 +36,9 @@ namespace Itop.TLPSP.DEVICE
         HWG=56,
         ZSKG=57,
         FZX=58,
-        GT=70
+        GT=70,
+        PDXL=73,
+        LUX=75
     }
    
     public class DeviceTypeHelper{

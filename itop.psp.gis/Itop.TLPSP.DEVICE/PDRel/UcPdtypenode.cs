@@ -678,6 +678,10 @@ namespace Itop.TLPSP.DEVICE
                     ex.CellsBackColor(1, 3, 1, 2 + columnscount, ExcelStyle.ColorIndex.黄色);
                     ex.ShowExcel();
                 }
+                else
+                {
+                    ex.DisPoseExcel();
+                }
                
             }
             catch (System.Exception exe)

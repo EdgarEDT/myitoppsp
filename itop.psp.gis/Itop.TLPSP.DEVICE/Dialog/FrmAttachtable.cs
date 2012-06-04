@@ -108,22 +108,25 @@ namespace Itop.TLPSP.DEVICE
             column.VisibleIndex = 3;
             column.Width = 120;
             this.gridView1.Columns.Add(column);
-            column = new GridColumn();
-            column.FieldName = "D1";
-            column.Caption = "丰水期出力率";
-            column.VisibleIndex = 4;
-            column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            column.DisplayFormat.FormatString = "n3";
-            column.Width = 120;
-            this.gridView1.Columns.Add(column);
-            column = new GridColumn();
-            column.FieldName = "D2";
-            column.Caption = "枯水期出力率";
-            column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            column.DisplayFormat.FormatString = "n3";
-            column.VisibleIndex = 5;
-            column.Width = 120;
-            this.gridView1.Columns.Add(column);
+            if (Type!="1")
+            {
+                column = new GridColumn();
+                column.FieldName = "D1";
+                column.Caption = "丰水期出力率";
+                column.VisibleIndex = 4;
+                column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                column.DisplayFormat.FormatString = "n3";
+                column.Width = 120;
+                this.gridView1.Columns.Add(column);
+                column = new GridColumn();
+                column.FieldName = "D2";
+                column.Caption = "枯水期出力率";
+                column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                column.DisplayFormat.FormatString = "n3";
+                column.VisibleIndex = 5;
+                column.Width = 120;
+                this.gridView1.Columns.Add(column);
+            }
             column = new GridColumn();
             column.FieldName = "S2";
             column.Caption = "状态";

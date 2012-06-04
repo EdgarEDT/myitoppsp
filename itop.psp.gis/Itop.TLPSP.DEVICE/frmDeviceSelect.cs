@@ -226,10 +226,11 @@ namespace Itop.TLPSP.DEVICE
             {
                 simpleButton4.Enabled = false;
             }
-            else
+            else if (Convert.ToInt32(strID) != 20 &&Convert.ToInt32(strID) != 30)
             {
                 simpleButton4.Enabled = true;
             }
+            
             if (devicTypes.ContainsKey(dtype))
             {
                 device = devicTypes[dtype];
