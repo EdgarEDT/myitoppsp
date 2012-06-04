@@ -20,7 +20,7 @@ using System.Drawing.Drawing2D;
 using Itop.Domain.Graphics;
 namespace Itop.Client.Table
 {
-    public partial class Frm220ResultSH : FormBase
+    public partial class Frm110ResultSH : FormBase
     {
         DataTable dataTable;
 
@@ -61,7 +61,7 @@ namespace Itop.Client.Table
             set { _gcontrol = value; }
         }
 
-        public Frm220ResultSH()
+        public Frm110ResultSH()
         {
             InitializeComponent();
         }
@@ -106,7 +106,7 @@ namespace Itop.Client.Table
         private void Form1_Load(object sender, EventArgs e)
         {
             HideToolBarButton();
-            yAnge = oper.GetYearRange("Col5='" + GetProjectID + "' and Col4='" + OperTable.rst220 + "'");
+            yAnge = oper.GetYearRange("Col5='" + GetProjectID + "' and Col4='" + OperTable.rst110 + "'");
             Show();
             initpasteCols();
             Application.DoEvents();
@@ -127,9 +127,9 @@ namespace Itop.Client.Table
           
            
             string con = "ProjectID='" + GetProjectID + "'";
-            listTypes = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", con);
+            listTypes = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con);
         
-            dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Table_220Result));
+            dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Table_110Result));
            
 
             treeList1.DataSource = dataTable;
@@ -182,9 +182,9 @@ namespace Itop.Client.Table
                 //treeList1.Columns.Clear();
             }
             string con = "ProjectID='" + GetProjectID + "'";
-            listTypes = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", con);
+            listTypes = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con);
             
-            dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Table_220Result));
+            dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Table_110Result));
             
 
             treeList1.DataSource = dataTable;
@@ -197,12 +197,12 @@ namespace Itop.Client.Table
             string conn = "ParentID='0' and ProjectID='" + GetProjectID + "'";
 
             int[] year = GetYears();
-            Ps_Table_220Result parent = new Ps_Table_220Result();
+            Ps_Table_110Result parent = new Ps_Table_110Result();
             parent.ID += "|" + GetProjectID;
-            parent.ParentID = "0"; parent.Title = "220千伏合计"; parent.Sort = 1000;// OperTable.GetMaxSort() + 1;
+            parent.ParentID = "0"; parent.Title = "110千伏合计"; parent.Sort = 1000;// OperTable.GetMaxSort() + 1;
             list.Add(parent);
             totoalParent = parent.ID;
-            string[] lei = new string[7] { "一、110千伏供电负荷合计", "二、110千伏直供负荷", "三、220千伏变电站低压侧供电负荷", "四、110千伏及以下地方电源出力", "五、外网110千伏及以下送入电力", "六、外网110千伏及以下送出电力", "七、220千伏供电负荷" };
+            string[] lei = new string[7] { "一、110千伏供电负荷合计", "二、110千伏直供负荷", "三、110千伏变电站低压侧供电负荷", "四、110千伏及以下地方电源出力", "五、外网110千伏及以下送入电力", "六、外网110千伏及以下送出电力", "七、110千伏供电负荷" };
             for (int i = 0; i < lei.Length; i++)
             {
                 conn = "Col1='"+Convert.ToString(i+1)+"' and ProjectID='" + GetProjectID + "'";
@@ -212,7 +212,7 @@ namespace Itop.Client.Table
                     conn = "Col1='no' and ProjectID='" + GetProjectID + "'";
                     conn1 = "ProjectID='" + GetProjectID + "' and Col2='no'";
                 }
-                Ps_Table_220Result table1 = new Ps_Table_220Result();
+                Ps_Table_110Result table1 = new Ps_Table_110Result();
                 table1.ID += "|" + GetProjectID;
                 table1.Title = lei[i];
                 table1.ParentID = parent.ID;
@@ -221,25 +221,25 @@ namespace Itop.Client.Table
                 table1.BuildEd = "total";
                 if (i == 6)
                     table1.Col1 = "no";
-                IList tList = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", conn);
+                IList tList = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", conn);
                 for (int j = year[1]; j <= year[2]; j++)
                 {
                     double first = 0.0, sec = 0.0;
                     for (int k = 0; k < tList.Count; k++)
                     {
-                        first += double.Parse(((Ps_Table_220Result)tList[k]).GetType().GetProperty("yf" + j).GetValue((Ps_Table_220Result)tList[k], null).ToString());
-                        sec += double.Parse(((Ps_Table_220Result)tList[k]).GetType().GetProperty("yk" + j).GetValue((Ps_Table_220Result)tList[k], null).ToString());
+                        first += double.Parse(((Ps_Table_110Result)tList[k]).GetType().GetProperty("yf" + j).GetValue((Ps_Table_110Result)tList[k], null).ToString());
+                        sec += double.Parse(((Ps_Table_110Result)tList[k]).GetType().GetProperty("yk" + j).GetValue((Ps_Table_110Result)tList[k], null).ToString());
                     }
                     table1.GetType().GetProperty("yf" + j).SetValue(table1,first, null);
                     table1.GetType().GetProperty("yk" + j).SetValue(table1, sec, null);
                 }
                 table1.Sort = i + 1;
                 list.Add(table1);
-                //IList cList = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", conn1);
+                //IList cList = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", conn1);
                 //for (int j = 0; j < cList.Count; j++)
                 //{
-                //    Ps_Table_220Result tablex = new Ps_Table_220Result();
-                //    tablex = (Ps_Table_220Result)((Ps_Table_220Result)cList[j]).Clone();
+                //    Ps_Table_110Result tablex = new Ps_Table_110Result();
+                //    tablex = (Ps_Table_110Result)((Ps_Table_110Result)cList[j]).Clone();
                 //    tablex.BuildEd = "total";
                 //    tablex.ParentID = table1.ID;
                 //    list.Add(tablex);
@@ -415,18 +415,18 @@ namespace Itop.Client.Table
             frm.SetLabelName = "子分类名称";
             if(frm.ShowDialog() == DialogResult.OK)
             {
-                Ps_Table_220Result table1 = new Ps_Table_220Result();
+                Ps_Table_110Result table1 = new Ps_Table_110Result();
                 table1.ID += "|" + GetProjectID;
                 table1.Title = frm.ParentName;
                 table1.ParentID = focusedNode.GetValue("ID").ToString();
                 table1.ProjectID = GetProjectID;
                 table1.Col1 = "child";
                 table1.Col2 = treeList1.FocusedNode.GetValue("Col1").ToString();
-                table1.Sort = OperTable.Get220ResultMaxSort()+1;
+                table1.Sort = OperTable.Get110ResultMaxSort()+1;
 
                 try
                 {
-                    Common.Services.BaseService.Create("InsertPs_Table_220Result", table1);
+                    Common.Services.BaseService.Create("InsertPs_Table_110Result", table1);
                     dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table1, dataTable.NewRow()));
                 }
                 catch(Exception ex)
@@ -466,13 +466,13 @@ namespace Itop.Client.Table
             frm.SetLabelName = "分类名称";
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                Ps_Table_220Result table1 = new Ps_Table_220Result();
-                table1 = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(treeList1.FocusedNode.GetValue("ID"));
+                Ps_Table_110Result table1 = new Ps_Table_110Result();
+                table1 = Common.Services.BaseService.GetOneByKey<Ps_Table_110Result>(treeList1.FocusedNode.GetValue("ID"));
                 table1.Title = frm.ParentName;
 
                 try
                 {
-                    Common.Services.BaseService.Update<Ps_Table_220Result>(table1);
+                    Common.Services.BaseService.Update<Ps_Table_110Result>(table1);
                     treeList1.FocusedNode.SetValue("Title", frm.ParentName);
                 }
                 catch { }
@@ -517,14 +517,14 @@ namespace Itop.Client.Table
 
             if(MsgBox.ShowYesNo("是否删除分类 " + treeList1.FocusedNode.GetValue("Title") + "？") == DialogResult.Yes)
             {
-                Ps_Table_220Result table1 = new Ps_Table_220Result();
+                Ps_Table_110Result table1 = new Ps_Table_110Result();
                // Class1.TreeNodeToDataObject<PSP_Types>(psp_Type, treeList1.FocusedNode);
                 table1.ID = treeList1.FocusedNode.GetValue("ID").ToString();
 
                 try
                 {
                     //DeletePSP_ValuesByType里面删除数据和分类
-                    Common.Services.BaseService.Delete <Ps_Table_220Result>(table1);//("DeletePs_Table_220Result", table1);
+                    Common.Services.BaseService.Delete <Ps_Table_110Result>(table1);//("DeletePs_Table_110Result", table1);
 
                     TreeListNode brotherNode = null;
                     if(treeList1.FocusedNode.ParentNode.Nodes.Count > 1)
@@ -571,11 +571,11 @@ namespace Itop.Client.Table
                 return;
             }
             FormYearSet fys = new FormYearSet();
-            fys.TYPE = OperTable.rst220;
+            fys.TYPE = OperTable.rst110;
             fys.PID = ProjectUID;
             if (fys.ShowDialog() != DialogResult.OK)
                 return;
-            yAnge = oper.GetYearRange("Col5='" + GetProjectID + "' and Col4='" + OperTable.rst220 + "'");
+            yAnge = oper.GetYearRange("Col5='" + GetProjectID + "' and Col4='" + OperTable.rst110 + "'");
             LoadData();
         }
 
@@ -670,14 +670,14 @@ namespace Itop.Client.Table
        
         private bool SaveCellValue(string year, string typeID, double value)
         {
-            Ps_Table_220Result psp = new Ps_Table_220Result();
-            Ps_Table_220Result old = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(typeID);
-            psp = (Ps_Table_220Result)old.Clone();
+            Ps_Table_110Result psp = new Ps_Table_110Result();
+            Ps_Table_110Result old = Common.Services.BaseService.GetOneByKey<Ps_Table_110Result>(typeID);
+            psp = (Ps_Table_110Result)old.Clone();
             psp.GetType().GetProperty(year).SetValue(psp, Math.Round(value,1),null);
 
             try
             {
-                Common.Services.BaseService.Update<Ps_Table_220Result>(psp);
+                Common.Services.BaseService.Update<Ps_Table_110Result>(psp);
             }
             catch(Exception ex)
             {
@@ -1114,7 +1114,6 @@ namespace Itop.Client.Table
             FrmAddPN frm = new FrmAddPN();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                
                 if (treeList1.Nodes.Count>0)
                 {
                     for (int i = 0; i < treeList1.Nodes.Count; i++)
@@ -1138,12 +1137,12 @@ namespace Itop.Client.Table
         private void AddArea(string Areaname)
         {
             Ps_YearRange range = yAnge;
-            Ps_Table_220Result table_yd = new Ps_Table_220Result();
+            Ps_Table_110Result table_yd = new Ps_Table_110Result();
             table_yd.ID += "|" + GetProjectID;
             table_yd.BuildYear = "1.9";
             table_yd.Title = Areaname;
             table_yd.ParentID = "0";
-            table_yd.Sort = OperTable.Get220ResultMaxSort() + 1;
+            table_yd.Sort = OperTable.Get110ResultMaxSort() + 1;
             table_yd.ProjectID = GetProjectID;
             for (int i = range.BeginYear; i <= range.EndYear; i++)
             {
@@ -1152,19 +1151,19 @@ namespace Itop.Client.Table
             }
             try
             {
-                Common.Services.BaseService.Create("InsertPs_Table_220Result", table_yd);
+                Common.Services.BaseService.Create("InsertPs_Table_110Result", table_yd);
             }
             catch (Exception ex)
             {
                 MsgBox.Show("增加城区出错：" + ex.Message);
             }
-            // string[] lei = new string[7] { "一、110千伏以下负荷", "二、110千伏直供负荷","三、220千伏变电站低压侧供电负荷","四、110千伏及以下地方电源出力", "五、外网110千伏及以下送入电力", "六、外网110千伏及以下送出电力", "七、220千伏供电负荷" };
-            string[] lei = new string[11] { "1、全社会最高负荷", "2、220kV以下电源", "3、直供负荷", "4、外区供电", "5、区内电源出力", "6、需220kV变电供电负荷", "7、需220kV主变容量", "8、安排220kV变电容量", "9、实际220kV容载比", "10、变电容量盈亏", "11、变电站个数" };
+            // string[] lei = new string[7] { "一、110千伏以下负荷", "二、110千伏直供负荷","三、110千伏变电站低压侧供电负荷","四、110千伏及以下地方电源出力", "五、外网110千伏及以下送入电力", "六、外网110千伏及以下送出电力", "七、110千伏供电负荷" };
+            string[] lei = new string[11] { "1、全社会最高负荷", "2、110kV以下电源", "3、直供负荷", "4、外区供电", "5、区内电源出力", "6、需110kV变电供电负荷", "7、需110kV主变容量", "8、安排110kV变电容量", "9、实际110kV容载比", "10、变电容量盈亏", "11、变电站个数" };
 
 
             for (int i = 0; i < lei.Length; i++)
             {
-                Ps_Table_220Result table1 = new Ps_Table_220Result();
+                Ps_Table_110Result table1 = new Ps_Table_110Result();
                 table1.ID += "|" + GetProjectID;
                 table1.Title = lei[i];
                 table1.ParentID = table_yd.ID;
@@ -1175,7 +1174,7 @@ namespace Itop.Client.Table
                 {
                     table1.Col1 = "";
                 }
-                //2、220kV以下电源
+                //2、110kV以下电源
                 if (i == 1 || i == 4 || i == 7 || i == 10)
                 {
                     table1.Col1 = "no";
@@ -1184,7 +1183,7 @@ namespace Itop.Client.Table
                 table1.Sort = i + 1;
                 try
                 {
-                    Common.Services.BaseService.Create("InsertPs_Table_220Result", table1);
+                    Common.Services.BaseService.Create("InsertPs_Table_110Result", table1);
                 }
                 catch (Exception ex)
                 {
@@ -1222,31 +1221,31 @@ namespace Itop.Client.Table
                 {
                     //第四项
                     con1 = "ProjectID='" + GetProjectID + "' and Col1='4' and ParentID='" + pid + "'";
-                    IList list4 = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", con1);
-                    Ps_Table_220Result res4 = (Ps_Table_220Result)((Ps_Table_220Result)list4[0]).Clone();
+                    IList list4 = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con1);
+                    Ps_Table_110Result res4 = (Ps_Table_110Result)((Ps_Table_110Result)list4[0]).Clone();
                     // 第四项之水电
                     con2 = "ProjectID='" + GetProjectID + "' and Col3='shui' and ParentID='" + res4.ID + "'";
-                    IList listshui = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", con2);
-                    Ps_Table_220Result reshui = (Ps_Table_220Result)((Ps_Table_220Result)listshui[0]).Clone();
+                    IList listshui = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con2);
+                    Ps_Table_110Result reshui = (Ps_Table_110Result)((Ps_Table_110Result)listshui[0]).Clone();
                     //35kv以下水电
                     con3 = "ProjectID='" + GetProjectID + "' and Col3='35xia' and ParentID='" + reshui.ID + "'";
-                    IList list35x = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", con3);
+                    IList list35x = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con3);
                     // 第四项之火电
                     con4 = "ProjectID='" + GetProjectID + "' and Col3='huo' and ParentID='" + res4.ID + "'";
-                    IList listhuo = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", con4);
-                    Ps_Table_220Result reshuo = (Ps_Table_220Result)((Ps_Table_220Result)listhuo[0]).Clone();
+                    IList listhuo = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con4);
+                    Ps_Table_110Result reshuo = (Ps_Table_110Result)((Ps_Table_110Result)listhuo[0]).Clone();
                     //35kv以下火电
                     con5 = "ProjectID='" + GetProjectID + "' and Col3='35xia' and ParentID='" + reshuo.ID + "'";
-                    IList list35xhuo = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", con5);
+                    IList list35xhuo = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con5);
                     //区域项
                     con7 = "ProjectID='" + GetProjectID + "' and Col1='no' and ParentID='" + pid + "'";
-                    IList list7 = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", con7);
+                    IList list7 = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con7);
                     //区域项
-                    Ps_Table_220Result reshe = (Ps_Table_220Result)((Ps_Table_220Result)list7[0]).Clone();
+                    Ps_Table_110Result reshe = (Ps_Table_110Result)((Ps_Table_110Result)list7[0]).Clone();
                     //35以下水
-                    Ps_Table_220Result res35shui = (Ps_Table_220Result)((Ps_Table_220Result)list35x[0]).Clone();
+                    Ps_Table_110Result res35shui = (Ps_Table_110Result)((Ps_Table_110Result)list35x[0]).Clone();
                     //35以下火
-                    Ps_Table_220Result res35huo = (Ps_Table_220Result)((Ps_Table_220Result)list35xhuo[0]).Clone();
+                    Ps_Table_110Result res35huo = (Ps_Table_110Result)((Ps_Table_110Result)list35xhuo[0]).Clone();
                     for (int i = year[0]; i <= year[3]; i++)
                     {
                         //35以下水丰原
@@ -1324,12 +1323,12 @@ namespace Itop.Client.Table
                 
                         }
                     }
-                    Common.Services.BaseService.Update<Ps_Table_220Result>(res35shui);
-                    Common.Services.BaseService.Update<Ps_Table_220Result>(res35huo);
-                    Common.Services.BaseService.Update<Ps_Table_220Result>(reshui);
-                    Common.Services.BaseService.Update<Ps_Table_220Result>(reshuo);
-                    Common.Services.BaseService.Update<Ps_Table_220Result>(res4);
-                    Common.Services.BaseService.Update<Ps_Table_220Result>(reshe);
+                    Common.Services.BaseService.Update<Ps_Table_110Result>(res35shui);
+                    Common.Services.BaseService.Update<Ps_Table_110Result>(res35huo);
+                    Common.Services.BaseService.Update<Ps_Table_110Result>(reshui);
+                    Common.Services.BaseService.Update<Ps_Table_110Result>(reshuo);
+                    Common.Services.BaseService.Update<Ps_Table_110Result>(res4);
+                    Common.Services.BaseService.Update<Ps_Table_110Result>(reshe);
                 }
             }
             catch { }
@@ -1342,36 +1341,36 @@ namespace Itop.Client.Table
         {
 
             Hashtable rtable = new Hashtable();
-            Ps_Table_220Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(ParentID);
+            Ps_Table_110Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_110Result>(ParentID);
             string AreaName = pt.Title;
 
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='" + ParentID + "'";
 
-            Ps_Table_220Result col2, col5;
+            Ps_Table_110Result col2, col5;
 
-            IList<Ps_Table_220Result> listchild = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            IList<Ps_Table_110Result> listchild = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
             for (int i = 0; i < listchild.Count; i++)
             {
                 rtable.Add(listchild[i].Col3,listchild[i] );
             }
-            col2 = (Ps_Table_220Result)rtable["2"];
+            col2 = (Ps_Table_110Result)rtable["2"];
 
             //删除其下的
             string conncol2 = "ProjectID='" + GetProjectID + "' and ParentID='" + col2.ID + "'";
 
 
-            IList<Ps_Table_220Result> col2list= Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conncol2);
-            foreach (Ps_Table_220Result ptr in col2list)
+            IList<Ps_Table_110Result> col2list= Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conncol2);
+            foreach (Ps_Table_110Result ptr in col2list)
             {
-                Common.Services.BaseService.Delete<Ps_Table_220Result>(ptr);
+                Common.Services.BaseService.Delete<Ps_Table_110Result>(ptr);
             }
 
            
-            col5 = (Ps_Table_220Result)rtable["5"];
+            col5 = (Ps_Table_110Result)rtable["5"];
 
-            //更新220kV以下电源  更新 5、区内电源出力
+            //更新110kV以下电源  更新 5、区内电源出力
             //
-            string conn1 = " AreaID='" + GetProjectID + "' and S9='" + AreaName + "' and cast(S1 as int)<=220";
+            string conn1 = " AreaID='" + GetProjectID + "' and S9='" + AreaName + "' and cast(S1 as int)<=110";
             IList<PSP_PowerSubstation_Info> list = Common.Services.BaseService.GetList<PSP_PowerSubstation_Info>("SelectPSP_PowerSubstation_InfoListByWhere", conn1);
 
             int startyear=yAnge.BeginYear;
@@ -1395,7 +1394,7 @@ namespace Itop.Client.Table
             for (int j = 0; j < list.Count; j++)
 			{
                 string dyid = list[j].UID;
-                Ps_Table_220Result newdy = new Ps_Table_220Result();
+                Ps_Table_110Result newdy = new Ps_Table_110Result();
                 newdy.ParentID = col2.ID;
                 newdy.ProjectID = GetProjectID;
                 newdy.Col1 = "no";
@@ -1480,10 +1479,10 @@ namespace Itop.Client.Table
                     col2.GetType().GetProperty("yk" + i.ToString()).SetValue(col2, Math.Round(d2k + ddyk, 2), null);
                 }
 
-                Common.Services.BaseService.Create<Ps_Table_220Result>(newdy);
+                Common.Services.BaseService.Create<Ps_Table_110Result>(newdy);
 			}
-            Common.Services.BaseService.Update<Ps_Table_220Result>(col2);
-            Common.Services.BaseService.Update<Ps_Table_220Result>(col5);
+            Common.Services.BaseService.Update<Ps_Table_110Result>(col2);
+            Common.Services.BaseService.Update<Ps_Table_110Result>(col5);
 
         }
         /// <summary>
@@ -1493,35 +1492,35 @@ namespace Itop.Client.Table
         public void UpDataRL(string ParentID)
         {
             Hashtable rtable = new Hashtable();
-            Ps_Table_220Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(ParentID);
+            Ps_Table_110Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_110Result>(ParentID);
             string AreaName = pt.Title;
 
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='" + ParentID + "'";
 
-            Ps_Table_220Result col8;
+            Ps_Table_110Result col8;
 
-            IList<Ps_Table_220Result> listchild = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            IList<Ps_Table_110Result> listchild = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
             for (int i = 0; i < listchild.Count; i++)
             {
                 rtable.Add(listchild[i].Col3, listchild[i]);
             }
-            col8 = (Ps_Table_220Result)rtable["8"];
+            col8 = (Ps_Table_110Result)rtable["8"];
 
             //删除其下的
             string conncol8 = "ProjectID='" + GetProjectID + "' and ParentID='" + col8.ID + "'";
 
 
-            IList<Ps_Table_220Result> col8list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conncol8);
-            foreach (Ps_Table_220Result ptr in col8list)
+            IList<Ps_Table_110Result> col8list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conncol8);
+            foreach (Ps_Table_110Result ptr in col8list)
             {
-                Common.Services.BaseService.Delete<Ps_Table_220Result>(ptr);
+                Common.Services.BaseService.Delete<Ps_Table_110Result>(ptr);
             }
 
 
 
-            //更新安排220kV变电容量
+            //更新安排110kV变电容量
             
-            string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=220";
+            string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=110";
             IList<PSP_Substation_Info> list = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
 
             int startyear = yAnge.BeginYear;
@@ -1541,7 +1540,7 @@ namespace Itop.Client.Table
             for (int j = 0; j < list.Count; j++)
             {
                 string dyid = list[j].UID;
-                Ps_Table_220Result newdy = new Ps_Table_220Result();
+                Ps_Table_110Result newdy = new Ps_Table_110Result();
                 newdy.ParentID = col8.ID;
                 newdy.ProjectID = GetProjectID;
                 newdy.Col1 = "no";
@@ -1615,9 +1614,9 @@ namespace Itop.Client.Table
                     col8.GetType().GetProperty("yk" + i.ToString()).SetValue(col8, Math.Round(d8k + ddyk, 2), null);
                 }
 
-                Common.Services.BaseService.Create<Ps_Table_220Result>(newdy);
+                Common.Services.BaseService.Create<Ps_Table_110Result>(newdy);
             }
-            Common.Services.BaseService.Update<Ps_Table_220Result>(col8);
+            Common.Services.BaseService.Update<Ps_Table_110Result>(col8);
           
 
         }
@@ -1628,29 +1627,29 @@ namespace Itop.Client.Table
         public void UpDataBDZ(string ParentID)
         {
             Hashtable rtable = new Hashtable();
-            Ps_Table_220Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(ParentID);
+            Ps_Table_110Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_110Result>(ParentID);
             string AreaName = pt.Title;
 
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='" + ParentID + "'";
 
-            Ps_Table_220Result col11;
+            Ps_Table_110Result col11;
 
-            IList<Ps_Table_220Result> listchild = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            IList<Ps_Table_110Result> listchild = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
             for (int i = 0; i < listchild.Count; i++)
             {
                 rtable.Add(listchild[i].Col3, listchild[i]);
             }
-            col11 = (Ps_Table_220Result)rtable["11"];
+            col11 = (Ps_Table_110Result)rtable["11"];
 
 
             //删除其下的
             string conncol11 = "ProjectID='" + GetProjectID + "' and ParentID='" + col11.ID + "'";
 
 
-            IList<Ps_Table_220Result> col11list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conncol11);
-            foreach (Ps_Table_220Result ptr in col11list)
+            IList<Ps_Table_110Result> col11list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conncol11);
+            foreach (Ps_Table_110Result ptr in col11list)
             {
-                Common.Services.BaseService.Delete<Ps_Table_220Result>(ptr);
+                Common.Services.BaseService.Delete<Ps_Table_110Result>(ptr);
             }
 
             //更新变电站数量  11.变电站个数
@@ -1662,14 +1661,14 @@ namespace Itop.Client.Table
             int endyear2 = yAnge.EndYear;
 
 
-            Ps_Table_220Result yybdz = new Ps_Table_220Result();
+            Ps_Table_110Result yybdz = new Ps_Table_110Result();
             yybdz.Title = "已有变电站";
             yybdz.ProjectID = GetProjectID;
             yybdz.Sort = 0;
             yybdz.ParentID = col11.ID;
 
 
-            Ps_Table_220Result xzbdz = new Ps_Table_220Result();
+            Ps_Table_110Result xzbdz = new Ps_Table_110Result();
             xzbdz.Title = "新增变电站";
             xzbdz.ProjectID = GetProjectID;
             xzbdz.Sort = 1;
@@ -1678,7 +1677,7 @@ namespace Itop.Client.Table
             for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
             {
                 //已有变电站
-                string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=220  and cast(S2 as int)<"+i;
+                string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=110  and cast(S2 as int)<"+i;
                 IList<PSP_Substation_Info> list1 = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
                 int yybdznumber = 0;
                 
@@ -1728,7 +1727,7 @@ namespace Itop.Client.Table
 
 
                 //新增变电站
-                string conn2 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=220  and cast(S2 as int)=" + i;
+                string conn2 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=110  and cast(S2 as int)=" + i;
                 IList<PSP_Substation_Info> list2 = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn2);
                 int xzbdznumber = 0;
 
@@ -1781,9 +1780,9 @@ namespace Itop.Client.Table
              
             }
 
-                Common.Services.BaseService.Create<Ps_Table_220Result>(yybdz);
-                Common.Services.BaseService.Create<Ps_Table_220Result>(xzbdz);
-                Common.Services.BaseService.Update<Ps_Table_220Result>(col11);
+                Common.Services.BaseService.Create<Ps_Table_110Result>(yybdz);
+                Common.Services.BaseService.Create<Ps_Table_110Result>(xzbdz);
+                Common.Services.BaseService.Update<Ps_Table_110Result>(col11);
         }
 
       
@@ -1807,14 +1806,14 @@ namespace Itop.Client.Table
 
             if (MsgBox.ShowYesNo("总分类及其下属分类都将删除，是否删除总分类 " + treeList1.FocusedNode.GetValue("Title") + "？") == DialogResult.Yes)
             {
-                Ps_Table_220Result table1 = new Ps_Table_220Result();
+                Ps_Table_110Result table1 = new Ps_Table_110Result();
                 // Class1.TreeNodeToDataObject<PSP_Types>(psp_Type, treeList1.FocusedNode);
                 table1.ID = treeList1.FocusedNode.GetValue("ID").ToString();
                 DelAll(table1.ID);
                 try
                 {
                     //DeletePSP_ValuesByType里面删除数据和分类
-                    Common.Services.BaseService.Delete<Ps_Table_220Result>(table1);//("DeletePs_Table_220Result", table1);
+                    Common.Services.BaseService.Delete<Ps_Table_110Result>(table1);//("DeletePs_Table_110Result", table1);
 
                     
                     treeList1.DeleteNode(treeList1.FocusedNode);
@@ -1837,14 +1836,14 @@ namespace Itop.Client.Table
         public void DelAll(string suid)
         {
             string conn = "ParentId='" + suid + "'";
-            IList<Ps_Table_220Result> list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            IList<Ps_Table_110Result> list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
             if (list.Count > 0)
             {
-                foreach (Ps_Table_220Result var in list)
+                foreach (Ps_Table_110Result var in list)
                 {
                     string child = var.ID;
                     DelAll(child);
-                    Ps_Table_220Result ny = new Ps_Table_220Result();
+                    Ps_Table_110Result ny = new Ps_Table_110Result();
                     ny.ID = child;
                     Common.Services.BaseService.Delete(ny);
                 }
@@ -1857,9 +1856,9 @@ namespace Itop.Client.Table
         {
             FrmCopy frm = new FrmCopy();
             frm.CurID = GetProjectID;
-            frm.ClassName = "Ps_Table_220Result";
-            frm.SelectString = "SelectPs_Table_220ResultByConn";
-            frm.InsertString = "InsertPs_Table_220Result";
+            frm.ClassName = "Ps_Table_110Result";
+            frm.SelectString = "SelectPs_Table_110ResultByConn";
+            frm.InsertString = "InsertPs_Table_110Result";
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("导入成功");
@@ -1872,7 +1871,7 @@ namespace Itop.Client.Table
             if (MessageBox.Show("该操作将清除当前项目的所有数据，清除数据以后无法恢复,可能对其他用户的数据产生影响，请谨慎操作，你确定继续吗？", "删除", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 string conn = "ProjectID='" + GetProjectID + "'";
-                Common.Services.BaseService.Update("DeletePs_Table_220ResultByConn", conn);
+                Common.Services.BaseService.Update("DeletePs_Table_110ResultByConn", conn);
                 LoadData1();
             }
         }
@@ -1880,11 +1879,11 @@ namespace Itop.Client.Table
         private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FormYearSet fys = new FormYearSet();
-            fys.TYPE = OperTable.rst220;
+            fys.TYPE = OperTable.rst110;
             fys.PID = ProjectUID;
             if (fys.ShowDialog() != DialogResult.OK)
                 return;
-            yAnge = oper.GetYearRange("Col5='" + GetProjectID + "' and Col4='" + OperTable.rst220 + "'");
+            yAnge = oper.GetYearRange("Col5='" + GetProjectID + "' and Col4='" + OperTable.rst110 + "'");
             LoadData();
         }
 
@@ -1901,26 +1900,26 @@ namespace Itop.Client.Table
             Hashtable rtable=new Hashtable ();
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='" + pid + "'";
 
-            Ps_Table_220Result col1, col2, col3, col4, col5, col6, col7, col8, col9, col10;
+            Ps_Table_110Result col1, col2, col3, col4, col5, col6, col7, col8, col9, col10;
 
-            IList<Ps_Table_220Result> list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            IList<Ps_Table_110Result> list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
             for (int i = 0; i < list.Count; i++)
             {
                 rtable.Add(list[i].Col3,list[i]);
             }
             int m = 1;
-            col1 = (Ps_Table_220Result)rtable[m++.ToString()];
-            col2 = (Ps_Table_220Result)rtable[m++.ToString()];
-            col3 = (Ps_Table_220Result)rtable[m++.ToString()];
-            col4 = (Ps_Table_220Result)rtable[m++.ToString()];
-            col5 = (Ps_Table_220Result)rtable[m++.ToString()];
-            col6 = (Ps_Table_220Result)rtable[m++.ToString()];
-            col7 = (Ps_Table_220Result)rtable[m++.ToString()];
-            col8 = (Ps_Table_220Result)rtable[m++.ToString()];
-            col9 = (Ps_Table_220Result)rtable[m++.ToString()];
-            col10 = (Ps_Table_220Result)rtable[m++.ToString()];
+            col1 = (Ps_Table_110Result)rtable[m++.ToString()];
+            col2 = (Ps_Table_110Result)rtable[m++.ToString()];
+            col3 = (Ps_Table_110Result)rtable[m++.ToString()];
+            col4 = (Ps_Table_110Result)rtable[m++.ToString()];
+            col5 = (Ps_Table_110Result)rtable[m++.ToString()];
+            col6 = (Ps_Table_110Result)rtable[m++.ToString()];
+            col7 = (Ps_Table_110Result)rtable[m++.ToString()];
+            col8 = (Ps_Table_110Result)rtable[m++.ToString()];
+            col9 = (Ps_Table_110Result)rtable[m++.ToString()];
+            col10 = (Ps_Table_110Result)rtable[m++.ToString()];
 
-            Ps_Table_220Result city = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(pid);
+            Ps_Table_110Result city = Common.Services.BaseService.GetOneByKey<Ps_Table_110Result>(pid);
             double rzb = 0;
             if (double.TryParse(city.BuildYear, out rzb))
             {
@@ -1929,7 +1928,7 @@ namespace Itop.Client.Table
 
             for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
             {
-                //更新6.需220kV变电供电负荷 6=1-3-4-5
+                //更新6.需110kV变电供电负荷 6=1-3-4-5
 
                 double d1f = double.Parse(col1.GetType().GetProperty("yf" + i.ToString()).GetValue(col1, null).ToString());
                 double d1k = double.Parse(col1.GetType().GetProperty("yk" + i.ToString()).GetValue(col1, null).ToString());
@@ -1949,7 +1948,7 @@ namespace Itop.Client.Table
                 col6.GetType().GetProperty("yf" + i.ToString()).SetValue(col6, Math.Round(d6f, 2), null);
                 col6.GetType().GetProperty("yk" + i.ToString()).SetValue(col6, Math.Round(d6k, 2), null);
 
-                //更新7.需220kV主变容量7=6*容载比
+                //更新7.需110kV主变容量7=6*容载比
                 double d7f = d6f * rzb;
                 double d7k = d6k * rzb;
 
@@ -1958,7 +1957,7 @@ namespace Itop.Client.Table
                 col7.GetType().GetProperty("yk" + i.ToString()).SetValue(col7, Math.Round(d7k, 2), null);
 
 
-                //9.实际220kV容载比 9=8/6
+                //9.实际110kV容载比 9=8/6
                 double d8f = double.Parse(col8.GetType().GetProperty("yf" + i.ToString()).GetValue(col8, null).ToString());
                 double d8k = double.Parse(col8.GetType().GetProperty("yk" + i.ToString()).GetValue(col8, null).ToString());
 
@@ -1986,17 +1985,17 @@ namespace Itop.Client.Table
                
             }
            
-                Common.Services.BaseService.Update<Ps_Table_220Result>(col6);
-                Common.Services.BaseService.Update<Ps_Table_220Result>(col7);
-                Common.Services.BaseService.Update<Ps_Table_220Result>(col9);
-                Common.Services.BaseService.Update<Ps_Table_220Result>(col10);
+                Common.Services.BaseService.Update<Ps_Table_110Result>(col6);
+                Common.Services.BaseService.Update<Ps_Table_110Result>(col7);
+                Common.Services.BaseService.Update<Ps_Table_110Result>(col9);
+                Common.Services.BaseService.Update<Ps_Table_110Result>(col10);
             
         }
         //载入负荷数据
         private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string conn = "ParentID='0' and ProjectID='" + GetProjectID + "'";
-            IList cList = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", conn);
+            IList cList = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", conn);
             if (cList.Count > 0)
             {
                 FrmImportSellgm frm1 = new FrmImportSellgm();
@@ -2014,16 +2013,16 @@ namespace Itop.Client.Table
                             DataRow row = frm.ROW;
                             foreach (string str in frm1.OutList)
                             {
-                                IList tempList = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", "ParentID='" + str + "' and ProjectID='" + GetProjectID + "' and Col3='1' and Title='1、全社会最高负荷'");
+                                IList tempList = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", "ParentID='" + str + "' and ProjectID='" + GetProjectID + "' and Col3='1' and Title='1、全社会最高负荷'");
                                 if (tempList.Count > 0)
                                 {
-                                    Ps_Table_220Result psr = tempList[0] as Ps_Table_220Result;
+                                    Ps_Table_110Result psr = tempList[0] as Ps_Table_110Result;
                                     for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
                                     {
                                         psr.GetType().GetProperty("yk" + i.ToString()).SetValue(psr, Math.Round(double.Parse(row["y" + i.ToString()].ToString()) * fkb.GetVal, 1), null);
                                         psr.GetType().GetProperty("yf" + i.ToString()).SetValue(psr, Math.Round(double.Parse(row["y" + i.ToString()].ToString()), 1), null);
                                     }
-                                    Common.Services.BaseService.Update<Ps_Table_220Result>(psr);
+                                    Common.Services.BaseService.Update<Ps_Table_110Result>(psr);
                                     UpdateFuHe(psr.ParentID);
                                 }
                             }
@@ -2099,7 +2098,7 @@ namespace Itop.Client.Table
             {
                 FrmResultPrint frma = new FrmResultPrint();
                 frma.IsSelect = _isSelect;
-                frma.Text = "220千伏供电平衡表";
+                frma.Text = "110千伏供电平衡表";
                 frma.Dw1 = "单位：万千瓦";
                
                 frma.GridDataTable = ResultDataTable(ConvertTreeListToDataTable(treeList1, false), frm.ListChoosedYears);
@@ -2117,7 +2116,7 @@ namespace Itop.Client.Table
         private void barButtonItem5_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='0'";
-            IList<Ps_Table_220Result> list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            IList<Ps_Table_110Result> list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
             Hashtable AreaTable = new Hashtable();
             for (int i = 0; i < list.Count; i++)
             {
@@ -2141,8 +2140,8 @@ namespace Itop.Client.Table
             //更新第2 5，8，11项
 
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='0'";
-            IList<Ps_Table_220Result> list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
-            foreach (Ps_Table_220Result pt in list)
+            IList<Ps_Table_110Result> list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
+            foreach (Ps_Table_110Result pt in list)
             {
                 UpdataDY(pt.ID);
                 UpDataRL(pt.ID);
@@ -2152,16 +2151,16 @@ namespace Itop.Client.Table
             LoadData1();
 
         }
-        private string rongZai220 = "1.9";
-        public string RongZai220
+        private string rongZai110 = "1.9";
+        public string RongZai110
         {
-            set { rongZai220 = value; }
-            get { return rongZai220; }
+            set { rongZai110 = value; }
+            get { return rongZai110; }
         }
         public string RongZai(Ps_Table_200PH cur)
         {
             if (cur == null || cur.BuildYear == null || cur.BuildYear == "")
-                return rongZai220;
+                return rongZai110;
             return cur.BuildYear;
         }
         //设置容载比 存放在BuildYear字段中
@@ -2169,27 +2168,27 @@ namespace Itop.Client.Table
         {
             FrmRZ frm = new FrmRZ();
             string conn = "ParentID='0' and ProjectID='" + GetProjectID + "'";
-            IList pareList = Common.Services.BaseService.GetList("SelectPs_Table_220ResultByConn", conn);
+            IList pareList = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", conn);
             for (int i = 0; i < pareList.Count; i++)
             {
-                string by = ((Ps_Table_220Result)pareList[i]).BuildYear;
+                string by = ((Ps_Table_110Result)pareList[i]).BuildYear;
                 if (by == null || by == "")
-                    ((Ps_Table_220Result)pareList[i]).BuildYear = RongZai220; ;
+                    ((Ps_Table_110Result)pareList[i]).BuildYear = RongZai110; ;
             }
             frm.BindList = pareList;
-            frm.RZ = RongZai220;
+            frm.RZ = RongZai110;
             frm.BRst = false;
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                RongZai220 = frm.RZ;
+                RongZai110 = frm.RZ;
                 UpDataRZB();
             }
         }
         private void UpDataRZB()
         {
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='0'";
-            IList<Ps_Table_220Result> list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
-            foreach (Ps_Table_220Result pt in list)
+            IList<Ps_Table_110Result> list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
+            foreach (Ps_Table_110Result pt in list)
             {
                 UpData(pt.ID);
             }

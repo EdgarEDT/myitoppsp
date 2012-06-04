@@ -1,6 +1,6 @@
 ﻿namespace Itop.Client.Table
 {
-    partial class Frm220ResultSH
+    partial class Frm110ResultSH
     {
         /// <summary>
         /// 必需的设计器变量。
