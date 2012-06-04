@@ -268,13 +268,29 @@ namespace ItopVector.Tools
                     string dxmd = rowView.Row["ObligateField6"].ToString();
                     if (checkEdit1.Checked)
                     {
-                        fh.Text = Convert.ToString(((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl)) + (Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd)));
-                        dl.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb)) + (Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd) * Convert.ToDouble(rzb)));
+                        if (xyxs.Text == "是")
+                        {
+                            fh.Text = Convert.ToString(((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl)) + (Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd)));
+                            dl.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(xs) * Convert.ToDouble(rzb)) + (Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd) * Convert.ToDouble(rzb)));
+                        }
+                        else
+                        {
+                            fh.Text = Convert.ToString(((Convert.ToDouble(mj.Text) * Convert.ToDouble(md))* Convert.ToDouble(rjl)) + (Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd)));
+                            dl.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb)) + (Convert.ToDouble(mj.Text) * Convert.ToDouble(dxmd) * Convert.ToDouble(rzb)));
+                        }
                     }
                     else
                     {
-                        fh.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl));
-                        dl.Text = Convert.ToString(Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb));
+                        if (xyxs.Text=="是")
+                        {
+                            fh.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md)) * Convert.ToDouble(xs) * Convert.ToDouble(rjl));
+                            dl.Text = Convert.ToString(Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb));
+                        }
+                        else
+                        {
+                            fh.Text = Convert.ToString((Convert.ToDouble(mj.Text) * Convert.ToDouble(md))* Convert.ToDouble(rjl));
+                            dl.Text = Convert.ToString(Convert.ToDouble(mj.Text) * Convert.ToDouble(md) * Convert.ToDouble(rzb));
+                        }
                     }
                     gPro.Burthen = Convert.ToDecimal(fh.Text);
                     gPro.Number = Convert.ToDecimal(dl.Text);
