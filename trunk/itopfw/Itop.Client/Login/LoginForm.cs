@@ -134,6 +134,7 @@ namespace Itop.Client.Login {
                     if (m_error[userNumber] >= 3) {
                         if (!m_reLogin) {
                             MsgBox.Show("密码输入错误次数超过三次，无法登录系统");
+                            CloseServer();
                             Application.Exit();
                         } else {
                             MsgBox.Show("密码输入错误次数超过三次，请稍候重试");
@@ -235,17 +236,39 @@ namespace Itop.Client.Login {
 
         private void sbtnOk_Click(object sender, EventArgs e)
         {
-            if (StartServer())
+            if (HasServer())
             {
                 DoLogin();
             }
            
            
         }
+        bool IsServerStart = false;
+        private bool HasServer()
+        {
+            string cityid = RemotingHelper.CityName;
+            SysDataServer ds = null;
+            try
+            {
+                ds = ServicesSys.BaseService.GetOneByKey<SysDataServer>(cityid);
+                if (combCity.EditValue == null)
+                {
+                    MsgBox.Show("请您选择正确的城市！");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("无法连接到服务器！请确保服务器参数正确并确认服务器已启动");
+                
+            }
+            return IsServerStart;
+        }
         /// <summary>
         /// 启动本机服务
         /// </summary>
-        private bool StartServer()
+        private void StartServer()
         {
             string cityid = RemotingHelper.CityName;
             SysDataServer ds = null;
@@ -254,16 +277,13 @@ namespace Itop.Client.Login {
                ds = ServicesSys.BaseService.GetOneByKey<SysDataServer>(cityid);
                if (combCity.EditValue==null)
                {
-                   MsgBox.Show("请您选择正确的城市！");
-                   return false;
+                   IsServerStart= false;
                }
                
             }
             catch (Exception)
             {
-
-                MessageBox.Show("无法连接到服务器！请确保服务器参数正确并确认服务器已启动");
-                return false;
+                IsServerStart= false;
             }
 
 
@@ -289,28 +309,31 @@ namespace Itop.Client.Login {
                 RemotingHelper.ServerAddress = "localhost";
                 RemotingHelper.ServerPort = ServerSettings.RemotingPort;
                 RemotingHelper.ServerProtocol = ServerSettings.RemotingProtocol;
-                if (MIS.curpro!=null)
-                {
-                    MIS.curpro.Kill();
-                }
+                CloseServer();
                 try
                 {
                     ProcessStartInfo sysserver = new ProcessStartInfo(Application.StartupPath + "\\Server\\Itop.Server.exe");
                     sysserver.WorkingDirectory = Application.StartupPath + "\\Server";
                     MIS.curpro = System.Diagnostics.Process.Start(sysserver);
-                    return true;
-                    //MIS.curpro = System.Diagnostics.Process.Start("C:\\Program Files\\Tencent\\QQ\\Bin\\QQ.exe");
+                    IsServerStart= true;
+                    
                     
                 }
                 catch (Exception)
                 {
-                    return false;
+                    IsServerStart= false;
                     throw;
                 }
                 
            
         }
-
+        private void CloseServer()
+        {
+            if (MIS.curpro != null)
+            {
+                MIS.curpro.Kill();
+            }
+        }
         #region 窗体美化w
         private bool m_isMouseDown = false;
         private Point m_mousePos = new Point();
@@ -390,7 +413,7 @@ namespace Itop.Client.Login {
         }
         private void lablogin_Click(object sender, EventArgs e)
         {
-            if (StartServer())
+            if (HasServer())
             {
                 DoLogin();
             }
@@ -472,10 +495,7 @@ namespace Itop.Client.Login {
         {
             if (this.DialogResult!=DialogResult.OK)
             {
-                if (MIS.curpro != null)
-                {
-                    MIS.curpro.Kill();
-                }
+                CloseServer();
             }
             
         }
@@ -483,6 +503,8 @@ namespace Itop.Client.Login {
         private void combCity_EditValueChanged(object sender, EventArgs e)
         {
             RemotingHelper.CityName = combCity.EditValue.ToString();
+
+            StartServer();
         }
 
 

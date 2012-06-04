@@ -18,9 +18,40 @@ namespace Itop.Server {
        
         public FrmServerManager() {
             InitializeComponent();
-           
+            killPerProcess();
         }
-      
+        protected void killPerProcess()
+        {
+            System.Diagnostics.Process[] myPs;
+            myPs = System.Diagnostics.Process.GetProcesses();
+            foreach (System.Diagnostics.Process p in myPs)
+            {
+                if (p.Id != 0)
+                {
+                    string myS = "Itop.Server.exe" + p.ProcessName + " ID:" + p.Id.ToString();
+                    try
+                    {
+                        if (p.Modules != null)
+                            if (p.Modules.Count > 0)
+                            {
+                                System.Diagnostics.ProcessModule pm = p.Modules[0];
+                                myS += "\n Modules[0].FileName:" + pm.FileName;
+                                myS += "\n Modules[0].ModuleName:" + pm.ModuleName;
+                                myS += "\n Modules[0].FileVersionInfo:\n" + pm.FileVersionInfo.ToString();
+                                //确保word进程是本程系启动而非用户自己启动的
+                                if (p.MainWindowTitle == "Itop.Server本机服务")
+                                    p.Kill();
+                            }
+                    }
+                    catch
+                    { }
+                    finally
+                    {
+
+                    }
+                }
+            }
+        }
         protected override void OnClosing(CancelEventArgs e) {
             if (base.Visible) {
                 e.Cancel = true;
@@ -35,6 +66,7 @@ namespace Itop.Server {
             this.notifyIcon1.Visible = true;
             if (Settings.IsOneServer == "two")
             {
+                this.Text = "Itop.Server本机服务";
                 this.notifyIcon1.Visible = false;
             }
         }
