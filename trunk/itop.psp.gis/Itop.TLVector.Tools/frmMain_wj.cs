@@ -3954,7 +3954,14 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                         {
                                             DeviceHelper.ShowDeviceDlg(DeviceType.MX, deviceid, false);
                                         }
-
+                                        if (obj.Type == "73")
+                                        {
+                                            DeviceHelper.ShowDeviceDlg(DeviceType.PDXL, deviceid, false);
+                                        }
+                                        if (obj.Type == "75")
+                                        {
+                                            DeviceHelper.ShowDeviceDlg(DeviceType.LUX, deviceid, false);
+                                        }
                                     }
 
 
