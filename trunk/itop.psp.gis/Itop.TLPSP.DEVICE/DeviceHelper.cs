@@ -251,6 +251,16 @@ namespace Itop.TLPSP.DEVICE
                     dlg20.DeviceMx = dev as PSPDEV;
                     dlg20.ShowDialog();
                     break;
+                case "73":
+                    frmDXdlg DX = new frmDXdlg();
+                    DX.DeviceMx = dev as PSPDEV;
+                    DX.ShowDialog();
+                    break;
+                case "75":
+                    frmLUXdlg LUX = new frmLUXdlg();
+                    LUX.DeviceMx = dev as PSPDEV;
+                   LUX.ShowDialog();
+                    break;
                 case "71":
                     frmRDQdlg dlg22 = new frmRDQdlg();
                     dlg22.DeviceMx = dev as PSPDEV;

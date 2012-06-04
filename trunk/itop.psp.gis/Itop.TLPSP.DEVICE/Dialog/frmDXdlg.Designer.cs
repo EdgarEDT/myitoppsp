@@ -1528,6 +1528,11 @@
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(667, 501);
             this.xtraTabPage3.Text = "节点（杆塔）";
+            this.ucjd1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucjd1.Location = new System.Drawing.Point(0, 0);
+            this.ucjd1.Name = "ucjd1";
+            this.ucjd1.Size = new System.Drawing.Size(667, 501);
+            this.ucjd1.TabIndex = 0;
             // 
             // xtraTabPage4
             // 
@@ -1535,6 +1540,7 @@
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(667, 501);
             this.xtraTabPage4.Text = "其他元件";
+
             // 
             // ucdxchildnode1
             // 

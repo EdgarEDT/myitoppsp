@@ -77,6 +77,7 @@ namespace Itop.TLPSP.DEVICE
             column = gridView1.Columns.Add();
             column.Caption = "±àºÅ";
             column.FieldName = "Number";
+            column.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
             column.Width = 100;
             column.VisibleIndex = 2;
             column.OptionsColumn.AllowEdit = false;

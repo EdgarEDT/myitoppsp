@@ -145,7 +145,7 @@
             // 
             this.barButtonItem5.Caption = "删除";
             this.barButtonItem5.Id = 4;
-            this.barButtonItem5.ImageIndex = 6;
+            this.barButtonItem5.ImageIndex = 10;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
