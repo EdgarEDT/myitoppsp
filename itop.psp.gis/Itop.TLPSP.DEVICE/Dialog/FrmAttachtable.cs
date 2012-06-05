@@ -262,7 +262,7 @@ namespace Itop.TLPSP.DEVICE
                         
                     dv.ProjectID = Itop.Client.MIS.ProgUID;
                     dv.AreaID = parentID;
-                    if (MessageBox.Show("是否需要添加更详细的信息？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                    if (MessageBox.Show("是否需要添加更详细的信息？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
                         if (dv.Type=="02")
                         {
@@ -347,7 +347,7 @@ namespace Itop.TLPSP.DEVICE
                          }
 
                          dv.ProjectID = Itop.Client.MIS.ProgUID;
-                         if (MessageBox.Show("是否需要修改更详细的信息？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                         if (MessageBox.Show("是否需要修改更详细的信息？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                          {
                              if (dv.Type == "02")
                              {
@@ -408,7 +408,7 @@ namespace Itop.TLPSP.DEVICE
 
                          dv.ProjectID = Itop.Client.MIS.ProgUID;
                          dv.AreaID = parentID;
-                         if (MessageBox.Show("是否需要添加更详细的信息？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                         if (MessageBox.Show("是否需要添加更详细的信息？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                          {
                              if (dv.Type == "02")
                              {

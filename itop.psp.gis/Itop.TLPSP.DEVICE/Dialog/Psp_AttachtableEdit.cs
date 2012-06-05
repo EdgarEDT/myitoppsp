@@ -30,6 +30,11 @@ namespace Itop.TLPSP.DEVICE
                 rowdate.S1 = S1;
                 rowdate.S2= S2;
                 rowdate.S3= S3;
+                if (string.IsNullOrEmpty(comboBoxEdit6.Text))
+                {
+                    rowdate.S4 = "两绕组变压器";
+                }
+                else
                 rowdate.S4 = comboBoxEdit6.Text;
                 rowdate.D1 = (double)spinEdit2.Value;
                 rowdate.D2 = (double)spinEdit3.Value;
@@ -44,6 +49,11 @@ namespace Itop.TLPSP.DEVICE
                 S1 = rowdate.S1;
                 S2 = rowdate.S2;
                 S3 = rowdate.S3;
+                if (string.IsNullOrEmpty(rowdate.S4))
+                {
+                    comboBoxEdit6.SelectedIndex = 0;
+                }
+                else
                 comboBoxEdit6.Text = rowdate.S4;
                 spinEdit2.Value = (decimal)rowdate.D1;
                 spinEdit3.Value = (decimal)rowdate.D2;
