@@ -18,6 +18,7 @@ using Itop.Client.Table;
 using Itop.Client.Forecast;
 using System.Drawing.Drawing2D;
 using Itop.Domain.Graphics;
+using DevExpress.Utils;
 namespace Itop.Client.Table
 {
     public partial class Frm110ResultSH : FormBase
@@ -71,7 +72,7 @@ namespace Itop.Client.Table
             if (!base.AddRight)
             {
                 barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-              
+
                 barButtonItem8.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             if (!base.EditRight)
@@ -80,12 +81,12 @@ namespace Itop.Client.Table
                 barButtonItem14.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem12.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem10.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-                
+
             }
             if (!base.DeleteRight)
             {
                 barButtonItem3.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-               
+
                 barButtonItem9.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem11.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
@@ -124,13 +125,13 @@ namespace Itop.Client.Table
                 dataTable.Columns.Clear();
                 treeList1.Columns.Clear();
             }
-          
-           
+
+
             string con = "ProjectID='" + GetProjectID + "'";
             listTypes = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con);
-        
+
             dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Table_110Result));
-           
+
 
             treeList1.DataSource = dataTable;
 
@@ -154,14 +155,14 @@ namespace Itop.Client.Table
             treeList1.Columns["BuildYear"].VisibleIndex = -1;
             treeList1.Columns["Sort"].SortOrder = SortOrder.Ascending;
             Application.DoEvents();
-          
+
             treeList1.CollapseAll();
         }
 
         public void SetValueNull()
         {
             int[] year = GetYears();
-            foreach(TreeListNode node in treeList1.Nodes)
+            foreach (TreeListNode node in treeList1.Nodes)
             {
                 if (node.GetValue("ParentID").ToString() == "0")
                 {
@@ -183,12 +184,12 @@ namespace Itop.Client.Table
             }
             string con = "ProjectID='" + GetProjectID + "'";
             listTypes = Common.Services.BaseService.GetList("SelectPs_Table_110ResultByConn", con);
-            
+
             dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Table_110Result));
-            
+
 
             treeList1.DataSource = dataTable;
-           
+
         }
         string totoalParent;
         public void AddTotalRow(ref IList list)
@@ -205,8 +206,8 @@ namespace Itop.Client.Table
             string[] lei = new string[7] { "一、110千伏供电负荷合计", "二、110千伏直供负荷", "三、110千伏变电站低压侧供电负荷", "四、110千伏及以下地方电源出力", "五、外网110千伏及以下送入电力", "六、外网110千伏及以下送出电力", "七、110千伏供电负荷" };
             for (int i = 0; i < lei.Length; i++)
             {
-                conn = "Col1='"+Convert.ToString(i+1)+"' and ProjectID='" + GetProjectID + "'";
-                string conn1 = "ProjectID='" + GetProjectID + "' and Col2='"+Convert.ToString(i+1)+"'";
+                conn = "Col1='" + Convert.ToString(i + 1) + "' and ProjectID='" + GetProjectID + "'";
+                string conn1 = "ProjectID='" + GetProjectID + "' and Col2='" + Convert.ToString(i + 1) + "'";
                 if (i == 6)
                 {
                     conn = "Col1='no' and ProjectID='" + GetProjectID + "'";
@@ -230,7 +231,7 @@ namespace Itop.Client.Table
                         first += double.Parse(((Ps_Table_110Result)tList[k]).GetType().GetProperty("yf" + j).GetValue((Ps_Table_110Result)tList[k], null).ToString());
                         sec += double.Parse(((Ps_Table_110Result)tList[k]).GetType().GetProperty("yk" + j).GetValue((Ps_Table_110Result)tList[k], null).ToString());
                     }
-                    table1.GetType().GetProperty("yf" + j).SetValue(table1,first, null);
+                    table1.GetType().GetProperty("yf" + j).SetValue(table1, first, null);
                     table1.GetType().GetProperty("yk" + j).SetValue(table1, sec, null);
                 }
                 table1.Sort = i + 1;
@@ -245,7 +246,7 @@ namespace Itop.Client.Table
                 //    list.Add(tablex);
                 //}
             }
-            
+
         }
 
         public void CalcYearColumn()
@@ -284,13 +285,13 @@ namespace Itop.Client.Table
                 treeList1.Columns["yf" + i.ToString()].Caption = i.ToString() + "年丰";
                 treeList1.Columns["yf" + i.ToString()].VisibleIndex = i;
                 treeList1.Columns["yf" + i.ToString()].Width = 70;
-               // treeList1.Columns["yf" + i.ToString()].OptionsColumn.AllowEdit = false;
+                // treeList1.Columns["yf" + i.ToString()].OptionsColumn.AllowEdit = false;
                 treeList1.Columns["yf" + i.ToString()].OptionsColumn.AllowSort = false;
                 treeList1.Columns["yf" + i.ToString()].ColumnEdit = repositoryItemTextEdit1;
                 treeList1.Columns["yk" + i.ToString()].Caption = i.ToString() + "年枯";
                 treeList1.Columns["yk" + i.ToString()].VisibleIndex = i;
                 treeList1.Columns["yk" + i.ToString()].Width = 70;
-              //  treeList1.Columns["yk" + i.ToString()].OptionsColumn.AllowEdit = false;
+                //  treeList1.Columns["yk" + i.ToString()].OptionsColumn.AllowEdit = false;
                 treeList1.Columns["yk" + i.ToString()].OptionsColumn.AllowSort = false;
                 treeList1.Columns["yk" + i.ToString()].ColumnEdit = repositoryItemTextEdit1;
                 treeList1.Columns["yk" + i.ToString()].ColumnEdit = repositoryItemTextEdit1;
@@ -311,7 +312,7 @@ namespace Itop.Client.Table
 
             IList<PSP_Values> listValues = Common.Services.BaseService.GetList<PSP_Values>("SelectPSP_ValuesListByFlag2", psp_Values);
 
-            foreach(PSP_Values value in listValues)
+            foreach (PSP_Values value in listValues)
             {
                 TreeListNode node = treeList1.FindNodeByFieldValue("ID", value.TypeID);
                 if (node != null)
@@ -320,7 +321,7 @@ namespace Itop.Client.Table
                 }
             }
         }
-       
+
 
         //添加年份后，新增一列
         private void AddColumn(int year)
@@ -404,16 +405,16 @@ namespace Itop.Client.Table
             }
             FindNodes(treeList1.FocusedNode);
             string nodestr = treenode.GetValue("Title").ToString();
-            if (treeList1.FocusedNode.GetValue("Col1").ToString() == "no" || focusedNode.GetValue("ParentID").ToString()=="0")
+            if (treeList1.FocusedNode.GetValue("Col1").ToString() == "no" || focusedNode.GetValue("ParentID").ToString() == "0")
             {
-                MsgBox.Show( focusedNode.GetValue("Title").ToString()+"不允许添加子分类！");
+                MsgBox.Show(focusedNode.GetValue("Title").ToString() + "不允许添加子分类！");
                 return;
             }
 
             FrmAddPN frm = new FrmAddPN();
             frm.Text = "增加" + focusedNode.GetValue("Title") + "的子分类";
             frm.SetLabelName = "子分类名称";
-            if(frm.ShowDialog() == DialogResult.OK)
+            if (frm.ShowDialog() == DialogResult.OK)
             {
                 Ps_Table_110Result table1 = new Ps_Table_110Result();
                 table1.ID += "|" + GetProjectID;
@@ -422,14 +423,14 @@ namespace Itop.Client.Table
                 table1.ProjectID = GetProjectID;
                 table1.Col1 = "child";
                 table1.Col2 = treeList1.FocusedNode.GetValue("Col1").ToString();
-                table1.Sort = OperTable.Get110ResultMaxSort()+1;
+                table1.Sort = OperTable.Get110ResultMaxSort() + 1;
 
                 try
                 {
                     Common.Services.BaseService.Create("InsertPs_Table_110Result", table1);
                     dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table1, dataTable.NewRow()));
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MsgBox.Show("增加子分类出错：" + ex.Message);
                 }
@@ -443,9 +444,9 @@ namespace Itop.Client.Table
                 return;
             }
             //FindNodes(treeList1.FocusedNode);
-    
+
             string nodestr = treeList1.FocusedNode.GetValue("Col1").ToString();
-            
+
 
             string parentid = treeList1.FocusedNode["ParentID"].ToString();
 
@@ -502,9 +503,9 @@ namespace Itop.Client.Table
                 return;
             }
             string parentid = treeList1.FocusedNode["ParentID"].ToString();
-          
 
-         
+
+
             if (treeList1.FocusedNode.HasChildren)
             {
                 MsgBox.Show("此分类下有子分类，请先删除子分类！");
@@ -513,24 +514,24 @@ namespace Itop.Client.Table
 
 
 
-            
 
-            if(MsgBox.ShowYesNo("是否删除分类 " + treeList1.FocusedNode.GetValue("Title") + "？") == DialogResult.Yes)
+
+            if (MsgBox.ShowYesNo("是否删除分类 " + treeList1.FocusedNode.GetValue("Title") + "？") == DialogResult.Yes)
             {
                 Ps_Table_110Result table1 = new Ps_Table_110Result();
-               // Class1.TreeNodeToDataObject<PSP_Types>(psp_Type, treeList1.FocusedNode);
+                // Class1.TreeNodeToDataObject<PSP_Types>(psp_Type, treeList1.FocusedNode);
                 table1.ID = treeList1.FocusedNode.GetValue("ID").ToString();
 
                 try
                 {
                     //DeletePSP_ValuesByType里面删除数据和分类
-                    Common.Services.BaseService.Delete <Ps_Table_110Result>(table1);//("DeletePs_Table_110Result", table1);
+                    Common.Services.BaseService.Delete<Ps_Table_110Result>(table1);//("DeletePs_Table_110Result", table1);
 
                     TreeListNode brotherNode = null;
-                    if(treeList1.FocusedNode.ParentNode.Nodes.Count > 1)
+                    if (treeList1.FocusedNode.ParentNode.Nodes.Count > 1)
                     {
                         brotherNode = treeList1.FocusedNode.PrevNode;
-                        if(brotherNode == null)
+                        if (brotherNode == null)
                         {
                             brotherNode = treeList1.FocusedNode.NextNode;
                         }
@@ -538,9 +539,9 @@ namespace Itop.Client.Table
                     treeList1.DeleteNode(treeList1.FocusedNode);
 
                     //删除后，如果同级还有其它分类，则重新计算此类的所有年份数据
-                    if(brotherNode != null)
+                    if (brotherNode != null)
                     {
-                        foreach(TreeListColumn column in treeList1.Columns)
+                        foreach (TreeListColumn column in treeList1.Columns)
                         {
                             if (column.Caption.IndexOf("年") > 0)
                             {
@@ -587,7 +588,7 @@ namespace Itop.Client.Table
             }
 
             //不是年份列
-            if(treeList1.FocusedColumn.FieldName.IndexOf("年") == -1)
+            if (treeList1.FocusedColumn.FieldName.IndexOf("年") == -1)
             {
                 return;
             }
@@ -615,13 +616,13 @@ namespace Itop.Client.Table
                 Common.Services.BaseService.Update("DeletePSP_ValuesByYear", psp_Values);
                 dataTable.Columns.Remove(treeList1.FocusedColumn.FieldName);
                 treeList1.Columns.Remove(treeList1.FocusedColumn);
-                if(colIndex >= treeList1.Columns.Count)
+                if (colIndex >= treeList1.Columns.Count)
                 {
                     colIndex--;
                 }
                 treeList1.FocusedColumn = treeList1.Columns[colIndex];
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MsgBox.Show("删除出错：" + ex.Message);
             }
@@ -631,14 +632,14 @@ namespace Itop.Client.Table
         {
             if (bPast)
                 return;
-            if (e.Value != null) 
-            if ((e.Value.ToString() != lastEditValue
-                || lastEditNode != e.Node
-                || lastEditColumn != e.Column)
-                && e.Column.Caption.IndexOf("年") > 0)
-            {
-                
-                
+            if (e.Value != null)
+                if ((e.Value.ToString() != lastEditValue
+                    || lastEditNode != e.Node
+                    || lastEditColumn != e.Column)
+                    && e.Column.Caption.IndexOf("年") > 0)
+                {
+
+
                     if (SaveCellValue((string)treeList1.FocusedColumn.FieldName, (string)treeList1.FocusedNode.GetValue("ID"), Convert.ToDouble(e.Value)))
                     {
                         CalculateSum(e.Node, e.Column);
@@ -646,40 +647,40 @@ namespace Itop.Client.Table
                         {
 
                             treeList1.FocusedNode.SetValue(treeList1.FocusedColumn.FieldName, null);
-                            
-                          
+
+
                         }
                     }
                     else
                     {
                         treeList1.FocusedNode.SetValue(treeList1.FocusedColumn.FieldName, lastEditValue);
                     }
-                
-              
-                  
-            }
+
+
+
+                }
 
             FindNodes(treeList1.FocusedNode);
-            
+
             //string nodestr = treenode.GetValue("Title").ToString();
-         
-           
+
+
             isdel = false;
         }
 
-       
+
         private bool SaveCellValue(string year, string typeID, double value)
         {
             Ps_Table_110Result psp = new Ps_Table_110Result();
             Ps_Table_110Result old = Common.Services.BaseService.GetOneByKey<Ps_Table_110Result>(typeID);
             psp = (Ps_Table_110Result)old.Clone();
-            psp.GetType().GetProperty(year).SetValue(psp, Math.Round(value,1),null);
+            psp.GetType().GetProperty(year).SetValue(psp, Math.Round(value, 1), null);
 
             try
             {
                 Common.Services.BaseService.Update<Ps_Table_110Result>(psp);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MsgBox.Show("保存数据出错：" + ex.Message);
                 return false;
@@ -696,14 +697,14 @@ namespace Itop.Client.Table
 
         private void treeList1_ShowingEditor(object sender, CancelEventArgs e)
         {
-            if(treeList1.FocusedNode.HasChildren
+            if (treeList1.FocusedNode.HasChildren
                 || !base.EditRight)
             {
                 e.Cancel = true;
             }
             FindNodes(treeList1.FocusedNode);
             string nodestr = treenode.GetValue("Title").ToString();
-          if (nodestr == "单产耗能(万千瓦时/万元)")
+            if (nodestr == "单产耗能(万千瓦时/万元)")
             {
                 e.Cancel = true;
             }
@@ -728,12 +729,12 @@ namespace Itop.Client.Table
             if (node.ParentNode == null)
             {
                 treenode = node;
-                return ;
+                return;
 
             }
-           
+
             FindNodes(node.ParentNode);
-            return ;
+            return;
         }
         //当子分类数据改变时，计算其父分类的值
         private void CalculateSum(TreeListNode node, TreeListColumn column)
@@ -750,45 +751,45 @@ namespace Itop.Client.Table
                 return;
             }
             double sum = 0;
-            foreach(TreeListNode nd in parentNode.Nodes)
+            foreach (TreeListNode nd in parentNode.Nodes)
             {
                 object value = nd.GetValue(column.FieldName);
-                if(value != null && value != DBNull.Value)
+                if (value != null && value != DBNull.Value)
                 {
                     sum += Convert.ToDouble(value);
                 }
             }
-           
-            if(sum!=0)
-            parentNode.SetValue(column.FieldName, sum);
-            else
-            parentNode.SetValue(column.FieldName, 0.0);
-        if (sum != 0)
-        {
-            if (!SaveCellValue((string)column.FieldName, (string)parentNode.GetValue("ID"), sum))
-            {
-                return;
-            }
-        }
-        else
-        {
-            //if (parentNode.HasChildren)
-            //{
-            //    string flagid = " year=" + treeList1.FocusedColumn.FieldName.Replace("Y", "").Replace("年", "") + " and TypeID=" + parentNode["ID"];
-            //    //psp_Values.ID = typeFlag2;//用ID字段存放Flag2的值
-            //    //psp_Values.TypeID =Convert.ToInt32(treeList1.FocusedNode["ID"]);
-            //    IList<PSP_Values> listValues = Common.Services.BaseService.GetList<PSP_Values>("SelectPSP_ValuesByWhere", flagid);
-            //    if (listValues.Count == 1)
-            //    {
-            //        Common.Services.BaseService.Delete<PSP_Values>(listValues[0]);
-            //    }
-            //}
-            if (!SaveCellValue((string)column.FieldName, (string)parentNode.GetValue("ID"), 0.0))
-            {
 
+            if (sum != 0)
+                parentNode.SetValue(column.FieldName, sum);
+            else
+                parentNode.SetValue(column.FieldName, 0.0);
+            if (sum != 0)
+            {
+                if (!SaveCellValue((string)column.FieldName, (string)parentNode.GetValue("ID"), sum))
+                {
+                    return;
+                }
             }
-        }
-        
+            else
+            {
+                //if (parentNode.HasChildren)
+                //{
+                //    string flagid = " year=" + treeList1.FocusedColumn.FieldName.Replace("Y", "").Replace("年", "") + " and TypeID=" + parentNode["ID"];
+                //    //psp_Values.ID = typeFlag2;//用ID字段存放Flag2的值
+                //    //psp_Values.TypeID =Convert.ToInt32(treeList1.FocusedNode["ID"]);
+                //    IList<PSP_Values> listValues = Common.Services.BaseService.GetList<PSP_Values>("SelectPSP_ValuesByWhere", flagid);
+                //    if (listValues.Count == 1)
+                //    {
+                //        Common.Services.BaseService.Delete<PSP_Values>(listValues[0]);
+                //    }
+                //}
+                if (!SaveCellValue((string)column.FieldName, (string)parentNode.GetValue("ID"), 0.0))
+                {
+
+                }
+            }
+
 
             CalculateSum(parentNode, column);
         }
@@ -835,7 +836,7 @@ namespace Itop.Client.Table
                             CalculateSum(fnode, fnode.TreeList.Columns[pasteCols[j]]);
                         }
                     }
-                    catch (Exception e) { string ddd = e.Message;  }
+                    catch (Exception e) { string ddd = e.Message; }
                 }
                 //  updateNode(fnode);
             }
@@ -875,9 +876,9 @@ namespace Itop.Client.Table
             Hashtable atable = new Hashtable();
 
             double dv1 = 0, dv3 = 0, dv4 = 0, dv5 = 0, dv6 = 0, dv7 = 0, dv8 = 0, dv9 = 0, dv10 = 0, drzb = 0;//BuildYear  rzb
-            
+
             TreeListNode to = null;
-            double.TryParse(node.ParentNode["BuildYear"].ToString(),out drzb);
+            double.TryParse(node.ParentNode["BuildYear"].ToString(), out drzb);
             foreach (TreeListNode nd in node.ParentNode.Nodes)
             {
                 if (!atable.ContainsKey(nd["Col3"].ToString()))
@@ -885,15 +886,15 @@ namespace Itop.Client.Table
                     atable.Add(nd["Col3"].ToString(), nd);
                 }
             }
-            
-            double.TryParse(((TreeListNode)atable["1"]).GetValue(column.FieldName).ToString(),out dv1);
+
+            double.TryParse(((TreeListNode)atable["1"]).GetValue(column.FieldName).ToString(), out dv1);
             double.TryParse(((TreeListNode)atable["3"]).GetValue(column.FieldName).ToString(), out dv3);
             double.TryParse(((TreeListNode)atable["4"]).GetValue(column.FieldName).ToString(), out dv4);
             double.TryParse(((TreeListNode)atable["5"]).GetValue(column.FieldName).ToString(), out dv5);
             double.TryParse(((TreeListNode)atable["8"]).GetValue(column.FieldName).ToString(), out dv8);
             dv6 = dv1 - dv3 - dv4 - dv5;
             dv7 = dv6 * drzb;
-            if (dv6!=0)
+            if (dv6 != 0)
             {
                 dv9 = dv8 / dv6;
             }
@@ -910,7 +911,7 @@ namespace Itop.Client.Table
             ((TreeListNode)atable["10"]).SetValue(column.FieldName, dv10);
             SaveCellValue((string)column.FieldName, (string)((TreeListNode)atable["10"]).GetValue("ID"), dv10);
 
-         
+
         }
 
         private void treeList1_ShownEditor(object sender, EventArgs e)
@@ -920,7 +921,7 @@ namespace Itop.Client.Table
             lastEditValue = treeList1.FocusedNode.GetValue(lastEditColumn.FieldName).ToString();
         }
 
-        
+
 
         //把树控件内容按显示顺序生成到DataTable中
         private DataTable ConvertTreeListToDataTable(DevExpress.XtraTreeList.TreeList xTreeList, bool bRemove)
@@ -1108,13 +1109,14 @@ namespace Itop.Client.Table
                 MsgBox.Show("您没有权限进行此项操作！");
                 return;
             }
-           
+
             TreeListNode focusedNode = treeList1.FocusedNode;
 
             FrmAddPN frm = new FrmAddPN();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                if (treeList1.Nodes.Count>0)
+
+                if (treeList1.Nodes.Count > 0)
                 {
                     for (int i = 0; i < treeList1.Nodes.Count; i++)
                     {
@@ -1130,7 +1132,7 @@ namespace Itop.Client.Table
                 {
                     AddArea(frm.ParentName);
                 }
-               
+
             }
         }
 
@@ -1170,7 +1172,7 @@ namespace Itop.Client.Table
                 table1.ProjectID = GetProjectID;
                 table1.Col3 = Convert.ToString(i + 1);
                 table1.Col1 = "no";
-                if (i==0||i == 2 || i == 3)
+                if (i == 0 || i == 2 || i == 3)
                 {
                     table1.Col1 = "";
                 }
@@ -1203,7 +1205,7 @@ namespace Itop.Client.Table
             treeList1.EndUpdate();
             this.Cursor = Cursors.Default;
         }
-        public void Update110(string chen,string pid)
+        public void Update110(string chen, string pid)
         {
             try
             {
@@ -1283,7 +1285,7 @@ namespace Itop.Client.Table
                             old4yf = double.Parse(list4[0].GetType().GetProperty("yf" + i.ToString()).GetValue(list4[0], null).ToString());
                             //总体第四项重新赋值
                             res4.GetType().GetProperty("yf" + i.ToString()).SetValue(res4, old4yf - oldyf + newyf - old1yf + new1yf, null);
-                           //包括第四项的分区原值
+                            //包括第四项的分区原值
                             oldheyf = double.Parse(list7[0].GetType().GetProperty("yf" + i.ToString()).GetValue(list7[0], null).ToString());
                             //分区重新赋值
                             reshe.GetType().GetProperty("yf" + i.ToString()).SetValue(reshe, oldheyf - oldyf + newyf - old1yf + new1yf, null);
@@ -1320,7 +1322,7 @@ namespace Itop.Client.Table
                             oldheyk = double.Parse(list7[0].GetType().GetProperty("yk" + i.ToString()).GetValue(list7[0], null).ToString());
                             //分区重新赋值
                             reshe.GetType().GetProperty("yk" + i.ToString()).SetValue(reshe, oldheyk - oldyk + newyk - old1yk + new1yk, null);
-                
+
                         }
                     }
                     Common.Services.BaseService.Update<Ps_Table_110Result>(res35shui);
@@ -1351,7 +1353,7 @@ namespace Itop.Client.Table
             IList<Ps_Table_110Result> listchild = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
             for (int i = 0; i < listchild.Count; i++)
             {
-                rtable.Add(listchild[i].Col3,listchild[i] );
+                rtable.Add(listchild[i].Col3, listchild[i]);
             }
             col2 = (Ps_Table_110Result)rtable["2"];
 
@@ -1359,13 +1361,13 @@ namespace Itop.Client.Table
             string conncol2 = "ProjectID='" + GetProjectID + "' and ParentID='" + col2.ID + "'";
 
 
-            IList<Ps_Table_110Result> col2list= Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conncol2);
+            IList<Ps_Table_110Result> col2list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conncol2);
             foreach (Ps_Table_110Result ptr in col2list)
             {
                 Common.Services.BaseService.Delete<Ps_Table_110Result>(ptr);
             }
 
-           
+
             col5 = (Ps_Table_110Result)rtable["5"];
 
             //更新110kV以下电源  更新 5、区内电源出力
@@ -1373,8 +1375,8 @@ namespace Itop.Client.Table
             string conn1 = " AreaID='" + GetProjectID + "' and S9='" + AreaName + "' and cast(S1 as int)<=110";
             IList<PSP_PowerSubstation_Info> list = Common.Services.BaseService.GetList<PSP_PowerSubstation_Info>("SelectPSP_PowerSubstation_InfoListByWhere", conn1);
 
-            int startyear=yAnge.BeginYear;
-            int endyear=yAnge.EndYear;
+            int startyear = yAnge.BeginYear;
+            int endyear = yAnge.EndYear;
 
             int startyear2 = yAnge.BeginYear;
             int endyear2 = yAnge.EndYear;
@@ -1392,7 +1394,7 @@ namespace Itop.Client.Table
             }
 
             for (int j = 0; j < list.Count; j++)
-			{
+            {
                 string dyid = list[j].UID;
                 Ps_Table_110Result newdy = new Ps_Table_110Result();
                 newdy.ParentID = col2.ID;
@@ -1400,26 +1402,31 @@ namespace Itop.Client.Table
                 newdy.Col1 = "no";
                 newdy.Title = list[j].Title;
 
-                if (list[j].S29!=string.Empty)
+                startyear = yAnge.BeginYear;
+                endyear = yAnge.EndYear;
+
+                if (list[j].S29 != string.Empty)
                 {
                     int.TryParse(list[j].S29, out startyear);
                 }
-                if (list[j].S30!=string.Empty)
+                if (list[j].S30 != string.Empty)
                 {
                     int.TryParse(list[j].S30, out endyear);
                 }
-               
+
 
 
                 string connjz = " RelatetableID ='" + dyid + "' and (S2='新建'  or S2='扩容')";
-                IList<Psp_Attachtable> listatt=Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont",connjz);
+                IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
                 for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
                 {
-                   //电源下是否有机组容量，如果没有机组则直接用源的容量，如果有机组，将所有机组按年份计算求和
-                    if (listatt.Count>0)
+                    //电源下是否有机组容量，如果没有机组则直接用源的容量，如果有机组，将所有机组按年份计算求和
+                    if (listatt.Count > 0)
                     {
                         for (int k = 0; k < listatt.Count; k++)
                         {
+                            startyear2 = yAnge.BeginYear;
+                            endyear2 = yAnge.EndYear;
                             if (listatt[k].startYear != string.Empty)
                             {
                                 int.TryParse(listatt[k].startYear, out startyear2);
@@ -1428,9 +1435,9 @@ namespace Itop.Client.Table
                             {
                                 int.TryParse(listatt[k].endYear, out endyear2);
                             }
-                           
-                            
-                            if (startyear2<=i&&i<=endyear2)
+
+
+                            if (startyear2 <= i && i < endyear2)
                             {
                                 double dyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
                                 double dyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
@@ -1443,7 +1450,7 @@ namespace Itop.Client.Table
                                 double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
                                 double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
                                 // 累计机组容量*丰期机组出力率  或枯期机组出力率
-                                col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + listatt[k].ZHI*listatt[k].D1, 2), null);
+                                col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + listatt[k].ZHI * listatt[k].D1, 2), null);
                                 col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + listatt[k].ZHI * listatt[k].D2, 2), null);
 
                             }
@@ -1451,20 +1458,20 @@ namespace Itop.Client.Table
 
                         }
 
-                       
+
                     }
                     else
                     {
-                        if (startyear<=i&&i<=endyear)
+                        if (startyear <= i && i < endyear)
                         {
-                            double.TryParse( list[j].S2,out yf);
-                            newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(yf,2), null);
+                            double.TryParse(list[j].S2, out yf);
+                            newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(yf, 2), null);
                             newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(yf, 2), null);
                             double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
                             double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
 
-                            col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f+yf, 2), null);
-                            col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k+yf, 2), null);
+                            col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + yf, 2), null);
+                            col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + yf, 2), null);
 
                         }
                     }
@@ -1480,7 +1487,7 @@ namespace Itop.Client.Table
                 }
 
                 Common.Services.BaseService.Create<Ps_Table_110Result>(newdy);
-			}
+            }
             Common.Services.BaseService.Update<Ps_Table_110Result>(col2);
             Common.Services.BaseService.Update<Ps_Table_110Result>(col5);
 
@@ -1519,7 +1526,7 @@ namespace Itop.Client.Table
 
 
             //更新安排110kV变电容量
-            
+
             string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=110";
             IList<PSP_Substation_Info> list = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
 
@@ -1546,6 +1553,9 @@ namespace Itop.Client.Table
                 newdy.Col1 = "no";
                 newdy.Title = list[j].Title;
 
+                startyear = yAnge.BeginYear;
+                endyear = yAnge.EndYear;
+
                 if (list[j].L28 != string.Empty)
                 {
                     int.TryParse(list[j].L28, out startyear);
@@ -1559,13 +1569,16 @@ namespace Itop.Client.Table
                 IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
                 for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
                 {
-                  
+
 
                     //变电站下是否有机组容量，如果没有机组则直接用源的容量，如果有机组，将所有机组按年份计算求和
                     if (listatt.Count > 0)
                     {
                         for (int k = 0; k < listatt.Count; k++)
                         {
+                            startyear2 = yAnge.BeginYear;
+                            endyear2 = yAnge.EndYear;
+
                             if (listatt[k].startYear != string.Empty)
                             {
                                 int.TryParse(listatt[k].startYear, out startyear2);
@@ -1576,7 +1589,7 @@ namespace Itop.Client.Table
                             }
 
 
-                            if (startyear2 <= i && i <= endyear2)
+                            if (startyear2 <= i && i < endyear2)
                             {
                                 double dyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
                                 double dyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
@@ -1593,12 +1606,12 @@ namespace Itop.Client.Table
                     }
                     else
                     {
-                        if (startyear <= i && i <= endyear)
+                        if (startyear <= i && i < endyear)
                         {
-                         
+
                             newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(list[j].L2, 2), null);
                             newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(list[j].L2, 2), null);
-                           
+
 
                         }
                     }
@@ -1617,7 +1630,7 @@ namespace Itop.Client.Table
                 Common.Services.BaseService.Create<Ps_Table_110Result>(newdy);
             }
             Common.Services.BaseService.Update<Ps_Table_110Result>(col8);
-          
+
 
         }
         /// <summary>
@@ -1664,6 +1677,7 @@ namespace Itop.Client.Table
             Ps_Table_110Result yybdz = new Ps_Table_110Result();
             yybdz.Title = "已有变电站";
             yybdz.ProjectID = GetProjectID;
+            yybdz.Col1 = "no";
             yybdz.Sort = 0;
             yybdz.ParentID = col11.ID;
 
@@ -1671,30 +1685,34 @@ namespace Itop.Client.Table
             Ps_Table_110Result xzbdz = new Ps_Table_110Result();
             xzbdz.Title = "新增变电站";
             xzbdz.ProjectID = GetProjectID;
+            xzbdz.Col1 = "no";
             xzbdz.Sort = 1;
             xzbdz.ParentID = col11.ID;
 
             for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
             {
                 //已有变电站
-                string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=110  and cast(S2 as int)<"+i;
+                string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=110  and cast(S2 as int)<" + i;
                 IList<PSP_Substation_Info> list1 = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
                 int yybdznumber = 0;
-                
+
                 for (int j = 0; j < list1.Count; j++)
                 {
-                    
+
                     string dyid = list1[j].UID;
                     string connjz = " RelatetableID ='" + dyid + "' and (S2='新建' or S2='扩容')";
 
                     IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
                     //如果变站下没有机组，则变电站有效
-                    if (listatt.Count>0)
+                    if (listatt.Count > 0)
                     {
-                        int jznumber= 0;
+                        int jznumber = 0;
                         //找到是否有指定年份还在使用的机组，如果有则变电站有效
                         for (int k = 0; k < listatt.Count; k++)
                         {
+                            startyear2 = yAnge.BeginYear;
+                            endyear2 = yAnge.EndYear;
+
                             if (listatt[k].startYear != string.Empty)
                             {
                                 int.TryParse(listatt[k].startYear, out startyear2);
@@ -1703,17 +1721,17 @@ namespace Itop.Client.Table
                             {
                                 int.TryParse(listatt[k].endYear, out endyear2);
                             }
-                            if (startyear2<=i&&i<=endyear2)
+                            if (startyear2 <= i && i <= endyear2)
                             {
                                 jznumber++;
                                 break;
                             }
                         }
-                        if (jznumber>0)
+                        if (jznumber > 0)
                         {
                             yybdznumber++;
                         }
-                        
+
                     }
                     else
                     {
@@ -1745,6 +1763,9 @@ namespace Itop.Client.Table
                         //找到是否有指定年份还在使用的机组，如果有则变电站有效
                         for (int k = 0; k < listatt.Count; k++)
                         {
+                            startyear2 = yAnge.BeginYear;
+                            endyear2 = yAnge.EndYear;
+
                             if (listatt[k].startYear != string.Empty)
                             {
                                 int.TryParse(listatt[k].startYear, out startyear2);
@@ -1774,18 +1795,18 @@ namespace Itop.Client.Table
                 xzbdz.GetType().GetProperty("yf" + i.ToString()).SetValue(xzbdz, xzbdznumber, null);
                 xzbdz.GetType().GetProperty("yk" + i.ToString()).SetValue(xzbdz, xzbdznumber, null);
 
-                col11.GetType().GetProperty("yf" + i.ToString()).SetValue(col11, yybdznumber+xzbdznumber, null);
+                col11.GetType().GetProperty("yf" + i.ToString()).SetValue(col11, yybdznumber + xzbdznumber, null);
                 col11.GetType().GetProperty("yk" + i.ToString()).SetValue(col11, yybdznumber + xzbdznumber, null);
 
-             
+
             }
 
-                Common.Services.BaseService.Create<Ps_Table_110Result>(yybdz);
-                Common.Services.BaseService.Create<Ps_Table_110Result>(xzbdz);
-                Common.Services.BaseService.Update<Ps_Table_110Result>(col11);
+            Common.Services.BaseService.Create<Ps_Table_110Result>(yybdz);
+            Common.Services.BaseService.Create<Ps_Table_110Result>(xzbdz);
+            Common.Services.BaseService.Update<Ps_Table_110Result>(col11);
         }
 
-      
+
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -1815,11 +1836,11 @@ namespace Itop.Client.Table
                     //DeletePSP_ValuesByType里面删除数据和分类
                     Common.Services.BaseService.Delete<Ps_Table_110Result>(table1);//("DeletePs_Table_110Result", table1);
 
-                    
+
                     treeList1.DeleteNode(treeList1.FocusedNode);
                     //treeList1.ExpandAll();
                     //删除后，如果同级还有其它分类，则重新计算此类的所有年份数据
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -1892,12 +1913,12 @@ namespace Itop.Client.Table
         public void UpdateFuHe(string pid)
         {
             UpData(pid);
-            
+
         }
         //根据ID值按计算关系重新计算数据
         private void UpData(string pid)
         {
-            Hashtable rtable=new Hashtable ();
+            Hashtable rtable = new Hashtable();
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='" + pid + "'";
 
             Ps_Table_110Result col1, col2, col3, col4, col5, col6, col7, col8, col9, col10;
@@ -1905,7 +1926,7 @@ namespace Itop.Client.Table
             IList<Ps_Table_110Result> list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
             for (int i = 0; i < list.Count; i++)
             {
-                rtable.Add(list[i].Col3,list[i]);
+                rtable.Add(list[i].Col3, list[i]);
             }
             int m = 1;
             col1 = (Ps_Table_110Result)rtable[m++.ToString()];
@@ -1964,7 +1985,7 @@ namespace Itop.Client.Table
                 double d9k = 0;
                 double d9f = 0;
 
-                if (d6f!=0)
+                if (d6f != 0)
                 {
                     d9f = d8f / d6f;
                 }
@@ -1982,14 +2003,14 @@ namespace Itop.Client.Table
 
                 col10.GetType().GetProperty("yf" + i.ToString()).SetValue(col10, Math.Round(d10f, 2), null);
                 col10.GetType().GetProperty("yk" + i.ToString()).SetValue(col10, Math.Round(d10k, 2), null);
-               
+
             }
-           
-                Common.Services.BaseService.Update<Ps_Table_110Result>(col6);
-                Common.Services.BaseService.Update<Ps_Table_110Result>(col7);
-                Common.Services.BaseService.Update<Ps_Table_110Result>(col9);
-                Common.Services.BaseService.Update<Ps_Table_110Result>(col10);
-            
+
+            Common.Services.BaseService.Update<Ps_Table_110Result>(col6);
+            Common.Services.BaseService.Update<Ps_Table_110Result>(col7);
+            Common.Services.BaseService.Update<Ps_Table_110Result>(col9);
+            Common.Services.BaseService.Update<Ps_Table_110Result>(col10);
+
         }
         //载入负荷数据
         private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -2100,10 +2121,10 @@ namespace Itop.Client.Table
                 frma.IsSelect = _isSelect;
                 frma.Text = "110千伏供电平衡表";
                 frma.Dw1 = "单位：万千瓦";
-               
+
                 frma.GridDataTable = ResultDataTable(ConvertTreeListToDataTable(treeList1, false), frm.ListChoosedYears);
 
-               
+
                 frma.YearList = frm.ListChoosedYears;
                 if (frma.ShowDialog() == DialogResult.OK && _isSelect)
                 {
@@ -2124,16 +2145,24 @@ namespace Itop.Client.Table
             }
             string connarea = "ProjectID='" + Itop.Client.MIS.ProgUID + "'order by Sort";
             IList<PS_Table_AreaWH> listarea = Common.Services.BaseService.GetList<PS_Table_AreaWH>("SelectPS_Table_AreaWHByConn", connarea);
+            int m = 0;
+            WaitDialogForm frm = new WaitDialogForm("", "正在更新区域，请稍后...");
             foreach (PS_Table_AreaWH area in listarea)
             {
+                m++;
                 if (!AreaTable.Contains(area.Title))
                 {
+
                     AddArea(area.Title);
                 }
+                double complete = m * 100 / listarea.Count;
+                frm.Caption = "已完成" + Math.Round(complete, 0) + "%";
             }
+            frm.Hide();
             LoadData1();
+            MessageBox.Show("已完成更新！");
         }
-       
+
         //更新变电站
         private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -2141,15 +2170,21 @@ namespace Itop.Client.Table
 
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='0'";
             IList<Ps_Table_110Result> list = Common.Services.BaseService.GetList<Ps_Table_110Result>("SelectPs_Table_110ResultByConn", conn);
+            int m = 0;
+            WaitDialogForm frm = new WaitDialogForm("", "正在更新电源及变电站，请稍后...");
             foreach (Ps_Table_110Result pt in list)
             {
+                m++;
                 UpdataDY(pt.ID);
                 UpDataRL(pt.ID);
                 UpDataBDZ(pt.ID);
                 UpData(pt.ID);
+                double complete = m * 100 / list.Count;
+                frm.Caption = "已完成" + Math.Round(complete, 0) + "%";
             }
             LoadData1();
-
+            frm.Hide();
+            MessageBox.Show("已完成更新！");
         }
         private string rongZai110 = "1.9";
         public string RongZai110

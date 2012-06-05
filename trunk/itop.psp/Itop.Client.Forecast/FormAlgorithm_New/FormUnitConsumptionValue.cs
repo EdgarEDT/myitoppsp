@@ -199,8 +199,9 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             //RefreshChart();
 
 
-            FormForecastLoadDataforMaxHour ffs = new FormForecastLoadDataforMaxHour();
-            ffs.maxhour = false;
+            //FormForecastLoadDataforMaxHour ffs = new FormForecastLoadDataforMaxHour();
+            FormForecastLoadData2 ffs = new FormForecastLoadData2();
+            ffs.ISGDP = true;
             ffs.PID = MIS.ProgUID;
             ffs.StartYear = forecastReport.StartYear;
             ffs.EndYear = forecastReport.EndYear;
@@ -1491,7 +1492,8 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            FormForecastLoadDataforMaxHour ffs = new FormForecastLoadDataforMaxHour();
+            //FormForecastLoadDataforMaxHour ffs = new FormForecastLoadDataforMaxHour();
+            FormForecastLoadData2 ffs = new FormForecastLoadData2();
             ffs.maxhour = false;
             ffs.PID = MIS.ProgUID;
             ffs.StartYear = forecastReport.StartYear;

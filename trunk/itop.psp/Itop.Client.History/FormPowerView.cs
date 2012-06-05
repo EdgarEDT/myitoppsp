@@ -18,7 +18,9 @@ namespace Itop.Client.History
 {
     public partial class FormPowerView : FormBase
     {
+        public int pstype = 0;
         Hashtable ht = new Hashtable();
+        public string yearflag = string.Empty;
         string projectUID = ""; 
         int firstyear = 2000;
         int endyear = 2008;
@@ -48,7 +50,7 @@ namespace Itop.Client.History
         private void InitData()
         {
             Ps_YearRange py = new Ps_YearRange();
-            py.Col4 = "电力发展实绩";
+            py.Col4 = yearflag;
             py.Col5 = projectUID;
 
             IList<Ps_YearRange> li = Itop.Client.Common.Services.BaseService.GetList<Ps_YearRange>("SelectPs_YearRangeByCol5andCol4", py);
@@ -73,7 +75,7 @@ namespace Itop.Client.History
             dt.Columns.Add("ID");
             dt.Columns.Add("Title");
             Ps_History psp_Type = new Ps_History();
-            psp_Type.Forecast = 1;
+            psp_Type.Forecast = pstype;
             psp_Type.Col4 = projectUID;
             IList<Ps_History> listTypes = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type);
             DataTable dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_History));

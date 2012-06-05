@@ -16,7 +16,11 @@ namespace Itop.Client.History
 {
     public partial class FormHistoryType : FormBase
     {
+
+        public int Forecast=0;
+        public string ForecastID = string.Empty;
         private TreeListNode CurrentNode = null;
+        private string TypeFlag = string.Empty;
         private string OldId = string.Empty;
         private string _flag="";
         private string _title;
@@ -64,7 +68,7 @@ namespace Itop.Client.History
             {
                 if (Flag=="1")
                 {
-                    _title = "电力发展实绩默认类别管理";
+                        _title = "电力发展实绩默认类别管理";
                 }
                 else if (Flag=="2")
                 {
@@ -73,6 +77,18 @@ namespace Itop.Client.History
                 else if (Flag=="3")
                 {
                     _title = "分区 "+AreaName+" 用电情况默认类别管理";
+                }
+                else if (Flag == "4")
+                {
+                    _title = "经济数据绩默认类别管理";
+                }
+                else if (Flag == "5")
+                {
+                    _title = "电力数据绩默认类别管理";
+                }
+                else if (Flag == "6")
+                {
+                    _title = "负荷数据绩默认类别管理";
                 }
                 else
                 {
@@ -92,7 +108,7 @@ namespace Itop.Client.History
             get { return _flagvalue; }
             set { _flagvalue = value; }
         }
-        private string[] str ={ "电力发展实绩", "分区供电实绩","分区用电情况" };
+        private string[] str ={ "电力发展实绩", "分区供电实绩","分区用电情况" ,"经济数据","电力数据","负荷数据"};
         public FormHistoryType()
         {
           
@@ -108,6 +124,7 @@ namespace Itop.Client.History
             treeList1.Columns["Units"].VisibleIndex = -1;
            
         }
+        
         //添加模块管理下拉列表
         private void BarEditItem1_Add(string[] str)
         {
@@ -403,6 +420,18 @@ namespace Itop.Client.History
             else if (combtype.EditValue == str[2].ToString())
             {
                 FlagValue = "3";
+            }
+            else if (combtype.EditValue == str[3].ToString())
+            {
+                FlagValue = "4";
+            }
+            else if (combtype.EditValue == str[4].ToString())
+            {
+                FlagValue = "5";
+            }
+            else if (combtype.EditValue == str[5].ToString())
+            {
+                FlagValue = "6";
             }
             else
             {
@@ -820,7 +849,9 @@ namespace Itop.Client.History
             //更新电发力发实绩中的类别
             if (Flag=="1")
             {
-                RefreshData_DLFZ();
+
+              RefreshData_DLFZ();
+               
             }
             //更新分区供电实绩中的类别
             if (Flag=="2")
@@ -832,7 +863,18 @@ namespace Itop.Client.History
             {
                 RefreshData_FQYD();
             }
-      
+            if (Flag == "4")
+            {
+                RefreshData_JJ();
+            }
+            if (Flag == "5")
+            {
+                RefreshData_DL();
+            }
+            if (Flag == "6")
+            {
+                RefreshData_FH();
+            }
         }
         //更新电发力发实绩中的类别
         private void RefreshData_DLFZ()
@@ -877,8 +919,8 @@ namespace Itop.Client.History
                         Ps_HistoryType pht = Common.Services.BaseService.GetOneByKey<Ps_HistoryType>(AddListID[i]); ;
                         Ps_History pf = new Ps_History();
                         pf.ID = pht.ID + "|" + ProjectID;
-                        pf.Forecast = FormHistory.Historyhome.type;
-                        pf.ForecastID = FormHistory.Historyhome.type1;
+                        pf.Forecast = Forecast;
+                        pf.ForecastID = ForecastID;
                         TreeListNode node = treeList1.FindNodeByKeyID(pht.ID);
                         string tempstr = string.Empty;
                         pf.Title = AddList[i].ToString();
@@ -933,12 +975,347 @@ namespace Itop.Client.History
 
                     }
                 }
-                FormHistory.Historyhome.treeList1.Refresh();
+                if (TypeFlag ==string.Empty)
+                {
+                    FormHistory.Historyhome.treeList1.Refresh();
+                }
+                if (TypeFlag == "JJ")
+                {
+                    FormHistoryJJ.Historyhome.treeList1.Refresh();
+                }
+                if (TypeFlag == "DL")
+                {
+                    FormHistoryDL.Historyhome.treeList1.Refresh();
+                }
+                if (TypeFlag == "FH")
+                {
+                    FormHistoryFH.Historyhome.treeList1.Refresh();
+                }
+               
                 EqueValueBynode(treeList1.Nodes);
                 treeList1.Refresh();
                 MsgBox.Show("更新完成!");
             }
         }
+        //更新电发力发实绩中的类别
+        private void RefreshData_JJ()
+        {
+            //改变treelist1的焦点结点，然后再变回来，这样treelist1才会更新值
+            if (treeList1.FocusedNode != null)
+            {
+                TreeListNode node = treeList1.FocusedNode;
+                treeList1.FocusedNode = null;
+                treeList1.FocusedNode = node;
+            }
+
+            //清空添加列表
+            AddListID.Clear();
+            AddList.Clear();
+            //清空减少列表
+            ReduceListID.Clear();
+            ReduceList.Clear();
+            //清空改变单位列表
+            changeUnitlist.Clear();
+            changeUnitlistID.Clear();
+            AddorReduListBynode(treeList1.Nodes, AddList, ReduceList);
+            if (AddList.Count == 0 && ReduceList.Count == 0 && changeUnitlist.Count == 0)
+            {
+                MsgBox.Show("您未做任何修改，不需要更新模块！");
+                return;
+            }
+
+            FormHistoryTypeEditDeal frm = new FormHistoryTypeEditDeal();
+            frm.TypeTitle = "请确认您是否要做如下类别改变？";
+            frm.addlist = AddList;
+            frm.reducelist = ReduceList;
+            frm.changeUnitslist = changeUnitlist;
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                if (AddListID.Count != 0)
+                {
+                    for (int i = 0; i < AddListID.Count; i++)
+                    {
+                        //Ps_HistoryType pht = new Ps_HistoryType();
+                        //pht.ID = AddListID[i];
+                        Ps_HistoryType pht = Common.Services.BaseService.GetOneByKey<Ps_HistoryType>(AddListID[i]); ;
+                        Ps_History pf = new Ps_History();
+                        pf.ID = pht.ID + "|" + ProjectID;
+                        pf.Forecast = Forecast;
+                        pf.ForecastID = ForecastID;
+                        TreeListNode node = treeList1.FindNodeByKeyID(pht.ID);
+                        string tempstr = string.Empty;
+                        pf.Title = AddList[i].ToString();
+                        pf.ParentID = pht.ParentID + "|" + ProjectID;
+                        pf.Col4 = MIS.ProgUID;
+                        //标识是默认类别生成
+                        pf.Col10 = "1";
+
+                        pf.Sort = pht.Sort;
+
+                        try
+                        {
+                            Common.Services.BaseService.Create<Ps_History>(pf);
+                            FormHistoryJJ.Historyhome.dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pf, FormHistoryJJ.Historyhome.dataTable.NewRow()));
+
+                        }
+                        catch (Exception ex) { MsgBox.Show("增加分类出错：" + ex.Message); }
+
+                        FormHistoryJJ.Historyhome.RefreshChart();
+                    }
+
+                }
+                if (ReduceListID.Count != 0)
+                {
+                    for (int i = 0; i < ReduceListID.Count; i++)
+                    {
+                        TreeListNode node = FormHistoryJJ.Historyhome.treeList1.FindNodeByKeyID(ReduceListID[i].ToString() + "|" + ProjectID);
+                        if (node != null)
+                        {
+                            FormHistoryJJ.Historyhome.DeleteNode(node);
+                        }
+
+                    }
+                }
+                if (changeUnitlistID.Count != 0)
+                {
+                    for (int i = 0; i < changeUnitlistID.Count; i++)
+                    {
+                        try
+                        {
+                            Ps_History pht = Common.Services.BaseService.GetOneByKey<Ps_History>(changeUnitlistID[i] + "|" + ProjectID);
+                            pht.Title = changeUnitlist[i].ToString();
+                            Common.Services.BaseService.Update<Ps_History>(pht);
+                            TreeListNode node = FormHistoryJJ.Historyhome.treeList1.FindNodeByKeyID(changeUnitlistID[i].ToString() + "|" + ProjectID);
+                            if (node != null)
+                            {
+                                node["Title"] = changeUnitlist[i].ToString();
+                            }
+
+                        }
+                        catch (Exception ex) { MsgBox.Show("修改单位出错：" + ex.Message); }
+
+                    }
+                }
+                
+                FormHistoryJJ.Historyhome.treeList1.Refresh();
+                EqueValueBynode(treeList1.Nodes);
+                treeList1.Refresh();
+                MsgBox.Show("更新完成!");
+            }
+        }
+        //更新电发力发实绩中的类别
+        private void RefreshData_DL()
+        {
+            //改变treelist1的焦点结点，然后再变回来，这样treelist1才会更新值
+            if (treeList1.FocusedNode != null)
+            {
+                TreeListNode node = treeList1.FocusedNode;
+                treeList1.FocusedNode = null;
+                treeList1.FocusedNode = node;
+            }
+
+            //清空添加列表
+            AddListID.Clear();
+            AddList.Clear();
+            //清空减少列表
+            ReduceListID.Clear();
+            ReduceList.Clear();
+            //清空改变单位列表
+            changeUnitlist.Clear();
+            changeUnitlistID.Clear();
+            AddorReduListBynode(treeList1.Nodes, AddList, ReduceList);
+            if (AddList.Count == 0 && ReduceList.Count == 0 && changeUnitlist.Count == 0)
+            {
+                MsgBox.Show("您未做任何修改，不需要更新模块！");
+                return;
+            }
+
+            FormHistoryTypeEditDeal frm = new FormHistoryTypeEditDeal();
+            frm.TypeTitle = "请确认您是否要做如下类别改变？";
+            frm.addlist = AddList;
+            frm.reducelist = ReduceList;
+            frm.changeUnitslist = changeUnitlist;
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                if (AddListID.Count != 0)
+                {
+                    for (int i = 0; i < AddListID.Count; i++)
+                    {
+                        //Ps_HistoryType pht = new Ps_HistoryType();
+                        //pht.ID = AddListID[i];
+                        Ps_HistoryType pht = Common.Services.BaseService.GetOneByKey<Ps_HistoryType>(AddListID[i]); ;
+                        Ps_History pf = new Ps_History();
+                        pf.ID = pht.ID + "|" + ProjectID;
+                        pf.Forecast = Forecast;
+                        pf.ForecastID = ForecastID;
+                        TreeListNode node = treeList1.FindNodeByKeyID(pht.ID);
+                        string tempstr = string.Empty;
+                        pf.Title = AddList[i].ToString();
+                        pf.ParentID = pht.ParentID + "|" + ProjectID;
+                        pf.Col4 = MIS.ProgUID;
+                        //标识是默认类别生成
+                        pf.Col10 = "1";
+
+                        pf.Sort = pht.Sort;
+
+                        try
+                        {
+                            Common.Services.BaseService.Create<Ps_History>(pf);
+                            FormHistoryDL.Historyhome.dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pf, FormHistoryDL.Historyhome.dataTable.NewRow()));
+
+                        }
+                        catch (Exception ex) { MsgBox.Show("增加分类出错：" + ex.Message); }
+
+                        FormHistoryDL.Historyhome.RefreshChart();
+                    }
+
+                }
+                if (ReduceListID.Count != 0)
+                {
+                    for (int i = 0; i < ReduceListID.Count; i++)
+                    {
+                        TreeListNode node = FormHistoryDL.Historyhome.treeList1.FindNodeByKeyID(ReduceListID[i].ToString() + "|" + ProjectID);
+                        if (node != null)
+                        {
+                            FormHistoryDL.Historyhome.DeleteNode(node);
+                        }
+
+                    }
+                }
+                if (changeUnitlistID.Count != 0)
+                {
+                    for (int i = 0; i < changeUnitlistID.Count; i++)
+                    {
+                        try
+                        {
+                            Ps_History pht = Common.Services.BaseService.GetOneByKey<Ps_History>(changeUnitlistID[i] + "|" + ProjectID);
+                            pht.Title = changeUnitlist[i].ToString();
+                            Common.Services.BaseService.Update<Ps_History>(pht);
+                            TreeListNode node = FormHistoryDL.Historyhome.treeList1.FindNodeByKeyID(changeUnitlistID[i].ToString() + "|" + ProjectID);
+                            if (node != null)
+                            {
+                                node["Title"] = changeUnitlist[i].ToString();
+                            }
+
+                        }
+                        catch (Exception ex) { MsgBox.Show("修改单位出错：" + ex.Message); }
+
+                    }
+                }
+
+                FormHistoryDL.Historyhome.treeList1.Refresh();
+                EqueValueBynode(treeList1.Nodes);
+                treeList1.Refresh();
+                MsgBox.Show("更新完成!");
+            }
+        }
+        //更新电发力发实绩中的类别
+        private void RefreshData_FH()
+        {
+            //改变treelist1的焦点结点，然后再变回来，这样treelist1才会更新值
+            if (treeList1.FocusedNode != null)
+            {
+                TreeListNode node = treeList1.FocusedNode;
+                treeList1.FocusedNode = null;
+                treeList1.FocusedNode = node;
+            }
+
+            //清空添加列表
+            AddListID.Clear();
+            AddList.Clear();
+            //清空减少列表
+            ReduceListID.Clear();
+            ReduceList.Clear();
+            //清空改变单位列表
+            changeUnitlist.Clear();
+            changeUnitlistID.Clear();
+            AddorReduListBynode(treeList1.Nodes, AddList, ReduceList);
+            if (AddList.Count == 0 && ReduceList.Count == 0 && changeUnitlist.Count == 0)
+            {
+                MsgBox.Show("您未做任何修改，不需要更新模块！");
+                return;
+            }
+
+            FormHistoryTypeEditDeal frm = new FormHistoryTypeEditDeal();
+            frm.TypeTitle = "请确认您是否要做如下类别改变？";
+            frm.addlist = AddList;
+            frm.reducelist = ReduceList;
+            frm.changeUnitslist = changeUnitlist;
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                if (AddListID.Count != 0)
+                {
+                    for (int i = 0; i < AddListID.Count; i++)
+                    {
+                        //Ps_HistoryType pht = new Ps_HistoryType();
+                        //pht.ID = AddListID[i];
+                        Ps_HistoryType pht = Common.Services.BaseService.GetOneByKey<Ps_HistoryType>(AddListID[i]); ;
+                        Ps_History pf = new Ps_History();
+                        pf.ID = pht.ID + "|" + ProjectID;
+                        pf.Forecast = Forecast;
+                        pf.ForecastID = ForecastID;
+                        TreeListNode node = treeList1.FindNodeByKeyID(pht.ID);
+                        string tempstr = string.Empty;
+                        pf.Title = AddList[i].ToString();
+                        pf.ParentID = pht.ParentID + "|" + ProjectID;
+                        pf.Col4 = MIS.ProgUID;
+                        //标识是默认类别生成
+                        pf.Col10 = "1";
+
+                        pf.Sort = pht.Sort;
+
+                        try
+                        {
+                            Common.Services.BaseService.Create<Ps_History>(pf);
+                            FormHistoryFH.Historyhome.dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pf, FormHistoryFH.Historyhome.dataTable.NewRow()));
+
+                        }
+                        catch (Exception ex) { MsgBox.Show("增加分类出错：" + ex.Message); }
+
+                        FormHistoryFH.Historyhome.RefreshChart();
+                    }
+
+                }
+                if (ReduceListID.Count != 0)
+                {
+                    for (int i = 0; i < ReduceListID.Count; i++)
+                    {
+                        TreeListNode node = FormHistoryFH.Historyhome.treeList1.FindNodeByKeyID(ReduceListID[i].ToString() + "|" + ProjectID);
+                        if (node != null)
+                        {
+                            FormHistoryFH.Historyhome.DeleteNode(node);
+                        }
+
+                    }
+                }
+                if (changeUnitlistID.Count != 0)
+                {
+                    for (int i = 0; i < changeUnitlistID.Count; i++)
+                    {
+                        try
+                        {
+                            Ps_History pht = Common.Services.BaseService.GetOneByKey<Ps_History>(changeUnitlistID[i] + "|" + ProjectID);
+                            pht.Title = changeUnitlist[i].ToString();
+                            Common.Services.BaseService.Update<Ps_History>(pht);
+                            TreeListNode node = FormHistoryFH.Historyhome.treeList1.FindNodeByKeyID(changeUnitlistID[i].ToString() + "|" + ProjectID);
+                            if (node != null)
+                            {
+                                node["Title"] = changeUnitlist[i].ToString();
+                            }
+
+                        }
+                        catch (Exception ex) { MsgBox.Show("修改单位出错：" + ex.Message); }
+
+                    }
+                }
+
+                FormHistoryFH.Historyhome.treeList1.Refresh();
+                EqueValueBynode(treeList1.Nodes);
+                treeList1.Refresh();
+                MsgBox.Show("更新完成!");
+            }
+        }
+
         //更新分区供电实绩中的类别
         private void RefreshData_FQGD()
         {

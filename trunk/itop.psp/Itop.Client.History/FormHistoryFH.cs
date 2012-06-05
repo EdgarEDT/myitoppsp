@@ -22,15 +22,15 @@ using DevExpress.Utils;
 using Dundas.Charting.WinControl;
 namespace Itop.Client.History
 {
-    public partial class FormHistory : FormBase
+    public partial class FormHistoryFH : FormBase
     {
         //当使用默认分类管理时用于控制当前窗体
-        public static FormHistory Historyhome = new FormHistory();
+        public static FormHistoryFH Historyhome = new FormHistoryFH();
         public IList<Ps_History> listTypes = null;
-        public string type1 = "1";
-        public int type = 1;
+        public string type1 = "7";
+        public int type = 7;
+        private string yearflag = "电力发展实绩负荷";
         public DataTable dataTable = new DataTable();
-        private  string yearflag = "电力发展实绩";
         bool bLoadingData = false;
         bool _canEdit = true;
         int firstyear = 2000;
@@ -47,7 +47,7 @@ namespace Itop.Client.History
         /// 图形背景色
         /// </summary>
         Color chartbackcolor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
-        public FormHistory()
+        public FormHistoryFH()
         {
             InitializeComponent();
         }
@@ -96,7 +96,7 @@ namespace Itop.Client.History
             InitForm();
             Application.DoEvents();
             Ps_YearRange py=new Ps_YearRange();
-            py.Col4 = yearflag;
+            py.Col4=yearflag;
             py.Col5=ProjectUID;
 
             IList<Ps_YearRange> li = Services.BaseService.GetList<Ps_YearRange>("SelectPs_YearRangeByCol5andCol4", py);
@@ -161,22 +161,13 @@ namespace Itop.Client.History
                 AddColumn(i);
             }
 
-            ArrayList al = new ArrayList();
-            //al.Add( "全地区GDP（亿元）");
-            //al.Add( "全社会用电量（亿kWh）");
-            //al.Add( "全社会供电量（亿kWh）");
-            //al.Add( "全社会最大负荷（万kW）");
-            //al.Add( "年末总人口（万人）");
-            //al.Add( "总面积（平方公里）");
+            Hashtable hasone = new Hashtable();
 
+            Hashtable hastwo = new Hashtable();
 
-            //添加固定类标题
+            hasone.Add("全社会最大负荷（MW）", "全社会最大负荷（MW）");
 
-            //IList<Base_Data> li1 = Common.Services.BaseService.GetStrongList<Base_Data>();
-            //foreach (Base_Data bd in li1)
-            //    al.Add(bd.Title);
-
-
+            hasone.Add("网供电大负荷（MW）", "网供电大负荷（MW）");
 
 
             Ps_History psp_Type = new Ps_History();
@@ -184,22 +175,22 @@ namespace Itop.Client.History
             psp_Type.Col4 = ProjectUID;
             IList<Ps_History> listTypes = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type);
 
-          
-            for(int c=0;c<al.Count;c++)
+
+            foreach (string key in hasone.Keys)
             {
                 bool bl = true;
                 foreach (Ps_History ph in listTypes)
                 {
-                    if (al[c].ToString() == ph.Title)
+                    if (key == ph.Title)
                         bl = false;
                 }
                 if (bl)
                 {
                     Ps_History pf = new Ps_History();
-                    pf.ID = Guid.NewGuid().ToString()+"|"+ProjectUID;
+                    pf.ID = Guid.NewGuid().ToString() + "|" + ProjectUID;
                     pf.Forecast = type;
                     pf.ForecastID = type1;
-                    pf.Title = al[c].ToString();
+                    pf.Title = key;
                     pf.Col4 = ProjectUID;
                     object obj = Services.BaseService.GetObject("SelectPs_HistoryMaxID", pf);
                     if (obj != null)
@@ -208,7 +199,40 @@ namespace Itop.Client.History
                         pf.Sort = 1;
                     Services.BaseService.Create<Ps_History>(pf);
                     listTypes.Add(pf);
+                    if (hastwo.ContainsKey(key))
+                    {
+                        ArrayList temlist = (ArrayList)hastwo[key];
+                        foreach (string title in temlist)
+                        {
+                            foreach (Ps_History ph in listTypes)
+                            {
+                                if (title == ph.Title)
+                                    bl = false;
+                            }
+                            if (bl)
+                            {
+                                Ps_History pfchild = new Ps_History();
+                                pfchild.ID = Guid.NewGuid().ToString() + "|" + ProjectUID;
+                                pfchild.Forecast = type;
+                                pfchild.ForecastID = type1;
+                                pfchild.Title = title;
+                                pfchild.Col4 = ProjectUID;
+                                pfchild.ParentID = pf.ID;
+                                object objchild = Services.BaseService.GetObject("SelectPs_HistoryMaxID", pfchild);
+                                if (obj != null)
+                                    pfchild.Sort = ((int)obj) + 1;
+                                else
+                                    pfchild.Sort = 1;
+                                Services.BaseService.Create<Ps_History>(pfchild);
+                                listTypes.Add(pfchild);
+                            }
+
+                        }
+
+                    }
                 }
+
+
             }
             dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_History));
             
@@ -221,7 +245,21 @@ namespace Itop.Client.History
            
             bLoadingData = false;
         }
+        public void LoadData1()
+        {
+            if (dataTable != null)
+            {
+                dataTable.Columns.Clear();
+            }
 
+            Ps_History psp_Type = new Ps_History();
+            psp_Type.Forecast = type;
+            psp_Type.Col4 = ProjectUID;
+            IList<Ps_History> listTypes = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type);
+            dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_History));
+            treeList1.DataSource = dataTable;
+
+        }
         //添加固定列
         private void AddFixColumn()
         {
@@ -1047,7 +1085,7 @@ namespace Itop.Client.History
                 Services.BaseService.Create<Ps_History>(ph);
             }
             //IList<Ps_History> li2 = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type2);
-            LoadData();
+            LoadData1();
             //b();
             RefreshChart();
 
@@ -1485,7 +1523,7 @@ namespace Itop.Client.History
         {
              //默认类别管理
        
-            FormHistoryType frm = new FormHistoryType("1");
+            FormHistoryType frm = new FormHistoryType("6");
             List<string> templist = new List<string>();
             //把当前类别ID放入templist
             for (int i = 0; i < dataTable.Rows.Count; i++)
@@ -1495,6 +1533,7 @@ namespace Itop.Client.History
             frm.ValueList = templist;
             frm.ForecastID = type1;
             frm.Forecast = type;
+   
             frm.ShowDialog();
         
         }
@@ -1609,65 +1648,8 @@ namespace Itop.Client.History
         }
 
       
-        //历年地区生产
-        private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
-            List<int> li = new List<int>();
-            for (int i = firstyear; i <= endyear; i++)
-            {
-                li.Add(i);
-            }
-
-            FormChooseYears cy = new FormChooseYears();
-            cy.ListYearsForChoose = li;
-            if (cy.ShowDialog() != DialogResult.OK)
-                return;
-            Hashtable ht=new Hashtable();
-
-            foreach (DataRow a in cy.DT.Rows)
-            {
-                if (a["B"].ToString() == "True")
-                    ht.Add(Guid.NewGuid().ToString(), Convert.ToInt32(a["A"].ToString().Replace("年", "")));
-            }
-            FormGdpView fgv = new FormGdpView();
-            fgv.pstype = type;
-            fgv.yearflag = yearflag;
-            fgv.ProjectUID = ProjectUID;
-            fgv.HT = ht;
-            fgv.ShowDialog();
-        }
-        
-        //分行业用电表
-        private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-             
       
-            List<int> li = new List<int>();
-            for (int i = firstyear; i <= endyear; i++)
-            {
-                li.Add(i);
-            }
-
-            FormChooseYears cy = new FormChooseYears();
-            cy.ListYearsForChoose = li;
-            if (cy.ShowDialog() != DialogResult.OK)
-                return;
-            Hashtable ht = new Hashtable();
-            foreach (DataRow a in cy.DT.Rows)
-            {
-                if (a["B"].ToString() == "True")
-                    ht.Add(Guid.NewGuid().ToString(), Convert.ToInt32(a["A"].ToString().Replace("年", "")));
-            }
-            FormPowerView fgv = new FormPowerView();
-            fgv.pstype = type;
-            fgv.yearflag = yearflag;
-            fgv.ProjectUID = ProjectUID;
-            fgv.HT = ht;
-            fgv.ShowDialog();
-        
-       
-        } 
+      
         //社会及经济用电情况
 
         private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1698,9 +1680,9 @@ namespace Itop.Client.History
                 if (a["D"].ToString() == "True")
                     ht2.Add(Guid.NewGuid().ToString(), Convert.ToInt32(a["A"].ToString().Replace("年", "")));
             }
-            FormHisView fgv = new FormHisView();
+            FormHisView2 fgv = new FormHisView2();
             fgv.pstype = type;
-            fgv.yearflag = yearflag;
+            fgv.Text = "负荷数据统计";
             fgv.ProjectUID = ProjectUID;
             fgv.HT = ht;
             fgv.HT1 = ht1;
