@@ -389,7 +389,6 @@
             this.groupBox21.TabIndex = 6;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "数据有效时间范围";
-            this.groupBox21.Visible = false;
             // 
             // date2
             // 
@@ -411,7 +410,7 @@
             this.label89.Name = "label89";
             this.label89.Size = new System.Drawing.Size(55, 14);
             this.label89.TabIndex = 18;
-            this.label89.Text = "开始时间\r\n";
+            this.label89.Text = "投产时间";
             // 
             // date1
             // 
@@ -433,7 +432,7 @@
             this.label91.Name = "label91";
             this.label91.Size = new System.Drawing.Size(55, 14);
             this.label91.TabIndex = 18;
-            this.label91.Text = "结束时间";
+            this.label91.Text = "退出时间";
             // 
             // groupBox8
             // 
@@ -865,11 +864,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(9, 104);
+            this.label4.Location = new System.Drawing.Point(9, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 14);
             this.label4.TabIndex = 4;
-            this.label4.Text = "投产年份";
+            this.label4.Text = "新建时间";
             // 
             // label2
             // 

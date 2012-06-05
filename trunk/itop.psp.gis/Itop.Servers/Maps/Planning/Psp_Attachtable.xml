@@ -18,6 +18,12 @@
       <result property='D2' column='D2' />
       <result property='D3' column='D3' />
       <result property='RelatetableID' column='RelatetableID' />
+      <result property='S4' column='S4' />
+      <result property='S5' column='S5' />
+      <result property='S6' column='S6' />
+      <result property='D4' column='D4' />
+      <result property='D5' column='D5' />
+      <result property='D6' column='D6' />
     </resultMap>
   </resultMaps>
   <statements>
@@ -35,7 +41,13 @@
       "D1",
       "D2",
       "D3",
-      "RelatetableID"
+      "RelatetableID",
+      "S4",
+      "S5",
+      "S6",
+      "D4",
+      "D5",
+      "D6"
       )
       VALUES
       (
@@ -51,7 +63,13 @@
       #D1#,
       #D2#,
       #D3#,
-      #RelatetableID#
+      #RelatetableID#,
+      #S4#,
+      #S5#,
+      #S6#,
+      #D4#,
+      #D5#,
+      #D6#
       )
     </insert>
     <delete id='DeletePsp_Attachtable' parameterClass='Psp_Attachtable'>
@@ -73,7 +91,13 @@
       "D1" = #D1#,
       "D2" = #D2#,
       "D3" = #D3#,
-      "RelatetableID" = #RelatetableID#
+      "RelatetableID" = #RelatetableID#,
+      "S4" = #S4#,
+      "S5" = #S5#,
+      "S6" = #S6#,
+      "D4" = #D4#,
+      "D5" = #D5#,
+      "D6" = #D6#
       WHERE
       ID = #ID#
     </update>
@@ -91,7 +115,13 @@
       "D1",
       "D2",
       "D3",
-      "RelatetableID"
+      "RelatetableID",
+      "S4",
+      "S5",
+      "S6",
+      "D4",
+      "D5",
+      "D6"
       FROM Psp_Attachtable
     </select>
     <select id='SelectPsp_AttachtableByKey' resultMap='Psp_AttachtableResult' parameterClass='Psp_Attachtable'>
@@ -108,7 +138,13 @@
       "D1",
       "D2",
       "D3",
-      "RelatetableID"
+      "RelatetableID",
+      "S4",
+      "S5",
+      "S6",
+      "D4",
+      "D5",
+      "D6"
       FROM Psp_Attachtable
       WHERE
       ID = #ID#
@@ -127,7 +163,13 @@
       "D1",
       "D2",
       "D3",
-      "RelatetableID"
+      "RelatetableID",
+      "S4",
+      "S5",
+      "S6",
+      "D4",
+      "D5",
+      "D6"
       FROM Psp_Attachtable
       WHERE
       $value$

@@ -310,7 +310,6 @@
             this.groupBox16.TabIndex = 5;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "数据有效时间范围";
-            this.groupBox16.Visible = false;
             // 
             // date2
             // 
@@ -332,7 +331,7 @@
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(55, 14);
             this.label73.TabIndex = 18;
-            this.label73.Text = "开始时间\r\n";
+            this.label73.Text = "投产时间\r\n";
             // 
             // date1
             // 
@@ -354,7 +353,7 @@
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(55, 14);
             this.label74.TabIndex = 18;
-            this.label74.Text = "结束时间";
+            this.label74.Text = "退出时间";
             // 
             // groupBox8
             // 
@@ -699,7 +698,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 14);
             this.label4.TabIndex = 4;
-            this.label4.Text = "投产年份";
+            this.label4.Text = "新建年份";
             // 
             // label2
             // 
