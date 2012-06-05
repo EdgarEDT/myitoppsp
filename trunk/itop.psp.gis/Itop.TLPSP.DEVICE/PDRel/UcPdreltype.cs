@@ -273,11 +273,15 @@ namespace Itop.TLPSP.DEVICE
 
         private void treeList1_MouseClick(object sender, MouseEventArgs e) {
             if (FocusedNodeChanged != null) {
-                TreeListNode tn = treeList1.FocusedNode;
-                Ps_pdreltype pdr = new Ps_pdreltype();
-                pdr.ID = tn["ID"].ToString();
-                pdr = Services.BaseService.GetOneByKey<Ps_pdreltype>(pdr);
-                FocusedNodeChanged(treeList1, pdr);
+                if (treeList1.FocusedNode!=null)
+                {
+                    TreeListNode tn = treeList1.FocusedNode;
+                    Ps_pdreltype pdr = new Ps_pdreltype();
+                    pdr.ID = tn["ID"].ToString();
+                    pdr = Services.BaseService.GetOneByKey<Ps_pdreltype>(pdr);
+                    FocusedNodeChanged(treeList1, pdr);
+                }
+               
             }
 
         }
