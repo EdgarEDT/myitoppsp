@@ -1,7 +1,7 @@
 use [itop_dwgh]
 alter table [glebeType] add
-	[ObligateField5] [nvarchar(50)] ,
-	[ObligateField6] [nvarchar(50)]
+	[ObligateField5] nvarchar(50) ,
+	[ObligateField6] nvarchar(50)
 	
 	
 go
