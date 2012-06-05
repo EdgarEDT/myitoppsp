@@ -201,7 +201,92 @@ namespace Itop.TLPSP.DEVICE
                 pdr = PDT.RowData;
                 
                 Itop.Client.Common.Services.BaseService.Create<Psp_Attachtable>(pdr);
+                //添加绕组变压器
+                string con = " where Type in ('02','03') AND  ProjectID ='" + Itop.Client.MIS.ProgUID + "'and Name='"+pdr.S1+"'";
+               IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", con);
+                if (list.Count>0)
+                {
+                    PSPDEV dv = list[0];
+                    dv.OperationYear = pdr.S3;
+                    dv.AreaID = parentID;
+                    dv.Date1 = pdr.startYear;
+                    dv.Date2 = pdr.endYear;
+                    if (dv.Type=="02")
+                    {
+                        dv.HuganTQ1 = pdr.D1;
+                        dv.HuganTQ2 = pdr.D2;
+                        dv.Burthen = (decimal)pdr.ZHI;
+                    }
+                    else
+                    {
+                        dv.X1 = pdr.D1;
+                        dv.X2 = pdr.D2;
+                        dv.HuganTQ2 = pdr.D2;
+                        dv.SiN = pdr.ZHI;
+                    }
+                    Services.BaseService.Update<PSPDEV>(dv);
+                }
+                else
+                {
+                    PSPDEV dv=new PSPDEV();
+                    dv.Name=pdr.S1;
+                    dv.OperationYear = pdr.S3;
+                    dv.Date1 = pdr.startYear;
+                    dv.Date2 = pdr.endYear;
+                    if (!string.IsNullOrEmpty(pdr.S4))
+                    {
 
+                        if (pdr.S4.Contains("三绕组"))
+                        {
+
+                            dv.SiN = pdr.ZHI;
+                            dv.X1 = pdr.D1;
+                            dv.X2 = pdr.D2;
+                            dv.Type = "03";
+                        }
+                        else
+                        {
+                            dv.Burthen = (decimal)pdr.ZHI;
+                            dv.HuganTQ1 = pdr.D1;
+                            dv.HuganTQ2 = pdr.D2;
+                            dv.Type = "02";
+                        }
+                    }
+                    else
+                    {
+                        dv.Burthen = (decimal)pdr.ZHI;
+                        dv.HuganTQ1 = pdr.D1;
+                        dv.HuganTQ2 = pdr.D2;
+                        dv.Type = "02";
+                    }
+                        
+                    dv.ProjectID = Itop.Client.MIS.ProgUID;
+                    dv.AreaID = parentID;
+                    if (MessageBox.Show("是否需要添加更详细的信息？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                    {
+                        if (dv.Type=="02")
+                        {
+                            frmBYQ2dlg dlg = new frmBYQ2dlg();
+                            dlg.DeviceMx = dv;
+                            if (dlg.ShowDialog()==DialogResult.OK)
+                            {
+                                dv = dlg.DeviceMx;
+                                Services.BaseService.Create<PSPDEV>(dv);
+                            }
+                        }
+                        else
+                        {
+                            frmBYQ3dlg dlg = new frmBYQ3dlg();
+                            dlg.DeviceMx = dv;
+                            if (dlg.ShowDialog() == DialogResult.OK)
+                            {
+                                dv = dlg.DeviceMx;
+                                Services.BaseService.Create<PSPDEV>(dv);
+                            }
+                        }
+                    }
+                }
+              
                 //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
                 ((DataTable)gridControl1.DataSource).Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
                 //gridControl1.DataSource = datatable;
@@ -220,13 +305,135 @@ namespace Itop.TLPSP.DEVICE
                  if (PDT.ShowDialog() == DialogResult.OK)
                  {
 
-                    
-                     Itop.Client.Common.Services.BaseService.Update<Psp_Attachtable>(PDT.RowData);
+                     Psp_Attachtable pdr = PDT.RowData;
+                     Itop.Client.Common.Services.BaseService.Update<Psp_Attachtable>(pdr);
                      datatable.Rows.Remove(row);
-                     ((DataTable)gridControl1.DataSource).Rows.Add(Itop.Common.DataConverter.ObjectToRow(PDT.RowData, datatable.NewRow()));
+                     ((DataTable)gridControl1.DataSource).Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
                      //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
-                     
+                     string con = " where Type in ('02','03') AND  ProjectID ='" + Itop.Client.MIS.ProgUID + "'and Name='" + pdr.S1 + "'";
+                     IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", con);
+                     if (list.Count>0)
+                     {
+                         PSPDEV dv = list[0];
+                         dv.Name = pdr.S1;
+                         dv.OperationYear = pdr.S3;
+                         dv.Date1 = pdr.startYear;
+                         dv.Date2 = pdr.endYear;
+                         if (!string.IsNullOrEmpty(pdr.S4))
+                         {
 
+                             if (pdr.S4.Contains("三绕组"))
+                             {
+
+                                 dv.SiN = pdr.ZHI;
+                                 dv.X1 = pdr.D1;
+                                 dv.X2 = pdr.D2;
+                                 dv.Type = "03";
+                             }
+                             else
+                             {
+                                 dv.Burthen = (decimal)pdr.ZHI;
+                                 dv.HuganTQ1 = pdr.D1;
+                                 dv.HuganTQ2 = pdr.D2;
+                                 dv.Type = "02";
+                             }
+                         }
+                         else
+                         {
+                             dv.Burthen = (decimal)pdr.ZHI;
+                             dv.HuganTQ1 = pdr.D1;
+                             dv.HuganTQ2 = pdr.D2;
+                             dv.Type = "02";
+                         }
+
+                         dv.ProjectID = Itop.Client.MIS.ProgUID;
+                         if (MessageBox.Show("是否需要修改更详细的信息？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                         {
+                             if (dv.Type == "02")
+                             {
+                                 frmBYQ2dlg dlg = new frmBYQ2dlg();
+                                 dlg.DeviceMx = dv;
+                                 if (dlg.ShowDialog() == DialogResult.OK)
+                                 {
+                                     dv = dlg.DeviceMx;
+                                     Services.BaseService.Update<PSPDEV>(dv);
+                                 }
+                             }
+                             else
+                             {
+                                 frmBYQ3dlg dlg = new frmBYQ3dlg();
+                                 dlg.DeviceMx = dv;
+                                 if (dlg.ShowDialog() == DialogResult.OK)
+                                 {
+                                     dv = dlg.DeviceMx;
+                                     Services.BaseService.Update<PSPDEV>(dv);
+                                 }
+                             }
+                         }
+
+                     }
+                     else
+                     {
+                         PSPDEV dv = new PSPDEV();
+                         dv.Name = pdr.S1;
+                         dv.OperationYear = pdr.S3;
+                         dv.Date1 = pdr.startYear;
+                         dv.Date2 = pdr.endYear;
+                         if (!string.IsNullOrEmpty(pdr.S4))
+                         {
+
+                             if (pdr.S4.Contains("三绕组"))
+                             {
+
+                                 dv.SiN = pdr.ZHI;
+                                 dv.X1 = pdr.D1;
+                                 dv.X2 = pdr.D2;
+                                 dv.Type = "03";
+                             }
+                             else
+                             {
+                                 dv.Burthen = (decimal)pdr.ZHI;
+                                 dv.HuganTQ1 = pdr.D1;
+                                 dv.HuganTQ2 = pdr.D2;
+                                 dv.Type = "02";
+                             }
+                         }
+                         else
+                         {
+                             dv.Burthen = (decimal)pdr.ZHI;
+                             dv.HuganTQ1 = pdr.D1;
+                             dv.HuganTQ2 = pdr.D2;
+                             dv.Type = "02";
+                         }
+
+                         dv.ProjectID = Itop.Client.MIS.ProgUID;
+                         dv.AreaID = parentID;
+                         if (MessageBox.Show("是否需要添加更详细的信息？", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                         {
+                             if (dv.Type == "02")
+                             {
+                                 frmBYQ2dlg dlg = new frmBYQ2dlg();
+                                 dlg.DeviceMx = dv;
+                                 if (dlg.ShowDialog() == DialogResult.OK)
+                                 {
+                                     dv = dlg.DeviceMx;
+                                     Services.BaseService.Create<PSPDEV>(dv);
+                                 }
+                             }
+                             else
+                             {
+                                 frmBYQ3dlg dlg = new frmBYQ3dlg();
+                                 dlg.DeviceMx = dv;
+                                 if (dlg.ShowDialog() == DialogResult.OK)
+                                 {
+                                     dv = dlg.DeviceMx;
+                                     Services.BaseService.Create<PSPDEV>(dv);
+                                 }
+                             }
+                         }
+
+                     }
+                     
                      //gridControl1.DataSource = datatable;
                  }
              }
@@ -247,24 +454,53 @@ namespace Itop.TLPSP.DEVICE
             if (row != null)
             {
                 Psp_Attachtable PD = Itop.Common.DataConverter.RowToObject<Psp_Attachtable>(row);
-                Psp_Attachtable pr = new Psp_Attachtable();
-                Itop.Common.DataConverter.CopyTo<Psp_Attachtable>(PD,pr);
-                pr.ID =Guid.NewGuid().ToString();
-                pr.S2 = "扩容";
+                Psp_Attachtable pdr = new Psp_Attachtable();
+                Itop.Common.DataConverter.CopyTo<Psp_Attachtable>(PD,pdr);
+                pdr.ID =Guid.NewGuid().ToString();
+                pdr.S2 = "扩容";
                 PD.S2 = "作废";
                 Psp_AttachtableEdit PDT = new Psp_AttachtableEdit();
                 PDT.SateType = "扩容";
                 PDT.type = Type;
-                PDT.RowData = pr;
+                PDT.RowData = pdr;
                 if (PDT.ShowDialog() == DialogResult.OK)
                 {
 
-                    pr = PDT.RowData;
+                    pdr = PDT.RowData;
+                    string con = " where Type in ('02','03') AND  ProjectID ='" + Itop.Client.MIS.ProgUID + "'and Name='" + pdr.S1 + "'";
+                    IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", con);
+                    if (list.Count > 0)
+                    {
+                        PSPDEV dv = list[0];
+                        dv.Name = pdr.S1;
+                        dv.OperationYear = pdr.S3;
+                        dv.Date1 = pdr.startYear;
+                        dv.Date2 = pdr.endYear;
+                        if (!string.IsNullOrEmpty(pdr.S4))
+                        {
 
-                    Itop.Client.Common.Services.BaseService.Create<Psp_Attachtable>(pr);
-                    Itop.Client.Common.Services.BaseService.Update<Psp_Attachtable>(pr);
+                            if (pdr.S4.Contains("三绕组"))
+                            {
+
+                                dv.SiN = pdr.ZHI;
+                                dv.X1 = pdr.D1;
+                                dv.X2 = pdr.D2;
+                                dv.Type = "03";
+                            }
+                            else
+                            {
+                                dv.Burthen = (decimal)pdr.ZHI;
+                                dv.HuganTQ1 = pdr.D1;
+                                dv.HuganTQ2 = pdr.D2;
+                                dv.Type = "02";
+                            }
+                        }
+                        Services.BaseService.Update<PSPDEV>(dv);
+                    }
+                    Itop.Client.Common.Services.BaseService.Create<Psp_Attachtable>(pdr);
+                    Itop.Client.Common.Services.BaseService.Update<Psp_Attachtable>(pdr);
                     //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
-                    ((DataTable)gridControl1.DataSource).Rows.Add(Itop.Common.DataConverter.ObjectToRow(pr, datatable.NewRow()));
+                    ((DataTable)gridControl1.DataSource).Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
                     
                     //gridControl1.DataSource = datatable;
                 }
@@ -279,6 +515,12 @@ namespace Itop.TLPSP.DEVICE
                 Psp_Attachtable dev = Itop.Common.DataConverter.RowToObject<Psp_Attachtable>(row);
                 if (Itop.Common.MsgBox.ShowYesNo("是否确认删除?") == DialogResult.Yes)
                 {
+                    string con = " where Type in ('02','03') AND  ProjectID ='" + Itop.Client.MIS.ProgUID + "'and Name='" + dev.S1 + "'";
+                    IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", con);
+                    if (list.Count>0)
+                    {
+                        Services.BaseService.Delete<PSPDEV>(list[0]);
+                    }
                     Itop.Client.Common.Services.BaseService.Delete<Psp_Attachtable>(dev);
                     ((DataTable)gridControl1.DataSource).Rows.Remove(row);
                 }

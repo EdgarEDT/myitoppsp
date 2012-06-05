@@ -445,7 +445,7 @@ namespace Itop.TLPSP.DEVICE
                     {
                         if (dt.Rows[i]["S2"].ToString() == "新建" || dt.Rows[i]["S2"].ToString() == "扩容" || dt.Rows[i]["S2"].ToString() == "投产")
                         {
-                            if (!string.IsNullOrEmpty(bdz.L28) && !string.IsNullOrEmpty(bdz.L28))
+                            if (!string.IsNullOrEmpty(bdz.L28) && !string.IsNullOrEmpty(bdz.L29))
                             {
                                 if (Convert.ToInt32(dt.Rows[i]["startYear"]) >= Convert.ToInt32(bdz.L28) && Convert.ToInt32(dt.Rows[i]["startYear"]) <= Convert.ToInt32(bdz.L29))
                                 {

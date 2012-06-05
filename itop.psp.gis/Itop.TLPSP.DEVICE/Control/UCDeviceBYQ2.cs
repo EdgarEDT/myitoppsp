@@ -439,6 +439,18 @@ namespace Itop.TLPSP.DEVICE
                         }
                     }
                     Itop.Common.DataConverter.ObjectToRow(dev, row);
+                    //
+                    string sql = "S1='" + dev.Name + "'and S4='Á½ÈÆ×é±äÑ¹Æ÷'";
+                    IList<Psp_Attachtable> ilist = UCDeviceBase.DataService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", sql);
+                    if (ilist.Count>0)
+                    {
+                        Psp_Attachtable pdr = ilist[0];
+                        pdr.ZHI =(double) dev.Burthen;
+                        pdr.S3 = dev.OperationYear;
+                        pdr.startYear = dev.Date1;
+                        pdr.endYear= dev.Date2;
+                        UCDeviceBase.DataService.Update<Psp_Attachtable>(pdr);
+                    }
                 }
             }
         }
