@@ -50,6 +50,7 @@ namespace Itop.Client
         private static string uid = string.Empty;// 用户
         private static string pwd = string.Empty;// 口令
         private static string isOneServer = string.Empty;//单实例
+        private static string processid = string.Empty;
         private static XmlElement channelElement;
         /// <summary>
         /// 保存配置
@@ -172,6 +173,25 @@ namespace Itop.Client
             {
                 ServerSettings.isOneServer = value;
                 dbDictionary["isOneServer"].Attributes["value"].Value = value;
+            }
+        }
+        /// <summary>
+        ///  进程ID
+        /// </summary>
+        public static string ProcessID
+        {
+            get
+            {
+                if (processid == string.Empty)
+                {
+                    processid = dbDictionary["ProcessID"].Attributes["value"].Value;
+                }
+                return ServerSettings.processid;
+            }
+            set
+            {
+                ServerSettings.processid = value;
+                dbDictionary["ProcessID"].Attributes["value"].Value = value;
             }
         }
         #endregion
