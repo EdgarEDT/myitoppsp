@@ -80,32 +80,45 @@ namespace Itop.TLPSP.DEVICE
 
             column = new GridColumn();
             column.FieldName = "S1";
-            column.Caption = "变压器名称";
+            if (Type=="1")
+            {
+                column.Caption = "变压器名称";
+            }
+            else
+            {
+                column.Caption = "机组名称";
+            }
+            column.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
             column.VisibleIndex = 0;
+            column.OptionsColumn.AllowEdit = false;
             column.Width = 120;
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "ZHI";
             column.Caption = "容量";
             column.VisibleIndex = 1;
+            column.OptionsColumn.AllowEdit = false;
             column.Width = 100;
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "S3";
             column.Caption = "新建时间";
             column.VisibleIndex = 2;
+            column.OptionsColumn.AllowEdit = false;
             column.Width = 100;
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "startYear";
             column.Caption = "投产时间";
             column.VisibleIndex = 2;
+            column.OptionsColumn.AllowEdit = false;
             column.Width =100;
             this.gridView1.Columns.Add(column);
             column = new GridColumn();
             column.FieldName = "endYear";
             column.Caption = "退出时间";
             column.VisibleIndex = 3;
+            column.OptionsColumn.AllowEdit = false;
             column.Width = 120;
             this.gridView1.Columns.Add(column);
             if (Type!="1")
@@ -117,6 +130,7 @@ namespace Itop.TLPSP.DEVICE
                 column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
                 column.DisplayFormat.FormatString = "n3";
                 column.Width = 120;
+                column.OptionsColumn.AllowEdit = false;
                 this.gridView1.Columns.Add(column);
                 column = new GridColumn();
                 column.FieldName = "D2";
@@ -125,6 +139,7 @@ namespace Itop.TLPSP.DEVICE
                 column.DisplayFormat.FormatString = "n3";
                 column.VisibleIndex = 5;
                 column.Width = 120;
+                column.OptionsColumn.AllowEdit = false;
                 this.gridView1.Columns.Add(column);
             }
             column = new GridColumn();
@@ -132,6 +147,7 @@ namespace Itop.TLPSP.DEVICE
             column.Caption = "状态";
             column.VisibleIndex =-1;
             column.Width = 120;
+            column.OptionsColumn.AllowEdit = false;
             this.gridView1.Columns.Add(column);
 
         }
@@ -183,7 +199,7 @@ namespace Itop.TLPSP.DEVICE
             {
 
                 pdr = PDT.RowData;
-
+                
                 Itop.Client.Common.Services.BaseService.Create<Psp_Attachtable>(pdr);
 
                 //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));

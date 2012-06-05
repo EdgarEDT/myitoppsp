@@ -1,7 +1,7 @@
 //********************************************************************************/
 //
 //此代码由TONLI.NET代码生成器自动生成.
-//生成时间:2012-5-22 13:03:50
+//生成时间:2012-6-5 11:40:34
 //
 //********************************************************************************/
 using System;
@@ -14,14 +14,12 @@ namespace Itop.Domain.Graphics
     public class Psp_Attachtable
     {
         public Psp_Attachtable()
-        {
-            ID = Guid.NewGuid().ToString();
-        }
+        { ID = Guid.NewGuid().ToString(); }
         #region 字段
         private string _id = "";
         private double _zhi;
-        private string _startyear;
-        private string _endyear;
+        private string _startyear = "";
+        private string _endyear = "";
         private string _relatetable = "";
         private string _type = "";
         private string _s1 = "";
@@ -31,6 +29,12 @@ namespace Itop.Domain.Graphics
         private double _d2;
         private double _d3;
         private string _relatetableid = "";
+        private string _s4 = "";
+        private string _s5 = "";
+        private string _s6 = "";
+        private double _d4;
+        private double _d5;
+        private double _d6;
         #endregion 字段
 
         #region 属性
@@ -137,6 +141,54 @@ namespace Itop.Domain.Graphics
         {
             set { _relatetableid = value; }
             get { return _relatetableid; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string S4
+        {
+            set { _s4 = value; }
+            get { return _s4; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string S5
+        {
+            set { _s5 = value; }
+            get { return _s5; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string S6
+        {
+            set { _s6 = value; }
+            get { return _s6; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double D4
+        {
+            set { _d4 = value; }
+            get { return _d4; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double D5
+        {
+            set { _d5 = value; }
+            get { return _d5; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double D6
+        {
+            set { _d6 = value; }
+            get { return _d6; }
         }
         #endregion 属性
     }
