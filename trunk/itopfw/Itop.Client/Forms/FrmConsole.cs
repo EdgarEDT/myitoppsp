@@ -504,7 +504,7 @@ namespace Itop.Client.Forms
 
             if (tln.ParentNode != null)
             {
-                MessageBox.Show("请先选择项目！");
+                MessageBox.Show("请先选择目录！");
                 return;
             }
                
@@ -1316,6 +1316,11 @@ namespace Itop.Client.Forms
                 ListViewGroup listgroup = listViewdown.Groups.Add(prog.ProgId, prog.ProgName);
                 foreach (DataRow rows1 in rowsf)
                 {
+                    VsmdgroupProg smdgroup2 = new VsmdgroupProg();
+                    smdgroup2 = MIS.GetProgRight(rows1["ProgId"].ToString(), MIS.ProgUID);
+                    if (smdgroup2 != null && Convert.ToInt32(smdgroup2.run) <= 0)
+                        continue;
+
                     ListViewItem item = new ListViewItem();
                     item.Text = rows1["progname"].ToString();
                     item.Tag = DataConverter.RowToObject<Smmprog>(rows1);
@@ -1331,6 +1336,13 @@ namespace Itop.Client.Forms
                     DataRow[] rowsmf = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", rows2["ProgId"].ToString(), "f"));
                     foreach (DataRow rows3 in rowsmf)
                     {
+
+                        VsmdgroupProg smdgroup2 = new VsmdgroupProg();
+                        smdgroup2 = MIS.GetProgRight(rows3["ProgId"].ToString(), MIS.ProgUID);
+                        if (smdgroup2 != null && Convert.ToInt32(smdgroup2.run) <= 0)
+                            continue;
+
+
                         ListViewItem item = new ListViewItem();
                         item.Text = rows3["progname"].ToString();
                         item.Tag = DataConverter.RowToObject<Smmprog>(rows3);
@@ -1351,6 +1363,12 @@ namespace Itop.Client.Forms
                     ListViewGroup listgroup = listViewdown.Groups.Add(prog.ProgId, prog.ProgName);
                     foreach (DataRow rows1 in rowsf)
                     {
+                        VsmdgroupProg smdgroup2 = new VsmdgroupProg();
+                        smdgroup2 = MIS.GetProgRight(rows1["ProgId"].ToString(), MIS.ProgUID);
+                        if (smdgroup2 != null && Convert.ToInt32(smdgroup2.run) <= 0)
+                            continue;
+
+
                         ListViewItem item = new ListViewItem();
                         item.Text = rows1["progname"].ToString();
                         item.Tag = DataConverter.RowToObject<Smmprog>(rows1);
@@ -1367,6 +1385,13 @@ namespace Itop.Client.Forms
                     
                     foreach (DataRow rows1 in rowsf)
                     {
+                        VsmdgroupProg smdgroup2 = new VsmdgroupProg();
+                        smdgroup2 = MIS.GetProgRight(rows1["ProgId"].ToString(), MIS.ProgUID);
+                        if (smdgroup2 != null && Convert.ToInt32(smdgroup2.run) <= 0)
+                            continue;
+
+
+
                         ListViewItem item = new ListViewItem();
                         item.Text = rows1["progname"].ToString();
                         item.Tag = DataConverter.RowToObject<Smmprog>(rows1);
@@ -1384,6 +1409,13 @@ namespace Itop.Client.Forms
 
                     foreach (DataRow rows1 in rowsf)
                     {
+                        VsmdgroupProg smdgroup2 = new VsmdgroupProg();
+                        smdgroup2 = MIS.GetProgRight(rows1["ProgId"].ToString(), MIS.ProgUID);
+                        if (smdgroup2 != null && Convert.ToInt32(smdgroup2.run) <= 0)
+                            continue;
+
+
+
                         ListViewItem item = new ListViewItem();
                         item.Text = rows1["progname"].ToString();
                         item.Tag = DataConverter.RowToObject<Smmprog>(rows1);

@@ -64,7 +64,9 @@ namespace Itop.Server {
             Application.SetCompatibleTextRenderingDefault(false);
 
             Process instance = RunningInstance();
+           
             //全局服务端只准运行一个实例
+           
             if (Settings.IsOneServer == "one")
             {
                 if (instance != null)
@@ -75,7 +77,17 @@ namespace Itop.Server {
                 }
 
             }
+            else
+            {
+                killPerProcess();
+               
+            }
             
+            
+           
+              
+            
+           
        
         reg:
             //RegistryKey rk = Registry.Users.CreateSubKey(".DEFAULT\\Software\\Itopsoft\\sbxj");
@@ -147,7 +159,8 @@ namespace Itop.Server {
            ShowWindowAsync(instance.MainWindowHandle, WS_SHOWNORMAL);
            SetForegroundWindow(instance.MainWindowHandle);
         }
-        public static void LoadAssembly() {
+        public static void LoadAssembly() 
+        {
             XmlDocument doc = new XmlDocument();
             doc.Load("ExAssemly.xml");
 
@@ -165,6 +178,36 @@ namespace Itop.Server {
                 }
             }
             
+        }
+        private static   void killPerProcess()
+        {
+            string proceid = Settings.ProcessID;
+            System.Diagnostics.Process[] myPs;
+            myPs = System.Diagnostics.Process.GetProcesses();
+            foreach (System.Diagnostics.Process p in myPs)
+            {
+                if (p.Id != 0)
+                {
+                    try
+                    {
+                        if (p.Modules != null)
+                            if (p.Modules.Count > 0)
+                            {
+                                //关闭本机启动的服务
+                                if (p.ProcessName=="Itop.Server"&&p.Id.ToString()==proceid)
+                                    p.Kill();
+                            }
+                    }
+                    catch
+                    { }
+                    finally
+                    {
+
+                    }
+                }
+            }
+            Settings.ProcessID= System.Diagnostics.Process.GetCurrentProcess().Id.ToString();
+            Settings.Save();
         }
         
     }

@@ -75,10 +75,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new CSharpWin.SplitContainerEx();
             this.nbctSystem = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainer2 = new CSharpWin.SplitContainerEx();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -217,7 +213,7 @@
             this.拷贝项目ToolStripMenuItem,
             this.项目用户ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 202);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(119, 180);
             // 
             // 添加目录ToolStripMenuItem
             // 
@@ -257,7 +253,7 @@
             // 关联图层ToolStripMenuItem
             // 
             this.关联图层ToolStripMenuItem.Name = "关联图层ToolStripMenuItem";
-            this.关联图层ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关联图层ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.关联图层ToolStripMenuItem.Text = "关联图层";
             this.关联图层ToolStripMenuItem.Visible = false;
             this.关联图层ToolStripMenuItem.Click += new System.EventHandler(this.关联图层ToolStripMenuItem_Click);
@@ -418,7 +414,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 2);
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(242, 26);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(244, 26);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barAndDockingController1
@@ -571,14 +567,9 @@
             // 
             // nbctSystem
             // 
-            this.nbctSystem.ActiveGroup = this.navBarGroup4;
+            this.nbctSystem.ActiveGroup = null;
             this.nbctSystem.AllowSelectedLink = true;
             this.nbctSystem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nbctSystem.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1,
-            this.navBarGroup2,
-            this.navBarGroup3,
-            this.navBarGroup4});
             this.nbctSystem.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItem1});
             this.nbctSystem.Location = new System.Drawing.Point(10, 0);
@@ -594,27 +585,6 @@
             this.nbctSystem.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
             this.nbctSystem.ActiveGroupChanged += new DevExpress.XtraNavBar.NavBarGroupEventHandler(this.nbctSystem_ActiveGroupChanged);
             this.nbctSystem.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbctSystem_LinkClicked);
-            // 
-            // navBarGroup4
-            // 
-            this.navBarGroup4.Caption = "navBarGroup4";
-            this.navBarGroup4.Expanded = true;
-            this.navBarGroup4.Name = "navBarGroup4";
-            // 
-            // navBarGroup1
-            // 
-            this.navBarGroup1.Caption = "navBarGroup1";
-            this.navBarGroup1.Name = "navBarGroup1";
-            // 
-            // navBarGroup2
-            // 
-            this.navBarGroup2.Caption = "navBarGroup2";
-            this.navBarGroup2.Name = "navBarGroup2";
-            // 
-            // navBarGroup3
-            // 
-            this.navBarGroup3.Caption = "navBarGroup3";
-            this.navBarGroup3.Name = "navBarGroup3";
             // 
             // navBarItem1
             // 
@@ -647,7 +617,7 @@
             this.splitContainer2.Panel2.Resize += new System.EventHandler(this.splitContainer2_Panel2_Resize);
             this.splitContainer2.Panel2MinSize = 0;
             this.splitContainer2.Size = new System.Drawing.Size(989, 550);
-            this.splitContainer2.SplitterDistance = 727;
+            this.splitContainer2.SplitterDistance = 709;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 13;
             // 
@@ -658,7 +628,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 25);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(10);
-            this.panel6.Size = new System.Drawing.Size(727, 525);
+            this.panel6.Size = new System.Drawing.Size(709, 525);
             this.panel6.TabIndex = 1;
             // 
             // listViewdown
@@ -672,7 +642,7 @@
             this.listViewdown.Location = new System.Drawing.Point(10, 10);
             this.listViewdown.Name = "listViewdown";
             this.listViewdown.ShowItemToolTips = true;
-            this.listViewdown.Size = new System.Drawing.Size(707, 505);
+            this.listViewdown.Size = new System.Drawing.Size(689, 505);
             this.listViewdown.TabIndex = 0;
             this.listViewdown.UseCompatibleStateImageBehavior = false;
             this.listViewdown.ItemActivate += new System.EventHandler(this.listViewdown_ItemActivate);
@@ -687,7 +657,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(727, 25);
+            this.panel5.Size = new System.Drawing.Size(709, 25);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -831,7 +801,7 @@
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(243, 525);
+            this.treeList1.Size = new System.Drawing.Size(261, 525);
             this.treeList1.StateImageList = this.imageList4;
             this.treeList1.TabIndex = 0;
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
@@ -1124,10 +1094,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn5;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup3;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;

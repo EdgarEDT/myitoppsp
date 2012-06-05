@@ -245,8 +245,8 @@ namespace Itop.Client.Projects
                 {
                     try
                     {
-                        
-                        sysService.GetList("DeleteProjectUserWhere", " UID='" + projid + "'");
+
+                        SysService.GetList("DeleteProjectUserWhere", " UID='" + projid + "'");
                     }
                     catch (Exception)
                     {
@@ -265,7 +265,7 @@ namespace Itop.Client.Projects
                             puser.Sort = node.ImageIndex;
                             try
                             {
-                                sysService.Create<ProjectUser>(puser);
+                                SysService.Create<ProjectUser>(puser);
                             }
                             catch (Exception)
                             {

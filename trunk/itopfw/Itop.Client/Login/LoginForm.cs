@@ -240,6 +240,14 @@ namespace Itop.Client.Login {
             {
                 DoLogin();
             }
+            else
+            {
+                StartServer();
+                if (HasServer())
+                {
+                    DoLogin();
+                }
+            }
            
            
         }
@@ -270,6 +278,7 @@ namespace Itop.Client.Login {
         /// </summary>
         private void StartServer()
         {
+            CloseServer();
             string cityid = RemotingHelper.CityName;
             SysDataServer ds = null;
             try
@@ -278,12 +287,14 @@ namespace Itop.Client.Login {
                if (combCity.EditValue==null)
                {
                    IsServerStart= false;
+                   return;
                }
                
             }
             catch (Exception)
             {
                 IsServerStart= false;
+                return;
             }
 
 
@@ -309,7 +320,7 @@ namespace Itop.Client.Login {
                 RemotingHelper.ServerAddress = "localhost";
                 RemotingHelper.ServerPort = ServerSettings.RemotingPort;
                 RemotingHelper.ServerProtocol = ServerSettings.RemotingProtocol;
-                CloseServer();
+               
                 try
                 {
                     ProcessStartInfo sysserver = new ProcessStartInfo(Application.StartupPath + "\\Server\\Itop.Server.exe");
@@ -331,7 +342,16 @@ namespace Itop.Client.Login {
         {
             if (MIS.curpro != null)
             {
-                MIS.curpro.Kill();
+                try
+                {
+                    MIS.curpro.Kill();
+                }
+                catch (Exception)
+                {
+                    
+                   
+                }
+                
             }
         }
         #region 窗体美化w
@@ -416,6 +436,14 @@ namespace Itop.Client.Login {
             if (HasServer())
             {
                 DoLogin();
+            }
+            else
+            {
+                StartServer();
+                if (HasServer())
+                {
+                    DoLogin();
+                }
             }
         }
         private void labSet_Click(object sender, EventArgs e)
