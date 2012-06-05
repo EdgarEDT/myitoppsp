@@ -18,6 +18,7 @@ using Itop.Client.Table;
 using Itop.Client.Forecast;
 using System.Drawing.Drawing2D;
 using Itop.Domain.Graphics;
+using DevExpress.Utils;
 namespace Itop.Client.Table
 {
     public partial class Frm220ResultSH : FormBase
@@ -1401,6 +1402,9 @@ namespace Itop.Client.Table
                 newdy.Col1 = "no";
                 newdy.Title = list[j].Title;
 
+               startyear = yAnge.BeginYear;
+               endyear = yAnge.EndYear;
+
                 if (list[j].S29!=string.Empty)
                 {
                     int.TryParse(list[j].S29, out startyear);
@@ -1421,6 +1425,8 @@ namespace Itop.Client.Table
                     {
                         for (int k = 0; k < listatt.Count; k++)
                         {
+                             startyear2 = yAnge.BeginYear;
+                            endyear2 = yAnge.EndYear;
                             if (listatt[k].startYear != string.Empty)
                             {
                                 int.TryParse(listatt[k].startYear, out startyear2);
@@ -1431,7 +1437,7 @@ namespace Itop.Client.Table
                             }
                            
                             
-                            if (startyear2<=i&&i<=endyear2)
+                            if (startyear2<=i&&i<endyear2)
                             {
                                 double dyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
                                 double dyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
@@ -1456,7 +1462,7 @@ namespace Itop.Client.Table
                     }
                     else
                     {
-                        if (startyear<=i&&i<=endyear)
+                        if (startyear<=i&&i<endyear)
                         {
                             double.TryParse( list[j].S2,out yf);
                             newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(yf,2), null);
@@ -1547,6 +1553,9 @@ namespace Itop.Client.Table
                 newdy.Col1 = "no";
                 newdy.Title = list[j].Title;
 
+                startyear = yAnge.BeginYear;
+                endyear = yAnge.EndYear;
+
                 if (list[j].L28 != string.Empty)
                 {
                     int.TryParse(list[j].L28, out startyear);
@@ -1567,6 +1576,9 @@ namespace Itop.Client.Table
                     {
                         for (int k = 0; k < listatt.Count; k++)
                         {
+                             startyear2 = yAnge.BeginYear;
+                             endyear2 = yAnge.EndYear;
+
                             if (listatt[k].startYear != string.Empty)
                             {
                                 int.TryParse(listatt[k].startYear, out startyear2);
@@ -1577,7 +1589,7 @@ namespace Itop.Client.Table
                             }
 
 
-                            if (startyear2 <= i && i <= endyear2)
+                            if (startyear2 <= i && i < endyear2)
                             {
                                 double dyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
                                 double dyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
@@ -1594,7 +1606,7 @@ namespace Itop.Client.Table
                     }
                     else
                     {
-                        if (startyear <= i && i <= endyear)
+                        if (startyear <= i && i < endyear)
                         {
                          
                             newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(list[j].L2, 2), null);
@@ -1665,6 +1677,7 @@ namespace Itop.Client.Table
             Ps_Table_220Result yybdz = new Ps_Table_220Result();
             yybdz.Title = "已有变电站";
             yybdz.ProjectID = GetProjectID;
+            yybdz.Col1 = "no";
             yybdz.Sort = 0;
             yybdz.ParentID = col11.ID;
 
@@ -1672,6 +1685,7 @@ namespace Itop.Client.Table
             Ps_Table_220Result xzbdz = new Ps_Table_220Result();
             xzbdz.Title = "新增变电站";
             xzbdz.ProjectID = GetProjectID;
+            xzbdz.Col1 = "no";
             xzbdz.Sort = 1;
             xzbdz.ParentID = col11.ID;
 
@@ -1696,6 +1710,9 @@ namespace Itop.Client.Table
                         //找到是否有指定年份还在使用的机组，如果有则变电站有效
                         for (int k = 0; k < listatt.Count; k++)
                         {
+                            startyear2 = yAnge.BeginYear;
+                           endyear2 = yAnge.EndYear;
+
                             if (listatt[k].startYear != string.Empty)
                             {
                                 int.TryParse(listatt[k].startYear, out startyear2);
@@ -1746,6 +1763,9 @@ namespace Itop.Client.Table
                         //找到是否有指定年份还在使用的机组，如果有则变电站有效
                         for (int k = 0; k < listatt.Count; k++)
                         {
+                             startyear2 = yAnge.BeginYear;
+                             endyear2 = yAnge.EndYear;
+
                             if (listatt[k].startYear != string.Empty)
                             {
                                 int.TryParse(listatt[k].startYear, out startyear2);
@@ -2125,14 +2145,22 @@ namespace Itop.Client.Table
             }
             string connarea = "ProjectID='" + Itop.Client.MIS.ProgUID + "'order by Sort";
             IList<PS_Table_AreaWH> listarea = Common.Services.BaseService.GetList<PS_Table_AreaWH>("SelectPS_Table_AreaWHByConn", connarea);
+            int m = 0;
+            WaitDialogForm frm = new WaitDialogForm("","正在更新区域，请稍后...");
             foreach (PS_Table_AreaWH area in listarea)
             {
+                m++;
                 if (!AreaTable.Contains(area.Title))
                 {
+                    
                     AddArea(area.Title);
                 }
+                double complete = m * 100 / listarea.Count ;
+                frm.Caption = "已完成" + Math.Round(complete, 0) + "%";
             }
+            frm.Hide();
             LoadData1();
+            MessageBox.Show("已完成更新！");
         }
        
         //更新变电站
@@ -2142,15 +2170,21 @@ namespace Itop.Client.Table
 
             string conn = "ProjectID='" + GetProjectID + "' and ParentID='0'";
             IList<Ps_Table_220Result> list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            int m = 0;
+            WaitDialogForm frm = new WaitDialogForm("", "正在更新电源及变电站，请稍后...");
             foreach (Ps_Table_220Result pt in list)
             {
+                m++;
                 UpdataDY(pt.ID);
                 UpDataRL(pt.ID);
                 UpDataBDZ(pt.ID);
                 UpData(pt.ID);
+                double complete = m * 100 / list.Count;
+                frm.Caption = "已完成" + Math.Round(complete, 0) + "%";
             }
             LoadData1();
-
+            frm.Hide();
+            MessageBox.Show("已完成更新！");
         }
         private string rongZai220 = "1.9";
         public string RongZai220

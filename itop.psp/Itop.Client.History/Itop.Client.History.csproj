@@ -307,6 +307,30 @@
     <Compile Include="FormFqHisView.Designer.cs">
       <DependentUpon>FormFqHisView.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormHistoryJJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistoryJJ.designer.cs">
+      <DependentUpon>FormHistoryJJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistoryDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistoryDL.designer.cs">
+      <DependentUpon>FormHistoryDL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistoryFH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistoryFH.designer.cs">
+      <DependentUpon>FormHistoryFH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHisView2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHisView2.Designer.cs">
+      <DependentUpon>FormHisView2.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Itop.Domain.Forecast\Itop.Domain.Forecast.csproj">
@@ -455,6 +479,22 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormFqHisView.resx">
       <DependentUpon>FormFqHisView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistoryJJ.resx">
+      <DependentUpon>FormHistoryJJ.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistoryDL.resx">
+      <DependentUpon>FormHistoryDL.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistoryFH.resx">
+      <DependentUpon>FormHistoryFH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHisView2.resx">
+      <DependentUpon>FormHisView2.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

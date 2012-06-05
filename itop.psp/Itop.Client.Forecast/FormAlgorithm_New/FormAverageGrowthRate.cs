@@ -203,7 +203,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 endyear = "0";
                 selectdral = false;
                 this.simpleButton2.Enabled = false;
-                this.barButtonItem2.Enabled = false;
+                this.barButtonItem3.Enabled = false;
                 this.simpleButton4.Enabled = false;
 
 
@@ -216,7 +216,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 barButtonItem3.Caption = "开始截取历史数据";
                 selectdral = true;
                 this.simpleButton2.Enabled = true;
-                this.barButtonItem2.Enabled = true;
+                this.barButtonItem3.Enabled = true;
                 this.simpleButton4.Enabled = true;
                 if (firstyear != "Title")
                 {

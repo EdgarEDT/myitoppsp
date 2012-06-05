@@ -103,7 +103,8 @@ namespace Itop.Client.History
 
         private void combu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string tempstr = textEdit2.Text.Trim();
+            string tempstr = string.Empty;
+            tempstr = textEdit2.Text.Trim();
             if (tempstr.Length==0)
             {
                 textEdit2.Text = combu.SelectedItem.ToString();

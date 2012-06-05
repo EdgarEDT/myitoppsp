@@ -782,7 +782,7 @@ namespace Itop.Client.Forecast
         /// <param name="e"></param>
         private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FormForecastLoadData ffs = new FormForecastLoadData();
+            FormForecastLoadData2 ffs = new FormForecastLoadData2();
           //  ffs.Type = type;
             ffs.PID = pid;
             ffs.StartYear = forecastReport.StartYear;
