@@ -34,7 +34,11 @@ namespace Itop.TLPSP.DEVICE
                 devObj.S3 = comboBoxEdit1.Text;
                 devObj.Flag = comboBoxEdit2.Text == "¹æ»®" ? "2" : "1";
                 devObj.S5 = dq.Text;
-                devObj.S9 = Area.EditValue.ToString();
+                if (Area.EditValue!=null)
+                {
+                    devObj.S9 = Area.EditValue.ToString();
+                }
+                
                 devObj.S10 = nylx.Text;
                 devObj.S11 = fdl.Text;
                 devObj.S12 = fdxss.Text;

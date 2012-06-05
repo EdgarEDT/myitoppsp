@@ -225,7 +225,12 @@ namespace Itop.TLPSP.DEVICE
 
         private void treeList1_MouseClick(object sender, MouseEventArgs e) {
             if (FocusedNodeChanged != null) {
+
                 TreeListNode tn = treeList1.FocusedNode;
+                if (tn==null)
+                {
+                    return;
+                }
                 PDrelregion pdr = new PDrelregion();
                 pdr.ID = tn["ID"].ToString();
                 pdr = Services.BaseService.GetOneByKey<PDrelregion>(pdr);
