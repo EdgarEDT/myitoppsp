@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm220ResultSH));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm110ResultSH));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
@@ -55,10 +55,10 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -259,6 +259,7 @@
             // 
             this.barButtonItem5.Caption = "更新区域";
             this.barButtonItem5.Id = 21;
+            this.barButtonItem5.ImageIndex = 10;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_1);
             // 
@@ -266,6 +267,7 @@
             // 
             this.barButtonItem15.Caption = "更新电源、变电站";
             this.barButtonItem15.Id = 23;
+            this.barButtonItem15.ImageIndex = 11;
             this.barButtonItem15.Name = "barButtonItem15";
             this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
             // 
@@ -314,21 +316,6 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1199, 34);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 499);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "保存.ico");
-            this.imageList1.Images.SetKeyName(1, "打印.ico");
-            this.imageList1.Images.SetKeyName(2, "删除.ico");
-            this.imageList1.Images.SetKeyName(3, "添加下级.ico");
-            this.imageList1.Images.SetKeyName(4, "新建.ico");
-            this.imageList1.Images.SetKeyName(5, "修改.ico");
-            this.imageList1.Images.SetKeyName(6, "添加同级.ico");
-            this.imageList1.Images.SetKeyName(7, "审批.ico");
-            this.imageList1.Images.SetKeyName(8, "审核.ico");
-            this.imageList1.Images.SetKeyName(9, "关闭.ico");
-            // 
             // treeList1
             // 
             this.treeList1.Appearance.HeaderPanel.Options.UseTextOptions = true;
@@ -365,7 +352,24 @@
             this.barButtonItem16.Name = "barButtonItem16";
             this.barButtonItem16.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // Frm220ResultSH
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "保存.ico");
+            this.imageList1.Images.SetKeyName(1, "打印.ico");
+            this.imageList1.Images.SetKeyName(2, "删除.ico");
+            this.imageList1.Images.SetKeyName(3, "添加下级.ico");
+            this.imageList1.Images.SetKeyName(4, "新建.ico");
+            this.imageList1.Images.SetKeyName(5, "修改.ico");
+            this.imageList1.Images.SetKeyName(6, "添加同级.ico");
+            this.imageList1.Images.SetKeyName(7, "审批.ico");
+            this.imageList1.Images.SetKeyName(8, "审核.ico");
+            this.imageList1.Images.SetKeyName(9, "关闭.ico");
+            this.imageList1.Images.SetKeyName(10, "component.ico");
+            this.imageList1.Images.SetKeyName(11, "bottom.ico");
+            // 
+            // Frm110ResultSH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -375,7 +379,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "Frm220ResultSH";
+            this.Name = "Frm110ResultSH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "本地区经济和电力发展实绩";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -401,7 +405,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
-        private System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
@@ -419,5 +422,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem15;
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

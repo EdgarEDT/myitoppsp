@@ -259,6 +259,7 @@
             // 
             this.barButtonItem5.Caption = "更新区域";
             this.barButtonItem5.Id = 21;
+            this.barButtonItem5.ImageIndex = 10;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_1);
             // 
@@ -266,6 +267,7 @@
             // 
             this.barButtonItem15.Caption = "更新电源、变电站";
             this.barButtonItem15.Id = 23;
+            this.barButtonItem15.ImageIndex = 11;
             this.barButtonItem15.Name = "barButtonItem15";
             this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
             // 
@@ -328,6 +330,8 @@
             this.imageList1.Images.SetKeyName(7, "审批.ico");
             this.imageList1.Images.SetKeyName(8, "审核.ico");
             this.imageList1.Images.SetKeyName(9, "关闭.ico");
+            this.imageList1.Images.SetKeyName(10, "component.ico");
+            this.imageList1.Images.SetKeyName(11, "bottom.ico");
             // 
             // treeList1
             // 

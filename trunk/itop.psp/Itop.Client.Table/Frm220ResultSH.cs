@@ -2160,7 +2160,6 @@ namespace Itop.Client.Table
             }
             frm.Hide();
             LoadData1();
-            MessageBox.Show("已完成更新！");
         }
        
         //更新变电站
@@ -2182,9 +2181,9 @@ namespace Itop.Client.Table
                 double complete = m * 100 / list.Count;
                 frm.Caption = "已完成" + Math.Round(complete, 0) + "%";
             }
-            LoadData1();
             frm.Hide();
-            MessageBox.Show("已完成更新！");
+            LoadData1();
+            
         }
         private string rongZai220 = "1.9";
         public string RongZai220
