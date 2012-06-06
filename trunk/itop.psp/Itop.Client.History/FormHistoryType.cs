@@ -84,7 +84,7 @@ namespace Itop.Client.History
                 }
                 else if (Flag == "5")
                 {
-                    _title = "电力数据绩默认类别管理";
+                    _title = "电量数据绩默认类别管理";
                 }
                 else if (Flag == "6")
                 {
@@ -975,23 +975,8 @@ namespace Itop.Client.History
 
                     }
                 }
-                if (TypeFlag ==string.Empty)
-                {
-                    FormHistory.Historyhome.treeList1.Refresh();
-                }
-                if (TypeFlag == "JJ")
-                {
-                    FormHistoryJJ.Historyhome.treeList1.Refresh();
-                }
-                if (TypeFlag == "DL")
-                {
-                    FormHistoryDL.Historyhome.treeList1.Refresh();
-                }
-                if (TypeFlag == "FH")
-                {
-                    FormHistoryFH.Historyhome.treeList1.Refresh();
-                }
                
+                FormHistory.Historyhome.treeList1.Refresh();
                 EqueValueBynode(treeList1.Nodes);
                 treeList1.Refresh();
                 MsgBox.Show("更新完成!");
@@ -1652,10 +1637,23 @@ namespace Itop.Client.History
         //类更新完成后将check与oldcheck设为相对值，以便下次更改时标记
         private void EqueValueBynode(TreeListNodes nodes)
         {
+            //if (nodes != null)
+            //{
+            //    foreach (TreeListNode node in nodes)
+            //    {
+            //        EqueVlaueDataTable(node.GetValue("ID").ToString(), (CheckState)node.GetValue("check"), (CheckState)node.GetValue("check"));
+            //        if (node.HasChildren)
+            //        {
+            //            EqueValueBynode(node.Nodes);
+            //        }
+            //    }
+
+            //}
             if (nodes != null)
             {
-                foreach (TreeListNode node in nodes)
+                for (int i = 0; i < nodes.Count; i++)
                 {
+                    TreeListNode node = nodes[i];
                     EqueVlaueDataTable(node.GetValue("ID").ToString(), (CheckState)node.GetValue("check"), (CheckState)node.GetValue("check"));
                     if (node.HasChildren)
                     {

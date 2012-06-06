@@ -327,7 +327,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FormForecastLoadData ffs = new FormForecastLoadData();
+            FormForecastLoadData2 ffs = new FormForecastLoadData2();
             ffs.PID = MIS.ProgUID;
             ffs.StartYear = forecastReport.StartYear;
             ffs.EndYear = forecastReport.EndYear;
