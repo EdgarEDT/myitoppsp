@@ -131,11 +131,20 @@ namespace Itop.TLPSP.DEVICE
                         int ts = 0;
                         foreach (Psp_Attachtable pa in pl)
                         {
-                            if (Convert.ToInt32(pa.startYear) <= Convert.ToInt32(StartYear) && Convert.ToInt32(pa.endYear) >= Convert.ToInt32(StartYear))
+                            if (!string.IsNullOrEmpty(pa.startYear) && !string.IsNullOrEmpty(pa.endYear))
+                            {
+                                if (Convert.ToInt32(pa.startYear) <= Convert.ToInt32(StartYear) && Convert.ToInt32(pa.endYear) >= Convert.ToInt32(StartYear))
+                                {
+                                    rl += Convert.ToDouble(pa.ZHI);
+                                    ts++;
+                                }
+                            }
+                            else
                             {
                                 rl += Convert.ToDouble(pa.ZHI);
                                 ts++;
                             }
+                            
                         }
                         spinEdit2.Value = (decimal)rl;
                         spinEdit4.Value=(decimal)ts;
