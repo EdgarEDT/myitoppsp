@@ -183,14 +183,14 @@ namespace Itop.Client.History
             hastwo.Add("年末总人口（万人）", a2);
 
 
-   
+
 
             Ps_History psp_Type = new Ps_History();
             psp_Type.Forecast = type;
             psp_Type.Col4 = ProjectUID;
             IList<Ps_History> listTypes = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type);
 
-            foreach (string  key in hasone.Keys)
+            foreach (string key in hasone.Keys)
             {
                 bool bl = true;
                 foreach (Ps_History ph in listTypes)
@@ -213,11 +213,13 @@ namespace Itop.Client.History
                         pf.Sort = 1;
                     Services.BaseService.Create<Ps_History>(pf);
                     listTypes.Add(pf);
+                    int m = 0;
                     if (hastwo.ContainsKey(key))
                     {
                         ArrayList temlist = (ArrayList)hastwo[key];
-                        foreach (string  title in temlist)
+                        foreach (string title in temlist)
                         {
+                            m++;
                             foreach (Ps_History ph in listTypes)
                             {
                                 if (title == ph.Title)
@@ -234,7 +236,7 @@ namespace Itop.Client.History
                                 pfchild.ParentID = pf.ID;
                                 object objchild = Services.BaseService.GetObject("SelectPs_HistoryMaxID", pfchild);
                                 if (obj != null)
-                                    pfchild.Sort = ((int)obj) + 1;
+                                    pfchild.Sort = ((int)obj) + 1 + m;
                                 else
                                     pfchild.Sort = 1;
                                 Services.BaseService.Create<Ps_History>(pfchild);
@@ -242,22 +244,21 @@ namespace Itop.Client.History
                             }
 
                         }
-                        
+
                     }
                 }
 
 
             }
-           
             dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_History));
-            
+
             treeList1.BeginInit();
             treeList1.DataSource = dataTable;
             treeList1.Columns["Sort"].SortOrder = SortOrder.Ascending;
             treeList1.EndInit();
             Application.DoEvents();
             treeList1.ExpandAll();
-           
+
             bLoadingData = false;
         }
         public void LoadData1()
@@ -1045,14 +1046,7 @@ namespace Itop.Client.History
             Hashtable ht1 = new Hashtable();
             Hashtable ht2 = new Hashtable();
             Hashtable ht3 = new Hashtable();
-            //IList<Base_Data> li = Common.Services.BaseService.GetStrongList<Base_Data>();
-            //foreach (Base_Data bd in li)
-            //{
-            //    if (!ht1.ContainsKey(bd.Title))
-            //        ht1.Add(bd.Title, "");
-            //    if (!ht2.ContainsKey(bd.Title))
-            //        ht2.Add(bd.Title, "");
-            //}
+
 
 
             Ps_History psp_Type1 = new Ps_History();
@@ -1060,31 +1054,22 @@ namespace Itop.Client.History
             psp_Type1.Col4 = pid;
             IList<Ps_History> li1 = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type1);
 
-            //Ps_History psp_Type2 = new Ps_History();
-            //psp_Type2.Forecast = type;
-            //psp_Type2.Col4 = ProjectUID;
-            //Services.BaseService.Update("DeletePs_HistoryBy", psp_Type2);
-            
+
 
             foreach (Ps_History ph in li1)
             {
-                //ph.ParentID = ph.ParentID.Replace(pid, ProjectUID);
-                //ph.Col4 = ProjectUID;
-                //ph.ID = ph.ID.Replace(pid, ProjectUID);
 
-                //Services.BaseService.Create<Ps_History>(ph);
-                
                 string tempid = ph.ID;
                 if (ht1.ContainsKey(tempid))
-	            {
-                    ph.ID=ht1[tempid].ToString();
-	            }
+                {
+                    ph.ID = ht1[tempid].ToString();
+                }
                 else
-	            {
-                     ph.ID = Guid.NewGuid().ToString();
-                     ht1.Add(tempid, ph.ID);
-	            }
-                if (ph.ParentID!="0")
+                {
+                    ph.ID = Guid.NewGuid().ToString();
+                    ht1.Add(tempid, ph.ID);
+                }
+                if (ph.ParentID != "0")
                 {
                     if (ht1.ContainsKey(ph.ParentID))
                     {
@@ -1092,10 +1077,11 @@ namespace Itop.Client.History
                     }
                     else
                     {
-                        ht1.Add(ph.ParentID, Guid.NewGuid().ToString());
-                        ph.ParentID = Guid.NewGuid().ToString();
+                        string tempid2 = Guid.NewGuid().ToString();
+                        ht1.Add(ph.ParentID, tempid2);
+                        ph.ParentID = tempid2;
                     }
-                } 
+                }
                 ph.Col4 = ProjectUID;
                 Services.BaseService.Create<Ps_History>(ph);
             }
@@ -1244,10 +1230,10 @@ namespace Itop.Client.History
             psp_Type2.Forecast = type;
             psp_Type2.Col4 = ProjectUID;
             Services.BaseService.Update("DeletePs_HistoryBy", psp_Type2);
+            dataTable.Clear();
             treeList1.Nodes.Clear();
             
-            //LoadData();
-            //b();
+          
         }
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

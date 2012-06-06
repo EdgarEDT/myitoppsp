@@ -66,43 +66,10 @@ namespace Itop.Client.Forecast
         {
             #region 电力发展实绩
 
-            //ArrayList al = new ArrayList();
-            //IList<Base_Data> li1 = Common.Services.BaseService.GetStrongList<Base_Data>();
-            //foreach (Base_Data bd in li1)
-            //    al.Add(bd.Title);
-
-            //Ps_History psp_Type1 = new Ps_History();
-            //psp_Type1.Forecast = 1;
-            //psp_Type1.Col4 = Itop.Client.MIS.ProgUID;
-            //IList<Ps_History> listTypes1 = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type1);
-
-            //for (int c = 0; c < al.Count; c++)
-            //{
-            //    bool bl = true;
-            //    foreach (Ps_History ph in listTypes1)
-            //    {
-            //        if (al[c].ToString() == ph.Title)
-            //            bl = false;
-            //    }
-            //    if (bl)
-            //    {
-            //        Ps_History pf = new Ps_History();
-            //        pf.ID = Guid.NewGuid().ToString() + "|" + Itop.Client.MIS.ProgUID;
-            //        pf.Forecast = 1;
-            //        pf.ForecastID = "1";
-            //        pf.Title = al[c].ToString();
-            //        pf.Col4 = Itop.Client.MIS.ProgUID;
-            //        Services.BaseService.Create<Ps_History>(pf);
-            //        listTypes1.Add(pf);
-            //    }
-            //}
-
-
-
 
 
             Ps_YearRange py = new Ps_YearRange();
-            py.Col4 = "电力发展实绩";
+            py.Col4 = "电力发展实绩经济";
             py.Col5 = Itop.Client.MIS.ProgUID;
 
             IList<Ps_YearRange> li2 = Services.BaseService.GetList<Ps_YearRange>("SelectPs_YearRangeByCol5andCol4", py);
@@ -111,18 +78,29 @@ namespace Itop.Client.Forecast
                 firstyear1 = li2[0].StartYear;
                 endyear1 = li2[0].FinishYear;
             }
-
+            //新经济数据
             Ps_History psp_Type = new Ps_History();
-            psp_Type.Forecast = 1;
+            psp_Type.Forecast = 5;
             psp_Type.Col4 = Itop.Client.MIS.ProgUID;
             IList<Ps_History> listTypes = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type);
             DataTable dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_History));
             DataRow[] rows1 = dataTable.Select("Title like '全地区GDP%'");
-            DataRow[] rows4 = dataTable.Select("Title like '全社会用电量%'");
+
+            //新电量数据
+            Ps_History psp_Type2 = new Ps_History();
+            psp_Type2.Forecast = 6;
+            psp_Type2.Col4 = Itop.Client.MIS.ProgUID;
+            IList<Ps_History> listTypes2 = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type2);
+            DataTable dataTable2 = Itop.Common.DataConverter.ToDataTable((IList)listTypes2, typeof(Ps_History));
+            DataRow[] rows4 = dataTable2.Select("Title like '全社会用电量%'");
+
+
+
+            
 
             if (rows1.Length==0||rows4.Length==0)
             {
-                MessageBox.Show("电力发展实绩中缺少‘全地区GDP’或‘全社会用电量’数据！");
+                MessageBox.Show("经济数据中缺少‘全地区GDP’或电量数据中缺少‘全社会用电量’数据！");
                 this.Close();
                 return;
             }

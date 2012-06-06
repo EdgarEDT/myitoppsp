@@ -1125,8 +1125,8 @@ namespace Itop.Client.Table
                             MessageBox.Show(frm.ParentName + " 地区已存在！");
                             return;
                         }
-                        AddArea(frm.ParentName);
                     }
+                    AddArea(frm.ParentName);
                 }
                 else
                 {
