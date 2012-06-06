@@ -788,7 +788,7 @@ namespace Itop.TLPSP.DEVICE
                     }
                     pdr = new Ps_pdreltype();
                     pdr.ID = dev.SUID;
-                    pdr.ProjectID = this.projectID;
+                    pdr.ProjectID = this.ProjectSUID;
                     pdr.Createtime = DateTime.Now;
                     pdr.Title = textEdit1.Text;
                     pdr.S1 = dev.IName;
@@ -921,7 +921,7 @@ namespace Itop.TLPSP.DEVICE
                     {
                         pdr = new Ps_pdreltype();
                         pdr.ID = dev.SUID;
-                        pdr.ProjectID = this.projectID;
+                        pdr.ProjectID = this.ProjectSUID;
                         pdr.Createtime = DateTime.Now;
                         pdr.Title = textEdit1.Text;
                         pdr.S1 = dev.IName;
@@ -1078,7 +1078,7 @@ namespace Itop.TLPSP.DEVICE
                 AddPDtypenode(ptn, (Convert.ToInt32(level) + 1).ToString(), pdreltype);
             }
             //获线路的所有节点 根据其节点找到线路段 其中线路段是根据iname来寻找 负荷支路和联络线
-            sql = "where AreaID='" + parentn.DeviceID + "'and type='70'and projectid='" + projectID + "' order by Number";
+            sql = "where AreaID='" + parentn.DeviceID + "'and type='70'and projectid='" + ProjectSUID + "' order by Number";
             IList<PSPDEV> listnode = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", sql);
             string xgxlsuid = "('',", xgfhsuid = "('',", xgkxsuid = "('',";
             //找到和节点线连接的线路段
