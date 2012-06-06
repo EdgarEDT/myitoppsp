@@ -38,6 +38,8 @@
             this.comboBoxEdit4 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.spinEdit2 = new DevExpress.XtraEditors.SpinEdit();
+            this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
@@ -67,8 +69,6 @@
             this.Dlqiname = new DevExpress.XtraEditors.TextEdit();
             this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label12 = new System.Windows.Forms.Label();
-            this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
-            this.spinEdit2 = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -76,6 +76,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).BeginInit();
@@ -93,25 +95,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.subsedit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dlqiname.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(413, 175);
+            this.simpleButton1.Location = new System.Drawing.Point(406, 413);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(87, 31);
-            this.simpleButton1.TabIndex = 11;
+            this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "确定";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(521, 176);
+            this.simpleButton2.Location = new System.Drawing.Point(535, 414);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(87, 30);
-            this.simpleButton2.TabIndex = 12;
+            this.simpleButton2.TabIndex = 6;
             this.simpleButton2.Text = "取消";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
@@ -124,7 +124,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
             this.xtraTabControl1.Size = new System.Drawing.Size(660, 509);
-            this.xtraTabControl1.TabIndex = 24;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1});
             // 
@@ -132,8 +132,11 @@
             // 
             this.xtraTabPage1.Controls.Add(this.groupBox5);
             this.xtraTabPage1.Controls.Add(this.groupBox2);
+            this.xtraTabPage1.Controls.Add(this.groupBox3);
             this.xtraTabPage1.Controls.Add(this.groupBox4);
+            this.xtraTabPage1.Controls.Add(this.simpleButton2);
             this.xtraTabPage1.Controls.Add(this.groupBox1);
+            this.xtraTabPage1.Controls.Add(this.simpleButton1);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(653, 479);
             this.xtraTabPage1.Text = "基本信息";
@@ -167,7 +170,7 @@
             this.lookUpEdit1.Properties.ValueMember = "SUID";
             this.lookUpEdit1.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_Properties_ButtonClick);
             this.lookUpEdit1.Size = new System.Drawing.Size(176, 21);
-            this.lookUpEdit1.TabIndex = 11;
+            this.lookUpEdit1.TabIndex = 0;
             // 
             // comboBoxEdit4
             // 
@@ -194,11 +197,8 @@
             // 
             this.groupBox2.Controls.Add(this.spinEdit2);
             this.groupBox2.Controls.Add(this.spinEdit1);
-            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.simpleButton2);
             this.groupBox2.Controls.Add(this.textEdit2);
-            this.groupBox2.Controls.Add(this.simpleButton1);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
@@ -210,20 +210,68 @@
             this.groupBox2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.groupBox2.Location = new System.Drawing.Point(14, 227);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(621, 232);
+            this.groupBox2.Size = new System.Drawing.Size(370, 232);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "额定值";
+            // 
+            // spinEdit2
+            // 
+            this.spinEdit2.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit2.Location = new System.Drawing.Point(157, 152);
+            this.spinEdit2.Name = "spinEdit2";
+            this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit2.Properties.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.spinEdit2.Properties.MaxValue = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.spinEdit2.Size = new System.Drawing.Size(196, 21);
+            this.spinEdit2.TabIndex = 4;
+            // 
+            // spinEdit1
+            // 
+            this.spinEdit1.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit1.Location = new System.Drawing.Point(157, 119);
+            this.spinEdit1.Name = "spinEdit1";
+            this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit1.Properties.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.spinEdit1.Properties.MaxValue = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.spinEdit1.Size = new System.Drawing.Size(196, 21);
+            this.spinEdit1.TabIndex = 3;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.panelControl2);
             this.groupBox3.Controls.Add(this.radioGroup2);
             this.groupBox3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.groupBox3.Location = new System.Drawing.Point(363, 21);
+            this.groupBox3.Location = new System.Drawing.Point(390, 227);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(252, 93);
-            this.groupBox3.TabIndex = 31;
+            this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "是否计入故障中";
             // 
@@ -250,7 +298,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "计入"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "不计入")});
             this.radioGroup2.Size = new System.Drawing.Size(98, 72);
-            this.radioGroup2.TabIndex = 3;
+            this.radioGroup2.TabIndex = 0;
             this.radioGroup2.SelectedIndexChanged += new System.EventHandler(this.radioGroup2_SelectedIndexChanged);
             // 
             // label5
@@ -268,7 +316,7 @@
             this.textEdit2.Location = new System.Drawing.Point(157, 59);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Size = new System.Drawing.Size(196, 21);
-            this.textEdit2.TabIndex = 7;
+            this.textEdit2.TabIndex = 1;
             // 
             // label9
             // 
@@ -305,7 +353,7 @@
             this.textEdit3.Location = new System.Drawing.Point(157, 88);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Size = new System.Drawing.Size(196, 21);
-            this.textEdit3.TabIndex = 8;
+            this.textEdit3.TabIndex = 2;
             // 
             // comboBoxEdit1
             // 
@@ -317,7 +365,7 @@
             "自脱扣断路器",
             "辅助动力脱扣的断路器"});
             this.comboBoxEdit1.Size = new System.Drawing.Size(196, 21);
-            this.comboBoxEdit1.TabIndex = 9;
+            this.comboBoxEdit1.TabIndex = 5;
             // 
             // label4
             // 
@@ -344,7 +392,7 @@
             this.textEdit1.Location = new System.Drawing.Point(159, 20);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(196, 21);
-            this.textEdit1.TabIndex = 6;
+            this.textEdit1.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -382,7 +430,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "投入运行"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "退出运行")});
             this.radioGroup1.Size = new System.Drawing.Size(118, 72);
-            this.radioGroup1.TabIndex = 3;
+            this.radioGroup1.TabIndex = 0;
             this.radioGroup1.SelectedIndexChanged += new System.EventHandler(this.radioGroup1_SelectedIndexChanged);
             // 
             // groupBox1
@@ -536,54 +584,6 @@
             this.label12.TabIndex = 4;
             this.label12.Text = "投产年份";
             // 
-            // spinEdit1
-            // 
-            this.spinEdit1.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spinEdit1.Location = new System.Drawing.Point(157, 119);
-            this.spinEdit1.Name = "spinEdit1";
-            this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spinEdit1.Properties.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.spinEdit1.Properties.MaxValue = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.spinEdit1.Size = new System.Drawing.Size(196, 21);
-            this.spinEdit1.TabIndex = 35;
-            // 
-            // spinEdit2
-            // 
-            this.spinEdit2.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spinEdit2.Location = new System.Drawing.Point(157, 152);
-            this.spinEdit2.Name = "spinEdit2";
-            this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spinEdit2.Properties.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.spinEdit2.Properties.MaxValue = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.spinEdit2.Size = new System.Drawing.Size(196, 21);
-            this.spinEdit2.TabIndex = 36;
-            // 
             // AddDlqiform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -605,6 +605,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).EndInit();
@@ -623,8 +625,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.subsedit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dlqiname.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
