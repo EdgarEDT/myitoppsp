@@ -52,10 +52,10 @@ namespace Itop.TLPSP.DEVICE
                     treeList1.Columns.Clear();
                 }
                 AddFixColumn();
-                Ps_pdreltype pr = new Ps_pdreltype();
-                pr.ProjectID = Itop.Client.MIS.ProgUID;
-                pr.ID = psxl.SUID;
-                string con = "ID='" + psxl.SUID + "'AND projectid='" + Itop.Client.MIS.ProgUID + "'";
+                //Ps_pdreltype pr = new Ps_pdreltype();
+                //pr.ProjectID = Itop.Client.MIS.ProgUID;
+                //pr.ID = psxl.SUID;
+                string con = "ID='" + psxl.SUID + "'";
                 IList<Ps_pdreltype> listTypes = Services.BaseService.GetList<Ps_pdreltype>("SelectPs_pdreltypeByCon", con);
                 barButtonItem1.Enabled = false;
                 bar2.Visible = false;
