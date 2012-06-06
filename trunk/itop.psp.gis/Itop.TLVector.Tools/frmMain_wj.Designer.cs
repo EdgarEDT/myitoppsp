@@ -56,6 +56,7 @@
             this.tmjxt = new System.Windows.Forms.ToolStripMenuItem();
             this.tmloctaionjxt = new System.Windows.Forms.ToolStripMenuItem();
             this.关联设备ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolrelanalyst = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.popupContainerEdit1 = new DevExpress.XtraEditors.PopupContainerEdit();
             this.tabItem1 = new DevComponents.DotNetBar.TabItem(this.components);
@@ -67,7 +68,6 @@
             this.tlVectorControl1 = new ItopVector.ItopVectorControl();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
-            this.toolrelanalyst = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupContainerEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl1)).BeginInit();
@@ -97,7 +97,7 @@
             this.dotNetBarManager1.ParentForm = this;
             this.dotNetBarManager1.RightDockSite = this.barRightDockSite;
             this.dotNetBarManager1.ShowCustomizeContextMenu = false;
-            this.dotNetBarManager1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
+            this.dotNetBarManager1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.dotNetBarManager1.ThemeAware = false;
             this.dotNetBarManager1.TopDockSite = this.barTopDockSite;
             this.dotNetBarManager1.ContainerLoadControl += new System.EventHandler(this.dotNetBarManager1_ContainerLoadControl);
@@ -171,7 +171,7 @@
             this.关联设备ToolStripMenuItem,
             this.toolrelanalyst});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 412);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 390);
             this.contextMenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
             // 
             // dToolStripMenuItem
@@ -316,6 +316,14 @@
             this.关联设备ToolStripMenuItem.Text = "关联设备";
             this.关联设备ToolStripMenuItem.Click += new System.EventHandler(this.关联设备ToolStripMenuItem_Click);
             // 
+            // toolrelanalyst
+            // 
+            this.toolrelanalyst.Name = "toolrelanalyst";
+            this.toolrelanalyst.Size = new System.Drawing.Size(166, 22);
+            this.toolrelanalyst.Text = "可靠性分析";
+            this.toolrelanalyst.Visible = false;
+            this.toolrelanalyst.Click += new System.EventHandler(this.toolrelanalyst_Click);
+            // 
             // popupContainerEdit1
             // 
             this.popupContainerEdit1.Location = new System.Drawing.Point(468, 33);
@@ -361,6 +369,7 @@
             this.bk1.Properties.Appearance.Options.UseBackColor = true;
             this.bk1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
             this.bk1.Properties.Caption = "显示背景图";
+            this.bk1.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.bk1.Size = new System.Drawing.Size(106, 23);
             this.bk1.TabIndex = 9;
             this.bk1.CheckedChanged += new System.EventHandler(this.bk1_CheckedChanged);
@@ -416,6 +425,7 @@
             this.checkEdit1.Properties.Appearance.Options.UseBackColor = true;
             this.checkEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
             this.checkEdit1.Properties.Caption = "显示3D场景图";
+            this.checkEdit1.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.checkEdit1.Size = new System.Drawing.Size(129, 23);
             this.checkEdit1.TabIndex = 9;
             this.checkEdit1.Visible = false;
@@ -429,18 +439,11 @@
             this.checkEdit2.Properties.Appearance.Options.UseBackColor = true;
             this.checkEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
             this.checkEdit2.Properties.Caption = "显示多回线";
+            this.checkEdit2.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.checkEdit2.Size = new System.Drawing.Size(106, 23);
             this.checkEdit2.TabIndex = 12;
             this.checkEdit2.Visible = false;
             this.checkEdit2.CheckedChanged += new System.EventHandler(this.checkEdit2_CheckedChanged);
-            // 
-            // toolrelanalyst
-            // 
-            this.toolrelanalyst.Name = "toolrelanalyst";
-            this.toolrelanalyst.Size = new System.Drawing.Size(166, 22);
-            this.toolrelanalyst.Text = "可靠性分析";
-            this.toolrelanalyst.Visible = false;
-            this.toolrelanalyst.Click += new System.EventHandler(this.toolrelanalyst_Click);
             // 
             // frmMain_wj
             // 
