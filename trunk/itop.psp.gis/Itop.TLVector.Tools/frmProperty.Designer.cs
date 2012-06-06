@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.xyxs = new DevExpress.XtraEditors.ComboBoxEdit();
             this.lx = new DevExpress.XtraEditors.LookUpEdit();
@@ -48,24 +49,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xyxs.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lx.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.remark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dl.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mj.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bh.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.label6);
             this.panelControl1.Controls.Add(this.checkEdit1);
             this.panelControl1.Controls.Add(this.comboBoxEdit1);
             this.panelControl1.Controls.Add(this.xyxs);
@@ -91,13 +91,22 @@
             this.panelControl1.Size = new System.Drawing.Size(423, 341);
             this.panelControl1.TabIndex = 0;
             // 
+            // checkEdit1
+            // 
+            this.checkEdit1.Location = new System.Drawing.Point(267, 142);
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "是否有地下负荷";
+            this.checkEdit1.Size = new System.Drawing.Size(119, 19);
+            this.checkEdit1.TabIndex = 17;
+            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            // 
             // comboBoxEdit1
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(112, 253);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(112, 176);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(272, 21);
+            this.comboBoxEdit1.Size = new System.Drawing.Size(274, 21);
             this.comboBoxEdit1.TabIndex = 16;
             // 
             // xyxs
@@ -137,7 +146,7 @@
             // 
             // remark
             // 
-            this.remark.Location = new System.Drawing.Point(112, 174);
+            this.remark.Location = new System.Drawing.Point(112, 205);
             this.remark.Name = "remark";
             this.remark.Size = new System.Drawing.Size(273, 69);
             this.remark.TabIndex = 9;
@@ -162,8 +171,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.label6);
-            this.groupControl1.Location = new System.Drawing.Point(8, 193);
+            this.groupControl1.Location = new System.Drawing.Point(9, 274);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(386, 2);
             this.groupControl1.TabIndex = 12;
@@ -172,7 +180,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, -12);
+            this.label6.Location = new System.Drawing.Point(44, 208);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 14);
             this.label6.TabIndex = 8;
@@ -180,7 +188,7 @@
             // 
             // dl
             // 
-            this.dl.Location = new System.Drawing.Point(94, 172);
+            this.dl.Location = new System.Drawing.Point(95, 253);
             this.dl.Name = "dl";
             this.dl.Properties.Appearance.Options.UseTextOptions = true;
             this.dl.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -249,7 +257,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 253);
+            this.label8.Location = new System.Drawing.Point(10, 178);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 14);
             this.label8.TabIndex = 6;
@@ -276,7 +284,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 179);
+            this.label2.Location = new System.Drawing.Point(13, 256);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 14);
             this.label2.TabIndex = 13;
@@ -291,15 +299,6 @@
             this.label1.Size = new System.Drawing.Size(75, 14);
             this.label1.TabIndex = 4;
             this.label1.Text = "面积(KM²)：";
-            // 
-            // checkEdit1
-            // 
-            this.checkEdit1.Location = new System.Drawing.Point(267, 142);
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "是否有地下负荷";
-            this.checkEdit1.Size = new System.Drawing.Size(119, 19);
-            this.checkEdit1.TabIndex = 17;
-            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // frmProperty
             // 
@@ -317,18 +316,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xyxs.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lx.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.remark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dl.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mj.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bh.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
