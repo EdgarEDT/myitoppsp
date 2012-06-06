@@ -222,7 +222,8 @@ namespace ItopVector.Tools
             try {
                 ISvgElement element = e.SvgElement;
                 XmlElement el = (XmlElement)tlVectorControl1.SVGDocument.SelectSingleNode("svg/use [@id='" + element.ID + "']");
-                if (!string.IsNullOrEmpty(el.GetAttribute("xzflag").ToString()) && el.GetAttribute("xzflag").ToString() == "1") {
+                if ((!string.IsNullOrEmpty(el.GetAttribute("xzflag").ToString()) && el.GetAttribute("xzflag").ToString() == "1") || (!string.IsNullOrEmpty(el.GetAttribute("ghyk")) && el.GetAttribute("ghyk").ToString() == "1"))
+                {
                     SvgElementCollection list = tlVectorControl1.SVGDocument.SelectCollection;
                     PointF beforeMove = e.BeforeMove;
                     PointF afterMove = e.AfterMove;
@@ -1012,6 +1013,7 @@ namespace ItopVector.Tools
                                     for (int m = 0; m< useList.Count; m++)
                                     {
                                         Use _p = useList[m] as Use;
+                                        (useList[m] as XmlElement).SetAttribute("ghyk", "1");
                                         string str_t = _p.GetAttribute("xlink:href");
 
                                         PointF of = TLMath.getUseOffset(str_t);
@@ -1166,6 +1168,7 @@ namespace ItopVector.Tools
                                     for (int m = 0; m < useList.Count; m++)
                                     {
                                         Use _p = useList[m] as Use;
+                                        (useList[m] as XmlElement).SetAttribute("ghyk", "1");
                                         string str_t = _p.GetAttribute("xlink:href");
 
                                         PointF of = TLMath.getUseOffset(str_t);
@@ -1279,6 +1282,7 @@ namespace ItopVector.Tools
                                 for (int m= 0; m < useList.Count; m++)
                                 {
                                     Use _p = useList[m] as Use;
+                                    (useList[m] as XmlElement).SetAttribute("ghyk", "1");
                                     string str_t = _p.GetAttribute("xlink:href");
 
                                     PointF of = TLMath.getUseOffset(str_t);
@@ -1321,6 +1325,7 @@ namespace ItopVector.Tools
                                 for (int m = 0; m < useList.Count; m++)
                                 {
                                     Use _p = useList[m] as Use;
+                                    (useList[m] as XmlElement).SetAttribute("ghyk", "1");
                                     string str_t = _p.GetAttribute("xlink:href");
 
                                     PointF of = TLMath.getUseOffset(str_t);
