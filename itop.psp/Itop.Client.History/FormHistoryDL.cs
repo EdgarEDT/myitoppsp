@@ -1047,6 +1047,14 @@ namespace Itop.Client.History
             psp_Type1.Col4 = pid;
             IList<Ps_History> li1 = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type1);
 
+
+
+            Ps_History psp_Type2 = new Ps_History();
+            psp_Type2.Forecast = type;
+            psp_Type2.Col4 = ProjectUID;
+            Services.BaseService.Update("DeletePs_HistoryBy", psp_Type2);
+            dataTable.Clear();
+            treeList1.Nodes.Clear();
           
 
             foreach (Ps_History ph in li1)
