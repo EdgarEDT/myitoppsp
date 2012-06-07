@@ -2071,8 +2071,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                             
                             if (_x.GetAttribute("xz")=="0")
                             {
-                                pl.ObligateField7 = sname; 
-                                Services.BaseService.Update<PSP_SubstationSelect>(pl);
+                                pl.ObligateField7 = sname;
+                                Services.BaseService.Update<glebeProperty>(pl);
                             }
                            
                         }
