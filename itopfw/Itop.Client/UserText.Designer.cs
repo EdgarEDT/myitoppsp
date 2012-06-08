@@ -37,7 +37,7 @@
             // panel1
             // 
             this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.txtbox);
             this.panel1.Controls.Add(this.label1);
@@ -53,15 +53,15 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbox.Location = new System.Drawing.Point(26, 2);
+            this.txtbox.Location = new System.Drawing.Point(34, 4);
             this.txtbox.MaxLength = 20;
             this.txtbox.Name = "txtbox";
-            this.txtbox.Size = new System.Drawing.Size(189, 14);
+            this.txtbox.Size = new System.Drawing.Size(181, 14);
             this.txtbox.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.BackColor = System.Drawing.SystemColors.Window;
             this.label1.Location = new System.Drawing.Point(-2, -1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 20);
@@ -73,6 +73,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.panel1);
             this.Name = "UserText";
             this.Size = new System.Drawing.Size(219, 23);

@@ -84,7 +84,10 @@ namespace Itop.Client
             ds.ServerUser=ServicesSys.GetUid;
             ds.ServerPwd = ServicesSys.GetPwd;
 
+
+
             FrmSysDataAdd frm = new FrmSysDataAdd();
+            
             frm.sds = ds;
             frm.Text = "新增城市";
             if (frm.ShowDialog()==DialogResult.OK)
@@ -137,6 +140,8 @@ namespace Itop.Client
 
                 
                 Services.BaseService.Delete<SysDataServer>(ds);
+                InitData();
+
             }
         }
         //配置

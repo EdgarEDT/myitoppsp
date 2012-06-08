@@ -16,7 +16,7 @@ namespace Itop.Domain
         public SysDataServer()
         { }
         #region ×Ö¶Î
-        private string _id = "";
+        private string _id =Guid.NewGuid().ToString();
         private int _sort;
         private string _serveraddress = "";
         private string _servername = "";

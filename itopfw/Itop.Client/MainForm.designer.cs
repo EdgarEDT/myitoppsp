@@ -42,7 +42,7 @@ namespace Itop.Client {
             // 
             this.m_mainMenu.Location = new System.Drawing.Point(0, 0);
             this.m_mainMenu.Name = "m_mainMenu";
-            this.m_mainMenu.Size = new System.Drawing.Size(1050, 24);
+            this.m_mainMenu.Size = new System.Drawing.Size(1115, 24);
             this.m_mainMenu.TabIndex = 0;
             this.m_mainMenu.Text = "menuStrip1";
             // 
@@ -167,7 +167,7 @@ namespace Itop.Client {
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 563);
+            this.ClientSize = new System.Drawing.Size(1115, 623);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.m_mainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

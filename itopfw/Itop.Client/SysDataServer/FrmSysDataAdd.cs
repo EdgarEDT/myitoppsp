@@ -20,8 +20,8 @@ namespace Itop.Client
     {
         public SysDataServer sds = null;
         //系统中不能删除的表名
-        string[] ObjectTable = new string[] { "Smugroup", "Smmuser", "Smmproject", "Smmprog", "Smmlog", "Smmgroup", "smdgroup", "SAppProps", "glebeType", "glebeProperty", "LineType", "PS_Table_Area_TYPE", "Ps_HistoryType", "WireCategory", "PSP_Project_Sum" };
-
+        string[] ObjectTable = new string[] { "Smugroup", "Smmuser", "Smmproject", "Smmprog", "Smmlog", "Smmgroup", "smdgroup", "SAppProps", "glebeType", "glebeProperty", "LineType", "PS_Table_Area_TYPE", "Ps_HistoryType", "WireCategory", "PSP_Project_Sum", "SVG_IMAGE", "SVG_FILE", "SVG_LAYER", "SVG_SYMBOL", "SVGFILE", "LayerGrade" };
+        //
         public FrmSysDataAdd()
         {
             InitializeComponent();

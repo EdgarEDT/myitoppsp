@@ -572,14 +572,17 @@
             this.nbctSystem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nbctSystem.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItem1});
+            this.nbctSystem.LargeImages = this.imageList2;
             this.nbctSystem.Location = new System.Drawing.Point(10, 0);
             this.nbctSystem.LookAndFeel.UseDefaultLookAndFeel = false;
             this.nbctSystem.Name = "nbctSystem";
-            this.nbctSystem.OptionsNavPane.ExpandedWidth = 233;
+            this.nbctSystem.NavigationPaneGroupClientHeight = 65;
+            this.nbctSystem.OptionsNavPane.ExpandedWidth = 20;
             this.nbctSystem.OptionsNavPane.ShowExpandButton = false;
             this.nbctSystem.OptionsNavPane.ShowOverflowButton = false;
             this.nbctSystem.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
             this.nbctSystem.Size = new System.Drawing.Size(190, 550);
+            this.nbctSystem.SmallImages = this.imageList4;
             this.nbctSystem.TabIndex = 0;
             this.nbctSystem.Text = "navBarControl1";
             this.nbctSystem.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
@@ -617,7 +620,7 @@
             this.splitContainer2.Panel2.Resize += new System.EventHandler(this.splitContainer2_Panel2_Resize);
             this.splitContainer2.Panel2MinSize = 0;
             this.splitContainer2.Size = new System.Drawing.Size(989, 550);
-            this.splitContainer2.SplitterDistance = 709;
+            this.splitContainer2.SplitterDistance = 631;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 13;
             // 
@@ -628,7 +631,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 25);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(10);
-            this.panel6.Size = new System.Drawing.Size(709, 525);
+            this.panel6.Size = new System.Drawing.Size(631, 525);
             this.panel6.TabIndex = 1;
             // 
             // listViewdown
@@ -642,7 +645,7 @@
             this.listViewdown.Location = new System.Drawing.Point(10, 10);
             this.listViewdown.Name = "listViewdown";
             this.listViewdown.ShowItemToolTips = true;
-            this.listViewdown.Size = new System.Drawing.Size(689, 505);
+            this.listViewdown.Size = new System.Drawing.Size(611, 505);
             this.listViewdown.TabIndex = 0;
             this.listViewdown.UseCompatibleStateImageBehavior = false;
             this.listViewdown.ItemActivate += new System.EventHandler(this.listViewdown_ItemActivate);
@@ -657,7 +660,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(709, 25);
+            this.panel5.Size = new System.Drawing.Size(631, 25);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -801,7 +804,7 @@
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(261, 525);
+            this.treeList1.Size = new System.Drawing.Size(339, 525);
             this.treeList1.StateImageList = this.imageList4;
             this.treeList1.TabIndex = 0;
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
