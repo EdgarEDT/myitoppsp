@@ -296,7 +296,10 @@ namespace Itop.Client.Login {
                 IsServerStart= false;
                 return;
             }
-
+            if (ds==null)
+            {
+                return;
+            }
 
                 MIS.DataServer = ds;
                 MIS.CityName = ds.CityName;
@@ -504,7 +507,9 @@ namespace Itop.Client.Login {
             if (frml.ShowDialog()==DialogResult.OK)
             {
                 FrmSysData frm = new FrmSysData();
-                frm.Show();
+                frm.ShowDialog();
+                StartServer();
+                SetComboData();
             }
            
         }
@@ -533,6 +538,7 @@ namespace Itop.Client.Login {
             RemotingHelper.CityName = combCity.EditValue.ToString();
 
             StartServer();
+          
         }
 
 

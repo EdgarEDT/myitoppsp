@@ -24,6 +24,8 @@ namespace Itop.Client.Forms
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class FrmConsole : MDIChildForm, IFrmConsole
     {
+        private int LargImagrSize = 18;
+        private int SmallImageSIze = 22;
         //是否第一次载入
         bool Isfristload = true;
         DataTable dt = new DataTable();
@@ -120,10 +122,10 @@ namespace Itop.Client.Forms
             DataRow[] rows = smmprogTable.Select(string.Format("parentid='{0}' and ProgType='{1}'", string.Empty, "m"));
             IList list = SysService.GetList("SelectSmmprogByMeIco", null);
             DataTable dt_list = DataConverter.ToDataTable(list);
-            nbctSystem.LargeImages = ImageListRes.GetimageList(24, dt_list);
+            nbctSystem.LargeImages = ImageListRes.GetimageList(LargImagrSize, dt_list);
             IList list2 = SysService.GetList("SelectSmmprogByFormIco", null);
             DataTable dt_list2 = DataConverter.ToDataTable(list2);
-            nbctSystem.SmallImages = ImageListRes.GetimageList(18, dt_list2);
+            nbctSystem.SmallImages = ImageListRes.GetimageList(SmallImageSIze, dt_list2);
             foreach (DataRow row in rows)
             {
                
@@ -322,6 +324,17 @@ namespace Itop.Client.Forms
             labCity.Parent = pictureBox2;
             labDate.Parent = pictureBox2;
             labTime.Parent = pictureBox2;
+            if (!HasSelectProj)
+            {
+                if (treeList1.Nodes.Count>0)
+                {
+                    if (treeList1.Nodes[0].Nodes.Count>0)
+                    {
+                        treeList1.FocusedNode = treeList1.Nodes[0].Nodes[0];
+                        treeList1.Nodes[0].ExpandAll();
+                    }
+                }
+            }
         }
         
        
@@ -448,6 +461,8 @@ namespace Itop.Client.Forms
             MIS.ProgUID = tln["UID"].ToString();
             MIS.ProgName = tln["ProjectName"].ToString();
             MIS.ProgUserID = tln["GuiDangName"].ToString();
+
+            HasSelectProj = true;
 
             string labeltext = "";
             labeltext = pj1.ProjectName + " - " + pj.ProjectName;
@@ -1020,6 +1035,7 @@ namespace Itop.Client.Forms
             user.ExpireDate = p.ProjectName;
             SysService.Update<Smmuser>(user);
         }
+        bool HasSelectProj = false;
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
 
@@ -1520,6 +1536,11 @@ namespace Itop.Client.Forms
         private void listViewdown_ItemActivate(object sender, EventArgs e)
         {
 
+            if (!HasSelectProj)
+            {
+                MsgBox.Show("请选择正确的项目！");
+                return;
+            }
             Smmprog prog = listViewdown.FocusedItem.Tag as Smmprog;
             if (prog == null || string.IsNullOrEmpty(prog.AssemblyName))
                 return;
