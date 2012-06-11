@@ -375,6 +375,9 @@
     <Content Include="Maps\Planning\SVG_SYMBOL.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Maps\Planning\Template_PSPDEV.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\Planning\UseGroup.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
