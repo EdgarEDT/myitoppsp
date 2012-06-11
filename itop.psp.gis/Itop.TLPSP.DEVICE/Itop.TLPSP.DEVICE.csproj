@@ -252,6 +252,36 @@
     <Compile Include="Control\UCDevicePWFHZL.Designer.cs">
       <DependentUpon>UCDevicePWFHZL.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeviceTemplate\frmBYQ2templatedlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceTemplate\frmBYQ2templatedlg.Designer.cs">
+      <DependentUpon>frmBYQ2templatedlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceTemplate\frmBYQ3templatedlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceTemplate\frmBYQ3templatedlg.Designer.cs">
+      <DependentUpon>frmBYQ3templatedlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceTemplate\frmDeviceTemplateManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceTemplate\frmDeviceTemplateManager.Designer.cs">
+      <DependentUpon>frmDeviceTemplateManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceTemplate\UCDeviceBYQ2template.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DeviceTemplate\UCDeviceBYQ2template.Designer.cs">
+      <DependentUpon>UCDeviceBYQ2template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceTemplate\UCDeviceBYQ3template.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DeviceTemplate\UCDeviceBYQ3template.Designer.cs">
+      <DependentUpon>UCDeviceBYQ3template.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeviceType.cs" />
     <Compile Include="Control\UCDeviceBDZ.cs">
       <SubType>UserControl</SubType>
@@ -1318,6 +1348,29 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DeviceTemplate\devicetempate.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceTemplate\frmBYQ2templatedlg.resx">
+      <DependentUpon>frmBYQ2templatedlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceTemplate\frmBYQ3templatedlg.resx">
+      <DependentUpon>frmBYQ3templatedlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceTemplate\frmDeviceTemplateManager.resx">
+      <DependentUpon>frmDeviceTemplateManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceTemplate\UCDeviceBYQ2template.resx">
+      <DependentUpon>UCDeviceBYQ2template.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceTemplate\UCDeviceBYQ3template.resx">
+      <DependentUpon>UCDeviceBYQ3template.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Mysql\importmap.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
