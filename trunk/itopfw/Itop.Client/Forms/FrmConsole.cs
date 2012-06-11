@@ -335,6 +335,7 @@ namespace Itop.Client.Forms
                     }
                 }
             }
+           
         }
         
        
@@ -1610,6 +1611,26 @@ namespace Itop.Client.Forms
                 SetListView(prog,3);
             }
            
+        }
+
+        private void labAbout_MouseEnter(object sender, EventArgs e)
+        {
+            labAbout.BackColor = Color.DarkGreen;
+        }
+
+        private void labAbout_MouseLeave(object sender, EventArgs e)
+        {
+            labAbout.BackColor = Color.Transparent;
+        }
+
+        private void labExit_MouseEnter(object sender, EventArgs e)
+        {
+            labExit.BackColor = Color.Red;
+        }
+
+        private void labExit_MouseLeave(object sender, EventArgs e)
+        {
+            labExit.BackColor = Color.Transparent;
         }
         
 

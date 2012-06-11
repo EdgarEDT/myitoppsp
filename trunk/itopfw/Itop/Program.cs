@@ -12,6 +12,8 @@ using Itop.Common;
 using Itop.Client.Option;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Itop {
     static class Program {
@@ -60,6 +62,13 @@ namespace Itop {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Process instance = RunningInstance();
+            if (instance != null)
+            {
+                HandleRunningInstance(instance);
+                Application.Exit();
+                return;
+            }
 
             if (!Regstate())
             {
@@ -85,11 +94,22 @@ namespace Itop {
             }
 
             //try {
+
+
+             
+
                
                 Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
 
                 // 如果登录成功，则进入主界面
                 UserLoginCommand login = new UserLoginCommand();
+
+         
+
+
+
+
+
                 if (login.Execute()) {
 
                     MIS.MainForm = new MainForm();
@@ -192,6 +212,33 @@ namespace Itop {
             }
             catch { }
            
+        }
+        [DllImport("User32.dll")]
+        private static extern bool ShowWindowAsync(IntPtr hWnd, int cmdShow);
+        [DllImport("User32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+        private const int WS_SHOWNORMAL = 1;
+        public static void HandleRunningInstance(Process instance)
+        {
+            ShowWindowAsync(instance.MainWindowHandle, WS_SHOWNORMAL);
+            SetForegroundWindow(instance.MainWindowHandle);
+        }
+        public static Process RunningInstance()
+        {
+            Process current = Process.GetCurrentProcess();
+            Process[] processes = Process.GetProcessesByName(current.ProcessName);
+            foreach (Process process in processes)
+            {
+                if (process.Id != current.Id)
+                {
+                    if (Assembly.GetExecutingAssembly().Location.Replace("/", "\\") ==
+                        current.MainModule.FileName)
+                    {
+                        return process;
+                    }
+                }
+            }
+            return null;
         }
     }
 }
