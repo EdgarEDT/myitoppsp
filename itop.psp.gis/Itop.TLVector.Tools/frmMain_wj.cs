@@ -2146,8 +2146,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                             pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
                             pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
 
-                            ex.SetCellValue(pl.UID, 5 + extsublist.Count + rowcount, 2);
-                            ex.SetCellValue(dk[1], 5 + extsublist.Count + rowcount, 3);
+                            ex.SetCellValue(pl.UseID, 5 + extsublist.Count + rowcount, 2);
+                            ex.SetCellValue((Convert.ToDouble(dk[1]) / dbl_rzb).ToString("N2"), 5 + extsublist.Count + rowcount, 3);
                             ex.AlignmentCells(5 + extsublist.Count + rowcount, 2, 5 + extsublist.Count + rowcount, 3, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
                             ex.SetFontStyle(5 + extsublist.Count + rowcount, 2, 5 + extsublist.Count + rowcount, 3, true, false, ExcelStyle.UnderlineStyle.无下划线);
                         }
