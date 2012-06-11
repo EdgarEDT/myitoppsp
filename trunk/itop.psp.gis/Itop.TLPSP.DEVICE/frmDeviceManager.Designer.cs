@@ -35,6 +35,7 @@
             this.AllDele = new DevExpress.XtraBars.BarButtonItem();
             this.UpdateNumber = new DevExpress.XtraBars.BarButtonItem();
             this.barImportPsasp = new DevExpress.XtraBars.BarButtonItem();
+            this.bardevicetemplate = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -145,6 +146,16 @@
             this.barImportPsasp.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barImportPsasp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barImportPsasp_ItemClick);
             // 
+            // bardevicetemplate
+            // 
+            this.bardevicetemplate.Caption = "典型参数管理";
+            this.bardevicetemplate.Id = 8;
+            this.bardevicetemplate.ImageIndex = 8;
+            this.bardevicetemplate.Name = "barImportPsasp";
+            this.bardevicetemplate.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bardevicetemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bardevicetemplate_ItemClick);
+            
+            // 
             // frmDeviceManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -172,5 +183,6 @@
         private DevExpress.XtraBars.BarButtonItem AllDele;
         private DevExpress.XtraBars.BarButtonItem UpdateNumber;
         private DevExpress.XtraBars.BarButtonItem barImportPsasp;
+        private DevExpress.XtraBars.BarButtonItem bardevicetemplate;
     }
 }
