@@ -414,7 +414,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 2);
             this.standaloneBarDockControl1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(244, 26);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(220, 26);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barAndDockingController1
@@ -433,20 +433,20 @@
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 691);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 677);
             this.barDockControlBottom.Size = new System.Drawing.Size(1199, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 691);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 677);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1199, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 691);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 677);
             // 
             // imageList3
             // 
@@ -492,13 +492,15 @@
             this.labExit.ForeColor = System.Drawing.Color.White;
             this.labExit.Image = ((System.Drawing.Image)(resources.GetObject("labExit.Image")));
             this.labExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labExit.Location = new System.Drawing.Point(1119, 63);
+            this.labExit.Location = new System.Drawing.Point(1113, 63);
             this.labExit.Name = "labExit";
             this.labExit.Size = new System.Drawing.Size(56, 20);
             this.labExit.TabIndex = 25;
             this.labExit.Text = "    退出";
             this.labExit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labExit.MouseLeave += new System.EventHandler(this.labExit_MouseLeave);
             this.labExit.Click += new System.EventHandler(this.labExit_Click);
+            this.labExit.MouseEnter += new System.EventHandler(this.labExit_MouseEnter);
             // 
             // labAbout
             // 
@@ -508,13 +510,15 @@
             this.labAbout.ForeColor = System.Drawing.Color.White;
             this.labAbout.Image = ((System.Drawing.Image)(resources.GetObject("labAbout.Image")));
             this.labAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labAbout.Location = new System.Drawing.Point(1051, 63);
+            this.labAbout.Location = new System.Drawing.Point(1053, 63);
             this.labAbout.Name = "labAbout";
             this.labAbout.Size = new System.Drawing.Size(56, 20);
             this.labAbout.TabIndex = 26;
             this.labAbout.Text = "    关于";
             this.labAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labAbout.MouseLeave += new System.EventHandler(this.labAbout_MouseLeave);
             this.labAbout.Click += new System.EventHandler(this.labAbout_Click);
+            this.labAbout.MouseEnter += new System.EventHandler(this.labAbout_MouseEnter);
             // 
             // pictureBox1
             // 
@@ -534,7 +538,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1199, 560);
+            this.panel2.Size = new System.Drawing.Size(1199, 546);
             this.panel2.TabIndex = 35;
             // 
             // splitContainer1
@@ -560,10 +564,11 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2MinSize = 0;
-            this.splitContainer1.Size = new System.Drawing.Size(1199, 550);
+            this.splitContainer1.Size = new System.Drawing.Size(1199, 536);
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.SplitterWidth = 10;
-            this.splitContainer1.TabIndex = 16;
+            this.splitContainer1.TabIndex = 100;
+            this.splitContainer1.TabStop = false;
             // 
             // nbctSystem
             // 
@@ -581,7 +586,7 @@
             this.nbctSystem.OptionsNavPane.ShowExpandButton = false;
             this.nbctSystem.OptionsNavPane.ShowOverflowButton = false;
             this.nbctSystem.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.nbctSystem.Size = new System.Drawing.Size(190, 550);
+            this.nbctSystem.Size = new System.Drawing.Size(190, 536);
             this.nbctSystem.SmallImages = this.imageList4;
             this.nbctSystem.TabIndex = 0;
             this.nbctSystem.Text = "navBarControl1";
@@ -619,10 +624,11 @@
             this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(0, 2, 10, 0);
             this.splitContainer2.Panel2.Resize += new System.EventHandler(this.splitContainer2_Panel2_Resize);
             this.splitContainer2.Panel2MinSize = 0;
-            this.splitContainer2.Size = new System.Drawing.Size(989, 550);
-            this.splitContainer2.SplitterDistance = 631;
+            this.splitContainer2.Size = new System.Drawing.Size(989, 536);
+            this.splitContainer2.SplitterDistance = 571;
             this.splitContainer2.SplitterWidth = 10;
-            this.splitContainer2.TabIndex = 13;
+            this.splitContainer2.TabIndex = 110;
+            this.splitContainer2.TabStop = false;
             // 
             // panel6
             // 
@@ -631,8 +637,8 @@
             this.panel6.Location = new System.Drawing.Point(0, 25);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(10);
-            this.panel6.Size = new System.Drawing.Size(631, 525);
-            this.panel6.TabIndex = 1;
+            this.panel6.Size = new System.Drawing.Size(571, 511);
+            this.panel6.TabIndex = 0;
             // 
             // listViewdown
             // 
@@ -645,7 +651,7 @@
             this.listViewdown.Location = new System.Drawing.Point(10, 10);
             this.listViewdown.Name = "listViewdown";
             this.listViewdown.ShowItemToolTips = true;
-            this.listViewdown.Size = new System.Drawing.Size(611, 505);
+            this.listViewdown.Size = new System.Drawing.Size(551, 491);
             this.listViewdown.TabIndex = 0;
             this.listViewdown.UseCompatibleStateImageBehavior = false;
             this.listViewdown.ItemActivate += new System.EventHandler(this.listViewdown_ItemActivate);
@@ -660,7 +666,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(631, 25);
+            this.panel5.Size = new System.Drawing.Size(571, 25);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -682,7 +688,7 @@
             this.label2.Location = new System.Drawing.Point(66, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 14);
-            this.label2.TabIndex = 33;
+            this.label2.TabIndex = 0;
             this.label2.Text = "模块";
             // 
             // label3
@@ -704,7 +710,7 @@
             this.labname.Location = new System.Drawing.Point(7, 5);
             this.labname.Name = "labname";
             this.labname.Size = new System.Drawing.Size(59, 14);
-            this.labname.TabIndex = 32;
+            this.labname.TabIndex = 1;
             this.labname.Text = "当前模块:";
             // 
             // treeList1
@@ -804,7 +810,7 @@
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(339, 525);
+            this.treeList1.Size = new System.Drawing.Size(399, 511);
             this.treeList1.StateImageList = this.imageList4;
             this.treeList1.TabIndex = 0;
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
@@ -924,7 +930,7 @@
             this.panel7.Controls.Add(this.labuser);
             this.panel7.Controls.Add(this.pictureBox2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 660);
+            this.panel7.Location = new System.Drawing.Point(0, 646);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.panel7.Size = new System.Drawing.Size(1199, 31);
@@ -994,7 +1000,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 691);
+            this.ClientSize = new System.Drawing.Size(1199, 677);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
