@@ -292,6 +292,7 @@
     <Content Include="Maps\Planning\SVG_SYMBOL.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Maps\Planning\Template_PSPDEV.xml" />
     <Content Include="Maps\Planning\UsepropertyType.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
