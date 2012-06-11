@@ -21,7 +21,7 @@ namespace ItopVector.Tools
 
         public string Str_rzb
         {
-            get { return str_rzb; }
+            get { return txtrzb.Text; }
             set { str_rzb = value; }
         }
         private string str_dj = "";
@@ -35,7 +35,7 @@ namespace ItopVector.Tools
 
         public string Str_rl
         {
-            get { return str_rl; }
+            get { return txtrl.Text; }
             set { str_rl = value; }
         }
         private string str_num = "";

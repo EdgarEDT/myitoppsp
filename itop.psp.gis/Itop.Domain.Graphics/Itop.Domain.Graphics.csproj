@@ -99,6 +99,7 @@
     <Compile Include="SVG_IMAGE.cs" />
     <Compile Include="SVG_LAYER.cs" />
     <Compile Include="SVG_SYMBOL.cs" />
+    <Compile Include="Template_PSPDEV.cs" />
     <Compile Include="UseGroup.cs" />
     <Compile Include="UsepropertyType.cs" />
     <Compile Include="UseRelating.cs" />
