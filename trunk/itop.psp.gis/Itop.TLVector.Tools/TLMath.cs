@@ -418,10 +418,10 @@ namespace ItopVector.Tools
            if (chose == 2) {
                int n = Convert.ToInt32(Scale * 1000000);
                switch (n) {
-                   case 15600:
+                   case 15625:
                        return (float)(number1 * 120 / (Convert.ToDecimal(Scale) * 40));
                        break;
-                   case 31200:
+                   case 31250:
                        return (float)(number1 * 120 / (Convert.ToDecimal(Scale) * 20));
                        break;
                    case 62500:
