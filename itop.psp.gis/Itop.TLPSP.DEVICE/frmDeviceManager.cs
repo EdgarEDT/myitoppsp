@@ -28,7 +28,7 @@ namespace Itop.TLPSP.DEVICE
         #region ≥ı ºªØ
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut,UpdateNumber, barButtonItemDel, AllDele, barButtonItemclose,barImportPsasp });
+            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut,UpdateNumber, barButtonItemDel, AllDele, barButtonItemclose,barImportPsasp,bardevicetemplate });
             
             barQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             barPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -208,6 +208,12 @@ namespace Itop.TLPSP.DEVICE
             frmImport dlg = new frmImport();
             dlg.Show(this);
             
+        }
+        private void bardevicetemplate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmDeviceTemplateManager dlg = new frmDeviceTemplateManager();
+            dlg.Show(this);
+
         }
     }
 }
