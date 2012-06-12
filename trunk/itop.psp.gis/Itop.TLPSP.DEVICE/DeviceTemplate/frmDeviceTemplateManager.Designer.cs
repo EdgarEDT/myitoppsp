@@ -25,7 +25,7 @@
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDeviceManager));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDeviceTemplateManager));
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.barButtonItemIn = new DevExpress.XtraBars.BarButtonItem();
@@ -59,8 +59,8 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.treeList1);
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(569, 299);
-            this.splitContainerControl1.SplitterPosition = 144;
+            this.splitContainerControl1.Size = new System.Drawing.Size(664, 354);
+            this.splitContainerControl1.SplitterPosition = 187;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -78,7 +78,7 @@
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
-            this.treeList1.Size = new System.Drawing.Size(138, 293);
+            this.treeList1.Size = new System.Drawing.Size(187, 354);
             this.treeList1.TabIndex = 0;
             this.treeList1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeList1_MouseClick);
             // 
@@ -145,11 +145,11 @@
             this.barImportPsasp.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barImportPsasp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barImportPsasp_ItemClick);
             // 
-            // frmDeviceManager
+            // frmDeviceTemplateManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 333);
+            this.ClientSize = new System.Drawing.Size(664, 388);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "frmDeviceTemplateManager";
             this.Text = "frmDeviceTemplateManager";
