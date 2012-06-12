@@ -2996,7 +2996,6 @@
             this.simpleButton5.Size = new System.Drawing.Size(87, 29);
             this.simpleButton5.TabIndex = 14;
             this.simpleButton5.Text = "添加典型参数";
-            this.simpleButton5.Visible = false;
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton3_Click_1);
             // 
             // frmBYQ3dlg

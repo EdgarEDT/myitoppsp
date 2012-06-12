@@ -546,299 +546,329 @@ namespace Itop.TLPSP.DEVICE
                 MessageBox.Show("请选择设备种类。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
             }
-            if (GetDevice.GetType() == "20")
-            {
+            //if (GetDevice.GetType() == "20")
+            //{
 
-                frmBDZdlg dlg = new frmBDZdlg();
-                //dlg.DeviceMx = dev as PSP_Substation_Info;
-                dlg.IsRead = false;
-                if (dlg.ShowDialog() == DialogResult.OK)
+            //    frmBDZdlg dlg = new frmBDZdlg();
+            //    //dlg.DeviceMx = dev as PSP_Substation_Info;
+            //    dlg.IsRead = false;
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.AreaID = MIS.ProgUID;                    
+            //        UCDeviceBase.DataService.Create<PSP_Substation_Info>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.UID);
+            //        devic.Add("name", dlg.DeviceMx.Title);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+
+            //if (GetDevice.GetType() == "30")
+            //{
+            //    frmDYdlg dlg21 = new frmDYdlg();
+            //    //dlg21.DeviceMx = dev as PSP_PowerSubstation_Info;
+            //    dlg21.IsRead = false;
+            //    if (dlg21.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg21.DeviceMx.AreaID = MIS.ProgUID;
+            //        UCDeviceBase.DataService.Create<PSP_PowerSubstation_Info>(dlg21.DeviceMx);
+            //        devic.Add("id", dlg21.DeviceMx.UID);
+            //        devic.Add("name", dlg21.DeviceMx.Title);
+            //        devic.Add("device", dlg21.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "05")
+            //{
+            //    frmXLdlg dlg5 = new frmXLdlg();
+            //    //dlg5.DeviceMx = dev as PSPDEV;
+            //    if (dlg5.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg5.DeviceMx.ProjectID = MIS.ProgUID;
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg5.DeviceMx);
+            //        devic.Add("id", dlg5.DeviceMx.SUID);
+            //        devic.Add("name", dlg5.DeviceMx.Name);
+            //        devic.Add("device", dlg5.DeviceMx);
+            //        frmDS fd = new frmDS();
+            //        fd.ProjectSUID = ProjectID;
+            //        fd.InitData();               
+            //        if (fd.ShowDialog() == DialogResult.OK)
+            //        {
+            //            PSP_ElcDevice pe = new PSP_ElcDevice();
+            //            pe.ProjectSUID = (string)fd.PJ;
+            //            pe.DeviceSUID = dlg5.DeviceMx.SUID;
+            //            UCDeviceBase.DataService.Create<PSP_ElcDevice>(pe);
+                       
+            //        }
+                    
+            //    }
+            //}
+            if (GetDevice.GetType() == "02")
+            {
+                frmBYQ2templatedlg dlg2 = new frmBYQ2templatedlg();
+                //dlg5.DeviceMx = dev as PSPDEV;
+                if (dlg2.ShowDialog() == DialogResult.OK)
                 {
-                    dlg.DeviceMx.AreaID = MIS.ProgUID;                    
-                    UCDeviceBase.DataService.Create<PSP_Substation_Info>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.UID);
-                    devic.Add("name", dlg.DeviceMx.Title);
-                    devic.Add("device", dlg.DeviceMx);
+                   
+                    UCDeviceBase.DataService.Create<Template_PSPDEV>(dlg2.DeviceMx);
+                    devic.Add("id", dlg2.DeviceMx.SUID);
+                    devic.Add("name", dlg2.DeviceMx.Name);
+                    devic.Add("device", dlg2.DeviceMx);
+                    
+
                 }
             }
-
-            if (GetDevice.GetType() == "30")
+            if (GetDevice.GetType() == "03")
             {
-                frmDYdlg dlg21 = new frmDYdlg();
-                //dlg21.DeviceMx = dev as PSP_PowerSubstation_Info;
-                dlg21.IsRead = false;
-                if (dlg21.ShowDialog() == DialogResult.OK)
-                {
-                    dlg21.DeviceMx.AreaID = MIS.ProgUID;
-                    UCDeviceBase.DataService.Create<PSP_PowerSubstation_Info>(dlg21.DeviceMx);
-                    devic.Add("id", dlg21.DeviceMx.UID);
-                    devic.Add("name", dlg21.DeviceMx.Title);
-                    devic.Add("device", dlg21.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "05")
-            {
-                frmXLdlg dlg5 = new frmXLdlg();
+                frmBYQ3templatedlg dlg5 = new frmBYQ3templatedlg();
                 //dlg5.DeviceMx = dev as PSPDEV;
                 if (dlg5.ShowDialog() == DialogResult.OK)
                 {
-                    dlg5.DeviceMx.ProjectID = MIS.ProgUID;
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg5.DeviceMx);
+                    
+                    UCDeviceBase.DataService.Create<Template_PSPDEV>(dlg5.DeviceMx);
                     devic.Add("id", dlg5.DeviceMx.SUID);
                     devic.Add("name", dlg5.DeviceMx.Name);
                     devic.Add("device", dlg5.DeviceMx);
-                    frmDS fd = new frmDS();
-                    fd.ProjectSUID = ProjectID;
-                    fd.InitData();               
-                    if (fd.ShowDialog() == DialogResult.OK)
-                    {
-                        PSP_ElcDevice pe = new PSP_ElcDevice();
-                        pe.ProjectSUID = (string)fd.PJ;
-                        pe.DeviceSUID = dlg5.DeviceMx.SUID;
-                        UCDeviceBase.DataService.Create<PSP_ElcDevice>(pe);
-                       
-                    }
                     
+
                 }
             }
-            if (GetDevice.GetType()=="70")
-            {
-                frmZXdlg dlg = new frmZXdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;               
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "71")
-            {
-                frmRDQdlg dlg = new frmRDQdlg();
+            //if (GetDevice.GetType()=="70")
+            //{
+            //    frmZXdlg dlg = new frmZXdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;               
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "71")
+            //{
+            //    frmRDQdlg dlg = new frmRDQdlg();
                 
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "72")
-            {
-                frmBYQTWOdlg dlg = new frmBYQTWOdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "50")
-            {
-                frmPWdlg dlg = new frmPWdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "50";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "51")
-            {
-                frmPWdlg dlg = new frmPWdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "51";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "52")
-            {
-                frmPWdlg dlg = new frmPWdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "52";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "55")
-            {
-                frmPWKGdlg dlg = new frmPWKGdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "55";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "56")
-            {
-                frmPWKGdlg dlg = new frmPWKGdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "56";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "57")
-            {
-                frmPWKGdlg dlg = new frmPWKGdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "57";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "58")
-            {
-                frmPWKGdlg dlg = new frmPWKGdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "58";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "59")
-            {
-                frmPWKGdlg dlg = new frmPWKGdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "59";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "61")
-            {
-                frmPWKGdlg dlg = new frmPWKGdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "61";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "62")
-            {
-                frmPWKGdlg dlg = new frmPWKGdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "62";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "63")
-            {
-                frmPWKGdlg dlg = new frmPWKGdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "63";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "64")
-            {
-                frmPWKGdlg dlg = new frmPWKGdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "64";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "74")
-            {
-                frmFZXdlg dlg = new frmFZXdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "74";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }
-            if (GetDevice.GetType() == "73")
-            {
-                frmDXdlg dlg = new frmDXdlg();
-                dlg.ProjectSUID = this.ProjectID;
-                dlg.Name = "";
-                PSPDEV p = new PSPDEV();
-                p.ProjectID = this.ProjectID;
-                dlg.DeviceMx = p;
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "73";
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "72")
+            //{
+            //    frmBYQTWOdlg dlg = new frmBYQTWOdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "50")
+            //{
+            //    frmPWdlg dlg = new frmPWdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "50";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "51")
+            //{
+            //    frmPWdlg dlg = new frmPWdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "51";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "52")
+            //{
+            //    frmPWdlg dlg = new frmPWdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "52";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "55")
+            //{
+            //    frmPWKGdlg dlg = new frmPWKGdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "55";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "56")
+            //{
+            //    frmPWKGdlg dlg = new frmPWKGdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "56";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "57")
+            //{
+            //    frmPWKGdlg dlg = new frmPWKGdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "57";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "58")
+            //{
+            //    frmPWKGdlg dlg = new frmPWKGdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "58";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "59")
+            //{
+            //    frmPWKGdlg dlg = new frmPWKGdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "59";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "61")
+            //{
+            //    frmPWKGdlg dlg = new frmPWKGdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "61";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "62")
+            //{
+            //    frmPWKGdlg dlg = new frmPWKGdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "62";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "63")
+            //{
+            //    frmPWKGdlg dlg = new frmPWKGdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "63";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "64")
+            //{
+            //    frmPWKGdlg dlg = new frmPWKGdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "64";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "74")
+            //{
+            //    frmFZXdlg dlg = new frmFZXdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "74";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}
+            //if (GetDevice.GetType() == "73")
+            //{
+            //    frmDXdlg dlg = new frmDXdlg();
+            //    dlg.ProjectSUID = this.ProjectID;
+            //    dlg.Name = "";
+            //    PSPDEV p = new PSPDEV();
+            //    p.ProjectID = this.ProjectID;
+            //    dlg.DeviceMx = p;
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "73";
                   
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);
-                    devic.Add("device", dlg.DeviceMx);
-                }
-            }  
-            if (GetDevice.GetType() == "75")
-            {
-                frmLUXdlg dlg = new frmLUXdlg();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    dlg.DeviceMx.ProjectID = MIS.ProgUID;
-                    dlg.DeviceMx.Type = "75";
-                    UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
-                    devic.Add("id", dlg.DeviceMx.SUID);
-                    devic.Add("name", dlg.DeviceMx.Name);                             
-                    devic.Add("device", dlg.DeviceMx);     
-                }
-            }
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);
+            //        devic.Add("device", dlg.DeviceMx);
+            //    }
+            //}  
+            //if (GetDevice.GetType() == "75")
+            //{
+            //    frmLUXdlg dlg = new frmLUXdlg();
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //    {
+            //        dlg.DeviceMx.ProjectID = MIS.ProgUID;
+            //        dlg.DeviceMx.Type = "75";
+            //        UCDeviceBase.DataService.Create<PSPDEV>(dlg.DeviceMx);
+            //        devic.Add("id", dlg.DeviceMx.SUID);
+            //        devic.Add("name", dlg.DeviceMx.Name);                             
+            //        devic.Add("device", dlg.DeviceMx);     
+            //    }
+            //}
             if (device!=null&&devic.Count>0)
             {
                 this.DialogResult = DialogResult.OK;
