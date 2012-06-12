@@ -41,7 +41,7 @@ namespace Itop.Domain.Graphics
 		private double _linechange;
 		private int _flag;
 		private string _nodetype="";
-		private double _burthen;
+		private decimal _burthen;
 		private double _linelength;
 		private string _linelevel="";
 		private string _linetype="";
@@ -65,7 +65,7 @@ namespace Itop.Domain.Graphics
 		private double _hugantq3;
 		private double _hugantq4;
 		private double _hugantq5;
-		private double _huganfirst;
+		private decimal _huganfirst;
 		private string _lable="";
 		private double _bigp;
 		private double _k;
@@ -337,7 +337,7 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-		public double Burthen
+		public decimal Burthen
 		{
 			set{ _burthen=value;}
 			get{return _burthen;}
@@ -529,7 +529,7 @@ namespace Itop.Domain.Graphics
 		/// <summary>
 		/// 
 		/// </summary>
-		public double HuganFirst
+		public decimal HuganFirst
 		{
 			set{ _huganfirst=value;}
 			get{return _huganfirst;}
