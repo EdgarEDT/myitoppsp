@@ -2,13 +2,13 @@
 <devicetempate>
   <!--<device id="200" name ="公用设备" visible="true" class="" parentid=""></device>
   <device id="300" name ="电气计算设备" visible="true" class="" parentid=""></device>-->
-  <device id="20" name="变电站" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBDZ" parentid="200"></device>
-  <device id="30" name="电源" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDY" parentid="200"></device>
-  <device id="01" name="母线" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceMX" parentid="300"></device>  
-  <device id="02" name ="两绕组变压器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQ2template" parentid="300"></device>
-  <device id="03" name ="三绕组变压器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQ3template" parentid="300"></device>
-  <device id="04" name ="发电机" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFDJ" parentid="300"></device>
-  <device id="05" name ="线路" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceXL" parentid="200"></device>
+  <device id="20" name="变电站典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBDZ" parentid="200"></device>
+  <device id="30" name="电源典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDY" parentid="200"></device>
+  <device id="01" name="母线典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceMX" parentid="300"></device>  
+  <device id="02" name ="两绕组变压器典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQ2template" parentid="300"></device>
+  <device id="03" name ="三绕组变压器典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQ3template" parentid="300"></device>
+  <device id="04" name ="发电机典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFDJ" parentid="300"></device>
+  <device id="05" name ="线路典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceXL" parentid="200"></device>
   <!--<device id="06" name ="断路器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDLQ" parentid="300"></device>
   <device id="07" name ="开关" visible="false" class="Itop.TLPSP.DEVICE.UCDeviceKG" parentid="300"></device>
   <device id="08" name ="串联电容器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceCLDR" parentid="300"></device>

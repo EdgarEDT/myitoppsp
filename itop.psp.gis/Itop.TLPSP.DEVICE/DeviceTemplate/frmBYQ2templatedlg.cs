@@ -37,7 +37,7 @@ namespace Itop.TLPSP.DEVICE
 
                 dev.LineLevel = (string)radioGroup6.EditValue;
                 dev.LineType = (string)radioGroup5.EditValue;
-                dev.Burthen =(double) spinEdit1.Value;
+                dev.Burthen =spinEdit1.Value;
                 dev.Vi0 = (double)spinEdit5.Value;
                 dev.Vj0 = (double)spinEdit2.Value;
                 dev.Vib = (double)spinEdit47.Value;
@@ -96,7 +96,7 @@ namespace Itop.TLPSP.DEVICE
                 radioGroup6.EditValue = dev.LineLevel;
                 radioGroup5.EditValue = dev.LineType;
 
-                spinEdit1.Value =(decimal) dev.Burthen;
+                spinEdit1.Value =dev.Burthen;
                 spinEdit5.Value = (decimal)dev.Vi0;
                 spinEdit2.Value = (decimal)dev.Vj0;
                 spinEdit47.Value = (decimal)dev.Vib;

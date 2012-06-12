@@ -526,5 +526,23 @@ namespace Itop.TLPSP.DEVICE
         {
 
         }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            frmDevicetemplateSelect dlg = new frmDevicetemplateSelect();
+            
+            dlg.InitDeviceType("02");
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+
+              object obj= dlg.GetSelectedDevice()["device"];
+                if (obj!=null&&obj is Template_PSPDEV )
+                {
+                    DeviceHelper.CopyTemplate(obj as Template_PSPDEV, dev);
+                    DeviceMx = dev;
+                }
+            }
+        }
+
     }
 }

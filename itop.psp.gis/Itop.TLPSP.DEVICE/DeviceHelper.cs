@@ -523,6 +523,22 @@ namespace Itop.TLPSP.DEVICE
                 }
             }
         }
+        public static void CopyTemplate(Template_PSPDEV source,PSPDEV target)
+        {
+            Type t = typeof(PSPDEV);
+            foreach (PropertyInfo p in t.GetProperties())
+            {
+                if (p.Name != "Name" && p.Name != "TemplateType" && p.Name != "AreaID" && p.Name != "SUID" && p.Name != "EleID" && p.Name != "SvgUID" && p.Name != "Type" && p.Name != "FirstNode" && p.Name != "LastNode" && p.Name != "IName" && p.Name != "JName" && p.Name != "KSwitchStatus" && p.Name != "Date1" && p.Name != "Date2" && p.Name != "OperationYear" && p.Name != "Number")
+                {
+                    if (source.GetType().GetProperty(p.Name)!=null)
+                    {
+                        p.SetValue(target, source.GetType().GetProperty(p.Name).GetValue(source, null), null);
+                    }
+                   
+                }
+               
+            }
+        }
     }
   public struct rresult
   {

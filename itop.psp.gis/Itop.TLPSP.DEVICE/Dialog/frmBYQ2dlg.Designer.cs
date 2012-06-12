@@ -185,6 +185,7 @@
             this.label65 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
             this.spinEdit43 = new DevExpress.XtraEditors.SpinEdit();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -2310,11 +2311,21 @@
             this.spinEdit43.Size = new System.Drawing.Size(84, 21);
             this.spinEdit43.TabIndex = 2;
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Location = new System.Drawing.Point(370, 458);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(105, 23);
+            this.simpleButton5.TabIndex = 5;
+            this.simpleButton5.Text = "添加典型参数";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
             // frmBYQ2dlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 499);
+            this.Controls.Add(this.simpleButton5);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.xtraTabControl1);
@@ -2593,5 +2604,6 @@
         private System.Windows.Forms.Label label73;
         private DevExpress.XtraEditors.DateEdit date1;
         private System.Windows.Forms.Label label74;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
     }
 }

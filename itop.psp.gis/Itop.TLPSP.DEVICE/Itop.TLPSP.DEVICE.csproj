@@ -264,6 +264,12 @@
     <Compile Include="DeviceTemplate\frmBYQ3templatedlg.Designer.cs">
       <DependentUpon>frmBYQ3templatedlg.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeviceTemplate\frmDevicetemplateSelect.Designer.cs">
+      <DependentUpon>frmDevicetemplateSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceTemplate\frmDevicetemplateSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DeviceTemplate\frmDeviceTemplateManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1357,6 +1363,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeviceTemplate\frmBYQ3templatedlg.resx">
       <DependentUpon>frmBYQ3templatedlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceTemplate\frmDevicetemplateSelect.resx">
+      <DependentUpon>frmDevicetemplateSelect.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="DeviceTemplate\frmDeviceTemplateManager.resx">

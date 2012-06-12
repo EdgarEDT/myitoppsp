@@ -233,6 +233,7 @@
             this.label65 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
             this.spinEdit43 = new DevExpress.XtraEditors.SpinEdit();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -2282,7 +2283,7 @@
             this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButton3.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.simpleButton3.Location = new System.Drawing.Point(374, 485);
+            this.simpleButton3.Location = new System.Drawing.Point(263, 486);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(87, 29);
             this.simpleButton3.TabIndex = 14;
@@ -2985,11 +2986,25 @@
             this.spinEdit43.Size = new System.Drawing.Size(84, 21);
             this.spinEdit43.TabIndex = 2;
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.simpleButton5.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.simpleButton5.Location = new System.Drawing.Point(379, 486);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(87, 29);
+            this.simpleButton5.TabIndex = 14;
+            this.simpleButton5.Text = "添加典型参数";
+            this.simpleButton5.Visible = false;
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton3_Click_1);
+            // 
             // frmBYQ3dlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 525);
+            this.Controls.Add(this.simpleButton5);
             this.Controls.Add(this.simpleButton3);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
@@ -3349,5 +3364,6 @@
         private System.Windows.Forms.Label label89;
         private DevExpress.XtraEditors.DateEdit date1;
         private System.Windows.Forms.Label label91;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
     }
 }
