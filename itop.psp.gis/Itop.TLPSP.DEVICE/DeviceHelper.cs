@@ -465,14 +465,14 @@ namespace Itop.TLPSP.DEVICE
                     FarPoint.Win.Spread.FpSpread fps = new FarPoint.Win.Spread.FpSpread();
                     fps.OpenExcel(fname);
                     SheetView sv = fps.Sheets[0];
-                    for (int j = 0; j < sv.NonEmptyColumnCount; j++)
-                    {
-                        for (int k = 0; k < sv.NonEmptyRowCount; k++)
-                        {
-                            sv.Cells[k, j].CellType = new FarPoint.Win.Spread.CellType.NumberCellType();
-                        }
+                    //for (int j = 1; j < sv.NonEmptyColumnCount; j++)
+                    //{
+                    //    for (int k = 0; k < sv.NonEmptyRowCount; k++)
+                    //    {
+                    //        sv.Cells[k, j].CellType = new FarPoint.Win.Spread.CellType.NumberCellType();
+                    //    }
 
-                    }
+                    //}
                     fps.SaveExcel(fname);
                     // 定义要使用的Excel 组件接口
                     // 定义Application 对象,此对象表示整个Excel 程序
@@ -516,7 +516,7 @@ namespace Itop.TLPSP.DEVICE
                     System.Diagnostics.Process.Start(fname);
 
                 }
-                catch
+                catch(Exception ee)
                 {
                     MsgBox.Show("无法保存" + fname + "。请用其他文件名保存文件，或将文件存至其他位置。");
                     return;
