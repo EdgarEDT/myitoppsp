@@ -585,8 +585,7 @@ namespace Itop.TLPSP.DEVICE
             PSPDEV devMX = new PSPDEV();
             string strCon = strCon = " WHERE Name = '" + comboBoxEdit4.Text + "' AND ProjectID = '" + this.ProjectSUID + "' AND Type = '01'";
             devMX = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", strCon);
-            if (devMX != null)
-            {
+            if (devMX != null)            {
                 spinEdit2.Value = (decimal)devMX.RateVolt;
                 spinEdit46.Value = (decimal)devMX.ReferenceVolt;
                 dev.LastNode = devMX.Number;
