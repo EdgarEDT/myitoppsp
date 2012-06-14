@@ -99,6 +99,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\output\Server\Itop.Server.Interface.dll</HintPath>
     </Reference>
+    <Reference Include="Itop.TLPSP.DEVICE, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
@@ -149,6 +150,12 @@
     </Compile>
     <Compile Include="FormHistoryType.Designer.cs">
       <DependentUpon>FormHistoryType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInData.Designer.cs">
+      <DependentUpon>FormInData.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProjectDataCopy.cs">
       <SubType>Form</SubType>
@@ -374,6 +381,9 @@
     <EmbeddedResource Include="FormHistoryType.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormHistoryType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInData.resx">
+      <DependentUpon>FormInData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProjectDataCopy.resx">
       <SubType>Designer</SubType>
