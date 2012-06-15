@@ -863,7 +863,31 @@ namespace ItopVector.Tools
                             _x.SetAttribute("rl",pl.L2.ToString());
                         }
                         ArrayList extsublist = new ArrayList();
-                    
+                         //创建新的图层放置显示的链接线路
+                        Layer lar = null;
+                        string FileName = "变电站地块连接线";
+                        if (Layer.CkLayerExist(FileName, tlVectorControl1.SVGDocument))
+                        {
+                            ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
+                            for (int i = 0; i < layercol.Count; i++)
+                            {
+                                if (FileName == (layercol[i] as Layer).GetAttribute("label"))
+                                {
+                                    lar = (Layer)layercol[i];
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            lar = Layer.CreateNew(FileName, tlVectorControl1.SVGDocument);
+
+                            lar.SetAttribute("layerType", progtype);
+                            lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
+                            this.frmlar.checkedListBox1.SelectedIndex = -1;
+                            this.frmlar.checkedListBox1.Items.Add(lar, true);
+                        }
+
                         FrmSet f_set = new FrmSet();
                         f_set.s = sumss;
                         f_set.sub_s = sumSub;
@@ -957,7 +981,7 @@ namespace ItopVector.Tools
                                     n1.SetAttribute("layer", SvgDocument.currentLayer);
                                     n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                     SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e0);
-                                    CreateSubline(sf,true);
+                                    CreateSubline1(sf, true, lar);
                                     extsublist.Add(e0);
                                     //
                                     XmlElement t0 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
@@ -1007,7 +1031,7 @@ namespace ItopVector.Tools
                                         n1.SetAttribute("layer", SvgDocument.currentLayer);
                                         n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                          sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
-                                        CreateSubline(sf,true);
+                                         CreateSubline1(sf, true, lar);
                                         extsublist.Add(e1);
                                         //
                                         PSP_SubstationSelect s2 = new PSP_SubstationSelect();
@@ -1065,7 +1089,7 @@ namespace ItopVector.Tools
                                         }
 
                                         SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), n2);
-                                        CreateSubline1(sf1, false);
+                                        CreateSubline1(sf1, false, lar);
                                         extsublist.Add(n2);
                                     }
                                     Extbdzreport(extsublist);
@@ -1119,7 +1143,7 @@ namespace ItopVector.Tools
                                     n1.SetAttribute("layer", SvgDocument.currentLayer);
                                     n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                     SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e0);
-                                    CreateSubline(sf,true);
+                                    CreateSubline1(sf, true, lar);
                                     extsublist.Add(e0);
                                     //
                                     XmlElement t0 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
@@ -1169,7 +1193,7 @@ namespace ItopVector.Tools
                                         n1.SetAttribute("layer", SvgDocument.currentLayer);
                                         n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                        sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
-                                        CreateSubline(sf,true);
+                                       CreateSubline1(sf, true, lar);
                                         extsublist.Add(e1);
                                         //
                                         PSP_SubstationSelect s2 = new PSP_SubstationSelect();
@@ -1227,7 +1251,7 @@ namespace ItopVector.Tools
                                         }
 
                                         SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), n2);
-                                        CreateSubline1(sf1, false);
+                                        CreateSubline1(sf1, false, lar);
                                         extsublist.Add(n2);
                                     }
                                     Extbdzreport(extsublist);
@@ -1283,7 +1307,7 @@ namespace ItopVector.Tools
                                 //获得此变电站的最小半径的圆 生成辐射线
                                
                                 SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
-                                CreateSubline(sf,true);
+                                CreateSubline1(sf, true, lar);
                                 extsublist.Add(e1);
                                 //
                                 PSP_SubstationSelect s2 = new PSP_SubstationSelect();
@@ -1346,7 +1370,7 @@ namespace ItopVector.Tools
                                     }
 
                                     SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), n2);
-                                    CreateSubline1(sf1, false);
+                                    CreateSubline1(sf1, false,lar);
                                     extsublist.Add(n2);
                                    
                                 }
@@ -1356,7 +1380,7 @@ namespace ItopVector.Tools
                             else
                             {
                                // ShowTriangle(polylist, poly1);    //王哥写的
-                                ShowTriangle1(polylist, poly1,ref extsublist);
+                                ShowTriangle1(polylist, poly1,ref extsublist,lar);
                                 bdz_xz = "";
                                 //给已有变电站创建
                                 for (int m = 0; m < useList.Count; m++)
@@ -1392,7 +1416,7 @@ namespace ItopVector.Tools
                                     }
 
                                     SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), n1);
-                                    CreateSubline1(sf,false);
+                                    CreateSubline1(sf,false,lar);
                                     extsublist.Add(n1);
                                 }
                                 Extbdzreport(extsublist);
@@ -1906,7 +1930,7 @@ namespace ItopVector.Tools
 
         }
       
-private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList arraylist)
+private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList arraylist,Layer lay)
 {
      try {
          Dictionary<XmlElement, PointF> fhkcollect = new Dictionary<XmlElement, PointF>();
@@ -2063,7 +2087,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
              s.col2 = XZ_bdz;
              s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
              Services.BaseService.Create<PSP_SubstationSelect>(s);
-             CreateSubline1(_subandfh,true);    //生成负荷中心与变电站的连接线
+             CreateSubline1(_subandfh,true,lay);    //生成负荷中心与变电站的连接线
              arraylist.Add(e1);
          }
      } 
@@ -2167,7 +2191,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
         }
        //flag 为false时为已有变电站
        //flag为ture时变电站为规划的
-        private void CreateSubline1(SubandFHcollect _subandfh,bool flag)
+        private void CreateSubline1(SubandFHcollect _subandfh,bool flag,Layer lay)
         {
             XmlElement sub = _subandfh.Sub;
             double subrl=0;
@@ -2317,7 +2341,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                     n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#330099;stroke-opacity:1;");
                      
                 }
-                n1.SetAttribute("layer", SvgDocument.currentLayer);
+                n1.SetAttribute("layer",lay.ID);
                 n1.SetAttribute("IsLead", "1");
                 n1.SetAttribute("FirstNode", sub.GetAttribute("id").ToString());
                 n1.SetAttribute("LastNode", _x.GetAttribute("id").ToString());
