@@ -34,6 +34,8 @@ namespace Itop.TLPSP.DEVICE
         public void init()
         {
             ucPdreltype1.init();
+            this.Show();
+            this.WindowState = FormWindowState.Maximized;
         }
         public void init(PSPDEV psxl)
         {

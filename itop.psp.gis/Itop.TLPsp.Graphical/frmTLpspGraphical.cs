@@ -1003,6 +1003,29 @@ namespace Itop.TLPsp.Graphical
                 tlVectorControl1.DrawArea.PreGraph = null;
             }
         }
+        public void NewFile()
+        {
+            OpenProject op = new OpenProject();
+            op.ProjectID = this.ProjectUID;
+            op.Initdata(false);
+            Relaflag = true;
+            if (op.ShowDialog() == DialogResult.OK)
+            {
+                if (op.FileSUID != null)
+                {
+                    Open(op.FileSUID);
+                    intdata(op.FileSUID);
+                    //if (this.Text.Contains())
+                    //{
+                    //}
+                    this.Text = frmname + "-" + op.FileName;
+                }
+                this.Show();
+                jxtbar(1);
+                LoadShape("symbol20.xml");
+            }  
+            
+        }
         private string frmname = "";
         public void NewFile(bool type,DialogResult result)
         {

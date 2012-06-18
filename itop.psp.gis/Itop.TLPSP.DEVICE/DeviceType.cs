@@ -66,6 +66,38 @@ namespace Itop.TLPSP.DEVICE
             }
             return table;
         }
+        public static DataTable GetDeviceTypes(string[] type)
+        {
+            Stream fs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Itop.TLPSP.DEVICE.devicetypes.xml");
+            XmlDocument xml = new XmlDocument();
+            xml.Load(fs);
+            XmlNodeList nodes = xml.GetElementsByTagName("device");
+            DataTable table = new DataTable();
+            table.Columns.Add("id", typeof(string));
+            table.Columns.Add("name", typeof(string));
+            table.Columns.Add("class", typeof(string));
+            table.Columns.Add("parentid", typeof(string));
+            foreach (XmlNode node in nodes)
+            {
+                for (int i = 0; i < type.Length;i++ )
+                {
+                    if (node.Attributes["id"].Value == type[i])
+                    {
+
+                        DataRow row = table.NewRow();
+                        row["id"] = node.Attributes["id"].Value;
+                        row["name"] = node.Attributes["name"].Value;
+                        row["class"] = node.Attributes["class"].Value;
+                        row["parentid"] = node.Attributes["parentid"].Value;
+                        table.Rows.Add(row);
+                    }
+                }
+               
+
+            }
+            return table;
+        }
+
         public static string DeviceClassbyType(string type)
         {
             switch(type)
@@ -104,6 +136,21 @@ namespace Itop.TLPSP.DEVICE
             treeList1.KeyFieldName = "id";
             treeList1.ParentFieldName = "parentid";
             treeList1.DataSource = DeviceTypeHelper.GetDeviceTypes();
+        }
+        public static void InitDeviceTypes(DevExpress.XtraTreeList.TreeList treeList1,string[] type)
+        {
+            TreeListColumn column = new TreeListColumn();
+            column.Caption = "设备分类";
+            column.FieldName = "name";
+            column.VisibleIndex = 0;
+            column.Width = 180;
+            column.OptionsColumn.AllowEdit = false;
+            column.OptionsColumn.AllowSort = false;
+            treeList1.Columns.AddRange(new TreeListColumn[] {
+            column});
+            treeList1.KeyFieldName = "id";
+            treeList1.ParentFieldName = "parentid";
+            treeList1.DataSource = DeviceTypeHelper.GetDeviceTypes(type);
         }
         public static void initprojectDeviceTypes(DevExpress.XtraTreeList.TreeList treeList1)
         {
