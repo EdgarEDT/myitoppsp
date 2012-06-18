@@ -303,6 +303,10 @@ namespace Itop.TLPSP.DEVICE
             frmBYQ2dlg dlg = new frmBYQ2dlg();
             dlg.Name = "";
             dlg.ProjectSUID = this.ProjectID;
+            PSPDEV p = new PSPDEV();
+            p.ProjectID = this.ProjectID;
+            p.SvgUID = ParentID;
+            dlg.DeviceMx = p;
             if (dlg.ShowDialog() == DialogResult.OK) {
                 //Ôö¼Ó¼ÇÂ¼ 
                 PSPDEV dev = dlg.DeviceMx;

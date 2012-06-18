@@ -92,6 +92,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -825,6 +826,17 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton5.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.simpleButton5.Location = new System.Drawing.Point(380, 475);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(87, 31);
+            this.simpleButton5.TabIndex = 12;
+            this.simpleButton5.Text = "详细信息";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
             // frmBDZdlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -833,6 +845,7 @@
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.simpleButton5);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "frmBDZdlg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -938,5 +951,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit date2;
         private DevExpress.XtraEditors.ComboBoxEdit date1;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
     }
 }

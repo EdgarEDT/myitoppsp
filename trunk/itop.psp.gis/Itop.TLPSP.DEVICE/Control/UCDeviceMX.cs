@@ -271,6 +271,10 @@ namespace Itop.TLPSP.DEVICE
         public override void Add() {
             frmMXdlg dlg = new frmMXdlg();
             dlg.Name = "";
+            PSPDEV p = new PSPDEV();
+            p.ProjectID = this.ProjectID;
+            p.SvgUID = ParentID;
+            dlg.DeviceMx = p;
             if (dlg.ShowDialog() == DialogResult.OK) {
                 //Ôö¼Ó¼ÇÂ¼ 
                 PSPDEV dev = dlg.DeviceMx;

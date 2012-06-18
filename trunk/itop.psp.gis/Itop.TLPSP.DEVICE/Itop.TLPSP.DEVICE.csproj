@@ -780,6 +780,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OddEven.cs" />
+    <Compile Include="PSPProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PSPProject.Designer.cs">
+      <DependentUpon>PSPProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="PDRel\frmfxlx.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -927,6 +933,24 @@
     </Compile>
     <Compile Include="frmDevSelect.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProjectManager_SH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProjectManager_SH.Designer.cs">
+      <DependentUpon>frmProjectManager_SH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeviceManager_SH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeviceManager_SH.Designer.cs">
+      <DependentUpon>frmDeviceManager_SH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeviceManager_children.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeviceManager_children.Designer.cs">
+      <DependentUpon>frmDeviceManager_children.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -1379,6 +1403,22 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeviceTemplate\UCDeviceBYQ3template.resx">
       <DependentUpon>UCDeviceBYQ3template.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProjectManager_SH.resx">
+      <DependentUpon>frmProjectManager_SH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSPProject.resx">
+      <DependentUpon>PSPProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeviceManager_SH.resx">
+      <DependentUpon>frmDeviceManager_SH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeviceManager_children.resx">
+      <DependentUpon>frmDeviceManager_children.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Mysql\importmap.xml" />

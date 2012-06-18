@@ -476,6 +476,15 @@ namespace Itop.TLPSP.DEVICE
               spinEdit4.Value =(decimal)bts;
             }
         }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            frmDeviceManager_children frmc = new frmDeviceManager_children();
+            frmc.ParentObj = DeviceMx;
+            string[] types=new string[]{"01","03","12"};
+            frmc.childrendevice(types);
+
+        }
        
     }
 }

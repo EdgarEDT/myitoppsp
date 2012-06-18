@@ -261,6 +261,10 @@ namespace Itop.TLPSP.DEVICE
             frmFHdlg dlg = new frmFHdlg();
             dlg.ProjectID = this.ProjectID;
             dlg.Name = "";
+            PSPDEV p = new PSPDEV();
+            p.ProjectID = this.ProjectID;
+            p.SvgUID = ParentID;
+            dlg.DeviceMx = p;
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 //Ôö¼Ó¼ÇÂ¼ 

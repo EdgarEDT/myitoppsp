@@ -239,5 +239,13 @@ namespace Itop.TLPSP.DEVICE
                
             }
         }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            frmDeviceManager_children frmc = new frmDeviceManager_children();
+            frmc.ParentObj = DeviceMx;
+            string[] types = new string[] { "01", "02", "04" };
+            frmc.childrendevice(types);
+        }
     }
 }

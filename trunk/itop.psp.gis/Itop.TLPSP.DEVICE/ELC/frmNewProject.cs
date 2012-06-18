@@ -13,7 +13,22 @@ namespace Itop.TLPSP.DEVICE
         public frmNewProject()
         {
             InitializeComponent();
+            
         }
+        public void init()
+        {
+            if (!flag)
+            {
+                comboBoxEdit1.Text = "潮流";
+                comboBoxEdit1.Enabled = false;
+            }
+            else
+            {
+                comboBoxEdit1.Text = "短路";
+                comboBoxEdit1.Enabled = false;
+            }
+        }
+        public bool flag = false;
         public string Name
         {
             get{
