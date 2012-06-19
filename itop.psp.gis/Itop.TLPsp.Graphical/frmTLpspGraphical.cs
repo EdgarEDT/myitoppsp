@@ -1981,11 +1981,30 @@ namespace Itop.TLPsp.Graphical
         }
         public void Start()
         {
-            this.Show();          
-            LoadShape("symbol20.xml");
-            jxtbar2(1);
-            jxb = 1;
-            NewFile(fileType, DialogResult.Ignore);
+            OpenProject op = new OpenProject();
+            op.ProjectID = this.ProjectUID;
+            op.Initdata(false);
+           
+            if (op.ShowDialog() == DialogResult.OK)
+            {
+                if (op.FileSUID != null)
+                {
+                    Open(op.FileSUID);
+                    intdata(op.FileSUID);
+                    //if (this.Text.Contains())
+                    //{
+                    //}
+                    this.Text = frmname + "-" + op.FileName;
+                }
+                this.Show();
+                jxtbar2(1);
+                LoadShape("symbol20.xml");
+            }  
+            //this.Show();          
+            //LoadShape("symbol20.xml");
+            //jxtbar2(1);
+            //jxb = 1;
+            //NewFile(fileType, DialogResult.Ignore);
             tlVectorControl1.PropertyGrid = propertyGrid;
             tlVectorControl1.ContextMenuStrip = contextMenuStrip1;            
         }

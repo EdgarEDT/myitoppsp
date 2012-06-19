@@ -3141,11 +3141,11 @@ namespace Itop.TLPsp.Graphical
         private string frmname = "";
         public void ShortCutStart()
         {
-            this.Show();
+           // this.Show();
             this.Text = "短路计算";
-            LoadShape("symbol23.xml");
+            //LoadShape("symbol23.xml");
             JXTFlat = false;
-            jxtbar2(2);
+           // jxtbar2(2);
             fileType = false;
             NewFile(fileType, "短路计算");
             // NewFile(fileType, DialogResult.Ignore);
