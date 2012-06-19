@@ -13,7 +13,6 @@ using System.Collections;
 using Itop.Common;
 using DevExpress.XtraGrid.Views.BandedGrid;
 using System.IO;
-using Itop.Domain.Stutistic;
 using System.Xml;
 using Itop.Domain.Stutistics;
 using Itop.Client.Stutistics;
@@ -77,6 +76,29 @@ namespace Itop.Client.Table
             leixing = "运行";
             this.Show();
             InitGridData();
+           // InitGridDataSH("2014");
+        }
+
+        public void BiandianzhanSH(string con)
+        {
+            splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
+            barSubItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            //  this.ctrlSubstation_Info1.GridView.Bands[7].Visible = false;
+            //   this.ctrlSubstation_Info1.GridView.Bands[8].Visible = false;
+            //  this.ctrlSubstation_Info1.GridView.Bands[0].Visible = true;
+            //  this.ctrlSubstation_Info1.GridView.SortInfo.Add(this.ctrlSubstation_Info1.GridView.Columns["L1"], DevExpress.Data.ColumnSortOrder.Descending);
+            //  this.ctrlSubstation_Info1.GridView.SortInfo.Add(this.ctrlSubstation_Info1.GridView.Columns["AreaName"], DevExpress.Data.ColumnSortOrder.Descending);
+            //  this.ctrlSubstation_Info1.GridView.SortInfo.Add(this.ctrlSubstation_Info1.GridView.Columns["CreateDate"], DevExpress.Data.ColumnSortOrder.Ascending); 
+            //this.ctrlSubstation_Info1.GridView.Columns["L7"].Visible = false;
+            //this.ctrlSubstation_Info1.GridView.Columns["L8"].Visible = false;
+            //this.ctrlSubstation_Info1.GridView.Columns["L11"].Visible = false;
+            //this.ctrlSubstation_Info1.GridView.Columns["L12"].Visible = false;
+            selectid = "1";
+            selectname = "变电站数据表";
+            leixing = "运行";
+            InitGridDataSH(con);
+            this.ShowDialog();
+            
         }
 
         public void BiandianzhanLayout()
@@ -195,7 +217,18 @@ namespace Itop.Client.Table
             this.ctrlSubstation_Info1.CalcTotal();
         
         }
+        private void InitGridDataSH(string con)
+        {
+            this.ctrlSubstation_Info1.GridView.GroupPanelText = selectname;
+            this.ctrlSubstation_Info1.Flag = selectid;
+            ctrlSubstation_Info1.xmlflag = "guihua";
+            this.ctrlSubstation_Info1.ProjectID = Itop.Client.MIS.ProgUID;
+            this.ctrlSubstation_Info1.RefreshData1();
+            this.ctrlSubstation_Info1.GridView.Bands[0].Visible = true;
+            this.ctrlSubstation_Info1.GridView.Bands[0].Columns[0].Visible = true;
+            this.ctrlSubstation_Info1.CalcTotal(con);
 
+        }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
