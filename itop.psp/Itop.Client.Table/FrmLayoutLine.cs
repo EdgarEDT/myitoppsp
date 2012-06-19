@@ -47,6 +47,14 @@ namespace Itop.Client.Table
             InitData();
            
         }
+        public void Linestatic(string year)
+        {
+            if (!string.IsNullOrEmpty(year))
+            {
+                nowyear = year;
+            }
+            this.ShowDialog();
+        }
         private void AddArea()
         {
             string constr = " ProjectID='" + MIS.ProgUID + "'";
