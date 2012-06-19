@@ -133,8 +133,14 @@ namespace Itop.TLPSP.DEVICE
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit3.Properties.Items.Add(o);
             }
-            string con = " where Type ='01'and ProjectID ='" + this.ProjectID + "' order by name";
+            string con = "where Type='01'AND  ProjectID ='" + this.ProjectID + "' and SvgUID='" + dev.SvgUID + "' order by name";
+
             IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            if (list.Count == 0)
+            {
+                con = " where Type='01'AND  ProjectID ='" + this.ProjectID + "' order by name";
+                list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            }
             foreach (PSPDEV pspdev in list)
             {
                 if (comboBoxEdit4.Properties.Items.IndexOf(pspdev.Name) == -1)

@@ -144,24 +144,30 @@ namespace Itop.TLPSP.DEVICE
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit1.Properties.Items.Add(o);
             }
-            string con = " where Type='01'AND  ProjectID ='" + this.ProjectSUID + "' order by name";
+            string con = "where Type='01'AND  ProjectID ='" + this.ProjectSUID + "' and SvgUID='" + dev.SvgUID + "' order by name";
+           
             IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
-            foreach (PSPDEV dev in list)
+            if (list.Count==0)
             {
-                if (comboBoxEdit3.Properties.Items.IndexOf(dev.Name)==-1)
+                con = " where Type='01'AND  ProjectID ='" + this.ProjectSUID + "' order by name";
+               list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            }
+            foreach (PSPDEV dev1 in list)
+            {
+                if (comboBoxEdit3.Properties.Items.IndexOf(dev1.Name)==-1)
                 {
-                    comboBoxEdit3.Properties.Items.Add(dev.Name);
-                    comboBoxEdit4.Properties.Items.Add(dev.Name);
+                    comboBoxEdit3.Properties.Items.Add(dev1.Name);
+                    comboBoxEdit4.Properties.Items.Add(dev1.Name);
                 }
             }
             con = " where Type='07'AND  ProjectID ='" + this.ProjectSUID + "' order by name";
             list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
-            foreach (PSPDEV dev in list)
+            foreach (PSPDEV dev1 in list)
             {
-                if (comboBoxEdit5.Properties.Items.IndexOf(dev.Name) == -1)
+                if (comboBoxEdit5.Properties.Items.IndexOf(dev1.Name) == -1)
                 {
-                    comboBoxEdit5.Properties.Items.Add(dev.Name);
-                    comboBoxEdit6.Properties.Items.Add(dev.Name);
+                    comboBoxEdit5.Properties.Items.Add(dev1.Name);
+                    comboBoxEdit6.Properties.Items.Add(dev1.Name);
                 }
             }
             //没有的话 给赋一个初值
