@@ -209,7 +209,33 @@ namespace ItopVector.Tools
                                 n1.SetAttribute("IsLead", "1");
 
                                 n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
-                                n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                //决定线路在那条图层上：本级图层中有包含“线路”两字的图层，则生成到此图层； 如果有多个包含“线路”的图层，则生成到第一个； 如果没有包含“线路”的图层，则生成到当前选择图层。
+                                ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
+                                bool jsflag = false;
+                                for (int m= 0; m< layercol.Count; m++)
+                                {
+                                    if ((layercol[m] as Layer).GetAttribute("id") == SvgDocument.currentLayer && (layercol[m] as Layer).GetAttribute("label").Contains("线路"))
+                                    {
+                                        n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                        jsflag = true;
+                                        break;
+                                    }
+                                    else 
+                                    {
+                                        if ((layercol[m] as Layer).GetAttribute("label").Contains("线路"))
+                                        {
+                                            n1.SetAttribute("layer", (layercol[m] as Layer).GetAttribute("id"));
+                                            jsflag = true;
+                                            break;
+                                        }
+                                        
+                                    }
+                                }
+                               if (!jsflag)
+                               {
+                                   n1.SetAttribute("layer", SvgDocument.currentLayer);
+                               }
+
                                 n1.SetAttribute("FirstNode", device.GetAttribute("id"));
                                 n1.SetAttribute("LastNode", element.GetAttribute("id"));
                                 n1.SetAttribute("Deviceid", ((PSPDEV)list4[i]).SUID);
