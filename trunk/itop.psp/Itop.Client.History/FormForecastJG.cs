@@ -724,5 +724,10 @@ namespace Itop.Client.History
         {
             RefreshChart();
         }
+
+        private void checkEdit1_Click(object sender, EventArgs e)
+        {
+            RefreshChart();
+        }
     }
 }
