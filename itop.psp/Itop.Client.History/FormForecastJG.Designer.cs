@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Dundas.Charting.WinControl.ChartArea chartArea1 = new Dundas.Charting.WinControl.ChartArea();
-            Dundas.Charting.WinControl.Legend legend1 = new Dundas.Charting.WinControl.Legend();
-            Dundas.Charting.WinControl.Series series1 = new Dundas.Charting.WinControl.Series();
+            Dundas.Charting.WinControl.ChartArea chartArea3 = new Dundas.Charting.WinControl.ChartArea();
+            Dundas.Charting.WinControl.Legend legend3 = new Dundas.Charting.WinControl.Legend();
+            Dundas.Charting.WinControl.Series series3 = new Dundas.Charting.WinControl.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormForecastTX));
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chart1 = new Dundas.Charting.WinControl.Chart();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
@@ -54,26 +53,28 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.checkBox1 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkBox1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 33);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 34);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.treeList1);
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.panel1);
             this.splitContainerControl1.Panel2.Controls.Add(this.chart1);
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(699, 372);
+            this.splitContainerControl1.Size = new System.Drawing.Size(815, 438);
             this.splitContainerControl1.SplitterPosition = 237;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -85,49 +86,35 @@
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.Editable = false;
             this.treeList1.OptionsView.AutoWidth = false;
-            this.treeList1.Size = new System.Drawing.Size(691, 229);
+            this.treeList1.Size = new System.Drawing.Size(815, 237);
             this.treeList1.TabIndex = 4;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Location = new System.Drawing.Point(645, 3);
+            this.panel1.Location = new System.Drawing.Point(752, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(51, 22);
+            this.panel1.Size = new System.Drawing.Size(59, 26);
             this.panel1.TabIndex = 9;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox1.Location = new System.Drawing.Point(3, 4);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(45, 16);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "全选";
-            this.checkBox1.UseVisualStyleBackColor = false;
-            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
             // chart1
             // 
-            chartArea1.Name = "Default";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "Default";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Default";
-            this.chart1.Legends.Add(legend1);
+            legend3.Name = "Default";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
-            series1.BorderWidth = 2;
-            series1.ChartType = "Spline";
-            series1.Name = "Series1";
-            series1.ShadowOffset = 1;
-            series1.XValueType = Dundas.Charting.WinControl.ChartValueTypes.Double;
-            series1.YValueType = Dundas.Charting.WinControl.ChartValueTypes.Double;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(691, 123);
+            series3.BorderWidth = 2;
+            series3.ChartType = "Spline";
+            series3.Name = "Series1";
+            series3.ShadowOffset = 1;
+            series3.XValueType = Dundas.Charting.WinControl.ChartValueTypes.Double;
+            series3.YValueType = Dundas.Charting.WinControl.ChartValueTypes.Double;
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(815, 195);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
             this.chart1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseDown);
@@ -256,6 +243,30 @@
             this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(815, 34);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 472);
+            this.barDockControlBottom.Size = new System.Drawing.Size(815, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 34);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 438);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(815, 34);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 438);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -276,11 +287,21 @@
             this.imageList1.Images.SetKeyName(13, "books.ico");
             this.imageList1.Images.SetKeyName(14, "授权.ico");
             // 
+            // checkBox1
+            // 
+            this.checkBox1.Location = new System.Drawing.Point(4, 3);
+            this.checkBox1.MenuManager = this.barManager1;
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Properties.Caption = "全选";
+            this.checkBox1.Size = new System.Drawing.Size(53, 19);
+            this.checkBox1.TabIndex = 10;
+            this.checkBox1.Click += new System.EventHandler(this.checkEdit1_Click);
+            // 
             // FormForecastTX
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 405);
+            this.ClientSize = new System.Drawing.Size(815, 472);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -294,9 +315,9 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkBox1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -322,7 +343,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.CheckEdit checkBox1;
     }
 }
