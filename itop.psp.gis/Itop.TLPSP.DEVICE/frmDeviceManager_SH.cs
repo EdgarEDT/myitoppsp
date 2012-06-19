@@ -12,7 +12,8 @@ using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraTreeList.Columns;
 using Itop.Domain.Graphics;
 using Itop.TLPSP.DEVICE.Mysql;
-
+using Itop.Domain.Table;
+using Itop.Client.Table;
 namespace Itop.TLPSP.DEVICE
 {
     /// <summary>
@@ -28,7 +29,7 @@ namespace Itop.TLPSP.DEVICE
         #region 初始化
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut,UpdateNumber, barButtonItemDel, AllDele, barButtonItemclose,barImportPsasp,bardevicetemplate });
+            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut, UpdateNumber, barButtonItemDel, AllDele, barButtonItemclose, barImportPsasp, bardevicetemplate, Autofpfh,bdzStatic,xlStatic });
             
             barQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             barPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -65,6 +66,9 @@ namespace Itop.TLPSP.DEVICE
             this.Text = this.smmprog.ProgName;
              string[] type=new string[]{"20"};
              InitDeviceType(type);
+             Autofpfh.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+             bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+             bdzStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
              splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
             
              
@@ -79,6 +83,7 @@ namespace Itop.TLPSP.DEVICE
                 this.Text = this.smmprog.ProgName;
             string[] type = new string[] { "30" };
             InitDeviceType(type);
+            bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
         }
         //线路入口
@@ -91,6 +96,7 @@ namespace Itop.TLPSP.DEVICE
                 this.Text = this.smmprog.ProgName;
             string[] type = new string[] { "05" };
             InitDeviceType(type);
+            xlStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
         }
         //无功设备入口
@@ -284,7 +290,40 @@ namespace Itop.TLPSP.DEVICE
             dlg.Show(this);
 
         }
+        private void Autofpfh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Dictionary<string, Ps_Table_220Result> dic220;
+            Dictionary<string, Ps_Table_110Result> dic110;
+            double tsl = 1;
+            FrmAutofh fa = new FrmAutofh();
+            if (fa.ShowDialog()==DialogResult.OK)
+            {
+                dic220 = fa.Dic220;
+                dic110 = fa.Dic110;
+                tsl = fa.TSL;
+                //找出此卷下的所有变电站下的 负荷 或者是输出有功 无功为有功的1/3
 
+            }
+        }
+        private void bdzStatic_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmyearSel fs = new FrmyearSel();
+            if (fs.ShowDialog()==DialogResult.OK)
+            {
+                FrmLayoutSubstationInfo_AHTL fa = new FrmLayoutSubstationInfo_AHTL();
+                fa.BiandianzhanSH(fs.Year);
+            }
+        }
+        private void xlStatic_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmyearSel fs = new FrmyearSel();
+            if (fs.ShowDialog() == DialogResult.OK)
+            {
+                FrmLayoutLine fa = new FrmLayoutLine();
+                fa.Linestatic(fs.Year);
+            }
+
+        }
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             TreeListNode node = treeList1.FocusedNode;

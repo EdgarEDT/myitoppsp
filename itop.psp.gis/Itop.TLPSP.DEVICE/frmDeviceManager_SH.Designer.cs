@@ -36,6 +36,9 @@
             this.UpdateNumber = new DevExpress.XtraBars.BarButtonItem();
             this.barImportPsasp = new DevExpress.XtraBars.BarButtonItem();
             this.bardevicetemplate = new DevExpress.XtraBars.BarButtonItem();
+            this.Autofpfh = new DevExpress.XtraBars.BarButtonItem();
+            this.bdzStatic = new DevExpress.XtraBars.BarButtonItem();
+            this.xlStatic = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -151,10 +154,41 @@
             // 
             this.bardevicetemplate.Caption = "典型参数管理";
             this.bardevicetemplate.Id = 8;
-            this.bardevicetemplate.ImageIndex = 8;
+            this.bardevicetemplate.ImageIndex = 1;
             this.bardevicetemplate.Name = "bardevicetemplate";
             this.bardevicetemplate.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bardevicetemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bardevicetemplate_ItemClick);
+             // 
+            // Autofpfh
+            // 
+            this.Autofpfh.Caption = "自动分配负荷";
+            this.Autofpfh.Id = 9;
+            this.Autofpfh.ImageIndex = 8;
+            this.Autofpfh.Name = "bardevicetemplate";
+            this.Autofpfh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.Autofpfh.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.Autofpfh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Autofpfh_ItemClick);
+              // 
+            // bdzStatic
+            // 
+            this.bdzStatic.Caption = "变电站统计";
+            this.bdzStatic.Id =10;
+            this.bdzStatic.ImageIndex = 1;
+            this.bdzStatic.Name = "bdzStatic";
+            this.bdzStatic.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bdzStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bdzStatic.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bdzStatic_ItemClick);
+            // 
+            // xlStatic
+            // 
+            this.xlStatic.Caption = "线路统计";
+            this.xlStatic.Id = 9;
+            this.xlStatic.ImageIndex = 1;
+            this.xlStatic.Name = "xlStatic";
+            this.xlStatic.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.xlStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.xlStatic.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.xlStatic_ItemClick);
             // 
             // frmDeviceManager_SH
             // 
@@ -184,5 +218,8 @@
         private DevExpress.XtraBars.BarButtonItem UpdateNumber;
         private DevExpress.XtraBars.BarButtonItem barImportPsasp;
         private DevExpress.XtraBars.BarButtonItem bardevicetemplate;
+        private DevExpress.XtraBars.BarButtonItem Autofpfh;
+        private DevExpress.XtraBars.BarButtonItem bdzStatic;
+        private DevExpress.XtraBars.BarButtonItem xlStatic;
     }
 }

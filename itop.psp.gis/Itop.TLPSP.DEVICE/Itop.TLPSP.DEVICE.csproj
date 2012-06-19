@@ -90,6 +90,7 @@
     <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Client.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Client.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.Client.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -719,6 +720,12 @@
     <Compile Include="ExcelAccess.cs" />
     <Compile Include="ExcelStyle.cs" />
     <Compile Include="FileClass.cs" />
+    <Compile Include="FrmAutofh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAutofh.Designer.cs">
+      <DependentUpon>FrmAutofh.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAutojxt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -763,6 +770,12 @@
     </Compile>
     <Compile Include="frmSelectSub.Designer.cs">
       <DependentUpon>frmSelectSub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmyearSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmyearSel.Designer.cs">
+      <DependentUpon>FrmyearSel.cs</DependentUpon>
     </Compile>
     <Compile Include="frnReport.cs">
       <SubType>Form</SubType>
@@ -1405,9 +1418,15 @@
       <DependentUpon>UCDeviceBYQ3template.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAutofh.resx">
+      <DependentUpon>FrmAutofh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProjectManager_SH.resx">
       <DependentUpon>frmProjectManager_SH.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmyearSel.resx">
+      <DependentUpon>FrmyearSel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PSPProject.resx">
       <DependentUpon>PSPProject.cs</DependentUpon>
