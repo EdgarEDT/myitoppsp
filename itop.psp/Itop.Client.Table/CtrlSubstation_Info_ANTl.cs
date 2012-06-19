@@ -210,7 +210,7 @@ namespace Itop.Client.Table
             int j = 0;
             int now = 0;
             string con = "AreaID='" + projectid + "'"+ " and Flag='"+Ghflag+"'";
-            con += addConn;
+           // con += addConn;
             con += " order by convert(int,L1) desc,S4,AreaName,CreateDate,convert(int,S5)";
             string[] que = new string[60] { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", 
             "十一","十二","十三","十四","十五","十六","十七","十八","十九","二十","二十一","二十二","二十三","二十四","二十五","二十六","二十七",
@@ -219,6 +219,28 @@ namespace Itop.Client.Table
             titlestr = que;
             //IList list = Common.Services.BaseService.GetList("SelectSubstation_InfoByCon", con);
             IList list = Common.Services.BaseService.GetList("SelectSubstation_InfoByWhere", con);
+            if (!string.IsNullOrEmpty(addConn))
+            {
+                List<Substation_Info> listremove = new List<Substation_Info>();
+                for (int i = 0; i < list.Count;i++ )
+                {
+                    if (((Substation_Info)list[i]).S2.Length!=4)
+                    {
+                        listremove.Add((Substation_Info)list[i]);
+                    }
+                    else
+                    {
+                        if (Convert.ToDouble(((Substation_Info)list[i]).S2)>Convert.ToDouble(addConn))
+                        {
+                            listremove.Add((Substation_Info)list[i]);
+                        }
+                    }
+                }
+                for (int i = 0; i < listremove.Count;i++ )
+                {
+                    list.Remove(listremove[i]);
+                }
+            }
             string conn = "L1=110";
             // IList groupList = Common.Services.BaseService.GetList("SelectAreaNameGroupByConn", conn);
             IList<string> groupList = new List<string>();
@@ -1082,11 +1104,15 @@ namespace Itop.Client.Table
         {
             for (int i = 0; i < templist.Count; i++)
             {
-                if (char.IsLower(((Substation_Info)templist[i]).S3, 0))
+                if (!string.IsNullOrEmpty(((Substation_Info)templist[i]).S3))
                 {
-                    templist.RemoveAt(i);
-                    i--;
+                    if (char.IsLower(((Substation_Info)templist[i]).S3, 0))
+                    {
+                        templist.RemoveAt(i);
+                        i--;
+                    }
                 }
+               
             }
         }
         public void CalcTotal()
