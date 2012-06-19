@@ -145,6 +145,7 @@
             this.barImportPsasp.ImageIndex = 1;
             this.barImportPsasp.Name = "barImportPsasp";
             this.barImportPsasp.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barImportPsasp.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barImportPsasp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barImportPsasp_ItemClick);
             // 
             // bardevicetemplate
@@ -153,8 +154,10 @@
             this.bardevicetemplate.Id = 8;
             this.bardevicetemplate.ImageIndex = 8;
             this.bardevicetemplate.Name = "bardevicetemplate";
-            this.bardevicetemplate.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bardevicetemplate.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph; 
+            this.bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bardevicetemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bardevicetemplate_ItemClick);
+          
             // 
             // frmDeviceManager_SH
             // 

@@ -29,7 +29,7 @@ namespace Itop.TLPSP.DEVICE
         #region ≥ı ºªØ
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut, UpdateNumber, barButtonItemDel, AllDele, barButtonItemclose, barImportPsasp, bardevicetemplate, Autofpfh,bdzStatic,xlStatic });
+            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut, UpdateNumber, barButtonItemDel, AllDele, barImportPsasp, bardevicetemplate, Autofpfh, bdzStatic, xlStatic, barButtonItemclose });
             
             barQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             barPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
