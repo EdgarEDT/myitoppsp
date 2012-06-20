@@ -264,6 +264,15 @@ namespace Itop.TLPSP.DEVICE
             PSPDEV p = new PSPDEV();
             p.ProjectID = this.ProjectID;
             p.SvgUID = ParentID;
+            if (ParentObj is PSP_Substation_Info)
+            {
+                p.Name = (ParentObj as PSP_Substation_Info).Title + "B";
+            }
+            else if (ParentObj is PSP_PowerSubstation_Info)
+            {
+                p.Name = (ParentObj as PSP_PowerSubstation_Info).Title + "B";
+            }
+           
             dlg.DeviceMx = p;
             if (dlg.ShowDialog() == DialogResult.OK)
             {

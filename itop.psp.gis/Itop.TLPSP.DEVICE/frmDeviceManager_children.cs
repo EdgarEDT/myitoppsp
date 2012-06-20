@@ -179,6 +179,7 @@ namespace Itop.TLPSP.DEVICE
             if (curDevice != null)
             {
                 curDevice.ParentID = parentid;
+                curDevice.ParentObj = ParentObj;
                 curDevice.Add();
             }
         }

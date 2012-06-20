@@ -16,6 +16,7 @@ using Itop.Domain.Stutistic;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.BandedGrid;
 using System.IO;
+using Itop.Domain.Graphics;
 #endregion
 
 namespace Itop.TLPSP.DEVICE
@@ -161,7 +162,52 @@ namespace Itop.TLPSP.DEVICE
 			return true;
 		}
 
+        /// <summary>
+        /// 刷新表格中的数据
+        /// </summary>
+        /// <returns>ture:成功  false:失败</returns>
+        public bool RefreshData1(PSP_ELCPROJECT proj)
+        {
+            try
+            {
+                string filepath = "";
+                // IList<Substation_Info> list = UCDeviceBase.DataService.GetList<Substation_Info>("SelectSubstation_InfoByFlag",flags1);
+                string con = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND UID IN (SELECT PSPDEV.SVGUID FROM PSPDEV, PSP_ELCDEVICE WHERE  PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + proj.ID+ "'AND Type='01')";
 
+                IList<Substation_Info> list = UCDeviceBase.DataService.GetList<Substation_Info>("SelectSubstation_InfoByCon", con);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    Substation_Info sb = (Substation_Info)list[i];
+                    if (sb.L2 != 0 || sb.L2 != null)
+                    {
+                        sb.L10 = Convert.ToDouble(Convert.ToDouble(sb.L9) / sb.L2 * 100);
+                        //sb.GetType().GetProperty("L10").SetValue(sb, LL10, null);
+
+                    }
+
+                }
+                if (xmlflag == "guihua")
+                    filepath = Path.GetTempPath() + "\\" + Path.GetFileName("SubstationGuiHua.xml");
+                else
+                {
+                    filepath = Path.GetTempPath() + "\\" + Path.GetFileName("SubstationLayOut11.xml");
+                }
+
+                if (File.Exists(filepath))
+                {
+                    this.bandedGridView1.RestoreLayoutFromXml(filepath);
+                }
+                this.gridControl.DataSource = list;
+            }
+            catch (Exception exc)
+            {
+                Debug.Fail(exc.Message);
+                HandleException.TryCatch(exc);
+                return false;
+            }
+
+            return true;
+        }
         /// <summary>
         /// 刷新表格中的数据
         /// </summary>

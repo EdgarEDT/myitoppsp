@@ -57,7 +57,8 @@ namespace Itop.TLPSP.DEVICE
         {
             set { isSelect = value; }
         }
-
+        string strID;
+        PSP_ELCPROJECT parentobj;
         public void Biandianzhan()
         {
             tucengflag = false;
@@ -66,8 +67,19 @@ namespace Itop.TLPSP.DEVICE
             selectid = "10000";           //为现状变电站
             selectname = "现状表";
             leixing = "运行";
-            this.Show();
-            InitGridData();
+            PSPProject pd = new PSPProject();
+            pd.ProjectID = this.ProjectUID;
+            pd.Initdata(false);
+            
+            if (pd.ShowDialog() == DialogResult.OK)
+            {
+                strID = pd.FileSUID;
+                parentobj = pd.Parentobj;
+                this.Text = "方案-" + parentobj.Name;
+                this.Show();
+                InitGridData_SH(parentobj);
+            }
+           
         }
 
         public void BiandianzhanLayout()
@@ -182,6 +194,17 @@ namespace Itop.TLPSP.DEVICE
             this.ctrlSubstation_Info1.RefreshData1();
 
         
+        }
+        private void InitGridData_SH(PSP_ELCPROJECT prj)
+        {
+            if (!tucengflag)
+                this.ctrlSubstation_Info1.GridView.GroupPanelText = "变压器可靠性检验表";
+            this.ctrlSubstation_Info1.ProjectID = Itop.Client.MIS.ProgUID;
+            this.ctrlSubstation_Info1.Flag = selectid;
+            ctrlSubstation_Info1.xmlflag = "guihua";
+            this.ctrlSubstation_Info1.RefreshData1(prj);
+
+
         }
 
 
@@ -1122,7 +1145,8 @@ namespace Itop.TLPSP.DEVICE
             }
             this.ctrlSubstation_Info1.kekaoflag = true;
             this.ctrlSubstation_Info1.row_num = row_num;
-            this.ctrlSubstation_Info1.RefreshData1();
+            //this.ctrlSubstation_Info1.RefreshData1();
+            this.ctrlSubstation_Info1.RefreshData1(parentobj);
         }
 
         ////////////private DataTable GetExcel(string filepach)
