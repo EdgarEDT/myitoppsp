@@ -7,6 +7,7 @@
   <device id="01" name="母线典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceMX" parentid="300"></device>-->  
   <device id="02" name ="两绕组变压器典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQ2template" parentid="300"></device>
   <device id="03" name ="三绕组变压器典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceBYQ3template" parentid="300"></device>
+  <device id="40" name ="导线型号" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDXXH" parentid="200"></device>
   <!--<device id="04" name ="发电机典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFDJ" parentid="300"></device>
   <device id="05" name ="线路典型参数" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceXL" parentid="200"></device>-->
   <!--<device id="06" name ="断路器" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDLQ" parentid="300"></device>
@@ -18,8 +19,7 @@
   <device id="12" name ="负荷" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceFH" parentid="300"></device>
   <device id="13" name ="1/2母联开关" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceML" parentid="300"></device>
   <device id="14" name ="3/2母联开关" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceML2" parentid="300"></device>
-  <device id="15" name ="线路互感" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceHG" parentid="300"></device>  
-  <device id="40" name ="导线型号" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceDXXH" parentid="200"></device>-->
+  <device id="15" name ="线路互感" visible="true" class="Itop.TLPSP.DEVICE.UCDeviceHG" parentid="300"></device> --> 
   <!--<device id="100" name ="配电设备" visible="true" class="" parentid=""></device>
   <device id="50" name ="配电室" visible="false" class="Itop.TLPSP.DEVICE.UCDevicePWB" parentid="100"></device>
   <device id="51" name ="箱式变" visible="false" class="Itop.TLPSP.DEVICE.UCDevicePWB" parentid="100"></device>
