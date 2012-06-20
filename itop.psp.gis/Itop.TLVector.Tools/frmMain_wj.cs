@@ -10944,7 +10944,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             ParentUID = pid;
             //MapType = "所内接线图";
             //Open(_SvgUID);
-            if (progtype == "电网规划层")
+            if (progtype == "电网规划层" || progtype == "变电站选址")
             {
                 Open(_SvgUID);
             }
@@ -11361,6 +11361,39 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                     tmplaylist.Add(layerlist[i]);
                 }
                 DwBarVisible(false);
+                tlVectorControl1.CanEdit = false;
+            }
+            if (progtype == "变电站选址")
+            {
+                //this.Text = "电网规划";
+                string title = " ";
+                string t = "";
+                getProjName(MIS.ProgUID, ref title);
+
+                string[] str = yearID.Split(",".ToCharArray());
+                if (str.Length > 1)
+                {
+                    for (int i = 1; i < str.Length; i++)
+                    {
+                        LayerGrade ll = Services.BaseService.GetOneByKey<LayerGrade>(str[i].Replace("'", ""));
+                        if (ll != null)
+                        {
+                            if (ll.ParentID != "SUID")
+                            {
+                                LayerGrade ll2 = Services.BaseService.GetOneByKey<LayerGrade>(ll.ParentID);
+                                t = t + ll2.Name + " " + ll.Name + "， ";
+                            }
+                        }
+                    }
+                }
+
+                this.Text = title + " " + t + " 变电站选址";
+                for (int i = 0; i < layerlist.Count; i++)
+                {
+                    Layer lar = (Layer)layerlist[i];
+                    tmplaylist.Add(layerlist[i]);
+                }
+                DwBarVisible_SH(false);
                 tlVectorControl1.CanEdit = false;
             }
 
@@ -12315,6 +12348,69 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             dotNetBarManager1.GetItem("ButtonJXT").Enabled = b;
 
             dotNetBarManager1.GetItem("ButtonItem7").Visible = true;
+    
+#if(!CITY)
+            dotNetBarManager1.Bars["bar7"].GetItem("mAreaPoly").Visible = false;
+#endif
+
+            dotNetBarManager1.Bars["bar7"].GetItem("mLeadLine").Enabled = b;
+            dotNetBarManager1.Bars["bar7"].GetItem("mJQLeadLine").Enabled = b;
+            dotNetBarManager1.Bars["bar7"].GetItem("mFx").Enabled = b;
+            dotNetBarManager1.Bars["bar7"].GetItem("mFzzj").Enabled = b;
+            dotNetBarManager1.Bars["bar7"].GetItem("mAreaPoly").Enabled = b;
+            dotNetBarManager1.Bars["bar7"].GetItem("mReCompute").Enabled = b;
+            //dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Visible = false;
+            dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Visible = true;
+            dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mFreeTransform").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mShapeTransform").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mLine").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mPolyline").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mAngleRectangle").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mEllipse").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mPolygon").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mBezier").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mImage").Enabled = b;
+            dotNetBarManager1.Bars["bar2"].GetItem("mText").Enabled = b;
+            propertyGrid.Enabled = b;
+            symbolSelector.Enabled = b;
+            bk1.Visible = true;
+        }
+
+        public void DwBarVisible_SH(bool b)
+        {
+            dotNetBarManager1.Bars["bar7"].Visible = true;
+            dotNetBarManager1.Bars["bar8"].Visible = false;
+            //dotNetBarManager1.Bars["bar8"].GetItem("mEdit").Enabled = false;
+            dotNetBarManager1.Bars["bar6"].Enabled = b;
+            dotNetBarManager1.Bars["bar7"].Enabled = b;
+            dotNetBarManager1.GetItem("ButtonItem7").Enabled = b;
+            dotNetBarManager1.GetItem("ghwj").Enabled = b;
+            dotNetBarManager1.GetItem("m_ld").Enabled = b;
+            dotNetBarManager1.GetItem("m_fz").Enabled = b;
+            dotNetBarManager1.GetItem("m_bxz").Enabled = b;
+            dotNetBarManager1.GetItem("ButtonJXT").Enabled = b;
+
+            dotNetBarManager1.GetItem("ButtonItem7").Visible = true;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["mJQLeadLine"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["mLeadLine"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["mFx"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["mFzzj"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_cx"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_ld"].Visible = b;
+
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_bxz"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_tp"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_reDraw"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_subColor"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["Chaoliujisuan"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["ORP"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["ghwj"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_djcl"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_inxljwd"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_inbdzjwd"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_unsel"].Visible = b;
+
 #if(!CITY)
             dotNetBarManager1.Bars["bar7"].GetItem("mAreaPoly").Visible = false;
 #endif

@@ -93,6 +93,8 @@
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.label11 = new System.Windows.Forms.Label();
+            this.spinEdit5 = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -123,6 +125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit5.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -170,7 +173,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 14);
             this.label10.TabIndex = 18;
-            this.label10.Text = "结束时间";
+            this.label10.Text = "退役时间";
             // 
             // label9
             // 
@@ -247,7 +250,9 @@
             this.groupBox1.Controls.Add(this.textEdit1);
             this.groupBox1.Controls.Add(this.textEdit2);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.spinEdit5);
             this.groupBox1.Controls.Add(this.spinEdit4);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.spinEdit3);
             this.groupBox1.Controls.Add(this.label5);
@@ -272,7 +277,7 @@
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(226, 89);
+            this.simpleButton4.Location = new System.Drawing.Point(226, 78);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(52, 23);
             this.simpleButton4.TabIndex = 20;
@@ -342,7 +347,7 @@
             // 
             // textEdit2
             // 
-            this.textEdit2.Location = new System.Drawing.Point(96, 124);
+            this.textEdit2.Location = new System.Drawing.Point(96, 106);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.MaxLength = 50;
             this.textEdit2.Size = new System.Drawing.Size(181, 21);
@@ -352,7 +357,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(8, 129);
+            this.label7.Location = new System.Drawing.Point(8, 111);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 14);
             this.label7.TabIndex = 10;
@@ -365,7 +370,7 @@
             0,
             0,
             0});
-            this.spinEdit4.Location = new System.Drawing.Point(97, 191);
+            this.spinEdit4.Location = new System.Drawing.Point(97, 161);
             this.spinEdit4.Name = "spinEdit4";
             this.spinEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -376,7 +381,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(9, 197);
+            this.label6.Location = new System.Drawing.Point(9, 167);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 14);
             this.label6.TabIndex = 8;
@@ -389,7 +394,7 @@
             0,
             0,
             0});
-            this.spinEdit3.Location = new System.Drawing.Point(97, 156);
+            this.spinEdit3.Location = new System.Drawing.Point(97, 134);
             this.spinEdit3.Name = "spinEdit3";
             this.spinEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -400,7 +405,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(9, 162);
+            this.label5.Location = new System.Drawing.Point(9, 140);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 14);
             this.label5.TabIndex = 6;
@@ -448,7 +453,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 265);
+            this.label2.Location = new System.Drawing.Point(9, 263);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 14);
             this.label2.TabIndex = 4;
@@ -468,7 +473,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(9, 232);
+            this.label4.Location = new System.Drawing.Point(9, 229);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 14);
             this.label4.TabIndex = 4;
@@ -481,7 +486,7 @@
             0,
             0,
             0});
-            this.spinEdit2.Location = new System.Drawing.Point(97, 90);
+            this.spinEdit2.Location = new System.Drawing.Point(97, 79);
             this.spinEdit2.Name = "spinEdit2";
             this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -492,7 +497,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(9, 97);
+            this.label16.Location = new System.Drawing.Point(9, 86);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(66, 14);
             this.label16.TabIndex = 2;
@@ -505,7 +510,7 @@
             0,
             0,
             0});
-            this.spinEdit1.Location = new System.Drawing.Point(97, 58);
+            this.spinEdit1.Location = new System.Drawing.Point(97, 52);
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -516,7 +521,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(9, 64);
+            this.label3.Location = new System.Drawing.Point(9, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 14);
             this.label3.TabIndex = 0;
@@ -834,8 +839,42 @@
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(87, 31);
             this.simpleButton5.TabIndex = 12;
-            this.simpleButton5.Text = "详细信息";
+            this.simpleButton5.Text = "设备参数";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(14, 195);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 14);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "负载率";
+            // 
+            // spinEdit5
+            // 
+            this.spinEdit5.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit5.Location = new System.Drawing.Point(96, 190);
+            this.spinEdit5.Name = "spinEdit5";
+            this.spinEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit5.Properties.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.spinEdit5.Properties.MaxValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinEdit5.Size = new System.Drawing.Size(181, 21);
+            this.spinEdit5.TabIndex = 5;
             // 
             // frmBDZdlg
             // 
@@ -882,6 +921,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit5.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -952,5 +992,7 @@
         private DevExpress.XtraEditors.ComboBoxEdit date1;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SpinEdit spinEdit5;
+        private System.Windows.Forms.Label label11;
     }
 }
