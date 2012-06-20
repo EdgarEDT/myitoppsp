@@ -36,7 +36,7 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.ctrlLayoutList1 = new Itop.TLPSP.DEVICE.CtrlLayoutList();
             this.ctrlSubstation_Info1 = new Itop.TLPSP.DEVICE.CtrlSubstation_Info();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -80,7 +80,7 @@
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.ctrlSubstation_Info1);
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(977, 391);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1140, 462);
             this.splitContainerControl1.SplitterPosition = 185;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -92,7 +92,7 @@
             this.ctrlLayoutList1.IsShow = true;
             this.ctrlLayoutList1.Location = new System.Drawing.Point(0, 0);
             this.ctrlLayoutList1.Name = "ctrlLayoutList1";
-            this.ctrlLayoutList1.Size = new System.Drawing.Size(179, 385);
+            this.ctrlLayoutList1.Size = new System.Drawing.Size(185, 462);
             this.ctrlLayoutList1.TabIndex = 0;
             this.ctrlLayoutList1.Type = "";
             // 
@@ -104,7 +104,7 @@
             this.ctrlSubstation_Info1.IsSelect = false;
             this.ctrlSubstation_Info1.Location = new System.Drawing.Point(0, 0);
             this.ctrlSubstation_Info1.Name = "ctrlSubstation_Info1";
-            this.ctrlSubstation_Info1.Size = new System.Drawing.Size(782, 385);
+            this.ctrlSubstation_Info1.Size = new System.Drawing.Size(949, 462);
             this.ctrlSubstation_Info1.TabIndex = 0;
             this.ctrlSubstation_Info1.Type = "";
             // 
@@ -157,7 +157,6 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barRel),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
@@ -390,6 +389,30 @@
             this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1140, 34);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 496);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1140, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 34);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 462);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1140, 34);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 462);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -411,9 +434,9 @@
             // 
             // FrmLayoutSubstationInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 425);
+            this.ClientSize = new System.Drawing.Size(1140, 496);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

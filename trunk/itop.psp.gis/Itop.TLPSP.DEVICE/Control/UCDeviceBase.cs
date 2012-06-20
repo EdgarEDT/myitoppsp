@@ -418,6 +418,12 @@ namespace Itop.TLPSP.DEVICE
             get { return parentid; }
             set { parentid = value; }
         }
+        private object parentobj;
+        public object ParentObj
+        {
+            get { return parentobj; }
+            set { parentobj = value; }
+        }
         public string strCon
         {
             get {
