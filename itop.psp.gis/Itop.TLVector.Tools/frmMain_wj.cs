@@ -10681,6 +10681,10 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                 {
                     DwBarVisible(true);
                 }
+                if (progtype == "变电站选址")
+                {
+                    DwBarVisible(true);
+                }
             }
             else
             {
@@ -10697,6 +10701,10 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                     DkBarVisible(false);
                 }
                 if (progtype == "电网规划层")
+                {
+                    DwBarVisible(false);
+                }
+                if (progtype == "变电站选址")
                 {
                     DwBarVisible(false);
                 }
