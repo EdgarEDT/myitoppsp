@@ -47,6 +47,7 @@ namespace Itop.TLPSP.DEVICE
                 devObj.S8 = type2.Text;
                 devObj.S29 = date1.Text;
                 devObj.S30 = date2.Text;
+                devObj.S18 = textEdit2.Text;
                 return devObj; }
             set {
                 devObj = value;
@@ -62,6 +63,7 @@ namespace Itop.TLPSP.DEVICE
                 fdxss.Text = devObj.S12;
                 cyd.Text = devObj.S13;
                 td.Text = devObj.S14;
+                textEdit2.Text = devObj.S18;
                 type2.Text = devObj.S8;
                 date1.Text = devObj.S29;
                 date2.Text = devObj.S30;

@@ -98,7 +98,18 @@ namespace Itop.DLGH
             this.Show();
            
         }
+        public void csxz()
+        {
+            stype = "变电站选址";
+            this.Text = "变电站选址";
+            ctrlSvgView1.progtype = stype;
+            this.Show();
+            string t = "";
+            string title = "";
+            getProjName(MIS.ProgUID, ref title);
 
+            this.Text = title + " " + t + " 变电站选址";
+        }
         private void button1_Click(object sender, EventArgs e)
         {
            

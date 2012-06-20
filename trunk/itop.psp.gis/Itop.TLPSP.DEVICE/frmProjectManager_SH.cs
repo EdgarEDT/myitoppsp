@@ -177,7 +177,7 @@ namespace Itop.TLPSP.DEVICE {
             treeList1.DataSource = datatable;
 
            // DeviceTypeHelper.InitDeviceTypes(treeList2);
-            DeviceTypeHelper.initprojectDeviceTypes(treeList2);
+            DeviceTypeHelper.initprojectDeviceTypes_SH(treeList2);
         }
 
         #endregion
@@ -189,6 +189,7 @@ namespace Itop.TLPSP.DEVICE {
         /// <param name="classname"></param>
         /// <returns></returns>
         private UCDeviceBase createInstance(string classname) {
+            //if (string.IsNullOrEmpty(classname))
             return Assembly.GetExecutingAssembly().CreateInstance(classname, false) as UCDeviceBase;
         }
         private void showDevice(UCDeviceBase device) {

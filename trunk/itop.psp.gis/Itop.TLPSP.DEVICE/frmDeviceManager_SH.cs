@@ -67,7 +67,7 @@ namespace Itop.TLPSP.DEVICE
              string[] type=new string[]{"20"};
              InitDeviceType(type);
              Autofpfh.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
-             bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            // bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
              bdzStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
              splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
             
@@ -83,7 +83,7 @@ namespace Itop.TLPSP.DEVICE
                 this.Text = this.smmprog.ProgName;
             string[] type = new string[] { "30" };
             InitDeviceType(type);
-            bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+           // bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
         }
         //线路入口

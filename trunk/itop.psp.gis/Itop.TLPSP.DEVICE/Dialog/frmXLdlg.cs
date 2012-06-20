@@ -845,6 +845,14 @@ namespace Itop.TLPSP.DEVICE
             }
         }
 
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            this.xtraTabPage2.PageVisible = true;
+            this.xtraTabPage3.PageVisible = true;
+            this.xtraTabPage4.PageVisible = true;
+            xtraTabControl1.SelectedTabPageIndex = 1;
+        }
+
         /// <summary>
         /// Ä¸ÏßÀàÐÍ
         /// </summary>

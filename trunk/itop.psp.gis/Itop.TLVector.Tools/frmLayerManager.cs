@@ -134,6 +134,23 @@ namespace ItopVector.Tools
                                     }
                          
                     }
+                    if (progtype == "变电站选址")
+                    {
+
+                        bool ck = false;
+                        if ((element1.GetAttribute("visibility") == "visible"))
+                        {
+                            ck = true;
+                        }
+                        string strLayerID = element1.GetAttribute("id");
+                        int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
+                        if (element1.Visible)
+                        {
+                            checkedListBox1.SetItemChecked(n, ck);
+                        }
+
+                    }
+
                     if (progtype == "所内接线图")
                     {
                         if (element1.GetAttribute("layerType") == progtype)

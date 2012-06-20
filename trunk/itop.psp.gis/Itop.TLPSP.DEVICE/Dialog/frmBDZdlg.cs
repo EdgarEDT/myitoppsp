@@ -85,6 +85,7 @@ namespace Itop.TLPSP.DEVICE
                 bdz.L2 = (double)spinEdit2.Value;
                 bdz.L4 = textEdit2.Text;
                 bdz.L9 =(double) spinEdit3.Value;
+                bdz.L10 = (double)spinEdit5.Value;
                 bdz.L3 = (int)spinEdit4.Value;
                 bdz.S2 = comboBoxEdit1.Text;
                 bdz.Flag = comboBoxEdit2.Text == "规划" ? "2" : "1";
@@ -110,6 +111,8 @@ namespace Itop.TLPSP.DEVICE
                 try { spinEdit3.Value = Convert.ToDecimal(bdz.L9); }
                 catch { }
                 try { spinEdit4.Value = (decimal)bdz.L3; }
+                catch { }
+                try { spinEdit5.Value = (decimal)bdz.L10; }
                 catch { }
                 comboBoxEdit1.Text = bdz.S2; 
                 comboBoxEdit2.Text = bdz.Flag == "2" ? "规划" :"现状" ;

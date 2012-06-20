@@ -148,6 +148,7 @@
             this.barImportPsasp.ImageIndex = 1;
             this.barImportPsasp.Name = "barImportPsasp";
             this.barImportPsasp.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barImportPsasp.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barImportPsasp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barImportPsasp_ItemClick);
             // 
             // bardevicetemplate

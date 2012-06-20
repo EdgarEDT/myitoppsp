@@ -168,10 +168,17 @@ namespace Itop.TLPSP.DEVICE
             column.VisibleIndex = 3;
             column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
+            column.Caption = "容量构成";
+            column.FieldName = "S18";
+            column.Width = 100;
+            column.VisibleIndex = 4;
+            column.OptionsColumn.AllowEdit = false;
+
+            column = gridView1.Columns.Add();
             column.Caption = "投产年份";
             column.FieldName = "S3";
             column.Width = 100;
-            column.VisibleIndex = 4;
+            column.VisibleIndex = 5;
             column.OptionsColumn.AllowEdit = false;
             //column = gridView1.Columns.Add();
             //column.Caption = "停产年份";

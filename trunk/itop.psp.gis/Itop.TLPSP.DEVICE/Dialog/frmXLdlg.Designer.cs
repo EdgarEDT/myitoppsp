@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -161,6 +161,7 @@
             this.colNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSonUid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
@@ -274,7 +275,7 @@
             this.groupBox9.Controls.Add(this.label48);
             this.groupBox9.Controls.Add(this.date2);
             this.groupBox9.Controls.Add(this.date1);
-            this.groupBox9.Location = new System.Drawing.Point(329, 324);
+            this.groupBox9.Location = new System.Drawing.Point(326, 311);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(313, 90);
             this.groupBox9.TabIndex = 21;
@@ -299,7 +300,7 @@
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(55, 14);
             this.label48.TabIndex = 18;
-            this.label48.Text = "结束时间";
+            this.label48.Text = "退役时间";
             // 
             // date2
             // 
@@ -571,7 +572,7 @@
             this.textEdit1.Location = new System.Drawing.Point(97, 29);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, false)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, false)});
             this.textEdit1.Properties.Click += new System.EventHandler(this.mc_Properties_Click);
             this.textEdit1.Size = new System.Drawing.Size(181, 21);
             this.textEdit1.TabIndex = 0;
@@ -998,6 +999,7 @@
             this.xtraTabPage2.Controls.Add(this.groupBox6);
             this.xtraTabPage2.Controls.Add(this.groupBox2);
             this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.PageVisible = false;
             this.xtraTabPage2.Size = new System.Drawing.Size(667, 537);
             this.xtraTabPage2.Text = "阻抗及线路容量";
             // 
@@ -1545,6 +1547,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.gridControl);
             this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.PageVisible = false;
             this.xtraTabPage3.Size = new System.Drawing.Size(667, 537);
             this.xtraTabPage3.Text = "附件文档";
             // 
@@ -1768,6 +1771,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.gridControl1);
             this.xtraTabPage4.Name = "xtraTabPage4";
+            this.xtraTabPage4.PageVisible = false;
             this.xtraTabPage4.Size = new System.Drawing.Size(667, 537);
             this.xtraTabPage4.Text = "线路经过地块";
             // 
@@ -1914,6 +1918,17 @@
             this.colSonUid.Name = "colSonUid";
             this.colSonUid.OptionsColumn.ShowInCustomizationForm = false;
             // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.simpleButton4.Location = new System.Drawing.Point(367, 587);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(94, 27);
+            this.simpleButton4.TabIndex = 22;
+            this.simpleButton4.Text = "详细信息";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -1963,6 +1978,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 622);
+            this.Controls.Add(this.simpleButton4);
             this.Controls.Add(this.buttonEdit1);
             this.Controls.Add(this.label46);
             this.Controls.Add(this.xtraTabControl1);
@@ -2194,5 +2210,6 @@
         private System.Windows.Forms.Label label48;
         private DevExpress.XtraEditors.ComboBoxEdit date2;
         private DevExpress.XtraEditors.ComboBoxEdit date1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
     }  
 }
