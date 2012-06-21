@@ -20,14 +20,12 @@ using System.Text.RegularExpressions;
 
 using Itop.Client.Base;
 
-namespace ItopVector.Tools
-{
+namespace ItopVector.Tools {
     public delegate void OnClickLayerhandler(object sender, Layer lar);
     public delegate void OnDeleteLayerhandler(object sender);
-    public delegate void OnCheckhandler(object sender);     
-    public partial class frmLayerManager : FormBase
-    {
-        public bool spatialflag=true;
+    public delegate void OnCheckhandler(object sender);
+    public partial class frmLayerManager : FormBase {
+        public bool spatialflag = true;
         FlashWindow f = new FlashWindow();
         public event OnClickLayerhandler OnClickLayer;
         public event OnDeleteLayerhandler OnDeleteLayer;
@@ -40,32 +38,28 @@ namespace ItopVector.Tools
         public string Key = "";
         public static ArrayList ilist = new ArrayList();
         public ArrayList NoSave = new ArrayList();
-        public string Progtype
-        {
+        public string Progtype {
             get { return progtype; }
             set { progtype = value; }
         }
 
-        public string StrYear
-        {
-            set { 
+        public string StrYear {
+            set {
                 dateEdit1.Text = value;
-                dateEdit2.Text = value; 
+                dateEdit2.Text = value;
             }
         }
-        public frmLayerManager()
-        {
+        public frmLayerManager() {
             InitializeComponent();
 
         }
-        public void Readonly()
-        {
-            btAdd.Enabled=false;
-            btEdit.Enabled=false;
-            btDel.Enabled=false;
-            simpleButton3.Enabled=false;
-            simpleButton4.Enabled=false;
-            simpleButton1.Enabled=false;
+        public void Readonly() {
+            btAdd.Enabled = false;
+            btEdit.Enabled = false;
+            btDel.Enabled = false;
+            simpleButton3.Enabled = false;
+            simpleButton4.Enabled = false;
+            simpleButton1.Enabled = false;
             simpleButton2.Enabled = false;
             button1.Enabled = false;
             checkEdit1.Enabled = false;
@@ -73,32 +67,24 @@ namespace ItopVector.Tools
             dateEdit2.Enabled = false;
             button2.Enabled = false;
         }
-        public void InitData()
-        {
+        public void InitData() {
             checkedListBox1.Items.Clear();
-            if (symbolDoc != null)
-            {
+            if (symbolDoc != null) {
                 symbolDoc2 = symbolDoc;
                 XmlNodeList list1 = symbolDoc.GetElementsByTagName("layer");
-                for (int num1 = 0; num1 < list1.Count; num1++)
-                {
+                for (int num1 = 0; num1 < list1.Count; num1++) {
                     Layer element1 = list1[num1] as Layer;
-                    if (progtype == "地理信息层")
-                    {
-                        if (element1.GetAttribute("layerType")==progtype)
-                        {
+                    if (progtype == "地理信息层") {
+                        if (element1.GetAttribute("layerType") == progtype) {
                             string strLayerID = element1.GetAttribute("id");
-                            int n=this.checkedListBox1.Items.Add(element1, element1.Visible);                          
-                            if (element1.Visible)
-                            {
+                            int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
+                            if (element1.Visible) {
                                 checkedListBox1.SetItemChecked(n, true);
                             }
                         }
                     }
-                    if (progtype == "城市规划层")
-                    {
-                        if (spatialflag)
-                        {
+                    if (progtype == "城市规划层") {
+                        if (spatialflag) {
                             if (element1.GetAttribute("layerType") == progtype || element1.GetAttribute("layerType") == "地理信息层") {
                                 string strLayerID = element1.GetAttribute("id");
                                 int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
@@ -107,64 +93,53 @@ namespace ItopVector.Tools
                                 }
                             }
 
-                        }
-                        else
-                        {
+                        } else {
                             string strLayerID = element1.GetAttribute("id");
                             int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
                             if (element1.Visible) {
                                 checkedListBox1.SetItemChecked(n, true);
                             }
                         }
-                        
+
                     }
-                    if (progtype == "电网规划层")
-                    {
-                        
-                                    bool ck=false;
-                                    if ((element1.GetAttribute("visibility") == "visible"))
-                                    {
-                                        ck=true;
-                                    }
-                                    string strLayerID = element1.GetAttribute("id");
-                                    int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
-                                    if (element1.Visible)
-                                    {
-                                        checkedListBox1.SetItemChecked(n,ck);
-                                    }
-                         
-                    }
-                    if (progtype == "变电站选址")
-                    {
+                    if (progtype == "电网规划层") {
 
                         bool ck = false;
-                        if ((element1.GetAttribute("visibility") == "visible"))
-                        {
+                        if ((element1.GetAttribute("visibility") == "visible")) {
                             ck = true;
                         }
                         string strLayerID = element1.GetAttribute("id");
                         int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
-                        if (element1.Visible)
-                        {
+                        if (element1.Visible) {
+                            checkedListBox1.SetItemChecked(n, ck);
+                        }
+
+                    }
+                    if (progtype == "变电站选址") {
+
+                        bool ck = false;
+                        if ((element1.GetAttribute("visibility") == "visible")) {
+                            ck = true;
+                        }
+                        string strLayerID = element1.GetAttribute("id");
+                        int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
+                        if (element1.Visible) {
                             checkedListBox1.SetItemChecked(n, ck);
                         }
 
                     }
 
-                    if (progtype == "所内接线图")
-                    {
-                        if (element1.GetAttribute("layerType") == progtype)
-                        {
-                        string strLayerID = element1.GetAttribute("id");
-                        int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
-                        if (element1.Visible)
-                        {
-                            checkedListBox1.SetItemChecked(n, true);
-                        }
-                        //if (strLayerID == SvgDocument.currentLayer)
-                        //{
-                        //    this.checkedListBox1.SelectedIndex = num1;
-                        //}
+                    if (progtype == "所内接线图") {
+                        if (element1.GetAttribute("layerType") == progtype) {
+                            string strLayerID = element1.GetAttribute("id");
+                            int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
+                            if (element1.Visible) {
+                                checkedListBox1.SetItemChecked(n, true);
+                            }
+                            //if (strLayerID == SvgDocument.currentLayer)
+                            //{
+                            //    this.checkedListBox1.SelectedIndex = num1;
+                            //}
                         }
                     }
                 }
@@ -176,47 +151,37 @@ namespace ItopVector.Tools
             if (this.Owner is frmMain)
                 tmClearLink.Visible = false;
         }
-        public ItopVector.Core.Document.SvgDocument SymbolDoc
-        {
-            get
-            {
+        public ItopVector.Core.Document.SvgDocument SymbolDoc {
+            get {
                 return this.symbolDoc;
             }
-            set
-            {
+            set {
                 this.symbolDoc = value;
             }
         }
         bool addflag = false;
-        private void btAdd_Click(object sender, EventArgs e)
-        {
+        private void btAdd_Click(object sender, EventArgs e) {
             frmInput dlg = new frmInput();
             dlg.InputType = progtype;
-            if (dlg.ShowDialog(this) == DialogResult.OK)
-            {
-                if (Layer.CkLayerExist(dlg.InputString, this.SymbolDoc))
-                {
+            if (dlg.ShowDialog(this) == DialogResult.OK) {
+                if (Layer.CkLayerExist(dlg.InputString, this.SymbolDoc)) {
                     MessageBox.Show("文档中已经存在同名图层。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 Layer lar = Layer.CreateNew(dlg.InputString, this.SymbolDoc);
                 lar.SetAttribute("layerType", dlg.InputType);
-                if (ilist.Count>0){
+                if (ilist.Count > 0) {
                     lar.SetAttribute("ParentID", ilist[0].ToString());
                 }
                 addflag = true;
                 this.checkedListBox1.Items.Add(lar, true);
-                checkedListBox1.SelectedIndex = checkedListBox1.Items.Count-1;
+                checkedListBox1.SelectedIndex = checkedListBox1.Items.Count - 1;
 
-                if (this.checkedListBox1.SelectedIndex != -1)
-                {
+                if (this.checkedListBox1.SelectedIndex != -1) {
                     Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
-                    if (checkedListBox1.GetItemCheckState(checkedListBox1.SelectedIndex) == CheckState.Checked)
-                    {
+                    if (checkedListBox1.GetItemCheckState(checkedListBox1.SelectedIndex) == CheckState.Checked) {
                         layer.Visible = true;
-                    }
-                    else
-                    {
+                    } else {
                         layer.Visible = false;
                     }
                 }
@@ -242,31 +207,25 @@ namespace ItopVector.Tools
                 //layer.IsSelect = lar.GetAttribute("IsSelect");
                 //Services.BaseService.Create<SVG_LAYER>(_svg);
 
-            }		
+            }
         }
 
-        private void btDel_Click(object sender, EventArgs e)
-        {
-            if (this.checkedListBox1.SelectedIndex >= 0 && this.checkedListBox1.SelectedIndex < this.checkedListBox1.Items.Count)
-            {
+        private void btDel_Click(object sender, EventArgs e) {
+            if (this.checkedListBox1.SelectedIndex >= 0 && this.checkedListBox1.SelectedIndex < this.checkedListBox1.Items.Count) {
                 Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
-                if (!CkRight(layer))
-                {
+                if (!CkRight(layer)) {
                     MessageBox.Show("基础图层不能改名或删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                if (MessageBox.Show("删除图层会使当前图层下所有数据丢失并且不可恢复，确定要删除吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                //    return;
-                //}
-                //if (MessageBox.Show(this, "是否删除图层：" + layer.Label + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                //{                 
+                if (MessageBox.Show("删除图层会使当前图层下所有数据丢失并且不可恢复，确定要删除吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) {
+                    //    return;
+                    //}
+                    //if (MessageBox.Show(this, "是否删除图层：" + layer.Label + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    //{                 
                     XmlNode node = this.SymbolDoc.SelectSingleNode("//*[@layer='" + layer.ID + "']");
-                    if (node != null)
-                    {
+                    if (node != null) {
 
-                        if ((MessageBox.Show(this, "此图层下有图元,是否删除图层：" + layer.Label + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes))
-                        {
+                        if ((MessageBox.Show(this, "此图层下有图元,是否删除图层：" + layer.Label + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)) {
                             //PSPDEV _line = new PSPDEV();
                             //_line.LayerID = layer.ID;
                             //Services.BaseService.Update("DeletePSPDEVbyLayerID", _line);
@@ -278,11 +237,10 @@ namespace ItopVector.Tools
                             //Services.BaseService.Update("DeletePSP_Substation_InfoByLayerID", _sub);
 
                             SVG_LAYER lar = new SVG_LAYER();
-                            lar.SUID=layer.ID;
+                            lar.SUID = layer.ID;
                             Services.BaseService.Update("DeleteSVG_LAYER", lar);
                             XmlNodeList list = this.SymbolDoc.SelectNodes("//*[@layer='" + layer.ID + "']");
-                            foreach (XmlNode elNode in list)
-                            {
+                            foreach (XmlNode elNode in list) {
                                 this.SymbolDoc.RootElement.RemoveChild(elNode);
                             }
                             // Services.BaseService.Update("UpdateGraPowerRelationByLayerID", layer.ID);
@@ -294,40 +252,34 @@ namespace ItopVector.Tools
                             LayerName = "";
                         }
                         //layer.Attributes.RemoveAll();
-                    }
-                    else
-                    {
+                    } else {
                         // Services.BaseService.Update("UpdateGraPowerRelationByLayerID", layer.ID);
                         //在文档中移除
                         SVG_LAYER lar = new SVG_LAYER();
                         lar.SUID = layer.ID;
                         Services.BaseService.Update("DeleteSVG_LAYER", lar);
-                        try
-                        {
+                        try {
                             layer.Remove();
-                        }
-                        catch { }
+                        } catch { }
                         //在列表中移除
                         this.checkedListBox1.Items.Remove(layer);
                         layer = null;
                         LayerName = "";
-                    }                        
+                    }
                 }
                 //if(this.checkedListBox1.Items.Count<1){
-                    if(OnDeleteLayer!=null){
-                        OnDeleteLayer(sender);
-                    }
+                if (OnDeleteLayer != null) {
+                    OnDeleteLayer(sender);
+                }
                 //}
             }
         }
 
         private void btEdit_Click(object sender, EventArgs e)//
         {
-            if (this.checkedListBox1.SelectedIndex >= 0 && this.checkedListBox1.SelectedIndex < this.checkedListBox1.Items.Count)
-            {
+            if (this.checkedListBox1.SelectedIndex >= 0 && this.checkedListBox1.SelectedIndex < this.checkedListBox1.Items.Count) {
                 Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
-                if (!CkRight(layer))
-                {
+                if (!CkRight(layer)) {
                     MessageBox.Show("基础图层不能改名或删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
@@ -337,32 +289,28 @@ namespace ItopVector.Tools
                 dlg.InputString = layer.Label;
                 dlg.InputType = layer.GetAttribute("layerType");
 
-                DialogResult d=dlg.ShowDialog(this);
-                if (d == DialogResult.OK)
-                {
-                    layer.Label = dlg.InputString;            
+                DialogResult d = dlg.ShowDialog(this);
+                if (d == DialogResult.OK) {
+                    layer.Label = dlg.InputString;
                     layer.SetAttribute("layerType", dlg.InputType);
                     InitData();
                 }
-                if(d==DialogResult.Retry){
-                    if (dlg.list.Count > 1)
-                    {
+                if (d == DialogResult.Retry) {
+                    if (dlg.list.Count > 1) {
                         layer.SetAttribute("ParentID", dlg.list[1].ToString());
                         SVG_LAYER temp = new SVG_LAYER();
-                        temp.SUID= layer.ID;
-                        temp.svgID=symbolDoc.SvgdataUid;
-                        SVG_LAYER lar =(SVG_LAYER) Services.BaseService.GetObject("SelectSVG_LAYERByKey",temp);
+                        temp.SUID = layer.ID;
+                        temp.svgID = symbolDoc.SvgdataUid;
+                        SVG_LAYER lar = (SVG_LAYER)Services.BaseService.GetObject("SelectSVG_LAYERByKey", temp);
                         lar.YearID = dlg.list[1].ToString();
                         Services.BaseService.Update<SVG_LAYER>(lar);
                     }
                 }
-                
+
             }
         }
-        private bool CkRight(Layer lar)
-        {
-            if (lar.Label == "背景层0"  /*|| lar.Label=="规划层" || lar.Label=="统计层"*/)
-            {
+        private bool CkRight(Layer lar) {
+            if (lar.Label == "背景层0"  /*|| lar.Label=="规划层" || lar.Label=="统计层"*/) {
                 return false;
             }
 #if(!CITY)
@@ -370,61 +318,50 @@ namespace ItopVector.Tools
                 string ltype = lar.GetAttribute("layerType");
                 if (ltype == "地理信息层" || ltype == "城市规划层")
                     return false;
-            }           
-#endif      
+            }
+#endif
             return true;
-            
+
         }
 
-        private void frmLayerManager_Load(object sender, EventArgs e)
-        {
+        private void frmLayerManager_Load(object sender, EventArgs e) {
             InitData();
         }
 
-        private void btOK_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < this.checkedListBox1.Items.Count; i++)
-            {
+        private void btOK_Click(object sender, EventArgs e) {
+            for (int i = 0; i < this.checkedListBox1.Items.Count; i++) {
                 (this.checkedListBox1.Items[i] as Layer).Visible = this.checkedListBox1.GetItemChecked(i);
             }
-            if (checkedListBox1.SelectedItem != null)
-            {
+            if (checkedListBox1.SelectedItem != null) {
                 SvgDocument.currentLayer = (checkedListBox1.SelectedItem as Layer).ID;
                 LayerName = (checkedListBox1.SelectedItem as Layer).Label;
             }
-            
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        private void btUp_Click(object sender, EventArgs e)
-        {
+        private void btUp_Click(object sender, EventArgs e) {
             int i = this.checkedListBox1.SelectedIndex;
             if (i == 0) { return; }
-            Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;            
+            Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
         }
 
-        private void btDown_Click(object sender, EventArgs e)
-        {
+        private void btDown_Click(object sender, EventArgs e) {
 
         }
-        public void LayerUpdate()
-        {
-            
+        public void LayerUpdate() {
+
         }
 
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
+        private void pictureBox5_Click(object sender, EventArgs e) {
             this.Hide();
         }
 
-        public string getSelectedLayer()
-        {
+        public string getSelectedLayer() {
             string strLayer = "";
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
-            {
-                if (checkedListBox1.GetItemCheckState(i) == CheckState.Checked)
-                {
+            for (int i = 0; i < checkedListBox1.Items.Count; i++) {
+                if (checkedListBox1.GetItemCheckState(i) == CheckState.Checked) {
                     Layer layer = checkedListBox1.Items[i] as Layer;
                     strLayer = strLayer + layer.ID + ",";
                 }
@@ -432,42 +369,33 @@ namespace ItopVector.Tools
             return strLayer;
         }
 
-        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-  
-            if (this.checkedListBox1.SelectedIndex!=-1)
-            {
-                if (!addflag)
-                {
+        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e) {
+
+            if (this.checkedListBox1.SelectedIndex != -1) {
+                if (!addflag) {
                     Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
-                    if (checkedListBox1.GetItemCheckState(checkedListBox1.SelectedIndex) == CheckState.Checked)
-                    {
+                    if (checkedListBox1.GetItemCheckState(checkedListBox1.SelectedIndex) == CheckState.Checked) {
                         layer.Visible = false;
-                    }
-                    else
-                    {
+                    } else {
                         layer.Visible = true;
-                    }               
+                    }
                 }
-                
+
             }
-           
+
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(checkedListBox1.SelectedIndex!=-1){
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) {
+            if (checkedListBox1.SelectedIndex != -1) {
                 Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
-                if (OnClickLayer != null)
-                {
+                if (OnClickLayer != null) {
                     addflag = false;
                     OnClickLayer(sender, layer);
                 }
             }
         }
 
-        private void frmLayerManager_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void frmLayerManager_FormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = true;
             this.Hide();
         }
@@ -475,7 +403,7 @@ namespace ItopVector.Tools
         private void simpleButton1_Click(object sender, EventArgs e) {
             int index = this.checkedListBox1.SelectedIndex;
             if (index > 0) {
-                Layer layer = this.checkedListBox1.Items[index] as Layer;                
+                Layer layer = this.checkedListBox1.Items[index] as Layer;
                 layer.GoUp();
                 this.checkedListBox1.Items.RemoveAt(index);
                 this.checkedListBox1.Items.Insert(index - 1, layer);
@@ -490,7 +418,7 @@ namespace ItopVector.Tools
 
         private void simpleButton2_Click(object sender, EventArgs e) {
             int index = this.checkedListBox1.SelectedIndex;
-            if ( index>=0 && index <checkedListBox1.Items.Count -1) {
+            if (index >= 0 && index < checkedListBox1.Items.Count - 1) {
                 Layer layer = this.checkedListBox1.Items[index] as Layer;
                 layer.GoDown();
                 this.checkedListBox1.Items.RemoveAt(index);
@@ -503,17 +431,15 @@ namespace ItopVector.Tools
                 }
             }
         }
-       
+
         private void simpleButton3_Click(object sender, EventArgs e) {//复制按钮
-            if (checkedListBoxControl2.Visible == false)
-            {
+            if (checkedListBoxControl2.Visible == false) {
                 //checkedListBoxControl2.
                 checkedListBoxControl2.Items[0].CheckState = CheckState.Unchecked;
                 checkedListBoxControl2.Items[1].CheckState = CheckState.Unchecked;
                 checkedListBoxControl2.Items[2].CheckState = CheckState.Unchecked;
                 checkedListBoxControl2.Visible = true;
-            }
-            else
+            } else
                 checkedListBoxControl2.Visible = false;
             //int index = this.checkedListBox1.SelectedIndex;
             // if (index > 0) {
@@ -529,42 +455,34 @@ namespace ItopVector.Tools
             //     layer2.Visible = false;
             // }
         }
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
+        private void simpleButton4_Click(object sender, EventArgs e) {
             int index = this.checkedListBox1.SelectedIndex;
-            if (index > 0)
-            {
-                ArrayList layerlist1 =  this.SymbolDoc.getLayerList();
+            if (index > 0) {
+                ArrayList layerlist1 = this.SymbolDoc.getLayerList();
                 string str1 = null;
                 string str2 = null;
-                foreach (Layer l in layerlist1)
-                {
-                    if (l.Visible)
-                    {
+                foreach (Layer l in layerlist1) {
+                    if (l.Visible) {
                         str1 += l.Label;
                         str2 += l.Label + "，";
                     }
-                }                
-                if (MessageBox.Show(this, "此操作将合并可见图层：" + str2 +"并且不可恢复，是否继续。", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
+                }
+                if (MessageBox.Show(this, "此操作将合并可见图层：" + str2 + "并且不可恢复，是否继续。", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     Layer layer = this.checkedListBox1.Items[index] as Layer;
                     string str = layer.GetAttribute("layerType");
-                    Layer layer2=Layer.CreateNew(str1,this.SymbolDoc);
+                    Layer layer2 = Layer.CreateNew(str1, this.SymbolDoc);
                     if (ilist.Count > 0) {
                         layer2.SetAttribute("ParentID", ilist[0].ToString());
                     }
-                    foreach (Layer layer1 in layerlist1)
-                    {
-                        if (layer1.Visible)
-                        {
+                    foreach (Layer layer1 in layerlist1) {
+                        if (layer1.Visible) {
                             //foreach (SvgElement g in layer1.GraphList)
                             //{
                             //    layer2.GraphList.Add(g);
                             //}
                             this.SymbolDoc.NumberOfUndoOperations = (2 * layer1.GraphList.Count) + 200;
                             SvgElementCollection sc = layer1.GraphList;
-                            for (int i = layer1.GraphList.Count - 1; i >= 0; i--)
-                            {
+                            for (int i = layer1.GraphList.Count - 1; i >= 0; i--) {
                                 SvgElement element = sc[i] as SvgElement;
                                 SvgElement temp = element.Clone() as SvgElement;
                                 IGraph graph = (IGraph)layer2.AddElement(temp);
@@ -574,8 +492,7 @@ namespace ItopVector.Tools
                                 _line.EleID = element.ID;
                                 _line.SvgUID = this.SymbolDoc.SvgdataUid;
                                 IList lineInfoList = Services.BaseService.GetList("SelectPSPDEVBySvgUIDandEleID", _line);
-                                foreach (PSPDEV line in lineInfoList)
-                                {
+                                foreach (PSPDEV line in lineInfoList) {
                                     line.LayerID = layer2.ID;
                                     line.EleID = temp.ID;
                                     Services.BaseService.Update<PSPDEV>(line);
@@ -584,8 +501,7 @@ namespace ItopVector.Tools
                                 gle.EleID = element.ID;
                                 gle.SvgUID = this.SymbolDoc.SvgdataUid;
                                 IList gleProList = Services.BaseService.GetList("SelectglebePropertyByEleID", gle);
-                                foreach (glebeProperty gleP in gleProList)
-                                {
+                                foreach (glebeProperty gleP in gleProList) {
                                     gleP.LayerID = layer2.ID;
                                     gleP.EleID = temp.ID;
                                     Services.BaseService.Update("UpdateglebeProperty", gle);
@@ -594,31 +510,28 @@ namespace ItopVector.Tools
                                 _sub.EleID = element.ID;
                                 _sub.AreaID = this.SymbolDoc.SvgdataUid;
                                 IList substationList = Services.BaseService.GetList("SelectPSP_Substation_InfoListByEleID", _sub);
-                                foreach (PSP_Substation_Info sub in substationList)
-                                {
+                                foreach (PSP_Substation_Info sub in substationList) {
                                     sub.LayerID = layer2.ID;
                                     sub.EleID = temp.ID;
-                                    Services.BaseService.Update<PSP_Substation_Info> (sub);
+                                    Services.BaseService.Update<PSP_Substation_Info>(sub);
                                 }
-                            } 
+                            }
                         }
                     }
 
                     this.SymbolDoc.NotifyUndo();
-                    layer2.SetAttribute("layerType", str); 
+                    layer2.SetAttribute("layerType", str);
                     //layer2.Label = str1;
                     this.checkedListBox1.Items.Add(layer2);
                     layer2.Visible = false;
-                    foreach (Layer layer3 in layerlist1)
-                    {
-                        if (layer3.Visible) 
-                        {
-                            DeleteLayer(layer3); 
+                    foreach (Layer layer3 in layerlist1) {
+                        if (layer3.Visible) {
+                            DeleteLayer(layer3);
                         }
                     }
                 }
             }
-        }  
+        }
         //private void simpleButton5_Click(object sender, EventArgs e)
         //{
         //    int index = this.checkedListBox1.SelectedIndex;
@@ -646,7 +559,7 @@ namespace ItopVector.Tools
         //        Services.BaseService.Create<LayerFile>(layerFile);
         //        DeleteLayer(layer);                
         //    }
-           
+
         //    //StreamWriter sw = new StreamWriter("c:\\1.xml");
         //    //sw.Write(str1);
         //    //sw.Close();
@@ -668,8 +581,7 @@ namespace ItopVector.Tools
         //    //svg.SVGDATA = this.SymbolDoc.OuterXml;
         //    //Services.BaseService.Update<SVGFILE>(svg);
         //}       
-        private Layer CopyLayer(Layer layer)
-        {
+        private Layer CopyLayer(Layer layer) {
             Layer layer2 = Layer.CreateNew(layer.Label + " 副本", this.SymbolDoc);
             layer2.SetAttribute("ParentID", layer.GetAttribute("ParentID"));
             //foreach (SvgElement g in layer.GraphList)
@@ -679,21 +591,19 @@ namespace ItopVector.Tools
             SVG_LAYER la = new SVG_LAYER();
             la.SUID = layer.ID;
             la.svgID = symbolDoc.SvgdataUid;
-            la=(SVG_LAYER) Services.BaseService.GetObject("SelectSVG_LAYERByKey", la);
-            if(la!=null){
+            la = (SVG_LAYER)Services.BaseService.GetObject("SelectSVG_LAYERByKey", la);
+            if (la != null) {
                 la.SUID = layer2.ID;
                 la.NAME = layer2.Label;
                 Services.BaseService.Create<SVG_LAYER>(la);
             }
             this.SymbolDoc.NumberOfUndoOperations = (2 * layer2.GraphList.Count) + 200;
             SvgElementCollection sc = layer.GraphList;
-            for (int i = layer.GraphList.Count - 1; i >= 0; i--)
-            {
+            for (int i = layer.GraphList.Count - 1; i >= 0; i--) {
                 SvgElement element = sc[i] as SvgElement;
                 SvgElement temp = element.Clone() as SvgElement;
                 //if (temp.Name=="use"){
-                if (temp.GetAttribute("CopyOf") == "")
-                {
+                if (temp.GetAttribute("CopyOf") == "") {
                     temp.SetAttribute("CopyOf", temp.ID);
                 }
                 //else
@@ -708,54 +618,52 @@ namespace ItopVector.Tools
                 //_line.EleID = element.ID;
                 //_line.SvgUID = this.SymbolDoc.SvgdataUid;
                 //IList lineInfoList = Services.BaseService.GetList("SelectLineInfoByEleID", _line);
-              /*  PSPDEV _line = new PSPDEV();
-                _line.EleID = element.ID;
-                _line.SvgUID = this.SymbolDoc.SvgdataUid;
-                IList lineInfoList = Services.BaseService.GetList("SelectPSPDEVBySvgUIDandEleID", _line);
+                /*  PSPDEV _line = new PSPDEV();
+                  _line.EleID = element.ID;
+                  _line.SvgUID = this.SymbolDoc.SvgdataUid;
+                  IList lineInfoList = Services.BaseService.GetList("SelectPSPDEVBySvgUIDandEleID", _line);
 
-                foreach (PSPDEV line in lineInfoList)
-                {
-                    line.SUID = Guid.NewGuid().ToString();
-                    line.LayerID = layer2.ID;
-                    line.EleID = temp.ID;
-                    line.Type = "05";
-                    Services.BaseService.Create<PSPDEV>(line);
-                }
-                glebeProperty gle = new glebeProperty();
-                gle.EleID = element.ID;
-                gle.SvgUID = this.SymbolDoc.SvgdataUid;
-                IList gleProList=Services.BaseService.GetList("SelectglebePropertyByEleID", gle);
-                foreach (glebeProperty gleP  in gleProList)
-                {
-                    gleP.UID = Guid.NewGuid().ToString(); 
-                    gleP.LayerID = layer2.ID;
-                    gleP.EleID = temp.ID;
-                    Services.BaseService.Create<glebeProperty>(gleP);
-                }
-                PSP_Substation_Info _sub = new PSP_Substation_Info();
-                _sub.EleID = element.ID;
-                _sub.AreaID = this.SymbolDoc.SvgdataUid;
-                IList substationList = Services.BaseService.GetList("SelectPSP_Substation_InfoListByEleID", _sub);
-                foreach (PSP_Substation_Info sub in substationList)
-                {
-                    sub.UID = Guid.NewGuid().ToString();
-                    sub.LayerID = layer2.ID;
-                    sub.EleID = temp.ID;
-                    Services.BaseService.Create<PSP_Substation_Info>(sub);
-                }
-               */
+                  foreach (PSPDEV line in lineInfoList)
+                  {
+                      line.SUID = Guid.NewGuid().ToString();
+                      line.LayerID = layer2.ID;
+                      line.EleID = temp.ID;
+                      line.Type = "05";
+                      Services.BaseService.Create<PSPDEV>(line);
+                  }
+                  glebeProperty gle = new glebeProperty();
+                  gle.EleID = element.ID;
+                  gle.SvgUID = this.SymbolDoc.SvgdataUid;
+                  IList gleProList=Services.BaseService.GetList("SelectglebePropertyByEleID", gle);
+                  foreach (glebeProperty gleP  in gleProList)
+                  {
+                      gleP.UID = Guid.NewGuid().ToString(); 
+                      gleP.LayerID = layer2.ID;
+                      gleP.EleID = temp.ID;
+                      Services.BaseService.Create<glebeProperty>(gleP);
+                  }
+                  PSP_Substation_Info _sub = new PSP_Substation_Info();
+                  _sub.EleID = element.ID;
+                  _sub.AreaID = this.SymbolDoc.SvgdataUid;
+                  IList substationList = Services.BaseService.GetList("SelectPSP_Substation_InfoListByEleID", _sub);
+                  foreach (PSP_Substation_Info sub in substationList)
+                  {
+                      sub.UID = Guid.NewGuid().ToString();
+                      sub.LayerID = layer2.ID;
+                      sub.EleID = temp.ID;
+                      Services.BaseService.Create<PSP_Substation_Info>(sub);
+                  }
+                 */
             }
             this.SymbolDoc.NotifyUndo();
             return layer2;
         }
-        public void DeleteLayer(Layer layer)
-        {
-            if (!CkRight(layer))
-            {
+        public void DeleteLayer(Layer layer) {
+            if (!CkRight(layer)) {
                 MessageBox.Show("基础图层不能改名或删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-        
+
             //if (true) {
             //    LineInfo _line = new LineInfo();
             //    _line.LayerID = layer.ID;
@@ -768,12 +676,11 @@ namespace ItopVector.Tools
             //    Services.BaseService.Update("DeletesubstationByLayerID", _sub);
             //}
             XmlNodeList list = this.SymbolDoc.SelectNodes("//*[@layer='" + layer.ID + "']");
-            foreach (XmlNode elNode in list)
-            {
+            foreach (XmlNode elNode in list) {
                 this.SymbolDoc.RootElement.RemoveChild(elNode);
             }
-       
-             //Services.BaseService.Update("UpdateGraPowerRelationByLayerID", layer.ID);
+
+            //Services.BaseService.Update("UpdateGraPowerRelationByLayerID", layer.ID);
             //在文档中移除
             SVG_LAYER lar = new SVG_LAYER();
             lar.SUID = layer.ID;
@@ -782,39 +689,33 @@ namespace ItopVector.Tools
             //在列表中移除
             this.checkedListBox1.Items.Remove(layer);
             layer = null;
-            LayerName = "";            
+            LayerName = "";
         }
 
-        private void checkedListBoxControl2_Leave(object sender, EventArgs e)
-        {
+        private void checkedListBoxControl2_Leave(object sender, EventArgs e) {
             //checkedListBoxControl2.CheckedItems
         }
-        private Layer CopyLayer2(Layer layer, string textname)
-        {
+        private Layer CopyLayer2(Layer layer, string textname) {
             LayerGrade la = Services.BaseService.GetOneByKey<LayerGrade>(textname);
 
             string layerlabelf = layer.Label.Substring(4);
-            string layer2name = la.Name.Substring(0,4) + layerlabelf;
+            string layer2name = la.Name.Substring(0, 4) + layerlabelf;
             int j = 0;
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
-            {
-               // if (checkedListBox1.Items[i].ToString() == layer2name)
-                    //j = 1;
+            for (int i = 0; i < checkedListBox1.Items.Count; i++) {
+                // if (checkedListBox1.Items[i].ToString() == layer2name)
+                //j = 1;
                 //else
                 //    j = 0;
             }
             Layer layer2 = null;
-            if (j == 0)
-            {
+            if (j == 0) {
                 layer2 = Layer.CreateNew(la.Name.Substring(0, 4) + layerlabelf, this.SymbolDoc);
                 this.SymbolDoc.NumberOfUndoOperations = (2 * layer2.GraphList.Count) + 200;
                 SvgElementCollection sc = layer.GraphList;
-                for (int i = layer.GraphList.Count - 1; i >= 0; i--)
-                {
+                for (int i = layer.GraphList.Count - 1; i >= 0; i--) {
                     SvgElement element = sc[i] as SvgElement;
                     SvgElement temp = element.Clone() as SvgElement;
-                    if (temp.GetAttribute("CopyOf") == "")
-                    {
+                    if (temp.GetAttribute("CopyOf") == "") {
                         temp.SetAttribute("CopyOf", temp.ID);
                     }
 
@@ -825,80 +726,70 @@ namespace ItopVector.Tools
                     //_line.EleID = element.ID;
                     //_line.SvgUID = this.SymbolDoc.SvgdataUid;
                     //IList lineInfoList = Services.BaseService.GetList("SelectLineInfoByEleID", _line);
-                 /*   PSPDEV _line = new PSPDEV();
-                    _line.EleID = element.ID;
-                    _line.SvgUID = this.SymbolDoc.SvgdataUid;
-                    IList lineInfoList = Services.BaseService.GetList("SelectPSPDEVBySvgUIDandEleID", _line);
+                    /*   PSPDEV _line = new PSPDEV();
+                       _line.EleID = element.ID;
+                       _line.SvgUID = this.SymbolDoc.SvgdataUid;
+                       IList lineInfoList = Services.BaseService.GetList("SelectPSPDEVBySvgUIDandEleID", _line);
 
-                    foreach (PSPDEV line in lineInfoList)
-                    {
-                        line.SUID = Guid.NewGuid().ToString();
-                        line.LayerID = layer2.ID;
-                        line.EleID = temp.ID;
-                        Services.BaseService.Create<PSPDEV>(line);
-                    }
-                    glebeProperty gle = new glebeProperty();
-                    gle.EleID = element.ID;
-                    gle.SvgUID = this.SymbolDoc.SvgdataUid;
-                    IList gleProList = Services.BaseService.GetList("SelectglebePropertyByEleID", gle);
-                    foreach (glebeProperty gleP in gleProList)
-                    {
-                        gleP.UID = Guid.NewGuid().ToString();
-                        gleP.LayerID = layer2.ID;
-                        gleP.EleID = temp.ID;
-                        Services.BaseService.Create<glebeProperty>(gleP);
-                    }
-                    substation _sub = new substation();
-                    _sub.EleID = element.ID;
-                    _sub.SvgUID = this.SymbolDoc.SvgdataUid;
-                    IList substationList = Services.BaseService.GetList("SelectsubstationByEleID", _sub);
-                    foreach (substation sub in substationList)
-                    {
-                        sub.UID = Guid.NewGuid().ToString();
-                        sub.LayerID = layer2.ID;
-                        sub.EleID = temp.ID;
-                        Services.BaseService.Create<substation>(sub);
-                    }
-                   */
+                       foreach (PSPDEV line in lineInfoList)
+                       {
+                           line.SUID = Guid.NewGuid().ToString();
+                           line.LayerID = layer2.ID;
+                           line.EleID = temp.ID;
+                           Services.BaseService.Create<PSPDEV>(line);
+                       }
+                       glebeProperty gle = new glebeProperty();
+                       gle.EleID = element.ID;
+                       gle.SvgUID = this.SymbolDoc.SvgdataUid;
+                       IList gleProList = Services.BaseService.GetList("SelectglebePropertyByEleID", gle);
+                       foreach (glebeProperty gleP in gleProList)
+                       {
+                           gleP.UID = Guid.NewGuid().ToString();
+                           gleP.LayerID = layer2.ID;
+                           gleP.EleID = temp.ID;
+                           Services.BaseService.Create<glebeProperty>(gleP);
+                       }
+                       substation _sub = new substation();
+                       _sub.EleID = element.ID;
+                       _sub.SvgUID = this.SymbolDoc.SvgdataUid;
+                       IList substationList = Services.BaseService.GetList("SelectsubstationByEleID", _sub);
+                       foreach (substation sub in substationList)
+                       {
+                           sub.UID = Guid.NewGuid().ToString();
+                           sub.LayerID = layer2.ID;
+                           sub.EleID = temp.ID;
+                           Services.BaseService.Create<substation>(sub);
+                       }
+                      */
                 }
             }
             this.SymbolDoc.NotifyUndo();
             return layer2;
         }
-        public static bool IsInt(string inString)
-        {
+        public static bool IsInt(string inString) {
             Regex regex = new Regex("^[0-9]*[1-9][0-9]*$");
             return regex.IsMatch(inString.Trim());
         }
-        private void simpleB(string id)
-        {
-          
+        private void simpleB(string id) {
+
 
             int itemcount = checkedListBox1.Items.Count;
-            if (checkedListBox1.Items != null)
-            {
+            if (checkedListBox1.Items != null) {
                 f.SetText("复制中，请等待......");
                 f.Show();
-                for (int num = 0; num < itemcount; num++)
-                {
+                for (int num = 0; num < itemcount; num++) {
 
 
                     string itemname = checkedListBox1.Items[num].ToString();
-                    if (itemname.Length > 4)
-                   
-                    
-                    {
+                    if (itemname.Length > 4) {
                         string item4 = itemname.Substring(0, 4);
-                        if ((IsInt(item4)) && checkedListBox1.GetItemChecked(num) == true)
-                        {
+                        if ((IsInt(item4)) && checkedListBox1.GetItemChecked(num) == true) {
                             Layer layer = this.checkedListBox1.Items[num] as Layer;
                             f.SetText("共选择" + checkedListBox1.CheckedItems.Count + "层，正在复制" + layer.Label + "层。");
                             string str = layer.GetAttribute("layerType");
                             Layer layer2 = CopyLayer2(layer, id);
-                            if (layer2 != null)
-                            {
-                                if (layer.Visible)
-                                {
+                            if (layer2 != null) {
+                                if (layer.Visible) {
                                     layer.Visible = false;
                                     layer.Visible = true;
                                 }
@@ -908,8 +799,7 @@ namespace ItopVector.Tools
 
                                 string xml = "";
                                 XmlNodeList oldList = symbolDoc.SelectNodes("//*[@layer=\"" + layer2.ID + "\"]");
-                                for (int i = 0; i < oldList.Count; i++)
-                                {
+                                for (int i = 0; i < oldList.Count; i++) {
                                     xml = xml + ((SvgElement)oldList[i]).OuterXml;
                                 }
                                 SVG_LAYER obj = new SVG_LAYER();
@@ -932,32 +822,26 @@ namespace ItopVector.Tools
                 f.Hide();
             }
         }
-        private void checkedListBoxControl2_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
-        {
+        private void checkedListBoxControl2_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e) {
             checkedListBoxControl2.Visible = false;
-            if (checkedListBoxControl2.SelectedValue.ToString() == "多层复制")
-            {
-              
-                frmLayerManager2 temp = new frmLayerManager2(symbolDoc2,progtype);
-                if (temp.ShowDialog(this) == DialogResult.Cancel)
-                {
+            if (checkedListBoxControl2.SelectedValue.ToString() == "多层复制") {
+
+                frmLayerManager2 temp = new frmLayerManager2(symbolDoc2, progtype);
+                if (temp.ShowDialog(this) == DialogResult.Cancel) {
                     InitData();
                     checkedListBox1.Refresh();
                 }
-          
+
             }
-            if (checkedListBoxControl2.SelectedValue.ToString() == "年图层复制")
-            {
+            if (checkedListBoxControl2.SelectedValue.ToString() == "年图层复制") {
                 frmLayerGradeSave2 temp = new frmLayerGradeSave2();
                 temp.SymbolDoc = symbolDoc;
                 temp.InitData2(symbolDoc.SvgdataUid);
                 //frmLayerManagerYear temp = new frmLayerManagerYear(symbolDoc2, progtype);
-                if (temp.ShowDialog(this) == DialogResult.OK)
-                {
-                    ArrayList ll=temp.GetSelectNode2();
-                    if (ll.Count>1){
-                        for (int j = 1; j < ll.Count; j++)
-                        {
+                if (temp.ShowDialog(this) == DialogResult.OK) {
+                    ArrayList ll = temp.GetSelectNode2();
+                    if (ll.Count > 1) {
+                        for (int j = 1; j < ll.Count; j++) {
                             simpleB(ll[j].ToString());
                             InitData();
                             checkedListBox1.Refresh();
@@ -965,22 +849,18 @@ namespace ItopVector.Tools
                     }
                 }
             }
-            if (checkedListBoxControl2.SelectedValue.ToString() == "单层复制")
-            {
+            if (checkedListBoxControl2.SelectedValue.ToString() == "单层复制") {
                 int index = this.checkedListBox1.SelectedIndex;
-               
-                if (index > 0)
-                {
+
+                if (index > 0) {
                     DevExpress.XtraEditors.Controls.CheckedListBoxItem t = (DevExpress.XtraEditors.Controls.CheckedListBoxItem)checkedListBoxControl2.SelectedItem;
-                    if (t.CheckState == CheckState.Checked)
-                    {
+                    if (t.CheckState == CheckState.Checked) {
                         f.SetText("复制中，请等待......");
                         f.Show();
                         Layer layer = this.checkedListBox1.Items[index] as Layer;
                         string str = layer.GetAttribute("layerType");
                         Layer layer2 = CopyLayer(layer);
-                        if (layer.Visible)
-                        {
+                        if (layer.Visible) {
                             layer.Visible = false;
                             layer.Visible = true;
                         }
@@ -993,56 +873,46 @@ namespace ItopVector.Tools
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
+        private void button1_Click(object sender, EventArgs e) {
+
         }
 
-        private void 全选ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox1.Items.Count;i++ )
-            {
+        private void 全选ToolStripMenuItem_Click(object sender, EventArgs e) {
+            for (int i = 0; i < checkedListBox1.Items.Count; i++) {
                 checkedListBox1.SetItemChecked(i, true);
                 Layer layer = this.checkedListBox1.Items[i] as Layer;
                 layer.Visible = true;
             }
         }
 
-        private void 全消ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
-            {
+        private void 全消ToolStripMenuItem_Click(object sender, EventArgs e) {
+            for (int i = 0; i < checkedListBox1.Items.Count; i++) {
                 checkedListBox1.SetItemChecked(i, false);
                 Layer layer = this.checkedListBox1.Items[i] as Layer;
                 layer.Visible = false;
             }
         }
-        public void Sel(object sender, EventArgs e)
-        {
-            全消ToolStripMenuItem_Click(sender,e);
+        public void Sel(object sender, EventArgs e) {
+            全消ToolStripMenuItem_Click(sender, e);
         }
-        private void 清除关联ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            XmlNodeList n1=  symbolDoc.SelectNodes("svg/polyline  [@layer='"+symbolDoc.CurrentLayer.ID+"']");
+        private void 清除关联ToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            XmlNodeList n1 = symbolDoc.SelectNodes("svg/polyline  [@layer='" + symbolDoc.CurrentLayer.ID + "']");
             XmlNodeList n2 = symbolDoc.SelectNodes("svg/use  [@layer='" + symbolDoc.CurrentLayer.ID + "']");
 
-            for (int i = 0; i < n1.Count;i++ )
-            {
+            for (int i = 0; i < n1.Count; i++) {
                 XmlNode x1 = n1[i];
                 ((XmlElement)x1).RemoveAttribute("Deviceid");
             }
-            for (int j = 0; j < n2.Count; j++)
-            {
+            for (int j = 0; j < n2.Count; j++) {
                 XmlNode x2 = n2[j];
                 ((XmlElement)x2).RemoveAttribute("Deviceid");
             }
         }
 
-        private void checkEdit1_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkEdit1_CheckedChanged(object sender, EventArgs e) {
             ChangeCheck(sender);
-         
+
         }
 
         //private void dateEdit1_EditValueChanged(object sender, EventArgs e)
@@ -1054,109 +924,77 @@ namespace ItopVector.Tools
         //{
         //    ChangeCheck(sender);
         //}
-        public void ChangeCheck(object sender)
-        {
+        public void ChangeCheck(object sender) {
             if (dateEdit1.Text == "" || dateEdit2.Text == "") return;
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
-            {
+            for (int i = 0; i < checkedListBox1.Items.Count; i++) {
                 Layer layer = this.checkedListBox1.Items[i] as Layer;
-                if (checkedListBox1.GetItemCheckState(i) == CheckState.Checked)
-                {
-                    for (int j = 0; j < layer.GraphList.Count; j++)
-                    {
+                if (checkedListBox1.GetItemCheckState(i) == CheckState.Checked) {
+                    for (int j = 0; j < layer.GraphList.Count; j++) {
                         IGraph gp = (IGraph)layer.GraphList[j];
-                        if (gp.GetType().ToString() == "ItopVector.Core.Figure.Polyline")
-                        {
-                            if (checkEdit1.Checked == true)
-                            {
+                        if (gp.GetType().ToString() == "ItopVector.Core.Figure.Polyline") {
+                            if (checkEdit1.Checked == true) {
                                 PSPDEV line = new PSPDEV();
                                 line.SUID = ((XmlElement)gp).GetAttribute("Deviceid");
                                 line = (PSPDEV)Services.BaseService.GetObject("SelectPSPDEVByKey", line);
-                                if (line != null)
-                                {
-                                    if (line.Date1 == null || line.Date1 == "" || line.Date2 == null || line.Date2 == "")
-                                    {
+                                if (line != null) {
+                                    if (line.Date1 == null || line.Date1 == "" || line.Date2 == null || line.Date2 == "") {
                                         gp.Visible = false;
                                         continue;
                                     }
-                                    if ((Convert.ToInt32(dateEdit1.Text) == Convert.ToInt32(line.Date1)) && (Convert.ToInt32(dateEdit2.Text) == Convert.ToInt32(line.Date2)))
-                                    {
+                                    if ((Convert.ToInt32(dateEdit1.Text) == Convert.ToInt32(line.Date1)) && (Convert.ToInt32(dateEdit2.Text) == Convert.ToInt32(line.Date2))) {
                                         gp.Visible = true;
                                         continue;
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         gp.Visible = false;
                                     }
-                                    for(int k=0;k<=(Convert.ToInt32(dateEdit2.Text)-Convert.ToInt32(dateEdit1.Text));k++){
-                                        if ((Convert.ToInt32(dateEdit1.Text)+k >= Convert.ToInt32(line.Date1)) && (Convert.ToInt32(dateEdit1.Text)+k <= Convert.ToInt32(line.Date2))){
-                                  
-                                            gp.Visible = true;
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            gp.Visible = false;
-                                        }
-                                    }
-                                    
-                                }
-                                else
-                                {
-                                    gp.Visible = false;
-                                }
-                            }
-                            else
-                            {
-                                gp.Visible = true;
-                            }
-                        }
-                        if (gp.GetType().ToString() == "ItopVector.Core.Figure.Use")
-                        {
-                            if (checkEdit1.Checked == true)
-                            {
-                                PSP_Substation_Info sub = new PSP_Substation_Info();
-                                sub.UID = ((XmlElement)gp).GetAttribute("Deviceid");
-                                sub = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoByKey", sub);
-                                if (sub != null)
-                                {
-                                   
-                                   
-                                    if (sub.L28 == null || sub.L28 == "" || sub.L29 == null || sub.L29 == "")
-                                    {
-                                        gp.Visible = false;
-                                        continue;
-                                    }
-                                    if ((Convert.ToInt32(dateEdit1.Text) == Convert.ToInt32(sub.L28)) && (Convert.ToInt32(dateEdit2.Text) == Convert.ToInt32(sub.L29)))
-                                    {
-                                        gp.Visible = true;
-                                        continue;
-                                    }
-                                    else
-                                    {
-                                        gp.Visible = false;
-                                    }
-                                    for (int k = 0; k <= (Convert.ToInt32(dateEdit2.Text) - Convert.ToInt32(dateEdit1.Text)); k++)
-                                    {
-                                        if ((Convert.ToInt32(dateEdit1.Text) + k >= Convert.ToInt32(sub.L28)) && (Convert.ToInt32(dateEdit1.Text) + k <= Convert.ToInt32(sub.L29)))
-                                        {
+                                    for (int k = 0; k <= (Convert.ToInt32(dateEdit2.Text) - Convert.ToInt32(dateEdit1.Text)); k++) {
+                                        if ((Convert.ToInt32(dateEdit1.Text) + k >= Convert.ToInt32(line.Date1)) && (Convert.ToInt32(dateEdit1.Text) + k <= Convert.ToInt32(line.Date2))) {
 
                                             gp.Visible = true;
                                             break;
-                                        }
-                                        else
-                                        {
+                                        } else {
                                             gp.Visible = false;
                                         }
                                     }
-                                }
-                                else
-                                {
+
+                                } else {
                                     gp.Visible = false;
                                 }
+                            } else {
+                                gp.Visible = true;
                             }
-                            else
-                            {
+                        }
+                        if (gp.GetType().ToString() == "ItopVector.Core.Figure.Use") {
+                            if (checkEdit1.Checked == true) {
+                                PSP_Substation_Info sub = new PSP_Substation_Info();
+                                sub.UID = ((XmlElement)gp).GetAttribute("Deviceid");
+                                sub = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoByKey", sub);
+                                if (sub != null) {
+
+
+                                    if (sub.L28 == null || sub.L28 == "" || sub.L29 == null || sub.L29 == "") {
+                                        gp.Visible = false;
+                                        continue;
+                                    }
+                                    if ((Convert.ToInt32(dateEdit1.Text) == Convert.ToInt32(sub.L28)) && (Convert.ToInt32(dateEdit2.Text) == Convert.ToInt32(sub.L29))) {
+                                        gp.Visible = true;
+                                        continue;
+                                    } else {
+                                        gp.Visible = false;
+                                    }
+                                    for (int k = 0; k <= (Convert.ToInt32(dateEdit2.Text) - Convert.ToInt32(dateEdit1.Text)); k++) {
+                                        if ((Convert.ToInt32(dateEdit1.Text) + k >= Convert.ToInt32(sub.L28)) && (Convert.ToInt32(dateEdit1.Text) + k <= Convert.ToInt32(sub.L29))) {
+
+                                            gp.Visible = true;
+                                            break;
+                                        } else {
+                                            gp.Visible = false;
+                                        }
+                                    }
+                                } else {
+                                    gp.Visible = false;
+                                }
+                            } else {
                                 gp.Visible = true;
                             }
                         }
@@ -1165,19 +1003,16 @@ namespace ItopVector.Tools
                 }
 
             }
-            if (OnCheck != null)
-            {
+            if (OnCheck != null) {
                 OnCheck(sender);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-           
+        private void button2_Click(object sender, EventArgs e) {
+
         }
 
-        private void dateEdit1_KeyDown(object sender, KeyEventArgs e)
-        {
+        private void dateEdit1_KeyDown(object sender, KeyEventArgs e) {
             //int i = e.KeyValue;
             //if ((i < 96) ||( i > 105))  //96--105  //
             //{
@@ -1185,22 +1020,18 @@ namespace ItopVector.Tools
             //}
         }
 
-        private void simpleButton5_Click(object sender, EventArgs e)
-        {
+        private void simpleButton5_Click(object sender, EventArgs e) {
             ChangeCheck(sender);
         }
 
-        private void simpleButton5_Click_1(object sender, EventArgs e)
-        {
-            if (checkedListBox1.SelectedIndex == -1)
-            {
+        private void simpleButton5_Click_1(object sender, EventArgs e) {
+            if (checkedListBox1.SelectedIndex == -1) {
                 MessageBox.Show("请选择图层。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             frmList l = new frmList();
             Layer layer = this.checkedListBox1.Items[checkedListBox1.SelectedIndex] as Layer;
-            if (!NoSave.Contains(layer))
-            {
+            if (!NoSave.Contains(layer)) {
                 NoSave.Add(layer);
             }
             l.list = NoSave;

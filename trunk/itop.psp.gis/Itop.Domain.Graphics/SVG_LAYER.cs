@@ -27,6 +27,7 @@ namespace Itop.Domain.Graphics
         private string _visibility = "";
         private string _isselect = "";
         private string _ischange = "";
+        private string _parentid = "";
         #endregion ◊÷∂Œ
 
         #region  Ù–‘
@@ -117,6 +118,13 @@ namespace Itop.Domain.Graphics
         {
             set { _ischange = value; }
             get { return _ischange; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ParentID {
+            set { _parentid = value; }
+            get { return _parentid; }
         }
         #endregion  Ù–‘
     }
