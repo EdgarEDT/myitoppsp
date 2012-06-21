@@ -379,5 +379,20 @@ namespace Itop.TLPSP.DEVICE
                 ReferenceVolt =(decimal) devMX.ReferenceVolt;
             }
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(DeviceMx.IName))
+            {
+                MessageBox.Show("请选择所在的母线！");
+                return;
+            }
+            if (string.IsNullOrEmpty(DeviceMx.OperationYear))
+            {
+                MessageBox.Show("请选择投产时间！");
+                return;
+            }
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

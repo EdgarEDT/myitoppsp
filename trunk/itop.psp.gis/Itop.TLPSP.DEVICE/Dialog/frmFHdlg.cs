@@ -77,6 +77,8 @@ namespace Itop.TLPSP.DEVICE
                 {
                     dev.SkN = Convert.ToDouble(spinEdit15.Text);
                 }
+               dev.OutP =ZInputP  ;
+               dev.OutQ =ZInputQ ;
                 dev.NodeType = (string)radioGroup2.EditValue;
                 dev.IName = belongbus;
                 dev.ProjectID = projectid;
@@ -91,6 +93,8 @@ namespace Itop.TLPSP.DEVICE
                 radioGroup3.EditValue = dev.UnitFlag;
                 InputP = dev.InPutP.ToString();
                 InputQ = dev.InPutQ.ToString();
+                ZInputP = dev.OutP;
+                ZInputQ = dev.OutQ;
                 VoltR = dev.VoltR.ToString();
                 belongbus = dev.IName;
                 projectid = dev.ProjectID;
@@ -223,6 +227,28 @@ namespace Itop.TLPSP.DEVICE
                 textEdit2.Text = value;
             }
         }
+        public double ZInputP
+        {
+            get
+            {
+                return (double)spinEdit1.Value;
+            }
+            set
+            {
+                spinEdit1.Value = (decimal)value;
+            }
+        }
+        public double ZInputQ
+        {
+            get
+            {
+                return (double)spinEdit18.Value;
+            }
+            set
+            {
+                spinEdit18.Value = (decimal)value;
+            }
+        }
         public string VoltR
         {
             get
@@ -254,6 +280,16 @@ namespace Itop.TLPSP.DEVICE
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(DeviceMx.IName) )
+            {
+                MessageBox.Show("请选择所在的母线！");
+                return;
+            }
+            if (string.IsNullOrEmpty(DeviceMx.OperationYear))
+            {
+                MessageBox.Show("请选择投产时间！");
+                return;
+            }
             this.DialogResult = DialogResult.OK;
         }
 

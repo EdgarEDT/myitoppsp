@@ -15,6 +15,7 @@ using Itop.Domain.Graphics;
 using System.Collections;
 using Itop.Client.Common;
 using DevExpress.Utils;
+using Itop.Domain.Table;
 namespace Itop.TLPSP.DEVICE {
     /// <summary>
     /// 项目管理
@@ -53,7 +54,7 @@ namespace Itop.TLPSP.DEVICE {
             //bar1.AddItem(barButtonItem1);
             if (strID == null)
             {
-                bar.AddItems(new DevExpress.XtraBars.BarItem[] { barSelectDevice, barDeleteDevice, barCopy, barButtonItem1, barButtonItem2, barButtonItem3, barButtonItem4, barORP, AllshortItem, RelcheckItem, jiaoliucheck, ZLcheck, barCheck, barUpdateNum });
+                bar.AddItems(new DevExpress.XtraBars.BarItem[] { barSelectDevice, barDeleteDevice, barCopy, Autofpfh, barButtonItem1, barButtonItem2, barButtonItem3, barButtonItem4, barORP, AllshortItem, RelcheckItem, jiaoliucheck, ZLcheck, barCheck, barUpdateNum });
                 //bar.AddItem();
                 barQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -189,8 +190,10 @@ namespace Itop.TLPSP.DEVICE {
         /// <param name="classname"></param>
         /// <returns></returns>
         private UCDeviceBase createInstance(string classname) {
-            //if (string.IsNullOrEmpty(classname))
+           
             return Assembly.GetExecutingAssembly().CreateInstance(classname, false) as UCDeviceBase;
+          
+
         }
         private void showDevice(UCDeviceBase device) {
             if (device == null) return;
@@ -303,6 +306,7 @@ namespace Itop.TLPSP.DEVICE {
             frmDeviceList frmDevList = new frmDeviceList();
             frmDevList.ProjectID = this.ProjectUID;
             frmDevList.ProjectSUID = strID;
+            frmDevList.BelongYear = parentobj.BelongYear;
             node = treeList2.FocusedNode;
             string devicenodename = null;
             if (node != null) {
@@ -404,6 +408,10 @@ namespace Itop.TLPSP.DEVICE {
                 TreeListNode node = treeList2.FocusedNode;
                 if (node == null) return;
                 string dtype = node["class"].ToString();
+                if (string.IsNullOrEmpty(dtype))
+                {
+                    return;
+                }
                 UCDeviceBase device = null;
                 if (devicTypes.ContainsKey(dtype)) {
                     device = devicTypes[dtype];
@@ -851,6 +859,22 @@ namespace Itop.TLPSP.DEVICE {
                     }
                 }
                 return;
+            }
+        }
+
+        private void Autofpfh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Dictionary<string, Ps_Table_220Result> dic220;
+            Dictionary<string, Ps_Table_110Result> dic110;
+            double tsl = 1;
+            FrmAutofh fa = new FrmAutofh();
+            if (fa.ShowDialog() == DialogResult.OK)
+            {
+                dic220 = fa.Dic220;
+                dic110 = fa.Dic110;
+                tsl = fa.TSL;
+                //找出此卷下的所有变电站下的 负荷 或者是输出有功 无功为有功的1/3
+
             }
         }
     }

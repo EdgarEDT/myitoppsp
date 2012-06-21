@@ -89,7 +89,9 @@ namespace Itop.TLPSP.DEVICE
             InitDeviceType(type);
             //splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
             treeList1.FocusedNode = null;
+            barButtonItemclose.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.ShowDialog();
+            
         }
         //±ßµçÕ¾Èë¿Ú
          public void bdzdevice()

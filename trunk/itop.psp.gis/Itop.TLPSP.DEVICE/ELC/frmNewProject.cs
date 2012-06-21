@@ -15,6 +15,14 @@ namespace Itop.TLPSP.DEVICE
             InitializeComponent();
             
         }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            for (int i = 0; i <= 30;i++ )
+            {
+                comboBoxEdit2.Properties.Items.Add((2000 + i).ToString());
+            }
+        }
         public void init()
         {
             if (!flag)
@@ -49,6 +57,18 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit1.Text = value;
             }
         }
+        public string BelongYear
+        {
+            get
+            {
+                return comboBoxEdit2.Text;
+            }
+            set
+            {
+                comboBoxEdit2.Text = value;
+            }
+        }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
 

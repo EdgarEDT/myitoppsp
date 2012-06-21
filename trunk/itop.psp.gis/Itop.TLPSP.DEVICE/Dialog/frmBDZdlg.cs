@@ -254,7 +254,14 @@ namespace Itop.TLPSP.DEVICE
             if (!isread) {
                 ucGraph1.Save(DeviceMx.UID,DeviceMx.AreaID=="");
                 ucGraph2.Save("", DeviceMx.AreaID == "");
+                if (string.IsNullOrEmpty(bdz.S2) || string.IsNullOrEmpty(bdz.L29))
+                {
+                    MessageBox.Show("请选择投产时间和退役时间！");
+                    return;
+                }
             }
+           
+            this.DialogResult = DialogResult.OK;
         }
 
         private void mc_Properties_Click(object sender, EventArgs e)
@@ -482,10 +489,35 @@ namespace Itop.TLPSP.DEVICE
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
+            double rl = 0;
+            int bts = 0;
             frmDeviceManager_children frmc = new frmDeviceManager_children();
             frmc.ParentObj = DeviceMx;
             string[] types=new string[]{"01","03","12"};
             frmc.childrendevice(types);
+            if (frmc.DialogResult==DialogResult.OK)
+            {
+                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='03'and SvgUID='"+DeviceMx.UID+"'";
+                IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+                foreach (PSPDEV pd in list)
+                {
+                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length==4)
+                    {
+                        if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(bdz.L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(bdz.L29))
+                        {
+                            rl += pd.SiN;
+                            bts++;
+                        }
+                    }
+                    else
+                    {
+                        rl += pd.SiN;
+                        bts++;
+                    }
+                }
+                spinEdit2.Value = (decimal)rl;
+                spinEdit4.Value = (decimal)bts;
+            }
 
         }
        

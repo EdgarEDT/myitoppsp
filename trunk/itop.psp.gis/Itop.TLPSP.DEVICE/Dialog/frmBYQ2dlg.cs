@@ -143,6 +143,8 @@ namespace Itop.TLPSP.DEVICE
             {
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit1.Properties.Items.Add(o);
+                date1.Properties.Items.Add(o);
+                date2.Properties.Items.Add(o);
             }
             string con = "where Type='01'AND  ProjectID ='" + this.ProjectSUID + "' and SvgUID='" + dev.SvgUID + "' order by name";
            
@@ -548,6 +550,21 @@ namespace Itop.TLPSP.DEVICE
                     DeviceMx = dev;
                 }
             }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(DeviceMx.IName) || string.IsNullOrEmpty(DeviceMx.JName) )
+            {
+                MessageBox.Show("请选择i侧、j侧所在的母线！");
+                return;
+            }
+            if (string.IsNullOrEmpty(DeviceMx.OperationYear)||string.IsNullOrEmpty(DeviceMx.Date2))
+            {
+                MessageBox.Show("请选择投产时间和退役时间！");
+                return;
+            }
+            this.DialogResult = DialogResult.OK;
         }
 
     }

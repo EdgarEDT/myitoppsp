@@ -309,10 +309,16 @@ namespace Itop.TLPSP.DEVICE
             if (ParentObj is PSP_Substation_Info)
             {
                 p.Name = (ParentObj as PSP_Substation_Info).Title+"-±äÑ¹Æ÷";
+                p.OperationYear = (ParentObj as PSP_Substation_Info).S2;
+                p.Date1 = (ParentObj as PSP_Substation_Info).S2;
+                p.Date2 = (ParentObj as PSP_Substation_Info).L29;
             }
             else if (ParentObj is PSP_PowerSubstation_Info)
             {
                 p.Name = (ParentObj as PSP_PowerSubstation_Info).Title + "-±äÑ¹Æ÷";
+                p.OperationYear = (ParentObj as PSP_PowerSubstation_Info).S3;
+                p.Date1 = (ParentObj as PSP_PowerSubstation_Info).S3;
+                p.Date2 = (ParentObj as PSP_PowerSubstation_Info).S30;
             }
             
             dlg.DeviceMx = p;

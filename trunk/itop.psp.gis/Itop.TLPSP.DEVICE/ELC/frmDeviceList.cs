@@ -45,6 +45,19 @@ namespace Itop.TLPSP.DEVICE
                 projectSUID = value;
             }
         }
+        private string belongyear;
+        public string BelongYear
+        {
+            get
+            {
+                return belongyear;
+            }
+            set
+            {
+                belongyear = value;
+            }
+        }
+
         private string devicename;
         public string DeviceName
         {
@@ -107,6 +120,30 @@ namespace Itop.TLPSP.DEVICE
                     string con2 = " and ProjectID = '" + this.ProjectID + "'";
                     con = con + con2;
                     IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+                    if (!string.IsNullOrEmpty(belongyear))   //根据参与计算设备属于那一年先进行一次筛选
+                    {
+                        for (int i = 0; i < list.Count;i++ )
+                        {
+                            if (!string.IsNullOrEmpty((list[i] as PSPDEV).OperationYear) && (list[i] as PSPDEV).OperationYear.Length == 4 && belongyear.Length == 4 )
+                            {
+                                if (Convert.ToInt32((list[i] as PSPDEV).OperationYear) > Convert.ToInt32(belongyear))
+                              {
+                                  list.RemoveAt(i);
+                                  i--;
+                                  continue;
+                              }
+                            }
+                            if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && belongyear.Length == 4)
+                            {
+                                if (Convert.ToInt32((list[i] as PSPDEV).Date2) > Convert.ToInt32(belongyear))
+                                {
+                                    list.RemoveAt(i);
+                                    i--;
+                                    continue;
+                                }
+                            }
+                        }
+                    }
                     foreach (PSPDEV dev in list)
                     {
                         PSP_ElcDevice pspDev = new PSP_ElcDevice();
@@ -173,6 +210,30 @@ namespace Itop.TLPSP.DEVICE
                 string con2 = " and ProjectID = '" + this.ProjectID + "'";
                 con = con + con2;
                 IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+                if (!string.IsNullOrEmpty(belongyear))   //根据参与计算设备属于那一年先进行一次筛选
+                {
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (!string.IsNullOrEmpty((list[i] as PSPDEV).OperationYear) && (list[i] as PSPDEV).OperationYear.Length == 4 && belongyear.Length == 4)
+                        {
+                            if (Convert.ToInt32((list[i] as PSPDEV).OperationYear) > Convert.ToInt32(belongyear))
+                            {
+                                list.RemoveAt(i);
+                                i--;
+                                continue;
+                            }
+                        }
+                        if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && belongyear.Length == 4)
+                        {
+                            if (Convert.ToInt32((list[i] as PSPDEV).Date2) > Convert.ToInt32(belongyear))
+                            {
+                                list.RemoveAt(i);
+                                i--;
+                                continue;
+                            }
+                        }
+                    }
+                }
                 foreach (PSPDEV dev in list)
                 {
                     PSP_ElcDevice pspDev = new PSP_ElcDevice();
@@ -230,6 +291,30 @@ namespace Itop.TLPSP.DEVICE
                                 string con2 = " and ProjectID = '" + this.ProjectID + "'";
                                 con = con + con2+selecfrm.Sqlcondition;
                                 IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+                                if (!string.IsNullOrEmpty(belongyear))   //根据参与计算设备属于那一年先进行一次筛选
+                                {
+                                    for (int i = 0; i < list.Count; i++)
+                                    {
+                                        if (!string.IsNullOrEmpty((list[i] as PSPDEV).OperationYear) && (list[i] as PSPDEV).OperationYear.Length == 4 && belongyear.Length == 4 )
+                                        {
+                                            if (Convert.ToInt32((list[i] as PSPDEV).OperationYear) > Convert.ToInt32(belongyear))
+                                            {
+                                                list.RemoveAt(i);
+                                                i--;
+                                                continue;
+                                            }
+                                        }
+                                        if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && belongyear.Length == 4)
+                                        {
+                                            if (Convert.ToInt32((list[i] as PSPDEV).Date2) > Convert.ToInt32(belongyear))
+                                            {
+                                                list.RemoveAt(i);
+                                                i--;
+                                                continue;
+                                            }
+                                        }
+                                    }
+                                }
                                 foreach (PSPDEV dev in list)
                                 {
                                    

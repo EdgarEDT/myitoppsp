@@ -36,7 +36,7 @@
             this.UpdateNumber = new DevExpress.XtraBars.BarButtonItem();
             this.barImportPsasp = new DevExpress.XtraBars.BarButtonItem();
             this.bardevicetemplate = new DevExpress.XtraBars.BarButtonItem();
-            this.Autofpfh = new DevExpress.XtraBars.BarButtonItem();
+            
             this.bdzStatic = new DevExpress.XtraBars.BarButtonItem();
             this.xlStatic = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -160,16 +160,7 @@
             this.bardevicetemplate.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bardevicetemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bardevicetemplate_ItemClick);
-             // 
-            // Autofpfh
-            // 
-            this.Autofpfh.Caption = "自动分配负荷";
-            this.Autofpfh.Id = 9;
-            this.Autofpfh.ImageIndex = 8;
-            this.Autofpfh.Name = "bardevicetemplate";
-            this.Autofpfh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.Autofpfh.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.Autofpfh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Autofpfh_ItemClick);
+            
               // 
             // bdzStatic
             // 
@@ -219,7 +210,7 @@
         private DevExpress.XtraBars.BarButtonItem UpdateNumber;
         private DevExpress.XtraBars.BarButtonItem barImportPsasp;
         private DevExpress.XtraBars.BarButtonItem bardevicetemplate;
-        private DevExpress.XtraBars.BarButtonItem Autofpfh;
+       
         private DevExpress.XtraBars.BarButtonItem bdzStatic;
         private DevExpress.XtraBars.BarButtonItem xlStatic;
     }
