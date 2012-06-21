@@ -16,6 +16,7 @@
       <result property='visibility' column='visibility' />
       <result property='IsSelect' column='IsSelect' />
       <result property='IsChange' column='IsChange' />
+      <result property='ParentID' column='ParentID' />
     </resultMap>
   </resultMaps>
   <statements>
@@ -31,7 +32,8 @@
       "layerType",
       "visibility",
       "IsSelect",
-      "IsChange"
+      "IsChange",
+      "ParentID"
       )
       VALUES
       (
@@ -45,7 +47,8 @@
       #layerType#,
       #visibility#,
       #IsSelect#,
-      #IsChange#
+      #IsChange#,
+      #ParentID#
       )
     </insert>
     <delete id='DeleteSVG_LAYER' parameterClass='SVG_LAYER'>
@@ -65,7 +68,8 @@
       "layerType" = #layerType#,
       "visibility" = #visibility#,
       "IsSelect" = #IsSelect#,
-      "IsChange" = #IsChange#
+      "IsChange" = #IsChange#,
+      "ParentID"=#ParentID#
       WHERE
       SUID = #SUID#
     </update>
@@ -81,7 +85,8 @@
       "layerType",
       "visibility",
       "IsSelect",
-      "IsChange"
+      "IsChange",
+      "ParentID"
       FROM SVG_LAYER
     </select>
     <select id='SelectSVG_LAYERByKey' resultMap='SVG_LAYERResult' parameterClass='SVG_LAYER'>
@@ -96,10 +101,11 @@
       "layerType",
       "visibility",
       "IsSelect",
-      "IsChange"
+      "IsChange",
+      "ParentID"
       FROM SVG_LAYER
       WHERE
-      SUID = #SUID# and 
+      SUID = #SUID# and
       svgID =#svgID#
     </select>
     <select id='SelectSVG_LAYERBySvgID' resultMap='SVG_LAYERResult' parameterClass='SVG_LAYER'>
@@ -114,7 +120,8 @@
       "layerType",
       "visibility",
       "IsSelect",
-      "IsChange"
+      "IsChange",
+      "ParentID"
       FROM SVG_LAYER
       WHERE
       svgID = #svgID#
@@ -132,11 +139,12 @@
       "layerType",
       "visibility",
       "IsSelect",
-      "IsChange"
+      "IsChange",
+      "ParentID"
       FROM SVG_LAYER
       WHERE
       svgID = #svgID#
-      and YearID in ( $YearID$ ) 
+      and YearID in ( $YearID$ )
       order by OrderID
     </select>
     <select id='SelectSVG_LAYERByWhere' resultMap='SVG_LAYERResult' parameterClass='SVG_LAYER'>
@@ -151,11 +159,12 @@
       "layerType",
       "visibility",
       "IsSelect",
-      "IsChange"
+      "IsChange",
+      "ParentID"
       FROM SVG_LAYER
       WHERE
       svgID = #svgID#
-      and $YearID$ 
+      and $YearID$
       order by OrderID
     </select>
     <select id='SelectSVG_LAYERByWhere1' resultMap='SVG_LAYERResult' parameterClass='string'>
@@ -170,7 +179,8 @@
       "layerType",
       "visibility",
       "IsSelect",
-      "IsChange"
+      "IsChange",
+      "ParentID"
       FROM SVG_LAYER
       WHERE
       $value$
