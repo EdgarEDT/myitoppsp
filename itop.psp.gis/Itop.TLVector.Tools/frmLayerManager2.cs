@@ -19,6 +19,9 @@ using System.Xml.XPath;
 using Itop.Client.Base;
 namespace ItopVector.Tools
 {
+    /// <summary>
+    /// v¶à²ã¸´ÖÆ
+    /// </summary>
     public partial class frmLayerManager2 : FormBase
     {
         FlashWindow f = new FlashWindow();
