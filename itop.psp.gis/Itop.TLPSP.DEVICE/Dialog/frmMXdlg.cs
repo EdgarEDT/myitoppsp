@@ -360,6 +360,17 @@ namespace Itop.TLPSP.DEVICE
                 dev.SvgUID = dic["id"].ToString();
             }
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+           
+            if (string.IsNullOrEmpty(DeviceMx.OperationYear))
+            {
+                MessageBox.Show("请选择投产时间！");
+                return;
+            }
+            this.DialogResult = DialogResult.OK;
+        }
  
     }
 }

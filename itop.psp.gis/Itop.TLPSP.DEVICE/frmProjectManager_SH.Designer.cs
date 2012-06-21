@@ -52,6 +52,7 @@
             this.barNL = new DevExpress.XtraBars.BarButtonItem();
             this.barORP = new DevExpress.XtraBars.BarButtonItem();
             this.barUpdateNum = new DevExpress.XtraBars.BarButtonItem();
+            this.Autofpfh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -254,6 +255,15 @@
             this.barUpdateNum.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barUpdateNum.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barUpdateNum_ItemClick);
             // 
+            // Autofpfh
+            // 
+            this.Autofpfh.Caption = "自动分配负荷";
+            this.Autofpfh.Id = 9;
+            this.Autofpfh.ImageIndex = 8;
+            this.Autofpfh.Name = "bardevicetemplate";
+            this.Autofpfh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.Autofpfh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Autofpfh_ItemClick);
+            // 
             // frmProjectManager_SH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -295,5 +305,6 @@
         private DevExpress.XtraBars.BarButtonItem barNL;
         private DevExpress.XtraBars.BarButtonItem barORP;
         private DevExpress.XtraBars.BarButtonItem barUpdateNum;
+        private DevExpress.XtraBars.BarButtonItem Autofpfh;
     }
 }

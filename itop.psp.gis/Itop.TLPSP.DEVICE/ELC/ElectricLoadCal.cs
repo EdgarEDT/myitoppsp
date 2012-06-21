@@ -985,11 +985,29 @@ namespace Itop.TLPSP.DEVICE
                                 {
                                     inputP += devFH.InPutP;
                                     inputQ += devFH.InPutQ;
+                                    //上海新加
+                                    if (devFH.OutP != 0)
+                                    {
+                                        inputP += devFH.OutP;
+                                    }
+                                    if (devFH.OutQ != 0)
+                                    {
+                                        inputQ += devFH.OutQ;
+                                    }
                                 }
                                 else
                                 {
                                     inputP += devFH.InPutP / ratedCapacity;
                                     inputQ += devFH.InPutQ / ratedCapacity;
+                                    //上海新加
+                                    if (devFH.OutP != 0)
+                                    {
+                                        inputP += devFH.OutP/ ratedCapacity;
+                                    }
+                                    if (devFH.OutQ != 0)
+                                    {
+                                        inputQ += devFH.OutQ/ ratedCapacity;
+                                    }
                                 }
                             }
                             //if (mxflag.ContainsKey(dev.SUID))
@@ -1080,11 +1098,29 @@ namespace Itop.TLPSP.DEVICE
                                 {
                                     inputP += devFH.InPutP;
                                     inputQ += devFH.InPutQ;
+                                    //上海新加
+                                    if (devFH.OutP != 0)
+                                    {
+                                        inputP += devFH.OutP;
+                                    }
+                                    if (devFH.OutQ != 0)
+                                    {
+                                        inputQ += devFH.OutQ;
+                                    }
                                 }
                                 else
                                 {
                                     inputP += devFH.InPutP / ratedCapacity;
                                     inputQ += devFH.InPutQ / ratedCapacity;
+                                    //上海新加
+                                    if (devFH.OutP != 0)
+                                    {
+                                        inputP += devFH.OutP/ ratedCapacity;
+                                    }
+                                    if (devFH.OutQ != 0)
+                                    {
+                                        inputQ += devFH.OutQ/ ratedCapacity;
+                                    }
                                 }
                             }
                             if (dev.UnitFlag == "0")
@@ -5577,11 +5613,29 @@ namespace Itop.TLPSP.DEVICE
                                 {
                                     inputP += devFH.InPutP;
                                     inputQ += devFH.InPutQ;
+                                    //上海新加
+                                    if (devFH.OutP!=0)
+                                    {
+                                        inputP += devFH.OutP;
+                                    }
+                                    if (devFH.OutQ != 0)
+                                    {
+                                        inputQ += devFH.OutQ;
+                                    }
                                 }
                                 else
                                 {
                                     inputP += devFH.InPutP / ratedCapacity;
                                     inputQ += devFH.InPutQ / ratedCapacity;
+                                    //上海新加
+                                    if (devFH.OutP != 0)
+                                    {
+                                        inputP += devFH.OutP / ratedCapacity;
+                                    }
+                                    if (devFH.OutQ != 0)
+                                    {
+                                        inputQ += devFH.OutQ / ratedCapacity;
+                                    }
                                 }
                             }
                             //if (mxflag.ContainsKey(dev.SUID))
@@ -5672,11 +5726,29 @@ namespace Itop.TLPSP.DEVICE
                                 {
                                     inputP += devFH.InPutP;
                                     inputQ += devFH.InPutQ;
+                                    //上海新加
+                                    if (devFH.OutP != 0)
+                                    {
+                                        inputP += devFH.OutP;
+                                    }
+                                    if (devFH.OutQ != 0)
+                                    {
+                                        inputQ += devFH.OutQ;
+                                    }
                                 }
                                 else
                                 {
                                     inputP += devFH.InPutP / ratedCapacity;
                                     inputQ += devFH.InPutQ / ratedCapacity;
+                                    //上海新加
+                                    if (devFH.OutP != 0)
+                                    {
+                                        inputP += devFH.OutP / ratedCapacity;
+                                    }
+                                    if (devFH.OutQ != 0)
+                                    {
+                                        inputQ += devFH.OutQ / ratedCapacity;
+                                    }
                                 }
                             }
                             if (dev.UnitFlag == "0")

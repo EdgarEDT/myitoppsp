@@ -614,6 +614,17 @@ namespace Itop.TLPSP.DEVICE
                     DeviceHelper.xml1.SetAttribute("info-name", dev.Name);
                 }
             }
+            if (string.IsNullOrEmpty(DeviceMx.IName) || string.IsNullOrEmpty(DeviceMx.JName))
+            {
+                MessageBox.Show("请选择i侧j侧所在的母线！");
+                return;
+            }
+            if (string.IsNullOrEmpty(DeviceMx.OperationYear))
+            {
+                MessageBox.Show("请选择投产时间！");
+                return;
+            }
+            this.DialogResult = DialogResult.OK;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -29,7 +29,7 @@ namespace Itop.TLPSP.DEVICE
         #region 初始化
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut, UpdateNumber, barButtonItemDel, AllDele, barImportPsasp, bardevicetemplate, Autofpfh, bdzStatic, xlStatic, barButtonItemclose });
+            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut, UpdateNumber, barButtonItemDel, AllDele, barImportPsasp, bardevicetemplate, bdzStatic, xlStatic, barButtonItemclose });
             
             barQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             barPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -66,7 +66,7 @@ namespace Itop.TLPSP.DEVICE
             this.Text = this.smmprog.ProgName;
              string[] type=new string[]{"20"};
              InitDeviceType(type);
-             Autofpfh.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            
             // bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
              bdzStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
              splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
@@ -290,21 +290,7 @@ namespace Itop.TLPSP.DEVICE
             dlg.Show(this);
 
         }
-        private void Autofpfh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Dictionary<string, Ps_Table_220Result> dic220;
-            Dictionary<string, Ps_Table_110Result> dic110;
-            double tsl = 1;
-            FrmAutofh fa = new FrmAutofh();
-            if (fa.ShowDialog()==DialogResult.OK)
-            {
-                dic220 = fa.Dic220;
-                dic110 = fa.Dic110;
-                tsl = fa.TSL;
-                //找出此卷下的所有变电站下的 负荷 或者是输出有功 无功为有功的1/3
-
-            }
-        }
+     
         private void bdzStatic_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmyearSel fs = new FrmyearSel();

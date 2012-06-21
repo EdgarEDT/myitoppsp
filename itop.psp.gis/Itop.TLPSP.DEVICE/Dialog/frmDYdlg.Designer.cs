@@ -36,10 +36,11 @@
             this.label19 = new System.Windows.Forms.Label();
             this.date2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.date1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.nylx = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label5 = new System.Windows.Forms.Label();
             this.Area = new DevExpress.XtraEditors.LookUpEdit();
@@ -63,6 +64,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
+            this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,8 +72,6 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -81,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.date1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nylx.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Area.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dq.Properties)).BeginInit();
@@ -94,7 +95,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -125,6 +125,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.groupBox7);
+            this.groupBox4.Controls.Add(this.simpleButton4);
             this.groupBox4.Controls.Add(this.listBoxControl1);
             this.groupBox4.Controls.Add(this.simpleButton3);
             this.groupBox4.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -188,6 +189,16 @@
             this.date1.Size = new System.Drawing.Size(181, 21);
             this.date1.TabIndex = 3;
             // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(39, 257);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(62, 23);
+            this.simpleButton4.TabIndex = 25;
+            this.simpleButton4.Text = "详情";
+            this.simpleButton4.Visible = false;
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
             // listBoxControl1
             // 
             this.listBoxControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -212,7 +223,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textEdit2);
-            this.groupBox1.Controls.Add(this.simpleButton4);
             this.groupBox1.Controls.Add(this.nylx);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.Area);
@@ -248,14 +258,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "基本信息";
             // 
-            // simpleButton4
+            // textEdit2
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(227, 82);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(62, 23);
-            this.simpleButton4.TabIndex = 25;
-            this.simpleButton4.Text = "详情";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            this.textEdit2.Location = new System.Drawing.Point(110, 115);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.MaxLength = 50;
+            this.textEdit2.Size = new System.Drawing.Size(179, 21);
+            this.textEdit2.TabIndex = 26;
             // 
             // nylx
             // 
@@ -475,7 +484,7 @@
             this.spinEdit2.Name = "spinEdit2";
             this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spinEdit2.Size = new System.Drawing.Size(113, 21);
+            this.spinEdit2.Size = new System.Drawing.Size(179, 21);
             this.spinEdit2.TabIndex = 2;
             // 
             // label7
@@ -542,6 +551,16 @@
             this.spinEdit1.Size = new System.Drawing.Size(181, 21);
             this.spinEdit1.TabIndex = 1;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(8, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 14);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "电压等级";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -580,7 +599,6 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton1.Location = new System.Drawing.Point(506, 496);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(87, 29);
@@ -610,24 +628,6 @@
             this.simpleButton5.Text = "设备参数";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
-            // textEdit2
-            // 
-            this.textEdit2.Location = new System.Drawing.Point(110, 115);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.MaxLength = 50;
-            this.textEdit2.Size = new System.Drawing.Size(179, 21);
-            this.textEdit2.TabIndex = 26;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(8, 58);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 14);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "电压等级";
-            // 
             // frmDYdlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -654,6 +654,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nylx.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Area.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dq.Properties)).EndInit();
@@ -667,7 +668,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

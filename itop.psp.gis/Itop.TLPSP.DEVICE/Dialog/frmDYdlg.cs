@@ -244,10 +244,35 @@ namespace Itop.TLPSP.DEVICE
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
+            double rl = 0;
+            int bts = 0;
             frmDeviceManager_children frmc = new frmDeviceManager_children();
             frmc.ParentObj = DeviceMx;
             string[] types = new string[] { "01", "02", "04" };
             frmc.childrendevice(types);
+            if (frmc.DialogResult==DialogResult.OK)
+            {
+                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='02'and SvgUID='" + DeviceMx.UID + "'";
+                IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+                foreach (PSPDEV pd in list)
+                {
+                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2)&&pd.Date2.Length==4)
+                    {
+                        if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(DeviceMx.S29) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(DeviceMx.S30))
+                        {
+                            rl +=(double) pd.Burthen;
+                            bts++;
+                        }
+                    }
+                    else
+                    {
+                        rl += (double)pd.Burthen;
+                        bts++;
+                    }
+                }
+                spinEdit2.Value = (decimal)rl;
+                
+            }
         }
     }
 }

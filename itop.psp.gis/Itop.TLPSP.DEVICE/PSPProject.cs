@@ -119,6 +119,7 @@ namespace Itop.TLPSP.DEVICE
                 pd.Name = frmprojectDLG.Name;
                 pd.FileType = frmprojectDLG.FileType;
                 pd.Class = System.DateTime.Now.ToString();
+                pd.BelongYear = frmprojectDLG.BelongYear;
                 pd.ProjectID = Itop.Client.MIS.ProgUID;
                 UCDeviceBase.DataService.Create<PSP_ELCPROJECT>(pd);
                 DataRow row = dataSvg.NewRow();
@@ -138,7 +139,7 @@ namespace Itop.TLPSP.DEVICE
                 pd.Name = node["Name"].ToString();
                 pd.Class = node["Class"].ToString();
                 pd.FileType = node["FileType"].ToString();
-                
+                pd.BelongYear = node["BelongYear"].ToString();
                 pd.ProjectID = node["ProjectID"].ToString();
                 frmNewProject frmprojectDLG = new frmNewProject();
                 if (pd.FileType == "潮流")
@@ -152,12 +153,14 @@ namespace Itop.TLPSP.DEVICE
                 
                 frmprojectDLG.Name = pd.Name;
                 frmprojectDLG.FileType = pd.FileType;
+                frmprojectDLG.BelongYear = pd.BelongYear;
                 frmprojectDLG.init();
                 if (frmprojectDLG.ShowDialog() == DialogResult.OK)
                 {
                     node["Name"] = frmprojectDLG.Name;
                     pd.Name = frmprojectDLG.Name;
                     pd.FileType = frmprojectDLG.FileType;
+                    pd.BelongYear = frmprojectDLG.BelongYear;
                     UCDeviceBase.DataService.Update("UpdatePSP_ELCPROJECT", pd);
                     SVGFILE svgFile = new SVGFILE();
                     svgFile.SUID = pd.ID;

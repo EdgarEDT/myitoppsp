@@ -23,6 +23,7 @@ namespace Itop.Domain.Graphics
         private string _class = "";
         private string _projectid = "";
         private string _filetype = "";
+        private string _BelongYear = "";
         #endregion 字段
 
         #region 属性
@@ -66,6 +67,14 @@ namespace Itop.Domain.Graphics
         {
             set { _filetype = value; }
             get { return _filetype; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string BelongYear
+        {
+            set { _BelongYear = value; }
+            get { return _BelongYear; }
         }
         #endregion 属性
 
