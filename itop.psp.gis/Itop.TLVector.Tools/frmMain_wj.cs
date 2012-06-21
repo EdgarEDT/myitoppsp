@@ -10681,10 +10681,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                 {
                     DwBarVisible(true);
                 }
-                if (progtype == "变电站选址")
-                {
-                    DwBarVisible(true);
-                }
+               
             }
             else
             {
@@ -10706,7 +10703,11 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                 }
                 if (progtype == "变电站选址")
                 {
-                    DwBarVisible(false);
+                    if (lar.GetAttribute("layerType") =="电网规划层")
+                    { 
+                        DwBarVisible_SH(false);
+                    }
+                   
                 }
 
 #if(CITY)
@@ -12389,12 +12390,20 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
         {
             dotNetBarManager1.Bars["bar7"].Visible = true;
             dotNetBarManager1.Bars["bar8"].Visible = false;
+            
             //dotNetBarManager1.Bars["bar8"].GetItem("mEdit").Enabled = false;
             dotNetBarManager1.Bars["bar6"].Enabled = b;
-            dotNetBarManager1.Bars["bar7"].Enabled = b;
-            dotNetBarManager1.GetItem("ButtonItem7").Enabled = b;
+            dotNetBarManager1.Bars["bar7"].Enabled =true;
+
+            dotNetBarManager1.GetItem("ButtonItem7").Enabled = true;
+            dotNetBarManager1.GetItem("ButtonItem2").Visible = false;
+            dotNetBarManager1.GetItem("ButtonItem5").Visible = false;
+            dotNetBarManager1.GetItem("ButtonItem6").Visible = false;
+            dotNetBarManager1.GetItem("mShapeTransform").Visible = false;
             dotNetBarManager1.GetItem("ghwj").Enabled = b;
             dotNetBarManager1.GetItem("m_ld").Enabled = b;
+
+
             dotNetBarManager1.GetItem("m_fz").Enabled = b;
             dotNetBarManager1.GetItem("m_bxz").Enabled = b;
             dotNetBarManager1.GetItem("ButtonJXT").Enabled = b;
@@ -12406,8 +12415,12 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["mFzzj"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_cx"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_ld"].Visible = b;
-
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_subxz"].Visible = true;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_bxz"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_outxljwd"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_outsubjwd"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_fz"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["mReCompute"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_tp"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_reDraw"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_subColor"].Visible = b;
@@ -12418,6 +12431,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_inxljwd"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_inbdzjwd"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_unsel"].Visible = b;
+            
 
 #if(!CITY)
             dotNetBarManager1.Bars["bar7"].GetItem("mAreaPoly").Visible = false;
@@ -12431,7 +12445,10 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             dotNetBarManager1.Bars["bar7"].GetItem("mReCompute").Enabled = b;
             //dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Visible = false;
             dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Visible = true;
-            dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Enabled = b;
+            dotNetBarManager1.Bars["bar7"].GetItem("mFhbz").Enabled = true;
+            dotNetBarManager1.Bars["bar7"].GetItem("mFhbz1").Visible = b;
+            dotNetBarManager1.Bars["bar7"].GetItem("mCJ").Visible = b;
+
             dotNetBarManager1.Bars["bar2"].GetItem("mFreeTransform").Enabled = b;
             dotNetBarManager1.Bars["bar2"].GetItem("mShapeTransform").Enabled = b;
             dotNetBarManager1.Bars["bar2"].GetItem("mLine").Enabled = b;
