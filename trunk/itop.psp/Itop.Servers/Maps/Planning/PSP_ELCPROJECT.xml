@@ -10,6 +10,7 @@
       <result property='Class' column='Class' />
       <result property='ProjectID' column='ProjectID' />
       <result property='FileType' column='FileType'/>
+       <result property='BelongYear' column='BelongYear'/>
     </resultMap>
   </resultMaps>
   <statements>
@@ -19,7 +20,8 @@
       "Name",
       "Class",
       "ProjectID",
-      "FileType"
+      "FileType",
+      "BelongYear"
       )
       VALUES
       (
@@ -27,7 +29,8 @@
       #Name#,
       #Class#,
       #ProjectID#,
-      #FileType#
+      #FileType#,
+      #BelongYear#
       )
     </insert>
     <delete id='DeletePSP_ELCPROJECT' parameterClass='PSP_ELCPROJECT'>
@@ -47,7 +50,8 @@
       "Name" = #Name#,
       "Class" = #Class#,
       "ProjectID" = #ProjectID#,
-      "FileType"=#FileType#
+      "FileType"=#FileType#,
+      "BelongYear"=#BelongYear#
       WHERE
       ID = #ID#
     </update>
@@ -57,7 +61,8 @@
       "Name",
       "Class",
       "ProjectID",
-      "FileType"
+      "FileType",
+      "BelongYear"
       FROM PSP_ELCPROJECT
       WHERE
       ProjectID = #ProjectID#
@@ -68,7 +73,8 @@
       "Name",
       "Class",
       "ProjectID",
-      "FileType"
+      "FileType",
+      "BelongYear"
       FROM PSP_ELCPROJECT
       WHERE
       FileType=#FileType#
@@ -79,7 +85,8 @@
       "Name",
       "Class",
       "ProjectID",
-      "FileType"
+      "FileType",
+      "BelongYear"
       FROM PSP_ELCPROJECT
       WHERE
       ID = #ID#
@@ -90,7 +97,8 @@
       "Name",
       "Class",
       "ProjectID",
-      "FileType"
+      "FileType",
+      "BelongYear"
       FROM PSP_ELCPROJECT
       WHERE
       $Value$
@@ -101,7 +109,8 @@
       "Name",
       "Class",
       "ProjectID",
-      "FileType"
+      "FileType",
+      "BelongYear"
       FROM PSP_ELCPROJECT
       WHERE
       ID = #ID# AND FileType=#FileType#
@@ -112,7 +121,8 @@
       "Name",
       "Class",
       "ProjectID",
-      "FileType"
+      "FileType",
+      "BelongYear"
       FROM PSP_ELCPROJECT
       WHERE
       ProjectID = #ProjectID# AND FileType=#FileType#
