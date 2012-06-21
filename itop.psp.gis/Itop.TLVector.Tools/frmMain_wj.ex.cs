@@ -267,11 +267,35 @@ namespace ItopVector.Tools
                                 } else if (OddEven.IsEven(i)) {
                                     temp = pStart2.X.ToString() + " " + pStart2.Y.ToString() + "," + pStart4.X.ToString() + " " + pStart4.Y.ToString();
                                 }
+                                ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
                                 XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
                                 n1.SetAttribute("points", temp);
                                 n1.SetAttribute("IsLead", "1");
                                 n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
-                                n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                bool jsflag = false;
+                                for (int m = 0; m < layercol.Count; m++)
+                                {
+                                    if ((layercol[m] as Layer).GetAttribute("id") == SvgDocument.currentLayer && (layercol[m] as Layer).GetAttribute("label").Contains("线路"))
+                                    {
+                                        n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                        jsflag = true;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        if ((layercol[m] as Layer).GetAttribute("label").Contains("线路"))
+                                        {
+                                            n1.SetAttribute("layer", (layercol[m] as Layer).GetAttribute("id"));
+                                            jsflag = true;
+                                            break;
+                                        }
+
+                                    }
+                                }
+                                if (!jsflag)
+                                {
+                                    n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                }
                                 n1.SetAttribute("FirstNode", element.GetAttribute("id"));
                                 n1.SetAttribute("LastNode", device.GetAttribute("id"));
                                 n1.SetAttribute("Deviceid", ((PSPDEV)list5[i - j]).SUID);
