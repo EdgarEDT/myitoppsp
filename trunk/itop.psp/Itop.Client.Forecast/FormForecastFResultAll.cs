@@ -393,7 +393,7 @@ namespace Itop.Client.Forecast
             {
                 if (commonhelp.HasValue(e.Node["ID"].ToString(), e.Column.FieldName))
                 {
-                    e.Appearance.BackColor = Color.Salmon;
+                    e.Appearance.ForeColor = Color.Salmon;
                 }
             }
         }
