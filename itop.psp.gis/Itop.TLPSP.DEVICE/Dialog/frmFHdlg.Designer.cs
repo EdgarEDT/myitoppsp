@@ -452,9 +452,9 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(9, 52);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 14);
+            this.label5.Size = new System.Drawing.Size(55, 14);
             this.label5.TabIndex = 29;
-            this.label5.Text = "网供负荷无功";
+            this.label5.Text = "负荷无功";
             // 
             // label2
             // 
@@ -482,9 +482,9 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(9, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 14);
+            this.label3.Size = new System.Drawing.Size(55, 14);
             this.label3.TabIndex = 12;
-            this.label3.Text = "网供负荷有功";
+            this.label3.Text = "负荷有功";
             // 
             // groupBox4
             // 

@@ -34,6 +34,8 @@ namespace Itop.TLPSP.DEVICE
                 dev.InPutQ = (double)InPutQ;
                 dev.OutP = (double)OutP;
                 dev.OutQ = (double)OutQ;
+                dev.HuganTQ1 = (double)spinEdit18.Value;
+                dev.HuganTQ2 = (double)spinEdit19.Value;
                 dev.Burthen = Burthen;
                 dev.LineLevel = checkBox1.Checked?"1":"0";
                 dev.LineType = checkBox2.Checked ? "1" : "0";
@@ -70,6 +72,8 @@ namespace Itop.TLPSP.DEVICE
                 InPutQ = (decimal)dev.InPutQ;
                 OutP = (decimal)dev.OutP;
                 OutQ = (decimal)dev.OutQ;
+                spinEdit18.Value = (decimal)dev.HuganTQ1;
+                spinEdit19.Value = (decimal)dev.HuganTQ2;
                 Burthen = dev.Burthen;
                 checkBox1.CheckState = dev.LineLevel=="1"?CheckState.Checked:CheckState.Unchecked ;
                 checkBox2.CheckState = dev.LineType == "1" ? CheckState.Checked : CheckState.Unchecked;
