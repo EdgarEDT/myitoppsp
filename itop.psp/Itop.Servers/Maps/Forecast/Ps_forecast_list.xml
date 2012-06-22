@@ -12,30 +12,36 @@
 			<result property='UserID' column='UserID' />
 			<result property='Col1' column='Col1' />
 			<result property='Col2' column='Col2' />
-		</resultMap>
+      <result property='YcStartYear' column='YcStartYear' />
+      <result property='YcEndYear' column='YcEndYear' />
+    </resultMap>
 	</resultMaps>
 <statements>
 	<insert id='InsertPs_forecast_list' parameterClass='Ps_forecast_list'>
-		INSERT INTO Ps_forecast_list		(
-			"ID",
-			"Title",
-			"StartYear",
-			"EndYear",
-			"UserID",
-			"Col1",
-			"Col2"
-		)
-		VALUES
-		(
-			#ID#,
-			#Title#,
-			#StartYear#,
-			#EndYear#,
-			#UserID#,
-			#Col1#,
-			#Col2#
-		)
-	</insert>
+    INSERT INTO Ps_forecast_list		(
+    "ID",
+    "Title",
+    "StartYear",
+    "EndYear",
+    "UserID",
+    "Col1",
+    "Col2",
+    "YcStartYear",
+    "YcEndYear"
+    )
+    VALUES
+    (
+    #ID#,
+    #Title#,
+    #StartYear#,
+    #EndYear#,
+    #UserID#,
+    #Col1#,
+    #Col2#,
+    #YcStartYear#,
+    #YcEndYear#
+    )
+  </insert>
 	<delete id='DeletePs_forecast_list' parameterClass='Ps_forecast_list'>
     DELETE FROM Ps_forecast_list
     WHERE
@@ -46,41 +52,47 @@
     ForecastID = #ID#
   </delete>
 	<update id='UpdatePs_forecast_list' parameterClass='Ps_forecast_list'>
-		UPDATE Ps_forecast_list
-		SET
-			"Title" = #Title#,
-			"StartYear" = #StartYear#,
-			"EndYear" = #EndYear#,
-			"UserID" = #UserID#,
-			"Col1" = #Col1#,
-			"Col2" = #Col2#
-		WHERE
-			ID = #ID#
-	</update>
+    UPDATE Ps_forecast_list
+    SET
+    "Title" = #Title#,
+    "StartYear" = #StartYear#,
+    "EndYear" = #EndYear#,
+    "UserID" = #UserID#,
+    "Col1" = #Col1#,
+    "Col2" = #Col2#,
+    "YcStartYear" = #YcStartYear#,
+    "YcEndYear" = #YcEndYear#
+    WHERE
+    ID = #ID#
+  </update>
 	<select id='SelectPs_forecast_listList' resultMap='Ps_forecast_listResult' parameterClass='Ps_forecast_list'>
-		SELECT
-			"ID",
-			"Title",
-			"StartYear",
-			"EndYear",
-			"UserID",
-			"Col1",
-			"Col2"
-		FROM Ps_forecast_list
-	</select>
+    SELECT
+    "ID",
+    "Title",
+    "StartYear",
+    "EndYear",
+    "UserID",
+    "Col1",
+    "Col2",
+    "YcStartYear",
+    "YcEndYear"
+    FROM Ps_forecast_list
+  </select>
 	<select id='SelectPs_forecast_listByKey' resultMap='Ps_forecast_listResult' parameterClass='Ps_forecast_list'>
-		SELECT
-			"ID",
-			"Title",
-			"StartYear",
-			"EndYear",
-			"UserID",
-			"Col1",
-			"Col2"
-		FROM Ps_forecast_list
-		WHERE
-			ID = #ID#
-	</select>
+    SELECT
+    "ID",
+    "Title",
+    "StartYear",
+    "EndYear",
+    "UserID",
+    "Col1",
+    "Col2",
+    "YcStartYear",
+    "YcEndYear"
+    FROM Ps_forecast_list
+    WHERE
+    ID = #ID#
+  </select>
   <select id='SelectPs_forecast_listByCOL1AndUserID' resultMap='Ps_forecast_listResult' parameterClass='Ps_forecast_list'>
     SELECT
     "ID",
@@ -89,7 +101,9 @@
     "EndYear",
     "UserID",
     "Col1",
-    "Col2"
+    "Col2",
+    "YcStartYear",
+    "YcEndYear"
     FROM Ps_forecast_list
     WHERE
     UserID = #UserID#
@@ -105,7 +119,9 @@
     "UserID",
     "Col1",
     convert(char,EndYear-StartYear)
-    "Col2"
+    "Col2",
+    "YcStartYear",
+    "YcEndYear"
     FROM Ps_forecast_list
     WHERE
     Col1 = #Col1#
@@ -119,7 +135,9 @@
     "EndYear",
     "UserID",
     "Col1",
-    "Col2"
+    "Col2",
+    "YcStartYear",
+    "YcEndYear"
     FROM Ps_forecast_list
     WHERE
     UserID = #UserID#
@@ -132,10 +150,12 @@
     "EndYear",
     "UserID",
     "Col1",
-    "Col2"
+    "Col2",
+    "YcStartYear",
+    "YcEndYear"
     FROM Ps_forecast_list
     WHERE
-     $value$
+    $value$
   </select>
 </statements>
 </sqlMap>
