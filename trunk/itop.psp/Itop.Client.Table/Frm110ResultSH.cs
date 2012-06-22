@@ -1373,7 +1373,7 @@ namespace Itop.Client.Table
 
             //更新110kV以下电源  更新 5、区内电源出力
             //
-            string conn1 = " AreaID='" + GetProjectID + "' and S9='" + AreaName + "' and cast(S1 as int)<=110";
+            string conn1 = " AreaID='" + GetProjectID + "' and S9='" + AreaName + "' and cast(S1 as int)=110";
             IList<PSP_PowerSubstation_Info> list = Common.Services.BaseService.GetList<PSP_PowerSubstation_Info>("SelectPSP_PowerSubstation_InfoListByWhere", conn1);
 
             int startyear = yAnge.BeginYear;
@@ -1528,7 +1528,7 @@ namespace Itop.Client.Table
 
             //更新安排110kV变电容量
 
-            string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=110";
+            string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1=110";
             IList<PSP_Substation_Info> list = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
 
             int startyear = yAnge.BeginYear;
