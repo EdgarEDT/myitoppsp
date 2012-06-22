@@ -103,7 +103,7 @@
     <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.MapView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-     <Reference Include="ItopVector, Version=3.0.1.27794, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ItopVector, Version=3.0.1.27794, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Client\ItopVector.dll</HintPath>
     </Reference>
@@ -879,6 +879,12 @@
     <Compile Include="frmMain_Spatial.Designer.cs">
       <DependentUpon>frmMain_Spatial.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLayerTreeManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLayerTreeManager.Designer.cs">
+      <DependentUpon>frmLayerTreeManager.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CtrlFileManager.resx">
@@ -1429,6 +1435,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain_Spatial.dotNetBarManager1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLayerTreeManager.resx">
+      <DependentUpon>frmLayerTreeManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="更新说明.txt" />
   </ItemGroup>
