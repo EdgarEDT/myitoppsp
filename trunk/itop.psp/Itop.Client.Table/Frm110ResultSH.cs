@@ -2024,7 +2024,7 @@ namespace Itop.Client.Table
                 frm1.BindList = cList;
                 if (frm1.ShowDialog() == DialogResult.OK)
                 {
-                    FormLoadForecastData frm = new FormLoadForecastData();
+                    FormLoadForecastDataFSH frm = new FormLoadForecastDataFSH();
                     frm.ProjectUID = GetProjectID;
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
