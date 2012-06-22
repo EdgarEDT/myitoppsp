@@ -161,6 +161,7 @@ namespace Itop.TLPSP.DEVICE
                     pd.Name = frmprojectDLG.Name;
                     pd.FileType = frmprojectDLG.FileType;
                     pd.BelongYear = frmprojectDLG.BelongYear;
+                    node["BelongYear"] = frmprojectDLG.BelongYear;
                     UCDeviceBase.DataService.Update("UpdatePSP_ELCPROJECT", pd);
                     SVGFILE svgFile = new SVGFILE();
                     svgFile.SUID = pd.ID;

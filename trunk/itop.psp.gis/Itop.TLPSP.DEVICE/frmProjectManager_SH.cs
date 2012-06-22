@@ -103,6 +103,10 @@ namespace Itop.TLPSP.DEVICE {
                
                 initbar(true);
             }
+            else
+            {
+                this.Close();
+            }
             
         }
         //flag=ture为潮流计算界面 false 为短路计算界面
@@ -156,6 +160,10 @@ namespace Itop.TLPSP.DEVICE {
                  this.Text = "短路计算-"+parentobj.Name;
                
                 initbar(false);
+            }
+            else
+            {
+                this.Close();
             }
         }
         /// <summary>
@@ -861,19 +869,214 @@ namespace Itop.TLPSP.DEVICE {
                 return;
             }
         }
-
+        private void fpfhyj(PSP_Substation_Info sub,ref double zgfh,ref Dictionary<PSP_Substation_Info,IList<PSPDEV>> listfhfp)
+        {
+            //首先需找最低压母线
+            string con = "where SvgUID='" + sub.UID + "'and Type='01' and ProjectID='" + Itop.Client.MIS.ProgUID + "' order by RateVolt";
+            IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", con);
+            List<int> listnum = new List<int>(); //记录那几个母线 要进行考虑到系统分析中\
+            IList<PSPDEV> list1 = new List<PSPDEV>();
+            double minv = sub.L1;
+            if (list.Count==0)
+            {
+                return;
+            }
+            bool flag=false;
+            for (int i = 0; i < list.Count;i++ )
+            {
+                if (list[i].RateVolt <= minv)
+                {
+                    minv = list[i].RateVolt;
+                }
+                if (list[i].RateVolt==sub.L1)
+                {
+                    flag=true;
+                }
+            }
+            
+            for (int i = 0; i < list.Count;i++ )
+            {
+                if (list[i].RateVolt == minv)
+                {
+                    con = "where IName='" + list[i].Name + "'and Type='12' and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+                    PSPDEV obj = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con)as PSPDEV;
+                    if (obj != null)
+                    {
+                        list1.Add(obj);
+                    }
+                    else
+                        list1.Add(list[i]);
+                    
+                }
+                if (flag)
+                {
+                    if (list[i].RateVolt == sub.L1)
+                    {
+                        con = "where IName='" + list[i].Name + "'and Type='12' and ProjectID='" + Itop.Client.MIS.ProgUID + "'";
+                        PSPDEV obj = UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con) as PSPDEV;
+                        if (obj != null)
+                        {
+                            zgfh += obj.OutP;
+                        }
+                        else
+                            zgfh += list[i].HuganTQ1;
+                    }
+                }
+            }
+            
+            listfhfp[sub] = list1;
+            
+        }
         private void Autofpfh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Dictionary<string, Ps_Table_220Result> dic220;
             Dictionary<string, Ps_Table_110Result> dic110;
+            Dictionary<string,IList<PSP_Substation_Info>> sub220list ;
+            Dictionary<string, IList<PSP_Substation_Info>> sub110list;
+            if (string.IsNullOrEmpty(parentobj.BelongYear))
+            {
+                parentobj.BelongYear = DateTime.Now.Year.ToString();
+            }
             double tsl = 1;
             FrmAutofh fa = new FrmAutofh();
+            fa.BelongYear = parentobj.BelongYear;
             if (fa.ShowDialog() == DialogResult.OK)
             {
                 dic220 = fa.Dic220;
                 dic110 = fa.Dic110;
                 tsl = fa.TSL;
+                sub110list = fa.Sub110list;
+                sub220list = fa.Sub220list;
+                List<string> listarea = fa.ListArea;
                 //找出此卷下的所有变电站下的 负荷 或者是输出有功 无功为有功的1/3
+                for (int i = 0; i < listarea.Count;i++ )
+                {
+                    //该变电站下同电压等级的负荷
+                    Dictionary<PSP_Substation_Info, IList<PSPDEV>> dicfh=new Dictionary<PSP_Substation_Info,IList<PSPDEV>>();
+                    double sumbdzrl = 0;
+                    double Fhfpz = 0;
+                    //如果110平衡表存在该地区的则只进行该地区的计算
+                    if (dic110.ContainsKey(listarea[i]))
+                    {
+                        Ps_Table_110Result p110 = dic110[listarea[i]];
+                      double qshfh= (double) p110.GetType().GetProperty("yf" + parentobj.BelongYear).GetValue(p110,null);
+                        if (qshfh==0)
+                        {
+                            continue;
+                        }
+                        double zgfh = 0;
+                        if (sub110list.ContainsKey(listarea[i]))  //存在变电站
+                        {
+                            // 找出220kv变电站的直供负荷
+                            double zgfh220 = 0;
+                            if (sub220list.ContainsKey(listarea[i]))
+                            {
+                                for (int j = 0; j < sub220list[listarea[i]].Count;j++ )
+                                {
+                                    //string con = "where SvgUID='" + sub220list[listarea[i]][j].UID + "'and Type='12' and ProjectID='" + Itop.Client.MIS.ProgUID + "'and VoltR='" + sub220list[listarea[i]][j].L1 + "'or  VoltR is null";
+                                    //IList<PSPDEV> listfh = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", con);
+                                    //for (int m = 0; m < listfh.Count; m++)
+                                    //{
+                                    //    zgfh220 += listfh[m].OutP;
+                                    //}
+                                    fpfhyj(sub220list[listarea[i]][j], ref zgfh220, ref dicfh);
+                                }
+                            }
+                            dicfh=new Dictionary<PSP_Substation_Info,IList<PSPDEV>>();
+                            //为110
+                            for (int j = 0; j < sub110list[listarea[i]].Count;j++ )
+                            {
+                                sumbdzrl += sub110list[listarea[i]][j].L2;
+                                fpfhyj(sub110list[listarea[i]][j],ref zgfh,ref dicfh);
+                                //string con = "where SvgUID='" + sub110list[listarea[i]][j].UID + "'and Type='12' and ProjectID='" + Itop.Client.MIS.ProgUID + "'and VoltR='" + sub110list[listarea[i]][j].L1 + "'or  VoltR is null";
+                                //IList<PSPDEV> listfh = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", con);
+                                //if (listfh.Count>0)
+                                //{
+                                //    dicfh.Add(sub110list[listarea[i]][j], listfh);
+                                //}
+                                //else
+                                //    continue;
+                                //for (int m = 0; m < listfh.Count;m++ )
+                                //{
+                                //    zgfh += listfh[m].OutP;
+                                //}
+                            }
+                            Fhfpz = qshfh - zgfh-zgfh220;
+                            if (Fhfpz<=0)
+                            {
+                                continue;
+                            }
+                            for (int j = 0; j < sub110list[listarea[i]].Count; j++)
+                            {
+                                double fpl = 0;
+                                fpl = ((sub110list[listarea[i]][j].L2 / sumbdzrl) * Fhfpz) / tsl;
+                                int fhsum = dicfh[sub110list[listarea[i]][j]].Count;
+                                foreach (PSPDEV fh in dicfh[sub110list[listarea[i]][j]])
+                                {
+                                   
+                                    fh.InPutP = fpl / fhsum;
+                                    fh.InPutQ = fpl / (3 * fhsum);
+                                    UCDeviceBase.DataService.Update<PSPDEV>(fh);
+                                }
+                            }
+                        }
+                    }
+                    else   //如果不存在
+                    {
+                        //判断220平衡表中的数据是否存在
+                        if (dic220.ContainsKey(listarea[i]))
+                        {
+                            Ps_Table_220Result p220 = dic220[listarea[i]];
+                            double qshfh = (double)p220.GetType().GetProperty("yf" + parentobj.BelongYear).GetValue(p220, null);
+                            if (qshfh == 0)
+                            {
+                                continue;
+                            }
+                            double zgfh = 0;
+                            if (sub220list.ContainsKey(listarea[i]))  //存在变电站
+                            {
+                                
+                              
+                                //为220
+                                for (int j = 0; j < sub220list[listarea[i]].Count; j++)
+                                {
+                                    sumbdzrl += sub220list[listarea[i]][j].L2;
+                                    fpfhyj(sub220list[listarea[i]][j], ref zgfh, ref dicfh);
+                                    //string con = "where SvgUID='" + sub220list[listarea[i]][j].UID + "'and Type='12' and ProjectID='" + Itop.Client.MIS.ProgUID + "'and VoltR='" + sub220list[listarea[i]][j].L1 + "'or  VoltR is null";
+                                    //IList<PSPDEV> listfh = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", con);
+                                    //if (listfh.Count > 0)
+                                    //{
+                                    //    dicfh.Add(sub220list[listarea[i]][j], listfh);
+                                    //}
+                                    //else
+                                    //    continue;
+                                    //for (int m = 0; m < listfh.Count; m++)
+                                    //{
+                                    //    zgfh += listfh[m].OutP;
+                                    //}
+                                }
+                                Fhfpz = qshfh - zgfh ;
+                                if (Fhfpz <= 0)
+                                {
+                                    continue;
+                                }
+                                for (int j = 0; j < sub220list[listarea[i]].Count; j++)
+                                {
+                                    double fpl = 0;
+                                    fpl = ((sub220list[listarea[i]][j].L2 / sumbdzrl) * Fhfpz) / tsl;
+                                    int fhsum = dicfh[sub110list[listarea[i]][j]].Count;
+                                    foreach (PSPDEV fh in dicfh[sub220list[listarea[i]][j]])
+                                    {
+                                        fh.InPutP = fpl / fhsum;
+                                        fh.InPutQ = fpl / (3 * fhsum);
+                                        UCDeviceBase.DataService.Update<PSPDEV>(fh);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
 
             }
         }

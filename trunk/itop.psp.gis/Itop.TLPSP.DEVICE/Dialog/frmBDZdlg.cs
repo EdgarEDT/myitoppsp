@@ -259,6 +259,11 @@ namespace Itop.TLPSP.DEVICE
                     MessageBox.Show("请选择投产时间和退役时间！");
                     return;
                 }
+                if (bdz.L1==0)
+                {
+                    MessageBox.Show("请填写电压等级！");
+                    return;
+                }
             }
            
             this.DialogResult = DialogResult.OK;
