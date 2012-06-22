@@ -80,7 +80,7 @@ namespace ItopVector.Tools
         string bdz_xz = "";
         string str_dhx = "";
         ArrayList ChangeLayerList = new ArrayList();
-        frmLayerManager frmlar = new frmLayerManager();
+        frmLayerTreeManager frmlar = new frmLayerTreeManager();
         private string SVGUID = "";
         private string SelUseArea = "";
         private string LineLen = "";
@@ -884,8 +884,8 @@ namespace ItopVector.Tools
 
                             lar.SetAttribute("layerType", progtype);
                             lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
-                            this.frmlar.checkedListBox1.SelectedIndex = -1;
-                            this.frmlar.checkedListBox1.Items.Add(lar, true);
+                            //this.frmlar.checkedListBox1.SelectedIndex = -1;
+                            //this.frmlar.checkedListBox1.Items.Add(lar, true);
                         }
 
                         FrmSet f_set = new FrmSet();
@@ -3532,13 +3532,13 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                     lar = Layer.CreateNew("临时显示层-杆塔号", tlVectorControl1.SVGDocument);
                     lar.SetAttribute("layerType", progtype);
                     lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
-                    this.frmlar.checkedListBox1.SelectedIndex = -1;
-                    this.frmlar.checkedListBox1.Items.Add(lar, true);
+                    //this.frmlar.checkedListBox1.SelectedIndex = -1;
+                    //this.frmlar.checkedListBox1.Items.Add(lar, true);
                     lar2 = Layer.CreateNew("临时显示层-公里数", tlVectorControl1.SVGDocument);
                     lar2.SetAttribute("layerType", progtype);
                     lar2.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
-                    this.frmlar.checkedListBox1.SelectedIndex = -1;
-                    this.frmlar.checkedListBox1.Items.Add(lar2, true);
+                    //this.frmlar.checkedListBox1.SelectedIndex = -1;
+                    //this.frmlar.checkedListBox1.Items.Add(lar2, true);
                 }
                 string gt = ((XmlElement)e.SvgElement).GetAttribute("gt-info");
                 string _gtxh = ((XmlElement)e.SvgElement).GetAttribute("gtxh-info");
@@ -6793,15 +6793,15 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                     case "mFx":
                         SubPrint = false;
                         bool ck = false;
-                        CheckedListBox.CheckedItemCollection ckcol = frmlar.checkedListBox1.CheckedItems;
-                        for (int i = 0; i < ckcol.Count; i++)
-                        {
-                            Layer _lar = ckcol[i] as Layer;
-                            if (_lar.GetAttribute("layerType") == "城市规划层")
-                            {
-                                ck = true;
-                            }
-                        }
+                        //CheckedListBox.CheckedItemCollection ckcol = frmlar.checkedListBox1.CheckedItems;
+                        //for (int i = 0; i < ckcol.Count; i++)
+                        //{
+                        //    Layer _lar = ckcol[i] as Layer;
+                        //    if (_lar.GetAttribute("layerType") == "城市规划层")
+                        //    {
+                        //        ck = true;
+                        //    }
+                        //}
                         if (!ck)
                         {
                             MessageBox.Show("请打开城市规划层。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -8603,8 +8603,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
 
                     lar.SetAttribute("layerType", progtype);
                     lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
-                    this.frmlar.checkedListBox1.SelectedIndex = -1;
-                    this.frmlar.checkedListBox1.Items.Add(lar, true);
+                    //this.frmlar.checkedListBox1.SelectedIndex = -1;
+                    //this.frmlar.checkedListBox1.Items.Add(lar, true);
                 }
                 int size = tlVectorControl1.ScaleRatio > 1 ? 12 : (int)(12 / tlVectorControl1.ScaleRatio);
                 XmlNodeList useList = tlVectorControl1.SVGDocument.SelectNodes("svg/use");
@@ -10322,6 +10322,9 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             }
 
         }
+        public void LoadLayers(string layers) {
+
+        }
         public void Linkage2()
         {
 
@@ -10967,6 +10970,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
         public void LayerManagerShow()
         {
             frmlar.SymbolDoc = tlVectorControl1.SVGDocument;
+            frmlar.YearID = yearID;
             if (MapType == "所内接线图")
             {
                 frmlar.Progtype = MapType;
