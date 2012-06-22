@@ -1692,7 +1692,7 @@ namespace Itop.Client.Table
             for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
             {
                 //已有变电站
-                string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=220  and cast(S2 as int)<"+i;
+                string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1=220  and cast(S2 as int)<"+i;
                 IList<PSP_Substation_Info> list1 = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
                 int yybdznumber = 0;
                 
@@ -1745,7 +1745,7 @@ namespace Itop.Client.Table
 
 
                 //新增变电站
-                string conn2 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1<=220  and cast(S2 as int)=" + i;
+                string conn2 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1=220  and cast(S2 as int)=" + i;
                 IList<PSP_Substation_Info> list2 = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn2);
                 int xzbdznumber = 0;
 
