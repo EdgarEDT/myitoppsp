@@ -192,6 +192,9 @@
     <Content Include="Maps\Forecast\Ps_HistoryType.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Maps\Forecast\Ps_Forecast_Math2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\GM\Common_Type.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
