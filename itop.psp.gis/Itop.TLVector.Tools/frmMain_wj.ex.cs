@@ -12,6 +12,8 @@ using ItopVector.Core.Document;
 using Itop.Domain.Graphics;
 using Itop.Client.Common;
 using System.Collections;
+using System.IO;
+using System.Configuration;
 
 namespace ItopVector.Tools
 {
@@ -310,6 +312,154 @@ namespace ItopVector.Tools
                     }
                 }
             }
+        }/*
+        public void Open(string _SvgUID) {
+            string id = "''";
+            frmLayerGrade fgrade = new frmLayerGrade();
+            fgrade.SymbolDoc = tlVectorControl1.SVGDocument;
+            fgrade.InitData(_SvgUID);
+
+            if (fgrade.ShowDialog() == DialogResult.OK) {
+                id = fgrade.GetSelectNode();
+            } else {
+                id = fgrade.GetSelectNode();
+            }
+
+            StringBuilder txt = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?><svg id=\"svg\" width=\"1500\" height=\"1000\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:itop=\"http://www.Itop.com/itop\" transform=\"matrix(1 0 0 1 0 1)\"><defs>");
+            string svgdefs = "";
+            string layertxt = "";
+            StringBuilder content = new StringBuilder();
+
+            if (string.IsNullOrEmpty(_SvgUID)) return;
+            try {
+                SVGFILE svgFile = new SVGFILE();
+                svgFile.SUID = _SvgUID;
+                svgFile = (SVGFILE)Services.BaseService.GetObject("SelectSVGFILEByKey", svgFile);
+                //SvgDocument document = CashSvgDocument;
+                //if (document == null) {
+                SVG_LAYER lar = new SVG_LAYER();
+                lar.svgID = _SvgUID;
+                lar.YearID = id;
+                IList<SVG_LAYER> larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByYearID", lar);
+                foreach (SVG_LAYER _lar in larlist) {
+                    layertxt = layertxt + "<layer id=\"" + _lar.SUID + "\" label=\"" + _lar.NAME + "\" layerType=\"" + _lar.layerType + "\" visibility=\"" + _lar.visibility + "\" ParentID=\"" + _lar.YearID + "\" IsSelect=\"" + _lar.IsSelect + "\" />";
+                    content.Append(_lar.XML);
+                }
+                txt.Append(layertxt);
+
+
+                SVG_SYMBOL sym = new SVG_SYMBOL();
+                sym.svgID = _SvgUID;
+                IList<SVG_SYMBOL> symlist = Services.BaseService.GetList<SVG_SYMBOL>("SelectSVG_SYMBOLBySvgID", sym);
+                foreach (SVG_SYMBOL _sym in symlist) {
+                    svgdefs = svgdefs + _sym.XML;
+                }
+
+                txt.Append(svgdefs + "</defs>");
+                txt.Append(content.ToString() + "</svg>");
+
+
+                //IList svgList = Services.BaseService.GetList("SelectSVGFILEByKey", svgFile);
+                //svgFile = (SVGFILE)svgList[0];
+
+                SvgDocument document = SvgDocumentFactory.CreateDocument();
+                if (txt.ToString() != "1") {
+                    string filename = Path.GetTempFileName();
+                    if (File.Exists("tmp080321.temp")) {
+                        filename = "tmp080321.temp";
+                    } else {
+                        StreamWriter sw = new StreamWriter(filename);
+                        sw.Write(txt.ToString());
+                        sw.Close();
+                    }
+                    tlVectorControl1.OpenFile(filename);
+                    document = tlVectorControl1.SVGDocument;
+                    int chose = Convert.ToInt32(ConfigurationSettings.AppSettings.Get("chose"));
+                    //if (chose == 2)
+                    //{ convertDoc(document); }
+                } else {
+                    NullFile(_SvgUID);
+                    return;
+                }
+                document.FileName = svgFile.FILENAME;
+                document.SvgdataUid = svgFile.SUID;
+                //CashSvgDocument = document;
+                //}
+
+                //SvgUID = document.SvgdataUid;
+                ////this.Text = document.FileName;
+                //string title = " ";
+                //string t = "";
+                //getProjName(MIS.ProgUID, ref title);
+
+                //string[] str = str_selID.Split(",".ToCharArray());
+                if (str.Length > 1) {
+                    for (int i = 1; i < str.Length; i++) {
+                        LayerGrade ll = Services.BaseService.GetOneByKey<LayerGrade>(str[i].Replace("'", ""));
+                        if (ll != null) {
+                            if (ll.ParentID != "SUID") {
+                                LayerGrade ll2 = Services.BaseService.GetOneByKey<LayerGrade>(ll.ParentID);
+                                t = t + ll2.Name + " " + ll.Name + "， ";
+                            }
+                        }
+                    }
+                }
+
+                this.ParentForm.Text = title + " " + t + " 浏览状态";
+                if (document.RootElement == null) {
+                    tlVectorControl1.NewFile();
+                    Layer.CreateNew("背景层", tlVectorControl1.SVGDocument);
+                    Layer.CreateNew("城市规划层", tlVectorControl1.SVGDocument);
+                    Layer.CreateNew("供电区域层", tlVectorControl1.SVGDocument);
+                } else {
+                    tlVectorControl1.SVGDocument = document;
+                }
+                //tlVectorControl1.SVGDocument.SvgdataUid = SvgUID;
+                //tlVectorControl1.SVGDocument.FileName = this.Text;
+                //if (svgFile.SUID.Length > 20) {
+                //    MapType = "接线图";
+                //}
+
+                //CreateComboBox();
+                //AddCombolScale();
+                //Init();
+                this.tlVectorControl1.IsPasteGrid = false;
+                this.tlVectorControl1.IsShowGrid = false;
+                this.tlVectorControl1.IsShowRule = false;
+                this.tlVectorControl1.IsShowTip = false;
+                contextMenuStrip1.Enabled = false;
+                //tlVectorControl1.Operation = ToolOperation.Roam;
+                //tlVectorControl1.ScaleRatio = 0.1f;
+                //LayerManagerShow();
+            } catch (Exception e) {
+                MessageBox.Show(e.Message);
+            }
         }
+        public void NullFile(string _SvgUID)
+        {
+            try
+            {
+                tlVectorControl1.NewFile();
+                // Layer.AddNode("背景层", tlVectorControl1.SVGDocument);
+                Layer lar1 = Layer.CreateNew("城市规划层", tlVectorControl1.SVGDocument);
+                lar1.SetAttribute("layerType", "城市规划层");
+                Layer lar2 = Layer.CreateNew("供电区域层", tlVectorControl1.SVGDocument);
+                lar2.SetAttribute("layerType", "电网规划层");
+                tlVectorControl1.SVGDocument.SvgdataUid = _SvgUID;
+                tlVectorControl1.SVGDocument.FileName = this.Text;
+                CreateComboBox();
+                AddCombolScale();
+                this.tlVectorControl1.IsPasteGrid = false;
+                this.tlVectorControl1.IsShowGrid = false;
+                this.tlVectorControl1.IsShowRule = false;
+                this.tlVectorControl1.IsShowTip = false;
+                contextMenuStrip1.Enabled = false;
+                tlVectorControl1.Operation = ToolOperation.Roam;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }*/
     }
 }
