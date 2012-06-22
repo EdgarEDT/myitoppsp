@@ -122,7 +122,8 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         Hashtable ht = new Hashtable();
         private void checkfixedvalue()
         {
-            ht.Add("全社会用电量(亿kWh)", 1);
+            ht.Clear();
+            ht.Add("全社会用电量（亿kWh）", 1);
           
             Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
             psp_Type.ForecastID = forecastReport.ID;
@@ -134,6 +135,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             commonhelp.CheckHasFixValue(ht, dataTable, forecastReport.ID, type);
 
         }
+        Hashtable OldHt = new Hashtable();
         private void LoadData()
         {
             checkfixedvalue();
@@ -160,6 +162,15 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
 
             dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Forecast_Math));
+
+            OldHt.Clear();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                if (!OldHt.ContainsKey(row["Title"].ToString()))
+                {
+                    OldHt.Add(row["Title"].ToString(), row["ID"].ToString());
+                }
+            }
 
             dataTable.Columns.Add("N2", typeof(double));
           
@@ -418,14 +429,19 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             string id = Guid.NewGuid().ToString();
              foreach (Ps_History de3 in hs.Values)
                 {
-                    Ps_Forecast_Math py = new Ps_Forecast_Math();
-                    py.Col1 = de3.ID;
-                    py.Forecast = type;
-                    py.ForecastID = forecastReport.ID;
-                    py = (Ps_Forecast_Math)Services.BaseService.GetObject("SelectPs_Forecast_MathByCol1", py);
-                    if (py == null)
+                    if (OldHt.ContainsKey(de3.Title))
                     {
+                        Ps_Forecast_Math py = Common.Services.BaseService.GetOneByKey<Ps_Forecast_Math>(OldHt[de3.Title]);
+                        for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
+                        {
+                            commonhelp.ResetValue(py.ID, "y" + i);
+                            py.GetType().GetProperty("y" + i).SetValue(py, de3.GetType().GetProperty("y" + i).GetValue(de3, null), null);
+                        }
 
+                        Services.BaseService.Update<Ps_Forecast_Math>(py);
+                    }
+                    else
+                    {
                         Ps_Forecast_Math ForecastMath = new Ps_Forecast_Math();
                         ForecastMath.Title = de3.Title;
 
@@ -433,8 +449,6 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                         {
                             ForecastMath.GetType().GetProperty("y" + i).SetValue(ForecastMath, de3.GetType().GetProperty("y" + i).GetValue(de3, null), null);
                         }
-
-
                         id = id.Substring(0, 8);
 
                         ForecastMath.Col1 = de3.ID;
@@ -447,20 +461,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                         {
                             ForecastMath.ParentID = id + "|" + de3.ParentID;
                         }
+
                         ForecastMath.Forecast = type;
                         ForecastMath.ForecastID = forecastReport.ID;
                         ForecastMath.Sort = de3.Sort;
                         Services.BaseService.Create("InsertPs_Forecast_MathbyPs_History", ForecastMath);
-                    }
-                    else
-                    {
-
-                        for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
-                        {
-                            py.GetType().GetProperty("y" + i).SetValue(py, de3.GetType().GetProperty("y" + i).GetValue(de3, null), null);
-                        }
-                        Services.BaseService.Update<Ps_Forecast_Math>(py);
-
                     }
                 }
 
@@ -961,7 +966,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                     e.Appearance.BackColor = Color.FromArgb(152, 122, 254);
                 if (commonhelp.HasValue(e.Node["ID"].ToString(), e.Column.FieldName))
                 {
-                    e.Appearance.BackColor = Color.Salmon;
+                    e.Appearance.ForeColor = Color.Salmon;
                 }
             }
            

@@ -4287,7 +4287,7 @@ namespace Itop.Client.Forecast
                     e.Appearance.BackColor = Color.FromArgb(152, 122, 254);
                 if (commonhelp.HasValue(e.Node["ID"].ToString(), e.Column.FieldName))
                 {
-                    e.Appearance.BackColor = Color.Salmon;
+                    e.Appearance.ForeColor = Color.Salmon;
                 }
             }
         }
@@ -4301,7 +4301,7 @@ namespace Itop.Client.Forecast
                     e.Appearance.BackColor = Color.FromArgb(152, 122, 254);
                 if (commonhelp.HasValue(e.Node["ID"].ToString(), e.Column.FieldName))
                 {
-                    e.Appearance.BackColor = Color.Salmon;
+                    e.Appearance.ForeColor = Color.Salmon;
                 }
             }
         }
