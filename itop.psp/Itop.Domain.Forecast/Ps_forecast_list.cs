@@ -23,6 +23,9 @@ namespace Itop.Domain.Forecast
 		private string _userid="";
 		private string _col1="";
 		private string _col2="";
+        private int _ycstartyear;
+        private int _ycendyear;
+
 		#endregion 字段
 
 		#region 属性
@@ -82,6 +85,23 @@ namespace Itop.Domain.Forecast
 			set{ _col2=value;}
 			get{return _col2;}
 		}
+        /// <summary>
+        /// 预测起始年份
+        /// </summary>
+        public int YcStartYear
+        {
+            set { _ycstartyear = value; }
+            get { return _ycstartyear; }
+        }
+        /// <summary>
+        /// 预测结束年份
+        /// </summary>
+        public int YcEndYear
+        {
+            set { _ycendyear = value; }
+            get { return _ycendyear; }
+        }
+
 		#endregion 属性
 	}
 }

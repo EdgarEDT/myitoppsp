@@ -57,6 +57,9 @@
     <Compile Include="Ps_Forecast_Setup.cs" />
     <Compile Include="Ps_History.cs" />
     <Compile Include="Ps_HistoryType.cs" />
+    <Compile Include="Ps_Forecast_Math2.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
