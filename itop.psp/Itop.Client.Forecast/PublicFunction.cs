@@ -204,6 +204,55 @@ namespace Itop.Client.Forecast
             }
         }
         /// <summary>
+        /// 初始化commboBox
+        /// </summary>
+        /// <param name="_comboBox"></param>
+        /// <param name="forecastReport"></param>
+        /// <param name="nOwn">判断算法是否为相关法 =2还是外推法=1,0代表父算法</param>
+        public void InitCommboBoxSH(System.Windows.Forms.ComboBox _comboBox, Ps_forecast_list forecastReport, int nOwn)
+        {
+            if (_comboBox.Name == "comboBox2")
+            {
+                if (nOwn == 0)
+                {
+                    InitScenario();
+                    for (int i = 0; i < _nComboBoxCount; ++i)
+                    {
+                        _comboBox.Items.Add(_StrScenario[i]);
+                    }
+                }
+            }
+            else if (_comboBox.Name == "comboBox6")
+            {
+                if (nOwn == 1)
+                {
+                    InitSubalgorithm();
+                    for (int i = 0; i < _nComboBoxCount_Subalgorithm; ++i)
+                    {
+                        _comboBox.Items.Add(_StrSubalgorithm[i]);
+                    }
+                }
+                else if (nOwn == 2)
+                {
+                    InitInterfix();
+                    for (int i = 0; i < _nComboBoxCount_Interfix; ++i)
+                    {
+                        _comboBox.Items.Add(_StrInterfix[i]);
+                    }
+                }
+            }
+            else
+            {
+                if (forecastReport != null)
+                {
+                    for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++)
+                    {
+                        _comboBox.Items.Add(i + "年");
+                    }
+                }
+            }
+        }
+        /// <summary>
         /// 初始化添加外推法子类算法数组
         /// </summary>
         public void InitSubalgorithm()

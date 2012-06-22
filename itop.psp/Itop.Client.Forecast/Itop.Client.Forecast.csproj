@@ -144,6 +144,7 @@
     <Compile Include="ForecastMaxHourSet.Designer.cs">
       <DependentUpon>ForecastMaxHourSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAlgorithm_New\commonhelp.cs" />
     <Compile Include="FormAlgorithm_New\CtrlglebeYearValue.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -179,6 +180,54 @@
     </Compile>
     <Compile Include="FormAlgorithm_New\frmMainProperty.designer.cs">
       <DependentUpon>frmMainProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormAverageGrowthRateSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormAverageGrowthRateSH.designer.cs">
+      <DependentUpon>FormAverageGrowthRateSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExtrapolationMethodSH .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExtrapolationMethodSH .designer.cs">
+      <DependentUpon>FormExtrapolationMethodSH .cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormCoefficientOfElasticitySH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormCoefficientOfElasticitySH.designer.cs">
+      <DependentUpon>FormCoefficientOfElasticitySH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExponentialSmoothingSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExponentialSmoothingSH.designer.cs">
+      <DependentUpon>FormExponentialSmoothingSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormGrayModelSH .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormGrayModelSH .designer.cs">
+      <DependentUpon>FormGrayModelSH .cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormUnitConsumptionValueSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormUnitConsumptionValueSH.designer.cs">
+      <DependentUpon>FormUnitConsumptionValueSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormMaxHourSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormMaxHourSH.designer.cs">
+      <DependentUpon>FormMaxHourSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExpertSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlgorithm_New\FormExpertSH.designer.cs">
+      <DependentUpon>FormExpertSH.cs</DependentUpon>
     </Compile>
     <Compile Include="FormArgumentSet.cs">
       <SubType>Form</SubType>
@@ -251,6 +300,24 @@
     </Compile>
     <Compile Include="FormForecastCalc9Third.Designer.cs">
       <DependentUpon>FormForecastCalc9Third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastDResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastDResult.Designer.cs">
+      <DependentUpon>FormForecastDResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastModelDSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastModelDSH.Designer.cs">
+      <DependentUpon>FormForecastModelDSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastSelectDSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastSelectDSH.Designer.cs">
+      <DependentUpon>FormForecastSelectDSH.cs</DependentUpon>
     </Compile>
     <Compile Include="FormForecastWDXS.cs">
       <SubType>Form</SubType>
@@ -527,6 +594,108 @@
     <Compile Include="FormForecastLoadData2.Designer.cs">
       <DependentUpon>FormForecastLoadData2.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormForecastDSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastDSH.designer.cs">
+      <DependentUpon>FormForecastDSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForecastListDSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastListDSH.Designer.cs">
+      <DependentUpon>ForecastListDSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastEditCSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastEditCSH.Designer.cs">
+      <DependentUpon>FormForecastEditCSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast11_SH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast11_SH.Designer.cs">
+      <DependentUpon>FormForecast11_SH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast9SH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast9SH.designer.cs">
+      <DependentUpon>FormForecast9SH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormArgumentSetNewSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArgumentSetNewSH.Designer.cs">
+      <DependentUpon>FormArgumentSetNewSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastMaxOrBad_SH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastMaxOrBad_SH.Designer.cs">
+      <DependentUpon>FormForecastMaxOrBad_SH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastCalc1ThirdSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastCalc1ThirdSH.Designer.cs">
+      <DependentUpon>FormForecastCalc1ThirdSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastCalc4SH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastCalc4SH.Designer.cs">
+      <DependentUpon>FormForecastCalc4SH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastDResultAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastDResultAll.Designer.cs">
+      <DependentUpon>FormForecastDResultAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForecastListFSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForecastListFSH.Designer.cs">
+      <DependentUpon>ForecastListFSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastModelFSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastModelFSH.Designer.cs">
+      <DependentUpon>FormForecastModelFSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastFResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastFResult.Designer.cs">
+      <DependentUpon>FormForecastFResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecastFResultAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecastFResultAll.Designer.cs">
+      <DependentUpon>FormForecastFResultAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormResultSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResultSH.Designer.cs">
+      <DependentUpon>FormResultSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoadForecastDataforMaxHourSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoadForecastDataforMaxHourSH.Designer.cs">
+      <DependentUpon>FormLoadForecastDataforMaxHourSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoadForecastDataFSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoadForecastDataFSH.Designer.cs">
+      <DependentUpon>FormLoadForecastDataFSH.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ForecastList.resx">
@@ -561,6 +730,38 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAlgorithm_New\frmMainProperty.resx">
       <DependentUpon>frmMainProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormAverageGrowthRateSH.resx">
+      <DependentUpon>FormAverageGrowthRateSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormExtrapolationMethodSH .resx">
+      <DependentUpon>FormExtrapolationMethodSH .cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormCoefficientOfElasticitySH.resx">
+      <DependentUpon>FormCoefficientOfElasticitySH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormExponentialSmoothingSH.resx">
+      <DependentUpon>FormExponentialSmoothingSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormGrayModelSH .resx">
+      <DependentUpon>FormGrayModelSH .cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormUnitConsumptionValueSH.resx">
+      <DependentUpon>FormUnitConsumptionValueSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormMaxHourSH.resx">
+      <DependentUpon>FormMaxHourSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlgorithm_New\FormExpertSH.resx">
+      <DependentUpon>FormExpertSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormArgumentSet.resx">
       <SubType>Designer</SubType>
@@ -609,6 +810,15 @@
     <EmbeddedResource Include="FormForecastCalc9Third.resx">
       <DependentUpon>FormForecastCalc9Third.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastDResult.resx">
+      <DependentUpon>FormForecastDResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastModelDSH.resx">
+      <DependentUpon>FormForecastModelDSH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastSelectDSH.resx">
+      <DependentUpon>FormForecastSelectDSH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormForecastWDXS.resx">
       <DependentUpon>FormForecastWDXS.cs</DependentUpon>
@@ -794,6 +1004,70 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormForecastLoadData2.resx">
       <DependentUpon>FormForecastLoadData2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastDSH.resx">
+      <DependentUpon>FormForecastDSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForecastListDSH.resx">
+      <DependentUpon>ForecastListDSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastEditCSH.resx">
+      <DependentUpon>FormForecastEditCSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast11_SH.resx">
+      <DependentUpon>FormForecast11_SH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast9SH.resx">
+      <DependentUpon>FormForecast9SH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArgumentSetNewSH.resx">
+      <DependentUpon>FormArgumentSetNewSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastMaxOrBad_SH.resx">
+      <DependentUpon>FormForecastMaxOrBad_SH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastCalc1ThirdSH.resx">
+      <DependentUpon>FormForecastCalc1ThirdSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastCalc4SH.resx">
+      <DependentUpon>FormForecastCalc4SH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastDResultAll.resx">
+      <DependentUpon>FormForecastDResultAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForecastListFSH.resx">
+      <DependentUpon>ForecastListFSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastModelFSH.resx">
+      <DependentUpon>FormForecastModelFSH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastFResult.resx">
+      <DependentUpon>FormForecastFResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecastFResultAll.resx">
+      <DependentUpon>FormForecastFResultAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResultSH.resx">
+      <DependentUpon>FormResultSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoadForecastDataforMaxHourSH.resx">
+      <DependentUpon>FormLoadForecastDataforMaxHourSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoadForecastDataFSH.resx">
+      <DependentUpon>FormLoadForecastDataFSH.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

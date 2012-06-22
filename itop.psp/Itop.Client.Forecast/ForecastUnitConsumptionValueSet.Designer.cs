@@ -95,7 +95,7 @@
             this.rbdhone.Name = "rbdhone";
             this.rbdhone.Size = new System.Drawing.Size(59, 16);
             this.rbdhone.TabIndex = 0;
-            this.rbdhone.Text = "kWh/元";
+            this.rbdhone.Text = "kWh/万元";
             this.rbdhone.UseVisualStyleBackColor = true;
             this.rbdhone.CheckedChanged += new System.EventHandler(this.rbdhone_CheckedChanged);
             // 

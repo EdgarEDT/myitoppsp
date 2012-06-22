@@ -94,6 +94,8 @@ namespace Itop.Client.Forecast
             gridView1.Columns["Col1"].OptionsColumn.ShowInCustomizationForm = false;
             gridView1.Columns["Col2"].Visible = false;
             gridView1.Columns["Col2"].OptionsColumn.ShowInCustomizationForm = false;
+            gridView1.Columns["YcStartYear"].Visible = false;
+            gridView1.Columns["YcEndYear"].Visible = false;
 
             gridView1.Columns["Title"].Caption = "预测名称";
             gridView1.Columns["Title"].Width = 300;

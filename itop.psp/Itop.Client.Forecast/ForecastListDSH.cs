@@ -13,15 +13,16 @@ using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
 using Itop.Domain.Forecast;
 using System.Xml;
+using Itop.Client.Forecast.FormAlgorithm_New;
 
 namespace Itop.Client.Forecast
 {
-    public partial class ForecastListD : Itop.Client.Base.FormBase
+    public partial class ForecastListDSH : Itop.Client.Base.FormBase
     {
         //设计为电量预测模块
         private int typeFlag =2;
         DataTable dataTable;
-        public ForecastListD()
+        public ForecastListDSH()
         {
             InitializeComponent();
         }
@@ -96,14 +97,15 @@ namespace Itop.Client.Forecast
             gridView1.Columns["Col2"].Visible = false;
             gridView1.Columns["Col2"].OptionsColumn.ShowInCustomizationForm = false;
 
-            gridView1.Columns["YcStartYear"].Visible = false;
-            gridView1.Columns["YcEndYear"].Visible = false;
-
-
             gridView1.Columns["Title"].Caption = "预测名称";
             gridView1.Columns["Title"].Width = 300;
-            gridView1.Columns["StartYear"].Caption = "起始年份";
-            gridView1.Columns["EndYear"].Caption = "结束年份";
+            gridView1.Columns["StartYear"].Caption = "历史起始年份";
+            gridView1.Columns["EndYear"].Caption = "历史结束年份";
+
+            gridView1.Columns["YcStartYear"].Caption = "预测起始年份";
+            gridView1.Columns["YcEndYear"].Caption = "预测结束年份";
+
+
             gridView1.EndUpdate();
         }
 
@@ -115,7 +117,7 @@ namespace Itop.Client.Forecast
                 return;
             }
 
-            FormForecastEditC frm = new FormForecastEditC();
+            FormForecastEditCSH frm = new FormForecastEditCSH();
             frm.TypeFlag = 2;
             frm.IsEdit = false;
             frm.ProjectUID = ProjectUID;
@@ -151,7 +153,7 @@ namespace Itop.Client.Forecast
             }
 
             Ps_forecast_list report = Itop.Common.DataConverter.RowToObject<Ps_forecast_list>(gridView1.GetDataRow(gridView1.FocusedRowHandle));
-            FormForecastEditC frm = new FormForecastEditC();
+            FormForecastEditCSH frm = new FormForecastEditCSH();
             frm.IsEdit = true;
             frm.Psp_ForecastReport = report;
             frm.ProjectUID = ProjectUID;
@@ -197,12 +199,19 @@ namespace Itop.Client.Forecast
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ShowDetails();
+            //预测结果
+            FormForecastDResultAll frm = new FormForecastDResultAll(this.Text + "-预测结果");
+            frm.ShowDialog();
         }
 
        
         private void ShowDetails()
         {
+            if (!base.EditRight)
+            {
+                MsgBox.Show("您没有权限进行此项操作！");
+                return;
+            }
             if (gridView1.FocusedRowHandle < 0)
             {
                 return;
@@ -210,23 +219,85 @@ namespace Itop.Client.Forecast
 
             Ps_forecast_list report = Itop.Common.DataConverter.RowToObject<Ps_forecast_list>(gridView1.GetDataRow(gridView1.FocusedRowHandle));
 
-            FormForecastD frm = new FormForecastD(report, typeFlag);
+            FormForecastModelDSH frm = new FormForecastModelDSH();
             frm.Text = this.Text + "- " + report.Title;
-            frm.PID = ProjectUID;
-            frm.CanPrint = base.PrintRight;
-            frm.CanEdit = base.EditRight;
-            frm.IsSelect = IsSelect;
-            frm.ADdRight = AddRight;
-            frm.DEleteRight = DeleteRight;
-            DialogResult dr = frm.ShowDialog();
-
-            if (IsSelect && dr == DialogResult.OK)
+            if (frm.ShowDialog()==DialogResult.OK)
             {
-                Title = report.Title;
-                Unit = "单位：万千瓦时";
-                Gcontrol = frm.GridControl;
-                DialogResult = DialogResult.OK;
+
+                ShowModel(frm.selectID, report);
+
             }
+
+
+        }
+        private void ShowModel(int id,Ps_forecast_list report)
+        {
+            switch (id)
+            {
+                case 1:
+                    FormAverageGrowthRateSH FMA1 = new FormAverageGrowthRateSH(report);
+                    FMA1.CanEdit = base.EditRight;
+                    FMA1.Text = this.Text + "- 年增长率法";
+                    FMA1.ShowDialog();
+                    break;
+                case 2:
+                    FormExtrapolationMethodSH FMA2 = new FormExtrapolationMethodSH(report);
+                    FMA2.Text = this.Text + "- 外推法";
+                    FMA2.CanEdit = base.EditRight; 
+                    FMA2.ShowDialog();
+                    break;
+
+                case 3:
+                    FormCoefficientOfElasticitySH FMA3 = new FormCoefficientOfElasticitySH(report);
+                    FMA3.Text = this.Text + "- 弹性系数法";
+                    FMA3.CanEdit = base.EditRight; 
+                    FMA3.ShowDialog();
+                    break;
+                case 4:
+                    FormExponentialSmoothingSH FMA4 = new FormExponentialSmoothingSH(report);
+                    FMA4.Text = this.Text + "- 指数平滑法";
+                    FMA4.CanEdit = base.EditRight; 
+                    FMA4.ShowDialog();
+                    break;
+                case 5:
+                    GrayModelSH FMA5 = new GrayModelSH(report);
+                    FMA5.Text = this.Text + "- 灰色理论法";
+                    FMA5.CanEdit = base.EditRight; 
+                    FMA5.ShowDialog();
+                    break;
+                case 6: 
+                    FormForecast11_SH FMA6 = new FormForecast11_SH(report);
+                    FMA6.Text = this.Text + "- 大用户";
+                    FMA6.CanEdit = base.EditRight; 
+                    FMA6.ShowDialog();
+                    break;
+                case 7:
+                    FormUnitConsumptionValueSH FMA7 = new FormUnitConsumptionValueSH(report);
+                    FMA7.Text = this.Text + "- 产值单耗法";
+                    FMA7.CanEdit = base.EditRight;
+                    FMA7.ShowDialog();
+                    break;
+                case 8: 
+                    FormForecast9SH FMA8 = new FormForecast9SH(report);
+                    FMA8.Text = this.Text + "- 复合算法";
+                    FMA8.CanEdit = base.EditRight; 
+                    FMA8.ShowDialog();
+                    break;
+                case 9:
+                    FormForecastDResult FMA9 = new FormForecastDResult(report);
+                    FMA9.Text = this.Text + "- 预测结果列表和综合";
+                    FMA9.CanEdit = base.EditRight;
+                    FMA9.ShowDialog();
+                    break;
+                case 10:
+                    FormExpertSH FMA10 = new FormExpertSH(report);
+                    FMA10.Text = this.Text + "- 专家决策法";
+                    FMA10.CanEdit = base.EditRight;
+                    FMA10.ShowDialog();
+                    break;
+            }
+
+           
         }
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
@@ -285,6 +356,11 @@ namespace Itop.Client.Forecast
                 }
             }
             return "";
+        }
+        //开始预测
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowDetails();
         }
 
 
