@@ -270,6 +270,11 @@
     WHERE
     ID = #ID#
   </delete>
+  <delete id='DeletePs_Forecast_MathByKey' parameterClass='string'>
+    DELETE FROM Ps_Forecast_Math
+    WHERE
+    ID = #ID#
+  </delete>
   <delete id='DeletePs_Forecast_Math' parameterClass='Ps_Forecast_Math'>
     DELETE FROM Ps_Forecast_Math
     WHERE
@@ -436,7 +441,11 @@
     "y2057" = #y2057#,
     "y2058" = #y2058#,
     "y2059" = #y2059#,
-    "y2060" = #y2060#
+    "y2060" = #y2060#,
+    "Col1" = #Col1#,
+    "Col2" = #Col2#,
+    "Col3" = #Col3#,
+    "Col4" = #Col4#
     WHERE
     ID = #ID#
   </update>
