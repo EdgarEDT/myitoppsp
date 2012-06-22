@@ -13,15 +13,15 @@ using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
 using Itop.Domain.Forecast;
 using System.Xml;
+using Itop.Client.Forecast.FormAlgorithm_New;
 
 namespace Itop.Client.Forecast
 {
-    public partial class ForecastListD : Itop.Client.Base.FormBase
+    public partial class ForecastListFSH : Itop.Client.Base.FormBase
     {
-        //设计为电量预测模块
-        private int typeFlag =2;
+        private int typeFlag =1;
         DataTable dataTable;
-        public ForecastListD()
+        public ForecastListFSH()
         {
             InitializeComponent();
         }
@@ -80,7 +80,7 @@ namespace Itop.Client.Forecast
 
             Ps_forecast_list report = new Ps_forecast_list();
             report.UserID = ProjectUID;  //SetCfgValue("lastLoginUserNumber", Application.ExecutablePath + ".config");
-            report.Col1 = "2";
+            report.Col1 = "1";
             IList listReports = Common.Services.BaseService.GetList("SelectPs_forecast_listByCOL1AndUserID", report);
 
             dataTable = Itop.Common.DataConverter.ToDataTable(listReports, typeof(Ps_forecast_list));
@@ -96,14 +96,14 @@ namespace Itop.Client.Forecast
             gridView1.Columns["Col2"].Visible = false;
             gridView1.Columns["Col2"].OptionsColumn.ShowInCustomizationForm = false;
 
-            gridView1.Columns["YcStartYear"].Visible = false;
-            gridView1.Columns["YcEndYear"].Visible = false;
-
 
             gridView1.Columns["Title"].Caption = "预测名称";
             gridView1.Columns["Title"].Width = 300;
-            gridView1.Columns["StartYear"].Caption = "起始年份";
-            gridView1.Columns["EndYear"].Caption = "结束年份";
+            gridView1.Columns["StartYear"].Caption = "历史起始年份";
+            gridView1.Columns["EndYear"].Caption = "历史结束年份";
+
+            gridView1.Columns["YcStartYear"].Caption = "预测起始年份";
+            gridView1.Columns["YcEndYear"].Caption = "预测结束年份";
             gridView1.EndUpdate();
         }
 
@@ -115,8 +115,8 @@ namespace Itop.Client.Forecast
                 return;
             }
 
-            FormForecastEditC frm = new FormForecastEditC();
-            frm.TypeFlag = 2;
+            FormForecastEditCSH frm = new FormForecastEditCSH();
+            frm.TypeFlag = 1;
             frm.IsEdit = false;
             frm.ProjectUID = ProjectUID;
      //       frm.TypeFlag = typeFlag;
@@ -151,7 +151,7 @@ namespace Itop.Client.Forecast
             }
 
             Ps_forecast_list report = Itop.Common.DataConverter.RowToObject<Ps_forecast_list>(gridView1.GetDataRow(gridView1.FocusedRowHandle));
-            FormForecastEditC frm = new FormForecastEditC();
+            FormForecastEditCSH frm = new FormForecastEditCSH();
             frm.IsEdit = true;
             frm.Psp_ForecastReport = report;
             frm.ProjectUID = ProjectUID;
@@ -194,10 +194,12 @@ namespace Itop.Client.Forecast
                 MsgBox.Show("删除出错：" + ex.Message);
             }
         }
+        //查看预测结果
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ShowDetails();
+            FormForecastFResultAll frm = new FormForecastFResultAll(this.Text+"-预测结果");
+            frm.ShowDialog();
         }
 
        
@@ -209,25 +211,14 @@ namespace Itop.Client.Forecast
             }
 
             Ps_forecast_list report = Itop.Common.DataConverter.RowToObject<Ps_forecast_list>(gridView1.GetDataRow(gridView1.FocusedRowHandle));
-
-            FormForecastD frm = new FormForecastD(report, typeFlag);
+            FormForecastSelectDSH frm = new FormForecastSelectDSH();
+            frm.CnaEdit = base.EditRight;
+            frm.forecastReport = report;
             frm.Text = this.Text + "- " + report.Title;
-            frm.PID = ProjectUID;
-            frm.CanPrint = base.PrintRight;
-            frm.CanEdit = base.EditRight;
-            frm.IsSelect = IsSelect;
-            frm.ADdRight = AddRight;
-            frm.DEleteRight = DeleteRight;
-            DialogResult dr = frm.ShowDialog();
+            frm.ShowDialog();
 
-            if (IsSelect && dr == DialogResult.OK)
-            {
-                Title = report.Title;
-                Unit = "单位：万千瓦时";
-                Gcontrol = frm.GridControl;
-                DialogResult = DialogResult.OK;
-            }
         }
+       
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
@@ -261,30 +252,11 @@ namespace Itop.Client.Forecast
             catch { }
         }
 
-        public static string SetCfgValue(string AppKey, string FileName)
+     
+        //开始预测
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            System.Xml.XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(FileName);
-
-            XmlNode xNode;
-            XmlElement xElemKey;
-            XmlElement xElemValue;
-
-            xNode = xDoc.SelectSingleNode("//appSettings");
-
-            xElemKey = (XmlElement)xNode.SelectSingleNode("//add[@key=\"" + AppKey + "\"]");
-            if (xElemKey != null)
-            {
-                string[] str = xElemKey.OuterXml.Split('"');
-                if (str != null)
-                {
-                    if (str.Length > 3)
-                    {
-                        return str[3];
-                    }
-                }
-            }
-            return "";
+            ShowDetails();
         }
 
 

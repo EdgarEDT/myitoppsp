@@ -1,6 +1,6 @@
 ﻿namespace Itop.Client.Forecast
 {
-    partial class FormArgumentSetNew
+    partial class FormArgumentSetNewSH
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -246,7 +246,7 @@
             // textEdit9
             // 
             this.textEdit9.EditValue = "设置指数平滑参数：";
-            this.textEdit9.Location = new System.Drawing.Point(6, 59);
+            this.textEdit9.Location = new System.Drawing.Point(6, 57);
             this.textEdit9.Name = "textEdit9";
             this.textEdit9.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.textEdit9.Properties.ReadOnly = true;
@@ -261,7 +261,7 @@
             0,
             0,
             65536});
-            this.spinEdit4.Location = new System.Drawing.Point(152, 58);
+            this.spinEdit4.Location = new System.Drawing.Point(152, 56);
             this.spinEdit4.Name = "spinEdit4";
             this.spinEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -299,7 +299,7 @@
             // 
             this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(152, 57);
+            this.comboBox6.Location = new System.Drawing.Point(152, 55);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(234, 22);
             this.comboBox6.TabIndex = 4;
@@ -359,7 +359,7 @@
             // textEdit7
             // 
             this.textEdit7.EditValue = "选择子算法名称：";
-            this.textEdit7.Location = new System.Drawing.Point(6, 59);
+            this.textEdit7.Location = new System.Drawing.Point(6, 57);
             this.textEdit7.Name = "textEdit7";
             this.textEdit7.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.textEdit7.Size = new System.Drawing.Size(117, 19);
@@ -391,6 +391,7 @@
             this.textEdit6.Location = new System.Drawing.Point(395, 30);
             this.textEdit6.Name = "textEdit6";
             this.textEdit6.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.textEdit6.Properties.ReadOnly = true;
             this.textEdit6.Size = new System.Drawing.Size(48, 19);
             this.textEdit6.TabIndex = 0;
             // 
@@ -433,7 +434,7 @@
             // 
             // simpleButton7
             // 
-            this.simpleButton7.Location = new System.Drawing.Point(186, 57);
+            this.simpleButton7.Location = new System.Drawing.Point(186, 55);
             this.simpleButton7.Name = "simpleButton7";
             this.simpleButton7.Size = new System.Drawing.Size(140, 23);
             this.simpleButton7.TabIndex = 3;
@@ -542,7 +543,7 @@
             this.spinEdit1.Size = new System.Drawing.Size(62, 21);
             this.spinEdit1.TabIndex = 2;
             // 
-            // FormArgumentSetNew
+            // FormArgumentSetNewSH
             // 
             this.Appearance.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Appearance.Options.UseFont = true;
@@ -551,7 +552,7 @@
             this.ClientSize = new System.Drawing.Size(568, 457);
             this.Controls.Add(this.panelControl1);
             this.MaximizeBox = false;
-            this.Name = "FormArgumentSetNew";
+            this.Name = "FormArgumentSetNewSH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormArgumentSetNew";
             this.Load += new System.EventHandler(this.FormArgumentSetNew_Load);

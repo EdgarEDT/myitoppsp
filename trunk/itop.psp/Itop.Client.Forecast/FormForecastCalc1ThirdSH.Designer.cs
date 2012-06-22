@@ -1,6 +1,6 @@
 ﻿namespace Itop.Client.Forecast
 {
-    partial class FormForecastCalc1Third
+    partial class FormForecastCalc1ThirdSH
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -391,14 +391,14 @@
             this.button4.Text = "确 定";
             this.button4.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
-            // FormForecastCalc1Third
+            // FormForecastCalc1ThirdSH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 520);
             this.Controls.Add(this.panelControl1);
             this.MaximizeBox = false;
-            this.Name = "FormForecastCalc1Third";
+            this.Name = "FormForecastCalc1ThirdSH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormForecastCalc1Sec";
             this.Load += new System.EventHandler(this.FormForecastCalc1Third_Load);

@@ -13,7 +13,7 @@ using DevExpress.XtraTreeList.Nodes;
 using Itop.Client.Base;
 namespace Itop.Client.Forecast
 {
-    public partial class FormResult : FormBase
+    public partial class FormResultSH : FormBase
     {
         private DataTable gridDataTable;
         private DataTable DT_ToExcel;
@@ -70,11 +70,11 @@ namespace Itop.Client.Forecast
 
 
 
-        public FormResult()
+        public FormResultSH()
         {
             InitializeComponent();
         }
-        public FormResult( int m)
+        public FormResultSH(int m)
         {
             InitializeComponent();
             xiaoshu = m;
@@ -101,6 +101,10 @@ namespace Itop.Client.Forecast
             DataTable dt = new DataTable();
             List<string> listColID = new List<string>();
 
+            listColID.Add("Col3");
+            dt.Columns.Add("Col3", typeof(string));
+            dt.Columns["Col3"].Caption = "方案名称";
+
             listColID.Add("Title");
             dt.Columns.Add("Title", typeof(string));
             dt.Columns["Title"].Caption = "项目";
@@ -113,13 +117,7 @@ namespace Itop.Client.Forecast
                     listColID.Add(column.FieldName);
                     dt.Columns.Add(column.FieldName, typeof(double));
                 }
-                //else
-                //    if (column.FieldName == "ParentID")
-                //    {
-                //        dt.Columns.Add("ParentID", typeof(string));
-                //        listColID.Add("ParentID");
-                //        dt.Columns["ParentID"].Caption = "父ID";
-                //    }
+                
             }
             listColID.Add("ParentID");
             dt.Columns["ParentID"].Caption = "父ID";
@@ -132,35 +130,18 @@ namespace Itop.Client.Forecast
                 AddNodeDataToDataTable(dt, node, listColID, ref itemp,   jtemp);
                // itemp++;
             }
-            //gridControl1.DataSource = dt;
-            //if(gridView1.Columns.Count > 0)
-            //{
-            //    gridView1.Columns["Title"].Width = _colTitleWidth;
-            //    gridView1.Columns["Title"].AppearanceCell.TextOptions.HAlignment = _colTitleAlign;
-            //    gridView1.Columns["Title"].Caption = "项目";
-            //    gridView1.Columns["ParentID"].Caption = "父ID";
-            //    for(int i=0; i<gridView1.Columns.Count; i++)
-            //    {
-            //        GridColumn gridCol = gridView1.Columns[i];
-            //        gridCol.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            //        if (gridCol.FieldName.IndexOf("y") >= 0)
-            //        {
-            //            gridCol.Width = 80;
-            //            gridCol.Caption = gridCol.FieldName.Replace("y", "") + "年";
-            //            gridCol.DisplayFormat.FormatString = "n2";
-            //            gridCol.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            //        }
-            //        else if (gridCol.Caption.IndexOf("增长率") >= 0)
-            //        {
-            //            gridCol.Caption = "增长率";
-            //            gridCol.DisplayFormat.FormatString = "p2";
-            //            gridCol.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            //            gridCol.Width = 80;
-            //        }
-            //    }
+           
             
             if (dt.Columns.Count>0)
             {
+                GridColumn gridCol1 = new GridColumn();
+                gridCol1.Caption = "方案名称";
+                gridCol1.Visible = true;
+                gridCol1.FieldName = "Col3";
+                gridCol1.Width = 200;
+                gridCol1.VisibleIndex = 0;
+
+
                 GridColumn gridCol2 = new GridColumn();
                 gridCol2.Caption = "项目";
                 gridCol2.Visible = true;
@@ -173,6 +154,7 @@ namespace Itop.Client.Forecast
                 gridCol3.FieldName = "ParentID";
                 gridCol3.Visible = true;
                 gridCol3.VisibleIndex = dt.Columns.Count + 3;
+                gridView1.Columns.Add(gridCol1);
                 gridView1.Columns.Add(gridCol2);
                 gridView1.Columns.Add(gridCol3);
                 for (int i = 0; i < dt.Columns.Count; i++)
