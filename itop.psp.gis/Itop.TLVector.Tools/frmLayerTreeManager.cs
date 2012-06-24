@@ -20,6 +20,7 @@ using System.Text.RegularExpressions;
 
 using Itop.Client.Base;
 using DevExpress.XtraTreeList.Nodes;
+using Itop.Common;
 
 namespace ItopVector.Tools {
     public partial class frmLayerTreeManager : FormBase {
@@ -53,10 +54,24 @@ namespace ItopVector.Tools {
             treeList1.KeyFieldName = "SUID";
             treeList1.ParentFieldName = "ParentID";
             treeList1.AfterDragNode += new DevExpress.XtraTreeList.NodeEventHandler(treeList1_AfterDragNode);
+            treeList1.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(treeList1_AfterCheckNode);
+        }
+
+        void treeList1_AfterCheckNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e) {
+
+            (symbolDoc.Layers[e.Node["SUID"].ToString()] as Layer).Visible = e.Node.Checked;
+
         }
 
         void treeList1_AfterDragNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e) {
-            Services.BaseService.Update<SVG_LAYER>(treeList1.GetDataRecordByNode(e.Node) as SVG_LAYER);
+            try {
+                DataRow row= treeList1.GetDataRecordByNode(e.Node) as DataRow;
+                SVG_LAYER lay = DataConverter.RowToObject<SVG_LAYER>(row);
+                if(lay.svgID!="")
+                Services.BaseService.Update<SVG_LAYER>(lay);
+            } catch {
+                //Services.BaseService.Create<SVG_LAYER>(treeList1.GetDataRecordByNode(e.Node) as SVG_LAYER);
+            }
         }
         public void Readonly() {
             btAdd.Enabled = false;
@@ -103,9 +118,9 @@ namespace ItopVector.Tools {
 
                         } else {
                             string strLayerID = element1.GetAttribute("id");
-                            int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
+                            //int n = this.checkedListBox1.Items.Add(element1, element1.Visible);
                             if (element1.Visible) {
-                                checkedListBox1.SetItemChecked(n, true);
+                                //checkedListBox1.SetItemChecked(n, true);
                             }
                         }
 
@@ -185,17 +200,31 @@ namespace ItopVector.Tools {
                     lar.SetAttribute("ParentID", ilist[0].ToString());
                 }
                 addflag = true;
-                this.checkedListBox1.Items.Add(lar, true);
-                checkedListBox1.SelectedIndex = checkedListBox1.Items.Count - 1;
-
-                if (this.checkedListBox1.SelectedIndex != -1) {
-                    Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
-                    if (checkedListBox1.GetItemCheckState(checkedListBox1.SelectedIndex) == CheckState.Checked) {
-                        layer.Visible = true;
-                    } else {
-                        layer.Visible = false;
-                    }
-                }
+                //this.checkedListBox1.Items.Add(lar, true);
+                //checkedListBox1.SelectedIndex = checkedListBox1.Items.Count - 1;
+                DataTable dt = treeList1.DataSource as DataTable;
+                SVG_LAYER _svg = new SVG_LAYER() { SUID = lar.ID, NAME = lar.Label };
+                dt.Rows.Add(DataConverter.ObjectToRow(_svg, dt.NewRow()));
+                //_svg.SUID = lar.ID;
+                //_svg.NAME = lar.Label;
+                //_svg.svgID = SVGUID;
+                //_svg.XML = txt;
+                //_svg.MDATE = System.DateTime.Now;
+                //_svg.OrderID = ny * 100 + list.IndexOf(lar);
+                //_svg.YearID = tems_id;// lar.GetAttribute("ParentID");
+                //_svg.IsChange = lar.GetAttribute("IsChange");
+                //_svg.visibility = lar.GetAttribute("visibility");
+                //_svg.layerType = lar.GetAttribute("layerType");
+                //_svg.IsSelect = lar.GetAttribute("IsSelect");
+                //Services.BaseService.Create<SVG_LAYER>(_svg);
+                //if (this.checkedListBox1.SelectedIndex != -1) {
+                //    Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
+                //    if (checkedListBox1.GetItemCheckState(checkedListBox1.SelectedIndex) == CheckState.Checked) {
+                //        layer.Visible = true;
+                //    } else {
+                //        layer.Visible = false;
+                //    }
+                //}
 
                 //string guid=Guid.NewGuid().ToString();
                 //GraPowerRelation gra = new GraPowerRelation();
@@ -354,7 +383,7 @@ namespace ItopVector.Tools {
 
         private void btUp_Click(object sender, EventArgs e) {
             int i = this.checkedListBox1.SelectedIndex;
-            if (i == 0) { return; }
+            if (i <1) { return; }
             Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
         }
 

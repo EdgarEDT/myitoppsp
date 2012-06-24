@@ -449,6 +449,6 @@
         private DevExpress.XtraEditors.SimpleButton button1;
         private DevExpress.XtraTreeList.TreeList treeList1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        public System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
