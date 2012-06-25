@@ -59,6 +59,13 @@
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.增加方案ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改方案ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除方案ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl2)).BeginInit();
@@ -66,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btAdd
@@ -313,7 +321,9 @@
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1,
             this.treeListColumn2,
-            this.treeListColumn3});
+            this.treeListColumn3,
+            this.treeListColumn4});
+            this.treeList1.ContextMenuStrip = this.contextMenuStrip2;
             this.treeList1.KeyFieldName = "SUID";
             this.treeList1.Location = new System.Drawing.Point(4, 37);
             this.treeList1.Name = "treeList1";
@@ -356,6 +366,59 @@
             this.checkedListBox1.Size = new System.Drawing.Size(120, 89);
             this.checkedListBox1.TabIndex = 21;
             this.checkedListBox1.Visible = false;
+            // 
+            // treeListColumn4
+            // 
+            this.treeListColumn4.Caption = "OrderID";
+            this.treeListColumn4.FieldName = "OrderID";
+            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn4.Visible = true;
+            this.treeListColumn4.VisibleIndex = 1;
+            this.treeListColumn4.Width = 20;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem1,
+            this.增加方案ToolStripMenuItem,
+            this.修改方案ToolStripMenuItem,
+            this.删除方案ToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(119, 98);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(118, 22);
+            this.toolStripMenuItem3.Text = "清除关联";
+            this.toolStripMenuItem3.Visible = false;
+            // 
+            // 增加方案ToolStripMenuItem
+            // 
+            this.增加方案ToolStripMenuItem.Name = "增加方案ToolStripMenuItem";
+            this.增加方案ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.增加方案ToolStripMenuItem.Text = "增加方案";
+            this.增加方案ToolStripMenuItem.Click += new System.EventHandler(this.增加方案ToolStripMenuItem_Click);
+            // 
+            // 修改方案ToolStripMenuItem
+            // 
+            this.修改方案ToolStripMenuItem.Name = "修改方案ToolStripMenuItem";
+            this.修改方案ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.修改方案ToolStripMenuItem.Text = "修改方案";
+            this.修改方案ToolStripMenuItem.Click += new System.EventHandler(this.修改方案ToolStripMenuItem_Click);
+            // 
+            // 删除方案ToolStripMenuItem
+            // 
+            this.删除方案ToolStripMenuItem.Name = "删除方案ToolStripMenuItem";
+            this.删除方案ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除方案ToolStripMenuItem.Text = "删除方案";
+            this.删除方案ToolStripMenuItem.Click += new System.EventHandler(this.删除方案ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // frmLayerTreeManager
             // 
@@ -400,6 +463,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,5 +500,12 @@
         public System.Windows.Forms.CheckedListBox checkedListBox1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem 增加方案ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 修改方案ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除方案ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }

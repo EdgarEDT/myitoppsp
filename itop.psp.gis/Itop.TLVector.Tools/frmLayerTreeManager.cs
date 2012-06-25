@@ -244,7 +244,18 @@ namespace ItopVector.Tools {
                 //checkedListBox1.SelectedIndex = checkedListBox1.Items.Count - 1;
                 DataTable dt = treeList1.DataSource as DataTable;
                 SVG_LAYER _svg = new SVG_LAYER() { SUID = lar.ID, NAME = lar.Label };
-                dt.Rows.Add(DataConverter.ObjectToRow(_svg, dt.NewRow()));
+                if (treeList1.FocusedNode != null) {
+                    _svg.ParentID = treeList1.FocusedNode["ParentID"].ToString();
+                    _svg.YearID = ilist[0].ToString();
+                    _svg.svgID = symbolDoc.SvgdataUid;
+                    _svg.OrderID = int.Parse(treeList1.FocusedNode["OrderID"].ToString()) + 1;
+                    _svg.MDATE = DateTime.Now;
+                    Services.BaseService.Create<SVG_LAYER>(_svg);
+                }
+                DataRow row =dt.NewRow();
+                dt.Rows.Add(DataConverter.ObjectToRow(_svg, row));
+                
+                
                 //_svg.SUID = lar.ID;
                 //_svg.NAME = lar.Label;
                 //_svg.svgID = SVGUID;
@@ -393,6 +404,7 @@ namespace ItopVector.Tools {
                     layer.Label = dlg.InputString;
                     layer.SetAttribute("layerType", dlg.InputType);
                     treeList1.FocusedNode.SetValue("Name", dlg.InputString);
+                    treeList1.Refresh();
                     //InitData();
                 }
                 if (d == DialogResult.Retry) {
@@ -490,35 +502,59 @@ namespace ItopVector.Tools {
         }
 
         private void simpleButton1_Click(object sender, EventArgs e) {
-            int index = this.checkedListBox1.SelectedIndex;
-            if (index > 0) {
-                Layer layer = this.checkedListBox1.Items[index] as Layer;
+            //int index = this.checkedListBox1.SelectedIndex;
+            //if (index > 0) {
+            //    Layer layer = this.checkedListBox1.Items[index] as Layer;
+            //    layer.GoUp();
+            //    this.checkedListBox1.Items.RemoveAt(index);
+            //    this.checkedListBox1.Items.Insert(index - 1, layer);
+            //    this.checkedListBox1.SetSelected(index - 1, true);
+            //    if (layer.Visible) {
+            //        this.checkedListBox1.SetItemChecked(index - 1, true);
+            //        layer.Visible = false;
+            //        layer.Visible = true;
+            //    }
+            //}
+            Layer layer = getFocusLayer();
+            if (layer == null) return;
+            TreeListNode node = treeList1.FocusedNode;
+            if (node.PrevVisibleNode != null) {
+                TreeListNode prevNode = node.PrevVisibleNode;
                 layer.GoUp();
-                this.checkedListBox1.Items.RemoveAt(index);
-                this.checkedListBox1.Items.Insert(index - 1, layer);
-                this.checkedListBox1.SetSelected(index - 1, true);
-                if (layer.Visible) {
-                    this.checkedListBox1.SetItemChecked(index - 1, true);
-                    layer.Visible = false;
-                    layer.Visible = true;
-                }
+                var order = node["OrderID"];
+                node["OrderID"] = prevNode["OrderID"];
+                prevNode["OrderID"] = order;
             }
+            (treeList1.DataSource as DataTable).Select("","OrderID");
+            treeList1.Refresh();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e) {
-            int index = this.checkedListBox1.SelectedIndex;
-            if (index >= 0 && index < checkedListBox1.Items.Count - 1) {
-                Layer layer = this.checkedListBox1.Items[index] as Layer;
-                layer.GoDown();
-                this.checkedListBox1.Items.RemoveAt(index);
-                this.checkedListBox1.Items.Insert(index + 1, layer);
-                this.checkedListBox1.SetSelected(index + 1, true);
-                if (layer.Visible) {
-                    this.checkedListBox1.SetItemChecked(index + 1, true);
-                    layer.Visible = false;
-                    layer.Visible = true;
-                }
+            //int index = this.checkedListBox1.SelectedIndex;
+            //if (index >= 0 && index < checkedListBox1.Items.Count - 1) {
+            //    Layer layer = this.checkedListBox1.Items[index] as Layer;
+            //    layer.GoDown();
+            //    this.checkedListBox1.Items.RemoveAt(index);
+            //    this.checkedListBox1.Items.Insert(index + 1, layer);
+            //    this.checkedListBox1.SetSelected(index + 1, true);
+            //    if (layer.Visible) {
+            //        this.checkedListBox1.SetItemChecked(index + 1, true);
+            //        layer.Visible = false;
+            //        layer.Visible = true;
+            //    }
+            //}
+            Layer layer = getFocusLayer();
+            if (layer == null) return;
+            TreeListNode node = treeList1.FocusedNode;
+            if (node.NextVisibleNode != null) {
+                TreeListNode prevNode = node.NextVisibleNode;
+                layer.GoUp();
+                var order = node["OrderID"];
+                node["OrderID"] = prevNode["OrderID"];
+                prevNode["OrderID"] = order;
             }
+            (treeList1.DataSource as DataTable).Select("", "OrderID");
+            treeList1.Refresh();
         }
 
         private void simpleButton3_Click(object sender, EventArgs e) {//复制按钮
@@ -1124,6 +1160,18 @@ namespace ItopVector.Tools {
             }
             l.list = NoSave;
             l.Show();
+        }
+
+        private void 增加方案ToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
+        private void 修改方案ToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
+        private void 删除方案ToolStripMenuItem_Click(object sender, EventArgs e) {
+
         }
 
     }
