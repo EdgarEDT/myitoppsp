@@ -1147,7 +1147,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                     bc1.Title = row["Title"].ToString();
                     Common.Services.BaseService.Update("DeleteFORBaseColorByTitleRemark", bc1);
 
-                    this.treeList1.Nodes.Remove(row);
+                    //this.treeList1.Nodes.Remove(row);
                 }
                 catch (Exception ex)
                 {

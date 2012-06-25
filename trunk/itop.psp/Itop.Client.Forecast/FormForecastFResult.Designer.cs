@@ -46,15 +46,15 @@
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.chart_user1 = new Itop.Client.Using.chart_userSH();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -163,7 +163,7 @@
             // 
             this.barButtonItem3.Caption = "退出";
             this.barButtonItem3.Id = 2;
-            this.barButtonItem3.ImageIndex = 10;
+            this.barButtonItem3.ImageIndex = 6;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -227,6 +227,13 @@
             this.imageList2.Images.SetKeyName(1, "选中1.bmp");
             this.imageList2.Images.SetKeyName(2, "选中.bmp");
             // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.repositoryItemCheckEdit1.ValueChecked = "1";
+            this.repositoryItemCheckEdit1.ValueUnchecked = "0";
+            // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -251,13 +258,6 @@
             this.chart_user1.Size = new System.Drawing.Size(818, 390);
             this.chart_user1.TabIndex = 0;
             // 
-            // repositoryItemCheckEdit1
-            // 
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
-            this.repositoryItemCheckEdit1.ValueChecked = "1";
-            this.repositoryItemCheckEdit1.ValueUnchecked = "0";
-            // 
             // FormForecastFResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -275,9 +275,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }

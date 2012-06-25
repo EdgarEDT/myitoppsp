@@ -62,6 +62,7 @@
             // 
             // simpleButton6
             // 
+            this.simpleButton6.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.simpleButton6.Location = new System.Drawing.Point(173, 224);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(76, 26);
@@ -158,6 +159,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 265);
             this.Controls.Add(this.groupControl1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ForecastUnitConsumptionValueSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "产值单耗法-计算单位设置";

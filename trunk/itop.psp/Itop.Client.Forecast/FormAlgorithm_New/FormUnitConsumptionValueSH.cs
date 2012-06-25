@@ -240,6 +240,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                         for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
                         {
                             currtenpfm.GetType().GetProperty("y" + i).SetValue(currtenpfm, de3.GetType().GetProperty("y" + i).GetValue(de3, null), null);
+                            commonhelp.ResetValue(currtenpfm.ID, "y" + i);
                         }
                         Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
                         break;
@@ -614,7 +615,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 psp_Type1.ID = Guid.NewGuid().ToString();
                 psp_Type1.ForecastID = forecastReport.ID;
                 psp_Type1.Forecast = type;
-                psp_Type1.Title = "生产总值(亿元）";
+                psp_Type1.Title = "生产总值（亿元）";
                 psp_Type1.Sort = 1;
                 psp_Type1.Col1 = "dc";
                 Common.Services.BaseService.Create<Ps_Forecast_Math>(psp_Type1);
@@ -625,7 +626,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 psp_Type2.ID = Guid.NewGuid().ToString();
                 psp_Type2.ForecastID = forecastReport.ID;
                 psp_Type2.Forecast = type;
-                psp_Type2.Title = "用电量（亿kWh)";
+                psp_Type2.Title = "全社会用电量（亿kWh）";
                 psp_Type2.Sort = 2;
                 psp_Type2.Col1 = "dc";
                 Common.Services.BaseService.Create<Ps_Forecast_Math>(psp_Type2);
@@ -1036,6 +1037,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 //    TreeListNode row = this.treeList1.Nodes[i];
                 Ps_Forecast_Math v = new Ps_Forecast_Math();
                 v.ID = row["ID"].ToString();
+                v.Sort = int.Parse(row["Sort"].ToString());
+                v.Col1 = row["Col1"].ToString();
+                v.Col2 = row["Col2"].ToString();
+                v.Col3 = row["Col3"].ToString();
+                v.Col4 = row["Col4"].ToString();
                 foreach (TreeListColumn col in this.treeList1.Columns)
                 {
                     if (col.FieldName.IndexOf("y") > -1)
@@ -1047,7 +1053,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                         }
                     }
                 }
-                v.Col4 = "yes";
+                if (v.Sort==2)
+                {
+                    v.Col4 = "yes";
+                }
+            
                 try
                 {
                     Services.BaseService.Update("UpdatePs_Forecast_MathByID", v);
@@ -1532,6 +1542,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                         for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
                         {
                             currtenpfm.GetType().GetProperty("y" + i).SetValue(currtenpfm, de3.GetType().GetProperty("y" + i).GetValue(de3, null), null);
+                            commonhelp.ResetValue(currtenpfm.ID, "y" + i);
                         }
                         Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
                         break;
