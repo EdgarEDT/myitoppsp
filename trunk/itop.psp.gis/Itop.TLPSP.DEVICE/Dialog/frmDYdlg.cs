@@ -274,5 +274,24 @@ namespace Itop.TLPSP.DEVICE
                 
             }
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (!isread)
+            {
+             
+                if (string.IsNullOrEmpty(devObj.S3) || string.IsNullOrEmpty(devObj.S29))
+                {
+                    MessageBox.Show("请选择投产时间和退役时间！");
+                    return;
+                }
+                if (Convert.ToDouble(devObj.S1)== 0)
+                {
+                    MessageBox.Show("请填写电压等级！");
+                    return;
+                }
+            }
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }
