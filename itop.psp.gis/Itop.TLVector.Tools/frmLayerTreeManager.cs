@@ -55,24 +55,61 @@ namespace ItopVector.Tools {
             treeList1.ParentFieldName = "ParentID";
             treeList1.AfterDragNode += new DevExpress.XtraTreeList.NodeEventHandler(treeList1_AfterDragNode);
             treeList1.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(treeList1_AfterCheckNode);
+            treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(treeList1_FocusedNodeChanged);
+        }
+
+        void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e) {
+            Layer layer = getFocusLayer();
+            if (OnClickLayer != null && layer!=null) {
+                addflag = false;
+                OnClickLayer(sender, layer);
+            }
         }
 
         void treeList1_AfterCheckNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e) {
 
             (symbolDoc.Layers[e.Node["SUID"].ToString()] as Layer).Visible = e.Node.Checked;
-
+            SetCheckedChildNodes(e.Node, e.Node.CheckState);
+            SetCheckedParentNodes(e.Node, e.Node.CheckState);
         }
 
         void treeList1_AfterDragNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e) {
             try {
-                DataRow row= treeList1.GetDataRecordByNode(e.Node) as DataRow;
-                SVG_LAYER lay = DataConverter.RowToObject<SVG_LAYER>(row);
+                DataRowView row = treeList1.GetDataRecordByNode(e.Node) as DataRowView;
+                SVG_LAYER lay = DataConverter.RowToObject<SVG_LAYER>(row.Row);
                 if(lay.svgID!="")
                 Services.BaseService.Update<SVG_LAYER>(lay);
             } catch {
                 //Services.BaseService.Create<SVG_LAYER>(treeList1.GetDataRecordByNode(e.Node) as SVG_LAYER);
             }
         }
+        private void SetCheckedParentNodes(TreeListNode node, CheckState check) {
+            if (node.ParentNode != null) {
+                bool b = false;
+                CheckState state;
+
+                for (int i = 0; i < node.ParentNode.Nodes.Count; i++) {
+                    state = (CheckState)node.ParentNode.Nodes[i].CheckState;
+                    if (!check.Equals(state)) {
+                        b = !b;
+                        break;
+                    }
+                }
+
+                node.ParentNode.CheckState = b ? CheckState.Checked : check;
+                SetCheckedParentNodes(node.ParentNode, check);
+            }
+        }
+        private void SetCheckedChildNodes(TreeListNode node, CheckState check) {
+            for (int i = 0; i < node.Nodes.Count; i++) {
+                if(node.Nodes[i].Checked!=node.Checked)
+                    (symbolDoc.Layers[node.Nodes[i]["SUID"].ToString()] as Layer).Visible = node.Checked;
+                node.Nodes[i].Checked = node.Checked;
+                
+                this.SetCheckedChildNodes(node.Nodes[i], check);
+            }
+        }
+
         public void Readonly() {
             btAdd.Enabled = false;
             btEdit.Enabled = false;
@@ -91,7 +128,10 @@ namespace ItopVector.Tools {
             checkedListBox1.Items.Clear();
             if (symbolDoc != null) {
                 symbolDoc2 = symbolDoc;
-                IList<SVG_LAYER> larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByYearID", YearID);
+                SVG_LAYER lar = new SVG_LAYER();
+                lar.svgID = symbolDoc.SvgdataUid;
+                lar.YearID = YearID;
+                IList<SVG_LAYER> larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByYearID", lar);
                 DataTable table= Itop.Common.DataConverter.ToDataTable((IList)larlist, typeof(SVG_LAYER));
                 treeList1.DataSource = table;
                 XmlNodeList list1 = symbolDoc.GetElementsByTagName("layer");
@@ -251,8 +291,13 @@ namespace ItopVector.Tools {
         }
 
         private void btDel_Click(object sender, EventArgs e) {
-            if (this.checkedListBox1.SelectedIndex >= 0 && this.checkedListBox1.SelectedIndex < this.checkedListBox1.Items.Count) {
-                Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
+            if (treeList1.FocusedNode!=null) {
+                TreeListNode treenode =treeList1.FocusedNode;
+                if (treenode.HasChildren) {
+                    MessageBox.Show("有子节点时不可删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                Layer layer = symbolDoc.Layers[treenode["SUID"].ToString()] as Layer;
                 if (!CkRight(layer)) {
                     MessageBox.Show("基础图层不能改名或删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -287,7 +332,10 @@ namespace ItopVector.Tools {
                             //在文档中移除
                             layer.Remove();
                             //在列表中移除
-                            this.checkedListBox1.Items.Remove(layer);
+                            if (treenode.ParentNode != null)
+                                treenode.ParentNode.Nodes.Remove(treenode);
+                            else
+                                treeList1.Nodes.Remove(treenode);
                             layer = null;
                             LayerName = "";
                         }
@@ -302,7 +350,10 @@ namespace ItopVector.Tools {
                             layer.Remove();
                         } catch { }
                         //在列表中移除
-                        this.checkedListBox1.Items.Remove(layer);
+                        if (treenode.ParentNode != null)
+                            treenode.ParentNode.Nodes.Remove(treenode);
+                        else
+                            treeList1.Nodes.Remove(treenode);
                         layer = null;
                         LayerName = "";
                     }
@@ -314,11 +365,19 @@ namespace ItopVector.Tools {
                 //}
             }
         }
-
+        private Layer getFocusLayer() {
+            TreeListNode node = treeList1.FocusedNode;
+            Layer layer=null;
+            try{
+                layer=symbolDoc.Layers[node["SUID"].ToString()] as Layer;
+            }catch{}
+            return layer;
+        }
         private void btEdit_Click(object sender, EventArgs e)//
         {
-            if (this.checkedListBox1.SelectedIndex >= 0 && this.checkedListBox1.SelectedIndex < this.checkedListBox1.Items.Count) {
-                Layer layer = this.checkedListBox1.Items[this.checkedListBox1.SelectedIndex] as Layer;
+            Layer layer = getFocusLayer();
+            if (layer!=null) {
+                
                 if (!CkRight(layer)) {
                     MessageBox.Show("基础图层不能改名或删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -333,7 +392,8 @@ namespace ItopVector.Tools {
                 if (d == DialogResult.OK) {
                     layer.Label = dlg.InputString;
                     layer.SetAttribute("layerType", dlg.InputType);
-                    InitData();
+                    treeList1.FocusedNode.SetValue("Name", dlg.InputString);
+                    //InitData();
                 }
                 if (d == DialogResult.Retry) {
                     if (dlg.list.Count > 1) {
@@ -350,6 +410,7 @@ namespace ItopVector.Tools {
             }
         }
         private bool CkRight(Layer lar) {
+            if (lar == null) return false;
             if (lar.Label == "背景层0"  /*|| lar.Label=="规划层" || lar.Label=="统计层"*/) {
                 return false;
             }
@@ -368,19 +429,7 @@ namespace ItopVector.Tools {
             InitData();
         }
 
-        private void btOK_Click(object sender, EventArgs e) {
-            for (int i = 0; i < this.checkedListBox1.Items.Count; i++) {
-                (this.checkedListBox1.Items[i] as Layer).Visible = this.checkedListBox1.GetItemChecked(i);
-            }
-            if (checkedListBox1.SelectedItem != null) {
-                SvgDocument.currentLayer = (checkedListBox1.SelectedItem as Layer).ID;
-                LayerName = (checkedListBox1.SelectedItem as Layer).Label;
-            }
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
+       
         private void btUp_Click(object sender, EventArgs e) {
             int i = this.checkedListBox1.SelectedIndex;
             if (i <1) { return; }
@@ -496,8 +545,9 @@ namespace ItopVector.Tools {
             // }
         }
         private void simpleButton4_Click(object sender, EventArgs e) {
-            int index = this.checkedListBox1.SelectedIndex;
-            if (index > 0) {
+            //int index = this.checkedListBox1.SelectedIndex;
+            Layer layer = getFocusLayer();
+            if (layer!=null) {
                 ArrayList layerlist1 = this.SymbolDoc.getLayerList();
                 string str1 = null;
                 string str2 = null;
@@ -508,7 +558,7 @@ namespace ItopVector.Tools {
                     }
                 }
                 if (MessageBox.Show(this, "此操作将合并可见图层：" + str2 + "并且不可恢复，是否继续。", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                    Layer layer = this.checkedListBox1.Items[index] as Layer;
+                    
                     string str = layer.GetAttribute("layerType");
                     Layer layer2 = Layer.CreateNew(str1, this.SymbolDoc);
                     if (ilist.Count > 0) {
@@ -1049,7 +1099,7 @@ namespace ItopVector.Tools {
         }
 
         private void button2_Click(object sender, EventArgs e) {
-
+            //ChangeCheck(sender);
         }
 
         private void dateEdit1_KeyDown(object sender, KeyEventArgs e) {
@@ -1060,9 +1110,7 @@ namespace ItopVector.Tools {
             //}
         }
 
-        private void simpleButton5_Click(object sender, EventArgs e) {
-            ChangeCheck(sender);
-        }
+
 
         private void simpleButton5_Click_1(object sender, EventArgs e) {
             if (checkedListBox1.SelectedIndex == -1) {
@@ -1077,5 +1125,6 @@ namespace ItopVector.Tools {
             l.list = NoSave;
             l.Show();
         }
+
     }
 }
