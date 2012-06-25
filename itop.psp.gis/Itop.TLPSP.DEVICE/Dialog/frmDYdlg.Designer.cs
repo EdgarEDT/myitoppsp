@@ -604,6 +604,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(87, 29);
             this.simpleButton1.TabIndex = 14;
             this.simpleButton1.Text = "确认";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // simpleButton2
             // 
