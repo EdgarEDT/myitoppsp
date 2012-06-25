@@ -11459,6 +11459,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             }
 
             frmLayerManager.ilist = SaveID;
+            frmLayerTreeManager.ilist = SaveID;
         }
         string xltProcessor_OnNewLine(List<string> existLineCode)
         {
@@ -11703,13 +11704,11 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                         IsSave = true;
                     }
                 }
-                //for (int j = 0; j<frmlar.NoSave.Count; j++)
-                //{
-                //    if (lar.ID == ((Layer)frmlar.NoSave[j]).ID)
-                //    {
-                //        IsSave = false;
-                //    }
-                //}
+                for (int j = 0; j < frmlar.NoSave.Count; j++) {
+                    if (lar.ID == ((Layer)frmlar.NoSave[j]).ID) {
+                        IsSave = false;
+                    }
+                }
                 for (int j = 0; j < saveList.Count; j++)
                 {
                     if ((lar.ID == (saveList[j] as Layer).ID) && IsSave)
