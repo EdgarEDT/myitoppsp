@@ -34,15 +34,12 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.btDel = new DevExpress.XtraEditors.SimpleButton();
             this.btEdit = new DevExpress.XtraEditors.SimpleButton();
-            this.btOK = new DevExpress.XtraEditors.SimpleButton();
-            this.btCel = new DevExpress.XtraEditors.SimpleButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.全选ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.全消ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmClearLink = new System.Windows.Forms.ToolStripMenuItem();
-            this.btUp = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -59,6 +56,8 @@
             this.button1 = new DevExpress.XtraEditors.SimpleButton();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -111,26 +110,6 @@
             this.btEdit.ToolTip = "修改";
             this.btEdit.Click += new System.EventHandler(this.btEdit_Click);
             // 
-            // btOK
-            // 
-            this.btOK.Location = new System.Drawing.Point(244, 286);
-            this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(28, 27);
-            this.btOK.TabIndex = 1;
-            this.btOK.Text = "确定";
-            this.btOK.Visible = false;
-            this.btOK.Click += new System.EventHandler(this.btOK_Click);
-            // 
-            // btCel
-            // 
-            this.btCel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btCel.Location = new System.Drawing.Point(244, 286);
-            this.btCel.Name = "btCel";
-            this.btCel.Size = new System.Drawing.Size(27, 27);
-            this.btCel.TabIndex = 1;
-            this.btCel.Text = "取消";
-            this.btCel.Visible = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -182,16 +161,6 @@
             this.tmClearLink.Size = new System.Drawing.Size(118, 22);
             this.tmClearLink.Text = "清除关联";
             this.tmClearLink.Click += new System.EventHandler(this.清除关联ToolStripMenuItem_Click);
-            // 
-            // btUp
-            // 
-            this.btUp.Location = new System.Drawing.Point(244, 286);
-            this.btUp.Name = "btUp";
-            this.btUp.Size = new System.Drawing.Size(28, 27);
-            this.btUp.TabIndex = 1;
-            this.btUp.Text = "复制";
-            this.btUp.Visible = false;
-            this.btUp.Click += new System.EventHandler(this.btUp_Click);
             // 
             // simpleButton1
             // 
@@ -324,7 +293,7 @@
             this.button2.Size = new System.Drawing.Size(43, 27);
             this.button2.TabIndex = 18;
             this.button2.Text = "确定";
-            this.button2.Click += new System.EventHandler(this.simpleButton5_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -342,12 +311,21 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1});
-            this.treeList1.Location = new System.Drawing.Point(4, 109);
+            this.treeListColumn1,
+            this.treeListColumn2,
+            this.treeListColumn3});
+            this.treeList1.KeyFieldName = "SUID";
+            this.treeList1.Location = new System.Drawing.Point(4, 37);
             this.treeList1.Name = "treeList1";
+            this.treeList1.OptionsBehavior.DragNodes = true;
             this.treeList1.OptionsBehavior.Editable = false;
+            this.treeList1.OptionsSelection.InvertSelection = true;
+            this.treeList1.OptionsSelection.MultiSelect = true;
             this.treeList1.OptionsView.ShowCheckBoxes = true;
-            this.treeList1.Size = new System.Drawing.Size(272, 293);
+            this.treeList1.OptionsView.ShowHorzLines = false;
+            this.treeList1.OptionsView.ShowIndicator = false;
+            this.treeList1.OptionsView.ShowVertLines = false;
+            this.treeList1.Size = new System.Drawing.Size(273, 365);
             this.treeList1.TabIndex = 20;
             // 
             // treeListColumn1
@@ -357,6 +335,18 @@
             this.treeListColumn1.Name = "treeListColumn1";
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
+            // 
+            // treeListColumn2
+            // 
+            this.treeListColumn2.Caption = "treeListColumn2";
+            this.treeListColumn2.FieldName = "SUID";
+            this.treeListColumn2.Name = "treeListColumn2";
+            // 
+            // treeListColumn3
+            // 
+            this.treeListColumn3.Caption = "treeListColumn3";
+            this.treeListColumn3.FieldName = "ParentID";
+            this.treeListColumn3.Name = "treeListColumn3";
             // 
             // checkedListBox1
             // 
@@ -371,7 +361,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 414);
+            this.ClientSize = new System.Drawing.Size(280, 414);
+            this.Controls.Add(this.checkedListBoxControl2);
             this.Controls.Add(this.treeList1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
@@ -382,14 +373,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.checkEdit1);
-            this.Controls.Add(this.checkedListBoxControl2);
             this.Controls.Add(this.simpleButton4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.btCel);
-            this.Controls.Add(this.btOK);
-            this.Controls.Add(this.btUp);
             this.Controls.Add(this.btEdit);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton3);
@@ -424,11 +411,8 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.SimpleButton btDel;
         private DevExpress.XtraEditors.SimpleButton btEdit;
-        private DevExpress.XtraEditors.SimpleButton btOK;
-        private DevExpress.XtraEditors.SimpleButton btCel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.SimpleButton btUp;       
+        private System.Windows.Forms.Label label2;       
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
@@ -450,5 +434,7 @@
         private DevExpress.XtraTreeList.TreeList treeList1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         public System.Windows.Forms.CheckedListBox checkedListBox1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
     }
 }
