@@ -15,6 +15,7 @@ using Itop.Client.Forecast.FormAlgorithm_New;
 using DevExpress.XtraTreeList.Nodes;
 using Itop.Common;
 using Itop.Client.Using;
+using DevExpress.Utils;
 
 namespace Itop.Client.Forecast
 {
@@ -455,57 +456,55 @@ namespace Itop.Client.Forecast
         }
         private void CalculateSum(TreeListNode node, TreeListColumn column)
         {
-            
-            if (node.ParentNode==null)
+
+            if (node.ParentNode == null)
             {
                 DataRow row = (node.TreeList.GetDataRecordByNode(node) as DataRowView).Row;
                 Ps_Forecast_Math v = DataConverter.RowToObject<Ps_Forecast_Math>(row);
                 commonhelp.SetValue(v.ID, column.FieldName, 1);
 
             }
-           
-
 
             TreeListNode rootnode = node.ParentNode;
-            if (rootnode==null)
+            if (rootnode == null)
             {
                 return;
             }
+            IList<Ps_Forecast_Math> relist = new List<Ps_Forecast_Math>();
 
-            for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++)
-            {
-                double sum = 0;
-                foreach (TreeListNode cnode in rootnode.Nodes)
-                {
-                    DataRow row = (node.TreeList.GetDataRecordByNode(cnode) as DataRowView).Row;
-                    Ps_Forecast_Math v = DataConverter.RowToObject<Ps_Forecast_Math>(row);
-                       double mm = v.y1990;
-                    string select = v.Col2;
-
-                    bool HasSelect = false;
-                    if (select == "1")
-                    {
-                        HasSelect = true;
-                    }
-                    if (HasSelect)
-                    {
-                        sum += double.Parse(cnode["y" + i].ToString())*mm;
-                    }
-                }
-                rootnode.SetValue("y" + i, sum);
-                commonhelp.ResetValue(rootnode["ID"].ToString(), "y" + i);
-            }
             double qzvalue = 0;
+
+
+            WaitDialogForm wait = new WaitDialogForm("", "正在更新数据，请稍后...");
             foreach (TreeListNode cnode in rootnode.Nodes)
             {
                 DataRow row = (node.TreeList.GetDataRecordByNode(cnode) as DataRowView).Row;
                 Ps_Forecast_Math v = DataConverter.RowToObject<Ps_Forecast_Math>(row);
                 double mm = v.y1990;
-                qzvalue += mm;
-  
+                string select = v.Col2;
+                if (select == "1")
+                {
+                    qzvalue += mm;
+                    relist.Add(v);
+                }
             }
             rootnode.SetValue("y1990", qzvalue);
+            for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++)
+            {
+                wait.SetCaption((i - forecastReport.StartYear) * 100 / (forecastReport.YcEndYear - forecastReport.StartYear) + "%");
+                double sum = 0;
+                foreach (Ps_Forecast_Math pfm in relist)
+                {
+                    double mm = pfm.y1990;
+
+                    sum += double.Parse(pfm.GetType().GetProperty("y" + i).GetValue(pfm, null).ToString()) * mm;
+
+                }
+                commonhelp.ResetValue(rootnode["ID"].ToString(), "y" + i);
+                rootnode.SetValue("y" + i, sum);
+            }
             RefreshChart();
+            wait.Close();
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

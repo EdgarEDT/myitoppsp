@@ -13,9 +13,10 @@ using DevExpress.XtraEditors;
 
 namespace Itop.Client.Forecast
 {
-    public partial class FormLoadForecastDataforMaxHourSH : FormBase
+    public partial class FormLoadForecastDataDSH : FormBase
     {
         string projectUID = "";
+        int typeflag = 1;
 
         public string ProjectUID
         {
@@ -36,8 +37,13 @@ namespace Itop.Client.Forecast
         }
 
 
-        public FormLoadForecastDataforMaxHourSH()
+        public FormLoadForecastDataDSH()
         {
+            InitializeComponent();
+        }
+        public FormLoadForecastDataDSH(int m)
+        {
+            typeflag = m;
             InitializeComponent();
         }
 
@@ -62,12 +68,31 @@ namespace Itop.Client.Forecast
         {
             Ps_forecast_list report = new Ps_forecast_list();
             report.UserID = ProjectUID;
-            report.Col1 = "2";
+            report.Col1 =typeflag.ToString();
             IList<Ps_forecast_list> listReports = Common.Services.BaseService.GetList<Ps_forecast_list>("SelectPs_forecast_listByCOL1AndUserID", report);
 
             gridControl1.DataSource = listReports;
 
-           
+            //DataTable dataTable = Itop.Common.DataConverter.ToDataTable(listReports, typeof(Ps_forecast_list));
+            //gridView1.BeginUpdate();
+            //gridControl1.DataSource = dataTable;
+
+            //gridView1.Columns["ID"].Visible = false;
+            //gridView1.Columns["ID"].OptionsColumn.ShowInCustomizationForm = false;
+            //gridView1.Columns["UserID"].Visible = false;
+            //gridView1.Columns["UserID"].OptionsColumn.ShowInCustomizationForm = false;
+            //gridView1.Columns["Col1"].Visible = false;
+            //gridView1.Columns["Col1"].OptionsColumn.ShowInCustomizationForm = false;
+            //gridView1.Columns["Col2"].Visible = false;
+            //gridView1.Columns["Col2"].OptionsColumn.ShowInCustomizationForm = false;
+
+            //gridView1.Columns["Title"].Caption = "预测名称";
+            //gridView1.Columns["Title"].Width = 300;
+            //gridView1.Columns["StartYear"].Caption = "起始年份";
+            //gridView1.Columns["StartYear"].Visible = false;
+            //gridView1.Columns["EndYear"].Caption = "结束年份";
+            //gridView1.Columns["EndYear"].Visible = false;
+            //gridView1.EndUpdate();
         
         
         }
@@ -116,14 +141,19 @@ namespace Itop.Client.Forecast
                     m = 2;
                     break;
                 case "指数平滑法":
-                    //m = 3;
-                    m = 5;
+                    m = 3;
                     break;
                 case "弹性系数法":
                     m = 4;
                     break;
+                case "产值单耗法":
+                    m = 17;
+                    break;
                 case "灰色理论法":
                     m = 6;
+                    break;
+                case "专家决策法":
+                    m = 7;
                     break;
                 case "复合算法":
                     m = 9;
@@ -131,9 +161,7 @@ namespace Itop.Client.Forecast
                 case "推荐值":
                     m = 30;
                     break;
-                case "专家决策法":
-                    m = 7;
-                    break;
+
             }
             DataTable dataTable = new DataTable();
 
@@ -145,13 +173,13 @@ namespace Itop.Client.Forecast
             }
             AddFixColumn();
 
-            for (int i = pf.StartYear; i <= pf.YcEndYear; i++)
+            for (int i = pf.StartYear; i <= pf.EndYear; i++)
             {
                 AddColumn(i);
             }
-            if (m==30)
+            if (m == 30)
             {
-                string sql2 = " Col4='yes' and Forecast=" + m + " and ParentID='' and ForecastID='"+id+"'";
+                string sql2 = " Col4='yes' and Forecast=" + m + " and ParentID='' and ForecastID='" + id + "'";
                 IList list = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByWhere", sql2);
                 dataTable = Itop.Common.DataConverter.ToDataTable(list, typeof(Ps_Forecast_Math));
             }
@@ -164,7 +192,7 @@ namespace Itop.Client.Forecast
 
                 dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Forecast_Math));
             }
-           
+          
             this.gridControl2.DataSource = dataTable;
 
             Application.DoEvents();

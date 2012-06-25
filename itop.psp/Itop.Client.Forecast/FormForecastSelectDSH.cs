@@ -79,7 +79,7 @@ namespace Itop.Client.Forecast
                     FMA5.ShowDialog();
                     break;
                 case 6:
-                    FormForecast11_SH FMA6 = new FormForecast11_SH(report);
+                    FormForecast11_FSH FMA6 = new FormForecast11_FSH(report);
                     FMA6.Text = this.Text + "- 大用户";
                     FMA6.CanEdit = CnaEdit;
                     FMA6.ShowDialog();
@@ -98,8 +98,8 @@ namespace Itop.Client.Forecast
                     break;
                 case 10:
                     FormExpertSH FMA10 = new FormExpertSH(report);
-                    FMA10.Text = this.Text + "- 预测结果列表和综合";
-                    FMA10.CanEdit = base.EditRight;
+                    FMA10.Text = this.Text + "- 专家决策法";
+                    FMA10.CanEdit = CnaEdit;
                     FMA10.ShowDialog();
                     break;
             }

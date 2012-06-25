@@ -15,6 +15,7 @@ using Itop.Client.Forecast.FormAlgorithm_New;
 using DevExpress.XtraTreeList.Nodes;
 using Itop.Common;
 using Itop.Client.Using;
+using DevExpress.Utils;
 
 namespace Itop.Client.Forecast
 {
@@ -274,7 +275,7 @@ namespace Itop.Client.Forecast
             column.FieldName = "Col2";
             column.Caption = "是否选中";
             column.VisibleIndex = 1;
-            column.Width = 50;
+            column.Width = 80;
             column.ColumnEdit = repositoryItemCheckEdit1;
             this.treeList1.Columns.AddRange(new TreeListColumn[] {
             column});
@@ -283,7 +284,7 @@ namespace Itop.Client.Forecast
             column.FieldName = "y1990";
             column.Caption = "权值系数";
             column.VisibleIndex = 2;
-            column.Width = 50;
+            column.Width = 80;
             this.treeList1.Columns.AddRange(new TreeListColumn[] {
             column});
         }
@@ -362,7 +363,7 @@ namespace Itop.Client.Forecast
                 pfm.ForecastID = forecastReport.ID;
                 Common.Services.BaseService.Create<Ps_Forecast_Math>(pfm);
 
-                string sqlr=  " Col4='yes' and (Forecast=1 or Forecast=2 or Forecast=4 or Forecast=5 or Forecast=6 or Forecast=12 or Forecast=17 or Forecast=20) and ParentID=''";
+                string sqlr = " Col4='yes' and (Forecast=1 or Forecast=2  or Forecast=5 or Forecast=6 or Forecast=13 or Forecast=15 or Forecast=20) and ParentID=''";
                 sqlr += "  and ForecastID='" + forecastReport.ID + "'  and Title='" + key.ToString() + "'";
                 IList<Ps_Forecast_Math> listresult = Common.Services.BaseService.GetList<Ps_Forecast_Math>("SelectPs_Forecast_MathByWhere", sqlr);
                 foreach (Ps_Forecast_Math pfmr in listresult)
@@ -462,41 +463,41 @@ namespace Itop.Client.Forecast
             {
                 return;
             }
+            IList<Ps_Forecast_Math> relist =new List<Ps_Forecast_Math>();
 
-            for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++)
-            {
-                double sum = 0;
-                foreach (TreeListNode cnode in rootnode.Nodes)
-                {
-                    DataRow row = (node.TreeList.GetDataRecordByNode(cnode) as DataRowView).Row;
-                    Ps_Forecast_Math v = DataConverter.RowToObject<Ps_Forecast_Math>(row);
-                       double mm = v.y1990;
-                    string select = v.Col2;
-
-                    bool HasSelect = false;
-                    if (select == "1")
-                    {
-                        HasSelect = true;
-                    }
-                    if (HasSelect)
-                    {
-                        sum += double.Parse(cnode["y" + i].ToString())*mm;
-                    }
-                }
-                commonhelp.ResetValue(rootnode["ID"].ToString(), "y" + i);
-                rootnode.SetValue("y" + i, sum);
-            }
             double qzvalue = 0;
+
+
+            WaitDialogForm wait = new WaitDialogForm("", "正在更新数据，请稍后...");
             foreach (TreeListNode cnode in rootnode.Nodes)
             {
                 DataRow row = (node.TreeList.GetDataRecordByNode(cnode) as DataRowView).Row;
                 Ps_Forecast_Math v = DataConverter.RowToObject<Ps_Forecast_Math>(row);
                 double mm = v.y1990;
-                qzvalue += mm;
-  
+                string select = v.Col2;
+                if (select == "1")
+                {
+                    qzvalue += mm;
+                    relist.Add(v);
+                }  
             }
             rootnode.SetValue("y1990", qzvalue);
+            for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++)
+            {
+                wait.SetCaption((i - forecastReport.StartYear) * 100 / (forecastReport.YcEndYear - forecastReport.StartYear) + "%");
+                double sum = 0;
+                foreach (Ps_Forecast_Math pfm in relist)
+                {
+                    double mm = pfm.y1990;
+
+                    sum += double.Parse(pfm.GetType().GetProperty("y" + i).GetValue(pfm,null).ToString()) * mm;
+
+                }
+                commonhelp.ResetValue(rootnode["ID"].ToString(), "y" + i);
+                rootnode.SetValue("y" + i, sum);
+            }
             RefreshChart();
+            wait.Close();
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

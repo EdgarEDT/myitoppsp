@@ -1729,7 +1729,7 @@ namespace Itop.Client.Table
                 {
                     Ps_Table_ElecPH psr = Common.Services.BaseService.GetOneByKey<Ps_Table_ElecPH>(this.treeList1.FocusedNode.GetValue("ID").ToString());
                     Ps_Table_ElecPH old = (Ps_Table_ElecPH)psr.Clone();
-                    FormLoadForecastData frm = new FormLoadForecastData(2);
+                    FormLoadForecastDataDSH frm = new FormLoadForecastDataDSH(2);
                     frm.ProjectUID = GetProjectID;
                     if (frm.ShowDialog() == DialogResult.OK)
                     {

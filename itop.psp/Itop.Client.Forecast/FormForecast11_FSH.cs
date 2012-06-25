@@ -26,7 +26,7 @@ namespace Itop.Client.Forecast
     /// <summary>
     /// 分区预测方案
     /// </summary>
-    public partial class FormForecast11_SH : FormBase
+    public partial class FormForecast11_FSH : FormBase
     {
         string type1 = "12";
         int type = 12;
@@ -95,11 +95,11 @@ namespace Itop.Client.Forecast
             get { return DeleteRight; }
             set { DeleteRight = value; }
         }
-        public FormForecast11_SH(Ps_forecast_list fr)
+        public FormForecast11_FSH(Ps_forecast_list fr)
         {
             InitializeComponent();
             forecastReport = fr;
-            treeList1.OptionsView.AutoWidth = false;
+            
             treeList2.OptionsView.AutoWidth = false;
             barButtonItem6.Glyph = Itop.ICON.Resource.关闭;
         }
@@ -212,13 +212,13 @@ namespace Itop.Client.Forecast
         private void LoadData()
         {
             //this.splitContainerControl1.SplitterPosition = (2* this.splitterControl1.Width) / 3;
-            this.splitContainerControl2.SplitterPosition = splitContainerControl2.Height / 2;
-            treeList1.DataSource = null;
+            
+           
             bLoadingData = true;
             if (dataTable != null)
             {
-                dataTable.Columns.Clear();
-                treeList1.Columns.Clear();
+               
+             
                 dataTable2.Columns.Clear();
                 treeList2.Columns.Clear();
                 chartdataTable.Columns.Clear();
@@ -237,7 +237,7 @@ namespace Itop.Client.Forecast
                 AddColumn(i);
 
             }
-            treeList1.Columns.AssignTo(treeList2.Columns);
+            
 
             TreeListColumn col = AddColumn(1993);
             col.VisibleIndex = -1;
@@ -252,13 +252,9 @@ namespace Itop.Client.Forecast
 
             }
             bLoadingData = false;
-            treeList1.CollapseAll();
+            
             treeList2.CollapseAll();
-            if (treeList1.Nodes.Count > 1)
-            {
-                treeList1.MoveFirst();
-                treeList1.Nodes[1].Expanded = true;
-            }
+           
 
             if (treeList2.Nodes.Count > 1)
             {
@@ -278,8 +274,7 @@ namespace Itop.Client.Forecast
 
             dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_Forecast_Math));
 
-            treeList1.DataSource = dataTable;
-            treeList1.Columns["Sort"].SortOrder = SortOrder.Ascending;
+          
             Application.DoEvents();
             //if(treeList1.Nodes.Count>0)
             //treeList1.Nodes[0].Expanded = true;
@@ -310,7 +305,7 @@ namespace Itop.Client.Forecast
             column.Width = 180;
             column.OptionsColumn.AllowEdit = false;
             column.OptionsColumn.AllowSort = false;
-            this.treeList1.Columns.AddRange(new TreeListColumn[] {
+            this.treeList2.Columns.AddRange(new TreeListColumn[] {
             column});
             //column = new TreeListColumn();
             //column.FieldName = "Col2";
@@ -319,7 +314,7 @@ namespace Itop.Client.Forecast
             //column.Width = 150;
             //column.OptionsColumn.AllowEdit = false;
             //column.OptionsColumn.AllowSort = false;
-            //this.treeList1.Columns.AddRange(new TreeListColumn[] {
+            //this.treeList2.Columns.AddRange(new TreeListColumn[] {
             //column});
             column = new TreeListColumn();
             column.FieldName = "Sort";
@@ -328,30 +323,30 @@ namespace Itop.Client.Forecast
             column.Width = 50;
             column.OptionsColumn.AllowEdit = false;
             //column.SortOrder = SortOrder.Ascending;
-            this.treeList1.Columns.AddRange(new TreeListColumn[] {
+            this.treeList2.Columns.AddRange(new TreeListColumn[] {
             column});
             column = new TreeListColumn();
             column.FieldName = "ForecastID";
             column.VisibleIndex = -1;
-            this.treeList1.Columns.AddRange(new TreeListColumn[] {
+            this.treeList2.Columns.AddRange(new TreeListColumn[] {
             column});
 
             column = new TreeListColumn();
             column.FieldName = "Forecast";
             column.VisibleIndex = -1;
-            this.treeList1.Columns.AddRange(new TreeListColumn[] {
+            this.treeList2.Columns.AddRange(new TreeListColumn[] {
             column});
 
             column = new TreeListColumn();
             column.FieldName = "ID";
             column.VisibleIndex = -1;
-            this.treeList1.Columns.AddRange(new TreeListColumn[] {
+            this.treeList2.Columns.AddRange(new TreeListColumn[] {
             column});
             column = new TreeListColumn();
             column.FieldName = "ParentID";
             column.VisibleIndex = -1;
 
-            this.treeList1.Columns.AddRange(new TreeListColumn[] {
+            this.treeList2.Columns.AddRange(new TreeListColumn[] {
             column});
         }
         //添加年份后，新增一列
@@ -382,7 +377,7 @@ namespace Itop.Client.Forecast
             //column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             column.Format.FormatString = "#####################0.##";
             column.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.treeList1.Columns.AddRange(new TreeListColumn[] {
+            this.treeList2.Columns.AddRange(new TreeListColumn[] {
             column});
             return column;
         }
@@ -463,82 +458,7 @@ namespace Itop.Client.Forecast
         //    fgv.HT = ht;
         //    fgv.ShowDialog();
         //}
-        private void cacsumsehui(string strname)
-        {
-
-            Ps_Forecast_Math v;
-            DataRow[] drlist = dataTable.Select("Title like '%常规%'");
-            //foreach (DataColumn dc in dataTable.Columns)
-            //{
-            double value = 0;
-            //if (dc.ColumnName.IndexOf("y") != 0)
-            //{
-            //    continue;
-            //}
-            foreach (DataRow dr in drlist)
-            {
-
-                if (treeList1.FindNodeByKeyID(dr["ID"]).ParentNode.ParentNode == null)
-                    continue;
-                try
-                {
-                    value += Math.Round(Convert.ToDouble(dr[strname]), 2);
-                }
-                catch { }
-            }
-            foreach (DataRow dr in drlist)
-            {
-                TreeListNode node = treeList1.FindNodeByKeyID(dr["ID"]).ParentNode.ParentNode;
-                if (node == null)
-                {
-                    int i = dataTable.Rows.IndexOf(dr);
-
-
-                    dataTable.Rows[i][strname] = value;
-                    //DataRow row = (node.TreeList.GetDataRecordByNode(node) as DataRowView).Row;
-                    v = DataConverter.RowToObject<Ps_Forecast_Math>(dataTable.Rows[i]);
-                    commonhelp.ResetValue(v.ID, strname);
-                    v.Col4 = "yes";
-                    Common.Services.BaseService.Update<Ps_Forecast_Math>(v);
-                }
-            }
-
-
-
-            DataRow[] drlist2 = dataTable.Select("Title like '%大用户%'");
-
-            value = 0;
-
-            foreach (DataRow dr in drlist2)
-            {
-                if (treeList1.FindNodeByKeyID(dr["ID"]).ParentNode.ParentNode == null)
-                    continue;
-
-                try
-                {
-                    value += Math.Round(Convert.ToDouble(dr[strname]), 2);
-                }
-                catch { }
-            }
-            foreach (DataRow dr in drlist2)
-            {
-                TreeListNode node = treeList1.FindNodeByKeyID(dr["ID"]).ParentNode.ParentNode;
-                if (node == null)
-                {
-                    int i = dataTable.Rows.IndexOf(dr);
-
-                    dataTable.Rows[i][strname] = value;
-                    v = DataConverter.RowToObject<Ps_Forecast_Math>(dataTable.Rows[i]);
-                    v.Col4 = "yes";
-                    commonhelp.ResetValue(v.ID, strname);
-                    Common.Services.BaseService.Update<Ps_Forecast_Math>(v);
-                }
-            }
-
-            //  dataTable.Rows[2][dc.ColumnName] = value;
-            //           }
-
-        }
+      
         private void cacsumsehui2(string strname)
         {
             Ps_Forecast_Math v;
@@ -606,47 +526,7 @@ namespace Itop.Client.Forecast
             //  dataTable.Rows[2][dc.ColumnName] = value;
             //}
         }
-        private void treeList1_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
-        {
-            //表格数据发生变化
-            if (e.Column.FieldName.Substring(0, 1) != "y") return;
-            //if ((e.Node.ParentNode.ParentNode == null && !e.Node.HasChildren))
-            //{
-            //  ;
-            //      Common.Services.BaseService.Update<Ps_Forecast_Math>( DataConverter.RowToObject<Ps_Forecast_Math>( (e.Node.TreeList.GetDataRecordByNode(e.Node) as DataRowView).Row));
-            //      return;
-            //}
-            double d = 0;
-            if(e.Value!=null)
-            {
-                if (!double.TryParse(e.Value.ToString(), out d)) return;
-            }
-            
-            treeList1.BeginInit();
-            if (e.Column.FieldName == "y1993")
-            {
-                try { jsdl(e.Node, e.Column); }
-                catch { }
-
-            }
-            else
-            {
-                try
-                {
-                    CalculateSum(e.Node, e.Column);
-                    if (e.Node.ParentNode!=null)
-                    {
-                        if (!e.Node.ParentNode["Title"].ToString().Contains("全地区"))
-                            cacsumsehui(e.Column.FieldName);
-                    }
-                   
-                }
-                catch { }
-            }
-            treeList1.EndInit();
-            //Save();
-            //RefreshChart();
-        }
+      
         private void treeList2_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
         {
             if (e.Column.FieldName.Substring(0, 1) != "y") return;
@@ -728,7 +608,7 @@ namespace Itop.Client.Forecast
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            TreeListNode tln = treeList1.FocusedNode;
+            TreeListNode tln = treeList2.FocusedNode;
             if (tln == null)
                 return;
             if (tln.HasChildren)
@@ -749,7 +629,7 @@ namespace Itop.Client.Forecast
                     TreeListNode node = treeList2.FindNodeByKeyID(pf.ID);
                     if (node != null)
                         treeList2.DeleteNode(node);
-                    treeList1.DeleteNode(treeList1.FocusedNode);
+                    treeList2.DeleteNode(treeList2.FocusedNode);
 
                 }
                 catch { }
@@ -842,25 +722,7 @@ namespace Itop.Client.Forecast
             }
         }
 
-        private void treeList1_ShowingEditor(object sender, CancelEventArgs e)
-        {
-            if (treeList1.FocusedNode.HasChildren)
-            {
-                if (treeList1.FocusedNode["Title"].ToString().Contains("常规"))
-                {
-                    if (treeList1.FocusedColumn.FieldName != "y1993")
-                    {
-                        e.Cancel = true;
-                    }
-                }
-                else
-                    e.Cancel = true;
-            }
-            if (!EditRight)
-            {
-                e.Cancel = true;
-            }
-        }
+     
         private void treeList2_ShowingEditor(object sender, CancelEventArgs e)
         {
             if (treeList2.FocusedNode.HasChildren)
@@ -1340,7 +1202,7 @@ namespace Itop.Client.Forecast
             List<int> list = new List<int>();
             list.Add(endyear);
             setcols432(list);
-            f.GridDataTable = ConvertTreeListToDataTable(treeList1);
+            f.GridDataTable = ConvertTreeListToDataTable(treeList2);
             f.ShowDialog();
             //}
         }
@@ -1350,7 +1212,7 @@ namespace Itop.Client.Forecast
         private void tj433()
         {
             FormChooseYears1 frm = new FormChooseYears1();
-            foreach (TreeListColumn column in treeList1.Columns)
+            foreach (TreeListColumn column in treeList2.Columns)
             {
                 if (column.Caption.IndexOf("年") > 0)
                 {
@@ -1367,7 +1229,7 @@ namespace Itop.Client.Forecast
                 //f.Text = Title = "本地区" + frm.ListChoosedYears[0].Year + "～" + frm.ListChoosedYears[frm.ListChoosedYears.Count - 1].Year + "年分区县供电实绩";
                 //f.GridDataTable = ResultDataTable(ConvertTreeListToDataTable(treeList1), frm.ListYearsForChoose);
                 setcols433(frm.DT.Rows);
-                f.GridDataTable = ConvertTreeListToDataTable433(treeList1);
+                f.GridDataTable = ConvertTreeListToDataTable433(treeList2);
                 DialogResult dr = f.ShowDialog();
             }
 
@@ -1378,7 +1240,7 @@ namespace Itop.Client.Forecast
         private void tj532()
         {
             FormChooseYears1 frm = new FormChooseYears1();
-            foreach (TreeListColumn column in treeList1.Columns)
+            foreach (TreeListColumn column in treeList2.Columns)
             {
                 if (column.Caption.IndexOf("年") > 0)
                 {
@@ -1388,10 +1250,10 @@ namespace Itop.Client.Forecast
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 Formtj432 f = new Formtj432();
-                f.Text = treeList1.FocusedNode["Title"].ToString() + "常规增长率+大用户法预测结果";
+                f.Text = treeList2.FocusedNode["Title"].ToString() + "常规增长率+大用户法预测结果";
                 f.CanPrint = base.EditRight;
                 setcols433(frm.DT.Rows);
-                f.GridDataTable = ConvertTreeListToDataTable532(treeList1);
+                f.GridDataTable = ConvertTreeListToDataTable532(treeList2);
                 DialogResult dr = f.ShowDialog();
             }
 
@@ -2011,7 +1873,7 @@ namespace Itop.Client.Forecast
         private void btCopy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //复制节点及子节点
-            TreeListNode tln = treeList1.FocusedNode;
+            TreeListNode tln = treeList2.FocusedNode;
 
             if (tln == null || tln.Level == 0)
                 return;
@@ -2031,7 +1893,7 @@ namespace Itop.Client.Forecast
         #endregion
         private void bt532_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            TreeListNode tln = treeList1.FocusedNode;
+            TreeListNode tln = treeList2.FocusedNode;
             if (tln == null || tln.Level != 1)
             {
                 MsgBox.Show("请先选择分区后重试！");
@@ -2161,18 +2023,7 @@ namespace Itop.Client.Forecast
             tln.TreeList.EndInit();
         }
         #endregion
-        private void treeList1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.V)
-            {
-                TreeListNode tln = treeList1.FocusedNode;
-                if (tln == null)
-                {
-                    return;
-                }
-                pasteData(tln);
-            }
-        }
+       
         private void treeList2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.V)
@@ -2551,7 +2402,7 @@ namespace Itop.Client.Forecast
                 wait.SetCaption((10 + m * 90 / dt2.Columns.Count) + "%");
                 if (dc.ColumnName.Substring(0, 1) != "y")
                     continue;
-                cacsumsehui(dc.ColumnName);
+               
                 cacsumsehui2(dc.ColumnName);
             }
         }
@@ -2759,7 +2610,7 @@ namespace Itop.Client.Forecast
                 row["y1993"] = nl * 100;
                 Ps_Forecast_Math ps = Itop.Common.DataConverter.RowToObject<Ps_Forecast_Math>(row);
                 Services.BaseService.Update<Ps_Forecast_Math>(ps);
-                TreeListNode node = treeList1.FindNodeByKeyID(row["ID"]);
+                //TreeListNode node = treeList1.FindNodeByKeyID(row["ID"]);
                 //if (node != null) sumDL(node.ParentNode, firstyear, endyear);
             }
             //常规负荷
@@ -2829,7 +2680,7 @@ namespace Itop.Client.Forecast
                 row["y1993"] = nl * 100;
                 Ps_Forecast_Math ps = Itop.Common.DataConverter.RowToObject<Ps_Forecast_Math>(row);
                 Services.BaseService.Update<Ps_Forecast_Math>(ps);
-                TreeListNode node = treeList1.FindNodeByKeyID(row["ID"]);
+                //TreeListNode node = treeList1.FindNodeByKeyID(row["ID"]);
                 //if (node != null) sumDL(node.ParentNode, firstyear, endyear);
             }
         }
@@ -2873,8 +2724,8 @@ namespace Itop.Client.Forecast
                 row["y1993"] = nl * 100;
                 Ps_Forecast_Math ps = Itop.Common.DataConverter.RowToObject<Ps_Forecast_Math>(row);
                 Services.BaseService.Update<Ps_Forecast_Math>(ps);
-                TreeListNode node = treeList1.FindNodeByKeyID(row["ID"]);
-                if (node != null) sumDL(node.ParentNode, firstyear, endyear);
+                //TreeListNode node = treeList1.FindNodeByKeyID(row["ID"]);
+                //if (node != null) sumDL(node.ParentNode, firstyear, endyear);
             }
         }
        
@@ -2958,8 +2809,7 @@ namespace Itop.Client.Forecast
                         }
                         Ps_Forecast_Math ps = Itop.Common.DataConverter.RowToObject<Ps_Forecast_Math>(dr);
                         Services.BaseService.Update<Ps_Forecast_Math>(ps);
-                        TreeListNode node = treeList1.FindNodeByKeyID(dr["ID"]);
-                        if (node != null) sumDL(node.ParentNode, firstyear, endyear);
+                      
 
                     }
                     else if (yhtype=="新增")
@@ -2977,9 +2827,7 @@ namespace Itop.Client.Forecast
                         }
                         Ps_Forecast_Math ps = Itop.Common.DataConverter.RowToObject<Ps_Forecast_Math>(dr);
                         Services.BaseService.Update<Ps_Forecast_Math>(ps);
-                        TreeListNode node = treeList1.FindNodeByKeyID(dr["ID"]);
-                        if (node != null) sumDL(node.ParentNode, firstyear, endyear);
-
+                      
                     }
                 }
                 else if (type == "负荷")
@@ -3135,7 +2983,7 @@ namespace Itop.Client.Forecast
         //根据总得来统计 找到最底层的目录
         private void jstjaddyear()
         {
-            DataRow[] rows1 = dataTable.Select("Title like '%新增%'");
+           
             DataRow[] rows2 = dataTable2.Select("Title like '%新增%'");
 
             //获得平摊率
@@ -3149,21 +2997,7 @@ namespace Itop.Client.Forecast
             //    ftlv = list1[0].Value1;
             //}
             //获取所有的大用户
-            foreach (DataRow row in rows1)
-            {
-                DataRow[] rows = dataTable.Select("ParentID='" + row["ID"].ToString() + "'");
-                if (rows != null&&rows.Length!=0)
-                {
-                    for (int i = firstyear; i <= endyear; i++)
-                    {
-
-                        string y = "y" + i.ToString();
-                        CalculateSum(treeList1.FindNodeByKeyID(rows[rows.Length - 1]["ID"].ToString()), treeList1.Columns[y]);
-
-                    }
-
-                }
-            }
+           
 
             foreach (DataRow row in rows2)
             {
@@ -3180,7 +3014,7 @@ namespace Itop.Client.Forecast
 
                 }
             }
-            rows1 = dataTable.Select("Title like '%现有%'");
+           
             rows2 = dataTable2.Select("Title like '%现有%'");
 
             //获得平摊率
@@ -3194,21 +3028,7 @@ namespace Itop.Client.Forecast
             //    ftlv = list1[0].Value1;
             //}
             //获取所有的大用户
-            foreach (DataRow row in rows1)
-            {
-                DataRow[] rows = dataTable.Select("ParentID='" + row["ID"].ToString() + "'");
-                if (rows != null && rows.Length != 0)
-                {
-                    for (int i = firstyear; i <= endyear; i++)
-                    {
-                        string y = "y" + i.ToString();
-                        CalculateSum(treeList1.FindNodeByKeyID(rows[rows.Length - 1]["ID"].ToString()), treeList1.Columns[y]);
-
-                    }
-
-                }
-            }
-
+           
             foreach (DataRow row in rows2)
             {
                 DataRow[] rows = dataTable2.Select("ParentID='" + row["ID"].ToString() + "'");
@@ -3252,8 +3072,8 @@ namespace Itop.Client.Forecast
                     {
                         Ps_Forecast_Math ps = Itop.Common.DataConverter.RowToObject<Ps_Forecast_Math>(drw);
                         // Services.BaseService.Update<Ps_Forecast_Math>(ps);
-                        TreeListNode node = treeList1.FindNodeByKeyID(drw["ID"]);
-                        if (node != null) sumDL(node.ParentNode, firstyear, endyear);
+                        //TreeListNode node = treeList1.FindNodeByKeyID(drw["ID"]);
+                        //if (node != null) sumDL(node.ParentNode, firstyear, endyear);
                     }
                 }
             }
@@ -3417,7 +3237,7 @@ namespace Itop.Client.Forecast
             }
                 //Services.BaseService.Update("UpdatePs_Forecast_SetupByForecast", pfs);
           
-            treeList1.BeginInit();
+            
             treeList2.BeginInit();
             //js(byear, eyear);
             if (eyear<firstyear||byear>endyear)
@@ -3440,7 +3260,7 @@ namespace Itop.Client.Forecast
                
                 if (dc.ColumnName.Substring(0, 1) != "y")
                     continue;
-                cacsumsehui(dc.ColumnName);
+                //cacsumsehui(dc.ColumnName);
                 cacsumsehui2(dc.ColumnName);
                 m++;
                 wait.SetCaption((10 + m * 90 / dataTable.Columns.Count) + "%");
@@ -3450,7 +3270,7 @@ namespace Itop.Client.Forecast
             Calqushehui1();
             Calqushehui2();
             treeList2.EndInit();
-            treeList1.EndInit();
+           
             wait.Close();
             MessageBox.Show("计算成功！");
             //LoadData();
@@ -3604,44 +3424,7 @@ namespace Itop.Client.Forecast
             DataRow row;
 
             DataRow dt;
-            foreach (TreeListNode nd in treeList1.Nodes)
-            {
-                row = (nd.TreeList.GetDataRecordByNode(nd) as DataRowView).Row;
-                dt = chartdataTable.NewRow();
-                foreach (DataColumn dc in chartdataTable.Columns)
-                {
-                    dt[dc.ColumnName] = row[dc.ColumnName];
-                    if (dc.ColumnName == "Title")
-                    {
-                        dt[dc.ColumnName] = dt[dc.ColumnName].ToString() + "（负荷）";
-                    }
-                }
-                dt["ParentID"] = 3;
-                chartdataTable.Rows.Add(dt);
-                foreach (TreeListNode nd2 in nd.Nodes)
-                {
-                    if (nd2.HasChildren)
-                    {
-                        row = (nd2.TreeList.GetDataRecordByNode(nd2) as DataRowView).Row;
-
-                        dt = chartdataTable.NewRow();
-                        foreach (DataColumn dc in chartdataTable.Columns)
-                        {
-                            dt[dc.ColumnName] = row[dc.ColumnName];
-                            if (dc.ColumnName == "Title")
-                            {
-                                dt[dc.ColumnName] = dt[dc.ColumnName].ToString() + "（负荷）";
-                            }
-                        }
-                        dt["ParentID"] = 3;
-                        chartdataTable.Rows.Add(dt);
-
-
-                    }
-
-                }
-
-            }
+            
             foreach (TreeListNode nd in treeList2.Nodes)
             {
                 row = (nd.TreeList.GetDataRecordByNode(nd) as DataRowView).Row;
@@ -4055,7 +3838,7 @@ namespace Itop.Client.Forecast
         bool selectdral = true;
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (treeList1.Nodes.Count == 0)
+            if (treeList2.Nodes.Count == 0)
             {
                 MessageBox.Show("无数据，不能操作！");
                 return;
@@ -4069,9 +3852,7 @@ namespace Itop.Client.Forecast
                
 
 
-                treeList1.OptionsSelection.MultiSelect = true;
-                treeList1.OptionsBehavior.Editable = false;
-                treeList1.Refresh();
+            
                 treeList2.OptionsSelection.MultiSelect = true;
                 treeList2.OptionsBehavior.Editable = false;
                 treeList2.Refresh();
@@ -4098,8 +3879,7 @@ namespace Itop.Client.Forecast
                         Services.BaseService.Update("UpdatePs_Forecast_SetupByForecast", pfs);
                 }
 
-                treeList1.OptionsSelection.MultiSelect = false;
-                treeList1.OptionsBehavior.Editable = true;
+              
                 treeList2.OptionsSelection.MultiSelect = false;
                 treeList2.OptionsBehavior.Editable = true;
             }
@@ -4265,50 +4045,8 @@ namespace Itop.Client.Forecast
             return rt;
         }
 
-        private void treeList1_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (!selectdral)
-            {
-                if (jqbyear == "0")
-                {
-                    if (treeList1.FocusedColumn.FieldName.Contains("y"))
-                    {
-                        jqbyear = treeList1.FocusedColumn.FieldName;
-                    }
-                }
-                else
-                {
-                    if (treeList1.FocusedColumn.FieldName.Contains("y"))
-                    {
-                        jqeyear= treeList1.FocusedColumn.FieldName;
-                    }
-
-                    if (Convert.ToInt32(jqbyear.Replace("y", "")) > Convert.ToInt32(jqeyear.Replace("y", "")))
-                    {
-                        string itemp = jqbyear;
-                        jqbyear = jqeyear;
-                        jqeyear = jqbyear;
-
-                    }
-                }
-                treeList1.Refresh();
-                treeList2.Refresh();
-            }
-        }
-
-        private void treeList1_NodeCellStyle(object sender, DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs e)
-        {
-            if (e.Column.FieldName.IndexOf("y") > -1 && jqbyear != "Title" && jqeyear != "Title")
-            {
-                if (Convert.ToInt32(e.Column.FieldName.Replace("y", "")) >= Convert.ToInt32(jqbyear.Replace("y", "")) && Convert.ToInt32(jqeyear.Replace("y", "")) >= Convert.ToInt32(e.Column.FieldName.Replace("y", "")))
-
-                    e.Appearance.BackColor = Color.FromArgb(152, 122, 254);
-                if (commonhelp.HasValue(e.Node["ID"].ToString(), e.Column.FieldName))
-                {
-                    e.Appearance.ForeColor = Color.Salmon;
-                }
-            }
-        }
+      
+       
 
         private void treeList2_NodeCellStyle(object sender, DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs e)
         {

@@ -266,7 +266,7 @@ namespace Itop.Client.Forecast
                     FMA5.ShowDialog();
                     break;
                 case 6: 
-                    FormForecast11_SH FMA6 = new FormForecast11_SH(report);
+                    FormForecast11_DSH FMA6 = new FormForecast11_DSH(report);
                     FMA6.Text = this.Text + "- 大用户";
                     FMA6.CanEdit = base.EditRight; 
                     FMA6.ShowDialog();

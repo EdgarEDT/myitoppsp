@@ -696,6 +696,24 @@
     <Compile Include="FormLoadForecastDataFSH.Designer.cs">
       <DependentUpon>FormLoadForecastDataFSH.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormForecast11_DSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast11_DSH.Designer.cs">
+      <DependentUpon>FormForecast11_DSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForecast11_FSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForecast11_FSH.Designer.cs">
+      <DependentUpon>FormForecast11_FSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoadForecastDataDSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoadForecastDataDSH.Designer.cs">
+      <DependentUpon>FormLoadForecastDataDSH.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ForecastList.resx">
@@ -1068,6 +1086,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoadForecastDataFSH.resx">
       <DependentUpon>FormLoadForecastDataFSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast11_DSH.resx">
+      <DependentUpon>FormForecast11_DSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForecast11_FSH.resx">
+      <DependentUpon>FormForecast11_FSH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoadForecastDataDSH.resx">
+      <DependentUpon>FormLoadForecastDataDSH.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
