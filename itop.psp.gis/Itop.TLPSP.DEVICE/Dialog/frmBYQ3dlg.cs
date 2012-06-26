@@ -662,9 +662,9 @@ namespace Itop.TLPSP.DEVICE
                 MessageBox.Show("请选择i侧、j侧、k侧所在的母线！");
                 return;
             }
-            if (string.IsNullOrEmpty(DeviceMx.OperationYear) || string.IsNullOrEmpty(DeviceMx.Date2))
+            if (string.IsNullOrEmpty(DeviceMx.OperationYear) )
             {
-                MessageBox.Show("请选择投产时间和退役时间！");
+                MessageBox.Show("请选择投产时间！");
                 return;
             }
             this.DialogResult = DialogResult.OK;

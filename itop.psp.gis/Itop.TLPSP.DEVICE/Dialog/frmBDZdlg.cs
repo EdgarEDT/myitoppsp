@@ -254,9 +254,9 @@ namespace Itop.TLPSP.DEVICE
             if (!isread) {
                 ucGraph1.Save(DeviceMx.UID,DeviceMx.AreaID=="");
                 ucGraph2.Save("", DeviceMx.AreaID == "");
-                if (string.IsNullOrEmpty(bdz.S2) || string.IsNullOrEmpty(bdz.L29))
+                if (string.IsNullOrEmpty(bdz.S2) )
                 {
-                    MessageBox.Show("请选择投产时间和退役时间！");
+                    MessageBox.Show("请选择投产时间！");
                     return;
                 }
                 if (bdz.L1==0)
