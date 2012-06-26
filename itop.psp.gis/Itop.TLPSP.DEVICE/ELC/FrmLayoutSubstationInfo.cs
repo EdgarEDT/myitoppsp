@@ -13,7 +13,6 @@ using System.Collections;
 using Itop.Common;
 using DevExpress.XtraGrid.Views.BandedGrid;
 using System.IO;
-using Itop.Domain.Stutistic;
 using Itop.Client.Stutistics;
 using System.Xml;
 using Itop.Domain.Stutistics;
