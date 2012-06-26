@@ -44,6 +44,8 @@ namespace Itop.Client.Table
         {
             InitializeComponent();
             barSubItem2.Glyph = Itop.ICON.Resource.新建;
+            barButtonItem7.Glyph = Itop.ICON.Resource.关闭;
+            barButtonItem2.Glyph = Itop.ICON.Resource.修改;
         }
 
         private void HideToolBarButton()

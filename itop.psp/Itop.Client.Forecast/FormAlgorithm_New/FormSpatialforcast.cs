@@ -47,6 +47,20 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             InitializeComponent();
             forecastReport = fr;
             Text = fr.Title;
+
+            barButtonItem1.Glyph = Itop.ICON.Resource.新建; 
+            barButtonItem2.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem5.Glyph = Itop.ICON.Resource.删除;
+           
+            barSubItem1.Glyph = Itop.ICON.Resource.发送;
+
+            barButtonItem3.Glyph = Itop.ICON.Resource.发送;
+            barButtonItem8.Glyph = Itop.ICON.Resource.工具;
+
+            barButtonItem4.Glyph = Itop.ICON.Resource.审批;
+            barButtonItem7.Glyph = Itop.ICON.Resource.保存;
+
+            barButtonItem6.Glyph = Itop.ICON.Resource.关闭;
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
