@@ -179,6 +179,12 @@
     </Compile>
     <Compile Include="Console\TreeStyleMenuFactory.cs" />
     <Compile Include="FileIni.cs" />
+    <Compile Include="Forms\FormProjectManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormProjectManage.Designer.cs">
+      <DependentUpon>FormProjectManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmChangPwd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -441,6 +447,9 @@
     <EmbeddedResource Include="Console\TreeStyleMenu.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TreeStyleMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormProjectManage.resx">
+      <DependentUpon>FormProjectManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmChangPwd.resx">
       <DependentUpon>FrmChangPwd.cs</DependentUpon>
