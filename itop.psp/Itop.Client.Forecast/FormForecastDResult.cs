@@ -465,46 +465,46 @@ namespace Itop.Client.Forecast
 
             }
 
-            TreeListNode rootnode = node.ParentNode;
-            if (rootnode == null)
-            {
-                return;
-            }
-            IList<Ps_Forecast_Math> relist = new List<Ps_Forecast_Math>();
+            //TreeListNode rootnode = node.ParentNode;
+            //if (rootnode == null)
+            //{
+            //    return;
+            //}
+            //IList<Ps_Forecast_Math> relist = new List<Ps_Forecast_Math>();
 
-            double qzvalue = 0;
+            //double qzvalue = 0;
 
 
-            WaitDialogForm wait = new WaitDialogForm("", "正在更新数据，请稍后...");
-            foreach (TreeListNode cnode in rootnode.Nodes)
-            {
-                DataRow row = (node.TreeList.GetDataRecordByNode(cnode) as DataRowView).Row;
-                Ps_Forecast_Math v = DataConverter.RowToObject<Ps_Forecast_Math>(row);
-                double mm = v.y1990;
-                string select = v.Col2;
-                if (select == "1")
-                {
-                    qzvalue += mm;
-                    relist.Add(v);
-                }
-            }
-            rootnode.SetValue("y1990", qzvalue);
-            for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++)
-            {
-                wait.SetCaption((i - forecastReport.StartYear) * 100 / (forecastReport.YcEndYear - forecastReport.StartYear) + "%");
-                double sum = 0;
-                foreach (Ps_Forecast_Math pfm in relist)
-                {
-                    double mm = pfm.y1990;
+            //WaitDialogForm wait = new WaitDialogForm("", "正在更新数据，请稍后...");
+            //foreach (TreeListNode cnode in rootnode.Nodes)
+            //{
+            //    DataRow row = (node.TreeList.GetDataRecordByNode(cnode) as DataRowView).Row;
+            //    Ps_Forecast_Math v = DataConverter.RowToObject<Ps_Forecast_Math>(row);
+            //    double mm = v.y1990;
+            //    string select = v.Col2;
+            //    if (select == "1")
+            //    {
+            //        qzvalue += mm;
+            //        relist.Add(v);
+            //    }
+            //}
+            //rootnode.SetValue("y1990", qzvalue);
+            //for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++)
+            //{
+            //    wait.SetCaption((i - forecastReport.StartYear) * 100 / (forecastReport.YcEndYear - forecastReport.StartYear) + "%");
+            //    double sum = 0;
+            //    foreach (Ps_Forecast_Math pfm in relist)
+            //    {
+            //        double mm = pfm.y1990;
 
-                    sum += double.Parse(pfm.GetType().GetProperty("y" + i).GetValue(pfm, null).ToString()) * mm;
+            //        sum += double.Parse(pfm.GetType().GetProperty("y" + i).GetValue(pfm, null).ToString()) * mm;
 
-                }
-                commonhelp.ResetValue(rootnode["ID"].ToString(), "y" + i);
-                rootnode.SetValue("y" + i, sum);
-            }
-            RefreshChart();
-            wait.Close();
+            //    }
+            //    commonhelp.ResetValue(rootnode["ID"].ToString(), "y" + i);
+            //    rootnode.SetValue("y" + i, sum);
+            //}
+            //RefreshChart();
+            //wait.Close();
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -589,10 +589,56 @@ namespace Itop.Client.Forecast
 
         }
 
-        private void repositoryItemCheckEdit1_CheckedChanged(object sender, EventArgs e)
+       
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ReCount();
+        }
+
+        private void ReCount()
         {
            
+            WaitDialogForm wait = new WaitDialogForm("", "正在更新数据，请稍后...");
+            int m = 0;
+            foreach (TreeListNode  node in treeList1.Nodes)
+            {
+                m++;
+                IList<Ps_Forecast_Math> relist = new List<Ps_Forecast_Math>();
+                double qzvalue = 0;
+                foreach (TreeListNode cnode in node.Nodes)
+                {
+                    DataRow row = (cnode.TreeList.GetDataRecordByNode(cnode) as DataRowView).Row;
+                    Ps_Forecast_Math v = DataConverter.RowToObject<Ps_Forecast_Math>(row);
+                    double mm = v.y1990;
+                    string select = v.Col2;
+                    if (select == "1")
+                    {
+                        qzvalue += mm;
+                        relist.Add(v);
+                    }
+                }
+                //wait.SetCaption(m * 100 / treeList1.Nodes.Count + "%");
+                node.SetValue("y1990", qzvalue);
+                for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++)
+                {
+                    int persent = ((m - 1) * (forecastReport.YcEndYear - forecastReport.StartYear + 1) + i - forecastReport.StartYear) * 100 / (treeList1.Nodes.Count * (forecastReport.YcEndYear - forecastReport.StartYear + 1));
+                    wait.SetCaption(persent+ "%");
+                    double sum = 0;
+                    foreach (Ps_Forecast_Math pfm in relist)
+                    {
+                        double mm = pfm.y1990;
+
+                        sum += double.Parse(pfm.GetType().GetProperty("y" + i).GetValue(pfm, null).ToString()) * mm;
+
+                    }
+                    commonhelp.ResetValue(node["ID"].ToString(), "y" + i);
+                    node.SetValue("y" + i, sum);
+                }
+               
+            }
+            RefreshChart();
+            wait.Close();
         }
-       
     }
 }

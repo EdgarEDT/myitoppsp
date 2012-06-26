@@ -194,7 +194,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                     //更新电量数据
                     if (currtenpfm.Sort==1)
 	                {
-                        for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
+                        for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++)
                         {
                             currtenpfm.GetType().GetProperty("y" + i).SetValue(currtenpfm, Math.Round(double.Parse(row["y" + i.ToString()].ToString()), 1), null);
                             commonhelp.ResetValue(currtenpfm.ID, "y" + i);
@@ -573,7 +573,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 psp_Type2.ID = Guid.NewGuid().ToString();
                 psp_Type2.ForecastID = forecastReport.ID;
                 psp_Type2.Forecast = type;
-                psp_Type2.Title = "负荷(MW)";
+                psp_Type2.Title = "全社会最大负荷（MW）";
                 psp_Type2.Sort = 2;
                 psp_Type2.Col1 = "mh";
                 Common.Services.BaseService.Create<Ps_Forecast_Math>(psp_Type2);

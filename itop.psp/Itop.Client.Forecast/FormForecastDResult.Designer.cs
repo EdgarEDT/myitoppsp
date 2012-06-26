@@ -43,12 +43,14 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.chart_user1 = new Itop.Client.Using.chart_userSH();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -98,9 +100,10 @@
             this.barButtonItem3,
             this.barSubItem1,
             this.barButtonItem4,
-            this.barButtonItem5});
-            this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 6;
+            this.barButtonItem5,
+            this.barButtonItem6,
+            this.barButtonItem7});
+            this.barManager1.MaxItemId = 8;
             // 
             // bar2
             // 
@@ -111,9 +114,9 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem7, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
@@ -191,6 +194,13 @@
             this.barDockControlRight.Location = new System.Drawing.Point(818, 34);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 473);
             // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "重新计算";
+            this.barButtonItem6.Id = 6;
+            this.barButtonItem6.ImageIndex = 6;
+            this.barButtonItem6.Name = "barButtonItem6";
+            // 
             // treeList1
             // 
             this.treeList1.AllowDrop = true;
@@ -233,7 +243,7 @@
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             this.repositoryItemCheckEdit1.ValueChecked = "1";
             this.repositoryItemCheckEdit1.ValueUnchecked = "0";
-            this.repositoryItemCheckEdit1.CheckedChanged += new System.EventHandler(this.repositoryItemCheckEdit1_CheckedChanged);
+    
             // 
             // splitContainerControl1
             // 
@@ -258,6 +268,14 @@
             this.chart_user1.Name = "chart_user1";
             this.chart_user1.Size = new System.Drawing.Size(818, 390);
             this.chart_user1.TabIndex = 0;
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "重新计算";
+            this.barButtonItem7.Id = 7;
+            this.barButtonItem7.ImageIndex = 14;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // FormForecastDResult
             // 
@@ -303,6 +321,9 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+       
     }
 }
