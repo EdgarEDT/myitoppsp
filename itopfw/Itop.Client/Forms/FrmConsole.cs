@@ -103,7 +103,10 @@ namespace Itop.Client.Forms
         #region ¸¨Öú·½·¨
 
         public void InitProject()
-        { }
+        {
+            InitRightControl();
+        
+        }
 
         bool oneload = false;
         private void  AddMainMenu(IList list)
@@ -1045,6 +1048,10 @@ namespace Itop.Client.Forms
                 return;
             }
             initButton();
+            if (treeList1.FocusedNode.ParentNode == null)
+            {
+                return;
+            }
             if (treeList1.FocusedNode.Nodes.Count == 0 && treeList1.FocusedNode.ParentNode == null)
             {
                 return;
