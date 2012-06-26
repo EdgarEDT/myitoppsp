@@ -13,7 +13,9 @@ namespace Itop.Client.Layouts
         public FrmLayout()
         {
             InitializeComponent();
-            barButtonItem1.Glyph = Itop.ICON.Resource.新建;
+      
+
+            barButtonItem3.Glyph = Itop.ICON.Resource.新建;
             barButtonItem4.Glyph = Itop.ICON.Resource.修改;
             barButtonItem5.Glyph = Itop.ICON.Resource.删除;
             barButtonItem6.Glyph = Itop.ICON.Resource.修改;

@@ -18,7 +18,12 @@ namespace Itop.Client.Table
             barButtonItem7.Glyph = Itop.ICON.Resource.打回重新编;
             barSubItem3.Glyph = Itop.ICON.Resource.新建; 
              barButtonItem9.Glyph = Itop.ICON.Resource.修改;
-             barButtonItem11.Glyph = Itop.ICON.Resource.关闭; 
+             barButtonItem11.Glyph = Itop.ICON.Resource.关闭;
+
+             barButtonItem1.Glyph = Itop.ICON.Resource.新建;
+
+             barButtonItem2.Glyph = Itop.ICON.Resource.修改;
+             barButtonItem3.Glyph = Itop.ICON.Resource.删除; 
         }
 
         private void FrmAreaData_Load(object sender, EventArgs e)
