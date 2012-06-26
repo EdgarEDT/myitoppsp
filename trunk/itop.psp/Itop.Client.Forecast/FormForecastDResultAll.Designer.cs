@@ -175,7 +175,7 @@
             this.treeList1.Name = "treeList1";
             this.treeList1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.treeList1.Size = new System.Drawing.Size(818, 205);
+            this.treeList1.Size = new System.Drawing.Size(818, 97);
             this.treeList1.TabIndex = 4;
             this.treeList1.NodeCellStyle += new DevExpress.XtraTreeList.GetCustomNodeCellStyleEventHandler(this.treeList1_NodeCellStyle);
             this.treeList1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.treeList1_ShowingEditor);
@@ -211,7 +211,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.chart_user1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(818, 473);
-            this.splitContainerControl1.SplitterPosition = 262;
+            this.splitContainerControl1.SplitterPosition = 370;
             this.splitContainerControl1.TabIndex = 9;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -220,7 +220,7 @@
             this.chart_user1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart_user1.Location = new System.Drawing.Point(0, 0);
             this.chart_user1.Name = "chart_user1";
-            this.chart_user1.Size = new System.Drawing.Size(818, 262);
+            this.chart_user1.Size = new System.Drawing.Size(818, 370);
             this.chart_user1.TabIndex = 0;
             // 
             // FormForecastDResultAll

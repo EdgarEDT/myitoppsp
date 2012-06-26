@@ -147,7 +147,7 @@ namespace Itop.Client.Forecast
 
 
 
-                textEdit1.Text = "本地区" + spinEdit1.Value + "～" + spinEdit2.Value + "年需" + _typeText + "预测表（方案）";
+                //textEdit1.Text = "本地区" + spinEdit1.Value + "～" + spinEdit2.Value + "年需" + _typeText + "预测表（方案）";
             }
 
             int firstyear = 0;
@@ -194,11 +194,8 @@ namespace Itop.Client.Forecast
 
         private void spinEdit2_EditValueChanged(object sender, EventArgs e)
         {
-            if (spinEdit3.Value<=spinEdit2.Value)
-            {
-                spinEdit3.Value = spinEdit2.Value + 1;
-            }
-
+            spinEdit3.Value = spinEdit2.Value + 1;
+ 
         }
     }
 }

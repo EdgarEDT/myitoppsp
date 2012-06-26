@@ -125,7 +125,14 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private void checkfixedvalue()
         {
             ht.Clear();
-            ht.Add("全社会用电量（亿kWh）", 1);
+            if (forecastReport.Col1 == "1")
+            {
+                ht.Add("全社会最大负荷（MW）", 1);
+            }
+            else
+            {
+                ht.Add("全社会用电量（亿kWh）", 1);
+            }
         
             Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
             psp_Type.ForecastID = forecastReport.ID;

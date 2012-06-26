@@ -49,8 +49,13 @@ namespace Itop.Client.Forecast
 
         void chart_user1_SetColor()
         {
+            DataTable dt = dataTable.Copy();
+            foreach (DataRow row in dt.Rows)
+            {
+                row["Title"] = row["Col3"].ToString() + "-" + row["Title"].ToString();
+            }
             FormColor fc = new FormColor();
-            fc.DT = dataTable;
+            fc.DT = dt;
             fc.ID =  MIS.ProgUID;
             fc.For = type;
             if (fc.ShowDialog() == DialogResult.OK)
@@ -90,7 +95,7 @@ namespace Itop.Client.Forecast
                 bl = false;
                 foreach (FORBaseColor bc in list)
                 {
-                    if (row["Title"].ToString() == bc.Title)
+                    if (row["Col3"].ToString() +"-"+ row["Title"].ToString() == bc.Title)
                     {
                         bl = true;
                         FORBaseColor bc1 = new FORBaseColor();
@@ -106,7 +111,7 @@ namespace Itop.Client.Forecast
                     FORBaseColor bc1 = new FORBaseColor();
                     bc1.UID = Guid.NewGuid().ToString();
                     bc1.Remark =  MIS.ProgUID + "-" + type;
-                    bc1.Title = row["Title"].ToString();
+                    bc1.Title = row["Col3"].ToString() +"-"+ row["Title"].ToString();
                     bc1.Color = 16711680;
                     if (m == 0)
                     {
@@ -146,7 +151,7 @@ namespace Itop.Client.Forecast
                                 Ps_Forecast_Math v = new Ps_Forecast_Math();
                                 v.ForecastID =  MIS.ProgUID;
                                 v.ID = (string)row["ID"];
-                                v.Title = row["Title"].ToString();
+                                v.Title = row["Col3"].ToString()+"-"+row["Title"].ToString();
                                 v.Sort = Convert.ToInt32(col.FieldName.Replace("y", ""));
                                 v.y1991 = (double)row[col.FieldName];
 

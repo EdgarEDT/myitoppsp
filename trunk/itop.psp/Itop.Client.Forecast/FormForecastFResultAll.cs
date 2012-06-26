@@ -49,9 +49,14 @@ namespace Itop.Client.Forecast
 
         void chart_user1_SetColor()
         {
+            DataTable dt = dataTable.Copy();
+            foreach (DataRow row in dt.Rows)
+            {
+                row["Title"] = row["Col3"].ToString() + "-" + row["Title"].ToString();
+            }
             FormColor fc = new FormColor();
-            fc.DT = dataTable;
-            fc.ID =  MIS.ProgUID;
+            fc.DT = dt;
+            fc.ID = MIS.ProgUID;
             fc.For = type;
             if (fc.ShowDialog() == DialogResult.OK)
                 RefreshChart();
@@ -74,7 +79,7 @@ namespace Itop.Client.Forecast
             ht.Add(Color.Crimson);
             int m = 0;
 
-            IList<FORBaseColor> list = Services.BaseService.GetList<FORBaseColor>("SelectFORBaseColorByWhere", "Remark='" +  MIS.ProgUID+ "-" + type + "'");
+            IList<FORBaseColor> list = Services.BaseService.GetList<FORBaseColor>("SelectFORBaseColorByWhere", "Remark='" + MIS.ProgUID + "-" + type + "'");
 
             IList<FORBaseColor> li = new List<FORBaseColor>();
             bool bl = false;
@@ -90,7 +95,7 @@ namespace Itop.Client.Forecast
                 bl = false;
                 foreach (FORBaseColor bc in list)
                 {
-                    if (row["Title"].ToString() == bc.Title)
+                    if (row["Col3"].ToString() + "-" + row["Title"].ToString() == bc.Title)
                     {
                         bl = true;
                         FORBaseColor bc1 = new FORBaseColor();
@@ -105,8 +110,8 @@ namespace Itop.Client.Forecast
                 {
                     FORBaseColor bc1 = new FORBaseColor();
                     bc1.UID = Guid.NewGuid().ToString();
-                    bc1.Remark =  MIS.ProgUID + "-" + type;
-                    bc1.Title = row["Title"].ToString();
+                    bc1.Remark = MIS.ProgUID + "-" + type;
+                    bc1.Title = row["Col3"].ToString() + "-" + row["Title"].ToString();
                     bc1.Color = 16711680;
                     if (m == 0)
                     {
@@ -134,19 +139,19 @@ namespace Itop.Client.Forecast
             for (int i = 0; i < treeList1.Nodes.Count; i++)
             {
                 TreeListNode row = treeList1.Nodes[i];
-                if (row.ParentNode==null)
+                if (row.ParentNode == null)
                 {
                     foreach (TreeListColumn col in treeList1.Columns)
                     {
-                        if (col.FieldName.IndexOf("y") > -1&&col.FieldName!="y1990")
+                        if (col.FieldName.IndexOf("y") > -1 && col.FieldName != "y1990")
                         {
                             object obj = row[col.FieldName];
                             if (obj != DBNull.Value)
                             {
                                 Ps_Forecast_Math v = new Ps_Forecast_Math();
-                                v.ForecastID =  MIS.ProgUID;
+                                v.ForecastID = MIS.ProgUID;
                                 v.ID = (string)row["ID"];
-                                v.Title = row["Title"].ToString();
+                                v.Title = row["Col3"].ToString() + "-" + row["Title"].ToString();
                                 v.Sort = Convert.ToInt32(col.FieldName.Replace("y", ""));
                                 v.y1991 = (double)row[col.FieldName];
 
@@ -155,7 +160,7 @@ namespace Itop.Client.Forecast
                         }
                     }
                 }
-               
+
 
 
             }

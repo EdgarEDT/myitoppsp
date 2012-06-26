@@ -173,7 +173,7 @@ namespace Itop.Client.Forecast
             }
             AddFixColumn();
 
-            for (int i = pf.StartYear; i <= pf.EndYear; i++)
+            for (int i = pf.StartYear; i <= pf.YcEndYear; i++)
             {
                 AddColumn(i);
             }
