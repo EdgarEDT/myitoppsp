@@ -128,6 +128,7 @@
             this.barSubItem3,
             this.barSelect,
             this.barButtonItem2,
+            this.barRel,
             this.barAdd,
             this.barEdit,
             this.barDel,
@@ -135,7 +136,8 @@
             this.barEdit1,
             this.barDel1,
             this.barPrint,
-            this.barPrint1,
+            this.barPrint1, 
+            
             this.barSubItem4,
             this.barButtonItem1,
             this.barButtonItem3,
@@ -144,8 +146,8 @@
             this.barButtonItem6,
             this.barButtonItem7,
             this.barButtonItem9,
-            this.barButtonItem8,
-            this.barRel});
+            this.barButtonItem8
+           });
             this.barManager1.MaxItemId = 24;
             // 
             // bar1
@@ -160,12 +162,15 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSelect),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSelect), 
+            new DevExpress.XtraBars.LinkPersistInfo(this.barRel), 
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem6, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)
+           
+            });
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.RotateWhenVertical = false;
