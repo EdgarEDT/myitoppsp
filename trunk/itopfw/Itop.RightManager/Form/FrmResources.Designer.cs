@@ -47,31 +47,31 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Location = new System.Drawing.Point(-5, 36);
+            this.tabControl1.Location = new System.Drawing.Point(-6, 42);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(443, 338);
+            this.tabControl1.Size = new System.Drawing.Size(587, 396);
             this.tabControl1.TabIndex = 1;
             // 
             // txtImageName
             // 
-            this.txtImageName.Location = new System.Drawing.Point(92, 9);
+            this.txtImageName.Location = new System.Drawing.Point(107, 10);
             this.txtImageName.Name = "txtImageName";
-            this.txtImageName.Size = new System.Drawing.Size(169, 21);
+            this.txtImageName.Size = new System.Drawing.Size(197, 21);
             this.txtImageName.TabIndex = 2;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(296, 7);
+            this.btnSearch.Location = new System.Drawing.Point(345, 8);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(87, 27);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "查询";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(13, 11);
+            this.labelControl1.Location = new System.Drawing.Point(15, 13);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(60, 14);
             this.labelControl1.TabIndex = 4;
@@ -79,9 +79,9 @@
             // 
             // FrmResources
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 370);
+            this.ClientSize = new System.Drawing.Size(576, 434);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtImageName);
