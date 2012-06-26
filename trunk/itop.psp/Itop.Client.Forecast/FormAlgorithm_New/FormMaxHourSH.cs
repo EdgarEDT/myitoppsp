@@ -151,6 +151,8 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             forecastReport = fr;
             Text = fr.Title;
             chart_user1.SetColor += new chart_userSH.setcolor(chart_user1_SetColor);
+            barButtonItem1.Glyph = Itop.ICON.Resource.授权;
+            barButtonItem8.Glyph = Itop.ICON.Resource.关闭;
         }
 
         void chart_user1_SetColor()

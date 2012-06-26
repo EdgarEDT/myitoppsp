@@ -45,6 +45,10 @@ namespace Itop.Client.Forecast
             InitializeComponent();
             Text = title;
             chart_user1.SetColor += new Itop.Client.Using.chart_userSH.setcolor(chart_user1_SetColor);
+            barSubItem1.Glyph = Itop.ICON.Resource.发送;
+            barButtonItem1.Glyph = Itop.ICON.Resource.发送;
+            barButtonItem2.Glyph = Itop.ICON.Resource.工具;
+            barButtonItem3.Glyph = Itop.ICON.Resource.关闭;
         }
 
         void chart_user1_SetColor()

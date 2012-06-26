@@ -88,6 +88,7 @@
     </Reference>
     <Reference Include="Itop.Domain.Graphics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.ICON, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.TLVector.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">

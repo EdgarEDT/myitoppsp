@@ -102,6 +102,10 @@ namespace Itop.Client.Forecast
             
             treeList2.OptionsView.AutoWidth = false;
             barButtonItem6.Glyph = Itop.ICON.Resource.关闭;
+
+
+            btGetHistory.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem10.Glyph = Itop.ICON.Resource.打回重新编;
         }
 
         private void HideToolBarButton()

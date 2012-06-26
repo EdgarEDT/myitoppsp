@@ -68,6 +68,13 @@ namespace Itop.Client.Table
         public FrmTableWGAH()
         {
             InitializeComponent();
+
+           
+            barSubItem1.Glyph = Itop.ICON.Resource.新建;
+            barButtonItem1.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem12.Glyph = Itop.ICON.Resource.审批;
+           
+
         }
 
         public int[] GetYears()

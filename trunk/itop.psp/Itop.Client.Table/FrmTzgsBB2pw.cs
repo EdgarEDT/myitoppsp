@@ -43,6 +43,7 @@ namespace Itop.Client.Table
         public FrmTzgsBB2pw()
         {
             InitializeComponent();
+            barSubItem2.Glyph = Itop.ICON.Resource.新建;
         }
 
         private void HideToolBarButton()

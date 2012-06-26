@@ -66,6 +66,11 @@ namespace Itop.Client.Table
         public FrmBuildProWH()
         {
             InitializeComponent();
+            barSubItem1.Glyph = Itop.ICON.Resource.新建;
+            barButtonItem2.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem10.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem15.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem7.Glyph = Itop.ICON.Resource.关闭;
         }
         string tong = "",g_col4="";
         public void ShowBian()

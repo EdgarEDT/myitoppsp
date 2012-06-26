@@ -88,6 +88,18 @@ namespace Itop.Client.History
 
             barButtonItem6.Glyph = Itop.ICON.Resource.关闭;
             barButtonItem6.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+
+
+            barButtonItem10.Glyph = Itop.ICON.Resource.授权;
+            barButtonItem10.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+
+
+            barButtonItem9.Glyph = Itop.ICON.Resource.打回重新编;
+            barButtonItem9.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+
+
+           
+
         }
 
 

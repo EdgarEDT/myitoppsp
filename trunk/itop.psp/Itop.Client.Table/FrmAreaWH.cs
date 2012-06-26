@@ -15,6 +15,10 @@ namespace Itop.Client.Table
         public FrmAreaWH()
         {
             InitializeComponent();
+            barButtonItem7.Glyph = Itop.ICON.Resource.打回重新编;
+            barSubItem3.Glyph = Itop.ICON.Resource.新建; 
+             barButtonItem9.Glyph = Itop.ICON.Resource.修改;
+             barButtonItem11.Glyph = Itop.ICON.Resource.关闭; 
         }
 
         private void FrmAreaData_Load(object sender, EventArgs e)

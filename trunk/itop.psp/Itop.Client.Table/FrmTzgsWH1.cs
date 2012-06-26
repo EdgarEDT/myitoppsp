@@ -122,6 +122,17 @@ namespace Itop.Client.Table
         public FrmTzgsWH1()
         {
             InitializeComponent();
+            barSubItem2.Glyph = Itop.ICON.Resource.新建;
+            barButtonItem21.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem19.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem12.Glyph = Itop.ICON.Resource.审批;
+
+            barSubItem1.Glyph = Itop.ICON.Resource.新建;
+
+            barButtonItem10.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem15.Glyph = Itop.ICON.Resource.修改;
+
+            barButtonItem7.Glyph = Itop.ICON.Resource.关闭;
         }
 
         private void HideToolBarButton()

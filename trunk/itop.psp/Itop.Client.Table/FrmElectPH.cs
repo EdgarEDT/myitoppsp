@@ -64,6 +64,12 @@ namespace Itop.Client.Table
         public FrmElecPH()
         {
             InitializeComponent();
+            barSubItem2.Glyph = Itop.ICON.Resource.新建;
+            barButtonItem7.Glyph = Itop.ICON.Resource.关闭;
+            barButtonItem14.Glyph = Itop.ICON.Resource.审批;
+            barButtonItem11.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem13.Glyph = Itop.ICON.Resource.新建;
+
         }
 
         private void HideToolBarButton()
