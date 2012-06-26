@@ -65,6 +65,13 @@ namespace Itop.Client.Table
         public Frm220ResultSH()
         {
             InitializeComponent();
+            barSubItem2.Glyph = Itop.ICON.Resource.新建;
+            barSubItem1.Glyph = Itop.ICON.Resource.新建;
+            barButtonItem17.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem12.Glyph = Itop.ICON.Resource.审批;
+            barButtonItem10.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem7.Glyph = Itop.ICON.Resource.关闭;
+
         }
 
         private void HideToolBarButton()
@@ -1339,7 +1346,7 @@ namespace Itop.Client.Table
         /// 更新电源
         /// </summary>
         /// <param name="ParentID"></param>
-        public void UpdataDY(string ParentID)
+        public void UpdataDY0ld(string ParentID)
         {
 
             Hashtable rtable = new Hashtable();
@@ -1492,11 +1499,191 @@ namespace Itop.Client.Table
             Common.Services.BaseService.Update<Ps_Table_220Result>(col5);
 
         }
+        public void UpdataDY(string ParentID)
+        {
+
+            Hashtable rtable = new Hashtable();
+            Ps_Table_220Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(ParentID);
+            string AreaName = pt.Title;
+
+            string conn = "ProjectID='" + GetProjectID + "' and ParentID='" + ParentID + "'";
+
+            Ps_Table_220Result col2, col5;
+
+            IList<Ps_Table_220Result> listchild = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            for (int i = 0; i < listchild.Count; i++)
+            {
+                rtable.Add(listchild[i].Col3, listchild[i]);
+            }
+            col2 = (Ps_Table_220Result)rtable["2"];
+
+            //删除其下的
+            string conncol2 = "ProjectID='" + GetProjectID + "' and ParentID='" + col2.ID + "'";
+
+
+            IList<Ps_Table_220Result> col2list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conncol2);
+            foreach (Ps_Table_220Result ptr in col2list)
+            {
+                Common.Services.BaseService.Delete<Ps_Table_220Result>(ptr);
+            }
+
+
+            col5 = (Ps_Table_220Result)rtable["5"];
+
+            //更新220kV以下电源  更新 5、区内电源出力
+            //
+            string conn1 = " AreaID='" + GetProjectID + "' and S9='" + AreaName + "' and cast(S1 as int)=220";
+            IList<PSP_PowerSubstation_Info> list = Common.Services.BaseService.GetList<PSP_PowerSubstation_Info>("SelectPSP_PowerSubstation_InfoListByWhere", conn1);
+
+            int startyear = yAnge.BeginYear;
+            int endyear = yAnge.EndYear;
+
+            int startyear2 = yAnge.BeginYear;
+            int endyear2 = yAnge.EndYear;
+
+
+            double yf = 0;
+            double yk = 0;
+            for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
+            {
+                col2.GetType().GetProperty("yf" + i.ToString()).SetValue(col2, 0, null);
+                col2.GetType().GetProperty("yk" + i.ToString()).SetValue(col2, 0, null);
+
+                col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, 0, null);
+                col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, 0, null);
+            }
+
+            for (int j = 0; j < list.Count; j++)
+            {
+                string dyid = list[j].UID;
+                Ps_Table_220Result newdy = new Ps_Table_220Result();
+                newdy.ParentID = col2.ID;
+                newdy.ProjectID = GetProjectID;
+                newdy.Col1 = "no";
+                newdy.Title = list[j].Title;
+
+                startyear = yAnge.BeginYear;
+                endyear = yAnge.EndYear;
+
+                if (list[j].S29 != string.Empty)
+                {
+                    int.TryParse(list[j].S29, out startyear);
+                }
+                if (list[j].S30 != string.Empty)
+                {
+                    int.TryParse(list[j].S30, out endyear);
+                }
+
+
+
+                string connjz = " where SvgUID ='" + dyid + "' and (Type='02'  or Type='03')";
+                IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
+                for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
+                {
+                    //电源下是否有机组容量，如果没有机组则直接用源的容量，如果有机组，将所有机组按年份计算求和
+                    if (listatt.Count > 0)
+                    {
+                        for (int k = 0; k < listatt.Count; k++)
+                        {
+                            startyear2 = yAnge.BeginYear;
+                            endyear2 = yAnge.EndYear;
+                            if (listatt[k].Date1 != string.Empty)
+                            {
+                                int.TryParse(listatt[k].Date1, out startyear2);
+                            }
+                            if (listatt[k].Date2 != string.Empty)
+                            {
+                                int.TryParse(listatt[k].Date2, out endyear2);
+                            }
+
+
+                            if (startyear2 <= i && i < endyear2)
+                            {
+                                double dyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
+                                double dyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
+
+                                if (listatt[k].Type=="02")
+                                {
+                                    // 累计机组容量
+
+                                    double tempdb = double.Parse(listatt[k].Burthen.ToString());
+
+                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
+                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
+
+
+                                    double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
+                                    double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
+                                    // 累计机组容量*丰期机组出力率  或枯期机组出力率
+
+
+                                    col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + tempdb * listatt[k].HuganTQ1, 2), null);
+                                    col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + tempdb * listatt[k].HuganTQ2, 2), null);
+                                }
+                                else
+                                {
+                                    // 累计机组容量
+
+                                    double tempdb = listatt[k].SiN;
+
+                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
+                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
+
+
+                                    double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
+                                    double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
+                                    // 累计机组容量*丰期机组出力率  或枯期机组出力率
+
+
+                                    col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + tempdb * listatt[k].HuganTQ1, 2), null);
+                                    col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + tempdb * listatt[k].HuganTQ2, 2), null);
+                                }
+                                
+
+                            }
+
+
+                        }
+
+
+                    }
+                    else
+                    {
+                        if (startyear <= i && i < endyear)
+                        {
+                            double.TryParse(list[j].S2, out yf);
+                            newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(yf, 2), null);
+                            newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(yf, 2), null);
+                            double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
+                            double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
+
+                            col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + yf, 2), null);
+                            col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + yf, 2), null);
+
+                        }
+                    }
+
+                    double d2f = double.Parse(col2.GetType().GetProperty("yf" + i.ToString()).GetValue(col2, null).ToString());
+                    double d2k = double.Parse(col2.GetType().GetProperty("yk" + i.ToString()).GetValue(col2, null).ToString());
+
+                    double ddyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
+                    double ddyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
+
+                    col2.GetType().GetProperty("yf" + i.ToString()).SetValue(col2, Math.Round(d2f + ddyf, 2), null);
+                    col2.GetType().GetProperty("yk" + i.ToString()).SetValue(col2, Math.Round(d2k + ddyk, 2), null);
+                }
+
+                Common.Services.BaseService.Create<Ps_Table_220Result>(newdy);
+            }
+            Common.Services.BaseService.Update<Ps_Table_220Result>(col2);
+            Common.Services.BaseService.Update<Ps_Table_220Result>(col5);
+
+        }
         /// <summary>
         /// 更新容量
         /// </summary>
         /// <param name="ParentID"></param>
-        public void UpDataRL(string ParentID)
+        public void UpDataRLOld(string ParentID)
         {
             Hashtable rtable = new Hashtable();
             Ps_Table_220Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(ParentID);
@@ -1633,11 +1820,162 @@ namespace Itop.Client.Table
           
 
         }
+        public void UpDataRL(string ParentID)
+        {
+            Hashtable rtable = new Hashtable();
+            Ps_Table_220Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(ParentID);
+            string AreaName = pt.Title;
+
+            string conn = "ProjectID='" + GetProjectID + "' and ParentID='" + ParentID + "'";
+
+            Ps_Table_220Result col8;
+
+            IList<Ps_Table_220Result> listchild = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            for (int i = 0; i < listchild.Count; i++)
+            {
+                rtable.Add(listchild[i].Col3, listchild[i]);
+            }
+            col8 = (Ps_Table_220Result)rtable["8"];
+
+            //删除其下的
+            string conncol8 = "ProjectID='" + GetProjectID + "' and ParentID='" + col8.ID + "'";
+
+
+            IList<Ps_Table_220Result> col8list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conncol8);
+            foreach (Ps_Table_220Result ptr in col8list)
+            {
+                Common.Services.BaseService.Delete<Ps_Table_220Result>(ptr);
+            }
+
+
+
+            //更新安排220kV变电容量
+
+            string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1=220";
+            IList<PSP_Substation_Info> list = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
+
+            int startyear = yAnge.BeginYear;
+            int endyear = yAnge.EndYear;
+
+            int startyear2 = yAnge.BeginYear;
+            int endyear2 = yAnge.EndYear;
+
+
+            double yf = 0;
+            double yk = 0;
+            for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
+            {
+                col8.GetType().GetProperty("yf" + i.ToString()).SetValue(col8, 0, null);
+                col8.GetType().GetProperty("yk" + i.ToString()).SetValue(col8, 0, null);
+            }
+            for (int j = 0; j < list.Count; j++)
+            {
+                string dyid = list[j].UID;
+                Ps_Table_220Result newdy = new Ps_Table_220Result();
+                newdy.ParentID = col8.ID;
+                newdy.ProjectID = GetProjectID;
+                newdy.Col1 = "no";
+                newdy.Title = list[j].Title;
+
+                startyear = yAnge.BeginYear;
+                endyear = yAnge.EndYear;
+
+                if (list[j].L28 != string.Empty)
+                {
+                    int.TryParse(list[j].L28, out startyear);
+                }
+                if (list[j].L29 != string.Empty)
+                {
+                    int.TryParse(list[j].L29, out endyear);
+                }
+
+                string connjz = " where SvgUID ='" + dyid + "' and (Type='02'  or Type='03')";
+                IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
+
+
+                for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
+                {
+
+
+                    //变电站下是否有机组容量，如果没有机组则直接用源的容量，如果有机组，将所有机组按年份计算求和
+                    if (listatt.Count > 0)
+                    {
+                        for (int k = 0; k < listatt.Count; k++)
+                        {
+                            startyear2 = yAnge.BeginYear;
+                            endyear2 = yAnge.EndYear;
+
+                            if (listatt[k].Date1 != string.Empty)
+                            {
+                                int.TryParse(listatt[k].Date1, out startyear2);
+                            }
+                            if (listatt[k].Date2 != string.Empty)
+                            {
+                                int.TryParse(listatt[k].Date2, out endyear2);
+                            }
+
+
+                            if (startyear2 <= i && i < endyear2)
+                            {
+                                double dyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
+                                double dyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
+
+                                if (listatt[k].Type == "02")
+                                {
+                                    double tempdb = double.Parse(listatt[k].Burthen.ToString());
+                                    // 累计机组容量
+                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
+                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
+                                }
+                                else
+                                {
+                                    double tempdb = listatt[k].SiN;
+                                    // 累计机组容量
+                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
+                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
+                                }
+                              
+                            }
+
+
+                        }
+
+
+                    }
+                    else
+                    {
+                        if (startyear <= i && i < endyear)
+                        {
+
+                            newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(list[j].L2, 2), null);
+                            newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(list[j].L2, 2), null);
+
+
+                        }
+                    }
+
+                    double d8f = double.Parse(col8.GetType().GetProperty("yf" + i.ToString()).GetValue(col8, null).ToString());
+                    double d8k = double.Parse(col8.GetType().GetProperty("yk" + i.ToString()).GetValue(col8, null).ToString());
+
+                    double ddyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
+                    double ddyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
+
+
+                    col8.GetType().GetProperty("yf" + i.ToString()).SetValue(col8, Math.Round(d8f + ddyf, 2), null);
+                    col8.GetType().GetProperty("yk" + i.ToString()).SetValue(col8, Math.Round(d8k + ddyk, 2), null);
+                }
+
+                Common.Services.BaseService.Create<Ps_Table_220Result>(newdy);
+            }
+            Common.Services.BaseService.Update<Ps_Table_220Result>(col8);
+
+
+        }
         /// <summary>
         /// 更新变电站
         /// </summary>
         /// <param name="ParentID"></param>
-        public void UpDataBDZ(string ParentID)
+        public void UpDataBDZOld(string ParentID)
         {
             Hashtable rtable = new Hashtable();
             Ps_Table_220Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(ParentID);
@@ -1804,6 +2142,190 @@ namespace Itop.Client.Table
                 Common.Services.BaseService.Create<Ps_Table_220Result>(yybdz);
                 Common.Services.BaseService.Create<Ps_Table_220Result>(xzbdz);
                 Common.Services.BaseService.Update<Ps_Table_220Result>(col11);
+        }
+        public void UpDataBDZ(string ParentID)
+        {
+            Hashtable rtable = new Hashtable();
+            Ps_Table_220Result pt = Common.Services.BaseService.GetOneByKey<Ps_Table_220Result>(ParentID);
+            string AreaName = pt.Title;
+
+            string conn = "ProjectID='" + GetProjectID + "' and ParentID='" + ParentID + "'";
+
+            Ps_Table_220Result col11;
+
+            IList<Ps_Table_220Result> listchild = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conn);
+            for (int i = 0; i < listchild.Count; i++)
+            {
+                rtable.Add(listchild[i].Col3, listchild[i]);
+            }
+            col11 = (Ps_Table_220Result)rtable["11"];
+
+
+            //删除其下的
+            string conncol11 = "ProjectID='" + GetProjectID + "' and ParentID='" + col11.ID + "'";
+
+
+            IList<Ps_Table_220Result> col11list = Common.Services.BaseService.GetList<Ps_Table_220Result>("SelectPs_Table_220ResultByConn", conncol11);
+            foreach (Ps_Table_220Result ptr in col11list)
+            {
+                Common.Services.BaseService.Delete<Ps_Table_220Result>(ptr);
+            }
+
+            //更新变电站数量  11.变电站个数
+
+            int startyear = yAnge.BeginYear;
+            int endyear = yAnge.EndYear;
+
+            int startyear2 = yAnge.BeginYear;
+            int endyear2 = yAnge.EndYear;
+
+
+            Ps_Table_220Result yybdz = new Ps_Table_220Result();
+            yybdz.Title = "已有变电站";
+            yybdz.ProjectID = GetProjectID;
+            yybdz.Col1 = "no";
+            yybdz.Sort = 0;
+            yybdz.ParentID = col11.ID;
+
+
+            Ps_Table_220Result xzbdz = new Ps_Table_220Result();
+            xzbdz.Title = "新增变电站";
+            xzbdz.ProjectID = GetProjectID;
+            xzbdz.Col1 = "no";
+            xzbdz.Sort = 1;
+            xzbdz.ParentID = col11.ID;
+
+            for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
+            {
+                //已有变电站
+                string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1=220  and cast(S2 as int)<" + i;
+                IList<PSP_Substation_Info> list1 = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
+
+
+
+                int yybdznumber = 0;
+
+                for (int j = 0; j < list1.Count; j++)
+                {
+
+                    string dyid = list1[j].UID;
+                    //string connjz = " RelatetableID ='" + dyid + "' and (S2='新建' or S2='扩容')";
+
+                    //IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
+
+
+                    string connjz = " where SvgUID ='" + dyid + "' and (Type='02'  or Type='03')";
+                    IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
+
+
+
+                    //如果变站下没有机组，则变电站有效
+                    if (listatt.Count > 0)
+                    {
+                        int jznumber = 0;
+                        //找到是否有指定年份还在使用的机组，如果有则变电站有效
+                        for (int k = 0; k < listatt.Count; k++)
+                        {
+                            startyear2 = yAnge.BeginYear;
+                            endyear2 = yAnge.EndYear;
+
+                            if (listatt[k].Date1 != string.Empty)
+                            {
+                                int.TryParse(listatt[k].Date1, out startyear2);
+                            }
+                            if (listatt[k].Date2 != string.Empty)
+                            {
+                                int.TryParse(listatt[k].Date2, out endyear2);
+                            }
+                            if (startyear2 <= i && i <= endyear2)
+                            {
+                                jznumber++;
+                                break;
+                            }
+                        }
+                        if (jznumber > 0)
+                        {
+                            yybdznumber++;
+                        }
+
+                    }
+                    else
+                    {
+                        yybdznumber++;
+                    }
+
+                }
+                yybdz.GetType().GetProperty("yf" + i.ToString()).SetValue(yybdz, yybdznumber, null);
+                yybdz.GetType().GetProperty("yk" + i.ToString()).SetValue(yybdz, yybdznumber, null);
+
+
+
+                //新增变电站
+                string conn2 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1=220  and cast(S2 as int)=" + i;
+                IList<PSP_Substation_Info> list2 = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn2);
+                int xzbdznumber = 0;
+
+                for (int j = 0; j < list2.Count; j++)
+                {
+
+                    string dyid = list2[j].UID;
+                    //string connjz = " RelatetableID ='" + dyid + "' and (S2='新建' or S2='扩容')";
+
+                    //IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
+
+
+                    string connjz = " where SvgUID ='" + dyid + "' and (Type='02'  or Type='03')";
+                    IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
+
+
+                    //如果变站下没有机组，则变电站有效
+                    if (listatt.Count > 0)
+                    {
+                        int jznumber = 0;
+                        //找到是否有指定年份还在使用的机组，如果有则变电站有效
+                        for (int k = 0; k < listatt.Count; k++)
+                        {
+                            startyear2 = yAnge.BeginYear;
+                            endyear2 = yAnge.EndYear;
+
+                            if (listatt[k].Date1 != string.Empty)
+                            {
+                                int.TryParse(listatt[k].Date1, out startyear2);
+                            }
+                            if (listatt[k].Date2 != string.Empty)
+                            {
+                                int.TryParse(listatt[k].Date2, out endyear2);
+                            }
+                            if (startyear2 <= i && i <= endyear2)
+                            {
+                                jznumber++;
+                                break;
+                            }
+                        }
+                        if (jznumber > 0)
+                        {
+                            xzbdznumber++;
+                        }
+
+                    }
+                    else
+                    {
+                        xzbdznumber++;
+                    }
+
+                }
+                xzbdz.GetType().GetProperty("yf" + i.ToString()).SetValue(xzbdz, xzbdznumber, null);
+                xzbdz.GetType().GetProperty("yk" + i.ToString()).SetValue(xzbdz, xzbdznumber, null);
+
+                col11.GetType().GetProperty("yf" + i.ToString()).SetValue(col11, yybdznumber + xzbdznumber, null);
+                col11.GetType().GetProperty("yk" + i.ToString()).SetValue(col11, yybdznumber + xzbdznumber, null);
+
+
+            }
+
+            Common.Services.BaseService.Create<Ps_Table_220Result>(yybdz);
+            Common.Services.BaseService.Create<Ps_Table_220Result>(xzbdz);
+            Common.Services.BaseService.Update<Ps_Table_220Result>(col11);
         }
 
       

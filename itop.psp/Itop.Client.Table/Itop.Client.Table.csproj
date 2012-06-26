@@ -88,6 +88,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\output\Server\Itop.Domain.Table.dll</HintPath>
     </Reference>
+    <Reference Include="Itop.ICON, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\output\Server\Itop.Server.Interface.dll</HintPath>

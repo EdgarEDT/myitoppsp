@@ -37,6 +37,13 @@ namespace Itop.Client.Table
         public FrmProject_SumWH()
         {
             InitializeComponent();
+            barAdd.Glyph = Itop.ICON.Resource.新建;
+            barEdit.Glyph = Itop.ICON.Resource.修改;
+            barButtonDel.Glyph = Itop.ICON.Resource.删除;
+            barClose.Glyph = Itop.ICON.Resource.关闭;
+            barPrint.Glyph = Itop.ICON.Resource.打印;
+            barButtonItem1.Glyph = Itop.ICON.Resource.布局;
+            barButtonItem2.Glyph = Itop.ICON.Resource.打回重新编; 
         }
 
         private void FrmProject_Sum_Load(object sender, EventArgs e)

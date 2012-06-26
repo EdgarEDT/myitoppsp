@@ -47,6 +47,17 @@ namespace Itop.Client.History
             treeList2.OptionsView.AutoWidth = false;
 
             barButtonItem6.Glyph = Itop.ICON.Resource.关闭;
+            barButtonItem9.Glyph = Itop.ICON.Resource.授权;
+
+            btCopy.Glyph = Itop.ICON.Resource.审批;
+
+            barSubItem11.Glyph = Itop.ICON.Resource.工具;
+
+            barButtonItem3.Glyph = Itop.ICON.Resource.修改;
+
+
+
+          
         }
 
         private void HideToolBarButton() {

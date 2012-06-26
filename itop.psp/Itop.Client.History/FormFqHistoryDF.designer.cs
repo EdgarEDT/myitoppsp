@@ -30,7 +30,7 @@ namespace Itop.Client.History
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFqHistoryDF));
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barSubItem11 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
@@ -213,7 +213,6 @@ namespace Itop.Client.History
             // 
             // barButtonItem11
             // 
-          
             this.barButtonItem11.Hint = "上移一位";
             this.barButtonItem11.Id = 75;
             this.barButtonItem11.ImageIndex = 21;
@@ -222,7 +221,6 @@ namespace Itop.Client.History
             // 
             // barButtonItem12
             // 
-           
             this.barButtonItem12.Hint = "下移一位";
             this.barButtonItem12.Id = 76;
             this.barButtonItem12.ImageIndex = 20;
@@ -348,6 +346,30 @@ namespace Itop.Client.History
             this.barButtonItem6.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1074, 34);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 729);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1074, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 34);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 695);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1074, 34);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 695);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -415,9 +437,9 @@ namespace Itop.Client.History
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitterControl1.Location = new System.Drawing.Point(0, 33);
+            this.splitterControl1.Location = new System.Drawing.Point(0, 34);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(921, 4);
+            this.splitterControl1.Size = new System.Drawing.Size(1074, 6);
             this.splitterControl1.TabIndex = 5;
             this.splitterControl1.TabStop = false;
             // 
@@ -425,7 +447,7 @@ namespace Itop.Client.History
             // 
             this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl2.Horizontal = false;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 37);
+            this.splitContainerControl2.Location = new System.Drawing.Point(0, 40);
             this.splitContainerControl2.Name = "splitContainerControl2";
             this.splitContainerControl2.Panel1.Controls.Add(this.treeList1);
             this.splitContainerControl2.Panel1.ShowCaption = true;
@@ -433,7 +455,7 @@ namespace Itop.Client.History
             this.splitContainerControl2.Panel2.Controls.Add(this.treeList2);
             this.splitContainerControl2.Panel2.ShowCaption = true;
             this.splitContainerControl2.Panel2.Text = "负荷";
-            this.splitContainerControl2.Size = new System.Drawing.Size(921, 588);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1074, 689);
             this.splitContainerControl2.SplitterPosition = 353;
             this.splitContainerControl2.TabIndex = 10;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -448,14 +470,14 @@ namespace Itop.Client.History
             this.treeList1.OptionsMenu.EnableColumnMenu = false;
             this.treeList1.OptionsMenu.EnableFooterMenu = false;
             this.treeList1.OptionsView.AutoWidth = false;
-            this.treeList1.Size = new System.Drawing.Size(913, 330);
+            this.treeList1.Size = new System.Drawing.Size(1074, 353);
             this.treeList1.TabIndex = 0;
+            this.treeList1.AfterDragNode += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList1_AfterDragNode);
             this.treeList1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeList1_KeyDown);
             this.treeList1.AfterCollapse += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList1_AfterCollapse);
-            this.treeList1.AfterDragNode += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList1_AfterDragNode);
-            this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
-            this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
             this.treeList1.AfterExpand += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList1_AfterExpand);
+            this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
+            this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
             this.treeList1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.treeList1_ShowingEditor);
             // 
             // treeList2
@@ -465,19 +487,19 @@ namespace Itop.Client.History
             this.treeList2.Name = "treeList2";
             this.treeList2.OptionsMenu.EnableColumnMenu = false;
             this.treeList2.OptionsMenu.EnableFooterMenu = false;
-            this.treeList2.Size = new System.Drawing.Size(913, 208);
+            this.treeList2.Size = new System.Drawing.Size(1074, 330);
             this.treeList2.TabIndex = 1;
             this.treeList2.AfterCollapse += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList2_AfterCollapse);
-            this.treeList2.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList2_CellValueChanged);
-            this.treeList2.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList2_FocusedNodeChanged);
             this.treeList2.AfterExpand += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList2_AfterExpand);
+            this.treeList2.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList2_FocusedNodeChanged);
+            this.treeList2.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList2_CellValueChanged);
             this.treeList2.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.treeList2_ShowingEditor);
             // 
             // FormFqHistoryDF
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 625);
+            this.ClientSize = new System.Drawing.Size(1074, 729);
             this.Controls.Add(this.splitContainerControl2);
             this.Controls.Add(this.splitterControl1);
             this.Controls.Add(this.barDockControlLeft);

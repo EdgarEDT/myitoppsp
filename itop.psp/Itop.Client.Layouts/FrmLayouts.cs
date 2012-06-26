@@ -13,6 +13,12 @@ namespace Itop.Client.Layouts
         public FrmLayout()
         {
             InitializeComponent();
+            barButtonItem1.Glyph = Itop.ICON.Resource.新建;
+            barButtonItem4.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem5.Glyph = Itop.ICON.Resource.删除;
+            barButtonItem6.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem8.Glyph = Itop.ICON.Resource.打印;
+            barButtonItem7.Glyph = Itop.ICON.Resource.关闭; 
         }
         //private VsmdgroupProg vp = new VsmdgroupProg();
         private void FrmLayouts_Load(object sender, EventArgs e)

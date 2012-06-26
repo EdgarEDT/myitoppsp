@@ -65,6 +65,13 @@ namespace Itop.Client.Table
         public Frm110ResultSH()
         {
             InitializeComponent();
+            barSubItem2.Glyph = Itop.ICON.Resource.新建;
+            barSubItem1.Glyph = Itop.ICON.Resource.新建;
+            barButtonItem17.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem12.Glyph = Itop.ICON.Resource.审批;
+            barButtonItem10.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem7.Glyph = Itop.ICON.Resource.关闭;
+
         }
 
         private void HideToolBarButton()
@@ -1336,6 +1343,7 @@ namespace Itop.Client.Table
             }
             catch { }
         }
+
         /// <summary>
         /// 更新电源
         /// </summary>
@@ -1417,8 +1425,8 @@ namespace Itop.Client.Table
 
 
 
-                string connjz = " RelatetableID ='" + dyid + "' and (S2='新建'  or S2='扩容')";
-                IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
+                string connjz = " where SvgUID ='" + dyid + "' and (Type='02'  or Type='03')";
+                IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
                 for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
                 {
                     //电源下是否有机组容量，如果没有机组则直接用源的容量，如果有机组，将所有机组按年份计算求和
@@ -1428,13 +1436,13 @@ namespace Itop.Client.Table
                         {
                             startyear2 = yAnge.BeginYear;
                             endyear2 = yAnge.EndYear;
-                            if (listatt[k].startYear != string.Empty)
+                            if (listatt[k].Date1 != string.Empty)
                             {
-                                int.TryParse(listatt[k].startYear, out startyear2);
+                                int.TryParse(listatt[k].Date1, out startyear2);
                             }
-                            if (listatt[k].endYear != string.Empty)
+                            if (listatt[k].Date2 != string.Empty)
                             {
-                                int.TryParse(listatt[k].endYear, out endyear2);
+                                int.TryParse(listatt[k].Date2, out endyear2);
                             }
 
 
@@ -1443,16 +1451,43 @@ namespace Itop.Client.Table
                                 double dyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
                                 double dyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
 
-                                // 累计机组容量
-                                newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + listatt[k].ZHI, 2), null);
-                                newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + listatt[k].ZHI, 2), null);
+                                if (listatt[k].Type == "02")
+                                {
+                                    // 累计机组容量
+
+                                    double tempdb = double.Parse(listatt[k].Burthen.ToString());
+
+                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
+                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
 
 
-                                double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
-                                double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
-                                // 累计机组容量*丰期机组出力率  或枯期机组出力率
-                                col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + listatt[k].ZHI * listatt[k].D1, 2), null);
-                                col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + listatt[k].ZHI * listatt[k].D2, 2), null);
+                                    double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
+                                    double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
+                                    // 累计机组容量*丰期机组出力率  或枯期机组出力率
+
+
+                                    col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + tempdb * listatt[k].HuganTQ1, 2), null);
+                                    col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + tempdb * listatt[k].HuganTQ2, 2), null);
+                                }
+                                else
+                                {
+                                    // 累计机组容量
+
+                                    double tempdb = listatt[k].SiN;
+
+                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
+                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
+
+
+                                    double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
+                                    double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
+                                    // 累计机组容量*丰期机组出力率  或枯期机组出力率
+
+
+                                    col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + tempdb * listatt[k].HuganTQ1, 2), null);
+                                    col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + tempdb * listatt[k].HuganTQ2, 2), null);
+                                }
+
 
                             }
 
@@ -1566,8 +1601,10 @@ namespace Itop.Client.Table
                     int.TryParse(list[j].L29, out endyear);
                 }
 
-                string connjz = " RelatetableID ='" + dyid + "' and (S2='新建'  or S2='扩容')";
-                IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
+                string connjz = " where SvgUID ='" + dyid + "' and (Type='02'  or Type='03')";
+                IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
+
+
                 for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
                 {
 
@@ -1580,13 +1617,13 @@ namespace Itop.Client.Table
                             startyear2 = yAnge.BeginYear;
                             endyear2 = yAnge.EndYear;
 
-                            if (listatt[k].startYear != string.Empty)
+                            if (listatt[k].Date1 != string.Empty)
                             {
-                                int.TryParse(listatt[k].startYear, out startyear2);
+                                int.TryParse(listatt[k].Date1, out startyear2);
                             }
-                            if (listatt[k].endYear != string.Empty)
+                            if (listatt[k].Date2 != string.Empty)
                             {
-                                int.TryParse(listatt[k].endYear, out endyear2);
+                                int.TryParse(listatt[k].Date2, out endyear2);
                             }
 
 
@@ -1595,9 +1632,21 @@ namespace Itop.Client.Table
                                 double dyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
                                 double dyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
 
-                                // 累计机组容量
-                                newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + listatt[k].ZHI, 2), null);
-                                newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + listatt[k].ZHI, 2), null);
+                                if (listatt[k].Type == "02")
+                                {
+                                    double tempdb = double.Parse(listatt[k].Burthen.ToString());
+                                    // 累计机组容量
+                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
+                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
+                                }
+                                else
+                                {
+                                    double tempdb = listatt[k].SiN;
+                                    // 累计机组容量
+                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
+                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
+                                }
+
                             }
 
 
@@ -1695,15 +1744,25 @@ namespace Itop.Client.Table
                 //已有变电站
                 string conn1 = " AreaID='" + GetProjectID + "' and AreaName='" + AreaName + "' and L1=110  and cast(S2 as int)<" + i;
                 IList<PSP_Substation_Info> list1 = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
+
+
+
                 int yybdznumber = 0;
 
                 for (int j = 0; j < list1.Count; j++)
                 {
 
                     string dyid = list1[j].UID;
-                    string connjz = " RelatetableID ='" + dyid + "' and (S2='新建' or S2='扩容')";
+                    //string connjz = " RelatetableID ='" + dyid + "' and (S2='新建' or S2='扩容')";
 
-                    IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
+                    //IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
+
+
+                    string connjz = " where SvgUID ='" + dyid + "' and (Type='02'  or Type='03')";
+                    IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
+
+
+
                     //如果变站下没有机组，则变电站有效
                     if (listatt.Count > 0)
                     {
@@ -1714,13 +1773,13 @@ namespace Itop.Client.Table
                             startyear2 = yAnge.BeginYear;
                             endyear2 = yAnge.EndYear;
 
-                            if (listatt[k].startYear != string.Empty)
+                            if (listatt[k].Date1 != string.Empty)
                             {
-                                int.TryParse(listatt[k].startYear, out startyear2);
+                                int.TryParse(listatt[k].Date1, out startyear2);
                             }
-                            if (listatt[k].endYear != string.Empty)
+                            if (listatt[k].Date2 != string.Empty)
                             {
-                                int.TryParse(listatt[k].endYear, out endyear2);
+                                int.TryParse(listatt[k].Date2, out endyear2);
                             }
                             if (startyear2 <= i && i <= endyear2)
                             {
@@ -1754,9 +1813,15 @@ namespace Itop.Client.Table
                 {
 
                     string dyid = list2[j].UID;
-                    string connjz = " RelatetableID ='" + dyid + "' and (S2='新建' or S2='扩容')";
+                    //string connjz = " RelatetableID ='" + dyid + "' and (S2='新建' or S2='扩容')";
 
-                    IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
+                    //IList<Psp_Attachtable> listatt = Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", connjz);
+
+
+                    string connjz = " where SvgUID ='" + dyid + "' and (Type='02'  or Type='03')";
+                    IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
+
+
                     //如果变站下没有机组，则变电站有效
                     if (listatt.Count > 0)
                     {
@@ -1767,13 +1832,13 @@ namespace Itop.Client.Table
                             startyear2 = yAnge.BeginYear;
                             endyear2 = yAnge.EndYear;
 
-                            if (listatt[k].startYear != string.Empty)
+                            if (listatt[k].Date1 != string.Empty)
                             {
-                                int.TryParse(listatt[k].startYear, out startyear2);
+                                int.TryParse(listatt[k].Date1, out startyear2);
                             }
-                            if (listatt[k].endYear != string.Empty)
+                            if (listatt[k].Date2 != string.Empty)
                             {
-                                int.TryParse(listatt[k].endYear, out endyear2);
+                                int.TryParse(listatt[k].Date2, out endyear2);
                             }
                             if (startyear2 <= i && i <= endyear2)
                             {
@@ -1806,6 +1871,8 @@ namespace Itop.Client.Table
             Common.Services.BaseService.Create<Ps_Table_110Result>(xzbdz);
             Common.Services.BaseService.Update<Ps_Table_110Result>(col11);
         }
+
+
 
 
 
