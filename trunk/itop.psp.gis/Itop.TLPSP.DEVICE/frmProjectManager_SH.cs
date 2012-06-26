@@ -436,8 +436,20 @@ namespace Itop.TLPSP.DEVICE {
                 if (curDevice != null && curDevice != device) curDevice.Hide();
                 curDevice = device;
                 if (curDevice != null) {
-                    curDevice.strCon = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and ";
-                    curDevice.Init();
+                    if (curDevice.GetClassName() == "PSP_Substation_Info")
+                    {
+                        curDevice.proInit(parentobj.BelongYear);
+                    }
+                    else if (curDevice.GetClassName() == "PSP_PowerSubstation_Info")
+                    {
+                        curDevice.proInit(parentobj.BelongYear);
+                    }
+                    else if (curDevice.GetClassName() == "PSPDEV")
+                    {
+                        curDevice.strCon = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and ";
+                        curDevice.Init();
+                    }
+                   
                 }
                 splitContainerControl2.Panel2.Text = node["name"].ToString();
             } else {

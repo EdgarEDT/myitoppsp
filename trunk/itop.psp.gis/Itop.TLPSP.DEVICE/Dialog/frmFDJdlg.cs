@@ -48,6 +48,7 @@ namespace Itop.TLPSP.DEVICE
                 dev.Vjmax = (double)spinEdit3.Value;
                 dev.Vjmin = (double)spinEdit4.Value;
                 dev.Vkb = (double)spinEdit21.Value;
+              
                 dev.ProjectID = ProjectSUID;
                 dev.LineType = textEdit2.Text;
                 dev.Date1 = date1.Text;
@@ -84,6 +85,7 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit3.Value = (decimal)dev.Vjmax;
                 spinEdit4.Value = (decimal)dev.Vjmin;
                 spinEdit21.Value = (decimal)dev.Vkb;
+              
                 textEdit2.Text = dev.LineType;
                 date1.Text = dev.Date1;
                 date2.Text = dev.Date2;

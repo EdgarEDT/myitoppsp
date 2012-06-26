@@ -280,9 +280,9 @@ namespace Itop.TLPSP.DEVICE
             if (!isread)
             {
              
-                if (string.IsNullOrEmpty(devObj.S3) || string.IsNullOrEmpty(devObj.S29))
+                if (string.IsNullOrEmpty(devObj.S3) )
                 {
-                    MessageBox.Show("请选择投产时间和退役时间！");
+                    MessageBox.Show("请选择投产时间！");
                     return;
                 }
                 if (Convert.ToDouble(devObj.S1)== 0)

@@ -202,6 +202,8 @@ namespace Itop.TLPSP.DEVICE
         {
 
         }
+        public virtual void proInit(string year)
+        {}
         /// <summary>
         /// 专门用于网架优化显示
         /// </summary>

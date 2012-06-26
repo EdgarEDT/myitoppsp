@@ -76,6 +76,58 @@ namespace Itop.TLPSP.DEVICE
 
             gridControl1.DataSource = datatable1;
         }
+        public override void proInit(string year)
+        {
+            datatable1 = null;
+            if (DeviceHelper.bdzwhere != "")
+            {
+                con = strCon + " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND UID NOT IN (SELECT DeviceSUID FROM PSP_ELCDEVICE WHERE ProjectSUID ='" + this.ProjectID + "')";
+            }
+            else
+            {
+                con = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND UID NOT IN (SELECT DeviceSUID FROM PSP_ELCDEVICE WHERE ProjectSUID ='" + this.ProjectID + "')";
+            }
+            IList list = DataService.GetList("SelectPSP_Substation_InfoListByWhere", con);
+            if (!string.IsNullOrEmpty(year))
+            {
+                List<PSP_Substation_Info> listremove = new List<PSP_Substation_Info>();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (((PSP_Substation_Info)list[i]).S2.Length != 4)
+                    {
+                        listremove.Add((PSP_Substation_Info)list[i]);
+                    }
+                    else
+                    {
+                        if (Convert.ToDouble(((PSP_Substation_Info)list[i]).S2) > Convert.ToDouble(year))
+                        {
+                            listremove.Add((PSP_Substation_Info)list[i]);
+                        }
+                        if (((PSP_Substation_Info)list[i]).L29.Length == 4)
+                        {
+                            if (Convert.ToDouble(((PSP_Substation_Info)list[i]).L29) < Convert.ToDouble(year))
+                            {
+                                listremove.Add((PSP_Substation_Info)list[i]);
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < listremove.Count; i++)
+                {
+                    list.Remove(listremove[i]);
+                }
+            }
+            datatable1 = Itop.Common.DataConverter.ToDataTable(list, typeof(PSP_Substation_Info));
+            datatable1.Columns.Add("flag_", typeof(string), "IIF(flag='2','¹æ»®','ÏÖ×´')");
+
+            gridControl1.DataSource = datatable1;
+            gridControl1.UseEmbeddedNavigator = true;
+            gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
+            gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            gridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            gridControl1.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+        }
         public override void PspInit(IList<object> listUID)
         {
             datatable1 = null;

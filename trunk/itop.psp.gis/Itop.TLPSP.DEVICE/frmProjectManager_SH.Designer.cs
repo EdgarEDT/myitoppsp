@@ -259,7 +259,7 @@
             // 
             this.Autofpfh.Caption = "自动分配负荷";
             this.Autofpfh.Id = 9;
-            this.Autofpfh.ImageIndex = 8;
+            this.Autofpfh.ImageIndex = 7;
             this.Autofpfh.Name = "bardevicetemplate";
             this.Autofpfh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.Autofpfh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Autofpfh_ItemClick);

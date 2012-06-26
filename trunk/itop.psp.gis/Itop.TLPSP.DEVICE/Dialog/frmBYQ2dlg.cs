@@ -67,6 +67,8 @@ namespace Itop.TLPSP.DEVICE
                 dev.jV = (double)spinEdit45.Value;
                 dev.BigTQ = (double)spinEdit44.Value;
                 dev.SmallTQ = (double)spinEdit17.Value;
+                dev.HuganTQ1 = (double)spinEdit50.Value;
+                dev.HuganTQ2 = (double)spinEdit49.Value;
                 dev.Date1 = date1.Text;
                 dev.Date2 = date2.Text;
                 return dev;
@@ -117,7 +119,8 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit21.Value = (decimal)dev.P0;
                 spinEdit20.Value = (decimal)dev.Vij;
                 spinEdit19.Value = (decimal)dev.I0;
-
+                spinEdit50.Value = (decimal)dev.HuganTQ1 ;
+                spinEdit49.Value  = (decimal)dev.HuganTQ2;
                 spinEdit18.Value = (decimal)dev.LineR;
                 spinEdit16.Value = (decimal)dev.LineTQ;
                 spinEdit15.Value = (decimal)dev.G;
@@ -559,9 +562,9 @@ namespace Itop.TLPSP.DEVICE
                 MessageBox.Show("请选择i侧、j侧所在的母线！");
                 return;
             }
-            if (string.IsNullOrEmpty(DeviceMx.OperationYear)||string.IsNullOrEmpty(DeviceMx.Date2))
+            if (string.IsNullOrEmpty(DeviceMx.OperationYear))
             {
-                MessageBox.Show("请选择投产时间和退役时间！");
+                MessageBox.Show("请选择投产时间！");
                 return;
             }
             this.DialogResult = DialogResult.OK;
