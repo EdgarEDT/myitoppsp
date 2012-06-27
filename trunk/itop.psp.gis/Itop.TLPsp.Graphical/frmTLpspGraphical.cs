@@ -34,19 +34,16 @@ using System.Runtime.InteropServices;
 using Microsoft.Office.Interop;
 using Itop.TLPSP.DEVICE;
 
-namespace Itop.TLPsp.Graphical
-{
+namespace Itop.TLPsp.Graphical {
     public delegate void OnCloseDocumenthandler(object sender, string svgUid, string pid);
-    public enum CustomOperation
-    {
+    public enum CustomOperation {
         OP_Default = 0,
         OP_MeasureGT,
         OP_MeasureDistance,
         OP_AreaEdit,
         OP_AreaCount
     }
-    enum MouseEventFlag : uint
-    {
+    enum MouseEventFlag : uint {
         Move = 0x0001,
         LeftDown = 0x0002,
         LeftUp = 0x0004,
@@ -60,15 +57,14 @@ namespace Itop.TLPsp.Graphical
         VirtualDesk = 0x4000,
         Absolute = 0x8000
     }
-    public partial class frmTLpspGraphical : FormBase
-    {
+    public partial class frmTLpspGraphical : FormBase {
         #region 对象声明
         SVGFILE svg = new SVGFILE();
         SvgDocument sdoc = new SvgDocument();
         glebeProperty gPro = new glebeProperty();
         bool JXTFlat = false;
         DevComponents.DotNetBar.ToolTip tip;
-        
+
 
         private ItopVector.Selector.SymbolSelector symbolSelector;
         private System.Windows.Forms.PropertyGrid propertyGrid;
@@ -84,8 +80,8 @@ namespace Itop.TLPsp.Graphical
 
         private bool fk = true;
         private int bangbang = 0;
-        
-       // private duluqiflag=false;
+
+        // private duluqiflag=false;
 
         double TLPSPVmin = 0.95, TLPSPVmax = 1.05;
         private string SVGUID = "";
@@ -94,7 +90,7 @@ namespace Itop.TLPsp.Graphical
         private string rzb = "1";
         private string selLar = "";
         private int LayerCount = 0;
-		private string str_power = "";
+        private string str_power = "";
         public int il = 0;
         private bool LoadImage = true;
         public bool SubPrint = false;
@@ -105,25 +101,24 @@ namespace Itop.TLPsp.Graphical
 
 
         public event OnCloseDocumenthandler OnCloseSvgDocument;
-        
+
         #endregion
         [DllImport("user32.dll")]
         static extern bool SetCursorPos(int X, int Y);
         [DllImport("user32.dll")]
         static extern void mouse_event(MouseEventFlag flags, int dx, int dy, uint data, UIntPtr extraInfo);
 
-        public frmTLpspGraphical()
-        {
-            
-            
+        public frmTLpspGraphical() {
+
+
             //Itop.Client.MIS.GetProgRight("4a535c01-3b40-4323-9a6e-f2cae00358cf", "admin");
             object ert;
 
             //ert=System.Configuration.ConfigurationSettings.GetConfig("lastLoginUserNumber");
             this.propertyGrid = new PropertyGrid();
             tip = new DevComponents.DotNetBar.ToolTip();
-            ItopVector.SpecialCursors.LoadCursors();            
-            InitializeComponent();         
+            ItopVector.SpecialCursors.LoadCursors();
+            InitializeComponent();
             tlVectorControl1.CanEdit = true;
             //tlVectorControl1.DrawArea.FreeSelect = true;
 
@@ -146,29 +141,25 @@ namespace Itop.TLPsp.Graphical
             tlVectorControl1.RightClick += new SvgElementEventHandler(tlVectorControl1_RightClick);
             tlVectorControl1.DoubleLeftClick += new SvgElementEventHandler(tlVectorControl1_DoubleLeftClick);
             //tlVectorControl1.DrawArea.OnMouseMove += new MouseEventHandler(DrawArea_OnMouseMove);
-            tlVectorControl1.DrawArea.OnMouseDown += new MouseEventHandler(DrawArea_OnMouseDown);            
+            tlVectorControl1.DrawArea.OnMouseDown += new MouseEventHandler(DrawArea_OnMouseDown);
             tlVectorControl1.DocumentChanged += new OnDocumentChangedEventHandler(tlVectorControl1_DocumentChanged);
             tlVectorControl1.DrawArea.OnElementMove += new ElementMoveEventHandler(DrawArea_OnElementMove);
             tlVectorControl1.DrawArea.OnMouseMove += new MouseEventHandler(DrawArea_OnMouseMove);
         }
 
-        void DrawArea_OnMouseMove(object sender, MouseEventArgs e)
-        {         
-            
+        void DrawArea_OnMouseMove(object sender, MouseEventArgs e) {
+
         }
-     
-        void tlVectorControl1_DocumentChanged(object sender, DocumentChangedEventArgs e)
-        {
-            if (tlVectorControl1.Operation == ToolOperation.InterEnclosurePrint)
-            {
+
+        void tlVectorControl1_DocumentChanged(object sender, DocumentChangedEventArgs e) {
+            if (tlVectorControl1.Operation == ToolOperation.InterEnclosurePrint) {
                 tlVectorControl1.Operation = ToolOperation.Select;
             }
-        }      
+        }
 
 
 
-        private void RenderTo(Graphics g)
-        {
+        private void RenderTo(Graphics g) {
             SvgDocument svgdoc = tlVectorControl1.SVGDocument;
             Matrix matrix1 = new Matrix();
             Matrix matrix2 = new Matrix();
@@ -177,8 +168,7 @@ namespace Itop.TLPsp.Graphical
             matrix1.Reset();
             matrix1.Multiply(g.Transform);
             g.ResetTransform();
-            try
-            {
+            try {
 
                 SVG svg1 = svgdoc.DocumentElement as SVG;
                 svgdoc.BeginPrint = true;
@@ -187,21 +177,17 @@ namespace Itop.TLPsp.Graphical
                 svg1.Draw(g, svgdoc.ControlTime);
                 svgdoc.SmoothingMode = mode1;
                 svgdoc.BeginPrint = false;
-            }
-            finally
-            {
+            } finally {
                 g.Transform = matrix1.Clone();
                 matrix1.Reset();
                 matrix1.Multiply(matrix2);
             }
         }
-        public void jxtbar2(int jxt)
-        {
+        public void jxtbar2(int jxt) {
 #if Debug || Release
             dotNetBarManager1.Bars["mainmenu"].GetItem("mjxt").Visible = true;
-#endif     
-            switch (jxt)
-            {
+#endif
+            switch (jxt) {
                 case 1:
                     dotNetBarManager1.Bars["bar2"].GetItem("mChaoliuResult").Visible = false;
                     dotNetBarManager1.Bars["bar2"].GetItem("mTlpsp").Visible = true;
@@ -209,8 +195,8 @@ namespace Itop.TLPsp.Graphical
                     dotNetBarManager1.Bars["bar2"].GetItem("VoltEvaluation").Visible = false;
                     dotNetBarManager1.Bars["bar2"].GetItem("PSPIdleOptimize").Visible = false;
                     dotNetBarManager1.Bars["bar2"].GetItem("DFS").Visible = false;
-                    dotNetBarManager1.Bars["bar2"].GetItem("DFSResult").Visible = false;              
-	                break;
+                    dotNetBarManager1.Bars["bar2"].GetItem("DFSResult").Visible = false;
+                    break;
                 case 2:
                     dotNetBarManager1.Bars["bar2"].GetItem("mChaoliuResult").Visible = false;
                     dotNetBarManager1.Bars["bar2"].GetItem("mTlpsp").Visible = false;
@@ -218,7 +204,7 @@ namespace Itop.TLPsp.Graphical
                     dotNetBarManager1.Bars["bar2"].GetItem("VoltEvaluation").Visible = false;
                     dotNetBarManager1.Bars["bar2"].GetItem("PSPIdleOptimize").Visible = false;
                     dotNetBarManager1.Bars["bar2"].GetItem("DFS").Visible = false;
-                    dotNetBarManager1.Bars["bar2"].GetItem("DFSResult").Visible = false;                    
+                    dotNetBarManager1.Bars["bar2"].GetItem("DFSResult").Visible = false;
                     break;
                 case 3:
                     dotNetBarManager1.Bars["bar2"].GetItem("mChaoliuResult").Visible = false;
@@ -248,7 +234,7 @@ namespace Itop.TLPsp.Graphical
                     dotNetBarManager1.Bars["bar2"].GetItem("VoltEvaluation").Visible = false;
                     dotNetBarManager1.Bars["bar2"].GetItem("PSPIdleOptimize").Visible = false;
                     dotNetBarManager1.Bars["bar2"].GetItem("DFS").Visible = true;
-                    dotNetBarManager1.Bars["bar2"].GetItem("DFSResult").Visible = true; 
+                    dotNetBarManager1.Bars["bar2"].GetItem("DFSResult").Visible = true;
                     break;
                 default:
                     dotNetBarManager1.Bars["bar2"].GetItem("mChaoliuResult").Visible = false;
@@ -260,17 +246,15 @@ namespace Itop.TLPsp.Graphical
 
             }
 
-                        
+
         }
-        public void jxtbar(int jxt)
-        {
-             if (jxt == 1)
-            {
+        public void jxtbar(int jxt) {
+            if (jxt == 1) {
                 bool flag = true;
                 if (Relaflag)
                     flag = false;
                 dotNetBarManager1.Bars["bar2"].GetItem("Rela").Visible = Relaflag;
-               // dotNetBarManager1.Bars["bar2"].GetItem("PowerLoss").Visible = flag;
+                // dotNetBarManager1.Bars["bar2"].GetItem("PowerLoss").Visible = flag;
                 dotNetBarManager1.Bars["bar2"].GetItem("PowerLossCal").Visible = flag;
                 dotNetBarManager1.Bars["bar2"].GetItem("VoltEvaluation").Visible = flag;
                 dotNetBarManager1.Bars["bar2"].GetItem("PSPIdleOptimize").Visible = flag;
@@ -280,7 +264,7 @@ namespace Itop.TLPsp.Graphical
                 dotNetBarManager1.Bars["bar2"].GetItem("DFS").Visible = flag;
                 dotNetBarManager1.Bars["bar2"].GetItem("DFSResult").Visible = flag;
 
-            }       
+            }
         }
         private void setTJhide() {
             SvgElementCollection sc = (tlVectorControl1.SVGDocument.RootElement as SVG).ChildList;
@@ -301,21 +285,20 @@ namespace Itop.TLPsp.Graphical
         /// <summary>
         /// 导出区域图片
         /// </summary>
-        private void ExportImage()
-        {
+        private void ExportImage() {
             GraphPath rt1 = tlVectorControl1.SVGDocument.CurrentElement as GraphPath;
-            
+
             if (rt1 == null) return;
             RectangleF rtf1 = rt1.GetBounds();
-            
-            int width = (int)Math.Round(rtf1.Width * tlVectorControl1.ScaleRatio, 0)+1;
-            int height = (int)Math.Round(rtf1.Height * tlVectorControl1.ScaleRatio, 0)+1;
+
+            int width = (int)Math.Round(rtf1.Width * tlVectorControl1.ScaleRatio, 0) + 1;
+            int height = (int)Math.Round(rtf1.Height * tlVectorControl1.ScaleRatio, 0) + 1;
             System.Drawing.Image image = new Bitmap(width, height);
             Graphics g = Graphics.FromImage(image);
-            Color color = ColorTranslator.FromHtml("#EBEAE8");                
+            Color color = ColorTranslator.FromHtml("#EBEAE8");
             g.Clear(Color.White);
             g.SmoothingMode = SmoothingMode.HighQuality;
-            g.CompositingQuality = CompositingQuality.HighQuality;              
+            g.CompositingQuality = CompositingQuality.HighQuality;
             Matrix matrix1 = new Matrix();
             matrix1.Scale(tlVectorControl1.ScaleRatio, tlVectorControl1.ScaleRatio);
             matrix1.Translate(-rtf1.X, -rtf1.Y);
@@ -326,14 +309,12 @@ namespace Itop.TLPsp.Graphical
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.RestoreDirectory = true;
             dlg.Filter = "图像文件(*.png)|*.png|图像文件(*.jpg)|*.jpg|图像文件(*.gif)|*.gif|Bitmap文件(*.bmp)|*.bmp|Jpeg文件(*.jpeg)|*.jpeg|所有文件(*.*)|*.*";
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
+            if (dlg.ShowDialog() == DialogResult.OK) {
                 string str = Path.GetExtension(dlg.FileName);
                 str = str.Substring(1);
                 if (string.IsNullOrEmpty(str)) str = "Bmp";
                 ImageFormat iformat = ImageFormat.Bmp;
-                switch (str.ToLower())
-                {
+                switch (str.ToLower()) {
                     case "bmp":
                         iformat = ImageFormat.Bmp;
                         break;
@@ -348,12 +329,11 @@ namespace Itop.TLPsp.Graphical
                         iformat = ImageFormat.Gif;
                         break;
                 }
-                image.Save(dlg.FileName, iformat);                
+                image.Save(dlg.FileName, iformat);
                 image.Dispose();
-            }                   
+            }
         }
-        void DrawArea_OnElementMove(object sender, MoveEventArgs e)
-        {
+        void DrawArea_OnElementMove(object sender, MoveEventArgs e) {
             SvgElementCollection list = tlVectorControl1.SVGDocument.SelectCollection;
             ISvgElement element = e.SvgElement;
             PointF beforeMove = e.BeforeMove;
@@ -365,10 +345,8 @@ namespace Itop.TLPsp.Graphical
             tran.Matrix.TransformPoints(ptt);
             beforeMove = ptt[0];
             afterMove = ptt[1];
-            foreach (XmlNode node in listFirstNode)
-            {
-                if (list.Contains((ISvgElement)(node as XmlElement)))
-                {
+            foreach (XmlNode node in listFirstNode) {
+                if (list.Contains((ISvgElement)(node as XmlElement))) {
                     continue;
                 }
                 PointF[] first = (node as Polyline).Points;
@@ -379,28 +357,21 @@ namespace Itop.TLPsp.Graphical
                 string temp = null;
                 (node as Polyline).GPath.Reset();
                 (node as Polyline).GPath.AddLines(first);
-                foreach (PointF pt in first)
-                {
-                    if (temp == null)
-                    {
+                foreach (PointF pt in first) {
+                    if (temp == null) {
                         temp += pt.X + " " + pt.Y;
-                    }
-                    else
-                    {
+                    } else {
                         temp += "," + pt.X + " " + pt.Y;
                     }
                 }
-                if (first[0] != pt1)
-                {
+                if (first[0] != pt1) {
                     (node as XmlElement).SetAttribute("points", temp);
                 }
             }
 
             XmlNodeList listLastNode = tlVectorControl1.SVGDocument.SelectNodes("svg/*[@LastNode='" + element.ID + "']");
-            foreach (XmlNode node in listLastNode)
-            {
-                if (list.Contains((ISvgElement)(node as XmlElement)))
-                {
+            foreach (XmlNode node in listLastNode) {
+                if (list.Contains((ISvgElement)(node as XmlElement))) {
                     continue;
                 }
                 PointF[] first = (node as Polyline).Points;
@@ -411,19 +382,14 @@ namespace Itop.TLPsp.Graphical
                 string temp = null;
                 (node as Polyline).GPath.Reset();
                 (node as Polyline).GPath.AddLines(first);
-                foreach (PointF pt in first)
-                {
-                    if (temp == null)
-                    {
+                foreach (PointF pt in first) {
+                    if (temp == null) {
                         temp += pt.X + " " + pt.Y;
-                    }
-                    else
-                    {
+                    } else {
                         temp += "," + pt.X + " " + pt.Y;
                     }
                 }
-                if (first[first.Length - 1] != pt1)
-                {
+                if (first[first.Length - 1] != pt1) {
                     (node as XmlElement).SetAttribute("points", temp);
                 }
             }
@@ -432,263 +398,214 @@ namespace Itop.TLPsp.Graphical
             (listText as Text).SetAttribute("x", (Convert.ToDouble((listText as Text).GetAttribute("x")) + afterMove.X - beforeMove.X).ToString());
             (listText as Text).SetAttribute("y", (Convert.ToDouble((listText as Text).GetAttribute("y")) + afterMove.Y - beforeMove.Y).ToString());
         }
-      
-        void DrawArea_OnMouseDown(object sender, MouseEventArgs e)
-        {            
-          
-        }           
 
-        void tlVectorControl1_DoubleLeftClick(object sender, SvgElementSelectedEventArgs e)
-        {
+        void DrawArea_OnMouseDown(object sender, MouseEventArgs e) {
+
+        }
+
+        void tlVectorControl1_DoubleLeftClick(object sender, SvgElementSelectedEventArgs e) {
             UseProperty();
         }
-        protected void UseProperty()
-        {
+        protected void UseProperty() {
             SvgElement element = tlVectorControl1.SVGDocument.CurrentElement;
-            if (element is Use)
-            {
-                if (element.GetAttribute("xlink:href").Contains("Substation") )
-                {
+            if (element is Use) {
+                if (element.GetAttribute("xlink:href").Contains("Substation")) {
                     DeviceHelper.ShowDeviceDlg(DeviceType.BDZ, element.GetAttribute("Deviceid"));
-                }
-                else if (element.GetAttribute("xlink:href").Contains("Power"))
-                {
+                } else if (element.GetAttribute("xlink:href").Contains("Power")) {
                     DeviceHelper.ShowDeviceDlg(DeviceType.DY, element.GetAttribute("Deviceid"));
                 }
             }
-                    
+
         }
 
-        void tlVectorControl1_RightClick(object sender, SvgElementSelectedEventArgs e)
-        {           
-            if (tlVectorControl1.SVGDocument.CurrentElement is Use)
-            {
+        void tlVectorControl1_RightClick(object sender, SvgElementSelectedEventArgs e) {
+            if (tlVectorControl1.SVGDocument.CurrentElement is Use) {
                 contextMenuStrip1.Show();
-            }
-            else if (tlVectorControl1.SVGDocument.CurrentElement is Polyline)
-            {
+            } else if (tlVectorControl1.SVGDocument.CurrentElement is Polyline) {
                 contextMenuStrip1.Hide();
-                tlVectorControl1.Operation = ToolOperation.Select; 
-            }
-            else if (tlVectorControl1.SVGDocument.CurrentElement is RectangleElement)
-            {
+                tlVectorControl1.Operation = ToolOperation.Select;
+            } else if (tlVectorControl1.SVGDocument.CurrentElement is RectangleElement) {
                 printToolStripMenuItem.Visible = true;
             }
 
         }
 
-        void tlVectorControl1_LeftClick(object sender, SvgElementSelectedEventArgs e)
-        {          
+        void tlVectorControl1_LeftClick(object sender, SvgElementSelectedEventArgs e) {
 
-        }        
-        void tlVectorControl1_AddElement(object sender, AddSvgElementEventArgs e)
-        {
+        }
+        void tlVectorControl1_AddElement(object sender, AddSvgElementEventArgs e) {
             XmlElement temp = e.SvgElement as XmlElement;
             intdata(tlVectorControl1.SVGDocument.SvgdataUid);
-  
-             if (temp is Use && (temp.GetAttribute("xlink:href").Contains("Substation")))
-             {
-                 //frmSubstation dlgSubstation = new frmSubstation();
-                 //dlgSubstation.ProjectID = this.ProjectUID;
-                 //dlgSubstation.InitData();
-                 XmlNodeList listUSE = tlVectorControl1.SVGDocument.GetElementsByTagName("use");
-                 IList<object> listID = new List<object>();
-                 foreach (XmlNode node in listUSE)
-                 {
-                    string str = ((XmlElement)node).GetAttribute("Deviceid");     
+
+            if (temp is Use && (temp.GetAttribute("xlink:href").Contains("Substation"))) {
+                //frmSubstation dlgSubstation = new frmSubstation();
+                //dlgSubstation.ProjectID = this.ProjectUID;
+                //dlgSubstation.InitData();
+                XmlNodeList listUSE = tlVectorControl1.SVGDocument.GetElementsByTagName("use");
+                IList<object> listID = new List<object>();
+                foreach (XmlNode node in listUSE) {
+                    string str = ((XmlElement)node).GetAttribute("Deviceid");
                     PSP_Substation_Info obj = DeviceHelper.GetDevice<PSP_Substation_Info>(str);
-                     if(obj!=null)
-                     {
-                         listID.Add((object)obj);
-                     }         
-                 }
-                 DeviceHelper.pspflag = true;
-                 object subID = DeviceHelper.SelectDevice("20",tlVectorControl1.SVGDocument.SvgdataUid,listID);
-                 
-                 XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
-                 if (subID!=null)
-                 {
-                     
-                     RectangleF t = ((IGraph)temp).GetBounds();
-                     n1.SetAttribute("x", (t.X +t.Width+10).ToString());
-                     n1.SetAttribute("y", (t.Y +t.Height/2).ToString());
-                     n1.InnerText = ((PSP_Substation_Info)subID).Title;
-                     n1.SetAttribute("layer", SvgDocument.currentLayer);
-                     n1.SetAttribute("Deviceid", ((PSP_Substation_Info)subID).UID);
-                     temp.SetAttribute("Deviceid", ((PSP_Substation_Info)subID).UID);
-                     n1.SetAttribute("ParentID", temp.GetAttribute("id"));
-                     tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
-                     tlVectorControl1.Operation = ToolOperation.Select;
-                     //PSP_ElcDevice elcDEV = new PSP_ElcDevice();
-                     //elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                     //elcDEV.DeviceSUID = ((PSP_Substation_Info)subID).UID;
-                     //Services.BaseService.Create<PSP_ElcDevice>(elcDEV);
-                     //AddLine(temp, elcDEV.DeviceSUID);
-                 } 
-                 else
-                 {
-                     tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
-                     tlVectorControl1.Delete();
-                     return;
-                 }
-                 bool projectexitflag = false;               //检验此变电站是否在项目中
-                 foreach (eleclass ele in Subcol)
-                 {
-                     if (ele.suid == ((PSP_Substation_Info)subID).UID && ele.selectflag == true)
-                     {
-                         projectexitflag = true;
-                         MessageBox.Show("已经选择此变电站，请重新选择其他的变电站！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                         tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
-                         tlVectorControl1.Delete();
-                         tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
-                         tlVectorControl1.Delete();
-                     }
-                     else if (ele.suid == ((PSP_Substation_Info)subID).UID && ele.selectflag == false)
-                     {
-                         projectexitflag = true;
-                         Subcol.Remove(ele);
-                         eleclass ele1 = new eleclass(((PSP_Substation_Info)subID).Title, ((PSP_Substation_Info)subID).UID, "20", true);
-                         Subcol.Add(ele1);
-                         PSP_ElcDevice elcDEV = new PSP_ElcDevice();
-                         elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                         elcDEV.DeviceSUID = ((PSP_Substation_Info)subID).UID;
-                         Services.BaseService.Create<PSP_ElcDevice>(elcDEV);
-                         AddLine(temp, elcDEV.DeviceSUID);
-                     }
+                    if (obj != null) {
+                        listID.Add((object)obj);
+                    }
+                }
+                DeviceHelper.pspflag = true;
+                object subID = DeviceHelper.SelectDevice("20", tlVectorControl1.SVGDocument.SvgdataUid, listID);
 
-                 }
-                 if (!projectexitflag)
-                 {
-                     MessageBox.Show("你所选择的项目中不包括此变电站！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                     tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
-                     tlVectorControl1.Delete();
-                     tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
-                     tlVectorControl1.Delete();
-                 }
-             }
-             else if (temp is Use && (temp.GetAttribute("xlink:href").Contains("Power")))
-             {
-                 XmlNodeList listUSE = tlVectorControl1.SVGDocument.GetElementsByTagName("use");
-                 IList<object> listID = new List<object>();
-                 foreach (XmlNode node in listUSE)
-                 {
-                     string str = ((XmlElement)node).GetAttribute("Deviceid");
-                     PSP_PowerSubstation_Info obj = DeviceHelper.GetDevice<PSP_PowerSubstation_Info>(str);
-                     if (obj != null)
-                     {
-                         listID.Add((object)obj);
-                     }
-                 }
-                 DeviceHelper.pspflag = true;
-                 object subID = DeviceHelper.SelectDevice("30",tlVectorControl1.SVGDocument.SvgdataUid,listID);
-                 XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
-                 if (subID != null)
-                 {
-                     
-                     RectangleF t = ((IGraph)temp).GetBounds();
-                     n1.SetAttribute("x", (t.X + t.Width + 10).ToString());
-                     n1.SetAttribute("y", (t.Y + t.Height / 2).ToString());
-                     n1.InnerText = ((PSP_PowerSubstation_Info)subID).Title;
-                     n1.SetAttribute("layer", SvgDocument.currentLayer);
-                     n1.SetAttribute("Deviceid", ((PSP_PowerSubstation_Info)subID).UID);
-                     temp.SetAttribute("Deviceid", ((PSP_PowerSubstation_Info)subID).UID);
-                     n1.SetAttribute("ParentID", temp.GetAttribute("id"));
-                     tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
-                     tlVectorControl1.Operation = ToolOperation.Select;
-                     //PSP_ElcDevice elcDEV = new PSP_ElcDevice();
-                     //elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                     //elcDEV.DeviceSUID = ((PSP_PowerSubstation_Info)subID).UID;
-                     //Services.BaseService.Create<PSP_ElcDevice>(elcDEV);
-                     //AddLine(temp, elcDEV.DeviceSUID);
-                 }
-                 else
-                 {
-                     tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
-                     tlVectorControl1.Delete();
-                     return;
-                 }
-                 bool projectexitflag = false;               //检验此变电站是否在项目中
-                 foreach (eleclass ele in Powcol)
-                 {
-                     if (ele.suid == ((PSP_PowerSubstation_Info)subID).UID && ele.selectflag == true)
-                     {
-                         projectexitflag = true;
-                         MessageBox.Show("已经选择此发电厂，请重新选择其他的发电厂！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                         tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
-                         tlVectorControl1.Delete();
-                         tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
-                         tlVectorControl1.Delete();
-                     }
-                     else if (ele.suid == ((PSP_PowerSubstation_Info)subID).UID && ele.selectflag == false)
-                     {
-                         projectexitflag = true;
-                         Subcol.Remove(ele);
-                         eleclass ele1 = new eleclass(((PSP_PowerSubstation_Info)subID).Title, ((PSP_PowerSubstation_Info)subID).UID, "30", true);
-                         Subcol.Add(ele1);
-                         PSP_ElcDevice elcDEV = new PSP_ElcDevice();
-                         elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                         elcDEV.DeviceSUID = ((PSP_PowerSubstation_Info)subID).UID;
-                         Services.BaseService.Create<PSP_ElcDevice>(elcDEV);
-                         AddLine(temp, elcDEV.DeviceSUID);
-                     }
+                XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
+                if (subID != null) {
 
-                 }
-                 if (!projectexitflag)
-                 {
-                     MessageBox.Show("你所选择的项目中不包括此发电厂！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                     tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
-                     tlVectorControl1.Delete();
-                     tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
-                     tlVectorControl1.Delete();
-                 }
-             }
+                    RectangleF t = ((IGraph)temp).GetBounds();
+                    n1.SetAttribute("x", (t.X + t.Width + 10).ToString());
+                    n1.SetAttribute("y", (t.Y + t.Height / 2).ToString());
+                    n1.InnerText = ((PSP_Substation_Info)subID).Title;
+                    n1.SetAttribute("layer", SvgDocument.currentLayer);
+                    n1.SetAttribute("Deviceid", ((PSP_Substation_Info)subID).UID);
+                    temp.SetAttribute("Deviceid", ((PSP_Substation_Info)subID).UID);
+                    n1.SetAttribute("ParentID", temp.GetAttribute("id"));
+                    tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+                    tlVectorControl1.Operation = ToolOperation.Select;
+                    //PSP_ElcDevice elcDEV = new PSP_ElcDevice();
+                    //elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                    //elcDEV.DeviceSUID = ((PSP_Substation_Info)subID).UID;
+                    //Services.BaseService.Create<PSP_ElcDevice>(elcDEV);
+                    //AddLine(temp, elcDEV.DeviceSUID);
+                } else {
+                    tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
+                    tlVectorControl1.Delete();
+                    return;
+                }
+                bool projectexitflag = false;               //检验此变电站是否在项目中
+                foreach (eleclass ele in Subcol) {
+                    if (ele.suid == ((PSP_Substation_Info)subID).UID && ele.selectflag == true) {
+                        projectexitflag = true;
+                        MessageBox.Show("已经选择此变电站，请重新选择其他的变电站！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
+                        tlVectorControl1.Delete();
+                        tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
+                        tlVectorControl1.Delete();
+                    } else if (ele.suid == ((PSP_Substation_Info)subID).UID && ele.selectflag == false) {
+                        projectexitflag = true;
+                        Subcol.Remove(ele);
+                        eleclass ele1 = new eleclass(((PSP_Substation_Info)subID).Title, ((PSP_Substation_Info)subID).UID, "20", true);
+                        Subcol.Add(ele1);
+                        PSP_ElcDevice elcDEV = new PSP_ElcDevice();
+                        elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                        elcDEV.DeviceSUID = ((PSP_Substation_Info)subID).UID;
+                        Services.BaseService.Create<PSP_ElcDevice>(elcDEV);
+                        AddLine(temp, elcDEV.DeviceSUID);
+                    }
+
+                }
+                if (!projectexitflag) {
+                    MessageBox.Show("你所选择的项目中不包括此变电站！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
+                    tlVectorControl1.Delete();
+                    tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
+                    tlVectorControl1.Delete();
+                }
+            } else if (temp is Use && (temp.GetAttribute("xlink:href").Contains("Power"))) {
+                XmlNodeList listUSE = tlVectorControl1.SVGDocument.GetElementsByTagName("use");
+                IList<object> listID = new List<object>();
+                foreach (XmlNode node in listUSE) {
+                    string str = ((XmlElement)node).GetAttribute("Deviceid");
+                    PSP_PowerSubstation_Info obj = DeviceHelper.GetDevice<PSP_PowerSubstation_Info>(str);
+                    if (obj != null) {
+                        listID.Add((object)obj);
+                    }
+                }
+                DeviceHelper.pspflag = true;
+                object subID = DeviceHelper.SelectDevice("30", tlVectorControl1.SVGDocument.SvgdataUid, listID);
+                XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
+                if (subID != null) {
+
+                    RectangleF t = ((IGraph)temp).GetBounds();
+                    n1.SetAttribute("x", (t.X + t.Width + 10).ToString());
+                    n1.SetAttribute("y", (t.Y + t.Height / 2).ToString());
+                    n1.InnerText = ((PSP_PowerSubstation_Info)subID).Title;
+                    n1.SetAttribute("layer", SvgDocument.currentLayer);
+                    n1.SetAttribute("Deviceid", ((PSP_PowerSubstation_Info)subID).UID);
+                    temp.SetAttribute("Deviceid", ((PSP_PowerSubstation_Info)subID).UID);
+                    n1.SetAttribute("ParentID", temp.GetAttribute("id"));
+                    tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+                    tlVectorControl1.Operation = ToolOperation.Select;
+                    //PSP_ElcDevice elcDEV = new PSP_ElcDevice();
+                    //elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                    //elcDEV.DeviceSUID = ((PSP_PowerSubstation_Info)subID).UID;
+                    //Services.BaseService.Create<PSP_ElcDevice>(elcDEV);
+                    //AddLine(temp, elcDEV.DeviceSUID);
+                } else {
+                    tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
+                    tlVectorControl1.Delete();
+                    return;
+                }
+                bool projectexitflag = false;               //检验此变电站是否在项目中
+                foreach (eleclass ele in Powcol) {
+                    if (ele.suid == ((PSP_PowerSubstation_Info)subID).UID && ele.selectflag == true) {
+                        projectexitflag = true;
+                        MessageBox.Show("已经选择此发电厂，请重新选择其他的发电厂！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
+                        tlVectorControl1.Delete();
+                        tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
+                        tlVectorControl1.Delete();
+                    } else if (ele.suid == ((PSP_PowerSubstation_Info)subID).UID && ele.selectflag == false) {
+                        projectexitflag = true;
+                        Subcol.Remove(ele);
+                        eleclass ele1 = new eleclass(((PSP_PowerSubstation_Info)subID).Title, ((PSP_PowerSubstation_Info)subID).UID, "30", true);
+                        Subcol.Add(ele1);
+                        PSP_ElcDevice elcDEV = new PSP_ElcDevice();
+                        elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                        elcDEV.DeviceSUID = ((PSP_PowerSubstation_Info)subID).UID;
+                        Services.BaseService.Create<PSP_ElcDevice>(elcDEV);
+                        AddLine(temp, elcDEV.DeviceSUID);
+                    }
+
+                }
+                if (!projectexitflag) {
+                    MessageBox.Show("你所选择的项目中不包括此发电厂！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tlVectorControl1.SVGDocument.CurrentElement = temp as SvgElement;
+                    tlVectorControl1.Delete();
+                    tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
+                    tlVectorControl1.Delete();
+                }
+            }
         }
-        protected void Ref()
-        {
+        protected void Ref() {
             string strCon = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "'AND Type = '05'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon);
-            foreach (PSPDEV ple in list)
-            {
-                XmlNode nodeLine = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@Deviceid='"+ple.SUID+"']");
-                if (nodeLine==null)
-                {
+            foreach (PSPDEV ple in list) {
+                XmlNode nodeLine = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@Deviceid='" + ple.SUID + "']");
+                if (nodeLine == null) {
                     string strCon1 = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND Number = '" + ple.FirstNode + "' AND Type = '01'";
                     IList list1 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon1);
                     strCon1 = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND Number = '" + ple.LastNode + "' AND Type = '01'";
                     IList list2 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon1);
-                    if (list1.Count>0&&list2.Count>0)
-                    {
+                    if (list1.Count > 0 && list2.Count > 0) {
                         string strCon2 = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND Type = '05' AND FirstNode = '" + ple.FirstNode + "' AND LastNode = '" + ple.LastNode + "'";
                         IList list3 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon2);
 
                         string strCon3 = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND Type = '05' AND FirstNode = '" + ple.LastNode + "' AND LastNode = '" + ple.FirstNode + "'";
                         IList list4 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon3);
                         int i = 0;
-                        foreach (PSPDEV line in list3)
-                        {
+                        foreach (PSPDEV line in list3) {
                             XmlNode nodeL = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@Deviceid='" + line.SUID + "']");
-                            if(nodeL!=null)
-                            {
+                            if (nodeL != null) {
                                 i++;
                             }
-                           
+
                         }
-                        foreach (PSPDEV line in list4)
-                        {
+                        foreach (PSPDEV line in list4) {
                             XmlNode nodeL = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@Deviceid='" + line.SUID + "']");
-                            if (nodeL != null)
-                            {
+                            if (nodeL != null) {
                                 i++;
                             }
                         }
                         XmlNode nodeFirst = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@Deviceid='" + ((PSPDEV)list1[0]).SvgUID + "']");
                         XmlNode nodeLast = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@Deviceid='" + ((PSPDEV)list2[0]).SvgUID + "']");
-                        if (nodeFirst!=null&&nodeLast!=null)
-                        {
+                        if (nodeFirst != null && nodeLast != null) {
 
-                        } 
-                        else
-                        {
+                        } else {
                             return;
                         }
                         PointF[] t2 = new PointF[] { ((IGraph)nodeFirst).CenterPoint, ((IGraph)nodeLast).CenterPoint };
@@ -701,16 +618,11 @@ namespace Itop.TLPsp.Graphical
                         PointF pStart4 = new PointF(((IGraph)nodeLast).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)nodeLast).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
 
                         string temp = "";
-                        if (i == 0)
-                        {
+                        if (i == 0) {
                             temp = ((IGraph)nodeFirst).CenterPoint.X.ToString() + " " + ((IGraph)nodeFirst).CenterPoint.Y.ToString() + "," + ((IGraph)nodeLast).CenterPoint.X + " " + ((IGraph)nodeLast).CenterPoint.Y.ToString();
-                        }
-                        else if (OddEven.IsOdd(i))
-                        {
+                        } else if (OddEven.IsOdd(i)) {
                             temp = pStart1.X.ToString() + " " + pStart1.Y.ToString() + "," + pStart3.X.ToString() + " " + pStart3.Y.ToString();
-                        }
-                        else if (OddEven.IsEven(i))
-                        {
+                        } else if (OddEven.IsEven(i)) {
                             temp = pStart2.X.ToString() + " " + pStart2.Y.ToString() + "," + pStart4.X.ToString() + " " + pStart4.Y.ToString();
                         }
                         XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
@@ -723,40 +635,34 @@ namespace Itop.TLPsp.Graphical
                         n1.SetAttribute("LastNode", (nodeLast as XmlElement).GetAttribute("id"));
                         n1.SetAttribute("Deviceid", ple.SUID);
                         tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
-                        tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;                        
-                        tlVectorControl1.ChangeLevel(LevelType.Bottom);                        
+                        tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
+                        tlVectorControl1.ChangeLevel(LevelType.Bottom);
                         //n1.RemoveAttribute("layer");
-                        tlVectorControl1.Operation = ToolOperation.Select;                 
-                    }                   
+                        tlVectorControl1.Operation = ToolOperation.Select;
+                    }
                 }
 
             }
         }
-        protected void AddLine(XmlElement device,string devicSUID)
-        {
-            string strCon = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND SvgUID = '" + devicSUID +"' AND Type = '01'";   
+        protected void AddLine(XmlElement device, string devicSUID) {
+            string strCon = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND SvgUID = '" + devicSUID + "' AND Type = '01'";
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon);
             XmlNodeList list2 = tlVectorControl1.SVGDocument.SelectNodes("svg/use");
-            foreach (PSPDEV dev in list)
-            {
-                foreach (XmlNode node in list2)
-                {                    
+            foreach (PSPDEV dev in list) {
+                foreach (XmlNode node in list2) {
                     XmlElement element = node as XmlElement;
                     //XmlNode text = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@ParentID='" + element.GetAttribute("id") + "']");
                     string strCon1 = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND SvgUID = '" + (element).GetAttribute("Deviceid") + "' AND Type = '01'";
                     IList list3 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon1);
-                    foreach (PSPDEV pd in list3)
-                    {
-                        if (dev.Number!=pd.Number)
-                        {
+                    foreach (PSPDEV pd in list3) {
+                        if (dev.Number != pd.Number) {
                             string strCon2 = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND Type = '05' AND FirstNode = '" + dev.Number + "' AND LastNode = '" + pd.Number + "'";
                             IList list4 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon2);
 
                             string strCon3 = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND Type = '05' AND FirstNode = '" + pd.Number + "' AND LastNode = '" + dev.Number + "'";
                             IList list5 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon3);
 
-                            for (int i = 0; i < list4.Count;i++ )
-                            {
+                            for (int i = 0; i < list4.Count; i++) {
                                 PointF[] t2 = new PointF[] { ((IGraph)device).CenterPoint, ((IGraph)element).CenterPoint };
                                 float angel = 0f;
                                 angel = (float)(180 * Math.Atan2((t2[1].Y - t2[0].Y), (t2[1].X - t2[0].X)) / Math.PI);
@@ -767,24 +673,19 @@ namespace Itop.TLPsp.Graphical
                                 PointF pStart4 = new PointF(((IGraph)element).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)element).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
 
                                 string temp = "";
-                                if (i==0)
-                                {                                   
+                                if (i == 0) {
                                     temp = ((IGraph)device).CenterPoint.X.ToString() + " " + ((IGraph)device).CenterPoint.Y.ToString() + "," + ((IGraph)element).CenterPoint.X + " " + ((IGraph)element).CenterPoint.Y.ToString();
-                                }
-                                else if (OddEven.IsOdd(i))
-                                {
-                                    temp = pStart1.X.ToString() + " " + pStart1.Y.ToString() +"," + pStart3.X.ToString() + " " + pStart3.Y.ToString();         
-                                }
-                                else if (OddEven.IsEven(i))
-                                {
-                                    temp = pStart2.X.ToString() + " " + pStart2.Y.ToString() + "," + pStart4.X.ToString() + " " + pStart4.Y.ToString();                                        
+                                } else if (OddEven.IsOdd(i)) {
+                                    temp = pStart1.X.ToString() + " " + pStart1.Y.ToString() + "," + pStart3.X.ToString() + " " + pStart3.Y.ToString();
+                                } else if (OddEven.IsEven(i)) {
+                                    temp = pStart2.X.ToString() + " " + pStart2.Y.ToString() + "," + pStart4.X.ToString() + " " + pStart4.Y.ToString();
                                 }
                                 XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
-                                
-                                n1.SetAttribute("points",temp);
+
+                                n1.SetAttribute("points", temp);
                                 n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
-                                n1.SetAttribute("layer", SvgDocument.currentLayer);    
-                                n1.SetAttribute("FirstNode",device.GetAttribute("id"));
+                                n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                n1.SetAttribute("FirstNode", device.GetAttribute("id"));
                                 n1.SetAttribute("LastNode", element.GetAttribute("id"));
                                 n1.SetAttribute("Deviceid", ((PSPDEV)list4[i]).SUID);
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
@@ -792,15 +693,13 @@ namespace Itop.TLPsp.Graphical
                                 tlVectorControl1.ChangeLevel(LevelType.Bottom);
                                 //n1.RemoveAttribute("layer");
                                 tlVectorControl1.Operation = ToolOperation.Select;
-                                tlVectorControl1.SVGDocument.CurrentElement = element as SvgElement;                                
+                                tlVectorControl1.SVGDocument.CurrentElement = element as SvgElement;
                             }
                             int j = 0;
-                            if (list4 != null)
-                            {
+                            if (list4 != null) {
                                 j = list4.Count;
                             }
-                            for (int i = j; i < j+ list5.Count; i++)
-                            {
+                            for (int i = j; i < j + list5.Count; i++) {
                                 PointF[] t2 = new PointF[] { ((IGraph)element).CenterPoint, ((IGraph)device).CenterPoint };
                                 float angel = 0f;
                                 angel = (float)(180 * Math.Atan2((t2[1].Y - t2[0].Y), (t2[1].X - t2[0].X)) / Math.PI);
@@ -810,16 +709,11 @@ namespace Itop.TLPsp.Graphical
                                 PointF pStart3 = new PointF(((IGraph)device).CenterPoint.X + (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y - (float)(tlVectorControl1.ScaleRatio * 10 * ((i + 1) / 2) * Math.Cos((angel) * Math.PI / 180)));
                                 PointF pStart4 = new PointF(((IGraph)device).CenterPoint.X - (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Sin((angel) * Math.PI / 180)), ((IGraph)device).CenterPoint.Y + (float)(tlVectorControl1.ScaleRatio * 10 * (i / 2) * Math.Cos((angel) * Math.PI / 180)));
                                 string temp = "";
-                                if (i == 0)
-                                {
+                                if (i == 0) {
                                     temp = ((IGraph)element).CenterPoint.X.ToString() + " " + ((IGraph)element).CenterPoint.Y.ToString() + "," + ((IGraph)device).CenterPoint.X + " " + ((IGraph)device).CenterPoint.Y.ToString();
-                                }
-                                else if (OddEven.IsOdd(i))
-                                {
+                                } else if (OddEven.IsOdd(i)) {
                                     temp = pStart1.X.ToString() + " " + pStart1.Y.ToString() + "," + pStart3.X.ToString() + " " + pStart3.Y.ToString();
-                                }
-                                else if (OddEven.IsEven(i))
-                                {
+                                } else if (OddEven.IsEven(i)) {
                                     temp = pStart2.X.ToString() + " " + pStart2.Y.ToString() + "," + pStart4.X.ToString() + " " + pStart4.Y.ToString();
                                 }
                                 XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
@@ -836,95 +730,69 @@ namespace Itop.TLPsp.Graphical
                                 tlVectorControl1.Operation = ToolOperation.Select;
                                 tlVectorControl1.SVGDocument.CurrentElement = element as SvgElement;
                             }
-                        }   
-                    }                   
+                        }
+                    }
                 }
             }
         }
-        public double getVolt(double avolt)
-        {
-            if (avolt == 525)
-            {
+        public double getVolt(double avolt) {
+            if (avolt == 525) {
                 return 500;
-            }
-            else if (avolt == 230)
-            {
+            } else if (avolt == 230) {
                 return 220;
-            }
-            else if (avolt == 115)
-            {
+            } else if (avolt == 115) {
                 return 110;
-            }
-            else if (avolt == 69)
-            {
+            } else if (avolt == 69) {
                 return 66;
-            }
-            else if (avolt == 37)
-            {
+            } else if (avolt == 37) {
                 return 35;
-            }
-            else if (avolt == 10.5)
-            {
+            } else if (avolt == 10.5) {
                 return 10;
-            }
-            else
+            } else
                 return 1;
         }
-        public string getPower(string str)
-        {
-            if (str.Contains("500"))
-            {
+        public string getPower(string str) {
+            if (str.Contains("500")) {
                 return "500";
             }
-            if (str.Contains("220"))
-            {
+            if (str.Contains("220")) {
                 return "220";
             }
-            if (str.Contains("110"))
-            {
+            if (str.Contains("110")) {
                 return "110";
             }
-            if (str.Contains("66"))
-            {
+            if (str.Contains("66")) {
                 return "66";
             }
-            if (str.Contains("35"))
-            {
+            if (str.Contains("35")) {
                 return "35";
-            }
-            else
+            } else
                 return "";
         }
-        void DrawArea_ViewChanged(object sender, ItopVector.DrawArea.ViewChangedEventArgs e)
-        {            
+        void DrawArea_ViewChanged(object sender, ItopVector.DrawArea.ViewChangedEventArgs e) {
         }
         CustomOperation csOperation = CustomOperation.OP_Default;
-        public void RelStart()
-        {
-            
+        public void RelStart() {
+
             this.Show();
             LoadShape("symbol20.xml");
             RelFormdialog reldialog = new RelFormdialog();
             // reldialog.Parent = this;
             reldialog.ShowDialog();
-            Relaflag = true;          
-                    
-            if (reldialog.DialogResult == DialogResult.OK)
-            {
+            Relaflag = true;
+
+            if (reldialog.DialogResult == DialogResult.OK) {
                 NewFile(fileType, DialogResult.Ignore);
                 tlVectorControl1.PropertyGrid = propertyGrid;
                 tlVectorControl1.ContextMenuStrip = contextMenuStrip1;
-            }
-            else if (reldialog.DialogResult == DialogResult.Ignore)
-            {
+            } else if (reldialog.DialogResult == DialogResult.Ignore) {
                 this.Visible = false;
                 //进行变压器检验
 
                 FrmLayoutSubstationInfo layoutSubstation = new FrmLayoutSubstationInfo();
                 layoutSubstation.Biandianzhan();
 
-            } 
-            else if (reldialog.DialogResult == DialogResult.Yes) {
+            } else if (reldialog.DialogResult == DialogResult.Yes) {
                 this.Visible = false;
                 //配电可靠性窗体
                 //XtraPDrelfrm xf = new XtraPDrelfrm();
@@ -934,46 +802,35 @@ namespace Itop.TLPsp.Graphical
                 Itop.TLPSP.DEVICE.FrmpdrelProject xf = new Itop.TLPSP.DEVICE.FrmpdrelProject();
                 xf.init();
                 xf.ShowDialog();
-            }
-            else if (reldialog.DialogResult == DialogResult.Cancel)
-            {
+            } else if (reldialog.DialogResult == DialogResult.Cancel) {
                 this.Visible = false;
-                
+
             }
-        }   
-        void tlVectorControl1_OperationChanged(object sender, EventArgs e)
-        {
-            if (csOperation == CustomOperation.OP_MeasureDistance)
-            {
+        }
+        void tlVectorControl1_OperationChanged(object sender, EventArgs e) {
+            if (csOperation == CustomOperation.OP_MeasureDistance) {
                 resetOperation();
             }
         }
-        void resetOperation()
-        {
+        void resetOperation() {
             csOperation = CustomOperation.OP_Default;
             ItopVector.Core.Figure.Polyline obj = (ItopVector.Core.Figure.Polyline)tlVectorControl1.SVGDocument.CurrentElement;
-            if (obj != null)
-            {
+            if (obj != null) {
                 obj.ParentNode.RemoveChild(obj);
                 tlVectorControl1.SVGDocument.CurrentElement = tlVectorControl1.SVGDocument.RootElement;
                 label1.Hide();
                 //tlVectorControl1.SetToolTip("");
             }
         }
-        void symbolSelector_SelectedChanged(object sender, EventArgs e)
-        {
+        void symbolSelector_SelectedChanged(object sender, EventArgs e) {
             tlVectorControl1.CurrentOperation = ToolOperation.Select;
-            if (symbolSelector.SelectedItem != null)
-            {
+            if (symbolSelector.SelectedItem != null) {
                 tlVectorControl1.DrawArea.PreGraph = symbolSelector.SelectedItem.CloneNode(true) as IGraph;
-            }
-            else
-            {
+            } else {
                 tlVectorControl1.DrawArea.PreGraph = null;
             }
         }
-        public void LoadShape(string filename)
-        {
+        public void LoadShape(string filename) {
             DockContainerItem dockitem = dotNetBarManager1.GetItem("DockContainerty") as DockContainerItem;
             symbolSelector = null;
             this.symbolSelector = new ItopVector.Selector.SymbolSelector(System.Windows.Forms.Application.StartupPath + "\\symbol\\" + filename);
@@ -983,7 +840,7 @@ namespace Itop.TLPsp.Graphical
             dockitem.Refresh();
             dockitem = dotNetBarManager1.GetItem("DockContainersx") as DockContainerItem;
             dockitem.Control = this.propertyGrid;
-            dockitem.Refresh();        
+            dockitem.Refresh();
             //symbolSelector.SelectedChanged += new EventHandler(symbolSelector_SelectedChanged);
             //symbolSelector.Selected += new EventHandler(symbolSelector_Selected);
             tlVectorControl1.Location = new System.Drawing.Point(176, 90);
@@ -991,28 +848,21 @@ namespace Itop.TLPsp.Graphical
             //tlVectorControl1.Size = new Size((Screen.PrimaryScreen.Bounds.Width - 176), (Screen.PrimaryScreen.Bounds.Height - 158));
         }
 
-        void symbolSelector_Selected(object sender, EventArgs e)
-        {
+        void symbolSelector_Selected(object sender, EventArgs e) {
             tlVectorControl1.CurrentOperation = ToolOperation.Select;
-            if (symbolSelector.SelectedItem != null)
-            {
+            if (symbolSelector.SelectedItem != null) {
                 tlVectorControl1.DrawArea.PreGraph = symbolSelector.SelectedItem.CloneNode(true) as IGraph;
-            }
-            else
-            {
+            } else {
                 tlVectorControl1.DrawArea.PreGraph = null;
             }
         }
-        public void NewFile()
-        {
+        public void NewFile() {
             OpenProject op = new OpenProject();
             op.ProjectID = this.ProjectUID;
             op.Initdata(false);
             Relaflag = true;
-            if (op.ShowDialog() == DialogResult.OK)
-            {
-                if (op.FileSUID != null)
-                {
+            if (op.ShowDialog() == DialogResult.OK) {
+                if (op.FileSUID != null) {
                     Open(op.FileSUID);
                     intdata(op.FileSUID);
                     //if (this.Text.Contains())
@@ -1023,12 +873,11 @@ namespace Itop.TLPsp.Graphical
                 this.Show();
                 jxtbar(1);
                 LoadShape("symbol20.xml");
-            }  
-            
+            }
+
         }
         private string frmname = "";
-        public void NewFile(bool type,DialogResult result)
-        {
+        public void NewFile(bool type, DialogResult result) {
             tlVectorControl1.NewFile();
             LoadShape("symbol20.xml");
             jxtbar(1);
@@ -1039,76 +888,66 @@ namespace Itop.TLPsp.Graphical
             tlVectorControl1.IsModified = false;
             frmname = this.Text;
         }
- 　　　　 //此操作获得项目中的所有的短路计算元件
-        private IList listSub= null;
+        //此操作获得项目中的所有的短路计算元件
+        private IList listSub = null;
         private IList listPow = null;
         private IList listXL = null;
         private List<eleclass> Subcol = new List<eleclass>();
         private List<eleclass> linecol = new List<eleclass>();
         private List<eleclass> Powcol = new List<eleclass>();
-       
-        private void intdata(string filesuid)
-        {
+
+        private void intdata(string filesuid) {
             Subcol.Clear();
             Powcol.Clear();
             linecol.Clear();
             string con = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND UID IN (SELECT PSPDEV.SVGUID FROM PSPDEV, PSP_ELCDEVICE WHERE  PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + filesuid + "')";
 
-           listSub = Services.BaseService.GetList("SelectPSP_Substation_InfoListByWhere", con);
-            foreach (PSP_Substation_Info dev in listSub)
-            {
-               
-                    XmlNode element = tlVectorControl1.SVGDocument.SelectSingleNode("//*[@Deviceid='" + dev.UID + "']");
-                    bool selectflag = false;
-                    if (element != null)
-                    {
-                        selectflag = true;
-                    }
-                    eleclass li = new eleclass(dev.Title, dev.UID, "20", selectflag);
-                    Subcol.Add(li);
-                    if (!selectflag)
-                    {
-                        PSP_ElcDevice pg = new PSP_ElcDevice();
-                        pg.DeviceSUID = dev.UID;
-                        pg.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                        // pg = (PSP_GprogElevice)Services.BaseService.GetObject("SelectPSP_GprogEleviceByKey", pg);
-                        Services.BaseService.Delete<PSP_ElcDevice>(pg);
-                    }
-               
-            }
-            con = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND UID IN (SELECT PSPDEV.SVGUID FROM PSPDEV, PSP_ELCDEVICE WHERE  PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + filesuid + "')";
-
-            listPow= Services.BaseService.GetList("SelectPSP_PowerSubstation_InfoListByWhere", con);
-            foreach (PSP_PowerSubstation_Info dev in listPow)
-            {
+            listSub = Services.BaseService.GetList("SelectPSP_Substation_InfoListByWhere", con);
+            foreach (PSP_Substation_Info dev in listSub) {
 
                 XmlNode element = tlVectorControl1.SVGDocument.SelectSingleNode("//*[@Deviceid='" + dev.UID + "']");
                 bool selectflag = false;
-                if (element != null)
-                {
+                if (element != null) {
+                    selectflag = true;
+                }
+                eleclass li = new eleclass(dev.Title, dev.UID, "20", selectflag);
+                Subcol.Add(li);
+                if (!selectflag) {
+                    PSP_ElcDevice pg = new PSP_ElcDevice();
+                    pg.DeviceSUID = dev.UID;
+                    pg.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                    // pg = (PSP_GprogElevice)Services.BaseService.GetObject("SelectPSP_GprogEleviceByKey", pg);
+                    Services.BaseService.Delete<PSP_ElcDevice>(pg);
+                }
+
+            }
+            con = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND UID IN (SELECT PSPDEV.SVGUID FROM PSPDEV, PSP_ELCDEVICE WHERE  PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + filesuid + "')";
+
+            listPow = Services.BaseService.GetList("SelectPSP_PowerSubstation_InfoListByWhere", con);
+            foreach (PSP_PowerSubstation_Info dev in listPow) {
+
+                XmlNode element = tlVectorControl1.SVGDocument.SelectSingleNode("//*[@Deviceid='" + dev.UID + "']");
+                bool selectflag = false;
+                if (element != null) {
                     selectflag = true;
                 }
                 eleclass li = new eleclass(dev.Title, dev.UID, "30", selectflag);
                 Powcol.Add(li);
-                if (!selectflag)
-                {
+                if (!selectflag) {
                     PSP_ElcDevice pg = new PSP_ElcDevice();
                     pg.DeviceSUID = dev.UID;
                     pg.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                   // pg = (PSP_GprogElevice)Services.BaseService.GetObject("SelectPSP_GprogEleviceByKey", pg);
+                    // pg = (PSP_GprogElevice)Services.BaseService.GetObject("SelectPSP_GprogEleviceByKey", pg);
                     Services.BaseService.Delete<PSP_ElcDevice>(pg);
                 }
             }
             con = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + filesuid + "' AND PSPDEV.Type = '05' ORDER BY PSPDEV.Number";
             listXL = Services.BaseService.GetList("SelectPSPDEVByCondition", con);
-            foreach (PSPDEV dev in listXL)
-            {
-                if (dev.KSwitchStatus == "0")
-                {
+            foreach (PSPDEV dev in listXL) {
+                if (dev.KSwitchStatus == "0") {
                     XmlNode element = tlVectorControl1.SVGDocument.SelectSingleNode("//*[@Deviceid='" + dev.SUID + "']");
                     bool selectflag = false;
-                    if (element != null)
-                    {
+                    if (element != null) {
                         selectflag = true;
                     }
                     eleclass li = new eleclass(dev.Name, dev.SUID, dev.Type, selectflag);
@@ -1116,22 +955,18 @@ namespace Itop.TLPsp.Graphical
                 }
             }
         }
-        private void dotNetBarManager1_ItemClick(object sender, EventArgs e)
-        {      
+        private void dotNetBarManager1_ItemClick(object sender, EventArgs e) {
 
-           
+
             DevComponents.DotNetBar.ButtonItem btItem = sender as DevComponents.DotNetBar.ButtonItem;
             //Layer layer1 = (Layer)LayerBox.ComboBoxEx.SelectedItem;
-            if (btItem != null)
-            {
-                switch (btItem.Name)
-                {
+            if (btItem != null) {
+                switch (btItem.Name) {
                     #region 文件操作
                     case "mNew":
                         frmNewProject frmprojectDLG = new frmNewProject();
                         frmprojectDLG.Name = "";
-                        if (frmprojectDLG.ShowDialog() == DialogResult.OK)
-                        {
+                        if (frmprojectDLG.ShowDialog() == DialogResult.OK) {
                             tlVectorControl1.NewFile();
                             PSP_ELCPROJECT pd = new PSP_ELCPROJECT();
                             pd.Name = frmprojectDLG.Name;
@@ -1143,8 +978,7 @@ namespace Itop.TLPsp.Graphical
                             Layer la = tlVectorControl1.SVGDocument.GetLayerByID(SvgDocument.currentLayer);
                             la.SetAttribute("layerType", "电网规划层");
                             Services.BaseService.Create<PSP_ELCPROJECT>(pd);
-                            if (pd.ID != null)
-                            {
+                            if (pd.ID != null) {
                                 Open(pd.ID);
                                 intdata(pd.ID);
                                 //if (this.Text.Contains())
@@ -1155,17 +989,17 @@ namespace Itop.TLPsp.Graphical
                             this.Show();
                             jxtbar(1);
                             LoadShape("symbol20.xml");
-                        }                       
+                        }
                         break;
                     case "mOpen":
                         //if (tlVectorControl1.IsModified == true)
                         //{
-                            //DialogResult a;
-                            //a = MessageBox.Show("图形已修改，是否保存?", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                        //DialogResult a;
+                        //a = MessageBox.Show("图形已修改，是否保存?", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
 
-                            //if (a == DialogResult.Yes)
-                            //{
-                                Save();
+                        //if (a == DialogResult.Yes)
+                        //{
+                        Save();
                         //    }
                         //    else if (a == DialogResult.No)
                         //    {
@@ -1179,21 +1013,19 @@ namespace Itop.TLPsp.Graphical
                         OpenProject op = new OpenProject();
                         op.ProjectID = this.ProjectUID;
                         op.Initdata(false);
-                        if (op.ShowDialog() == DialogResult.OK)
-                        {
-                            if (op.FileSUID != null)
-                            {
+                        if (op.ShowDialog() == DialogResult.OK) {
+                            if (op.FileSUID != null) {
                                 Open(op.FileSUID);
                                 intdata(op.FileSUID);
                                 //if (this.Text.Contains())
                                 //{
                                 //}
                                 this.Text = frmname + "-" + op.FileName;
-                            }                      
+                            }
                             this.Show();
                             jxtbar(1);
                             LoadShape("symbol20.xml");
-                       
+
                         }
                         break;
                     case "barDeviceData":
@@ -1253,12 +1085,10 @@ namespace Itop.TLPsp.Graphical
                     case "mRzb":
                         frmRatio fRat = new frmRatio();
                         string viewRat = tlVectorControl1.SVGDocument.getRZBRatio();
-                        if (viewRat != "")
-                        {
+                        if (viewRat != "") {
                             fRat.InitData(viewRat);
                         }
-                        if (fRat.ShowDialog() == DialogResult.OK)
-                        {
+                        if (fRat.ShowDialog() == DialogResult.OK) {
                             viewRat = fRat.ViewScale;
                             tlVectorControl1.SVGDocument.setRZBRatio(viewRat);
                         }
@@ -1271,12 +1101,12 @@ namespace Itop.TLPsp.Graphical
                         break;
 
                     case "ButtonItem10":
-                       
+
                         break;
-                    case "Dlqibutt":                       
+                    case "Dlqibutt":
                         break;
-                        //MessageBox.Show("请选中母线点，然后点击右键输入断路器属性" "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //duluqiflag=true;
+                    //MessageBox.Show("请选中母线点，然后点击右键输入断路器属性" "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //duluqiflag=true;
                     //基础操作
                     case "mFreeTransform":
                         tlVectorControl1.Operation = ToolOperation.FreeTransform;
@@ -1290,13 +1120,13 @@ namespace Itop.TLPsp.Graphical
                     //    break;
                     #endregion
                     #region 无功优化参数维护
-                    case "VoltLimit":                       
+                    case "VoltLimit":
                         break;
-                    case "GeneratorLimit":                     
+                    case "GeneratorLimit":
                         break;
-                    case "TransformLimit":                      
+                    case "TransformLimit":
                         break;
-                    case "SVC":                       
+                    case "SVC":
                         break;
                     #endregion
                     #region 基础图元
@@ -1319,7 +1149,7 @@ namespace Itop.TLPsp.Graphical
                         tlVectorControl1.Operation = ToolOperation.Select;
                         break;
                     case "mSel":
-                        
+
                         tlVectorControl1.Operation = ToolOperation.FreeTransform;
                         break;
                     //case "mFreeTransform":
@@ -1333,7 +1163,7 @@ namespace Itop.TLPsp.Graphical
                     case "mFreePath":
                         tlVectorControl1.Operation = ToolOperation.FreePath;
 
-                        break;                     
+                        break;
                     case "mShapeTransform":
                         tlVectorControl1.Operation = ToolOperation.ShapeTransform;
 
@@ -1360,7 +1190,7 @@ namespace Itop.TLPsp.Graphical
                     case "mConnectLine":
                         tlVectorControl1.Operation = ToolOperation.ConnectLine;
                         break;
-                        
+
                     case "mPolygon":
                         tlVectorControl1.Operation = ToolOperation.Polygon;
 
@@ -1376,18 +1206,17 @@ namespace Itop.TLPsp.Graphical
 
                         break;
                     case "ButtonItem2":
-                        
+
                         break;
-                    case "ButtonItem8":                    
-                
+                    case "ButtonItem8":
+
                         break;
-                    case "mCheck":                        
+                    case "mCheck":
                         break;
                     case "DFSResult":
                         frmSetPower frmSPR = new frmSetPower();
                         frmSPR.ProjectID = this.tlVectorControl1.SVGDocument.SvgdataUid;
-                        if (frmSPR.ShowDialog() == DialogResult.OK)
-                        {
+                        if (frmSPR.ShowDialog() == DialogResult.OK) {
                             ElectricLoadCal elcDFS = new ElectricLoadCal();
                             //string strCon1 = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "'";
                             //string strCon2 = null;
@@ -1416,17 +1245,15 @@ namespace Itop.TLPsp.Graphical
                             //}
                             busList = frmSPR.ListPower;
                             branchList = frmSPR.ListBranch;
-                            if (busList != null)
-                            {
-                                elcDFS.DFSER(branchList, busList, tlVectorControl1.SVGDocument.SvgdataUid, 100,1);                                
+                            if (busList != null) {
+                                elcDFS.DFSER(branchList, busList, tlVectorControl1.SVGDocument.SvgdataUid, 100, 1);
                             }
-                        }                      
+                        }
                         break;
                     case "DFS":
                         frmSetPower frmSP = new frmSetPower();
                         frmSP.ProjectID = this.tlVectorControl1.SVGDocument.SvgdataUid;
-                        if (frmSP.ShowDialog()==DialogResult.OK)
-                        {
+                        if (frmSP.ShowDialog() == DialogResult.OK) {
                             ElectricLoadCal elcDFS = new ElectricLoadCal();
                             //string strCon1 = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "'";
                             //string strCon2 = null;
@@ -1455,13 +1282,12 @@ namespace Itop.TLPsp.Graphical
                             //}
                             busList = frmSP.ListPower;
                             branchList = frmSP.ListBranch;
-                            if (busList != null)
-                            {
+                            if (busList != null) {
                                 elcDFS.DFS(branchList, busList, tlVectorControl1.SVGDocument.SvgdataUid, 100);
                                 ShowResult(0);
                             }
-                        }                      
-                   
+                        }
+
                         break;
                     case "niula":
                         frnReport wFrom = new frnReport();
@@ -1470,8 +1296,8 @@ namespace Itop.TLPsp.Graphical
                         wFrom.Text = this.Text + "—牛拉法潮流计算";
                         wFrom.ShowText += "正在收集信息\t" + System.DateTime.Now.ToString();
                         ElectricLoadCal elc = new ElectricLoadCal();
-                        elc.LFC(tlVectorControl1.SVGDocument.SvgdataUid, 1, 100,wFrom);
-                        ShowResult(0,wFrom);
+                        elc.LFC(tlVectorControl1.SVGDocument.SvgdataUid, 1, 100, wFrom);
+                        ShowResult(0, wFrom);
                         break;
                     case "pq":
                         frnReport wFromPQ = new frnReport();
@@ -1482,7 +1308,7 @@ namespace Itop.TLPsp.Graphical
                         ElectricLoadCal elcPQ = new ElectricLoadCal();
                         elcPQ.LFC(tlVectorControl1.SVGDocument.SvgdataUid, 2, 100, wFromPQ);
                         ShowResult(1, wFromPQ);
-                        break;                     
+                        break;
 
                     case "GaussSeidel":
                         frnReport wFromGS = new frnReport();
@@ -1493,7 +1319,7 @@ namespace Itop.TLPsp.Graphical
                         ElectricLoadCal elcGS = new ElectricLoadCal();
                         elcGS.LFC(tlVectorControl1.SVGDocument.SvgdataUid, 3, 100, wFromGS);
                         ShowResult(2, wFromGS);
-                        break;           
+                        break;
                     case "N_RZYz":
                         frnReport wFromZYZ = new frnReport();
                         wFromZYZ.Owner = this;
@@ -1518,8 +1344,8 @@ namespace Itop.TLPsp.Graphical
                     case "TransRela":                       //进行变压器N-1检验
 
                         break;
-                    case "Shortibut":                       
-                        
+                    case "Shortibut":
+
                         break;
                     case "dd":
                         //SubPrint = true;
@@ -1540,7 +1366,7 @@ namespace Itop.TLPsp.Graphical
                         break;
                     case "N_RZYzResult":
                         ElectricLoadCal elcNZResult = new ElectricLoadCal();
-                        elcNZResult.LFCER(tlVectorControl1.SVGDocument.SvgdataUid,4, 100);
+                        elcNZResult.LFCER(tlVectorControl1.SVGDocument.SvgdataUid, 4, 100);
                         break;
                     case "NLnFHresult":
                         elc = new ElectricLoadCal();
@@ -1558,9 +1384,9 @@ namespace Itop.TLPsp.Graphical
                     case "PowerLoss":
                         ElectricLoadCal elcPLE = new ElectricLoadCal();
                         elcPLE.PLE(tlVectorControl1.SVGDocument.SvgdataUid, 2, 100);
-                        break;                   
+                        break;
                     case "ZLPResult1":
-    
+
 
                         break;
 
@@ -1568,30 +1394,26 @@ namespace Itop.TLPsp.Graphical
                     case "mDLR":
 
 
-                      
+
                         break;
                     case "clearResult":
-                        try
-                        {
+                        try {
                             XmlNodeList list = tlVectorControl1.SVGDocument.SelectNodes("svg/*[@flag='" + "1" + "']");
 
-                            foreach (XmlNode node in list)
-                            {
+                            foreach (XmlNode node in list) {
                                 SvgElement element = node as SvgElement;
 
                                 tlVectorControl1.SVGDocument.CurrentElement = element;
                                 tlVectorControl1.Delete();
 
                             }
-                        }
-                        catch (System.Exception ex)
-                        {
+                        } catch (System.Exception ex) {
 
                         }
                         break;
                     case "mEnclosure":
                         tlVectorControl1.Operation = ToolOperation.Enclosure;
-                        
+
                         break;
 
                     case "mGroup":
@@ -1617,7 +1439,7 @@ namespace Itop.TLPsp.Graphical
                         csOperation = CustomOperation.OP_MeasureDistance;
                         break;
                     case "powerFactor":
-                        
+
                         break;
                     #endregion
 
@@ -1642,15 +1464,12 @@ namespace Itop.TLPsp.Graphical
 
                     #region 布局，对齐，顺序
                     case "mRotate":
-                        if (btItem.Tag is ButtonItem)
-                        {
+                        if (btItem.Tag is ButtonItem) {
                             btItem = btItem.Tag as ButtonItem;
                             tlVectorControl1.FlipX();
 
 
-                        }
-                        else
-                        {
+                        } else {
                             tlVectorControl1.FlipX();
                         }
                         break;
@@ -1676,14 +1495,11 @@ namespace Itop.TLPsp.Graphical
                         //this.rotateButton.ImageIndex = btItem.ImageIndex;
                         break;
                     case "mAlign":
-                        if (btItem.Tag is ButtonItem)
-                        {
+                        if (btItem.Tag is ButtonItem) {
                             btItem = btItem.Tag as ButtonItem;
                             tlVectorControl1.Align(AlignType.Left);
 
-                        }
-                        else
-                        {
+                        } else {
                             tlVectorControl1.Align(AlignType.Left);
 
                         }
@@ -1726,14 +1542,11 @@ namespace Itop.TLPsp.Graphical
                         tlVectorControl1.Refresh();
                         break;
                     case "mOrder":
-                        if (btItem.Tag is ButtonItem)
-                        {
+                        if (btItem.Tag is ButtonItem) {
                             btItem = btItem.Tag as ButtonItem;
                             tlVectorControl1.ChangeLevel(LevelType.Top);
 
-                        }
-                        else
-                        {
+                        } else {
                             tlVectorControl1.ChangeLevel(LevelType.Top);
                         }
 
@@ -1770,18 +1583,12 @@ namespace Itop.TLPsp.Graphical
                         tlVectorControl1.Paste();
                         break;
                     case "mDelete":
-                        if (tlVectorControl1.SVGDocument.CurrentElement is SVG)
-                        {
-                        }
-                        else
-                        {
-                            if (MessageBox.Show("确定要删除么?", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                            {
+                        if (tlVectorControl1.SVGDocument.CurrentElement is SVG) {
+                        } else {
+                            if (MessageBox.Show("确定要删除么?", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                                 SvgElementCollection collection = tlVectorControl1.SVGDocument.SelectCollection;
-                                foreach (XmlElement element in collection)
-                                {
-                                    if (element is Text)
-                                    {
+                                foreach (XmlElement element in collection) {
+                                    if (element is Text) {
                                         PSP_ElcDevice elcDEV = new PSP_ElcDevice();
                                         elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
                                         elcDEV.DeviceSUID = element.GetAttribute("Deviceid");
@@ -1791,7 +1598,7 @@ namespace Itop.TLPsp.Graphical
                                 tlVectorControl1.Delete();
                             }
 
-                        }                       
+                        }
                         break;
                     case "mUodo":
                         tlVectorControl1.Undo();
@@ -1812,15 +1619,12 @@ namespace Itop.TLPsp.Graphical
                         break;
 
                     case "mSaveGroup":
-                        if (tlVectorControl1.SVGDocument.SelectCollection.Count > 1)
-                        {
+                        if (tlVectorControl1.SVGDocument.SelectCollection.Count > 1) {
                             string content = "<svg>";
                             SvgElementCollection col = tlVectorControl1.SVGDocument.SelectCollection;
-                            for (int i = 0; i < col.Count; i++)
-                            {
+                            for (int i = 0; i < col.Count; i++) {
                                 SvgElement _e = (SvgElement)col[i];
-                                if (_e.ID != "svg")
-                                {
+                                if (_e.ID != "svg") {
                                     content = content + _e.OuterXml;
                                 }
                             }
@@ -1831,9 +1635,7 @@ namespace Itop.TLPsp.Graphical
                             fm.rect = rect;
                             fm.Content = content;
                             fm.ShowDialog();
-                        }
-                        else
-                        {
+                        } else {
                             MessageBox.Show("请至少选择2个图元。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
@@ -1841,14 +1643,11 @@ namespace Itop.TLPsp.Graphical
 
                     case "mInsert":
                         frmUseGroup fg = new frmUseGroup();
-                        if (fg.ShowDialog() == DialogResult.OK)
-                        {
+                        if (fg.ShowDialog() == DialogResult.OK) {
                             UseGroup u = fg.SelectedUseGroup;
-                            if (u != null)
-                            {
+                            if (u != null) {
                                 frmXY xy = new frmXY();
-                                if (xy.ShowDialog() == DialogResult.OK)
-                                {
+                                if (xy.ShowDialog() == DialogResult.OK) {
                                     decimal x = xy.GetX();
                                     decimal y = xy.GetY();
                                     string content = u.Content;
@@ -1859,12 +1658,10 @@ namespace Itop.TLPsp.Graphical
                                     XmlNodeList sonlist = _node.ChildNodes;
                                     XmlElement ele = tlVectorControl1.SVGDocument.CreateElement("g");
                                     ele.SetAttribute("layer", SvgDocument.currentLayer);
-                                    for (int i = 0; i < sonlist.Count; i++)
-                                    {
+                                    for (int i = 0; i < sonlist.Count; i++) {
                                         XmlNode _sonnode = sonlist[i];
                                         //string str = _sonnode.OuterXml;
-                                        if (_sonnode.Name == "use")
-                                        {
+                                        if (_sonnode.Name == "use") {
                                             string sid = ((XmlElement)_sonnode).GetAttribute("xlink:href");
                                             XmlNode _snode = symbolSelector.SymbolDoc.SelectSingleNode("//*[@id='" + sid.Substring(1) + "']");
                                             tlVectorControl1.SVGDocument.AddDefsElement((SvgElement)_snode);
@@ -1896,99 +1693,86 @@ namespace Itop.TLPsp.Graphical
                     #endregion
                     #region 参数维护
                     case "mNodeParam":
-                        
+
                         break;
                     case "mLineParam":
-                     
+
                         break;
                     case "mWire":
-                                         
+
                         break;
                     case "nTransformLineParam":
-                       
+
                         break;
                     case "nGNDLineParam":
-                       
+
                         break;
                     case "mLineDL":
-                                           
+
                         break;
                     case "mFadianDL":
-                     
+
                         break;
-                    case "mConvert":                          
-                        
+                    case "mConvert":
+
                         break;
 
                     #endregion
                 }
             }
         }
-        void ComboBoxScaleBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        void ComboBoxScaleBox_SelectedIndexChanged(object sender, EventArgs e) {
             string text1 = this.scaleBox.SelectedItem.ToString();
             tlVectorControl1.ScaleRatio = ItopVector.Core.Func.Number.ParseFloatStr(text1);
-            
+
         }
-        void tlVectorControl1_ScaleChanged(object sender, EventArgs e)
-        {
+        void tlVectorControl1_ScaleChanged(object sender, EventArgs e) {
             string text1 = (((ItopVector.ItopVectorControl)sender).ScaleRatio * 100) + "%";
             scaleBox.ComboBoxEx.SelectedIndexChanged -= new EventHandler(ComboBoxScaleBox_SelectedIndexChanged);
             this.scaleBox.ComboBoxEx.Text = text1;
             scaleBox.ComboBoxEx.SelectedIndexChanged += new EventHandler(ComboBoxScaleBox_SelectedIndexChanged);
-            if (tlVectorControl1.ScaleRatio < 0.006f)
-            {
+            if (tlVectorControl1.ScaleRatio < 0.006f) {
                 tlVectorControl1.ScaleRatio = 0.006f;
                 scaleBox.ComboBoxEx.Text = "0.6%";
                 //scaleBox.SelectedText = "10%";
             }
         }
-        private void AddCombolScale()
-        {
+        private void AddCombolScale() {
             //缩放大小
             scaleBox = this.dotNetBarManager1.GetItem("ScaleBox") as DevComponents.DotNetBar.ComboBoxItem;
-            if (scaleBox != null)
-            {
+            if (scaleBox != null) {
                 scaleBox.Items.AddRange(ScaleRange());
                 scaleBox.ComboBoxEx.Text = "100%";
                 scaleBox.ComboBoxEx.SelectedIndexChanged += new EventHandler(ComboBoxScaleBox_SelectedIndexChanged);
 
             }
         }
-        public string[] ScaleRange()
-        {
+        public string[] ScaleRange() {
             string[] range1 = new string[] { "400%", "200%", "100%", "40%", "20%", "10%", "4%", "2%", "1%" };
             return range1;
         }
-        private void tlVectorControl1_Load(object sender, EventArgs e)
-        {
+        private void tlVectorControl1_Load(object sender, EventArgs e) {
             AddCombolScale();
             LoadShape("symbol20.xml");
             //Topology2();
-            
+
         }
 
-        public void theout(object source, System.Timers.ElapsedEventArgs e)
-        {
+        public void theout(object source, System.Timers.ElapsedEventArgs e) {
             Process[] ps = Process.GetProcessesByName("ChaoLiu");
-            if (ps.Length>0)
-            {
-                foreach (Process pre in ps)
-                {
+            if (ps.Length > 0) {
+                foreach (Process pre in ps) {
                     pre.Kill();
-                }                
+                }
             }
         }
-        public void Start()
-        {
+        public void Start() {
             OpenProject op = new OpenProject();
             op.ProjectID = this.ProjectUID;
             op.Initdata(false);
-           
-            if (op.ShowDialog() == DialogResult.OK)
-            {
-                if (op.FileSUID != null)
-                {
+
+            if (op.ShowDialog() == DialogResult.OK) {
+                if (op.FileSUID != null) {
                     Open(op.FileSUID);
                     intdata(op.FileSUID);
                     //if (this.Text.Contains())
@@ -1999,27 +1783,25 @@ namespace Itop.TLPsp.Graphical
                 this.Show();
                 jxtbar2(1);
                 LoadShape("symbol20.xml");
-            }  
+            }
             //this.Show();          
             //LoadShape("symbol20.xml");
             //jxtbar2(1);
             //jxb = 1;
             //NewFile(fileType, DialogResult.Ignore);
             tlVectorControl1.PropertyGrid = propertyGrid;
-            tlVectorControl1.ContextMenuStrip = contextMenuStrip1;            
+            tlVectorControl1.ContextMenuStrip = contextMenuStrip1;
         }
-        public void PowerLossStart()
-        {
+        public void PowerLossStart() {
             this.Show();
             LoadShape("symbol20.xml");
             NewFile(fileType, DialogResult.Ignore);
             jxtbar2(2);
             jxb = 2;
             tlVectorControl1.PropertyGrid = propertyGrid;
-            tlVectorControl1.ContextMenuStrip = contextMenuStrip1;            
+            tlVectorControl1.ContextMenuStrip = contextMenuStrip1;
         }
-        public void DFSStart()
-        {
+        public void DFSStart() {
             this.Show();
             LoadShape("symbol20.xml");
             NewFile(fileType, DialogResult.Ignore);
@@ -2028,28 +1810,25 @@ namespace Itop.TLPsp.Graphical
             tlVectorControl1.PropertyGrid = propertyGrid;
             tlVectorControl1.ContextMenuStrip = contextMenuStrip1;
         }
-        public void VoltEvaluationStart()
-        {
+        public void VoltEvaluationStart() {
             this.Show();
             LoadShape("symbol20.xml");
-            NewFile(fileType, DialogResult.Ignore); 
+            NewFile(fileType, DialogResult.Ignore);
             jxtbar2(3);
             jxb = 3;
             tlVectorControl1.PropertyGrid = propertyGrid;
-            tlVectorControl1.ContextMenuStrip = contextMenuStrip1;            
+            tlVectorControl1.ContextMenuStrip = contextMenuStrip1;
         }
-        public void ORPStrat()
-        {
+        public void ORPStrat() {
             this.Show();
             LoadShape("symbol20.xml");
             NewFile(fileType, DialogResult.Ignore);
             jxtbar2(4);
             jxb = 4;
             tlVectorControl1.PropertyGrid = propertyGrid;
-            tlVectorControl1.ContextMenuStrip = contextMenuStrip1;            
+            tlVectorControl1.ContextMenuStrip = contextMenuStrip1;
         }
-        public void Save()
-        {
+        public void Save() {
             //XmlNodeList list = tlVectorControl1.SVGDocument.SelectNodes("svg/*[@flag='" + "1" + "']");
             //foreach (XmlNode node in list)
             //{
@@ -2058,11 +1837,9 @@ namespace Itop.TLPsp.Graphical
             //    tlVectorControl1.Delete();
             //}
 
-            if (tlVectorControl1.SVGDocument.SvgdataUid != string.Empty)
-            {
+            if (tlVectorControl1.SVGDocument.SvgdataUid != string.Empty) {
                 IList svglist = Services.BaseService.GetList("SelectSVGFILEByKey", tlVectorControl1.SVGDocument.SvgdataUid);
-                if (svglist.Count > 0)
-                {
+                if (svglist.Count > 0) {
                     svg = (SVGFILE)svglist[0];
                     svg.SVGDATA = tlVectorControl1.SVGDocument.OuterXml;
                     svg.FILENAME = tlVectorControl1.SVGDocument.FileName;
@@ -2079,9 +1856,7 @@ namespace Itop.TLPsp.Graphical
                     //    pspDir.FileType = "短路";
                     //}
                     //Services.BaseService.Update<PSPDIR>(pspDir);
-                }
-                else
-                {
+                } else {
                     svg.SUID = tlVectorControl1.SVGDocument.SvgdataUid;
                     svg.FILENAME = tlVectorControl1.SVGDocument.FileName;
                     svg.SVGDATA = tlVectorControl1.SVGDocument.OuterXml;
@@ -2100,9 +1875,7 @@ namespace Itop.TLPsp.Graphical
                     //pspDir.CreateTime = System.DateTime.Now.ToString();
                     //Services.BaseService.Create<PSPDIR>(pspDir);
                 }
-            }
-            else
-            {
+            } else {
                 svg.SUID = Guid.NewGuid().ToString();
                 svg.FILENAME = tlVectorControl1.SVGDocument.FileName;
                 svg.SVGDATA = tlVectorControl1.SVGDocument.OuterXml;
@@ -2124,10 +1897,8 @@ namespace Itop.TLPsp.Graphical
             }
             tlVectorControl1.IsModified = false;
         }
-        public void Open2(string _SvgUID, string yearID)
-        {
-            try
-            {
+        public void Open2(string _SvgUID, string yearID) {
+            try {
                 string uid = ConfigurationSettings.AppSettings.Get("SvgID");
 
                 StringBuilder txt = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?><svg id=\"svg\" width=\"1500\" height=\"1000\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:itop=\"http://www.Itop.com/itop\" transform=\"matrix(1 0 0 1 0 1)\"><defs>");
@@ -2138,27 +1909,25 @@ namespace Itop.TLPsp.Graphical
                 if (string.IsNullOrEmpty(_SvgUID)) return;
                 SVG_LAYER lar = new SVG_LAYER();
                 lar.svgID = uid;
-                lar.YearID ="'"+ yearID+"'";
+                lar.YearID = "'" + yearID + "'";
                 IList<SVG_LAYER> larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByYearID", lar);
-                foreach (SVG_LAYER _lar in larlist)
-                {
+                foreach (SVG_LAYER _lar in larlist) {
                     //layertxt = layertxt + "<layer id=\"" + _lar.SUID + "\" label=\"" + _lar.NAME + "\" layerType=\"" + _lar.layerType + "\" visibility=\"" + _lar.visibility + "\" ParentID=\"" + _lar.YearID + "\" IsSelect=\"" + _lar.IsSelect + "\" />";
                     content.Append(_lar.XML);
                 }
                 txt.Append("<layer id=\"layer6666\" label=\"默认层\" />");
                 txt.Append(layertxt);
-               
+
 
                 SVG_SYMBOL sym = new SVG_SYMBOL();
                 sym.svgID = uid;
                 IList<SVG_SYMBOL> symlist = Services.BaseService.GetList<SVG_SYMBOL>("SelectSVG_SYMBOLBySvgID", sym);
-                foreach (SVG_SYMBOL _sym in symlist)
-                {
+                foreach (SVG_SYMBOL _sym in symlist) {
                     svgdefs = svgdefs + _sym.XML;
                 }
                 txt.Append(svgdefs + "</defs>");
                 txt.Append(content.ToString() + "</svg>");
-                
+
                 SvgDocument document = new SvgDocument();
                 document.LoadXml(txt.ToString());
                 //document.FileName = SvgName;
@@ -2166,15 +1935,12 @@ namespace Itop.TLPsp.Graphical
                 SVGUID = _SvgUID;
 
                 this.Text = document.FileName;
-                if (document.RootElement == null)
-                {
+                if (document.RootElement == null) {
                     tlVectorControl1.NewFile();
                     Layer.CreateNew("背景层", tlVectorControl1.SVGDocument);
                     Layer.CreateNew("城市规划层", tlVectorControl1.SVGDocument);
                     Layer.CreateNew("供电区域层", tlVectorControl1.SVGDocument);
-                }
-                else
-                {
+                } else {
                     tlVectorControl1.SVGDocument = document;
                 }
                 tlVectorControl1.SVGDocument.SvgdataUid = SVGUID;
@@ -2182,61 +1948,50 @@ namespace Itop.TLPsp.Graphical
                 tlVectorControl1.DocumentbgColor = Color.White;
                 tlVectorControl1.BackColor = Color.White;
 
-                foreach(XmlElement ele in document.RootElement.ChildNodes ){
+                foreach (XmlElement ele in document.RootElement.ChildNodes) {
                     ele.SetAttribute("layer", "layer6666");
-                    if (((SvgElement)ele).LocalName == "polyline")
-                    {
+                    if (((SvgElement)ele).LocalName == "polyline") {
                         ele.SetAttribute("flag", "1");
                     }
                 }
 
                 SvgDocument.currentLayer = "layer6666";
 
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 MessageBox.Show(e.Message);
             }
             //tlVectorControl1.SVGDocument.SvgdataUid = "";
         }
-        public void Open(string _SvgUID)
-        {
-            try
-            {
+        public void Open(string _SvgUID) {
+            try {
                 SVGFILE svgFile = new SVGFILE();
                 svgFile.SUID = _SvgUID;
                 SvgDocument document = new SvgDocument();
-                if (document != null)
-                {
+                if (document != null) {
                     IList svgList = Services.BaseService.GetList("SelectSVGFILEByKey", svgFile);
-                    if (svgList.Count > 0)
-                    {
+                    if (svgList.Count > 0) {
                         svgFile = (SVGFILE)svgList[0];
                     }
 
                     document = new SvgDocument();
-                    if (!string.IsNullOrEmpty(svgFile.SVGDATA))
-                    {
+                    if (!string.IsNullOrEmpty(svgFile.SVGDATA)) {
                         document.LoadXml(svgFile.SVGDATA);
                     }
-                    
+
                     document.FileName = svgFile.FILENAME;
                     document.SvgdataUid = svgFile.SUID;
                 }
                 SVGUID = document.SvgdataUid;
 
                 //this.Text = document.FileName;
-                if (document.RootElement == null)
-                {
+                if (document.RootElement == null) {
                     tlVectorControl1.NewFile();
                     tlVectorControl1.SVGDocument.SvgdataUid = _SvgUID;
                     SvgDocument.currentLayer = Layer.CreateNew("默认层", tlVectorControl1.SVGDocument).ID;
                     Layer la = tlVectorControl1.SVGDocument.GetLayerByID(SvgDocument.currentLayer);
                     la.SetAttribute("layerType", "电网规划层");
-                   
-                }
-                else
-                {
+
+                } else {
                     tlVectorControl1.SVGDocument = document;
                     tlVectorControl1.SVGDocument.CurrentLayer = ((tlVectorControl1.SVGDocument.getLayerList()[0]) as ItopVector.Core.Figure.Layer);
                 }
@@ -2273,44 +2028,33 @@ namespace Itop.TLPsp.Graphical
                 //        tlVectorControl1.Delete();
                 //    }
                 //}
-                try
-                {
+                try {
                     string strCon = ",PSP_Substation_Info WHERE PSP_Substation_Info.UID=PSP_ELCDEVICE.DeviceSUID AND ProjectSUID ='" + tlVectorControl1.SVGDocument.SvgdataUid + "'";
                     //elcDev.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
                     IList list = Services.BaseService.GetList("SelectPSP_ElcDeviceByCondition", strCon);
-                    foreach (PSP_ElcDevice elcDev in list)
-                    {
+                    foreach (PSP_ElcDevice elcDev in list) {
                         XmlNode useDEV = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@SubstationID='" + elcDev.DeviceSUID + "']");
-                        if (useDEV == null)
-                        {
+                        if (useDEV == null) {
                             Services.BaseService.Delete<PSP_ElcDevice>(elcDev);
                         }
                     }
-                }
-                catch (System.Exception ex)
-                {
+                } catch (System.Exception ex) {
 
-                }               
-            }
-            catch (Exception e)
-            {
+                }
+            } catch (Exception e) {
                 MessageBox.Show(e.Message);
             }
 
-        }    
-              
-        private void frmTLpspGraphical_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        }
+
+        private void frmTLpspGraphical_FormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = false;
-            try
-            {
-                if (tlVectorControl1.IsModified)
-                {
+            try {
+                if (tlVectorControl1.IsModified) {
                     string a;
 
 
-                    if ((a = Convert.ToString(MessageBox.Show("图形已修改，是否保存?", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information))) == "Yes")
-                    {
+                    if ((a = Convert.ToString(MessageBox.Show("图形已修改，是否保存?", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information))) == "Yes") {
 
                         //frmElementName dlg = new frmElementName();
 
@@ -2321,41 +2065,36 @@ namespace Itop.TLPsp.Graphical
                         //    tlVectorControl1.SVGDocument.FileName = dlg.TextInput;
                         //}
                         Save();
-                    }
-                    else if (a == "Cancel")
-                    {
+                    } else if (a == "Cancel") {
                         e.Cancel = true;
                         return;
                     }
                     //else e.Cancel = true;
                     //else
                     //{
-                        //a = Convert.ToString((MessageBox.Show("图形已修改，是否保存?", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information)));
-                        //if (ShowDialog == DialogResult.Cancel)
-                        //{
-                            //return;
-                        //}
-                        //}
-                        //else
-                        //{
-                        //    PSPDEV pspDev = new PSPDEV();
-                        //    pspDev.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                        //    IList list = Services.BaseService.GetList("SelectPSPDEVBySvgUID", pspDev);
-                        //    foreach (PSPDEV dev in list)
-                        //    {
-                        //        Services.BaseService.Delete<PSPDEV>(dev);
-                        //    } 
-                        //}
+                    //a = Convert.ToString((MessageBox.Show("图形已修改，是否保存?", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information)));
+                    //if (ShowDialog == DialogResult.Cancel)
+                    //{
+                    //return;
+                    //}
+                    //}
+                    //else
+                    //{
+                    //    PSPDEV pspDev = new PSPDEV();
+                    //    pspDev.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                    //    IList list = Services.BaseService.GetList("SelectPSPDEVBySvgUID", pspDev);
+                    //    foreach (PSPDEV dev in list)
+                    //    {
+                    //        Services.BaseService.Delete<PSPDEV>(dev);
+                    //    } 
+                    //}
                     //}
                 }
-            }
-            catch (Exception e1) { }
+            } catch (Exception e1) { }
         }
-        private  DeviceCOL GetColValue(PSP_ElcDevice elcDEV,int order)
-        {
+        private DeviceCOL GetColValue(PSP_ElcDevice elcDEV, int order) {
             DeviceCOL devCol = new DeviceCOL();
-            if (order==0)
-            {
+            if (order == 0) {
                 devCol.COL1 = elcDEV.COL1;
                 devCol.COL2 = elcDEV.COL2;
                 devCol.COL3 = elcDEV.COL3;
@@ -2376,9 +2115,7 @@ namespace Itop.TLPsp.Graphical
                 devCol.COL18 = elcDEV.COL18;
                 devCol.COL19 = elcDEV.COL19;
                 devCol.COL20 = elcDEV.COL20;
-            }
-            else if (order==1)
-            {
+            } else if (order == 1) {
                 devCol.COL1 = elcDEV.COL21;
                 devCol.COL2 = elcDEV.COL22;
                 devCol.COL3 = elcDEV.COL23;
@@ -2399,9 +2136,7 @@ namespace Itop.TLPsp.Graphical
                 devCol.COL18 = elcDEV.COL38;
                 devCol.COL19 = elcDEV.COL39;
                 devCol.COL20 = elcDEV.COL40;
-            }
-            else if (order==2)
-            {
+            } else if (order == 2) {
                 devCol.COL1 = elcDEV.COL41;
                 devCol.COL2 = elcDEV.COL42;
                 devCol.COL3 = elcDEV.COL43;
@@ -2422,9 +2157,7 @@ namespace Itop.TLPsp.Graphical
                 devCol.COL18 = elcDEV.COL58;
                 devCol.COL19 = elcDEV.COL59;
                 devCol.COL20 = elcDEV.COL60;
-            }
-            else if (order==3)
-            {
+            } else if (order == 3) {
                 devCol.COL1 = elcDEV.COL61;
                 devCol.COL2 = elcDEV.COL62;
                 devCol.COL3 = elcDEV.COL63;
@@ -2448,17 +2181,13 @@ namespace Itop.TLPsp.Graphical
             }
             return devCol;
         }
-        private void ShowResult(int order)
-        {
-            try
-            {
+        private void ShowResult(int order) {
+            try {
                 XmlNodeList list = tlVectorControl1.SVGDocument.SelectNodes("svg/*[@flag='" + "1" + "']");
 
-                foreach (XmlNode node in list)
-                {
+                foreach (XmlNode node in list) {
                     SvgElement element = node as SvgElement;
-                    if ((element.GetAttribute("textn1id") == null || element.GetAttribute("textn1id") == "") && (element.GetAttribute("textn2id") == null || element.GetAttribute("textn2id") == ""))
-                    {
+                    if ((element.GetAttribute("textn1id") == null || element.GetAttribute("textn1id") == "") && (element.GetAttribute("textn2id") == null || element.GetAttribute("textn2id") == "")) {
                         tlVectorControl1.SVGDocument.CurrentElement = element;
                         tlVectorControl1.Delete();
                     }
@@ -2495,47 +2224,40 @@ namespace Itop.TLPsp.Graphical
                 //    standvolt = volt;
                 //    current = capability / (Math.Sqrt(3) * volt);
                 //};
-            
+
                 //SvgDocument.currentLayer = Layer.CreateNew("结果显示", tlVectorControl1.SVGDocument).ID;
                 tlVectorControl1.SVGDocument.AcceptChanges = true;
                 XmlNodeList useList = tlVectorControl1.SVGDocument.SelectNodes("svg/use");
                 XmlNodeList layerlist = tlVectorControl1.SVGDocument.GetElementsByTagName("layer");
                 Layer layResult;
                 bool lb = true;
-                foreach (Layer lay in layerlist)
-                {
-                    if (lay.GetAttribute("label")=="结果显示")
-                    {
+                foreach (Layer lay in layerlist) {
+                    if (lay.GetAttribute("label") == "结果显示") {
                         SvgDocument.currentLayer = lay.ID;
                         lb = false;
                     }
                 }
-                if (lb)
-                {
+                if (lb) {
                     SvgDocument.currentLayer = Layer.CreateNew("结果显示", tlVectorControl1.SVGDocument).ID;
-                }         
-                foreach (XmlNode node in useList)
-                {
+                }
+                foreach (XmlNode node in useList) {
                     XmlElement element = node as XmlElement;
                     //XmlNode text = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@ParentID='" + element.GetAttribute("id") + "']");
                     string strCon = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND SvgUID = '" + (element).GetAttribute("Deviceid") + "' AND Type = '01'";
                     IList listMX = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon);
-                    for (int i = 0; i < listMX.Count; i++)
-                    {
+                    for (int i = 0; i < listMX.Count; i++) {
                         PSPDEV elementDEV = (PSPDEV)(listMX[i]);
                         PSP_ElcDevice elcDEV = new PSP_ElcDevice();
                         elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
                         elcDEV.DeviceSUID = ((PSPDEV)listMX[i]).SUID;
                         elcDEV = (PSP_ElcDevice)Services.BaseService.GetObject("SelectPSP_ElcDeviceByKey", elcDEV);
-                        if (elcDEV != null)
-                        {
+                        if (elcDEV != null) {
                             RectangleF bound = ((IGraph)element).GetBounds();
                             XmlElement n1 = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@textn1id='" + element.GetAttribute("Deviceid") + "']") as XmlElement;
                             XmlElement n2 = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@textn2id='" + element.GetAttribute("Deviceid") + "']") as XmlElement;
                             Layer la = tlVectorControl1.SVGDocument.GetLayerByID(element.GetAttribute("layer"));
-                          
-                            if (n1 == null)
-                            {
+
+                            if (n1 == null) {
                                 n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                                 n1.SetAttribute("x", Convert.ToString(bound.X));
                                 n1.SetAttribute("y", Convert.ToString(bound.Y - (i + 1) * 10 * tlVectorControl1.ScaleRatio));
@@ -2543,7 +2265,7 @@ namespace Itop.TLPsp.Graphical
                                 n1.SetAttribute("font-family", "楷体_GB2312");
                                 n1.SetAttribute("layer", SvgDocument.currentLayer);
                                 //MessageBox.Show(Convert.ToString(n1.InnerText));
-                            
+
                                 //n1.SetAttribute("layer", la.ID);
                                 //MessageBox.Show(Convert.ToString(n1.InnerText));
                                 n1.SetAttribute("flag", "1");
@@ -2551,23 +2273,18 @@ namespace Itop.TLPsp.Graphical
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
                             }
 
-                            if (elementDEV.KSwitchStatus=="1")
-                            {
+                            if (elementDEV.KSwitchStatus == "1") {
                                 n1.InnerText = "0";
-                            } 
-                            else
-                            {
+                            } else {
                                 n1.InnerText = Convert.ToDouble(GetColValue(elcDEV, order).COL2).ToString("N2");
                             }
-                            
 
-                            if (Convert.ToDouble(GetColValue(elcDEV, order).COL2) > elementDEV.jV || Convert.ToDouble(GetColValue(elcDEV, order).COL2) <elementDEV.iV)//电压越限，需修改
+
+                            if (Convert.ToDouble(GetColValue(elcDEV, order).COL2) > elementDEV.jV || Convert.ToDouble(GetColValue(elcDEV, order).COL2) < elementDEV.iV)//电压越限，需修改
                                 n1.SetAttribute("stroke", "#FF0000");
-                            if (elementDEV.NodeType == "0")
-                            {
-                               
-                                if (n2 == null)
-                                {
+                            if (elementDEV.NodeType == "0") {
+
+                                if (n2 == null) {
                                     n2 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                                     n2.SetAttribute("x", Convert.ToString(bound.X));
                                     n2.SetAttribute("y", Convert.ToString(bound.Y + bound.Height + 20));
@@ -2578,29 +2295,22 @@ namespace Itop.TLPsp.Graphical
                                     n2.SetAttribute("textn2id", element.GetAttribute("Deviceid"));
                                     tlVectorControl1.SVGDocument.RootElement.AppendChild(n2);
                                 }
-                                if (elementDEV.KSwitchStatus=="1")
-                                {
+                                if (elementDEV.KSwitchStatus == "1") {
                                     n2.InnerText = "0" + "j" + "0";
-                                } 
-                                else
-                                {
-                                    if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) >= 0)
-                                    {
+                                } else {
+                                    if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) >= 0) {
                                         n2.InnerText = Convert.ToDouble(GetColValue(elcDEV, order).COL4).ToString("N2") + "  + " + "j" + Convert.ToDouble(GetColValue(elcDEV, order).COL5).ToString("N2");
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         n2.InnerText = Convert.ToDouble(GetColValue(elcDEV, order).COL4).ToString("N2") + "  - " + "j" + (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL5))).ToString("N2");
                                     }
                                 }
 
- 
+
 
                                 double tempi = Convert.ToDouble(GetColValue(elcDEV, order).COL4);
                                 double tempj = Convert.ToDouble(GetColValue(elcDEV, order).COL5);
                                 double temptotal = Math.Sqrt(tempi * tempi + tempj * tempj);
-                                if (temptotal > Convert.ToDouble(elementDEV.Burthen))
-                                {
+                                if (temptotal > Convert.ToDouble(elementDEV.Burthen)) {
                                     n2.SetAttribute("stroke", "#FF0000");
                                 }
                                 //tlVectorControl1.SVGDocument.RootElement.AppendChild(n2);                           
@@ -2613,32 +2323,27 @@ namespace Itop.TLPsp.Graphical
                     }
                 }
                 XmlNodeList polyLineList = tlVectorControl1.SVGDocument.SelectNodes("svg/polyline");
-            
-                foreach (XmlNode node in polyLineList)
-                {
-           
-                    XmlElement element = node as XmlElement;                 
+
+                foreach (XmlNode node in polyLineList) {
+
+                    XmlElement element = node as XmlElement;
                     PSP_ElcDevice elcDEV = new PSP_ElcDevice();
                     elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
                     elcDEV.DeviceSUID = element.GetAttribute("Deviceid");
-                    elcDEV = (PSP_ElcDevice)Services.BaseService.GetObject("SelectPSP_ElcDeviceByKey", elcDEV);                 
+                    elcDEV = (PSP_ElcDevice)Services.BaseService.GetObject("SelectPSP_ElcDeviceByKey", elcDEV);
                     PSPDEV elementDEV = new PSPDEV();
                     Layer la = tlVectorControl1.SVGDocument.GetLayerByID(element.GetAttribute("layer"));
-                    if (elcDEV!=null)
-                    {
+                    if (elcDEV != null) {
                         elementDEV.SUID = elcDEV.DeviceSUID;
                         elementDEV = (PSPDEV)Services.BaseService.GetObject("SelectPSPDEVByKey", elementDEV);
-                     
-                    }    
-                    else
-                    {
+
+                    } else {
                         continue;
                     }
 
-                    if (elementDEV != null)
-                    {
+                    if (elementDEV != null) {
                         PointF[] t = ((Polyline)element).Points;
-                        PointF[] t2 = ((Polyline)element).FirstTwoPoint; 
+                        PointF[] t2 = ((Polyline)element).FirstTwoPoint;
                         t = t2;
                         PointF midt = new PointF((float)((t2[0].X + t2[1].X) / 2), (float)((t2[0].Y + t2[1].Y) / 2));
                         float angel = 0f;
@@ -2659,34 +2364,25 @@ namespace Itop.TLPsp.Graphical
 
                         XmlNode firstNodeElement = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@id='" + element.GetAttribute("FirstNode") + "']");
                         XmlNode lastNodeElement = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@id='" + element.GetAttribute("LastNode") + "']");
-                        if(firstNodeElement!=null&&lastNodeElement!=null)
-                        {
-                            if ((angel > 10 && angel < 90) || (angel < 0 && Math.Abs(angel) < 90) || (angel > 180 && angel < 350))
-                            {
-                                if (t2[0].X > ((IGraph)firstNodeElement).CenterPoint.X)
-                                {
+                        if (firstNodeElement != null && lastNodeElement != null) {
+                            if ((angel > 10 && angel < 90) || (angel < 0 && Math.Abs(angel) < 90) || (angel > 180 && angel < 350)) {
+                                if (t2[0].X > ((IGraph)firstNodeElement).CenterPoint.X) {
                                     pStart = new PointF(center.X - (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y + (float)(23 * Math.Cos((angel) * Math.PI / 180)));
                                     pStart2 = new PointF(center.X + (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y - (float)(23 * Math.Cos((angel) * Math.PI / 180)));
                                 }
-                            }
-                            else if ((angel >= 0 && angel <= 10) || (angel >= 350 && angel <= 360) || (angel < 0 && Math.Abs(angel) <= 90))
-                            {
-                                if (t2[0].Y > ((IGraph)firstNodeElement).CenterPoint.Y)
-                                {
+                            } else if ((angel >= 0 && angel <= 10) || (angel >= 350 && angel <= 360) || (angel < 0 && Math.Abs(angel) <= 90)) {
+                                if (t2[0].Y > ((IGraph)firstNodeElement).CenterPoint.Y) {
                                     pStart = new PointF(center.X - (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y + (float)(23 * Math.Cos((angel) * Math.PI / 180)));
                                     pStart2 = new PointF(center.X + (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y - (float)(23 * Math.Cos((angel) * Math.PI / 180)));
                                 }
-                            }
-                            else if ((angel < 0 && Math.Abs(angel) > 90) || (angel >= 90 && angel <= 180))
-                            {
-                                if (t2[0].Y > ((IGraph)firstNodeElement).CenterPoint.Y)
-                                {
+                            } else if ((angel < 0 && Math.Abs(angel) > 90) || (angel >= 90 && angel <= 180)) {
+                                if (t2[0].Y > ((IGraph)firstNodeElement).CenterPoint.Y) {
                                     pStart = new PointF(center.X - (float)(7 * Math.Sin((angel) * Math.PI / 180)), center.Y + (float)(7 * Math.Cos((angel) * Math.PI / 180)));
                                     pStart2 = new PointF(center.X + (float)(7 * Math.Sin((angel) * Math.PI / 180)), center.Y - (float)(7 * Math.Cos((angel) * Math.PI / 180)));
                                 }
                             }
                         }
-                       
+
 
                         //if (t2[0].X > ((IGraph)firstNodeElement).CenterPoint.X || t2[0].Y < ((IGraph)firstNodeElement).CenterPoint.Y)
                         //{
@@ -2702,11 +2398,10 @@ namespace Itop.TLPsp.Graphical
 
 
                         PointF newp1 = new PointF(t[0].X + (t[1].X - t[0].X) / 2 - (float)(15 * Math.Sin(angel)), t[0].Y + (t[1].Y - t[0].Y) / 2 - (float)(15 * Math.Cos(angel)));
-                      
-                     
-                       
-                        if (n1 == null)
-                        {
+
+
+
+                        if (n1 == null) {
                             n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                             n1.SetAttribute("x", Convert.ToString(pStart.X));
                             n1.SetAttribute("y", Convert.ToString(pStart.Y));
@@ -2727,48 +2422,35 @@ namespace Itop.TLPsp.Graphical
                                 tlVectorControl1.RotateSelection(180, pStart);
                         }
 
-                        if (elementDEV.KSwitchStatus=="1")
-                        {
+                        if (elementDEV.KSwitchStatus == "1") {
                             n1.InnerText = "0" + "j" + "0";
-                        } 
-                        else
-                        {
-                            if (Convert.ToDouble(GetColValue(elcDEV, order).COL4) >= 0)
-                            {
-                                if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) >= 0)
-                                {
+                        } else {
+                            if (Convert.ToDouble(GetColValue(elcDEV, order).COL4) >= 0) {
+                                if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) >= 0) {
                                     n1.InnerText = (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL4))).ToString("N2") + " + j" + (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL5))).ToString("N2");
-                                }
-                                else
-                                {
+                                } else {
                                     n1.InnerText = (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL4))).ToString("N2") + " - j" + (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL5))).ToString("N2");
                                 }
-                            } 
-                            else
-                            {
-                                if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) >= 0)
-                                {
+                            } else {
+                                if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) >= 0) {
                                     n1.InnerText = (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL4))).ToString("N2") + " - j" + (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL5))).ToString("N2");
-                                }
-                                else
-                                {
+                                } else {
                                     n1.InnerText = (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL4))).ToString("N2") + " + j" + (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL5))).ToString("N2");
                                 }
                             }
-                           
-                        }
-                      
 
-              
+                        }
+
+
+
                         if (Convert.ToDouble(GetColValue(elcDEV, order).COL14) > (double)(elementDEV.Burthen))//电流越限，需修改。
-                            n1.SetAttribute("stroke", "#FF0000");               
+                            n1.SetAttribute("stroke", "#FF0000");
 
 
                         PointF p1 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 10) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 10) * Math.PI / 180)));
                         PointF p2 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 350) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 350) * Math.PI / 180)));
 
-                        if (Convert.ToDouble(GetColValue(elcDEV, order).COL4) < 0)
-                        {
+                        if (Convert.ToDouble(GetColValue(elcDEV, order).COL4) < 0) {
                             p1 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 170) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 170) * Math.PI / 180)));
                             p2 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 190) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 190) * Math.PI / 180)));
                         }
@@ -2798,31 +2480,25 @@ namespace Itop.TLPsp.Graphical
                         //tlVectorControl1.RotateSelection(angel, pStart);
                         //if (Math.Abs(angel) > 90)
                         //    tlVectorControl1.RotateSelection(180, pStart);
-                     
+
                         tlVectorControl1.Refresh();
                     }
                 }
-            }
-            catch (System.Exception ex)
-            {
+            } catch (System.Exception ex) {
                 MessageBox.Show("参数错误，请调整参数后重新计算！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            tlVectorControl1.SVGDocument.CurrentLayer =(Layer)tlVectorControl1.SVGDocument.Layers[0];
+            tlVectorControl1.SVGDocument.CurrentLayer = (Layer)tlVectorControl1.SVGDocument.Layers[0];
 
         }
-        private void ShowResult(int order,frnReport wFrom)
-        {
+        private void ShowResult(int order, frnReport wFrom) {
             wFrom.ShowText += "\r\n开始显示计算结果\t" + System.DateTime.Now.ToString();
-            try
-            {
+            try {
                 XmlNodeList list = tlVectorControl1.SVGDocument.SelectNodes("svg/*[@flag='" + "1" + "']");
 
-                foreach (XmlNode node in list)
-                {
+                foreach (XmlNode node in list) {
                     SvgElement element = node as SvgElement;
-                    if ((element.GetAttribute("textn1id") == null || element.GetAttribute("textn1id") == "") && (element.GetAttribute("textn2id") == null || element.GetAttribute("textn2id") == ""))
-                    {
+                    if ((element.GetAttribute("textn1id") == null || element.GetAttribute("textn1id") == "") && (element.GetAttribute("textn2id") == null || element.GetAttribute("textn2id") == "")) {
                         tlVectorControl1.SVGDocument.CurrentElement = element;
                         tlVectorControl1.Delete();
                     }
@@ -2866,27 +2542,22 @@ namespace Itop.TLPsp.Graphical
                 XmlNodeList layerlist = tlVectorControl1.SVGDocument.GetElementsByTagName("layer");
                 Layer layResult;
                 bool lb = true;
-                foreach (Layer lay in layerlist)
-                {
-                    if (lay.GetAttribute("label") == "结果显示")
-                    {
+                foreach (Layer lay in layerlist) {
+                    if (lay.GetAttribute("label") == "结果显示") {
                         SvgDocument.currentLayer = lay.ID;
                         lb = false;
                     }
                 }
-                if (lb)
-                {
+                if (lb) {
                     SvgDocument.currentLayer = Layer.CreateNew("结果显示", tlVectorControl1.SVGDocument).ID;
                 }
                 wFrom.ShowText += "\r\n正在显示变电站信息\t" + System.DateTime.Now.ToString();
                 int count = 0;
-                foreach (XmlNode node in useList)
-                {
+                foreach (XmlNode node in useList) {
                     count++;
                     XmlElement element = node as XmlElement;
-                    string strCon = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND SvgUID = '" + (element).GetAttribute("Deviceid") + "' AND Type = '01' order by ratevolt desc,referencevolt desc,col2 desc,col22 desc,col42 desc,col62 desc"; 
-                    switch(order)
-                    {
+                    string strCon = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND SvgUID = '" + (element).GetAttribute("Deviceid") + "' AND Type = '01' order by ratevolt desc,referencevolt desc,col2 desc,col22 desc,col42 desc,col62 desc";
+                    switch (order) {
                         case 0:
                             strCon = ",PSP_ELCDEVICE WHERE PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + tlVectorControl1.SVGDocument.SvgdataUid + "' AND SvgUID = '" + (element).GetAttribute("Deviceid") + "' AND Type = '01' order by ratevolt desc,referencevolt desc,col2 desc";
                             break;
@@ -2908,23 +2579,20 @@ namespace Itop.TLPsp.Graphical
                     IList listMX = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon);
                     if (listMX.Count <= 0)
                         continue;
-                  
-                    if ((PSPDEV)(listMX[0])!=null)
-                    {
+
+                    if ((PSPDEV)(listMX[0]) != null) {
                         PSPDEV elementDEV = (PSPDEV)(listMX[0]);
                         PSP_ElcDevice elcDEV = new PSP_ElcDevice();
                         elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
                         elcDEV.DeviceSUID = ((PSPDEV)listMX[0]).SUID;
                         elcDEV = (PSP_ElcDevice)Services.BaseService.GetObject("SelectPSP_ElcDeviceByKey", elcDEV);
-                        if (elcDEV != null)
-                        {
+                        if (elcDEV != null) {
                             RectangleF bound = ((IGraph)element).GetBounds();
                             XmlElement n1 = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@textn1id='" + element.GetAttribute("Deviceid") + "']") as XmlElement;
                             XmlElement n2 = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@textn2id='" + element.GetAttribute("Deviceid") + "']") as XmlElement;
                             Layer la = tlVectorControl1.SVGDocument.GetLayerByID(element.GetAttribute("layer"));
 
-                            if (n1 == null)
-                            {
+                            if (n1 == null) {
                                 n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                                 n1.SetAttribute("x", Convert.ToString(bound.X));
                                 n1.SetAttribute("y", Convert.ToString(bound.Y - (0 + 1) * 10 * tlVectorControl1.ScaleRatio));
@@ -2940,26 +2608,20 @@ namespace Itop.TLPsp.Graphical
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
                             }
 
-                            if (elementDEV.KSwitchStatus == "1")
-                            {
+                            if (elementDEV.KSwitchStatus == "1") {
                                 n1.InnerText = "0";
-                            }
-                            else
-                            {
+                            } else {
                                 n1.InnerText = Convert.ToDouble(GetColValue(elcDEV, order).COL2).ToString("N2");
                             }
 
-                            if (elementDEV.KSwitchStatus == "0")
-                            {
+                            if (elementDEV.KSwitchStatus == "0") {
                                 if (Convert.ToDouble(GetColValue(elcDEV, order).COL2 == "" ? "0" : GetColValue(elcDEV, order).COL2) > elementDEV.jV || Convert.ToDouble(GetColValue(elcDEV, order).COL2 == "" ? "0" : GetColValue(elcDEV, order).COL2) < elementDEV.iV)//电压越限，需修改
                                     n1.SetAttribute("stroke", "#FF0000");
-                               
-                            }
-                            if (elementDEV.NodeType == "0")
-                            {
 
-                                if (n2 == null)
-                                {
+                            }
+                            if (elementDEV.NodeType == "0") {
+
+                                if (n2 == null) {
                                     n2 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                                     n2.SetAttribute("x", Convert.ToString(bound.X));
                                     n2.SetAttribute("y", Convert.ToString(bound.Y + bound.Height + 20));
@@ -2970,18 +2632,12 @@ namespace Itop.TLPsp.Graphical
                                     n2.SetAttribute("textn2id", element.GetAttribute("Deviceid"));
                                     tlVectorControl1.SVGDocument.RootElement.AppendChild(n2);
                                 }
-                                if (elementDEV.KSwitchStatus == "1")
-                                {
+                                if (elementDEV.KSwitchStatus == "1") {
                                     n2.InnerText = "0" + "j" + "0";
-                                }
-                                else
-                                {
-                                    if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) >= 0)
-                                    {
+                                } else {
+                                    if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) >= 0) {
                                         n2.InnerText = Convert.ToDouble(GetColValue(elcDEV, order).COL4).ToString("N2") + "  + " + "j" + Convert.ToDouble(GetColValue(elcDEV, order).COL5).ToString("N2");
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         n2.InnerText = Convert.ToDouble(GetColValue(elcDEV, order).COL4).ToString("N2") + "  - " + "j" + (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL5))).ToString("N2");
                                     }
                                 }
@@ -2991,8 +2647,7 @@ namespace Itop.TLPsp.Graphical
                                 double tempi = Convert.ToDouble(GetColValue(elcDEV, order).COL4);
                                 double tempj = Convert.ToDouble(GetColValue(elcDEV, order).COL5);
                                 double temptotal = Math.Sqrt(tempi * tempi + tempj * tempj);
-                                if (temptotal > Convert.ToDouble(elementDEV.Burthen))
-                                {
+                                if (temptotal > Convert.ToDouble(elementDEV.Burthen)) {
                                     n2.SetAttribute("stroke", "#FF0000");
                                 }
                                 //tlVectorControl1.SVGDocument.RootElement.AppendChild(n2);                           
@@ -3006,9 +2661,8 @@ namespace Itop.TLPsp.Graphical
                 }
                 XmlNodeList polyLineList = tlVectorControl1.SVGDocument.SelectNodes("svg/polyline");
                 wFrom.ShowText += "\r\n正在显示线路信息\t" + System.DateTime.Now.ToString();
-                foreach (XmlNode node in polyLineList)
-                {
-                  
+                foreach (XmlNode node in polyLineList) {
+
 
                     XmlElement element = node as XmlElement;
                     PSP_ElcDevice elcDEV = new PSP_ElcDevice();
@@ -3017,19 +2671,15 @@ namespace Itop.TLPsp.Graphical
                     elcDEV = (PSP_ElcDevice)Services.BaseService.GetObject("SelectPSP_ElcDeviceByKey", elcDEV);
                     PSPDEV elementDEV = new PSPDEV();
                     Layer la = tlVectorControl1.SVGDocument.GetLayerByID(element.GetAttribute("layer"));
-                    if (elcDEV != null)
-                    {
+                    if (elcDEV != null) {
                         elementDEV.SUID = elcDEV.DeviceSUID;
                         elementDEV = (PSPDEV)Services.BaseService.GetObject("SelectPSPDEVByKey", elementDEV);
 
-                    }
-                    else
-                    {
+                    } else {
                         continue;
                     }
 
-                    if (elementDEV != null)
-                    {
+                    if (elementDEV != null) {
                         PointF[] t = ((Polyline)element).Points;
                         PointF[] t2 = ((Polyline)element).FirstTwoPoint;
                         t = t2;
@@ -3052,28 +2702,19 @@ namespace Itop.TLPsp.Graphical
 
                         XmlNode firstNodeElement = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@id='" + element.GetAttribute("FirstNode") + "']");
                         XmlNode lastNodeElement = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@id='" + element.GetAttribute("LastNode") + "']");
-                        if (firstNodeElement != null && lastNodeElement != null)
-                        {
-                            if ((angel > 10 && angel < 90) || (angel < 0 && Math.Abs(angel) < 90) || (angel > 180 && angel < 350))
-                            {
-                                if (t2[0].X > ((IGraph)firstNodeElement).CenterPoint.X)
-                                {
+                        if (firstNodeElement != null && lastNodeElement != null) {
+                            if ((angel > 10 && angel < 90) || (angel < 0 && Math.Abs(angel) < 90) || (angel > 180 && angel < 350)) {
+                                if (t2[0].X > ((IGraph)firstNodeElement).CenterPoint.X) {
                                     pStart = new PointF(center.X - (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y + (float)(23 * Math.Cos((angel) * Math.PI / 180)));
                                     pStart2 = new PointF(center.X + (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y - (float)(23 * Math.Cos((angel) * Math.PI / 180)));
                                 }
-                            }
-                            else if ((angel >= 0 && angel <= 10) || (angel >= 350 && angel <= 360) || (angel < 0 && Math.Abs(angel) <= 90))
-                            {
-                                if (t2[0].Y > ((IGraph)firstNodeElement).CenterPoint.Y)
-                                {
+                            } else if ((angel >= 0 && angel <= 10) || (angel >= 350 && angel <= 360) || (angel < 0 && Math.Abs(angel) <= 90)) {
+                                if (t2[0].Y > ((IGraph)firstNodeElement).CenterPoint.Y) {
                                     pStart = new PointF(center.X - (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y + (float)(23 * Math.Cos((angel) * Math.PI / 180)));
                                     pStart2 = new PointF(center.X + (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y - (float)(23 * Math.Cos((angel) * Math.PI / 180)));
                                 }
-                            }
-                            else if ((angel < 0 && Math.Abs(angel) > 90) || (angel >= 90 && angel <= 180))
-                            {
-                                if (t2[0].Y > ((IGraph)firstNodeElement).CenterPoint.Y)
-                                {
+                            } else if ((angel < 0 && Math.Abs(angel) > 90) || (angel >= 90 && angel <= 180)) {
+                                if (t2[0].Y > ((IGraph)firstNodeElement).CenterPoint.Y) {
                                     pStart = new PointF(center.X - (float)(7 * Math.Sin((angel) * Math.PI / 180)), center.Y + (float)(7 * Math.Cos((angel) * Math.PI / 180)));
                                     pStart2 = new PointF(center.X + (float)(7 * Math.Sin((angel) * Math.PI / 180)), center.Y - (float)(7 * Math.Cos((angel) * Math.PI / 180)));
                                 }
@@ -3098,8 +2739,7 @@ namespace Itop.TLPsp.Graphical
 
 
 
-                        if (n1 == null)
-                        {
+                        if (n1 == null) {
                             n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                             n1.SetAttribute("x", Convert.ToString(pStart.X));
                             n1.SetAttribute("y", Convert.ToString(pStart.Y));
@@ -3120,18 +2760,12 @@ namespace Itop.TLPsp.Graphical
                                 tlVectorControl1.RotateSelection(180, pStart);
                         }
 
-                        if (elementDEV.KSwitchStatus == "1")
-                        {
+                        if (elementDEV.KSwitchStatus == "1") {
                             n1.InnerText = "0" + "j" + "0";
-                        }
-                        else
-                        {
-                            if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) * Convert.ToDouble(GetColValue(elcDEV, order).COL4) >= 0)
-                            {
+                        } else {
+                            if (Convert.ToDouble(GetColValue(elcDEV, order).COL5) * Convert.ToDouble(GetColValue(elcDEV, order).COL4) >= 0) {
                                 n1.InnerText = (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL4))).ToString("N2") + " + j" + (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL5))).ToString("N2");
-                            }
-                            else
-                            {
+                            } else {
                                 n1.InnerText = (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL4))).ToString("N2") + " - j" + (Math.Abs(Convert.ToDouble(GetColValue(elcDEV, order).COL5))).ToString("N2");
                             }
 
@@ -3140,8 +2774,7 @@ namespace Itop.TLPsp.Graphical
                             PointF p1 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 10) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 10) * Math.PI / 180)));
                             PointF p2 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 350) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 350) * Math.PI / 180)));
 
-                            if (Convert.ToDouble(GetColValue(elcDEV, order).COL4) < 0)
-                            {
+                            if (Convert.ToDouble(GetColValue(elcDEV, order).COL4) < 0) {
                                 p1 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 170) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 170) * Math.PI / 180)));
                                 p2 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 190) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 190) * Math.PI / 180)));
                             }
@@ -3161,9 +2794,9 @@ namespace Itop.TLPsp.Graphical
                             tlVectorControl1.SVGDocument.CurrentElement = n2 as SvgElement;
 
                         }
-                     
+
                         n1.SetAttribute("font-family", "楷体_GB2312");
-                       
+
                         //tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
                         //tlVectorControl1.Operation = ToolOperation.Select;
 
@@ -3178,9 +2811,7 @@ namespace Itop.TLPsp.Graphical
                         tlVectorControl1.Refresh();
                     }
                 }
-            }
-            catch (System.Exception ex)
-            {
+            } catch (System.Exception ex) {
                 wFrom.ShowText += "\r\n结果显示出错，请检查数据和图形是否一致\t" + System.DateTime.Now.ToString();
                 MessageBox.Show("参数错误，请调整参数后重新计算！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -3189,18 +2820,14 @@ namespace Itop.TLPsp.Graphical
             wFrom.ShowText += "\r\n结果显示完毕\t " + System.DateTime.Now.ToString();
             tlVectorControl1.SVGDocument.CurrentLayer = (Layer)tlVectorControl1.SVGDocument.Layers[0];
         }
-        private void ShowPowerLoss()
-        {
+        private void ShowPowerLoss() {
             int order = 1;
-            try
-            {
+            try {
                 XmlNodeList list = tlVectorControl1.SVGDocument.SelectNodes("svg/*[@flag='" + "1" + "']");
 
-                foreach (XmlNode node in list)
-                {
+                foreach (XmlNode node in list) {
                     SvgElement element = node as SvgElement;
-                    if ((element.GetAttribute("textn1id") == null || element.GetAttribute("textn1id") == "") && (element.GetAttribute("textn2id") == null || element.GetAttribute("textn2id") == ""))
-                    {
+                    if ((element.GetAttribute("textn1id") == null || element.GetAttribute("textn1id") == "") && (element.GetAttribute("textn2id") == null || element.GetAttribute("textn2id") == "")) {
                         tlVectorControl1.SVGDocument.CurrentElement = element;
                         tlVectorControl1.Delete();
                     }
@@ -3304,38 +2931,30 @@ namespace Itop.TLPsp.Graphical
                 XmlNodeList layerlist = tlVectorControl1.SVGDocument.GetElementsByTagName("layer");
                 Layer layResult;
                 bool lb = true;
-                foreach (Layer lay in layerlist)
-                {
-                    if (lay.GetAttribute("label") == "结果显示")
-                    {
+                foreach (Layer lay in layerlist) {
+                    if (lay.GetAttribute("label") == "结果显示") {
                         SvgDocument.currentLayer = lay.ID;
                         lb = false;
                     }
                 }
-                if (lb)
-                {
+                if (lb) {
                     SvgDocument.currentLayer = Layer.CreateNew("结果显示", tlVectorControl1.SVGDocument).ID;
                 }
-                foreach (XmlNode node in polyLineList)
-                {
+                foreach (XmlNode node in polyLineList) {
                     XmlElement element = node as XmlElement;
                     PSP_ElcDevice elcDEV = new PSP_ElcDevice();
                     elcDEV.ProjectSUID = tlVectorControl1.SVGDocument.SvgdataUid;
                     elcDEV.DeviceSUID = element.GetAttribute("Deviceid");
                     elcDEV = (PSP_ElcDevice)Services.BaseService.GetObject("SelectPSP_ElcDeviceByKey", elcDEV);
                     PSPDEV elementDEV = new PSPDEV();
-                    if (elcDEV != null)
-                    {
+                    if (elcDEV != null) {
                         elementDEV.SUID = elcDEV.DeviceSUID;
                         elementDEV = (PSPDEV)Services.BaseService.GetObject("SelectPSPDEVByKey", elementDEV);
-                    }
-                    else
-                    {
+                    } else {
                         continue;
                     }
 
-                    if (elementDEV != null&&elementDEV.KSwitchStatus=="0")
-                    {
+                    if (elementDEV != null && elementDEV.KSwitchStatus == "0") {
                         PointF[] t = ((Polyline)element).Points;
                         PointF[] t2 = ((Polyline)element).FirstTwoPoint; t = t2;
 
@@ -3350,7 +2969,7 @@ namespace Itop.TLPsp.Graphical
 
                         PointF center = new PointF((float)(t[0].X + (t[1].X - t[0].X) / 2), (float)(t[0].Y + (t[1].Y - t[0].Y) / 2));
                         XmlElement n1 = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@textn1id='" + element.GetAttribute("Deviceid") + "']") as XmlElement;
-                       // XmlElement n2 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
+                        // XmlElement n2 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
                         //XmlElement n3 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
 
                         PointF pStart = new PointF(center.X + (float)(15 * Math.Sin((angel) * Math.PI / 180)), center.Y - (float)(15 * Math.Cos((angel) * Math.PI / 180)));
@@ -3360,13 +2979,10 @@ namespace Itop.TLPsp.Graphical
                         XmlNode lastNodeElement = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@id='" + element.GetAttribute("LastNode") + "']");
                         if (firstNodeElement == null || lastNodeElement == null)
                             continue;
-                        if (t2[0].X > ((IGraph)firstNodeElement).CenterPoint.X || t2[0].Y < ((IGraph)firstNodeElement).CenterPoint.Y)
-                        {
+                        if (t2[0].X > ((IGraph)firstNodeElement).CenterPoint.X || t2[0].Y < ((IGraph)firstNodeElement).CenterPoint.Y) {
                             pStart = new PointF(center.X - (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y + (float)(23 * Math.Cos((angel) * Math.PI / 180)));
                             pStart2 = new PointF(center.X + (float)(23 * Math.Sin((angel) * Math.PI / 180)), center.Y - (float)(23 * Math.Cos((angel) * Math.PI / 180)));
-                        }
-                        else
-                        {
+                        } else {
                             pStart = new PointF(center.X - (float)(7 * Math.Sin((angel) * Math.PI / 180)), center.Y + (float)(7 * Math.Cos((angel) * Math.PI / 180)));
                             pStart2 = new PointF(center.X + (float)(7 * Math.Sin((angel) * Math.PI / 180)), center.Y - (float)(7 * Math.Cos((angel) * Math.PI / 180)));
                         }
@@ -3374,8 +2990,7 @@ namespace Itop.TLPsp.Graphical
 
 
                         PointF newp1 = new PointF(t[0].X + (t[1].X - t[0].X) / 2 - (float)(15 * Math.Sin(angel)), t[0].Y + (t[1].Y - t[0].Y) / 2 - (float)(15 * Math.Cos(angel)));
-                        if (n1 == null)
-                        {
+                        if (n1 == null) {
                             n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                             n1.SetAttribute("x", Convert.ToString(pStart.X));
                             n1.SetAttribute("y", Convert.ToString(pStart.Y));
@@ -3396,12 +3011,9 @@ namespace Itop.TLPsp.Graphical
                         }
 
 
-                        if ((Convert.ToDouble(GetColValue(elcDEV, order).COL7) + Convert.ToDouble(GetColValue(elcDEV, order).COL11)) * (Convert.ToDouble(GetColValue(elcDEV, order).COL6) + Convert.ToDouble(GetColValue(elcDEV, order).COL10)) >= 0)
-                        {
+                        if ((Convert.ToDouble(GetColValue(elcDEV, order).COL7) + Convert.ToDouble(GetColValue(elcDEV, order).COL11)) * (Convert.ToDouble(GetColValue(elcDEV, order).COL6) + Convert.ToDouble(GetColValue(elcDEV, order).COL10)) >= 0) {
                             n1.InnerText = (Math.Abs((Convert.ToDouble(GetColValue(elcDEV, order).COL6) + Convert.ToDouble(GetColValue(elcDEV, order).COL10)))).ToString("N2") + " + j" + (Math.Abs((Convert.ToDouble(GetColValue(elcDEV, order).COL7) + Convert.ToDouble(GetColValue(elcDEV, order).COL11)))).ToString("N2");
-                        }
-                        else
-                        {
+                        } else {
                             n1.InnerText = (Math.Abs((Convert.ToDouble(GetColValue(elcDEV, order).COL6) + Convert.ToDouble(GetColValue(elcDEV, order).COL10)))).ToString("N2") + " - j" + (Math.Abs((Convert.ToDouble(GetColValue(elcDEV, order).COL7) + Convert.ToDouble(GetColValue(elcDEV, order).COL11)))).ToString("N2");
                         }
 
@@ -3415,8 +3027,7 @@ namespace Itop.TLPsp.Graphical
                         PointF p2 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 350) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 350) * Math.PI / 180)));
 
                         //if ((Convert.ToDouble(GetColValue(elcDEV, order).COL6) + Convert.ToDouble(GetColValue(elcDEV, order).COL10)) < 0)
-                        if (Convert.ToDouble(GetColValue(elcDEV, order).COL4) < 0)
-                        {
+                        if (Convert.ToDouble(GetColValue(elcDEV, order).COL4) < 0) {
                             p1 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 170) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 170) * Math.PI / 180)));
                             p2 = new PointF(midt.X - (float)(10 * Math.Cos((angel + 190) * Math.PI / 180)), midt.Y - (float)(10 * Math.Sin((angel + 190) * Math.PI / 180)));
                         }
@@ -3449,51 +3060,37 @@ namespace Itop.TLPsp.Graphical
                         tlVectorControl1.Refresh();
                     }
                 }
-            }
-            catch (System.Exception ex)
-            {
+            } catch (System.Exception ex) {
                 MessageBox.Show("参数错误，请调整参数后重新计算！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
 
-        }      
+        }
 
 
-        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            if (e.ClickedItem.Text == "属性")
-            {
+        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+            if (e.ClickedItem.Text == "属性") {
                 UseProperty();
-            }
-            else if (e.ClickedItem.Text == "不打印节点")
-            {
+            } else if (e.ClickedItem.Text == "不打印节点") {
                 SvgElement sub = tlVectorControl1.SVGDocument.CurrentElement;
-                if (sub!=null)
-                {
+                if (sub != null) {
                     sub.SetAttribute("print", "no");
                     XmlNodeList listText = tlVectorControl1.SVGDocument.SelectNodes("svg/*[@ParentID='" + sub.ID + "']");
-                    foreach (XmlNode node in listText)
-                    {
+                    foreach (XmlNode node in listText) {
                         (node as SvgElement).SetAttribute("print", "no");
                     }
                 }
-            }
-            else if (e.ClickedItem.Text == "打印节点")
-            {
+            } else if (e.ClickedItem.Text == "打印节点") {
                 SvgElement sub = tlVectorControl1.SVGDocument.CurrentElement;
-                if (sub!=null)
-                {
+                if (sub != null) {
                     sub.SetAttribute("print", "yes");
                     XmlNodeList listText = tlVectorControl1.SVGDocument.SelectNodes("svg/*[@ParentID='" + sub.ID + "']");
-                    foreach (XmlNode node in listText)
-                    {
+                    foreach (XmlNode node in listText) {
                         (node as SvgElement).SetAttribute("print", "yes");
                     }
                 }
-            }
-            else if (e.ClickedItem.Text == "区域打印")
-            {
+            } else if (e.ClickedItem.Text == "区域打印") {
                 setTJhide();
                 PrintHelper ph = new PrintHelper(tlVectorControl1, mapview);
                 ph.blshowflag = false;
@@ -3502,20 +3099,18 @@ namespace Itop.TLPsp.Graphical
                 dlg.ShowDialog();
                 setTJshow();
                 return;
-            }          
+            }
         }
 
-       
 
-      
-        private void frmTLpspGraphical_Load(object sender, EventArgs e)
-        {          
+
+
+        private void frmTLpspGraphical_Load(object sender, EventArgs e) {
             this.alignButton = this.dotNetBarManager1.GetItem("mAlign") as ButtonItem;
             this.orderButton = this.dotNetBarManager1.GetItem("mOrder") as ButtonItem;
             this.rotateButton = this.dotNetBarManager1.GetItem("mRotate") as ButtonItem;
 
-            if (!base.EditRight)
-            {              
+            if (!base.EditRight) {
                 //dotNetBarManager1.Bars["mainmenu"].Enabled = false;
                 dotNetBarManager1.Bars["bar6"].Enabled = false;
                 //dotNetBarManager1.Bars["bar2"].Enabled = false;
@@ -3544,9 +3139,8 @@ namespace Itop.TLPsp.Graphical
 
         }
 
-        private void frmTLpspGraphical_Paint(object sender, PaintEventArgs e)
-        {
+        private void frmTLpspGraphical_Paint(object sender, PaintEventArgs e) {
             jxtbar2(jxb);
         }
-    }   
+    }
 }
