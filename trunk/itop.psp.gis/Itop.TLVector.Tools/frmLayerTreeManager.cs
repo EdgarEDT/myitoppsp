@@ -62,13 +62,15 @@ namespace ItopVector.Tools {
             treeList1.AfterDragNode += new DevExpress.XtraTreeList.NodeEventHandler(treeList1_AfterDragNode);
             treeList1.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(treeList1_AfterCheckNode);
             treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(treeList1_FocusedNodeChanged);
+            treeList1.Columns["OrderID"].Visible = false;
+            treeList1.Columns["OrderID"].SortOrder = SortOrder.Ascending;
         }
 
         void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e) {
             TreeListNode treenode = treeList1.FocusedNode;
             if (treenode!=null)
             {
-                if (treenode["SUID"].ToString().Contains("FA"))
+                if (treenode["SUID"].ToString().StartsWith("FA"))
                 {
                     FAID = treenode["SUID"].ToString();
                 }
@@ -89,7 +91,7 @@ namespace ItopVector.Tools {
             TreeListNode pa = tln.ParentNode;
             if(pa!=null)
             {
-                if (tln.ParentNode["SUID"].ToString().Contains("FA"))
+                if (tln.ParentNode["SUID"].ToString().StartsWith("FA"))
                 {
                     return tln.ParentNode["SUID"].ToString();
                 }
@@ -124,8 +126,11 @@ namespace ItopVector.Tools {
             try {
                 DataRowView row = treeList1.GetDataRecordByNode(e.Node) as DataRowView;
                 SVG_LAYER lay = DataConverter.RowToObject<SVG_LAYER>(row.Row);
-                if(lay.svgID!="")
-                Services.BaseService.Update<SVG_LAYER>(lay);
+                SVG_LAYER lay2 = Services.BaseService.GetOneByKey<SVG_LAYER>(lay);
+                if (lay2 != null) {
+                    lay2.ParentID = lay.ParentID;
+                    Services.BaseService.Update<SVG_LAYER>(lay);
+                }
             } catch {
                 //Services.BaseService.Create<SVG_LAYER>(treeList1.GetDataRecordByNode(e.Node) as SVG_LAYER);
             }
@@ -639,74 +644,86 @@ namespace ItopVector.Tools {
         private void simpleButton4_Click(object sender, EventArgs e) {
             //int index = this.checkedListBox1.SelectedIndex;
             Layer layer = getFocusLayer();
-            if (layer!=null) {
+            TreeListNode focusNode=treeList1.FocusedNode;
+            if (layer!=null&& focusNode.Checked && !focusNode.HasChildren) {
                 ArrayList layerlist1 = this.SymbolDoc.getLayerList();
                 string str1 = null;
                 string str2 = null;
+                List<Layer> delLayers = new List<Layer>();
+                TreeListNode node1 = null;
                 foreach (Layer l in layerlist1) {
                     if (l.Visible) {
+                        node1= treeList1.FindNodeByKeyID(l.ID);
+                        if (node1.ParentNode != focusNode.ParentNode) continue;
                         str1 += l.Label;
                         str2 += l.Label + "，";
+                        if (l.ID != layer.ID)
+                            delLayers.Add(l);
                     }
                 }
+                if (str1 == null) return;
                 if (MessageBox.Show(this, "此操作将合并可见图层：" + str2 + "并且不可恢复，是否继续。", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     
                     string str = layer.GetAttribute("layerType");
-                    Layer layer2 = Layer.CreateNew(str1, this.SymbolDoc);
-                    if (ilist.Count > 0) {
-                        layer2.SetAttribute("ParentID", ilist[0].ToString());
-                    }
-                    foreach (Layer layer1 in layerlist1) {
-                        if (layer1.Visible) {
-                            //foreach (SvgElement g in layer1.GraphList)
-                            //{
-                            //    layer2.GraphList.Add(g);
-                            //}
-                            this.SymbolDoc.NumberOfUndoOperations = (2 * layer1.GraphList.Count) + 200;
-                            SvgElementCollection sc = layer1.GraphList;
-                            for (int i = layer1.GraphList.Count - 1; i >= 0; i--) {
-                                SvgElement element = sc[i] as SvgElement;
-                                SvgElement temp = element.Clone() as SvgElement;
-                                IGraph graph = (IGraph)layer2.AddElement(temp);
-                                graph.Layer = layer2;
+                    Layer layer2 = layer;// Layer.CreateNew(str1, this.SymbolDoc);
+                    //if (ilist.Count > 0) {
+                    //    layer2.SetAttribute("ParentID", ilist[0].ToString());
+                    //}
 
-                                PSPDEV _line = new PSPDEV();
-                                _line.EleID = element.ID;
-                                _line.SvgUID = this.SymbolDoc.SvgdataUid;
-                                IList lineInfoList = Services.BaseService.GetList("SelectPSPDEVBySvgUIDandEleID", _line);
-                                foreach (PSPDEV line in lineInfoList) {
-                                    line.LayerID = layer2.ID;
-                                    line.EleID = temp.ID;
-                                    Services.BaseService.Update<PSPDEV>(line);
-                                }
-                                glebeProperty gle = new glebeProperty();
-                                gle.EleID = element.ID;
-                                gle.SvgUID = this.SymbolDoc.SvgdataUid;
-                                IList gleProList = Services.BaseService.GetList("SelectglebePropertyByEleID", gle);
-                                foreach (glebeProperty gleP in gleProList) {
-                                    gleP.LayerID = layer2.ID;
-                                    gleP.EleID = temp.ID;
-                                    Services.BaseService.Update("UpdateglebeProperty", gle);
-                                }
-                                PSP_Substation_Info _sub = new PSP_Substation_Info();
-                                _sub.EleID = element.ID;
-                                _sub.AreaID = this.SymbolDoc.SvgdataUid;
-                                IList substationList = Services.BaseService.GetList("SelectPSP_Substation_InfoListByEleID", _sub);
-                                foreach (PSP_Substation_Info sub in substationList) {
-                                    sub.LayerID = layer2.ID;
-                                    sub.EleID = temp.ID;
-                                    Services.BaseService.Update<PSP_Substation_Info>(sub);
-                                }
+                    foreach (Layer layer1 in delLayers) {
+                        if (layer1.Visible) {
+                            for (int i = layer1.GraphList.Count - 1; i >= 0;i-- ) {
+                                IGraph g = layer1.GraphList[i] as IGraph;
+                                g.Layer = layer2;
+                                //layer2.GraphList.Add(g);
                             }
+                            //this.SymbolDoc.NumberOfUndoOperations = (2 * layer1.GraphList.Count) + 200;
+                            //SvgElementCollection sc = layer1.GraphList;
+                            //for (int i = layer1.GraphList.Count - 1; i >= 0; i--) {
+                            //    SvgElement element = sc[i] as SvgElement;
+                            //    SvgElement temp = element.Clone() as SvgElement;
+                            //    IGraph graph = (IGraph)layer2.AddElement(temp);
+                            //    graph.Layer = layer2;
+
+                            //    PSPDEV _line = new PSPDEV();
+                            //    _line.EleID = element.ID;
+                            //    _line.SvgUID = this.SymbolDoc.SvgdataUid;
+                            //    IList lineInfoList = Services.BaseService.GetList("SelectPSPDEVBySvgUIDandEleID", _line);
+                            //    foreach (PSPDEV line in lineInfoList) {
+                            //        line.LayerID = layer2.ID;
+                            //        line.EleID = temp.ID;
+                            //        Services.BaseService.Update<PSPDEV>(line);
+                            //    }
+                            //    glebeProperty gle = new glebeProperty();
+                            //    gle.EleID = element.ID;
+                            //    gle.SvgUID = this.SymbolDoc.SvgdataUid;
+                            //    IList gleProList = Services.BaseService.GetList("SelectglebePropertyByEleID", gle);
+                            //    foreach (glebeProperty gleP in gleProList) {
+                            //        gleP.LayerID = layer2.ID;
+                            //        gleP.EleID = temp.ID;
+                            //        Services.BaseService.Update("UpdateglebeProperty", gle);
+                            //    }
+                            //    PSP_Substation_Info _sub = new PSP_Substation_Info();
+                            //    _sub.EleID = element.ID;
+                            //    _sub.AreaID = this.SymbolDoc.SvgdataUid;
+                            //    IList substationList = Services.BaseService.GetList("SelectPSP_Substation_InfoListByEleID", _sub);
+                            //    foreach (PSP_Substation_Info sub in substationList) {
+                            //        sub.LayerID = layer2.ID;
+                            //        sub.EleID = temp.ID;
+                            //        Services.BaseService.Update<PSP_Substation_Info>(sub);
+                            //    }
+                            //}
                         }
                     }
 
-                    this.SymbolDoc.NotifyUndo();
-                    layer2.SetAttribute("layerType", str);
+                    //this.SymbolDoc.NotifyUndo();
+                    //layer2.SetAttribute("layerType", str);
                     //layer2.Label = str1;
-                    this.checkedListBox1.Items.Add(layer2);
+                    //this.checkedListBox1.Items.Add(layer2);
                     layer2.Visible = false;
-                    foreach (Layer layer3 in layerlist1) {
+                    layer2.Visible = true;
+
+                    foreach (Layer layer3 in delLayers) {
                         if (layer3.Visible) {
                             DeleteLayer(layer3);
                         }
@@ -778,6 +795,8 @@ namespace ItopVector.Tools {
                 la.SUID = layer2.ID;
                 la.NAME = layer2.Label;
                 Services.BaseService.Create<SVG_LAYER>(la);
+                DataTable dt = treeList1.DataSource as DataTable;
+                dt.Rows.Add( Itop.Common.DataConverter.ObjectToRow(la,dt.NewRow()));
             }
             this.SymbolDoc.NumberOfUndoOperations = (2 * layer2.GraphList.Count) + 200;
             SvgElementCollection sc = layer.GraphList;
@@ -869,7 +888,13 @@ namespace ItopVector.Tools {
             Services.BaseService.Update("DeleteSVG_LAYER", lar);
             layer.Remove();
             //在列表中移除
-            this.checkedListBox1.Items.Remove(layer);
+            TreeListNode node= treeList1.FindNodeByKeyID(layer.ID);
+            if (node != null) {
+                if (node.ParentNode == null)
+                    treeList1.Nodes.Remove(node);
+                else
+                    node.ParentNode.Nodes.Remove(node);
+            }
             layer = null;
             LayerName = "";
         }
@@ -883,16 +908,16 @@ namespace ItopVector.Tools {
             string layerlabelf = layer.Label.Substring(4);
             string layer2name = la.Name.Substring(0, 4) + layerlabelf;
             int j = 0;
-            for (int i = 0; i < checkedListBox1.Items.Count; i++) {
-                // if (checkedListBox1.Items[i].ToString() == layer2name)
-                //j = 1;
-                //else
-                //    j = 0;
-            }
+            //for (int i = 0; i < checkedListBox1.Items.Count; i++) {
+            //    if (checkedListBox1.Items[i].ToString() == layer2name)
+            //        j = 1;
+            //    else
+            //        j = 0;
+            //}
             Layer layer2 = null;
             if (j == 0) {
-                layer2 = Layer.CreateNew(la.Name.Substring(0, 4) + layerlabelf, this.SymbolDoc);
-                this.SymbolDoc.NumberOfUndoOperations = (2 * layer2.GraphList.Count) + 200;
+                layer2 = Layer.CreateNew(layer2name, this.SymbolDoc);
+                //this.SymbolDoc.NumberOfUndoOperations = (2 * layer2.GraphList.Count) + 200;
                 SvgElementCollection sc = layer.GraphList;
                 for (int i = layer.GraphList.Count - 1; i >= 0; i--) {
                     SvgElement element = sc[i] as SvgElement;
@@ -945,7 +970,7 @@ namespace ItopVector.Tools {
                       */
                 }
             }
-            this.SymbolDoc.NotifyUndo();
+            //this.SymbolDoc.NotifyUndo();
             return layer2;
         }
         public static bool IsInt(string inString) {
@@ -955,19 +980,25 @@ namespace ItopVector.Tools {
         private void simpleB(string id) {
 
 
-            int itemcount = checkedListBox1.Items.Count;
-            if (checkedListBox1.Items != null) {
+            int itemcount = (treeList1.DataSource as DataTable).Rows.Count;
+            TreeListNode node = treeList1.GetNodeByVisibleIndex(0);
+            int num = 0;
+            if (node!=null) {
                 f.SetText("复制中，请等待......");
                 f.Show();
-                for (int num = 0; num < itemcount; num++) {
+                while (node!=null) {
 
-
-                    string itemname = checkedListBox1.Items[num].ToString();
+                    num++;
+                    string itemname = node["NAME"].ToString();
                     if (itemname.Length > 4) {
                         string item4 = itemname.Substring(0, 4);
-                        if ((IsInt(item4)) && checkedListBox1.GetItemChecked(num) == true) {
-                            Layer layer = this.checkedListBox1.Items[num] as Layer;
-                            f.SetText("共选择" + checkedListBox1.CheckedItems.Count + "层，正在复制" + layer.Label + "层。");
+                        int year = 0;
+                        
+                        if ((IsInt(item4)) && node.Checked == true) {
+                            year = int.Parse(item4);
+                            Layer layer = symbolDoc.Layers[node["SUID"].ToString()] as Layer;
+                            if (layer == null) continue;
+                            f.SetText("正在复制" + layer.Label + "层。");
                             string str = layer.GetAttribute("layerType");
                             Layer layer2 = CopyLayer2(layer, id);
                             if (layer2 != null) {
@@ -976,11 +1007,11 @@ namespace ItopVector.Tools {
                                     layer.Visible = true;
                                 }
                                 layer2.SetAttribute("layerType", str);
-                                this.checkedListBox1.Items.Add(layer2);
+                                //this.checkedListBox1.Items.Add(layer2);
                                 layer2.Visible = false;
 
                                 string xml = "";
-                                XmlNodeList oldList = symbolDoc.SelectNodes("//*[@layer=\"" + layer2.ID + "\"]");
+                                XmlNodeList oldList = symbolDoc.SelectNodes("//*[@layer=\"" + layer.ID + "\"]");
                                 for (int i = 0; i < oldList.Count; i++) {
                                     xml = xml + ((SvgElement)oldList[i]).OuterXml;
                                 }
@@ -989,20 +1020,28 @@ namespace ItopVector.Tools {
                                 obj.svgID = symbolDoc.SvgdataUid;
                                 obj.NAME = layer2.Label;
                                 obj.MDATE = System.DateTime.Now;
-                                obj.OrderID = num + 10;
+                                obj.OrderID = year + itemcount+num + 10;
                                 obj.YearID = id;//((LayerGrade)list[0]).SUID;
                                 obj.layerType = "电网规划层";
                                 obj.visibility = "visible";
                                 obj.IsSelect = "true";
                                 obj.XML = xml;
                                 Services.BaseService.Create<SVG_LAYER>(obj);
+                                addtotreelist(obj);
                             }
                         }
                     }
+                    node = node.NextNode;
 
                 }
                 f.Hide();
             }
+        }
+
+        private void addtotreelist(SVG_LAYER obj) {
+            DataTable dt = treeList1.DataSource as DataTable;
+            if (dt == null) return;
+            dt.Rows.Add(Itop.Common.DataConverter.ObjectToRow(obj,dt.NewRow()));
         }
         private void checkedListBoxControl2_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e) {
             checkedListBoxControl2.Visible = false;
@@ -1011,7 +1050,7 @@ namespace ItopVector.Tools {
                 frmLayerManager2 temp = new frmLayerManager2(symbolDoc2, progtype);
                 if (temp.ShowDialog(this) == DialogResult.Cancel) {
                     InitData();
-                    checkedListBox1.Refresh();
+                    treeList1.Refresh();
                 }
 
             }
@@ -1026,20 +1065,20 @@ namespace ItopVector.Tools {
                         for (int j = 1; j < ll.Count; j++) {
                             simpleB(ll[j].ToString());
                             InitData();
-                            checkedListBox1.Refresh();
+                            treeList1.Refresh();
+                            //checkedListBox1.Refresh();
                         }
                     }
                 }
             }
             if (checkedListBoxControl2.SelectedValue.ToString() == "单层复制") {
-                int index = this.checkedListBox1.SelectedIndex;
-
-                if (index > 0) {
-                    DevExpress.XtraEditors.Controls.CheckedListBoxItem t = (DevExpress.XtraEditors.Controls.CheckedListBoxItem)checkedListBoxControl2.SelectedItem;
-                    if (t.CheckState == CheckState.Checked) {
+                TreeListNode node = treeList1.FocusedNode;
+                Layer layer = getFocusLayer();
+                if (layer!=null) {
+                    
                         f.SetText("复制中，请等待......");
                         f.Show();
-                        Layer layer = this.checkedListBox1.Items[index] as Layer;
+                        
                         string str = layer.GetAttribute("layerType");
                         Layer layer2 = CopyLayer(layer);
                         if (layer.Visible) {
@@ -1047,10 +1086,10 @@ namespace ItopVector.Tools {
                             layer.Visible = true;
                         }
                         layer2.SetAttribute("layerType", str);
-                        this.checkedListBox1.Items.Add(layer2);
+
+
                         layer2.Visible = false;
                         f.Hide();
-                    }
                 }
             }
         }
