@@ -4274,6 +4274,20 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                                         obj.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
                                         obj.EleID = ((SvgElement)xml1).ID;
                                         Services.BaseService.Update<PSPDEV>(obj);
+
+                                        //将其设备加入到计算方案中
+                                        PSP_ElcDevice elcDevice = new PSP_ElcDevice();
+                                        elcDevice.DeviceSUID = deviceid;
+                                        elcDevice.ProjectSUID = frmlar.FAID;
+                                        elcDevice = UCDeviceBase.DataService.GetOneByKey<PSP_ElcDevice>(elcDevice);
+                                        if (elcDevice==null)
+                                        {
+                                            elcDevice = new PSP_ElcDevice();
+                                            elcDevice.DeviceSUID = deviceid;
+                                            elcDevice.ProjectSUID = frmlar.FAID;
+                                            UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
+                                        }
+                                      
                                     }
                                 }
                                 if (!string.IsNullOrEmpty(deviceid))
@@ -4402,6 +4416,24 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                                         Services.BaseService.Update<PSP_PowerSubstation_Info>(((PSP_PowerSubstation_Info)obj));
                                         xml1.SetAttribute("Deviceid", deviceid);
                                         xml1.SetAttribute("info-name", ((PSP_PowerSubstation_Info)obj).Title);
+
+                                        string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and SvgUID='" + ((PSP_PowerSubstation_Info)obj).UID + "'";
+                                        IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+                                        foreach (PSPDEV pv in list)
+                                        {
+                                            //将其设备加入到计算方案中
+                                            PSP_ElcDevice elcDevice = new PSP_ElcDevice();
+                                            elcDevice.DeviceSUID = pv.SUID;
+                                            elcDevice.ProjectSUID = frmlar.FAID;
+                                            elcDevice = UCDeviceBase.DataService.GetOneByKey<PSP_ElcDevice>(elcDevice);
+                                            if (elcDevice == null)
+                                            {
+                                                elcDevice = new PSP_ElcDevice();
+                                                elcDevice.DeviceSUID = deviceid;
+                                                elcDevice.ProjectSUID = frmlar.FAID;
+                                                UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
+                                            }
+                                        }
                                     }
 
                                     substation sb = new substation();
@@ -4438,6 +4470,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                                             sb.ObligateField3 = "现行";
                                         }
                                         Services.BaseService.Create<substation>(sb);
+
+
                                     }
                                 }
                                 else
@@ -4482,6 +4516,24 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                                         Services.BaseService.Update<PSP_Substation_Info>(((PSP_Substation_Info)obj));
                                         xml1.SetAttribute("Deviceid", deviceid);
                                         xml1.SetAttribute("info-name", ((PSP_Substation_Info)obj).Title);
+
+                                        string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and SvgUID='" + ((PSP_Substation_Info)obj).UID + "'";
+                                        IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+                                        foreach (PSPDEV pv in list)
+                                        {
+                                            //将其设备加入到计算方案中
+                                            PSP_ElcDevice elcDevice = new PSP_ElcDevice();
+                                            elcDevice.DeviceSUID = pv.SUID;
+                                            elcDevice.ProjectSUID = frmlar.FAID;
+                                            elcDevice = UCDeviceBase.DataService.GetOneByKey<PSP_ElcDevice>(elcDevice);
+                                            if (elcDevice == null)
+                                            {
+                                                elcDevice = new PSP_ElcDevice();
+                                                elcDevice.DeviceSUID = deviceid;
+                                                elcDevice.ProjectSUID = frmlar.FAID;
+                                                UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
+                                            }
+                                        }
                                         //return;
                                         //根据变站创建线路
                                         createLine(xml1, deviceid);

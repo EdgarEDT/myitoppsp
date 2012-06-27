@@ -38,15 +38,21 @@ namespace ItopVector.Tools {
         public string YearID = "";
         public static ArrayList ilist = new ArrayList();
         public ArrayList NoSave = new ArrayList();
+        public string FAID;           //方案id
         public string Progtype {
             get { return progtype; }
             set { progtype = value; }
         }
-
+        private string _stryear;
         public string StrYear {
             set {
                 dateEdit1.Text = value;
                 dateEdit2.Text = value;
+                _stryear = value;
+            }
+            get
+            {
+                return _stryear;
             }
         }
         public frmLayerTreeManager() {
@@ -59,16 +65,57 @@ namespace ItopVector.Tools {
         }
 
         void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e) {
+            TreeListNode treenode = treeList1.FocusedNode;
+            if (treenode!=null)
+            {
+                if (treenode["SUID"].ToString().Contains("FA"))
+                {
+                    FAID = treenode["SUID"].ToString();
+                }
+                else
+                {
+                    FAID = Searchfa(treenode);
+                }
+            }
+           
             Layer layer = getFocusLayer();
             if (OnClickLayer != null && layer!=null) {
                 addflag = false;
                 OnClickLayer(sender, layer);
             }
         }
+        private string Searchfa(TreeListNode tln)
+        {
+            TreeListNode pa = tln.ParentNode;
+            if(pa!=null)
+            {
+                if (tln.ParentNode["SUID"].ToString().Contains("FA"))
+                {
+                    return tln.ParentNode["SUID"].ToString();
+                }
+                else
+                    Searchfa(pa);
+            }
+            return null;
+            //bool nodeflag = false;
+            //foreach (TreeListNode tn in tln.Nodes)
+            //{
+            //    if (tn["SUID"].ToString().Contains("FA"))
+            //    {
+            //        nodeflag = true;
+            //        return tn["SUID"].ToString();
 
+            //    }
+                         
+            //}
+           
+        }
         void treeList1_AfterCheckNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e) {
-
-            (symbolDoc.Layers[e.Node["SUID"].ToString()] as Layer).Visible = e.Node.Checked;
+            if (symbolDoc.Layers[e.Node["SUID"].ToString()]!=null)
+            {
+                (symbolDoc.Layers[e.Node["SUID"].ToString()] as Layer).Visible = e.Node.Checked;
+              
+            }
             SetCheckedChildNodes(e.Node, e.Node.CheckState);
             SetCheckedParentNodes(e.Node, e.Node.CheckState);
         }
@@ -102,8 +149,12 @@ namespace ItopVector.Tools {
         }
         private void SetCheckedChildNodes(TreeListNode node, CheckState check) {
             for (int i = 0; i < node.Nodes.Count; i++) {
-                if(node.Nodes[i].Checked!=node.Checked)
+                if (node.Nodes[i].Checked != node.Checked)
+                {
+                    if (symbolDoc.Layers[node.Nodes[i]["SUID"].ToString()] != null)
                     (symbolDoc.Layers[node.Nodes[i]["SUID"].ToString()] as Layer).Visible = node.Checked;
+                }
+                   
                 node.Nodes[i].Checked = node.Checked;
                 
                 this.SetCheckedChildNodes(node.Nodes[i], check);
@@ -304,6 +355,10 @@ namespace ItopVector.Tools {
         private void btDel_Click(object sender, EventArgs e) {
             if (treeList1.FocusedNode!=null) {
                 TreeListNode treenode =treeList1.FocusedNode;
+                if (treenode["SUID"].ToString().Contains("FA"))
+                {
+                    return;
+                }
                 if (treenode.HasChildren) {
                     MessageBox.Show("有子节点时不可删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -386,6 +441,7 @@ namespace ItopVector.Tools {
         }
         private void btEdit_Click(object sender, EventArgs e)//
         {
+           
             Layer layer = getFocusLayer();
             if (layer!=null) {
                 
@@ -1185,6 +1241,7 @@ namespace ItopVector.Tools {
                 SVG_LAYER _svg = new SVG_LAYER() { SUID = Guid.NewGuid().ToString().Substring(0,10)};
                 //if (treeList1.FocusedNode != null)
                 {
+                    _svg.NAME = dlg.InputString;
                     _svg.SUID = "FA" + _svg.SUID;
                     //_svg.ParentID = treeList1.FocusedNode["ParentID"].ToString();
                     _svg.YearID = ilist[0].ToString();
@@ -1192,6 +1249,19 @@ namespace ItopVector.Tools {
                     //_svg.OrderID = int.Parse(treeList1.FocusedNode["OrderID"].ToString()) + 1;
                     _svg.MDATE = DateTime.Now;
                     Services.BaseService.Create<SVG_LAYER>(_svg);
+                    //创建计算方案
+                    PSP_ELCPROJECT pd = new PSP_ELCPROJECT();
+                    pd.ID = _svg.SUID;
+                    pd.Name = dlg.InputString;
+                    pd.FileType = "潮流";
+                    pd.Class = System.DateTime.Now.ToString();
+                    if (!string.IsNullOrEmpty(StrYear)&&StrYear.Length==4)
+                    {
+                        pd.BelongYear = StrYear;
+                    }
+                   
+                    pd.ProjectID = Itop.Client.MIS.ProgUID;
+                    Services.BaseService.Create<PSP_ELCPROJECT>(pd);
                 }
                 DataRow row = dt.NewRow();
                 dt.Rows.Add(DataConverter.ObjectToRow(_svg, row));
@@ -1209,14 +1279,29 @@ namespace ItopVector.Tools {
                     frmInput dlg = new frmInput();
                     dlg.id = symbolDoc.SvgdataUid;
                     dlg.symbolDoc = symbolDoc;
-                    dlg.InputString = node["Name"].ToString();
+                    dlg.InputString = node["NAME"].ToString();
                    // dlg.InputType = layer.GetAttribute("layerType");
 
                     DialogResult d = dlg.ShowDialog(this);
                     if (d == DialogResult.OK)
                     {
-                      
-                        treeList1.FocusedNode.SetValue("Name", dlg.InputString);
+                        SVG_LAYER temp = new SVG_LAYER();
+                        temp.SUID = suid;
+                        temp.svgID = symbolDoc.SvgdataUid;
+                        SVG_LAYER lar = (SVG_LAYER)Services.BaseService.GetObject("SelectSVG_LAYERByKey", temp);
+                       // lar.YearID = dlg.list[1].ToString();
+                        lar.NAME = dlg.InputString;
+
+                        Services.BaseService.Update<SVG_LAYER>(lar);
+                        PSP_ELCPROJECT pe = new PSP_ELCPROJECT();
+                        pe.ID = lar.SUID;
+                        pe = Services.BaseService.GetOneByKey<PSP_ELCPROJECT>(pe);
+                        if (pe!=null)
+                        {
+                            pe.Name = dlg.InputString;
+                            Services.BaseService.Update<PSP_ELCPROJECT>(pe);
+                        }
+                        treeList1.FocusedNode.SetValue("NAME", dlg.InputString);
                         treeList1.Refresh();
                         //InitData();
                     }
@@ -1255,7 +1340,7 @@ namespace ItopVector.Tools {
                         MessageBox.Show("有子节点时不可删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    Layer layer = symbolDoc.Layers[treenode["SUID"].ToString()] as Layer;
+                    Layer layer = getFocusLayer();
                     if (!CkRight(layer))
                     {
                         MessageBox.Show("基础图层不能改名或删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
