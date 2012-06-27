@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itop.TLPsp", "Itop.TLPsp\Itop.TLPsp.csproj", "{C9B58C6D-AE54-42BE-A36D-CEB43CA770FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itop.TLPSP.DEVICE", "Itop.TLPSP.DEVICE\Itop.TLPSP.DEVICE.csproj", "{549F483D-6CDD-47E6-84A4-7B530EB67DC1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ED06E9A4-4FC9-4945-B8D6-88E25364A212} = {ED06E9A4-4FC9-4945-B8D6-88E25364A212}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itop.TLPsp.Graphical", "Itop.TLPsp.Graphical\Itop.TLPsp.Graphical.csproj", "{0D19E762-7F50-4765-AE33-681E95703FCA}"
 EndProject
