@@ -74,38 +74,37 @@ namespace Itop.TLPSP.DEVICE
         public override void proInit(string year)
         {
             datatable1 = null;
-            con = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND UID NOT IN (SELECT DeviceSUID FROM PSP_ELCDEVICE WHERE ProjectSUID ='" + this.ProjectID + "')";
-
+            con = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND  UID IN (SELECT PSPDEV.SVGUID FROM PSPDEV, PSP_ELCDEVICE WHERE  PSPDEV.SUID = PSP_ELCDEVICE.DeviceSUID AND PSP_ELCDEVICE.ProjectSUID = '" + year + "')";
             IList list = DataService.GetList("SelectPSP_PowerSubstation_InfoListByWhere", con);
-            if (!string.IsNullOrEmpty(year))
-            {
-                List<PSP_PowerSubstation_Info> listremove = new List<PSP_PowerSubstation_Info>();
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (((PSP_PowerSubstation_Info)list[i]).S3.Length != 4)
-                    {
-                        listremove.Add((PSP_PowerSubstation_Info)list[i]);
-                    }
-                    else
-                    {
-                        if (Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S3) > Convert.ToDouble(year))
-                        {
-                            listremove.Add((PSP_PowerSubstation_Info)list[i]);
-                        }
-                        if (((PSP_PowerSubstation_Info)list[i]).S30.Length == 4)
-                        {
-                            if (Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S30) < Convert.ToDouble(year))
-                            {
-                                listremove.Add((PSP_PowerSubstation_Info)list[i]);
-                            }
-                        }
-                    }
-                }
-                for (int i = 0; i < listremove.Count; i++)
-                {
-                    list.Remove(listremove[i]);
-                }
-            }
+            //if (!string.IsNullOrEmpty(year))
+            //{
+            //    List<PSP_PowerSubstation_Info> listremove = new List<PSP_PowerSubstation_Info>();
+            //    for (int i = 0; i < list.Count; i++)
+            //    {
+            //        if (((PSP_PowerSubstation_Info)list[i]).S3.Length != 4)
+            //        {
+            //            listremove.Add((PSP_PowerSubstation_Info)list[i]);
+            //        }
+            //        else
+            //        {
+            //            if (Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S3) > Convert.ToDouble(year))
+            //            {
+            //                listremove.Add((PSP_PowerSubstation_Info)list[i]);
+            //            }
+            //            if (((PSP_PowerSubstation_Info)list[i]).S30.Length == 4)
+            //            {
+            //                if (Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S30) < Convert.ToDouble(year))
+            //                {
+            //                    listremove.Add((PSP_PowerSubstation_Info)list[i]);
+            //                }
+            //            }
+            //        }
+            //    }
+            //    for (int i = 0; i < listremove.Count; i++)
+            //    {
+            //        list.Remove(listremove[i]);
+            //    }
+            //}
 
             datatable1 = Itop.Common.DataConverter.ToDataTable(list, typeof(PSP_PowerSubstation_Info));
             datatable1.Columns.Add("flag_", typeof(string), "IIF(flag=2,'¹æ»®','ÏÖ×´')");

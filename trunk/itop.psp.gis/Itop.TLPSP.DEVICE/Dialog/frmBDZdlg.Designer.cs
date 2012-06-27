@@ -159,9 +159,11 @@
             this.groupControl1.Controls.Add(this.label9);
             this.groupControl1.Controls.Add(this.date2);
             this.groupControl1.Controls.Add(this.date1);
+            this.groupControl1.Controls.Add(this.comboBoxEdit1);
+            this.groupControl1.Controls.Add(this.label4);
             this.groupControl1.Location = new System.Drawing.Point(329, 297);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(311, 99);
+            this.groupControl1.Size = new System.Drawing.Size(311, 113);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "数据有效时间范围";
             // 
@@ -169,25 +171,25 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(23, 64);
+            this.label10.Location = new System.Drawing.Point(23, 84);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 14);
             this.label10.TabIndex = 18;
-            this.label10.Text = "退役时间";
+            this.label10.Text = "退役年份";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(23, 31);
+            this.label9.Location = new System.Drawing.Point(23, 34);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 14);
             this.label9.TabIndex = 18;
-            this.label9.Text = "开始时间";
+            this.label9.Text = "开工年份";
             // 
             // date2
             // 
-            this.date2.Location = new System.Drawing.Point(87, 57);
+            this.date2.Location = new System.Drawing.Point(87, 81);
             this.date2.Name = "date2";
             this.date2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -196,7 +198,7 @@
             // 
             // date1
             // 
-            this.date1.Location = new System.Drawing.Point(87, 26);
+            this.date1.Location = new System.Drawing.Point(87, 29);
             this.date1.Name = "date1";
             this.date1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -270,8 +272,6 @@
             this.groupBox1.Controls.Add(this.comboBoxEdit2);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBoxEdit1);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.spinEdit2);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.spinEdit1);
@@ -280,14 +280,14 @@
             this.groupBox1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.groupBox1.Location = new System.Drawing.Point(14, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(310, 391);
+            this.groupBox1.Size = new System.Drawing.Size(310, 367);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "基本信息";
             // 
             // comboBoxEdit8
             // 
-            this.comboBoxEdit8.Location = new System.Drawing.Point(96, 289);
+            this.comboBoxEdit8.Location = new System.Drawing.Point(96, 251);
             this.comboBoxEdit8.Name = "comboBoxEdit8";
             this.comboBoxEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -302,7 +302,7 @@
             // 
             // comboBoxEdit9
             // 
-            this.comboBoxEdit9.Location = new System.Drawing.Point(97, 323);
+            this.comboBoxEdit9.Location = new System.Drawing.Point(97, 285);
             this.comboBoxEdit9.Name = "comboBoxEdit9";
             this.comboBoxEdit9.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -319,7 +319,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.ForeColor = System.Drawing.Color.Black;
-            this.label37.Location = new System.Drawing.Point(9, 329);
+            this.label37.Location = new System.Drawing.Point(9, 291);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(55, 14);
             this.label37.TabIndex = 18;
@@ -329,7 +329,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.ForeColor = System.Drawing.Color.Black;
-            this.label34.Location = new System.Drawing.Point(9, 296);
+            this.label34.Location = new System.Drawing.Point(9, 258);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(55, 14);
             this.label34.TabIndex = 19;
@@ -449,7 +449,7 @@
             // comboBoxEdit3
             // 
             this.comboBoxEdit3.EditValue = "公用";
-            this.comboBoxEdit3.Location = new System.Drawing.Point(96, 355);
+            this.comboBoxEdit3.Location = new System.Drawing.Point(96, 317);
             this.comboBoxEdit3.Name = "comboBoxEdit3";
             this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -463,7 +463,7 @@
             // comboBoxEdit2
             // 
             this.comboBoxEdit2.EditValue = "现状";
-            this.comboBoxEdit2.Location = new System.Drawing.Point(97, 257);
+            this.comboBoxEdit2.Location = new System.Drawing.Point(97, 219);
             this.comboBoxEdit2.Name = "comboBoxEdit2";
             this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -478,7 +478,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(8, 363);
+            this.label8.Location = new System.Drawing.Point(8, 325);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 14);
             this.label8.TabIndex = 4;
@@ -488,7 +488,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 263);
+            this.label2.Location = new System.Drawing.Point(9, 225);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 14);
             this.label2.TabIndex = 4;
@@ -496,7 +496,7 @@
             // 
             // comboBoxEdit1
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(97, 224);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(87, 56);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -508,7 +508,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(9, 229);
+            this.label4.Location = new System.Drawing.Point(23, 57);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 14);
             this.label4.TabIndex = 4;

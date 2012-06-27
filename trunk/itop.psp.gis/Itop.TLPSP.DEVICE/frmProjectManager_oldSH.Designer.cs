@@ -1,6 +1,6 @@
 ﻿namespace Itop.TLPSP.DEVICE
 {
-    partial class frmProjectManager_SH
+    partial class frmProjectManager_oldSH
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -53,8 +53,6 @@
             this.barORP = new DevExpress.XtraBars.BarButtonItem();
             this.barUpdateNum = new DevExpress.XtraBars.BarButtonItem();
             this.Autofpfh = new DevExpress.XtraBars.BarButtonItem();
-            this.bardetail = new DevExpress.XtraBars.BarButtonItem();
-
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -266,23 +264,13 @@
             this.Autofpfh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.Autofpfh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Autofpfh_ItemClick);
             // 
-            // bardetail
-            // 
-            this.bardetail.Caption = "站内详细信息";
-            this.bardetail.Id = 9;
-            this.bardetail.ImageIndex = 7;
-            this.bardetail.Name = "bardetaile";
-            this.bardetail.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bardetail.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.bardetail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bardetail_ItemClick);
-            // 
             // frmProjectManager_SH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 388);
             this.Controls.Add(this.splitContainerControl1);
-            this.Name = "frmProjectManager_SH";
+            this.Name = "frmProjectManager_oldSH";
             this.Text = "电气计算方案管理";
             this.Controls.SetChildIndex(this.splitContainerControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -318,6 +306,5 @@
         private DevExpress.XtraBars.BarButtonItem barORP;
         private DevExpress.XtraBars.BarButtonItem barUpdateNum;
         private DevExpress.XtraBars.BarButtonItem Autofpfh;
-        private DevExpress.XtraBars.BarButtonItem bardetail;
     }
 }

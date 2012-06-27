@@ -20,10 +20,10 @@ namespace Itop.TLPSP.DEVICE {
     /// <summary>
     /// 项目管理
     /// </summary>
-    public partial class frmProjectManager_SH : Itop.Client.Base.FormModuleBase {
+    public partial class frmProjectManager_oldSH : Itop.Client.Base.FormModuleBase {
         DataTable datatable;
         protected string strID = null;
-        public frmProjectManager_SH()
+        public frmProjectManager_oldSH()
         {
             InitializeComponent();
             Init();
@@ -54,7 +54,7 @@ namespace Itop.TLPSP.DEVICE {
             //bar1.AddItem(barButtonItem1);
             if (strID == null)
             {
-                bar.AddItems(new DevExpress.XtraBars.BarItem[] { barSelectDevice, barDeleteDevice, barCopy, Autofpfh,bardetail, barButtonItem1, barButtonItem2, barButtonItem3, barButtonItem4, barORP, AllshortItem, RelcheckItem, jiaoliucheck, ZLcheck, barCheck, barUpdateNum });
+                bar.AddItems(new DevExpress.XtraBars.BarItem[] { barSelectDevice, barDeleteDevice, barCopy, Autofpfh, barButtonItem1, barButtonItem2, barButtonItem3, barButtonItem4, barORP, AllshortItem, RelcheckItem, jiaoliucheck, ZLcheck, barCheck, barUpdateNum });
                 //bar.AddItem();
                 barQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -186,7 +186,7 @@ namespace Itop.TLPSP.DEVICE {
             treeList1.DataSource = datatable;
 
            // DeviceTypeHelper.InitDeviceTypes(treeList2);
-            DeviceTypeHelper.initprojectDeviceTypes_SH1(treeList2);
+            DeviceTypeHelper.initprojectDeviceTypes_SH(treeList2);
         }
 
         #endregion
@@ -309,27 +309,19 @@ namespace Itop.TLPSP.DEVICE {
                 MessageBox.Show("请先选择电气计算方案！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            frmSeldevtype fm = new frmSeldevtype();
-            int devtype = 0;
-            if (fm.ShowDialog()==DialogResult.OK)
-            {
-                devtype = fm.UnitFlag;
-            }
             //strID = node["ID"].ToString();
             DataTable dt = new DataTable();
-            frmDeviceList_sh frmDevList = new frmDeviceList_sh();
+            frmDeviceList frmDevList = new frmDeviceList();
             frmDevList.ProjectID = this.ProjectUID;
             frmDevList.ProjectSUID = strID;
             frmDevList.BelongYear = parentobj.BelongYear;
-            frmDevList.Devicetype = devtype;
             node = treeList2.FocusedNode;
             string devicenodename = null;
             if (node != null) {
                 devicenodename = node["name"].ToString();
             }
             frmDevList.DeviceName = devicenodename;
-            frmDevList.initCheckcombox();
-            frmDevList.initcombox();
+            frmDevList.Init();
             if (frmDevList.ShowDialog() == DialogResult.OK) {
                 foreach (DataRow row in frmDevList.DT.Rows) {
                     try {
@@ -349,20 +341,8 @@ namespace Itop.TLPSP.DEVICE {
                     }
                 }
                 if (curDevice != null) {
-
-                    if (curDevice.GetClassName() == "PSP_Substation_Info")
-                    {
-                        curDevice.proInit(parentobj.ID);
-                    }
-                    else if (curDevice.GetClassName() == "PSP_PowerSubstation_Info")
-                    {
-                        curDevice.proInit(parentobj.ID);
-                    }
-                    else if (curDevice.GetClassName() == "PSPDEV")
-                    {
-                        curDevice.strCon = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and ";
-                        curDevice.Init();
-                    }
+                    curDevice.strCon = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and ";
+                    curDevice.Init();
                 }
             }
         }
@@ -403,19 +383,8 @@ namespace Itop.TLPSP.DEVICE {
            
          
             if (curDevice != null) {
-                if (curDevice.GetClassName() == "PSP_Substation_Info")
-                {
-                    curDevice.proInit(parentobj.ID);
-                }
-                else if (curDevice.GetClassName() == "PSP_PowerSubstation_Info")
-                {
-                    curDevice.proInit(parentobj.ID);
-                }
-                else if (curDevice.GetClassName() == "PSPDEV")
-                {
-                    curDevice.strCon = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and ";
-                    curDevice.Init();
-                }
+                curDevice.strCon = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and ";
+                curDevice.Init();
             }
         }
         #endregion
@@ -451,11 +420,6 @@ namespace Itop.TLPSP.DEVICE {
                 {
                     return;
                 }
-                if (node["id"].ToString() == "20" || node["id"].ToString()=="30")
-                {
-                    this.bardetail.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
-                    this.barDeleteDevice.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-                }
                 UCDeviceBase device = null;
                 if (devicTypes.ContainsKey(dtype)) {
                     device = devicTypes[dtype];
@@ -474,11 +438,11 @@ namespace Itop.TLPSP.DEVICE {
                 if (curDevice != null) {
                     if (curDevice.GetClassName() == "PSP_Substation_Info")
                     {
-                        curDevice.proInit(parentobj.ID);
+                        curDevice.proInit(parentobj.BelongYear);
                     }
                     else if (curDevice.GetClassName() == "PSP_PowerSubstation_Info")
                     {
-                        curDevice.proInit(parentobj.ID);
+                        curDevice.proInit(parentobj.BelongYear);
                     }
                     else if (curDevice.GetClassName() == "PSPDEV")
                     {
@@ -872,44 +836,6 @@ namespace Itop.TLPSP.DEVICE {
                 wait.Close();
                 return;
             }
-
-        }
-        private void bardetail_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //TreeListNode node = treeList1.FocusedNode;
-             frmProjectManager_children frmc = new frmProjectManager_children();
-            frmc.ParentObj =curDevice.SelectedDevice ;
-            frmc.Psp_proj=parentobj;
-            string[] types;
-            if (curDevice.GetClassName()=="PSP_Substation_Info")
-            {
-            types=new string[]{"01","03","12"};
-            }
-            else
-            {
-              types=new string[]{"01","02","04"};
-            }
-            frmc.childrendevice(types);
-            if (curDevice != null)
-            {
-                if (curDevice.GetClassName() == "PSP_Substation_Info")
-                {
-                    curDevice.proInit(parentobj.ID);
-                }
-                else if (curDevice.GetClassName() == "PSP_PowerSubstation_Info")
-                {
-                    curDevice.proInit(parentobj.ID);
-                }
-                else if (curDevice.GetClassName() == "PSPDEV")
-                {
-                    curDevice.strCon = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and ";
-                    curDevice.Init();
-                }
-            }
-            //if (frmc.DialogResult == DialogResult.OK)
-            //{
-
-            //}
 
         }
         private void barCopy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {

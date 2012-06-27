@@ -15,7 +15,8 @@ namespace Itop.TLPSP.DEVICE
     {
         public PSPProject()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            barButtonItem4.Glyph = Itop.ICON.Resource.修改;
         }
         protected string projectID;
         public string ProjectID

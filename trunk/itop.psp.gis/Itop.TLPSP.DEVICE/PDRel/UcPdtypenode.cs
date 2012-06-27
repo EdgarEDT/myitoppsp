@@ -28,6 +28,10 @@ namespace Itop.TLPSP.DEVICE
         public UcPdtypenode()
         {
             InitializeComponent();
+            barButtonItem6.Glyph = Itop.ICON.Resource.打回重新编;
+            barSubItem1.Glyph = Itop.ICON.Resource.修改;
+            barButtonItem10.Glyph = Itop.ICON.Resource.作废;
+
         }
         private Ps_pdreltype parentobj=new Ps_pdreltype();
         private string pdreltypeid;
