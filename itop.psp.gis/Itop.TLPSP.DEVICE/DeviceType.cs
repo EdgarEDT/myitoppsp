@@ -182,6 +182,22 @@ namespace Itop.TLPSP.DEVICE
             treeList1.ParentFieldName = "parentid";
             treeList1.DataSource = DeviceTypeHelper.GetprojectDeviceTypes_SH();
         }
+        public static void initprojectDeviceTypes_SH1(DevExpress.XtraTreeList.TreeList treeList1)
+        {
+            TreeListColumn column = new TreeListColumn();
+            column.Caption = "设备分类";
+            column.FieldName = "name";
+            column.VisibleIndex = 0;
+            column.Width = 180;
+            column.OptionsColumn.AllowEdit = false;
+            column.OptionsColumn.AllowSort = false;
+            treeList1.Columns.AddRange(new TreeListColumn[] {
+            column});
+            treeList1.KeyFieldName = "keyid";
+            treeList1.ParentFieldName = "parentid";
+            treeList1.DataSource = DeviceTypeHelper.GetprojectDeviceTypes_SH1();
+        }
+
         public static DataTable GetprojectDeviceTypes()
         {
             Stream fs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Itop.TLPSP.DEVICE.devicetypes.xml");
@@ -222,7 +238,35 @@ namespace Itop.TLPSP.DEVICE
             table.Columns.Add("keyid", typeof(string));
             foreach (XmlNode node in nodes)
             {
-                if (Convert.ToInt32(node.Attributes["id"].Value) < 40)
+                if (Convert.ToInt32(node.Attributes["id"].Value) < 40 )
+                {
+                    DataRow row = table.NewRow();
+                    row["id"] = node.Attributes["id"].Value;
+                    row["name"] = node.Attributes["name"].Value;
+                    row["class"] = node.Attributes["class"].Value;
+                    row["parentid"] = node.Attributes["parentid"].Value;
+                    row["keyid"] = node.Attributes["keyid"].Value;
+                    table.Rows.Add(row);
+                }
+
+            }
+            return table;
+        }
+        public static DataTable GetprojectDeviceTypes_SH1()
+        {
+            Stream fs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Itop.TLPSP.DEVICE.projectdevicetypes.xml");
+            XmlDocument xml = new XmlDocument();
+            xml.Load(fs);
+            XmlNodeList nodes = xml.GetElementsByTagName("device");
+            DataTable table = new DataTable();
+            table.Columns.Add("id", typeof(string));
+            table.Columns.Add("name", typeof(string));
+            table.Columns.Add("class", typeof(string));
+            table.Columns.Add("parentid", typeof(string));
+            table.Columns.Add("keyid", typeof(string));
+            foreach (XmlNode node in nodes)
+            {
+                if (Convert.ToInt32(node.Attributes["id"].Value) < 40 && Convert.ToInt32(node.Attributes["id"].Value) !=12 && (string.IsNullOrEmpty(node.Attributes["parentid"].Value) || Convert.ToInt32(node.Attributes["id"].Value) >= 6))
                 {
                     DataRow row = table.NewRow();
                     row["id"] = node.Attributes["id"].Value;

@@ -99,6 +99,7 @@
     </Reference>
     <Reference Include="Itop.Domain.Stutistics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Domain.Table, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Itop.ICON, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Itop.Server.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <SpecificVersion>False</SpecificVersion>
@@ -674,6 +675,12 @@
     <Compile Include="ELC\FrmPicTypeSelect.designer.cs">
       <DependentUpon>FrmPicTypeSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="ELC\frmSeldevtype.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\frmSeldevtype.Designer.cs">
+      <DependentUpon>frmSeldevtype.cs</DependentUpon>
+    </Compile>
     <Compile Include="ELC\FrmSubstation_InfoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -716,6 +723,12 @@
     </Compile>
     <Compile Include="ELC\OuptResultForm.Designer.cs">
       <DependentUpon>OuptResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELC\frmDeviceList_sh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELC\frmDeviceList_sh.designer.cs">
+      <DependentUpon>frmDeviceList_sh.cs</DependentUpon>
     </Compile>
     <Compile Include="ExcelAccess.cs" />
     <Compile Include="ExcelStyle.cs" />
@@ -947,11 +960,11 @@
     <Compile Include="frmDevSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProjectManager_SH.cs">
+    <Compile Include="frmProjectManager_oldSH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProjectManager_SH.Designer.cs">
-      <DependentUpon>frmProjectManager_SH.cs</DependentUpon>
+    <Compile Include="frmProjectManager_oldSH.Designer.cs">
+      <DependentUpon>frmProjectManager_oldSH.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDeviceManager_SH.cs">
       <SubType>Form</SubType>
@@ -964,6 +977,18 @@
     </Compile>
     <Compile Include="frmDeviceManager_children.Designer.cs">
       <DependentUpon>frmDeviceManager_children.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProjectManager_SH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProjectManager_SH.Designer.cs">
+      <DependentUpon>frmProjectManager_SH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProjectManager_children.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProjectManager_children.Designer.cs">
+      <DependentUpon>frmProjectManager_children.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -1418,11 +1443,18 @@
       <DependentUpon>UCDeviceBYQ3template.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ELC\frmDeviceList_sh.resx">
+      <DependentUpon>frmDeviceList_sh.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELC\frmSeldevtype.resx">
+      <DependentUpon>frmSeldevtype.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAutofh.resx">
       <DependentUpon>FrmAutofh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProjectManager_SH.resx">
-      <DependentUpon>frmProjectManager_SH.cs</DependentUpon>
+    <EmbeddedResource Include="frmProjectManager_oldSH.resx">
+      <DependentUpon>frmProjectManager_oldSH.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmyearSel.resx">
@@ -1443,6 +1475,14 @@
     <Content Include="Mysql\importmap.xml" />
     <EmbeddedResource Include="projectdevicetypes.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProjectManager_SH.resx">
+      <DependentUpon>frmProjectManager_SH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProjectManager_children.resx">
+      <DependentUpon>frmProjectManager_children.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
