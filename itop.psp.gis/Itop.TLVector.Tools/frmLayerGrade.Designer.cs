@@ -46,9 +46,9 @@
             // 
             // nodeAdd
             // 
-            this.nodeAdd.Location = new System.Drawing.Point(19, 8);
+            this.nodeAdd.Location = new System.Drawing.Point(22, 9);
             this.nodeAdd.Name = "nodeAdd";
-            this.nodeAdd.Size = new System.Drawing.Size(40, 23);
+            this.nodeAdd.Size = new System.Drawing.Size(47, 27);
             this.nodeAdd.TabIndex = 1;
             this.nodeAdd.Text = "增加";
             this.nodeAdd.Click += new System.EventHandler(this.LayerGradeAdd);
@@ -56,9 +56,9 @@
             // nodeDel
             // 
             this.nodeDel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.nodeDel.Location = new System.Drawing.Point(65, 8);
+            this.nodeDel.Location = new System.Drawing.Point(76, 9);
             this.nodeDel.Name = "nodeDel";
-            this.nodeDel.Size = new System.Drawing.Size(40, 23);
+            this.nodeDel.Size = new System.Drawing.Size(47, 27);
             this.nodeDel.TabIndex = 2;
             this.nodeDel.Text = "删除";
             this.nodeDel.Click += new System.EventHandler(this.LayerGradeDel);
@@ -66,9 +66,9 @@
             // changeName
             // 
             this.changeName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.changeName.Location = new System.Drawing.Point(111, 8);
+            this.changeName.Location = new System.Drawing.Point(129, 9);
             this.changeName.Name = "changeName";
-            this.changeName.Size = new System.Drawing.Size(40, 23);
+            this.changeName.Size = new System.Drawing.Size(47, 27);
             this.changeName.TabIndex = 4;
             this.changeName.Text = "修改";
             this.changeName.Click += new System.EventHandler(this.LayerGradeChange);
@@ -86,17 +86,17 @@
             this.treeListColumn2});
             this.treeList1.CustomizationFormBounds = new System.Drawing.Rectangle(81, 294, 208, 163);
             this.treeList1.KeyFieldName = "SUID";
-            this.treeList1.Location = new System.Drawing.Point(-1, 37);
+            this.treeList1.Location = new System.Drawing.Point(-1, 43);
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.Editable = false;
             this.treeList1.OptionsMenu.EnableColumnMenu = false;
             this.treeList1.OptionsMenu.EnableFooterMenu = false;
             this.treeList1.OptionsSelection.MultiSelect = true;
-            this.treeList1.Size = new System.Drawing.Size(401, 381);
-            this.treeList1.StateImageList = this.imageList1;
+            this.treeList1.OptionsView.ShowCheckBoxes = true;
+            this.treeList1.Size = new System.Drawing.Size(468, 444);
             this.treeList1.TabIndex = 5;
-            this.treeList1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeList1_KeyDown);
             this.treeList1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeList1_MouseDown);
+            this.treeList1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeList1_KeyDown);
             this.treeList1.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.treeList1_GetStateImage);
             // 
             // treeListColumn1
@@ -106,6 +106,7 @@
             this.treeListColumn1.MinWidth = 27;
             this.treeListColumn1.Name = "treeListColumn1";
             this.treeListColumn1.SortOrder = System.Windows.Forms.SortOrder.Ascending;
+            this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
             // 
             // treeListColumn3
@@ -139,9 +140,9 @@
             // 
             this.simpleButtonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButtonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.simpleButtonOK.Location = new System.Drawing.Point(230, 424);
+            this.simpleButtonOK.Location = new System.Drawing.Point(268, 495);
             this.simpleButtonOK.Name = "simpleButtonOK";
-            this.simpleButtonOK.Size = new System.Drawing.Size(60, 23);
+            this.simpleButtonOK.Size = new System.Drawing.Size(70, 27);
             this.simpleButtonOK.TabIndex = 6;
             this.simpleButtonOK.Text = "确定";
             // 
@@ -149,18 +150,17 @@
             // 
             this.simpleButtonCancle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonCancle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButtonCancle.Location = new System.Drawing.Point(305, 424);
+            this.simpleButtonCancle.Location = new System.Drawing.Point(356, 495);
             this.simpleButtonCancle.Name = "simpleButtonCancle";
-            this.simpleButtonCancle.Size = new System.Drawing.Size(60, 23);
+            this.simpleButtonCancle.Size = new System.Drawing.Size(70, 27);
             this.simpleButtonCancle.TabIndex = 7;
             this.simpleButtonCancle.Text = "取消";
             // 
             // frmLayerGrade
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(400, 459);
+            this.ClientSize = new System.Drawing.Size(467, 535);
             this.Controls.Add(this.simpleButtonCancle);
             this.Controls.Add(this.simpleButtonOK);
             this.Controls.Add(this.treeList1);
