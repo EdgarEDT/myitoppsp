@@ -234,6 +234,7 @@ namespace Itop.Client.Table
                         {
                             listremove.Add((Substation_Info)list[i]);
                         }
+                       
                     }
                 }
                 for (int i = 0; i < listremove.Count;i++ )
