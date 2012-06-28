@@ -102,6 +102,7 @@ namespace Itop.TLPSP.DEVICE
             {
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit1.Properties.Items.Add(o);
+                date2.Properties.Items.Add(o);
             }
         }
         private void panelControl1_Paint(object sender, PaintEventArgs e)

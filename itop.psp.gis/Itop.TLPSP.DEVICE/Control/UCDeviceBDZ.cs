@@ -203,7 +203,7 @@ namespace Itop.TLPSP.DEVICE
         /// </summary>
         public override void InitColumns() {
             GridColumn column = gridView1.Columns.Add();
-            column.Caption = "名称";
+            column.Caption = "变电站名称";
             column.FieldName = "Title";
             column.Width = 100;
             column.VisibleIndex = 1;
@@ -232,19 +232,24 @@ namespace Itop.TLPSP.DEVICE
             column.Width = 100;
             column.VisibleIndex = 6;
             column.OptionsColumn.AllowEdit = false;
-           
             column = gridView1.Columns.Add();
-            
-            column.Caption = "最大负荷";
-            column.FieldName = "L9";
+            column.Caption = "负载率";
+            column.FieldName = "L10";
             column.Width = 100;
             column.VisibleIndex = 7;
             column.OptionsColumn.AllowEdit = false;
+           
             column = gridView1.Columns.Add();
             column.Caption = "投产年份";
             column.FieldName = "S2";
             column.Width = 100;
             column.VisibleIndex = 8;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "退役年份";
+            column.FieldName = "L29";
+            column.Width = 100;
+            column.VisibleIndex = 9;
             column.OptionsColumn.AllowEdit = false;
             //column = gridView1.Columns.Add();
             //column.Caption = "停产年份";
@@ -252,12 +257,7 @@ namespace Itop.TLPSP.DEVICE
             //column.Width = 100;
             //column.VisibleIndex = 5;
             //column.OptionsColumn.AllowEdit = false;
-            column = gridView1.Columns.Add();
-            column.Caption = "状态";
-            column.FieldName = "flag_";
-            column.Width = 100;
-            column.VisibleIndex =9;
-            column.OptionsColumn.AllowEdit = false;
+            
             column = gridView1.Columns.Add();
             column.Caption = "电网类型";
             column.FieldName = "DQ";
@@ -269,6 +269,18 @@ namespace Itop.TLPSP.DEVICE
             column.FieldName = "AreaName";
             column.Width = 100;
             column.VisibleIndex = 11;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "无功容量";
+            column.FieldName = "L26";
+            column.Width = 100;
+            column.VisibleIndex = 12;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "无功补偿构成";
+            column.FieldName = "L27";
+            column.Width = 100;
+            column.VisibleIndex = 13;
             column.OptionsColumn.AllowEdit = false;
         }
         #endregion

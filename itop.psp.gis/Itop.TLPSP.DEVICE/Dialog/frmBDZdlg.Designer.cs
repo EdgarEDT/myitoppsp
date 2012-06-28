@@ -32,6 +32,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.comboBoxEdit8 = new DevExpress.XtraEditors.LookUpEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -43,13 +44,14 @@
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.label34 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBoxEdit8 = new DevExpress.XtraEditors.LookUpEdit();
             this.comboBoxEdit9 = new DevExpress.XtraEditors.LookUpEdit();
             this.label37 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.textEdit1 = new DevExpress.XtraEditors.ButtonEdit();
+            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.spinEdit5 = new DevExpress.XtraEditors.SpinEdit();
             this.spinEdit4 = new DevExpress.XtraEditors.SpinEdit();
@@ -61,11 +63,14 @@
             this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.spinEdit6 = new DevExpress.XtraEditors.SpinEdit();
+            this.label12 = new System.Windows.Forms.Label();
             this.spinEdit2 = new DevExpress.XtraEditors.SpinEdit();
             this.label16 = new System.Windows.Forms.Label();
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucGraph1 = new Itop.TLPSP.DEVICE.UCGraph();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
@@ -93,11 +98,11 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.date2.Properties)).BeginInit();
@@ -106,15 +111,16 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
@@ -155,6 +161,22 @@
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(656, 428);
             this.xtraTabPage1.Text = "基本信息";
+            // 
+            // comboBoxEdit8
+            // 
+            this.comboBoxEdit8.Location = new System.Drawing.Point(88, 444);
+            this.comboBoxEdit8.Name = "comboBoxEdit8";
+            this.comboBoxEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit8.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Title", "区域名称")});
+            this.comboBoxEdit8.Properties.DisplayMember = "Title";
+            this.comboBoxEdit8.Properties.NullText = "";
+            this.comboBoxEdit8.Properties.ValueMember = "Title";
+            this.comboBoxEdit8.Size = new System.Drawing.Size(181, 21);
+            this.comboBoxEdit8.TabIndex = 8;
+            this.comboBoxEdit8.Visible = false;
             // 
             // groupControl1
             // 
@@ -274,6 +296,17 @@
             this.simpleButton3.Text = "选择母线";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.Black;
+            this.label34.Location = new System.Drawing.Point(1, 451);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(55, 14);
+            this.label34.TabIndex = 19;
+            this.label34.Text = "电网类型";
+            this.label34.Visible = false;
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -281,7 +314,9 @@
             this.groupBox1.Controls.Add(this.comboBoxEdit9);
             this.groupBox1.Controls.Add(this.label37);
             this.groupBox1.Controls.Add(this.textEdit1);
+            this.groupBox1.Controls.Add(this.textEdit3);
             this.groupBox1.Controls.Add(this.textEdit2);
+            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.spinEdit5);
             this.groupBox1.Controls.Add(this.spinEdit4);
@@ -293,6 +328,8 @@
             this.groupBox1.Controls.Add(this.comboBoxEdit2);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.spinEdit6);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.spinEdit2);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.spinEdit1);
@@ -301,30 +338,14 @@
             this.groupBox1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.groupBox1.Location = new System.Drawing.Point(14, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(310, 309);
+            this.groupBox1.Size = new System.Drawing.Size(310, 367);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "基本信息";
             // 
-            // comboBoxEdit8
-            // 
-            this.comboBoxEdit8.Location = new System.Drawing.Point(88, 353);
-            this.comboBoxEdit8.Name = "comboBoxEdit8";
-            this.comboBoxEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit8.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Title", "区域名称")});
-            this.comboBoxEdit8.Properties.DisplayMember = "Title";
-            this.comboBoxEdit8.Properties.NullText = "";
-            this.comboBoxEdit8.Properties.ValueMember = "Title";
-            this.comboBoxEdit8.Size = new System.Drawing.Size(181, 21);
-            this.comboBoxEdit8.TabIndex = 8;
-            this.comboBoxEdit8.Visible = false;
-            // 
             // comboBoxEdit9
             // 
-            this.comboBoxEdit9.Location = new System.Drawing.Point(97, 246);
+            this.comboBoxEdit9.Location = new System.Drawing.Point(97, 299);
             this.comboBoxEdit9.Name = "comboBoxEdit9";
             this.comboBoxEdit9.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -341,22 +362,11 @@
             // 
             this.label37.AutoSize = true;
             this.label37.ForeColor = System.Drawing.Color.Black;
-            this.label37.Location = new System.Drawing.Point(9, 252);
+            this.label37.Location = new System.Drawing.Point(9, 305);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(55, 14);
             this.label37.TabIndex = 18;
             this.label37.Text = "所在区域";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.Color.Black;
-            this.label34.Location = new System.Drawing.Point(1, 360);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(55, 14);
-            this.label34.TabIndex = 19;
-            this.label34.Text = "电网类型";
-            this.label34.Visible = false;
             // 
             // textEdit1
             // 
@@ -369,6 +379,14 @@
             this.textEdit1.TabIndex = 0;
             this.textEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.textEdit1_ButtonClick);
             // 
+            // textEdit3
+            // 
+            this.textEdit3.Location = new System.Drawing.Point(95, 159);
+            this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Properties.MaxLength = 50;
+            this.textEdit3.Size = new System.Drawing.Size(181, 21);
+            this.textEdit3.TabIndex = 3;
+            // 
             // textEdit2
             // 
             this.textEdit2.Location = new System.Drawing.Point(96, 106);
@@ -376,6 +394,16 @@
             this.textEdit2.Properties.MaxLength = 50;
             this.textEdit2.Size = new System.Drawing.Size(181, 21);
             this.textEdit2.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(7, 162);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(79, 14);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "无功补偿构成";
             // 
             // label7
             // 
@@ -394,7 +422,7 @@
             0,
             0,
             0});
-            this.spinEdit5.Location = new System.Drawing.Point(96, 190);
+            this.spinEdit5.Location = new System.Drawing.Point(96, 243);
             this.spinEdit5.Name = "spinEdit5";
             this.spinEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -418,7 +446,7 @@
             0,
             0,
             0});
-            this.spinEdit4.Location = new System.Drawing.Point(97, 161);
+            this.spinEdit4.Location = new System.Drawing.Point(97, 214);
             this.spinEdit4.Name = "spinEdit4";
             this.spinEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -429,7 +457,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(14, 195);
+            this.label11.Location = new System.Drawing.Point(14, 248);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 14);
             this.label11.TabIndex = 8;
@@ -439,7 +467,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(9, 167);
+            this.label6.Location = new System.Drawing.Point(9, 220);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 14);
             this.label6.TabIndex = 8;
@@ -452,7 +480,7 @@
             0,
             0,
             0});
-            this.spinEdit3.Location = new System.Drawing.Point(97, 134);
+            this.spinEdit3.Location = new System.Drawing.Point(97, 187);
             this.spinEdit3.Name = "spinEdit3";
             this.spinEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -463,7 +491,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(9, 140);
+            this.label5.Location = new System.Drawing.Point(9, 193);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 14);
             this.label5.TabIndex = 6;
@@ -472,7 +500,7 @@
             // comboBoxEdit3
             // 
             this.comboBoxEdit3.EditValue = "公用";
-            this.comboBoxEdit3.Location = new System.Drawing.Point(96, 278);
+            this.comboBoxEdit3.Location = new System.Drawing.Point(96, 331);
             this.comboBoxEdit3.Name = "comboBoxEdit3";
             this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -486,7 +514,7 @@
             // comboBoxEdit2
             // 
             this.comboBoxEdit2.EditValue = "现状";
-            this.comboBoxEdit2.Location = new System.Drawing.Point(97, 219);
+            this.comboBoxEdit2.Location = new System.Drawing.Point(97, 272);
             this.comboBoxEdit2.Name = "comboBoxEdit2";
             this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -501,7 +529,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(8, 286);
+            this.label8.Location = new System.Drawing.Point(8, 339);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 14);
             this.label8.TabIndex = 4;
@@ -511,11 +539,35 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 225);
+            this.label2.Location = new System.Drawing.Point(9, 278);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 14);
             this.label2.TabIndex = 4;
             this.label2.Text = "状态";
+            // 
+            // spinEdit6
+            // 
+            this.spinEdit6.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit6.Location = new System.Drawing.Point(96, 132);
+            this.spinEdit6.Name = "spinEdit6";
+            this.spinEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit6.Size = new System.Drawing.Size(180, 21);
+            this.spinEdit6.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(8, 135);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(90, 14);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "无功容量(MVA)";
             // 
             // spinEdit2
             // 
@@ -574,6 +626,17 @@
             this.label1.Size = new System.Drawing.Size(67, 14);
             this.label1.TabIndex = 0;
             this.label1.Text = "变电站名称";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(8, 394);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(82, 18);
+            this.checkBox1.TabIndex = 25;
+            this.checkBox1.Text = "作为T接点";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
             // xtraTabPage2
             // 
@@ -857,17 +920,6 @@
             this.simpleButton2.TabIndex = 13;
             this.simpleButton2.Text = "取消";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(8, 328);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(82, 18);
-            this.checkBox1.TabIndex = 25;
-            this.checkBox1.Text = "作为T接点";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.Visible = false;
-            // 
             // simpleButton5
             // 
             this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -895,6 +947,7 @@
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -905,15 +958,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
@@ -996,5 +1050,9 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.SpinEdit spinEdit5;
         private System.Windows.Forms.Label label11;
+        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private System.Windows.Forms.Label label13;
+        private DevExpress.XtraEditors.SpinEdit spinEdit6;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -874,6 +874,251 @@ namespace Itop.TLPSP.DEVICE {
             }
 
         }
+        private void AllUpdateNumber()
+        {
+            //更新母线编号
+           string con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" +strID+ "' and pspdev.Type='01' ORDER BY Number";
+            IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            int i = 0;
+            foreach (PSPDEV dev in list)
+            {
+                i++;
+                dev.Number = i;
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+            //更新线路编号
+            con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and pspdev.Type='05'";
+
+           list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            foreach (PSPDEV dev in list)
+            {
+                string iname = dev.IName;
+                if (iname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "'and pspdev.type='01'and pspdev.name='" + iname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.FirstNode = psp.Number;
+                        dev.RateVolt = psp.RateVolt;
+                        dev.ReferenceVolt = psp.ReferenceVolt;
+                    }
+                }
+
+                string jname = dev.JName;
+                if (jname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "'and pspdev.type='01'and pspdev.name='" + jname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.LastNode = psp.Number;
+                    }
+                }
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+            //更新负荷
+            con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='12'";
+
+            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            foreach (PSPDEV dev in list)
+            {
+                string iname = dev.IName;
+                if (iname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='01'and pspdev.name='" + iname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.FirstNode = psp.Number;
+                        dev.RateVolt = psp.RateVolt;
+                        dev.ReferenceVolt = psp.ReferenceVolt;
+                    }
+                }
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+            //更新两绕组 和三绕组
+            con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='02'";
+
+           list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            foreach (PSPDEV dev in list)
+            {
+                string iname = dev.IName;
+                if (iname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='01'and pspdev.name='" + iname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.FirstNode = psp.Number;
+                        dev.Vi0 = psp.RateVolt;
+                        dev.Vib = psp.ReferenceVolt;
+                    }
+                }
+
+                string jname = dev.JName;
+                if (jname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='01'and pspdev.name='" + jname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.LastNode = psp.Number;
+                        dev.Vj0 = psp.RateVolt;
+                        dev.Vjb = psp.ReferenceVolt;
+                    }
+                }
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+
+            con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='03'";
+
+             list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            foreach (PSPDEV dev in list)
+            {
+                string iname = dev.IName;
+                if (iname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='01'and pspdev.name='" + iname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.FirstNode = psp.Number;
+                        dev.Vi0 = psp.RateVolt;
+                        dev.Vib = psp.ReferenceVolt;
+
+                    }
+                }
+
+                string jname = dev.JName;
+                if (jname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='01'and pspdev.name='" + jname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.LastNode = psp.Number;
+                        dev.Vj0 = psp.RateVolt;
+                        dev.Vjb = psp.ReferenceVolt;
+                    }
+                }
+                string kname = dev.KName;
+                if (kname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='01'and pspdev.name='" + kname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.Flag = psp.Number;
+                        dev.Vk0 = psp.RateVolt;
+                        dev.Vkb = psp.ReferenceVolt;
+                    }
+                }
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+
+            //更新发电机
+            con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='04'";
+
+           list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            foreach (PSPDEV dev in list)
+            {
+                string iname = dev.IName;
+                if (iname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='01'and pspdev.name='" + iname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.FirstNode = psp.Number;
+                        dev.RateVolt = psp.RateVolt;
+                        dev.ReferenceVolt = psp.ReferenceVolt;
+                    }
+                }
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+
+            //更新无功设备
+            con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='11'";
+
+           list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            foreach (PSPDEV dev in list)
+            {
+                string iname = dev.IName;
+                if (iname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='01'and pspdev.name='" + iname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.FirstNode = psp.Number;
+                        dev.ReferenceVolt = psp.ReferenceVolt;
+                        dev.RateVolt = psp.RateVolt;
+                    }
+                }
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+            con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='09'";
+
+           list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            foreach (PSPDEV dev in list)
+            {
+                string iname = dev.IName;
+                if (iname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='01'and pspdev.name='" + iname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.FirstNode = psp.Number;
+                        dev.RateVolt = psp.RateVolt;
+                        dev.ReferenceVolt = psp.ReferenceVolt;
+                    }
+                }
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+            con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='10'";
+
+           list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            foreach (PSPDEV dev in list)
+            {
+                string iname = dev.IName;
+                if (iname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='05'and pspdev.name='" + iname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.FirstNode = psp.FirstNode;
+                        dev.LastNode = psp.LastNode;
+                        dev.RateVolt = psp.RateVolt;
+                        dev.ReferenceVolt = psp.ReferenceVolt;
+                    }
+                }
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+            con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='08'";
+
+           list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+            foreach (PSPDEV dev in list)
+            {
+                string iname = dev.IName;
+                if (iname != null)
+                {
+                    con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "'and pspdev.type='05'and pspdev.name='" + iname + "'";
+                    PSPDEV psp = (PSPDEV)UCDeviceBase.DataService.GetObject("SelectPSPDEVByCondition", con);
+                    if (psp != null)
+                    {
+                        dev.FirstNode = psp.FirstNode;
+                        dev.LastNode = psp.LastNode;
+                        dev.RateVolt = psp.RateVolt;
+                        dev.ReferenceVolt = psp.ReferenceVolt;
+                    }
+                }
+                UCDeviceBase.DataService.Update<PSPDEV>(dev);
+            }
+
+        }
         private void bardetail_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //TreeListNode node = treeList1.FocusedNode;

@@ -38,7 +38,7 @@ namespace ItopVector.Tools {
         public string YearID = "";
         public static ArrayList ilist = new ArrayList();
         public ArrayList NoSave = new ArrayList();
-        public string FAID;           //方案id
+        public string FAID;           //方案
         public string Progtype {
             get { return progtype; }
             set { progtype = value; }
