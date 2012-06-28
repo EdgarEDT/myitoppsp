@@ -254,6 +254,11 @@ namespace Itop.TLPSP.DEVICE
             if (!isread) {
                 ucGraph1.Save(DeviceMx.UID,DeviceMx.AreaID=="");
                 ucGraph2.Save("", DeviceMx.AreaID == "");
+                if (string.IsNullOrEmpty(bdz.Title))
+                {
+                    MessageBox.Show("变电站名称不能为空！");
+                    return;
+                }
                 if (string.IsNullOrEmpty(bdz.S2) )
                 {
                     MessageBox.Show("请选择投产时间！");

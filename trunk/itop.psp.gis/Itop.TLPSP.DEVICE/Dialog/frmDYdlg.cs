@@ -279,7 +279,11 @@ namespace Itop.TLPSP.DEVICE
         {
             if (!isread)
             {
-             
+                if (string.IsNullOrEmpty(devObj.Title))
+                {
+                    MessageBox.Show("名称不能为空！");
+                    return;
+                }
                 if (string.IsNullOrEmpty(devObj.S3) )
                 {
                     MessageBox.Show("请选择投产时间！");

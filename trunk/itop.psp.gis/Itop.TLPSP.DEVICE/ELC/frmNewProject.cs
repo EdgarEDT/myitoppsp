@@ -71,7 +71,12 @@ namespace Itop.TLPSP.DEVICE
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(comboBoxEdit2.Text))
+            {
+                MessageBox.Show("方案年份不能为空");
+                return;
+            }
+            this.DialogResult = DialogResult.OK;
         }
     }
 }
