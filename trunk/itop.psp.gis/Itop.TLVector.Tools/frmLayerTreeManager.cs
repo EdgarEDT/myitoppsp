@@ -141,8 +141,8 @@ namespace ItopVector.Tools {
                 foreach (TreeListNode node3 in updateNodes) {
                     node3["ParentID"] = lay.ParentID;
                 }
-            } catch {
-                //Services.BaseService.Create<SVG_LAYER>(treeList1.GetDataRecordByNode(e.Node) as SVG_LAYER);
+            } catch(Exception err) {
+                MessageBox.Show(err.Message);
             }
         }
         private void SetCheckedParentNodes(TreeListNode node, CheckState check) {
