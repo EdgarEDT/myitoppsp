@@ -124,12 +124,22 @@ namespace ItopVector.Tools {
 
         void treeList1_AfterDragNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e) {
             try {
-                DataRowView row = treeList1.GetDataRecordByNode(e.Node) as DataRowView;
-                SVG_LAYER lay = DataConverter.RowToObject<SVG_LAYER>(row.Row);
-                SVG_LAYER lay2 = Services.BaseService.GetOneByKey<SVG_LAYER>(lay);
-                if (lay2 != null) {
-                    lay2.ParentID = lay.ParentID;
-                    Services.BaseService.Update<SVG_LAYER>(lay);
+
+                SVG_LAYER lay = new SVG_LAYER() { ParentID = e.Node["ParentID"].ToString(), SUID = e.Node["SUID"].ToString(), svgID = e.Node["svgID"].ToString() };
+                SVG_LAYER lay2 = null;
+                List<TreeListNode> updateNodes = new List<TreeListNode>();
+                foreach (TreeListNode node2 in treeList1.Selection) {
+                    lay.SUID = node2["SUID"].ToString();
+                    lay2 =Services.BaseService.GetOneByKey<SVG_LAYER>(lay);
+                    if (lay2 != null) {
+                         lay2.ParentID = lay.ParentID;
+                       Services.BaseService.Update<SVG_LAYER>(lay2);
+                       updateNodes.Add(node2);
+                       
+                    }
+                }
+                foreach (TreeListNode node3 in updateNodes) {
+                    node3["ParentID"] = lay.ParentID;
                 }
             } catch {
                 //Services.BaseService.Create<SVG_LAYER>(treeList1.GetDataRecordByNode(e.Node) as SVG_LAYER);
