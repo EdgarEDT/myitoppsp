@@ -36,8 +36,6 @@
             this.UpdateNumber = new DevExpress.XtraBars.BarButtonItem();
             this.barImportPsasp = new DevExpress.XtraBars.BarButtonItem();
             this.bardevicetemplate = new DevExpress.XtraBars.BarButtonItem();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -64,7 +62,7 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.treeList1);
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(664, 324);
+            this.splitContainerControl1.Size = new System.Drawing.Size(664, 369);
             this.splitContainerControl1.SplitterPosition = 144;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -83,7 +81,7 @@
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
-            this.treeList1.Size = new System.Drawing.Size(144, 324);
+            this.treeList1.Size = new System.Drawing.Size(144, 369);
             this.treeList1.TabIndex = 0;
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
             this.treeList1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeList1_MouseClick);
@@ -140,6 +138,7 @@
             this.UpdateNumber.ImageIndex = 0;
             this.UpdateNumber.Name = "UpdateNumber";
             this.UpdateNumber.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.UpdateNumber.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.UpdateNumber.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.UpdateNumber_ItemClick);
             // 
             // barImportPsasp
@@ -162,39 +161,15 @@
             this.bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bardevicetemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bardevicetemplate_ItemClick);
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(542, 373);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 4;
-            this.simpleButton1.Text = "取消";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.simpleButton2.Location = new System.Drawing.Point(411, 373);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 4;
-            this.simpleButton2.Text = "确定";
-            // 
             // frmDeviceManager_children
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 404);
-            this.Controls.Add(this.simpleButton2);
-            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "frmDeviceManager_children";
             this.Text = "frmDeviceManager";
             this.Controls.SetChildIndex(this.splitContainerControl1, 0);
-            this.Controls.SetChildIndex(this.simpleButton1, 0);
-            this.Controls.SetChildIndex(this.simpleButton2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
@@ -214,7 +189,5 @@
         private DevExpress.XtraBars.BarButtonItem UpdateNumber;
         private DevExpress.XtraBars.BarButtonItem barImportPsasp;
         private DevExpress.XtraBars.BarButtonItem bardevicetemplate;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

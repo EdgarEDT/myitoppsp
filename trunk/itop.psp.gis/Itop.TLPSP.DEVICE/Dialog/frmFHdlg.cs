@@ -82,6 +82,7 @@ namespace Itop.TLPSP.DEVICE
                 dev.NodeType = (string)radioGroup2.EditValue;
                 dev.IName = belongbus;
                 dev.ProjectID = projectid;
+                dev.Date2 = comboBoxEdit5.Text;
                 return dev;
             }
             set
@@ -110,7 +111,7 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit11.Text = dev.SiN.ToString();      
                 spinEdit17.Text = dev.SjN.ToString();  
                 spinEdit15.Text = dev.SkN.ToString();
-
+                comboBoxEdit5.Text = dev.Date2;
                 int f = 0;
                 int.TryParse(dev.KSwitchStatus, out f);
                 KswitchStatus = f;
@@ -136,6 +137,8 @@ namespace Itop.TLPSP.DEVICE
             {
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit3.Properties.Items.Add(o);
+                comboBoxEdit5.Properties.Items.Add(o);
+
             }
             string con = "where Type='01'AND  ProjectID ='" + this.ProjectID + "' and SvgUID='" + dev.SvgUID + "' order by name";
 

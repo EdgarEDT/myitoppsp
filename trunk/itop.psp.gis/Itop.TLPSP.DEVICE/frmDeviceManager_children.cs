@@ -89,7 +89,7 @@ namespace Itop.TLPSP.DEVICE
             InitDeviceType(type);
             //splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
             treeList1.FocusedNode = null;
-            barButtonItemclose.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            //barButtonItemclose.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.ShowDialog();
             
         }
@@ -294,7 +294,8 @@ namespace Itop.TLPSP.DEVICE
         }
         private void barButtonItemclose_ItemClick(object sender,DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Close();
+            this.DialogResult = DialogResult.OK;
+            //this.Close();
         }
 
         private void AllDele_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

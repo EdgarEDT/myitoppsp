@@ -139,6 +139,7 @@
             this.UpdateNumber.ImageIndex = 0;
             this.UpdateNumber.Name = "UpdateNumber";
             this.UpdateNumber.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.UpdateNumber.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.UpdateNumber.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.UpdateNumber_ItemClick);
             // 
             // barImportPsasp

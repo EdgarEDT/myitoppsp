@@ -260,7 +260,7 @@ namespace Itop.TLPSP.DEVICE
                                }
                                if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && belongyear.Length == 4)
                                {
-                                   if (Convert.ToInt32((list[i] as PSPDEV).Date2) > Convert.ToInt32(belongyear))
+                                   if (Convert.ToInt32((list[i] as PSPDEV).Date2) < Convert.ToInt32(belongyear))
                                    {
                                        list.RemoveAt(i);
                                        i--;
@@ -489,7 +489,7 @@ namespace Itop.TLPSP.DEVICE
                                         }
                                         if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && belongyear.Length == 4)
                                         {
-                                            if (Convert.ToInt32((list[i] as PSPDEV).Date2) > Convert.ToInt32(belongyear))
+                                            if (Convert.ToInt32((list[i] as PSPDEV).Date2) < Convert.ToInt32(belongyear))
                                             {
                                                 list.RemoveAt(i);
                                                 i--;
@@ -691,8 +691,8 @@ namespace Itop.TLPSP.DEVICE
               {
                   list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", " where  ProjectID = '" + this.ProjectID + "'and type='01'and SvgUID IS NULL");
               }
-              if (string.IsNullOrEmpty(bdzordy))
-              {
+              //if (string.IsNullOrEmpty(bdzordy))       //对所有的数据进行 年份的筛选
+              //{
                   if (!string.IsNullOrEmpty(belongyear))   //根据参与计算设备属于那一年先进行一次筛选
                   {
                       for (int i = 0; i < list.Count; i++)
@@ -708,7 +708,7 @@ namespace Itop.TLPSP.DEVICE
                           }
                           if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && belongyear.Length == 4)
                           {
-                              if (Convert.ToInt32((list[i] as PSPDEV).Date2) > Convert.ToInt32(belongyear))
+                              if (Convert.ToInt32((list[i] as PSPDEV).Date2) <Convert.ToInt32(belongyear))
                               {
                                   list.RemoveAt(i);
                                   i--;
@@ -717,7 +717,7 @@ namespace Itop.TLPSP.DEVICE
                           }
                       }
                   }
-              }
+             // }
               
               foreach (PSPDEV dev in list)
               {

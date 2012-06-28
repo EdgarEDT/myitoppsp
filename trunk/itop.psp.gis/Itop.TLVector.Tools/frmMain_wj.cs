@@ -4276,17 +4276,44 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                                         Services.BaseService.Update<PSPDEV>(obj);
 
                                         //将其设备加入到计算方案中
-                                        PSP_ElcDevice elcDevice = new PSP_ElcDevice();
-                                        elcDevice.DeviceSUID = deviceid;
-                                        elcDevice.ProjectSUID = frmlar.FAID;
-                                        elcDevice = UCDeviceBase.DataService.GetOneByKey<PSP_ElcDevice>(elcDevice);
-                                        if (elcDevice==null)
+                                        //获得方案名称
+                                        PSP_ELCPROJECT pd = new PSP_ELCPROJECT();
+                                        pd.ID = frmlar.FAID;
+                                        pd = Services.BaseService.GetOneByKey<PSP_ELCPROJECT>(pd);
+                                        if (pd != null)
                                         {
-                                            elcDevice = new PSP_ElcDevice();
-                                            elcDevice.DeviceSUID = deviceid;
-                                            elcDevice.ProjectSUID = frmlar.FAID;
-                                            UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
+                                            bool operflag = false, dataflag = false;
+                                            if (!string.IsNullOrEmpty(((PSPDEV)obj).OperationYear) && ((PSPDEV)obj).OperationYear.Length == 4 && pd.BelongYear.Length == 4)
+                                            {
+                                                if (Convert.ToInt32(((PSPDEV)obj).OperationYear) < Convert.ToInt32(pd.BelongYear))
+                                                {
+                                                    operflag = true;
+                                                }
+                                            }
+                                            if (!string.IsNullOrEmpty(((PSPDEV)obj).Date2) && ((PSPDEV)obj).Date2.Length == 4 && pd.BelongYear.Length == 4)
+                                            {
+                                                if (Convert.ToInt32(((PSPDEV)obj).Date2) > Convert.ToInt32(pd.BelongYear))
+                                                {
+                                                    dataflag = true;
+                                                }
+                                            }
+                                            if (operflag && dataflag)
+                                            {
+                                                PSP_ElcDevice elcDevice = new PSP_ElcDevice();
+                                                elcDevice.DeviceSUID = deviceid;
+                                                elcDevice.ProjectSUID = frmlar.FAID;
+                                                elcDevice = UCDeviceBase.DataService.GetOneByKey<PSP_ElcDevice>(elcDevice);
+                                                if (elcDevice == null)
+                                                {
+                                                    elcDevice = new PSP_ElcDevice();
+                                                    elcDevice.DeviceSUID = deviceid;
+                                                    elcDevice.ProjectSUID = frmlar.FAID;
+                                                    UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
+                                                }
+                                            }
+
                                         }
+                                     
                                       
                                     }
                                 }
@@ -4417,21 +4444,55 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                                         xml1.SetAttribute("Deviceid", deviceid);
                                         xml1.SetAttribute("info-name", ((PSP_PowerSubstation_Info)obj).Title);
 
-                                        string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and SvgUID='" + ((PSP_PowerSubstation_Info)obj).UID + "'";
-                                        IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
-                                        foreach (PSPDEV pv in list)
+                                        //获得方案名称
+                                        PSP_ELCPROJECT pd = new PSP_ELCPROJECT();
+                                        pd.ID = frmlar.FAID;
+                                        pd = Services.BaseService.GetOneByKey<PSP_ELCPROJECT>(pd);
+                                        if (pd != null)
                                         {
-                                            //将其设备加入到计算方案中
-                                            PSP_ElcDevice elcDevice = new PSP_ElcDevice();
-                                            elcDevice.DeviceSUID = pv.SUID;
-                                            elcDevice.ProjectSUID = frmlar.FAID;
-                                            elcDevice = UCDeviceBase.DataService.GetOneByKey<PSP_ElcDevice>(elcDevice);
-                                            if (elcDevice == null)
+                                            string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and SvgUID='" + ((PSP_PowerSubstation_Info)obj).UID + "'";
+                                            IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+                                            //根据年份进行筛选
+                                            if (!string.IsNullOrEmpty(pd.BelongYear))   //根据参与计算设备属于那一年先进行一次筛选
                                             {
-                                                elcDevice = new PSP_ElcDevice();
-                                                elcDevice.DeviceSUID = deviceid;
+                                                for (int i = 0; i < list.Count; i++)
+                                                {
+                                                    if (!string.IsNullOrEmpty((list[i] as PSPDEV).OperationYear) && (list[i] as PSPDEV).OperationYear.Length == 4 && pd.BelongYear.Length == 4)
+                                                    {
+                                                        if (Convert.ToInt32((list[i] as PSPDEV).OperationYear) > Convert.ToInt32(pd.BelongYear))
+                                                        {
+                                                            list.RemoveAt(i);
+                                                            i--;
+                                                            continue;
+                                                        }
+                                                    }
+                                                    if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && pd.BelongYear.Length == 4)
+                                                    {
+                                                        if (Convert.ToInt32((list[i] as PSPDEV).Date2) < Convert.ToInt32(pd.BelongYear))
+                                                        {
+                                                            list.RemoveAt(i);
+                                                            i--;
+                                                            continue;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+
+                                            foreach (PSPDEV pv in list)
+                                            {
+                                                //将其设备加入到计算方案中
+                                                PSP_ElcDevice elcDevice = new PSP_ElcDevice();
+                                                elcDevice.DeviceSUID = pv.SUID;
                                                 elcDevice.ProjectSUID = frmlar.FAID;
-                                                UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
+                                                elcDevice = UCDeviceBase.DataService.GetOneByKey<PSP_ElcDevice>(elcDevice);
+                                                if (elcDevice == null)
+                                                {
+                                                    elcDevice = new PSP_ElcDevice();
+                                                    elcDevice.DeviceSUID = deviceid;
+                                                    elcDevice.ProjectSUID = frmlar.FAID;
+                                                    UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
+                                                }
                                             }
                                         }
                                     }
@@ -4517,23 +4578,57 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                                         xml1.SetAttribute("Deviceid", deviceid);
                                         xml1.SetAttribute("info-name", ((PSP_Substation_Info)obj).Title);
 
-                                        string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and SvgUID='" + ((PSP_Substation_Info)obj).UID + "'";
-                                        IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
-                                        foreach (PSPDEV pv in list)
+                                        //获得方案名称
+                                        PSP_ELCPROJECT pd = new PSP_ELCPROJECT();
+                                        pd.ID = frmlar.FAID;
+                                        pd = Services.BaseService.GetOneByKey<PSP_ELCPROJECT>(pd);
+                                        if (pd != null)
                                         {
-                                            //将其设备加入到计算方案中
-                                            PSP_ElcDevice elcDevice = new PSP_ElcDevice();
-                                            elcDevice.DeviceSUID = pv.SUID;
-                                            elcDevice.ProjectSUID = frmlar.FAID;
-                                            elcDevice = UCDeviceBase.DataService.GetOneByKey<PSP_ElcDevice>(elcDevice);
-                                            if (elcDevice == null)
+                                            string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and SvgUID='" + ((PSP_Substation_Info)obj).UID + "'";
+                                            IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+                                            //根据年份进行筛选
+                                            if (!string.IsNullOrEmpty(pd.BelongYear))   //根据参与计算设备属于那一年先进行一次筛选
                                             {
-                                                elcDevice = new PSP_ElcDevice();
-                                                elcDevice.DeviceSUID = deviceid;
+                                                for (int i = 0; i < list.Count; i++)
+                                                {
+                                                    if (!string.IsNullOrEmpty((list[i] as PSPDEV).OperationYear) && (list[i] as PSPDEV).OperationYear.Length == 4 && pd.BelongYear.Length == 4)
+                                                    {
+                                                        if (Convert.ToInt32((list[i] as PSPDEV).OperationYear) > Convert.ToInt32(pd.BelongYear))
+                                                        {
+                                                            list.RemoveAt(i);
+                                                            i--;
+                                                            continue;
+                                                        }
+                                                    }
+                                                    if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && pd.BelongYear.Length == 4)
+                                                    {
+                                                        if (Convert.ToInt32((list[i] as PSPDEV).Date2) < Convert.ToInt32(pd.BelongYear))
+                                                        {
+                                                            list.RemoveAt(i);
+                                                            i--;
+                                                            continue;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            foreach (PSPDEV pv in list)
+                                            {
+                                                //将其设备加入到计算方案中
+                                                PSP_ElcDevice elcDevice = new PSP_ElcDevice();
+                                                elcDevice.DeviceSUID = pv.SUID;
                                                 elcDevice.ProjectSUID = frmlar.FAID;
-                                                UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
+                                                elcDevice = UCDeviceBase.DataService.GetOneByKey<PSP_ElcDevice>(elcDevice);
+                                                if (elcDevice == null)
+                                                {
+                                                    elcDevice = new PSP_ElcDevice();
+                                                    elcDevice.DeviceSUID = deviceid;
+                                                    elcDevice.ProjectSUID = frmlar.FAID;
+                                                    UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
+                                                }
                                             }
                                         }
+
                                         //return;
                                         //根据变站创建线路
                                         createLine(xml1, deviceid);

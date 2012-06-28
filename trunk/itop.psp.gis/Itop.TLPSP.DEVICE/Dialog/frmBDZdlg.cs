@@ -101,6 +101,8 @@ namespace Itop.TLPSP.DEVICE
                 }
                 bdz.L28 = date1.Text;
                 bdz.L29 = date2.Text;
+                bdz.L27 = textEdit3.Text;
+                bdz.L26 = spinEdit6.Value.ToString();
                 return bdz; }
             set {
                 bdz = value;
@@ -113,6 +115,10 @@ namespace Itop.TLPSP.DEVICE
                 try { spinEdit4.Value = (decimal)bdz.L3; }
                 catch { }
                 try { spinEdit5.Value = (decimal)bdz.L10; }
+                catch { }
+                try { spinEdit6.Value = Convert.ToDecimal(bdz.L26); }
+                catch { }
+                try { textEdit3.Text =bdz.L27; }
                 catch { }
                 comboBoxEdit1.Text = bdz.S2; 
                 comboBoxEdit2.Text = bdz.Flag == "2" ? "¹æ»®" :"ÏÖ×´" ;
@@ -511,7 +517,7 @@ namespace Itop.TLPSP.DEVICE
                 IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
                 {
-                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length==4)
+                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(bdz.L29))
                     {
                         if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(bdz.L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(bdz.L29))
                         {

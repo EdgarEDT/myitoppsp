@@ -50,9 +50,9 @@ namespace Itop.TLPSP.DEVICE
                 /// <summary>
                 ///连接方式
                 /// </summary>
-                dev.LineLevel = (string)radioGroup6.EditValue;
-                dev.LineType = (string)radioGroup5.EditValue;
-                dev.LineStatus = (string)radioGroup8.EditValue;
+                dev.LineLevel = (string)radioGroup11.EditValue;
+                dev.LineType = (string)radioGroup10.EditValue;
+                dev.LineStatus = (string)radioGroup9.EditValue;
                 /// <summary>
                 ///额定容量
                 /// </summary>                
@@ -149,9 +149,9 @@ namespace Itop.TLPSP.DEVICE
                 radioGroup4.EditValue = dev.HuganLine4;
                 radioGroup7.EditValue = dev.HuganLine2;
 
-                radioGroup6.EditValue = dev.LineLevel;
-                radioGroup5.EditValue = dev.LineType;
-                radioGroup8.EditValue = dev.LineStatus;
+                radioGroup11.EditValue = dev.LineLevel;
+                radioGroup10.EditValue = dev.LineType;
+                radioGroup9.EditValue = dev.LineStatus;
 
                 /// <summary>
                 ///额定容量
@@ -652,7 +652,7 @@ namespace Itop.TLPSP.DEVICE
 
         private void comboBoxEdit1_SelectedValueChanged(object sender, EventArgs e)
         {
-            date1.Text = comboBoxEdit1.Text;
+         //   date1.Text = comboBoxEdit1.Text;
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)

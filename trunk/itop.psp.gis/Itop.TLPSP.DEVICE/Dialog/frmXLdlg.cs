@@ -192,16 +192,18 @@ namespace Itop.TLPSP.DEVICE
             comboBoxEdit1.Text = DateTime.Today.Year.ToString();
             date1.Text = DateTime.Today.Year.ToString();
             WireCategory wirewire = new WireCategory();
+
             wirewire.Type = "40";
             IList list1 = null;
+            wirewire.WireLevel = DeviceMx.RateVolt.ToString();
+
+            list1 = UCDeviceBase.DataService.GetList("SelectWireCategoryListBYWireLevel", wirewire);
             if (DeviceMx.RateVolt != 0)
-            {
-                wirewire.WireLevel = DeviceMx.RateVolt.ToString();
-                
-                list1 = UCDeviceBase.DataService.GetList("SelectWireCategoryListBYWireLevel", wirewire);
-            }
-            else
-                list1 = UCDeviceBase.DataService.GetList("SelectWireCategoryList", wirewire);
+            //{
+               
+            //}
+            //else
+            //    list1 = UCDeviceBase.DataService.GetList("SelectWireCategoryList", wirewire);
             foreach (WireCategory sub in list1)
             {
                 if (comboBoxEdit2.Properties.Items.IndexOf(sub.WireType)==-1)
@@ -862,6 +864,24 @@ namespace Itop.TLPSP.DEVICE
             this.xtraTabPage3.PageVisible = true;
             this.xtraTabPage4.PageVisible = true;
             xtraTabControl1.SelectedTabPageIndex = 1;
+        }
+
+        private void spinEdit5_EditValueChanged(object sender, EventArgs e)
+        {
+            WireCategory wirewire = new WireCategory();
+            wirewire.Type = "40";
+            IList list1 = null;
+           
+                wirewire.WireLevel = spinEdit5.Value.ToString();
+
+                list1 = UCDeviceBase.DataService.GetList("SelectWireCategoryListBYWireLevel", wirewire);
+                foreach (WireCategory sub in list1)
+                {
+                    if (comboBoxEdit2.Properties.Items.IndexOf(sub.WireType) == -1)
+                    {
+                        comboBoxEdit2.Properties.Items.Add(sub.WireType);
+                    }
+                }
         }
 
         /// <summary>
