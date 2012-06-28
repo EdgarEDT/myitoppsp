@@ -27,6 +27,10 @@
         private void InitializeComponent() {
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.date1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,6 +63,11 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.radioGroup5 = new DevExpress.XtraEditors.RadioGroup();
+            this.radioGroup6 = new DevExpress.XtraEditors.RadioGroup();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.spinEdit49 = new DevExpress.XtraEditors.SpinEdit();
             this.spinEdit50 = new DevExpress.XtraEditors.SpinEdit();
@@ -182,18 +191,11 @@
             this.label66 = new System.Windows.Forms.Label();
             this.spinEdit43 = new DevExpress.XtraEditors.SpinEdit();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.radioGroup5 = new DevExpress.XtraEditors.RadioGroup();
-            this.radioGroup6 = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             this.groupBox16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.date1.Properties)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -214,6 +216,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup6.Properties)).BeginInit();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit49.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit50.Properties)).BeginInit();
@@ -271,11 +276,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit42.Properties)).BeginInit();
             this.groupBox15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit43.Properties)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup6.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -303,6 +303,53 @@
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(667, 392);
             this.xtraTabPage1.Text = "基本信息";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.spinEdit1);
+            this.groupBox2.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.groupBox2.Location = new System.Drawing.Point(337, 266);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(304, 62);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "容量";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.Black;
+            this.label28.Location = new System.Drawing.Point(238, 29);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(32, 14);
+            this.label28.TabIndex = 19;
+            this.label28.Text = "MVA";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(15, 29);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(95, 14);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "变压器额定容量:";
+            // 
+            // spinEdit1
+            // 
+            this.spinEdit1.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEdit1.Location = new System.Drawing.Point(133, 26);
+            this.spinEdit1.Name = "spinEdit1";
+            this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.spinEdit1.Size = new System.Drawing.Size(98, 21);
+            this.spinEdit1.TabIndex = 0;
             // 
             // groupBox16
             // 
@@ -580,7 +627,7 @@
             this.groupBox1.Size = new System.Drawing.Size(310, 167);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "线路基本信息";
+            this.groupBox1.Text = "基本信息";
             // 
             // date2
             // 
@@ -674,6 +721,70 @@
             this.xtraTabPage2.Size = new System.Drawing.Size(667, 392);
             this.xtraTabPage2.Text = "额定值";
             this.xtraTabPage2.Paint += new System.Windows.Forms.PaintEventHandler(this.xtraTabPage2_Paint);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label7);
+            this.groupBox8.Controls.Add(this.label16);
+            this.groupBox8.Controls.Add(this.radioGroup5);
+            this.groupBox8.Controls.Add(this.radioGroup6);
+            this.groupBox8.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.groupBox8.Location = new System.Drawing.Point(16, 3);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(274, 89);
+            this.groupBox8.TabIndex = 32;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "连接方式";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(19, 62);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 14);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "二次侧连接方式";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(19, 26);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(91, 14);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "一次侧连接方式";
+            // 
+            // radioGroup5
+            // 
+            this.radioGroup5.EditValue = "D";
+            this.radioGroup5.Location = new System.Drawing.Point(131, 54);
+            this.radioGroup5.Name = "radioGroup5";
+            this.radioGroup5.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.radioGroup5.Properties.Appearance.Options.UseBackColor = true;
+            this.radioGroup5.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.radioGroup5.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("D", "D"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("Y", "Y"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("YG", "YG")});
+            this.radioGroup5.Size = new System.Drawing.Size(146, 35);
+            this.radioGroup5.TabIndex = 5;
+            // 
+            // radioGroup6
+            // 
+            this.radioGroup6.EditValue = "D";
+            this.radioGroup6.Location = new System.Drawing.Point(131, 17);
+            this.radioGroup6.Name = "radioGroup6";
+            this.radioGroup6.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.radioGroup6.Properties.Appearance.Options.UseBackColor = true;
+            this.radioGroup6.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.radioGroup6.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("D", "D"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("Y", "Y"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("YG", "YG")});
+            this.radioGroup6.Size = new System.Drawing.Size(146, 35);
+            this.radioGroup6.TabIndex = 4;
             // 
             // groupBox7
             // 
@@ -2283,117 +2394,6 @@
             this.simpleButton5.Text = "添加典型参数";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label28);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.spinEdit1);
-            this.groupBox2.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.groupBox2.Location = new System.Drawing.Point(337, 266);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(275, 62);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "容量";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(238, 29);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(32, 14);
-            this.label28.TabIndex = 19;
-            this.label28.Text = "MVA";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(15, 29);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(95, 14);
-            this.label15.TabIndex = 8;
-            this.label15.Text = "变压器额定容量:";
-            // 
-            // spinEdit1
-            // 
-            this.spinEdit1.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spinEdit1.Location = new System.Drawing.Point(133, 23);
-            this.spinEdit1.Name = "spinEdit1";
-            this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spinEdit1.Size = new System.Drawing.Size(98, 21);
-            this.spinEdit1.TabIndex = 0;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label7);
-            this.groupBox8.Controls.Add(this.label16);
-            this.groupBox8.Controls.Add(this.radioGroup5);
-            this.groupBox8.Controls.Add(this.radioGroup6);
-            this.groupBox8.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.groupBox8.Location = new System.Drawing.Point(16, 3);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(274, 89);
-            this.groupBox8.TabIndex = 32;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "连接方式";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(19, 62);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 14);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "二次侧连接方式";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(19, 26);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(91, 14);
-            this.label16.TabIndex = 6;
-            this.label16.Text = "一次侧连接方式";
-            // 
-            // radioGroup5
-            // 
-            this.radioGroup5.EditValue = "D";
-            this.radioGroup5.Location = new System.Drawing.Point(131, 54);
-            this.radioGroup5.Name = "radioGroup5";
-            this.radioGroup5.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.radioGroup5.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroup5.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.radioGroup5.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("D", "D"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("Y", "Y"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("YG", "YG")});
-            this.radioGroup5.Size = new System.Drawing.Size(146, 35);
-            this.radioGroup5.TabIndex = 5;
-            // 
-            // radioGroup6
-            // 
-            this.radioGroup6.EditValue = "D";
-            this.radioGroup6.Location = new System.Drawing.Point(131, 17);
-            this.radioGroup6.Name = "radioGroup6";
-            this.radioGroup6.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.radioGroup6.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroup6.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.radioGroup6.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("D", "D"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("Y", "Y"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("YG", "YG")});
-            this.radioGroup6.Size = new System.Drawing.Size(146, 35);
-            this.radioGroup6.TabIndex = 4;
-            // 
             // frmBYQ2dlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -2412,6 +2412,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.date1.Properties)).EndInit();
@@ -2437,6 +2440,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup6.Properties)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit49.Properties)).EndInit();
@@ -2503,13 +2510,6 @@
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit43.Properties)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup6.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
