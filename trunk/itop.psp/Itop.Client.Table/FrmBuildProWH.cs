@@ -18,6 +18,8 @@ using Itop.Client.Table;
 using Itop.Client.Forecast;
 using Itop.Client.Stutistics;
 using Itop.Domain.Stutistics;
+using Itop.Domain.Graphics;
+using DevExpress.Utils;
 
 namespace Itop.Client.Table
 {
@@ -71,6 +73,12 @@ namespace Itop.Client.Table
             barButtonItem10.Glyph = Itop.ICON.Resource.修改;
             barButtonItem15.Glyph = Itop.ICON.Resource.修改;
             barButtonItem7.Glyph = Itop.ICON.Resource.关闭;
+
+            barButtonItem19.Glyph = Itop.ICON.Resource.打回重新编;
+            barButtonItem20.Glyph = Itop.ICON.Resource.打回重新编;
+            barButtonItem22.Glyph = Itop.ICON.Resource.布局;
+
+
         }
         string tong = "",g_col4="";
         public void ShowBian()
@@ -2156,6 +2164,8 @@ namespace Itop.Client.Table
             if (xtraTabControl1.SelectedTabPageIndex == 0)
             {
                 barButtonItem18.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barButtonItem19.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                barButtonItem20.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 tong = "Col4='bian' and ";
                 g_col4 = "bian";
@@ -2168,11 +2178,14 @@ namespace Itop.Client.Table
                 if (!base.AddRight)
                 {
                     barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                   
                 }
             }
             else if (xtraTabControl1.SelectedTabPageIndex == 1)
             {
                 barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barButtonItem19.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barButtonItem20.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 barButtonItem18.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 tong = "Col4='line' and ";
                 g_col4 = "line";
@@ -2187,6 +2200,516 @@ namespace Itop.Client.Table
                     barButtonItem18.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 }
             }
+        }
+        //更新变电站
+        private void barButtonItem19_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int year = yAnge.StartYear;
+            string con = "Col4='bian' and ProjectID='" + GetProjectID + "' and ParentID='0'";
+            IList list = Common.Services.BaseService.GetList("SelectPs_Table_BuildProByConn", con);
+            DataTable dt = Itop.Common.DataConverter.ToDataTable(list, typeof(Ps_Table_BuildPro));
+
+            string con2 = "Col4='bian' and ProjectID='" + GetProjectID + "'";
+            IList list2 = Common.Services.BaseService.GetList("SelectPs_Table_BuildProByConn", con2);
+            DataTable dt2 = Itop.Common.DataConverter.ToDataTable(list2, typeof(Ps_Table_BuildPro));
+
+            WaitDialogForm wait = new WaitDialogForm("", "正在更新变电站数据，请稍后...");
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                string parentid = dt.Rows[i]["ID"].ToString();
+                string dy = dt.Rows[i]["FromID"].ToString();
+
+                string conn1 = " AreaID='" + GetProjectID + "' and L1=" + dy;
+                IList<PSP_Substation_Info> listbdz = Common.Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", conn1);
+                int mm = 0;
+
+                foreach (PSP_Substation_Info psi in listbdz)
+                {
+                    mm++;
+                    int perent=(i+1) * 100*mm/listbdz.Count / dt.Rows.Count;
+                    wait.SetCaption( perent+ "%");
+
+                    string dyid = psi.UID;
+                    string connjz = " where SvgUID ='" + dyid + "' and Type='03'";
+                    IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
+                    DataTable dataTable = Itop.Common.DataConverter.ToDataTable((IList)listatt, typeof(PSPDEV));
+                    if (listatt.Count>0)
+                    {
+
+                        DataRow[] xyrow=dataTable.Select(" Date1<="+year);
+                        DataRow[] dyrow=dataTable.Select(" Date1>"+year ,"Date1");
+
+                        if (dyrow.Length>0)
+	                    {
+                            if (xyrow.Length>0)
+	                        {
+                                int start=int.Parse(dyrow[0]["Date1"].ToString());
+                                int end=int.Parse(dyrow[dyrow.Length-1]["Date1"].ToString());
+                                //扩建
+                                for (int j = start; j <= end; j++)
+			                    {
+                                    DataRow[] curow=dataTable.Select(" Date1="+j );
+                                    Ps_Table_BuildPro table1 = new Ps_Table_BuildPro();
+                                    table1.ID += "|" + GetProjectID;
+                                    table1.Title = curow[0]["Name"].ToString();
+                                    table1.ParentID = parentid;
+                                    table1.ProjectID = GetProjectID;
+                                    table1.BuildYear =j.ToString(); 
+                                    table1.BuildEd = curow[0]["OperationYear"].ToString();
+                                    table1.FromID = dy;
+                                    table1.Volumn = double .Parse( curow[0]["SiN"].ToString());
+                                    table1.AllVolumn =table1.Volumn;
+                                    table1.Col4 = "bian";
+                                    table1.Sort = OperTable.GetBuildProMaxSort() + 1;
+                                    table1.Col10 = curow[0]["SUID"].ToString();
+                                    table1.Col3="扩建";
+                                    table1.AreaName = psi.AreaName;
+                                    for (int k = 1; k < curow.Length; k++)
+			                        {
+                        			    table1.Volumn += double .Parse( curow[k]["SiN"].ToString());
+                                        table1.AllVolumn =table1.Volumn;
+			                        }
+                                    table1.GetType().GetProperty("y" + j).SetValue(table1, table1.Volumn, null);
+                                    try
+                                    {
+                                         if (DTHave(dt2,curow[0]["SUID"].ToString()))
+                                            {
+
+                                                 UPDateOldBDZ(dt2,curow[0]["SUID"].ToString(),table1);
+                                            }
+                                            else
+                                            {
+                                                Common.Services.BaseService.Create("InsertPs_Table_BuildPro", table1);
+                                                dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table1, dataTable.NewRow()));
+                                                AddChildVol(table1, true);
+                                            }
+                                      
+                                    }
+                                      catch (Exception ee)
+                                    {
+                                        wait.Close();
+                                    }
+			                    }
+
+
+	                        }
+                            else
+	                        {
+                                //新建+扩建
+                                int start=int.Parse(dyrow[0]["Date1"].ToString());
+                                int end=int.Parse(dyrow[dyrow.Length-1]["Date1"].ToString());
+                                for (int j = start; j <= end; j++)
+			                    {
+                                    DataRow[] curow=dataTable.Select(" Date1="+j );
+                                    if (j==start)//只有第一年需要新建，其后的都是扩建
+	                                {
+                                        Ps_Table_BuildPro table1 = new Ps_Table_BuildPro();
+                                        table1.ID += "|" + GetProjectID;
+                                        table1.Title = curow[0]["Name"].ToString();
+                                        table1.ParentID = parentid;
+                                        table1.ProjectID = GetProjectID;
+                                        table1.BuildYear = j.ToString();
+                                        table1.BuildEd = curow[0]["OperationYear"].ToString();
+                                        table1.FromID = dy;
+                                        table1.Volumn = double .Parse( curow[0]["SiN"].ToString());
+                                        table1.AllVolumn =table1.Volumn;
+                                        table1.Col4 = "bian";
+                                        table1.Sort = OperTable.GetBuildProMaxSort() + 1;
+                                        table1.Col10 = curow[0]["SUID"].ToString();
+                                        table1.Col3="新建";
+                                        table1.AreaName = psi.AreaName;
+                                         table1.GetType().GetProperty("y" + j).SetValue(table1, table1.Volumn, null);
+                                        try
+                                        {
+                                                if (DTHave(dt2,curow[0]["SUID"].ToString()))
+                                                {
+
+                                                     UPDateOldBDZ(dt2,curow[0]["SUID"].ToString(),table1);
+                                                }
+                                                else
+                                                {
+                                                     Common.Services.BaseService.Create("InsertPs_Table_BuildPro", table1);
+                                                     dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table1, dataTable.NewRow()));
+                                                     AddChildVol(table1, true);
+                                                }
+                                            
+                                        }
+                                          catch (Exception ee)
+                                        {
+                                            wait.Close();
+                                        }
+                                           if (curow.Length>1)
+	                                       {
+
+                                             Ps_Table_BuildPro table2 = new Ps_Table_BuildPro();
+                                            table2.ID += "|" + GetProjectID;
+                                            table2.Title = curow[1]["Name"].ToString();
+                                            table2.ParentID = parentid;
+                                            table2.ProjectID = GetProjectID;
+                                            table2.BuildYear = j.ToString();
+                                            table2.BuildEd = curow[1]["OperationYear"].ToString();
+                                            table2.FromID = dy;
+                                            table2.Volumn = double .Parse( curow[1]["SiN"].ToString());
+                                            table2.AllVolumn =table2.Volumn;
+                                            table2.Col4 = "bian";
+                                            table2.Sort = OperTable.GetBuildProMaxSort() + 1;
+                                            table2.Col10 = curow[1]["SUID"].ToString();
+                                            table2.Col3="扩建";
+                                            table2.AreaName = psi.AreaName;
+                                            for (int k = 2; k < curow.Length; k++)
+                                            {
+            			                        table2.Volumn += double .Parse( curow[k]["SiN"].ToString());
+                                                table2.AllVolumn =table2.Volumn;
+                                            }
+                                            table2.GetType().GetProperty("y" + j).SetValue(table2, table2.Volumn, null);
+                                            try
+                                            {
+                                                if (DTHave(dt2,curow[1]["SUID"].ToString()))
+                                                {
+
+                                                     UPDateOldBDZ(dt2,curow[1]["SUID"].ToString(),table2);
+                                                }
+                                                else
+                                                {
+                                                      Common.Services.BaseService.Create("InsertPs_Table_BuildPro", table2);
+                                                     dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table2, dataTable.NewRow()));
+                                                     AddChildVol(table2, true);
+                                                }
+
+                                              
+                                            }
+                                              catch (Exception ee)
+                                            {
+                                                wait.Close();
+                                            }
+
+	                                       }
+	                                }
+                                    else
+	                                {
+                                        
+                                             Ps_Table_BuildPro table2 = new Ps_Table_BuildPro();
+                                            table2.ID += "|" + GetProjectID;
+                                            table2.Title = curow[0]["Name"].ToString();
+                                            table2.ParentID = parentid;
+                                            table2.ProjectID = GetProjectID;
+                                            table2.BuildYear = curow[0]["OperationYear"].ToString();
+                                            table2.BuildEd =  j.ToString();
+                                            table2.FromID = dy;
+                                            table2.Volumn = double .Parse( curow[0]["SiN"].ToString());
+                                            table2.AllVolumn =table2.Volumn;
+                                            table2.Col4 = "bian";
+                                            table2.Sort = OperTable.GetBuildProMaxSort() + 1;
+                                            table2.Col10 = curow[0]["SUID"].ToString();
+                                            table2.Col3="扩建";
+                                            table2.AreaName = psi.AreaName;
+                                            for (int k = 1; k < curow.Length; k++)
+		                                    {
+                    			                table2.Volumn += double .Parse( curow[k]["SiN"].ToString());
+                                                table2.AllVolumn =table2.Volumn;
+		                                    }
+                                            table2.GetType().GetProperty("y" + j).SetValue(table2, table2.Volumn, null);
+                                            try
+                                            {
+                                                 if (DTHave(dt2,curow[0]["SUID"].ToString()))
+                                                {
+
+                                                     UPDateOldBDZ(dt2,curow[0]["SUID"].ToString(),table2);
+                                                }
+                                                else
+                                                {
+                                                     Common.Services.BaseService.Create("InsertPs_Table_BuildPro", table2);
+                                                     dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table2, dataTable.NewRow()));
+                                                     AddChildVol(table2, true);
+                                                }
+
+                                                
+                                            }
+                                              catch (Exception ee)
+                                            {
+                                                wait.Close();
+                                            }
+
+
+	                                }
+                                    
+                                        #region 有扩建项
+                                    if (curow.Length>1)
+	                               {
+
+                                             Ps_Table_BuildPro table2 = new Ps_Table_BuildPro();
+                                            table2.ID += "|" + GetProjectID;
+                                            table2.Title = curow[1]["Name"].ToString();
+                                            table2.ParentID = parentid;
+                                            table2.ProjectID = GetProjectID;
+                                            table2.BuildYear = j.ToString();
+                                            table2.BuildEd = curow[1]["OperationYear"].ToString();
+                                            table2.FromID = dy;
+                                            table2.Volumn = double .Parse( curow[1]["SiN"].ToString());
+                                            table2.AllVolumn =table2.Volumn;
+                                            table2.Col4 = "bian";
+                                            table2.Sort = OperTable.GetBuildProMaxSort() + 1;
+                                            table2.Col10 = curow[1]["SUID"].ToString();
+                                            table2.Col3="扩建";
+                                            table2.AreaName = psi.AreaName;
+                                            for (int k = 2; k < curow.Length; k++)
+		                                    {
+                    			                table2.Volumn += double .Parse( curow[k]["SiN"].ToString());
+                                                table2.AllVolumn =table2.Volumn;
+		                                    }
+                                            table2.GetType().GetProperty("y" + j).SetValue(table2, table2.Volumn, null);
+                                            try
+                                            {
+                                                 if (DTHave(dt2,curow[1]["SUID"].ToString()))
+                                                {
+
+                                                     UPDateOldBDZ(dt2,curow[1]["SUID"].ToString(),table2);
+                                                }
+                                                else
+                                                {
+                                                     Common.Services.BaseService.Create("InsertPs_Table_BuildPro", table2);
+                                                    dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table2, dataTable.NewRow()));
+                                                    AddChildVol(table2, true);
+                                                }
+
+                                               
+                                            }
+                                              catch (Exception ee)
+                                            {
+                                                wait.Close();
+                                            }
+
+	                               }
+                                        		 
+                                        #endregion
+                                   
+			                    }
+
+
+
+	                        }
+	                    }
+
+                    }
+                    else
+                    {
+                        int curyear = 0;
+                        int.TryParse(psi.L28, out curyear);
+                        if (curyear> year)
+	                    {
+                           
+                    	    Ps_Table_BuildPro table1 = new Ps_Table_BuildPro();
+                            table1.ID += "|" + GetProjectID;
+                            table1.Title = psi.Title;
+                            table1.ParentID = parentid;
+                            table1.ProjectID = GetProjectID;
+                            table1.BuildYear = psi.L28;
+                            table1.BuildEd = psi.S2;
+                            table1.FromID = dy;
+                            table1.Volumn = psi.L2;
+                            table1.AllVolumn = psi.L2;
+                            //  table1.BefVolumn = frm.AllVol;
+                            table1.GetType().GetProperty("y" + psi.L28).SetValue(table1, psi.L2, null);
+                            table1.Col4 = "bian";
+                            table1.Sort = OperTable.GetBuildProMaxSort() + 1;
+                            table1.Col10 = psi.UID;
+                            table1.Col3="新建";
+                            table1.AreaName = psi.AreaName;
+                            try
+                            {
+                                 if (DTHave(dt2,psi.UID))
+                                {
+
+                                     UPDateOldBDZ(dt2,psi.UID,table1);
+                                }
+                                else
+                                {
+                                     Common.Services.BaseService.Create("InsertPs_Table_BuildPro", table1);
+                                     dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table1, dataTable.NewRow()));
+                                     AddChildVol(table1, true);
+                                }
+                               
+                            }
+                            catch (Exception ee)
+                            {
+                                wait.Close();
+                            }
+	                    }
+                      
+
+                    }
+
+                }
+
+             
+
+
+
+            }
+           
+            LoadData1();
+            wait.Close(); 
+
+        }
+        private void UPDateOldBDZ(DataTable dt, string condition, Ps_Table_BuildPro value)
+        {
+            DataRow[] dtrow = dt.Select("Col10='"+condition+"'");
+            Ps_Table_BuildPro ptb = Itop.Common.DataConverter.RowToObject<Ps_Table_BuildPro>(dtrow[0]);
+            ptb.Volumn = value.Volumn;
+            ptb.AllVolumn = value.Volumn;
+            ptb.BuildYear=value.BuildYear;
+            ptb.BuildEd=value.BuildEd;
+            ptb.GetType().GetProperty("y" + ptb.BuildYear).SetValue(ptb,0, null);
+
+            ptb.GetType().GetProperty("y" + value.BuildYear).SetValue(ptb, value.Volumn, null);
+            try
+            {
+                Common.Services.BaseService.Update<Ps_Table_BuildPro>(ptb);
+                AddChildVol(ptb, true);
+            }
+            catch (Exception ee)
+            {
+                
+                throw;
+            }
+           
+
+        }
+        private void UPDateOldXl(DataTable dt, string condition, Ps_Table_BuildPro value)
+        {
+            DataRow[] dtrow = dt.Select("Col10='" + condition + "'");
+            Ps_Table_BuildPro ptb = Itop.Common.DataConverter.RowToObject<Ps_Table_BuildPro>(dtrow[0]);
+            ptb.Length = value.Length;
+            ptb.AllVolumn = value.Volumn;
+            ptb.BuildYear = value.BuildYear;
+            ptb.BuildEd = value.BuildEd;
+            ptb.GetType().GetProperty("y" + ptb.BuildYear).SetValue(ptb, 0, null);
+
+            ptb.GetType().GetProperty("y" + value.BuildYear).SetValue(ptb, value.Length, null);
+            try
+            {
+                Common.Services.BaseService.Update<Ps_Table_BuildPro>(ptb);
+                AddChildVol(ptb, true);
+            }
+            catch (Exception ee)
+            {
+
+                throw;
+            }
+
+
+        }
+        private bool DTHave(DataTable dt, string condition)
+        {
+            DataRow[] dtrow = dt.Select(" Col10='"+condition+"'");
+            if (dtrow.Length>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //更新线路
+        private void barButtonItem20_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Hashtable area_key_id = new Hashtable();
+            //初始化哈希表
+            string areaall = " ProjectID='" + GetProjectID + "'";
+            IList<PS_Table_AreaWH> tempPTA = Common.Services.BaseService.GetList<PS_Table_AreaWH>("SelectPS_Table_AreaWHByConn", areaall);
+
+            if (tempPTA.Count != 0)
+            {
+                for (int i = 0; i < tempPTA.Count; i++)
+                {
+                    area_key_id.Add(tempPTA[i].ID, tempPTA[i].Title);
+                }
+            }
+      
+            int year = yAnge.StartYear;
+            string con = "Col4='line' and ProjectID='" + GetProjectID + "' and ParentID='0'";
+            IList list = Common.Services.BaseService.GetList("SelectPs_Table_BuildProByConn", con);
+            DataTable dt = Itop.Common.DataConverter.ToDataTable(list, typeof(Ps_Table_BuildPro));
+
+            string con2 = "Col4='line' and ProjectID='" + GetProjectID + "'";
+            IList list2 = Common.Services.BaseService.GetList("SelectPs_Table_BuildProByConn", con2);
+            DataTable dt2 = Itop.Common.DataConverter.ToDataTable(list2, typeof(Ps_Table_BuildPro));
+
+            WaitDialogForm wait = new WaitDialogForm("", "正在更新线路数据，请稍后...");
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                string parentid = dt.Rows[i]["ID"].ToString();
+                string dy = dt.Rows[i]["FromID"].ToString();
+
+                string connjz = " where ProjectID ='" + GetProjectID + "' and Type='05' and RateVolt=" + dy + " and Cast(Date1 as int)>" + year;
+                IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
+                int mm = 0;
+
+                foreach (PSPDEV psi in listatt)
+                {
+                    mm++;
+                    int perent = (i + 1) * 100 * mm / listatt.Count / dt.Rows.Count;
+                    wait.SetCaption(perent + "%");
+
+                    Ps_Table_BuildPro table1 = new Ps_Table_BuildPro();
+                    table1.ID += "|" + GetProjectID;
+                    table1.Title = psi.Name;
+                    table1.ParentID = parentid;
+                    table1.ProjectID = GetProjectID;
+                    table1.BuildYear = psi.Date1;
+                    table1.BuildEd = psi.OperationYear;
+                    table1.FromID = dy;
+                    table1.Length = psi.LineLength+psi.Length2;
+                    
+                    //  table1.BefVolumn = frm.AllVol;
+                    table1.GetType().GetProperty("y" + psi.Date1).SetValue(table1, table1.Length, null);
+                    table1.Col4 = "line";
+                    table1.Sort = OperTable.GetBuildProMaxSort() + 1;
+                    table1.Col10 = psi.SUID;
+                    table1.Col3 = "新建";
+                    if (area_key_id[psi.AreaID]!=null)
+                    {
+                        table1.AreaName = area_key_id[psi.AreaID].ToString();
+                    }
+                    
+                    try
+                    {
+                        if (DTHave(dt2, psi.SUID))
+                        {
+
+                            UPDateOldXl(dt2, psi.SUID, table1);
+                        }
+                        else
+                        {
+                            Common.Services.BaseService.Create("InsertPs_Table_BuildPro", table1);
+                            dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table1, dataTable.NewRow()));
+                            AddChildVol(table1, true);
+                        }
+
+                    }
+                    catch (Exception ee)
+                    {
+                        wait.Close();
+                    }
+
+                   
+                }
+            } 
+            LoadData1();
+            wait.Close(); 
+        }
+        // 基础年设置
+        private void barButtonItem22_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormYearSet fys = new FormYearSet();
+            fys.TYPE = OperTable.tzgs;
+            fys.PID = ProjectUID;
+            fys.SetTzgs();
+            if (fys.ShowDialog() != DialogResult.OK)
+                return;
+            yAnge = oper.GetYearRange("Col5='" + GetProjectID + "' and Col4='" + OperTable.tzgs + "'");
+            LoadData();
         }
 
       
