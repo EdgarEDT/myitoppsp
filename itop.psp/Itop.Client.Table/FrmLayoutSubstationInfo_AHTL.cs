@@ -121,6 +121,9 @@ namespace Itop.Client.Table
         public FrmLayoutSubstationInfo_AHTL()
         {
             InitializeComponent();
+            barButtonItem5.Glyph = Itop.ICON.Resource.打回重新编;
+            barButtonItem2.Glyph = Itop.ICON.Resource.关闭;
+
         }
 
         private void FrmLayoutLineInfo_Load(object sender, EventArgs e)
