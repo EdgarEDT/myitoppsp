@@ -241,59 +241,59 @@ namespace Itop.TLPSP.DEVICE
                       
                        string id = obj["id"].ToString();
                        comboBox1.EditValue= id;
-                       string con = " where type = '" + id + "'";
-                       string con2 = " and ProjectID = '" + this.ProjectID + "'";
-                       con = con + con2;
-                       IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
-                       if (!string.IsNullOrEmpty(belongyear))   //根据参与计算设备属于那一年先进行一次筛选
-                       {
-                           for (int i = 0; i < list.Count; i++)
-                           {
-                               if (!string.IsNullOrEmpty((list[i] as PSPDEV).OperationYear) && (list[i] as PSPDEV).OperationYear.Length == 4 && belongyear.Length == 4)
-                               {
-                                   if (Convert.ToInt32((list[i] as PSPDEV).OperationYear) > Convert.ToInt32(belongyear))
-                                   {
-                                       list.RemoveAt(i);
-                                       i--;
-                                       continue;
-                                   }
-                               }
-                               if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && belongyear.Length == 4)
-                               {
-                                   if (Convert.ToInt32((list[i] as PSPDEV).Date2) < Convert.ToInt32(belongyear))
-                                   {
-                                       list.RemoveAt(i);
-                                       i--;
-                                       continue;
-                                   }
-                               }
-                           }
-                       }
-                       foreach (PSPDEV dev in list)
-                       {
-                           PSP_ElcDevice pspDev = new PSP_ElcDevice();
-                           pspDev.DeviceSUID = dev.SUID;
-                           pspDev.ProjectSUID = ProjectSUID;
-                           IList list1 = UCDeviceBase.DataService.GetList("SelectPSP_ElcDeviceByKey", pspDev);
-                           if (list1.Count > 0)
-                           {
-                               DataRow row = dt.NewRow();
-                               row["A"] = dev.SUID;
-                               row["B"] = dev.Name;
-                               row["C"] = true;
-                               dt.Rows.Add(row);
-                           }
-                           else
-                           {
-                               DataRow row = dt.NewRow();
-                               row["A"] = dev.SUID;
-                               row["B"] = dev.Name;
-                               row["C"] = false;
-                               dt.Rows.Add(row);
-                           }
-                       }
+                   //    string con = " where type = '" + id + "'";
+                   //    string con2 = " and ProjectID = '" + this.ProjectID + "'";
+                   //    con = con + con2;
+                   //    IList list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+                   //    if (!string.IsNullOrEmpty(belongyear))   //根据参与计算设备属于那一年先进行一次筛选
+                   //    {
+                   //        for (int i = 0; i < list.Count; i++)
+                   //        {
+                   //            if (!string.IsNullOrEmpty((list[i] as PSPDEV).OperationYear) && (list[i] as PSPDEV).OperationYear.Length == 4 && belongyear.Length == 4)
+                   //            {
+                   //                if (Convert.ToInt32((list[i] as PSPDEV).OperationYear) > Convert.ToInt32(belongyear))
+                   //                {
+                   //                    list.RemoveAt(i);
+                   //                    i--;
+                   //                    continue;
+                   //                }
+                   //            }
+                   //            if (!string.IsNullOrEmpty((list[i] as PSPDEV).Date2) && (list[i] as PSPDEV).Date2.Length == 4 && belongyear.Length == 4)
+                   //            {
+                   //                if (Convert.ToInt32((list[i] as PSPDEV).Date2) < Convert.ToInt32(belongyear))
+                   //                {
+                   //                    list.RemoveAt(i);
+                   //                    i--;
+                   //                    continue;
+                   //                }
+                   //            }
+                   //        }
+                   //    }
+                   //    foreach (PSPDEV dev in list)
+                   //    {
+                   //        PSP_ElcDevice pspDev = new PSP_ElcDevice();
+                   //        pspDev.DeviceSUID = dev.SUID;
+                   //        pspDev.ProjectSUID = ProjectSUID;
+                   //        IList list1 = UCDeviceBase.DataService.GetList("SelectPSP_ElcDeviceByKey", pspDev);
+                   //        if (list1.Count > 0)
+                   //        {
+                   //            DataRow row = dt.NewRow();
+                   //            row["A"] = dev.SUID;
+                   //            row["B"] = dev.Name;
+                   //            row["C"] = true;
+                   //            dt.Rows.Add(row);
+                   //        }
+                   //        else
+                   //        {
+                   //            DataRow row = dt.NewRow();
+                   //            row["A"] = dev.SUID;
+                   //            row["B"] = dev.Name;
+                   //            row["C"] = false;
+                   //            dt.Rows.Add(row);
+                   //        }
+                   //    }
                    }
-                   gridControl1.DataSource = dt;
+                   //gridControl1.DataSource = dt;
 
                 }
                 

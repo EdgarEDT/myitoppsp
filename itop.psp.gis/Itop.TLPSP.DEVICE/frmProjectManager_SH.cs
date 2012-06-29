@@ -311,10 +311,12 @@ namespace Itop.TLPSP.DEVICE {
             }
             frmSeldevtype fm = new frmSeldevtype();
             int devtype = 0;
-            if (fm.ShowDialog()==DialogResult.OK)
+            if (fm.ShowDialog() == DialogResult.OK)
             {
                 devtype = fm.UnitFlag;
             }
+            else
+                return;
             //strID = node["ID"].ToString();
             DataTable dt = new DataTable();
             frmDeviceList_sh frmDevList = new frmDeviceList_sh();
@@ -858,12 +860,12 @@ namespace Itop.TLPSP.DEVICE {
             WaitDialogForm wait = null;
             try {
                 wait = new WaitDialogForm("", "正在处理数据, 请稍候...");
-                if (curDevice != null) {
-                    curDevice.projectdeviceid = strID;
-                    curDevice.updatenumberflag = false;
-                    curDevice.UpdateNumber();
-                }
-
+                //if (curDevice != null) {
+                //    curDevice.projectdeviceid = strID;
+                //    curDevice.updatenumberflag = false;
+                //    curDevice.UpdateNumber();
+                //}
+                AllUpdateNumber();
                 wait.Close();
 
             } catch (Exception exc) {
