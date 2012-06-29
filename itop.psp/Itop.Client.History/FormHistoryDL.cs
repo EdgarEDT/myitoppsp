@@ -1747,7 +1747,7 @@ namespace Itop.Client.History
                 if (a["D"].ToString() == "True")
                     ht2.Add(Guid.NewGuid().ToString(), Convert.ToInt32(a["A"].ToString().Replace("Äê", "")));
             }
-            FormHisView fgv = new FormHisView();
+            FormHisViewSH fgv = new FormHisViewSH();
             fgv.pstype = type;
             fgv.yearflag = yearflag;
             fgv.ProjectUID = ProjectUID;
