@@ -129,3 +129,100 @@ CREATE TABLE [dbo].[ProjectUser](
 
 GO
 SET ANSI_PADDING OFF
+
+
+
+ALTER TABLE  Ps_forecast_list  ADD YcStartYear [int] NULL;
+ALTER TABLE  Ps_forecast_list ADD  [YcEndYear] [int] NULL;
+
+CREATE TABLE [dbo].[Ps_Forecast_Math2](
+	[ID] [varchar](200) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Title] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[Sort] [int] NULL,
+	[ForecastID] [varchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[Forecast] [int] NULL,
+	[ParentID] [varchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[y1990] [float] NULL,
+	[y1991] [float] NULL,
+	[y1992] [float] NULL,
+	[y1993] [float] NULL,
+	[y1994] [float] NULL,
+	[y1995] [float] NULL,
+	[y1996] [float] NULL,
+	[y1997] [float] NULL,
+	[y1998] [float] NULL,
+	[y1999] [float] NULL,
+	[y2000] [float] NULL,
+	[y2001] [float] NULL,
+	[y2002] [float] NULL,
+	[y2003] [float] NULL,
+	[y2004] [float] NULL,
+	[y2005] [float] NULL,
+	[y2006] [float] NULL,
+	[y2007] [float] NULL,
+	[y2008] [float] NULL,
+	[y2009] [float] NULL,
+	[y2010] [float] NULL,
+	[y2011] [float] NULL,
+	[y2012] [float] NULL,
+	[y2013] [float] NULL,
+	[y2014] [float] NULL,
+	[y2015] [float] NULL,
+	[y2016] [float] NULL,
+	[y2017] [float] NULL,
+	[y2018] [float] NULL,
+	[y2019] [float] NULL,
+	[y2020] [float] NULL,
+	[y2021] [float] NULL,
+	[y2022] [float] NULL,
+	[y2023] [float] NULL,
+	[y2024] [float] NULL,
+	[y2025] [float] NULL,
+	[y2026] [float] NULL,
+	[y2027] [float] NULL,
+	[y2028] [float] NULL,
+	[y2029] [float] NULL,
+	[y2030] [float] NULL,
+	[y2031] [float] NULL,
+	[y2032] [float] NULL,
+	[y2033] [float] NULL,
+	[y2034] [float] NULL,
+	[y2035] [float] NULL,
+	[y2036] [float] NULL,
+	[y2037] [float] NULL,
+	[y2038] [float] NULL,
+	[y2039] [float] NULL,
+	[y2040] [float] NULL,
+	[y2041] [float] NULL,
+	[y2042] [float] NULL,
+	[y2043] [float] NULL,
+	[y2044] [float] NULL,
+	[y2045] [float] NULL,
+	[y2046] [float] NULL,
+	[y2047] [float] NULL,
+	[y2048] [float] NULL,
+	[y2049] [float] NULL,
+	[y2050] [float] NULL,
+	[y2051] [float] NULL,
+	[y2052] [float] NULL,
+	[y2053] [float] NULL,
+	[y2054] [float] NULL,
+	[y2055] [float] NULL,
+	[y2056] [float] NULL,
+	[y2057] [float] NULL,
+	[y2058] [float] NULL,
+	[y2059] [float] NULL,
+	[y2060] [float] NULL,
+	[Col1] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[Col2] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[Col3] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[Col4] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_Ps_Forecast_Math2] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+	
