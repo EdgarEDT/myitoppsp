@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTzgsWH1));
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -336,6 +336,30 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Custom 2";
             // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1195, 34);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 518);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1195, 22);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 34);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 484);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1195, 34);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 484);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -381,22 +405,22 @@
             this.treeList1.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.treeList1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeList1.Location = new System.Drawing.Point(0, 59);
+            this.treeList1.Location = new System.Drawing.Point(0, 64);
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.AutoFocusNewNode = true;
             this.treeList1.OptionsView.AutoWidth = false;
             this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.treeList1.Size = new System.Drawing.Size(1024, 383);
+            this.treeList1.Size = new System.Drawing.Size(1195, 454);
             this.treeList1.TabIndex = 4;
-            this.treeList1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeList1_KeyDown);
-            this.treeList1.EditorKeyDown += new System.Windows.Forms.KeyEventHandler(this.treeList1_EditorKeyDown);
-            this.treeList1.FocusedColumnChanged += new DevExpress.XtraTreeList.FocusedColumnChangedEventHandler(this.treeList1_FocusedColumnChanged);
             this.treeList1.AfterDragNode += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList1_AfterDragNode);
-            this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
-            this.treeList1.ShownEditor += new System.EventHandler(this.treeList1_ShownEditor);
+            this.treeList1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeList1_KeyDown);
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
+            this.treeList1.FocusedColumnChanged += new DevExpress.XtraTreeList.FocusedColumnChangedEventHandler(this.treeList1_FocusedColumnChanged);
+            this.treeList1.ShownEditor += new System.EventHandler(this.treeList1_ShownEditor);
+            this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
+            this.treeList1.EditorKeyDown += new System.Windows.Forms.KeyEventHandler(this.treeList1_EditorKeyDown);
             this.treeList1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.treeList1_ShowingEditor);
             // 
             // repositoryItemTextEdit1
@@ -409,41 +433,41 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 33);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 34);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1024, 26);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1195, 30);
             this.xtraTabControl1.TabIndex = 5;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3});
-            this.xtraTabControl1.Text = "xtraTabControl1";
             this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1018, 0);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1188, 0);
             this.xtraTabPage1.Text = "变电站投资估算";
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1018, -1);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1188, 0);
             this.xtraTabPage2.Text = "线路投资估算";
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1018, -1);
+            this.xtraTabPage3.PageVisible = false;
+            this.xtraTabPage3.Size = new System.Drawing.Size(1188, 0);
             this.xtraTabPage3.Text = "送变电工程投资估算";
             // 
             // FrmTzgsWH1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 463);
+            this.ClientSize = new System.Drawing.Size(1195, 540);
             this.Controls.Add(this.treeList1);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.barDockControlLeft);

@@ -188,17 +188,17 @@ namespace Itop.Client.Table
         private IList listTypes;
         public void CalcYearVol()
         {
-            if (yAnge.StartYear > 2008)
-            {
-                for (int i = 0; i < listTypes.Count; i++)
-                {
-                    for (int j = 2009; j < yAnge.StartYear + 1; j++)
-                    {
-                        ((Ps_Table_TZGS)listTypes[i]).BefVolumn += double.Parse(listTypes[i].GetType().GetProperty("y" + j).GetValue(listTypes[i], null).ToString());
-                        ((Ps_Table_TZGS)listTypes[i]).AftVolumn -= double.Parse(listTypes[i].GetType().GetProperty("y" + j).GetValue(listTypes[i], null).ToString());
-                    }
-                }
-            }
+            //if (yAnge.StartYear > 2008)
+            //{
+            //    for (int i = 0; i < listTypes.Count; i++)
+            //    {
+            //        for (int j = 2009; j < yAnge.StartYear + 1; j++)
+            //        {
+            //            ((Ps_Table_TZGS)listTypes[i]).BefVolumn += double.Parse(listTypes[i].GetType().GetProperty("y" + j).GetValue(listTypes[i], null).ToString());
+            //            ((Ps_Table_TZGS)listTypes[i]).AftVolumn -= double.Parse(listTypes[i].GetType().GetProperty("y" + j).GetValue(listTypes[i], null).ToString());
+            //        }
+            //    }
+            //}
         }
         private void LoadData()
         {
@@ -212,6 +212,11 @@ namespace Itop.Client.Table
             listTypes = Common.Services.BaseService.GetList("SelectPs_Table_TZGSByConn", con);
             CalcYearVol();
           //  AddTotalRow(ref listTypes);
+            if (dataTable!=null)
+            {
+                dataTable.Clear();
+            }
+           
             dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Table_TZGS));
             //dataTable = dc.GetSortTable(dataTable, "Flag", true);
 
