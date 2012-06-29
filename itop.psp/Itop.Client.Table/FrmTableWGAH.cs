@@ -73,6 +73,9 @@ namespace Itop.Client.Table
             barSubItem1.Glyph = Itop.ICON.Resource.新建;
             barButtonItem1.Glyph = Itop.ICON.Resource.修改;
             barButtonItem12.Glyph = Itop.ICON.Resource.审批;
+            barButtonItem7.Glyph = Itop.ICON.Resource.关闭;
+
+
            
 
         }
