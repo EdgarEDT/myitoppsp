@@ -12427,6 +12427,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
         public void DlBarVisible(bool b)
         {
             dotNetBarManager1.Bars["bar6"].Enabled = b;
+            dotNetBarManager1.Bars["bar6"].GetItem("mSave").Enabled = true;
             dotNetBarManager1.Bars["bar8"].Visible = false;
             dotNetBarManager1.Bars["bar7"].Visible = false;
             dotNetBarManager1.Bars["bar88"].Visible = false;
@@ -12450,6 +12451,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
         {
             dotNetBarManager1.Bars["bar7"].Visible = true;
             dotNetBarManager1.Bars["bar6"].Enabled = b;
+            dotNetBarManager1.Bars["bar6"].GetItem("mSave").Enabled = true;
             dotNetBarManager1.Bars["bar8"].Visible = false;
             dotNetBarManager1.Bars["bar88"].Visible = false;
             //dotNetBarManager1.Bars["bar7"].Enabled = b;
@@ -12498,6 +12500,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             dotNetBarManager1.Bars["bar8"].Visible = false;
             //dotNetBarManager1.Bars["bar8"].GetItem("mEdit").Enabled = false;
             dotNetBarManager1.Bars["bar6"].Enabled = b;
+            dotNetBarManager1.Bars["bar6"].GetItem("mSave").Enabled = true;
             dotNetBarManager1.Bars["bar7"].Enabled = b;
             dotNetBarManager1.GetItem("ButtonItem7").Enabled = b;
             dotNetBarManager1.GetItem("ghwj").Enabled = b;
@@ -12543,6 +12546,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             
             //dotNetBarManager1.Bars["bar8"].GetItem("mEdit").Enabled = false;
             dotNetBarManager1.Bars["bar6"].Enabled = b;
+            dotNetBarManager1.Bars["bar6"].GetItem("mSave").Enabled = true;
             dotNetBarManager1.Bars["bar7"].Enabled =true;
 
             dotNetBarManager1.GetItem("ButtonItem7").Enabled = true;
