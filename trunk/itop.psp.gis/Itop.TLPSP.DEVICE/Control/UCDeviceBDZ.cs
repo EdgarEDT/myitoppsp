@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Itop.Domain.Graphics;
 using System.Collections;
 using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraEditors.Repository;
 
 namespace Itop.TLPSP.DEVICE
 {
@@ -119,6 +120,8 @@ namespace Itop.TLPSP.DEVICE
             datatable1.Columns.Add("flag_", typeof(string), "IIF(flag='2','规划','现状')");
 
             gridControl1.DataSource = datatable1;
+            //隐藏详情
+            gridView1.Columns["AreaID"].Visible = false;
             gridControl1.UseEmbeddedNavigator = true;
             gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
             gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
@@ -282,6 +285,60 @@ namespace Itop.TLPSP.DEVICE
             column.Width = 100;
             column.VisibleIndex = 13;
             column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "查看";
+            column.FieldName = "AreaID";
+            column.Width = 100;
+            column.VisibleIndex = 14;
+           // column.OptionsColumn.AllowEdit = false;
+            RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1 = new RepositoryItemHyperLinkEdit();
+            repositoryItemHyperLinkEdit1.AutoHeight = false;
+            repositoryItemHyperLinkEdit1.Caption = "站内详情";
+            repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
+            repositoryItemHyperLinkEdit1.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit1_Click);
+            
+            column.ColumnEdit =repositoryItemHyperLinkEdit1;
+
+        }
+        private void repositoryItemHyperLinkEdit1_Click(object sender, EventArgs e)
+        {
+            int ihand = gridView1.FocusedRowHandle;
+            if (ihand < 0)
+                return;
+            DataRow dr = gridView1.GetDataRow(ihand);
+            PSP_Substation_Info pj = Itop.Common.DataConverter.RowToObject<PSP_Substation_Info>(dr);
+            double rl = 0;
+            int bts = 0;
+            frmDeviceManager_children frmc = new frmDeviceManager_children();
+            frmc.ParentObj = pj;
+            string[] types = new string[] { "01", "03", "12" };
+            frmc.childrendevice(types);
+            if (frmc.DialogResult == DialogResult.OK)
+            {
+                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='03'and SvgUID='" + pj.UID + "'";
+                IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+                foreach (PSPDEV pd in list)
+                {
+                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(pj.L29))
+                    {
+                        if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(pj.L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(pj.L29))
+                        {
+                            rl += pd.SiN;
+                            bts++;
+                        }
+                    }
+                    else
+                    {
+                        rl += pd.SiN;
+                        bts++;
+                    }
+                }
+                pj.L2 = rl;
+                pj.L3 = bts;
+                dr["L2"] = rl;
+                dr["L3"] = bts;
+                UCDeviceBase.DataService.Update<PSP_Substation_Info>(pj);
+            }
         }
         #endregion
         #region 记录操作

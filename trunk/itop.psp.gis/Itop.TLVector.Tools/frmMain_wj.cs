@@ -4489,7 +4489,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                                                 if (elcDevice == null)
                                                 {
                                                     elcDevice = new PSP_ElcDevice();
-                                                    elcDevice.DeviceSUID = deviceid;
+                                                    elcDevice.DeviceSUID = pv.SUID;
                                                     elcDevice.ProjectSUID = frmlar.FAID;
                                                     UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
                                                 }
@@ -4622,7 +4622,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                                                 if (elcDevice == null)
                                                 {
                                                     elcDevice = new PSP_ElcDevice();
-                                                    elcDevice.DeviceSUID = deviceid;
+                                                    elcDevice.DeviceSUID = pv.SUID;
                                                     elcDevice.ProjectSUID = frmlar.FAID;
                                                     UCDeviceBase.DataService.Create<PSP_ElcDevice>(elcDevice);
                                                 }

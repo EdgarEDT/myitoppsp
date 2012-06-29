@@ -868,6 +868,7 @@ namespace Itop.TLPSP.DEVICE
 
         private void spinEdit5_EditValueChanged(object sender, EventArgs e)
         {
+            comboBoxEdit2.Properties.Items.Clear();
             WireCategory wirewire = new WireCategory();
             wirewire.Type = "40";
             IList list1 = null;
