@@ -836,13 +836,100 @@ namespace Itop.Client.Layouts
         }
         public void InitSelectBox()
         {
-            IList list = Common.Services.BaseService.GetList("SelectPs_Table_TZGSByConn", "ProjectID='"+ProjectID+"' and ParentID='0' and Col4='bian'");
-            int x=10;
-            for (int i = 0; i < list.Count; i++)
+            //IList list = Common.Services.BaseService.GetList("SelectPs_Table_TZGSByConn", "ProjectID='"+ProjectID+"' and ParentID='0' and Col4='bian'");
+
+
+            //int x=10;
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    Ps_Table_TZGS tzgs=list[i] as Ps_Table_TZGS;
+            //    CheckBox box = new CheckBox();
+            //    box.Text = tzgs.FromID + "kV";
+
+            //    box.Tag = tzgs;
+            //    box.Checked = true;
+            //    box.Size = new Size(60, 18);
+            //    groupControl1.Controls.Add(box);
+            //    box.Location = new Point(x + 100 * i, 35);
+            //}
+            //if (list.Count == 0)
+            //    simpleButton4.Enabled = false;
+
+            IList list = Common.Services.BaseService.GetList("SelectPs_Table_TZGSByConn", "ProjectID='" + ProjectID + "' and ParentID='0' ");
+
+            DataTable dt = Itop.Common.DataConverter.ToDataTable((IList)list, typeof(Ps_Table_TZGS));
+
+            IList listrust = new List<Ps_Table_TZGS>();
+            int dy=500;
+            DataRow[] dtrow500 = dt.Select(" FromID='" + dy + "'");
+            dy = 220;
+            DataRow[] dtrow220 = dt.Select(" FromID='" + dy + "'");
+            dy = 110;
+            DataRow[] dtrow110 = dt.Select(" FromID='" + dy + "'");
+
+            if (dtrow500.Length>0)
             {
-                Ps_Table_TZGS tzgs=list[i] as Ps_Table_TZGS;
+                Ps_Table_TZGS tzgs500 = new Ps_Table_TZGS();
+                 tzgs500.FromID = "500";
+                 for (int j = 1990; j < 2061; j++)
+                 {
+
+                     foreach (DataRow row in dtrow500)
+                     {
+                         double tempdb = double.Parse(tzgs500.GetType().GetProperty("y" + j).GetValue(tzgs500, null).ToString());
+                         double tempdb2=double.Parse(row["y"+j].ToString());
+                         tzgs500.GetType().GetProperty("y" + j).SetValue(tzgs500, tempdb + tempdb2, null);
+                     }
+
+                 }
+                 
+                listrust.Add(tzgs500);
+            }
+           
+            if (dtrow220.Length>0)
+            {
+                Ps_Table_TZGS tzgs220 = new Ps_Table_TZGS();
+                tzgs220.FromID = "220";
+                for (int j = 1990; j < 2061; j++)
+                {
+
+                    foreach (DataRow row in dtrow220)
+                    {
+                        double tempdb = double.Parse(tzgs220.GetType().GetProperty("y" + j).GetValue(tzgs220, null).ToString());
+                        double tempdb2 = double.Parse(row["y" + j].ToString());
+                        tzgs220.GetType().GetProperty("y" + j).SetValue(tzgs220, tempdb + tempdb2, null);
+                    }
+
+                }
+
+                listrust.Add(tzgs220);
+            }
+
+            if (dtrow110.Length>0)
+            {
+                Ps_Table_TZGS tzgs110 = new Ps_Table_TZGS();
+                tzgs110.FromID = "110";
+                for (int j = 1990; j < 2061; j++)
+                {
+
+                    foreach (DataRow row in dtrow110)
+                    {
+                        double tempdb = double.Parse(tzgs110.GetType().GetProperty("y" + j).GetValue(tzgs110, null).ToString());
+                        double tempdb2 = double.Parse(row["y" + j].ToString());
+                        tzgs110.GetType().GetProperty("y" + j).SetValue(tzgs110, tempdb + tempdb2, null);
+                    }
+
+                }
+
+                listrust.Add(tzgs110);
+            }
+            int x = 10;
+            for (int i = 0; i < listrust.Count; i++)
+            {
+                Ps_Table_TZGS tzgs = listrust[i] as Ps_Table_TZGS;
                 CheckBox box = new CheckBox();
                 box.Text = tzgs.FromID + "kV";
+
                 box.Tag = tzgs;
                 box.Checked = true;
                 box.Size = new Size(60, 18);

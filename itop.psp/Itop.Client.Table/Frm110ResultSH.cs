@@ -2185,6 +2185,23 @@ namespace Itop.Client.Table
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
+
+            //    Itop.Client.Using.FormResult frma = new Itop.Client.Using.FormResult();
+            //    frma.IsSelect = _isSelect;
+            //    frma.Text = "110千伏供电平衡表";
+            //    frma.Dw1 = "单位：万千瓦";
+
+            //    frma.GridDataTable = ResultDataTable(ConvertTreeListToDataTable(treeList1, false), frm.ListChoosedYears);
+
+
+            //    frma.YearList = frm.ListChoosedYears;
+            //    if (frma.ShowDialog() == DialogResult.OK && _isSelect)
+            //    {
+            //        DialogResult = DialogResult.OK;
+            //    }
+                  
+
+
                 FrmResultPrint frma = new FrmResultPrint();
                 frma.IsSelect = _isSelect;
                 frma.Text = "110千伏供电平衡表";

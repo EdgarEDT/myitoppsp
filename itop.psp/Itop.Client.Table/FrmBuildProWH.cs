@@ -2277,7 +2277,7 @@ namespace Itop.Client.Table
                                     table1.BuildEd = curow[0]["OperationYear"].ToString();
                                     table1.FromID = dy;
                                     table1.Volumn = double .Parse( curow[0]["SiN"].ToString());
-                                    table1.AllVolumn =table1.Volumn;
+                                 
                                     table1.Col4 = "bian";
                                     table1.Sort = OperTable.GetBuildProMaxSort() + 1;
                                     table1.Col10 = curow[0]["SUID"].ToString();
@@ -2286,7 +2286,7 @@ namespace Itop.Client.Table
                                     for (int k = 1; k < curow.Length; k++)
 			                        {
                         			    table1.Volumn += double .Parse( curow[k]["SiN"].ToString());
-                                        table1.AllVolumn =table1.Volumn;
+                                        
 			                        }
                                     table1.GetType().GetProperty("y" + j).SetValue(table1, table1.Volumn, null);
                                     try
@@ -2335,7 +2335,7 @@ namespace Itop.Client.Table
                                         table1.BuildEd = curow[0]["OperationYear"].ToString();
                                         table1.FromID = dy;
                                         table1.Volumn = double .Parse( curow[0]["SiN"].ToString());
-                                        table1.AllVolumn =table1.Volumn;
+                                       
                                         table1.Col4 = "bian";
                                         table1.Sort = OperTable.GetBuildProMaxSort() + 1;
                                         table1.Col10 = curow[0]["SUID"].ToString();
@@ -2344,7 +2344,7 @@ namespace Itop.Client.Table
                                         for (int k = 1; k < curow.Length; k++)
                                         {
                                             table1.Volumn += double.Parse(curow[k]["SiN"].ToString());
-                                            table1.AllVolumn = table1.Volumn;
+                                            
                                         }
                                          table1.GetType().GetProperty("y" + j).SetValue(table1, table1.Volumn, null);
                                         try
@@ -2380,7 +2380,7 @@ namespace Itop.Client.Table
                                             table2.BuildEd =  curow[0]["OperationYear"].ToString();
                                             table2.FromID = dy;
                                             table2.Volumn = double .Parse( curow[0]["SiN"].ToString());
-                                            table2.AllVolumn =table2.Volumn;
+                                            
                                             table2.Col4 = "bian";
                                             table2.Sort = OperTable.GetBuildProMaxSort() + 1;
                                             table2.Col10 = curow[0]["SUID"].ToString();
@@ -2389,7 +2389,7 @@ namespace Itop.Client.Table
                                             for (int k = 1; k < curow.Length; k++)
 		                                    {
                     			                table2.Volumn += double .Parse( curow[k]["SiN"].ToString());
-                                                table2.AllVolumn =table2.Volumn;
+                                               
 		                                    }
                                             table2.GetType().GetProperty("y" + j).SetValue(table2, table2.Volumn, null);
                                             try
@@ -2438,7 +2438,7 @@ namespace Itop.Client.Table
                             table1.BuildEd = psi.S2;
                             table1.FromID = dy;
                             table1.Volumn = psi.L2;
-                            table1.AllVolumn = psi.L2;
+                            
                             //  table1.BefVolumn = frm.AllVol;
                             table1.GetType().GetProperty("y" + psi.L28).SetValue(table1, psi.L2, null);
                             table1.Col4 = "bian";
@@ -2487,7 +2487,7 @@ namespace Itop.Client.Table
             DataRow[] dtrow = dt.Select("Col10='"+condition+"'");
             Ps_Table_BuildPro ptb = Itop.Common.DataConverter.RowToObject<Ps_Table_BuildPro>(dtrow[0]);
             ptb.Volumn = value.Volumn;
-            ptb.AllVolumn = value.Volumn;
+          
             ptb.BuildYear=value.BuildYear;
             ptb.BuildEd=value.BuildEd;
             for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
@@ -2514,7 +2514,7 @@ namespace Itop.Client.Table
             DataRow[] dtrow = dt.Select("Col10='" + condition + "'");
             Ps_Table_BuildPro ptb = Itop.Common.DataConverter.RowToObject<Ps_Table_BuildPro>(dtrow[0]);
             ptb.Length = value.Length;
-            ptb.AllVolumn = value.Volumn;
+            
             ptb.BuildYear = value.BuildYear;
             ptb.BuildEd = value.BuildEd;
             for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
