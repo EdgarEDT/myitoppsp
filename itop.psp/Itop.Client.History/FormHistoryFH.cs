@@ -96,6 +96,8 @@ namespace Itop.Client.History
             barButtonItem9.Glyph = Itop.ICON.Resource.打回重新编;
             barButtonItem9.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
 
+            barButtonItem14.Glyph = Itop.ICON.Resource.关闭;
+
         }
 
 
@@ -1693,6 +1695,11 @@ namespace Itop.Client.History
             fgv.ShowDialog();
         
 
+        }
+
+        private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
 
 

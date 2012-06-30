@@ -487,12 +487,23 @@ namespace Itop.Client.Layouts
 
             if (simpleButton2.Text == "下一步" && !simpleButton1.Visible)
             {
+                
+
 
                 if (t1.Text == "" || t1.Text == "0")
                 {
                     MsgBox.Show("开始建设年度未输入！");
                     return;
                 }
+
+                int curyear = 0;
+                int.TryParse(t1.ToString(), out curyear);
+                if (curyear < 1991 || curyear > 2060)
+                {
+                    MsgBox.Show("开始建设年度输入有误！");
+                    return;
+                }
+
 
                 if (t2.Text == "" || t2.Text == "0")
                 {
