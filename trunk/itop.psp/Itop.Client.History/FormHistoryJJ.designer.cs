@@ -50,6 +50,7 @@ namespace Itop.Client.History
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -118,8 +119,9 @@ namespace Itop.Client.History
             this.barCheckItem4,
             this.barCheckItem5,
             this.barCheckItem6,
-            this.barCheckItem7});
-            this.barManager1.MaxItemId = 90;
+            this.barCheckItem7,
+            this.barButtonItem15});
+            this.barManager1.MaxItemId = 93;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1});
             // 
@@ -139,7 +141,8 @@ namespace Itop.Client.History
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8, true),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem15, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -307,6 +310,13 @@ namespace Itop.Client.History
             this.barButtonItem14.Id = 70;
             this.barButtonItem14.Name = "barButtonItem14";
             this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
+            // 
+            // barButtonItem15
+            // 
+            this.barButtonItem15.Caption = "¹Ø±Õ";
+            this.barButtonItem15.Id = 92;
+            this.barButtonItem15.Name = "barButtonItem15";
+            this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick_1);
             // 
             // barDockControlTop
             // 
@@ -540,6 +550,7 @@ namespace Itop.Client.History
         private DevExpress.XtraBars.BarCheckItem barCheckItem7;
         private Itop.Client.Using.chart_user chart_user1;
         public DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem15;
 
     }
 }

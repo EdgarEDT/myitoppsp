@@ -102,6 +102,7 @@ namespace Itop.Client.History
             int m=-1;
             this.gridControl1.BeginInit();
             this.gridControl1.BeginUpdate();
+            bool isfirst = true;
             for (int i = firstyear; i <= endyear; i++)
             {
                 
@@ -126,16 +127,24 @@ namespace Itop.Client.History
 
                 if (ht1.ContainsValue(i))
                 {
-                    gridColumn = new GridColumn();
-                    gridColumn.Caption = "年均增长率(%)";
-                    gridColumn.FieldName = "mm" + i;
-                    gridColumn.Visible = true;
-                    gridColumn.Width = 130;
-                    gridColumn.VisibleIndex = 2 * m + 11;
-                    gridColumn.DisplayFormat.FormatString = "n2";
-                    gridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                    gridView1.Columns.Add(gridColumn);
-                    dataTable.Columns.Add("mm" + i, typeof(double));
+                    if (isfirst)
+                    {
+                        isfirst = false;
+                    }
+                    else
+                    {
+                        gridColumn = new GridColumn();
+                        gridColumn.Caption = "年均增长率(%)";
+                        gridColumn.FieldName = "mm" + i;
+                        gridColumn.Visible = true;
+                        gridColumn.Width = 130;
+                        gridColumn.VisibleIndex = 2 * m + 11;
+                        gridColumn.DisplayFormat.FormatString = "n2";
+                        gridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                        gridView1.Columns.Add(gridColumn);
+                        dataTable.Columns.Add("mm" + i, typeof(double));
+                    }
+                   
                 }
 
                 if (ht2.ContainsValue(i))
@@ -180,7 +189,7 @@ namespace Itop.Client.History
                         int peryear = 0;
                         for (int i = y1-1; i >0; i--)
                         {
-                            if ( ht.ContainsValue(i))
+                            if ( ht1.ContainsValue(i))
                             {
                                 peryear = i;
                                 break;

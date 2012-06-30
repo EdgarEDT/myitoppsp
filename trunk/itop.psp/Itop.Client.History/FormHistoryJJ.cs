@@ -86,8 +86,8 @@ namespace Itop.Client.History
             barButtonItem4.Glyph = Itop.ICON.Resource.刷新;
             barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
 
-            barButtonItem6.Glyph = Itop.ICON.Resource.关闭;
-            barButtonItem6.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            barButtonItem15.Glyph = Itop.ICON.Resource.关闭;
+            barButtonItem15.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
 
 
             barButtonItem10.Glyph = Itop.ICON.Resource.授权;
@@ -1761,6 +1761,11 @@ namespace Itop.Client.History
             fgv.ShowDialog();
         
 
+        }
+
+        private void barButtonItem15_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
 
 

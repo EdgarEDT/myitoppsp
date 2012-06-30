@@ -71,6 +71,7 @@ namespace Itop.Client.History
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.chart_user1 = new Itop.Client.Using.chart_user();
+            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
@@ -120,8 +121,9 @@ namespace Itop.Client.History
             this.barCheckItem4,
             this.barCheckItem5,
             this.barCheckItem6,
-            this.barCheckItem7});
-            this.barManager1.MaxItemId = 90;
+            this.barCheckItem7,
+            this.barButtonItem14});
+            this.barManager1.MaxItemId = 91;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1});
             // 
@@ -141,7 +143,8 @@ namespace Itop.Client.History
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8, true),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem14, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -481,6 +484,13 @@ namespace Itop.Client.History
             this.chart_user1.Size = new System.Drawing.Size(1100, 309);
             this.chart_user1.TabIndex = 0;
             // 
+            // barButtonItem14
+            // 
+            this.barButtonItem14.Caption = "¹Ø±Õ";
+            this.barButtonItem14.Id = 90;
+            this.barButtonItem14.Name = "barButtonItem14";
+            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick_1);
+            // 
             // FormHistoryDL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -551,6 +561,7 @@ namespace Itop.Client.History
         private DevExpress.XtraBars.BarCheckItem barCheckItem7;
         private Itop.Client.Using.chart_user chart_user1;
         public DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
 
     }
 }
