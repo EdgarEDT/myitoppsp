@@ -449,6 +449,36 @@ namespace ItopVector.Tools {
             } catch { }
             return layer;
         }
+        public ArrayList getBrotherLayers()
+        {
+            ArrayList list = new ArrayList();
+            TreeListNode node = treeList1.FocusedNode;
+            Layer layer = null;
+            if (node.ParentNode!=null)
+            {
+                foreach (TreeListNode tl in node.ParentNode.Nodes)
+                {
+                    if (symbolDoc.Layers[tl["SUID"].ToString()]!=null)
+                    {
+                        layer = symbolDoc.Layers[tl["SUID"].ToString()] as Layer;
+                        list.Add(layer);
+                    }
+
+                }
+            }
+            else
+            {
+                foreach (TreeListNode tln in treeList1.Nodes)
+                {
+                    if (symbolDoc.Layers[tln["SUID"].ToString()] != null)
+                    {
+                        layer = symbolDoc.Layers[tln["SUID"].ToString()] as Layer;
+                        list.Add(layer);
+                    }
+                }
+            }
+            return list;
+        }
         private void btEdit_Click(object sender, EventArgs e)//
         {
 

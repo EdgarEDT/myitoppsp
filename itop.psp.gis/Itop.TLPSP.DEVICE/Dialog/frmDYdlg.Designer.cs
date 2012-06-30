@@ -46,10 +46,8 @@
             this.nylx = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label5 = new System.Windows.Forms.Label();
             this.Area = new DevExpress.XtraEditors.LookUpEdit();
-            this.dq = new DevExpress.XtraEditors.ComboBoxEdit();
             this.type2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label37 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.td = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label9 = new System.Windows.Forms.Label();
@@ -68,6 +66,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
+            this.dq = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label34 = new System.Windows.Forms.Label();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -85,7 +85,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nylx.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Area.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dq.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.type2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.td.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
@@ -95,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dq.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -330,17 +330,6 @@
             this.Area.Size = new System.Drawing.Size(181, 21);
             this.Area.TabIndex = 11;
             // 
-            // dq
-            // 
-            this.dq.EditValue = "";
-            this.dq.Location = new System.Drawing.Point(122, 389);
-            this.dq.Name = "dq";
-            this.dq.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dq.Size = new System.Drawing.Size(181, 21);
-            this.dq.TabIndex = 10;
-            this.dq.Visible = false;
-            // 
             // type2
             // 
             this.type2.EditValue = "公用";
@@ -363,17 +352,6 @@
             this.label37.Size = new System.Drawing.Size(55, 14);
             this.label37.TabIndex = 18;
             this.label37.Text = "所在区域";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.Color.Black;
-            this.label34.Location = new System.Drawing.Point(21, 395);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(55, 14);
-            this.label34.TabIndex = 19;
-            this.label34.Text = "电网类型";
-            this.label34.Visible = false;
             // 
             // label41
             // 
@@ -591,6 +569,28 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "名称";
             // 
+            // dq
+            // 
+            this.dq.EditValue = "";
+            this.dq.Location = new System.Drawing.Point(122, 389);
+            this.dq.Name = "dq";
+            this.dq.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dq.Size = new System.Drawing.Size(181, 21);
+            this.dq.TabIndex = 10;
+            this.dq.Visible = false;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.Black;
+            this.label34.Location = new System.Drawing.Point(21, 395);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(55, 14);
+            this.label34.TabIndex = 19;
+            this.label34.Text = "电网类型";
+            this.label34.Visible = false;
+            // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
@@ -623,7 +623,6 @@
             // 
             this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton5.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton5.Location = new System.Drawing.Point(386, 496);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(87, 29);
@@ -662,7 +661,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nylx.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Area.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dq.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.type2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.td.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
@@ -672,6 +670,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dq.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

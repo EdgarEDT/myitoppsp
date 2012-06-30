@@ -165,7 +165,8 @@ namespace ItopVector.Tools
             string projectid=Itop.Client.MIS.ProgUID;
             string strCon = string.Format(" where Type = '01' and projectid='{0}' and svguid='{1}'",projectid,devicSUID);
             IList list = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon);
-            SvgElementCollection list2 = tlVectorControl1.SVGDocument.CurrentLayer.GraphList.Clone();// tlVectorControl1.SVGDocument.SelectNodes("svg/use");
+           // SvgElementCollection list2 = tlVectorControl1.SVGDocument.CurrentLayer.GraphList.Clone();// tlVectorControl1.SVGDocument.SelectNodes("svg/use");
+            XmlNodeList list2 = tlVectorControl1.SVGDocument.SelectNodes("svg/use");
             float scale = tlVectorControl1.ScaleRatio;
             //scale = 1;
             foreach (PSPDEV dev in list) {
@@ -179,11 +180,12 @@ namespace ItopVector.Tools
                     string label = element.GetAttribute("info-name");
                     IList list3 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon1);
                     foreach (PSPDEV pd in list3) {
-                        if (dev.Number != pd.Number) {
-                            string strCon2 = " where projectid = '" + projectid + "' AND Type = '05' AND FirstNode = '" + dev.Number + "' AND LastNode = '" + pd.Number + "'";
+                       // if (dev.Number != pd.Number)
+                        {
+                            string strCon2 = " where projectid = '" + projectid + "' AND Type = '05' AND IName = '" + dev.Name + "' AND JName = '" + pd.Name + "'";
                             IList list4 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon2);
 
-                            string strCon3 = "where projectid = '" + projectid + "' AND Type = '05' AND FirstNode = '" + pd.Number + "' AND LastNode = '" + dev.Number + "'";
+                            string strCon3 = "where projectid = '" + projectid + "' AND Type = '05' AND IName = '" + pd.Name + "' AND JName = '" + dev.Name + "'";
                             IList list5 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon3);
                             float width =  ((IGraph)element).GetBounds().Width/3;
                             for (int i = 0; i < list4.Count; i++) {
@@ -212,26 +214,32 @@ namespace ItopVector.Tools
 
                                 n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                 //决定线路在那条图层上：本级图层中有包含“线路”两字的图层，则生成到此图层； 如果有多个包含“线路”的图层，则生成到第一个； 如果没有包含“线路”的图层，则生成到当前选择图层。
-                                ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
+                                //ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
+                                ArrayList layercol = frmlar.getBrotherLayers();
                                 bool jsflag = false;
                                 for (int m= 0; m< layercol.Count; m++)
                                 {
-                                    if ((layercol[m] as Layer).GetAttribute("id") == SvgDocument.currentLayer && (layercol[m] as Layer).GetAttribute("label").Contains("线路"))
+                                    if ((layercol[m] as Layer).GetAttribute("id") == SvgDocument.currentLayer &&!(layercol[m] as Layer).GetAttribute("label").Contains("线路"))
+                                    {
+                                        continue;
+                                    }
+                                    else if ((layercol[m] as Layer).GetAttribute("id") != SvgDocument.currentLayer && !(layercol[m] as Layer).GetAttribute("label").Contains("线路"))
+                                    {
+                                        continue;
+                                    }
+                                    else if ((layercol[m] as Layer).GetAttribute("id") == SvgDocument.currentLayer && (layercol[m] as Layer).GetAttribute("label").Contains("线路"))
                                     {
                                         n1.SetAttribute("layer", SvgDocument.currentLayer);
                                         jsflag = true;
                                         break;
                                     }
-                                    else 
+                                    else if ((layercol[m] as Layer).GetAttribute("id") != SvgDocument.currentLayer && (layercol[m] as Layer).GetAttribute("label").Contains("线路"))
                                     {
-                                        if ((layercol[m] as Layer).GetAttribute("label").Contains("线路"))
-                                        {
-                                            n1.SetAttribute("layer", (layercol[m] as Layer).GetAttribute("id"));
-                                            jsflag = true;
-                                            break;
-                                        }
-                                        
+                                        n1.SetAttribute("layer", (layercol[m] as Layer).GetAttribute("id"));
+                                        jsflag = true;
+                                        break;
                                     }
+
                                 }
                                if (!jsflag)
                                {
@@ -269,7 +277,8 @@ namespace ItopVector.Tools
                                 } else if (OddEven.IsEven(i)) {
                                     temp = pStart2.X.ToString() + " " + pStart2.Y.ToString() + "," + pStart4.X.ToString() + " " + pStart4.Y.ToString();
                                 }
-                                ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
+                                //ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
+                                ArrayList layercol = frmlar.getBrotherLayers();
                                 XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
                                 n1.SetAttribute("points", temp);
                                 n1.SetAttribute("IsLead", "1");
@@ -277,21 +286,25 @@ namespace ItopVector.Tools
                                 bool jsflag = false;
                                 for (int m = 0; m < layercol.Count; m++)
                                 {
-                                    if ((layercol[m] as Layer).GetAttribute("id") == SvgDocument.currentLayer && (layercol[m] as Layer).GetAttribute("label").Contains("线路"))
+                                    if ((layercol[m] as Layer).ID == SvgDocument.currentLayer && !(layercol[m] as Layer).Label.Contains("线路"))
+                                    {
+                                        continue;
+                                    }
+                                    else if ((layercol[m] as Layer).ID != SvgDocument.currentLayer && !(layercol[m] as Layer).Label.Contains("线路"))
+                                    {
+                                        continue;
+                                    }
+                                    else if ((layercol[m] as Layer).ID== SvgDocument.currentLayer && (layercol[m] as Layer).Label.Contains("线路"))
                                     {
                                         n1.SetAttribute("layer", SvgDocument.currentLayer);
                                         jsflag = true;
                                         break;
                                     }
-                                    else
+                                    else if ((layercol[m] as Layer).ID != SvgDocument.currentLayer && (layercol[m] as Layer).Label.Contains("线路"))
                                     {
-                                        if ((layercol[m] as Layer).GetAttribute("label").Contains("线路"))
-                                        {
-                                            n1.SetAttribute("layer", (layercol[m] as Layer).GetAttribute("id"));
-                                            jsflag = true;
-                                            break;
-                                        }
-
+                                        n1.SetAttribute("layer", (layercol[m] as Layer).ID);
+                                        jsflag = true;
+                                        break;
                                     }
                                 }
                                 if (!jsflag)

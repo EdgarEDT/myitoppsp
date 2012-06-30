@@ -333,7 +333,7 @@ namespace Itop.TLPSP.DEVICE
                 IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
                 {
-                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4)
+                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(pj.S30) && !string.IsNullOrEmpty(pj.S29))
                     {
                         if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(pj.S29) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(pj.S30))
                         {
@@ -441,13 +441,18 @@ namespace Itop.TLPSP.DEVICE
         public override void Add()
         {
             frmDYdlg dlg = new frmDYdlg();
-            dlg.ProjectID = this.ProjectID;
+            dlg.ProjectID = Itop.Client.MIS.ProgUID;
             dlg.Name = "";
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 //增加记录 
                 PSP_PowerSubstation_Info dev = dlg.DeviceMx;
-                dev.AreaID = this.ProjectID;
+                dev.AreaID = Itop.Client.MIS.ProgUID;
+                if (dlg.bcflag)  //说明已经创建
+                {
+                    DataService.Update<PSP_PowerSubstation_Info>(dev);
+                }
+                else
                 DataService.Create<PSP_PowerSubstation_Info>(dev);
                 DataRow row = datatable1.NewRow();
                 Itop.Common.DataConverter.ObjectToRow(dev, row);
