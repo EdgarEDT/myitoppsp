@@ -48,6 +48,7 @@ namespace Itop.TLPSP.DEVICE
                 devObj.S29 = date1.Text;
                 devObj.S30 = date2.Text;
                 devObj.S18 = textEdit2.Text;
+                devObj.AreaID = ProjectID;
                 return devObj; }
             set {
                 devObj = value;
@@ -241,9 +242,29 @@ namespace Itop.TLPSP.DEVICE
                
             }
         }
-
+        public bool bcflag = false;
         private void simpleButton5_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(devObj.Title))
+            {
+                MessageBox.Show("名称不能为空！");
+                return;
+            }
+            if (string.IsNullOrEmpty(devObj.S3))
+            {
+                MessageBox.Show("请选择投产时间！");
+                return;
+            }
+            if (Convert.ToDouble(devObj.S1) == 0)
+            {
+                MessageBox.Show("请填写电压等级！");
+                return;
+            }
+            PSP_PowerSubstation_Info obj = UCDeviceBase.DataService.GetOneByKey<PSP_PowerSubstation_Info>(DeviceMx);
+            if (obj==null)
+            {
+                UCDeviceBase.DataService.Create<PSP_PowerSubstation_Info>(DeviceMx);
+            }
             double rl = 0;
             int bts = 0;
             frmDeviceManager_children frmc = new frmDeviceManager_children();
@@ -256,7 +277,7 @@ namespace Itop.TLPSP.DEVICE
                 IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
                 {
-                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2)&&pd.Date2.Length==4)
+                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(DeviceMx.S29) && !string.IsNullOrEmpty(DeviceMx.S30))
                     {
                         if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(DeviceMx.S29) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(DeviceMx.S30))
                         {
@@ -270,7 +291,11 @@ namespace Itop.TLPSP.DEVICE
                         bts++;
                     }
                 }
-                spinEdit2.Value = (decimal)rl;
+                if (list.Count>0)
+                {
+                    spinEdit2.Value = (decimal)rl;
+                }
+                
                 
             }
         }
@@ -279,17 +304,17 @@ namespace Itop.TLPSP.DEVICE
         {
             if (!isread)
             {
-                if (string.IsNullOrEmpty(devObj.Title))
+                if (string.IsNullOrEmpty(textEdit1.Text))
                 {
                     MessageBox.Show("名称不能为空！");
                     return;
                 }
-                if (string.IsNullOrEmpty(devObj.S3) )
+                if (string.IsNullOrEmpty(comboBoxEdit1.Text))
                 {
                     MessageBox.Show("请选择投产时间！");
                     return;
                 }
-                if (Convert.ToDouble(devObj.S1)== 0)
+                if (spinEdit1.Value == 0)
                 {
                     MessageBox.Show("请填写电压等级！");
                     return;

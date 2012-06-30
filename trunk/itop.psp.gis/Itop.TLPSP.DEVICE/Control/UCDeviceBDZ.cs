@@ -434,6 +434,11 @@ namespace Itop.TLPSP.DEVICE
                 //增加记录 
                 PSP_Substation_Info dev = dlg.DeviceMx;
                 dev.AreaID = Itop.Client.MIS.ProgUID;
+                if (dlg.bcflag)   //在点击设备参数的时候 已经进行了保存
+                {
+                    DataService.Update<PSP_Substation_Info>(dev);
+                }
+                else
                 DataService.Create<PSP_Substation_Info>(dev);
                 DataRow row = datatable1.NewRow();
                 Itop.Common.DataConverter.ObjectToRow(dev, row);

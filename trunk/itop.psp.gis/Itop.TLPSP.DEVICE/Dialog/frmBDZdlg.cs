@@ -103,6 +103,7 @@ namespace Itop.TLPSP.DEVICE
                 bdz.L29 = date2.Text;
                 bdz.L27 = textEdit3.Text;
                 bdz.L26 = spinEdit6.Value.ToString();
+                bdz.AreaID = ProjectID;
                 return bdz; }
             set {
                 bdz = value;
@@ -502,17 +503,41 @@ namespace Itop.TLPSP.DEVICE
               spinEdit4.Value =(decimal)bts;
             }
         }
-
+        public bool bcflag = false;
         private void simpleButton5_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textEdit1.Text))
+            {
+                MessageBox.Show("变电站名称不能为空！");
+                return;
+            }
+            if (string.IsNullOrEmpty(comboBoxEdit1.Text))
+            {
+                MessageBox.Show("请选择投产时间！");
+                return;
+            }
+            if ((int)spinEdit1.Value == 0)
+            {
+                MessageBox.Show("请填写电压等级！");
+                return;
+            }
+            PSP_Substation_Info obj = UCDeviceBase.DataService.GetOneByKey<PSP_Substation_Info>(DeviceMx);
+            if (obj==null)
+            {
+                bcflag = true;
+                UCDeviceBase.DataService.Create<PSP_Substation_Info>(DeviceMx);
+            }
+            
             double rl = 0;
             int bts = 0;
             frmDeviceManager_children frmc = new frmDeviceManager_children();
             frmc.ParentObj = DeviceMx;
             string[] types=new string[]{"01","03","12"};
             frmc.childrendevice(types);
+
             if (frmc.DialogResult==DialogResult.OK)
             {
+
                 string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='03'and SvgUID='"+DeviceMx.UID+"'";
                 IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
@@ -531,8 +556,12 @@ namespace Itop.TLPSP.DEVICE
                         bts++;
                     }
                 }
-                spinEdit2.Value = (decimal)rl;
-                spinEdit4.Value = (decimal)bts;
+                if (list.Count>0)
+                {
+                    spinEdit2.Value = (decimal)rl;
+                    spinEdit4.Value = (decimal)bts;
+                }
+              
             }
 
         }
