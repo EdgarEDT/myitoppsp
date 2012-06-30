@@ -1126,11 +1126,11 @@ namespace Itop.Client.Table
             {
                 string con = "ProjectID='" + GetProjectID + "' ORDER BY Sort";
                 listTypes = Common.Services.BaseService.GetList("SelectPs_Table_ElecPHByConn", con);
-                  AddTotalRow(ref listTypes);
+                  //AddTotalRow(ref listTypes);
                  
                 DataTable dt = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Table_ElecPH));
 
-
+           
                 Form21Print frma = new Form21Print();
                 frma.IsSelect = _isSelect;
                 frma.Text = "电量平衡表";
@@ -1138,6 +1138,7 @@ namespace Itop.Client.Table
                 frma.IsBand = false;
                 frma.BHe = false;
                 frma.SetGridWidth(70,"序号", 250);
+                treeList1.DataSource = null;
                 treeList1.DataSource = dt;
                 frma.GridDataTable = ResultDataTable(ConvertTreeListToDataTable(treeList1,false), frm.ListChoosedYears);
                 

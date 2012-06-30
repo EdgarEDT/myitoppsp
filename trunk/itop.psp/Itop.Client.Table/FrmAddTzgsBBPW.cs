@@ -15,9 +15,8 @@ namespace Itop.Client.Table
     {
         public FrmAddTzgsBBPW()
         {
-            InitializeComponent(); 
-            string conn = "Col5='" + projectID + "' and Col4='" + OperTable.tzgs + "'";
-            yAnge = oper.GetYearRange(conn);
+            InitializeComponent();
+        
             InitCom();
         }
         private Ps_YearRange yAnge = new Ps_YearRange();
@@ -151,6 +150,9 @@ namespace Itop.Client.Table
         public int Syear
         {
             set { syear = value; }
+            get { syear = yAnge.StartYear;
+            return syear;
+            }
         }
         //public void SetText(string com6,string com
         public double Vol
@@ -285,17 +287,18 @@ namespace Itop.Client.Table
                 catch { }
             }
         }
+       
         public double AllVol
         {
             get
             {
                 double LineVol=0.0,BianVol=0.0;
                 int fy = 2010;
-                try { fy = int.Parse(FinishYear); }
+                try { fy = int.Parse(StartYear); }
                 catch { }
-                if (fy < syear)
-                    fy = syear;
-                double pei = Math.Pow((1 + tzgsXs),(fy - syear)); 
+                if (fy < Syear)
+                    fy = Syear;
+                double pei = Math.Pow((1 + tzgsXs),(fy - Syear)); 
                 string conn="";
                 if (Line)
                 {
@@ -354,6 +357,8 @@ namespace Itop.Client.Table
 
         private void FrmAddTzgs_Load(object sender, EventArgs e)
         {
+            string conny = "Col5='" + MIS.ProgUID + "' and Col4='" + OperTable.tzgs + "'";
+            yAnge = oper.GetYearRange(conny);
             if (strtype=="line")
             {
                 label19.Visible = buildprortzgsflag;

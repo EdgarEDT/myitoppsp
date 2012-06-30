@@ -2180,8 +2180,8 @@ namespace Itop.Client.Table
                         tzgs.Col1 = list[i].Col1;
                         tzgs.FromID = list[i].FromID;
                         tzgs.Col4 = list[i].Col4;
-                        if(tzgs.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd))!=null)
-                            tzgs.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).SetValue(tzgs, tzgs.AllVolumn, null);
+                        if (tzgs.GetType().GetProperty("y" + Convert.ToString(list[i].BuildYear)) != null)
+                            tzgs.GetType().GetProperty("y" + Convert.ToString(list[i].BuildYear)).SetValue(tzgs, tzgs.AllVolumn, null);
                         if (pare110 != null && table.ParentID==pare110.ID)
                         {
                             pare110.AftVolumn += tzgs.AftVolumn;
@@ -2189,7 +2189,7 @@ namespace Itop.Client.Table
                             pare110.Length += tzgs.Length;
                             pare110.Volumn += tzgs.Volumn;
                             pare110.Num1 += tzgs.Num1;
-                            pare110.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).SetValue(pare110, double.Parse(pare110.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).GetValue(pare110, null).ToString()) + tzgs.AllVolumn, null);
+                            pare110.GetType().GetProperty("y" + Convert.ToString(list[i].BuildYear)).SetValue(pare110, double.Parse(pare110.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).GetValue(pare110, null).ToString()) + tzgs.AllVolumn, null);
                             Common.Services.BaseService.Update<Ps_Table_TZGS>(pare110);
                         }
                         else if (pare220 != null && table.ParentID == pare220.ID)
@@ -2199,7 +2199,7 @@ namespace Itop.Client.Table
                             pare220.Length += tzgs.Length;
                             pare220.Volumn += tzgs.Volumn;
                             pare220.Num1 += tzgs.Num1;
-                            pare220.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).SetValue(pare220, double.Parse(pare220.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).GetValue(pare220, null).ToString()) + tzgs.AllVolumn, null);
+                            pare220.GetType().GetProperty("y" + Convert.ToString(list[i].BuildYear)).SetValue(pare220, double.Parse(pare220.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).GetValue(pare220, null).ToString()) + tzgs.AllVolumn, null);
                             Common.Services.BaseService.Update<Ps_Table_TZGS>(pare220);
                         }
                         else if (pare500 != null && table.ParentID == pare500.ID)
@@ -2209,7 +2209,7 @@ namespace Itop.Client.Table
                             pare500.Length += tzgs.Length;
                             pare500.Volumn += tzgs.Volumn;
                             pare500.Num1 += tzgs.Num1;
-                            pare500.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).SetValue(pare500, double.Parse(pare500.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).GetValue(pare500, null).ToString()) + tzgs.AllVolumn, null);
+                            pare500.GetType().GetProperty("y" + Convert.ToString(list[i].BuildYear)).SetValue(pare500, double.Parse(pare500.GetType().GetProperty("y" + Convert.ToString(list[i].BuildEd)).GetValue(pare500, null).ToString()) + tzgs.AllVolumn, null);
                             Common.Services.BaseService.Update<Ps_Table_TZGS>(pare500);
 
                         }
@@ -2520,11 +2520,11 @@ namespace Itop.Client.Table
                     {
                         double LineVol = 0.0, BianVol = 0.0;
                         int fy = 2010;
-                        try { fy = int.Parse(pz.BuildEd); }
+                        try { fy = int.Parse(pz.BuildYear); }
                         catch { }
                         if (fy < int.Parse(pz.BuildYear))
                             fy = int.Parse(pz.BuildYear);
-                        double pei = Math.Pow((1 + double.Parse(yAngeXs.Col1)), (fy - int.Parse(pz.BuildYear)));
+                        double pei = Math.Pow((1 + double.Parse(yAngeXs.Col1)), (fy - yAnge.StartYear));
 
                         if (pz.Col4 == "line")
                         {
@@ -2542,7 +2542,7 @@ namespace Itop.Client.Table
                                 //  table1.BefVolumn = frm.AllVol;
                                 pz.AftVolumn = LineVol;
 
-                                pz.GetType().GetProperty("y" + Convert.ToString(pz.BuildEd)).SetValue(pz, LineVol, null);
+                                pz.GetType().GetProperty("y" + Convert.ToString(pz.BuildYear)).SetValue(pz, LineVol, null);
                             }
                         }
                         else if (pz.Col4 == "bian")
@@ -2570,7 +2570,7 @@ namespace Itop.Client.Table
                                 //  table1.BefVolumn = frm.AllVol;
                                 pz.AftVolumn = LineVol;
 
-                                pz.GetType().GetProperty("y" + Convert.ToString(pz.BuildEd)).SetValue(pz, LineVol, null);
+                                pz.GetType().GetProperty("y" + Convert.ToString(pz.BuildYear)).SetValue(pz, LineVol, null);
                             }
                         }
                         else if (pz.Col4 == "sbd")
@@ -2589,7 +2589,7 @@ namespace Itop.Client.Table
                                 //  table1.BefVolumn = frm.AllVol;
                                 pz.AftVolumn = LineVol;
 
-                                pz.GetType().GetProperty("y" + Convert.ToString(pz.BuildEd)).SetValue(pz, LineVol, null);
+                                pz.GetType().GetProperty("y" + Convert.ToString(pz.BuildYear)).SetValue(pz, LineVol, null);
                             }
                             if (string.IsNullOrEmpty(pz.BianInfo))
                                 LineVol += 0.0;
@@ -2614,7 +2614,7 @@ namespace Itop.Client.Table
                                 //  table1.BefVolumn = frm.AllVol;
                                 pz.AftVolumn = LineVol;
 
-                                pz.GetType().GetProperty("y" + Convert.ToString(pz.BuildEd)).SetValue(pz, LineVol, null);
+                                pz.GetType().GetProperty("y" + Convert.ToString(pz.BuildYear)).SetValue(pz, LineVol, null);
                             }
                         }
                         Common.Services.BaseService.Update<Ps_Table_TZGS>(pz);
@@ -2632,7 +2632,7 @@ namespace Itop.Client.Table
                     foreach (Ps_Table_TZGS ps in list1)
                     {
                         sumlinvel += ps.AllVolumn;
-                        buildend = ps.BuildEd;
+                        buildend = ps.BuildYear;
                     }
                     if (buildend!="")
                     {
