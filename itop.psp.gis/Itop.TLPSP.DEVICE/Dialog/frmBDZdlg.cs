@@ -126,6 +126,7 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit8.EditValue= bdz.DQ;
                 comboBoxEdit9.EditValue = bdz.AreaName;
                 comboBoxEdit3.Text = bdz.S4;
+                ProjectID = Itop.Client.MIS.ProgUID;
                 date1.Text = bdz.L28;
                 date2.Text = bdz.L29;
                 ucGraph1.Open(value.UID);

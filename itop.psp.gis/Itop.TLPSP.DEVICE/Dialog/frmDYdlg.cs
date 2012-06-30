@@ -58,6 +58,7 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit1.Text = devObj.S3;
                 comboBoxEdit2.Text = devObj.Flag == "2" ? "¹æ»®" :"ÏÖ×´" ;
                 dq.Text= devObj.S5;
+                ProjectID = Itop.Client.MIS.ProgUID;
                 Area.EditValue= devObj.S9;
                 nylx.Text = devObj.S10;
                 fdl.Text = devObj.S11;
