@@ -47,6 +47,7 @@ namespace Itop.Client.Table
             AddArea();
             InitRight();
             InitData();
+            this.Text = "线路统计";
            
         }
         public void Linestatic(string year)

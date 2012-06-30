@@ -209,7 +209,7 @@ namespace Itop.Client.Table
             string area_6z = "1@3$5q99z99";
             int j = 0;
             int now = 0;
-            string con = "AreaID='" + projectid + "'"+ " and Flag='"+Ghflag+"'";
+            string con = "AreaID='" + projectid + "'";// +" and Flag='" + Ghflag + "'";
            // con += addConn;
             con += " order by convert(int,L1) desc,S4,AreaName,CreateDate,convert(int,S5)";
             string[] que = new string[60] { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", 

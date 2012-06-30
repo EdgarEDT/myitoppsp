@@ -97,6 +97,7 @@ namespace Itop.Client.Table
             selectname = "变电站数据表";
             leixing = "运行";
             InitGridDataSH(con);
+            this.Text = "变电站统计";
             this.ShowDialog();
             
         }

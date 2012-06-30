@@ -1414,9 +1414,9 @@ namespace Itop.Client.Table
                 startyear = yAnge.BeginYear;
                 endyear = yAnge.EndYear;
 
-                if (list[j].S29 != string.Empty)
+                if (list[j].S2 != string.Empty)
                 {
-                    int.TryParse(list[j].S29, out startyear);
+                    int.TryParse(list[j].S2, out startyear);
                 }
                 if (list[j].S30 != string.Empty)
                 {
@@ -1436,9 +1436,9 @@ namespace Itop.Client.Table
                         {
                             startyear2 = yAnge.BeginYear;
                             endyear2 = yAnge.EndYear;
-                            if (listatt[k].Date1 != string.Empty)
+                            if (listatt[k].OperationYear != string.Empty)
                             {
-                                int.TryParse(listatt[k].Date1, out startyear2);
+                                int.TryParse(listatt[k].OperationYear, out startyear2);
                             }
                             if (listatt[k].Date2 != string.Empty)
                             {
@@ -1592,9 +1592,9 @@ namespace Itop.Client.Table
                 startyear = yAnge.BeginYear;
                 endyear = yAnge.EndYear;
 
-                if (list[j].L28 != string.Empty)
+                if (list[j].S2 != string.Empty)
                 {
-                    int.TryParse(list[j].L28, out startyear);
+                    int.TryParse(list[j].S2, out startyear);
                 }
                 if (list[j].L29 != string.Empty)
                 {
@@ -1617,9 +1617,9 @@ namespace Itop.Client.Table
                             startyear2 = yAnge.BeginYear;
                             endyear2 = yAnge.EndYear;
 
-                            if (listatt[k].Date1 != string.Empty)
+                            if (listatt[k].OperationYear != string.Empty)
                             {
-                                int.TryParse(listatt[k].Date1, out startyear2);
+                                int.TryParse(listatt[k].OperationYear, out startyear2);
                             }
                             if (listatt[k].Date2 != string.Empty)
                             {
@@ -1773,9 +1773,9 @@ namespace Itop.Client.Table
                             startyear2 = yAnge.BeginYear;
                             endyear2 = yAnge.EndYear;
 
-                            if (listatt[k].Date1 != string.Empty)
+                            if (listatt[k].OperationYear != string.Empty)
                             {
-                                int.TryParse(listatt[k].Date1, out startyear2);
+                                int.TryParse(listatt[k].OperationYear, out startyear2);
                             }
                             if (listatt[k].Date2 != string.Empty)
                             {
@@ -1832,9 +1832,9 @@ namespace Itop.Client.Table
                             startyear2 = yAnge.BeginYear;
                             endyear2 = yAnge.EndYear;
 
-                            if (listatt[k].Date1 != string.Empty)
+                            if (listatt[k].OperationYear != string.Empty)
                             {
-                                int.TryParse(listatt[k].Date1, out startyear2);
+                                int.TryParse(listatt[k].OperationYear, out startyear2);
                             }
                             if (listatt[k].Date2 != string.Empty)
                             {
