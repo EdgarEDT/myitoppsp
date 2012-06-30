@@ -2249,6 +2249,10 @@ namespace Itop.Client.Table
                                 for (int j = start; j <= end; j++)
 			                    {
                                     DataRow[] curow=dataTable.Select(" Date1="+j );
+                                    if (curow.Length==0)
+                                    {
+                                        continue;
+                                    }
                                     Ps_Table_BuildPro table1 = new Ps_Table_BuildPro();
                                     table1.ID += "|" + GetProjectID;
                                     table1.Title = curow[0]["Name"].ToString();
@@ -2301,6 +2305,10 @@ namespace Itop.Client.Table
                                 for (int j = start; j <= end; j++)
 			                    {
                                     DataRow[] curow=dataTable.Select(" Date1="+j );
+                                    if (curow.Length==0)
+                                    {
+                                        continue;
+                                    }
                                     if (j==start)//只有第一年需要新建，其后的都是扩建
 	                                {
                                         Ps_Table_BuildPro table1 = new Ps_Table_BuildPro();
