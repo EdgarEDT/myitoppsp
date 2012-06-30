@@ -497,7 +497,7 @@ namespace Itop.Client.Layouts
                 }
 
                 int curyear = 0;
-                int.TryParse(t1.ToString(), out curyear);
+                int.TryParse(t1.Text.ToString(), out curyear);
                 if (curyear < 1991 || curyear > 2060)
                 {
                     MsgBox.Show("开始建设年度输入有误！");
