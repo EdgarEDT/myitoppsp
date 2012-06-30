@@ -666,7 +666,7 @@ namespace Itop.Client.Table
                 table1.AftVolumn = frm.AllVol;
                 table1.LineInfo = frm.LineInfo;
                 table1.BianInfo = frm.BianInfo;
-                table1.GetType().GetProperty("y" + Convert.ToString(frm.FinishYear)).SetValue(table1, frm.Vol, null);
+                table1.GetType().GetProperty("y" + Convert.ToString(frm.StartYear)).SetValue(table1, frm.Vol, null);
                 table1.Col4 = "bian";
                 table1.Sort = OperTable.GetBuildProMaxSort()+1;
                 table1.Col3 = frm.Col3;
@@ -788,7 +788,7 @@ namespace Itop.Client.Table
                         temp1 = frm.Vol;
                     else if (g_col4 == "line")
                         temp1 = frm.LineLen;
-                    table.GetType().GetProperty("y" + Convert.ToString(frm.FinishYear)).SetValue(table, temp1, null);
+                    table.GetType().GetProperty("y" + Convert.ToString(frm.StartYear)).SetValue(table, temp1, null);
                     table.Col1 = frm.BieZhu;
                     table.Col3 = frm.Col3;
                     table.BianInfo = frm.BianInfo;
@@ -882,23 +882,38 @@ namespace Itop.Client.Table
         public void AddChildVol(Ps_Table_BuildPro child,bool bAdd)
         {
             Ps_Table_BuildPro pare = Common.Services.BaseService.GetOneByKey<Ps_Table_BuildPro>(child.ParentID);
-            IList<string> list=new List<string>();
-            list.Add("Length");list.Add("Volumn");//list.Add("AllVolumn");list.Add("BefVolumn");
-           // list.Add("AftVolumn");
-           // for (int i = 2008; i <= yAnge.StartYear + 5; i++)
-           //     list.Add("y" + i.ToString());
-            double old=0.0,cld=0.0;
-           // foreach (string str in list)
-            for(int i=yAnge.BeginYear;i<=yAnge.EndYear;i++)
+
+            IList<Ps_Table_BuildPro> list = Common.Services.BaseService.GetList<Ps_Table_BuildPro>("SelectPs_Table_BuildProByConn", " ParentID='" + child.ParentID + "'");
+           
+            for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
             {
-                old=double.Parse(pare.GetType().GetProperty("y"+i.ToString()).GetValue(pare,null).ToString());
-                cld = double.Parse(child.GetType().GetProperty("y" + i.ToString()).GetValue(child, null).ToString());
-                if (bAdd)
-                    pare.GetType().GetProperty("y" + i.ToString()).SetValue(pare, old + cld, null);
-                else
-                    pare.GetType().GetProperty("y" + i.ToString()).SetValue(pare, old - cld, null);
+                double tempdb = 0;
+                foreach (Ps_Table_BuildPro  ptb in list)
+                {
+                    tempdb += double.Parse(ptb.GetType().GetProperty("y" + i.ToString()).GetValue(ptb, null).ToString());
+                }
+                pare.GetType().GetProperty("y" + i.ToString()).SetValue(pare, tempdb, null);
             }
             Common.Services.BaseService.Update<Ps_Table_BuildPro>(pare);
+
+
+           // IList<string> list=new List<string>();
+           // list.Add("Length");list.Add("Volumn");//list.Add("AllVolumn");list.Add("BefVolumn");
+           //// list.Add("AftVolumn");
+           //// for (int i = 2008; i <= yAnge.StartYear + 5; i++)
+           ////     list.Add("y" + i.ToString());
+           // double old=0.0,cld=0.0;
+           //// foreach (string str in list)
+           // for(int i=yAnge.BeginYear;i<=yAnge.EndYear;i++)
+           // {
+           //     old=double.Parse(pare.GetType().GetProperty("y"+i.ToString()).GetValue(pare,null).ToString());
+           //     cld = double.Parse(child.GetType().GetProperty("y" + i.ToString()).GetValue(child, null).ToString());
+           //     if (bAdd)
+           //         pare.GetType().GetProperty("y" + i.ToString()).SetValue(pare, old + cld, null);
+           //     else
+           //         pare.GetType().GetProperty("y" + i.ToString()).SetValue(pare, old - cld, null);
+           // }
+           // Common.Services.BaseService.Update<Ps_Table_BuildPro>(pare);
         }
 
         //增加年份
@@ -2137,7 +2152,7 @@ namespace Itop.Client.Table
                 table1.AftVolumn = frm.AllVol;
                 table1.LineInfo = frm.LineInfo;
                 table1.BianInfo = frm.BianInfo;
-                table1.GetType().GetProperty("y" + Convert.ToString(frm.FinishYear)).SetValue(table1, frm.LineLen, null);
+                table1.GetType().GetProperty("y" + Convert.ToString(frm.StartYear)).SetValue(table1, frm.LineLen, null);
                 //table1.Col2 = treeList1.FocusedNode.GetValue("Col1").ToString();
                 table1.Sort = OperTable.GetBuildProMaxSort() + 1;
                 table1.Col3 = frm.Col3;
@@ -2255,7 +2270,7 @@ namespace Itop.Client.Table
                                     }
                                     Ps_Table_BuildPro table1 = new Ps_Table_BuildPro();
                                     table1.ID += "|" + GetProjectID;
-                                    table1.Title = curow[0]["Name"].ToString();
+                                    table1.Title = psi.Title;
                                     table1.ParentID = parentid;
                                     table1.ProjectID = GetProjectID;
                                     table1.BuildYear =j.ToString(); 
@@ -2313,7 +2328,7 @@ namespace Itop.Client.Table
 	                                {
                                         Ps_Table_BuildPro table1 = new Ps_Table_BuildPro();
                                         table1.ID += "|" + GetProjectID;
-                                        table1.Title = curow[0]["Name"].ToString();
+                                        table1.Title = psi.Title;
                                         table1.ParentID = parentid;
                                         table1.ProjectID = GetProjectID;
                                         table1.BuildYear = j.ToString();
@@ -2326,6 +2341,11 @@ namespace Itop.Client.Table
                                         table1.Col10 = curow[0]["SUID"].ToString();
                                         table1.Col3="新建";
                                         table1.AreaName = psi.AreaName;
+                                        for (int k = 1; k < curow.Length; k++)
+                                        {
+                                            table1.Volumn += double.Parse(curow[k]["SiN"].ToString());
+                                            table1.AllVolumn = table1.Volumn;
+                                        }
                                          table1.GetType().GetProperty("y" + j).SetValue(table1, table1.Volumn, null);
                                         try
                                         {
@@ -2346,63 +2366,18 @@ namespace Itop.Client.Table
                                         {
                                             wait.Close();
                                         }
-                                           if (curow.Length>1)
-	                                       {
-
-                                             Ps_Table_BuildPro table2 = new Ps_Table_BuildPro();
-                                            table2.ID += "|" + GetProjectID;
-                                            table2.Title = curow[1]["Name"].ToString();
-                                            table2.ParentID = parentid;
-                                            table2.ProjectID = GetProjectID;
-                                            table2.BuildYear = j.ToString();
-                                            table2.BuildEd = curow[1]["OperationYear"].ToString();
-                                            table2.FromID = dy;
-                                            table2.Volumn = double .Parse( curow[1]["SiN"].ToString());
-                                            table2.AllVolumn =table2.Volumn;
-                                            table2.Col4 = "bian";
-                                            table2.Sort = OperTable.GetBuildProMaxSort() + 1;
-                                            table2.Col10 = curow[1]["SUID"].ToString();
-                                            table2.Col3="扩建";
-                                            table2.AreaName = psi.AreaName;
-                                            for (int k = 2; k < curow.Length; k++)
-                                            {
-            			                        table2.Volumn += double .Parse( curow[k]["SiN"].ToString());
-                                                table2.AllVolumn =table2.Volumn;
-                                            }
-                                            table2.GetType().GetProperty("y" + j).SetValue(table2, table2.Volumn, null);
-                                            try
-                                            {
-                                                if (DTHave(dt2,curow[1]["SUID"].ToString()))
-                                                {
-
-                                                     UPDateOldBDZ(dt2,curow[1]["SUID"].ToString(),table2);
-                                                }
-                                                else
-                                                {
-                                                      Common.Services.BaseService.Create("InsertPs_Table_BuildPro", table2);
-                                                     dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table2, dataTable.NewRow()));
-                                                     AddChildVol(table2, true);
-                                                }
-
-                                              
-                                            }
-                                              catch (Exception ee)
-                                            {
-                                                wait.Close();
-                                            }
-
-	                                       }
+                                          
 	                                }
                                     else
 	                                {
                                         
                                              Ps_Table_BuildPro table2 = new Ps_Table_BuildPro();
                                             table2.ID += "|" + GetProjectID;
-                                            table2.Title = curow[0]["Name"].ToString();
+                                            table2.Title = psi.Title;
                                             table2.ParentID = parentid;
                                             table2.ProjectID = GetProjectID;
-                                            table2.BuildYear = curow[0]["OperationYear"].ToString();
-                                            table2.BuildEd =  j.ToString();
+                                            table2.BuildYear = j.ToString();
+                                            table2.BuildEd =  curow[0]["OperationYear"].ToString();
                                             table2.FromID = dy;
                                             table2.Volumn = double .Parse( curow[0]["SiN"].ToString());
                                             table2.AllVolumn =table2.Volumn;
@@ -2437,62 +2412,10 @@ namespace Itop.Client.Table
                                             {
                                                 wait.Close();
                                             }
-
-
 	                                }
-                                    
-                                        #region 有扩建项
-                                    if (curow.Length>1)
-	                               {
-
-                                             Ps_Table_BuildPro table2 = new Ps_Table_BuildPro();
-                                            table2.ID += "|" + GetProjectID;
-                                            table2.Title = curow[1]["Name"].ToString();
-                                            table2.ParentID = parentid;
-                                            table2.ProjectID = GetProjectID;
-                                            table2.BuildYear = j.ToString();
-                                            table2.BuildEd = curow[1]["OperationYear"].ToString();
-                                            table2.FromID = dy;
-                                            table2.Volumn = double .Parse( curow[1]["SiN"].ToString());
-                                            table2.AllVolumn =table2.Volumn;
-                                            table2.Col4 = "bian";
-                                            table2.Sort = OperTable.GetBuildProMaxSort() + 1;
-                                            table2.Col10 = curow[1]["SUID"].ToString();
-                                            table2.Col3="扩建";
-                                            table2.AreaName = psi.AreaName;
-                                            for (int k = 2; k < curow.Length; k++)
-		                                    {
-                    			                table2.Volumn += double .Parse( curow[k]["SiN"].ToString());
-                                                table2.AllVolumn =table2.Volumn;
-		                                    }
-                                            table2.GetType().GetProperty("y" + j).SetValue(table2, table2.Volumn, null);
-                                            try
-                                            {
-                                                 if (DTHave(dt2,curow[1]["SUID"].ToString()))
-                                                {
-
-                                                     UPDateOldBDZ(dt2,curow[1]["SUID"].ToString(),table2);
-                                                }
-                                                else
-                                                {
-                                                     Common.Services.BaseService.Create("InsertPs_Table_BuildPro", table2);
-                                                    dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(table2, dataTable.NewRow()));
-                                                    AddChildVol(table2, true);
-                                                }
-
-                                               
-                                            }
-                                              catch (Exception ee)
-                                            {
-                                                wait.Close();
-                                            }
-
-	                               }
-                                        		 
-                                        #endregion
+                                     
                                    
 			                    }
-
 
 
 	                        }
@@ -2567,8 +2490,11 @@ namespace Itop.Client.Table
             ptb.AllVolumn = value.Volumn;
             ptb.BuildYear=value.BuildYear;
             ptb.BuildEd=value.BuildEd;
-            ptb.GetType().GetProperty("y" + ptb.BuildYear).SetValue(ptb,0, null);
+            for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
+            {
+                ptb.GetType().GetProperty("y" + i).SetValue(ptb, 0, null);
 
+            }
             ptb.GetType().GetProperty("y" + value.BuildYear).SetValue(ptb, value.Volumn, null);
             try
             {
@@ -2591,7 +2517,11 @@ namespace Itop.Client.Table
             ptb.AllVolumn = value.Volumn;
             ptb.BuildYear = value.BuildYear;
             ptb.BuildEd = value.BuildEd;
-            ptb.GetType().GetProperty("y" + ptb.BuildYear).SetValue(ptb, 0, null);
+            for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
+            {
+                ptb.GetType().GetProperty("y" + i).SetValue(ptb, 0, null);
+
+            }
 
             ptb.GetType().GetProperty("y" + value.BuildYear).SetValue(ptb, value.Length, null);
             try
