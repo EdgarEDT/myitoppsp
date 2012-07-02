@@ -937,8 +937,8 @@ namespace ItopVector.Tools {
         private void checkedListBoxControl2_Leave(object sender, EventArgs e) {
             //checkedListBoxControl2.CheckedItems
         }
-        private Layer CopyLayer2(Layer layer, string textname) {
-            LayerGrade la = Services.BaseService.GetOneByKey<LayerGrade>(textname);
+        private Layer CopyLayer2(Layer layer, string gradeid) {
+            LayerGrade la = Services.BaseService.GetOneByKey<LayerGrade>(gradeid);
 
             string layerlabelf = layer.Label.Substring(4);
             string layer2name = la.Name.Substring(0, 4) + layerlabelf;
@@ -1044,7 +1044,7 @@ namespace ItopVector.Tools {
                                 layer2.Visible = false;
 
                                 string xml = "";
-                                XmlNodeList oldList = symbolDoc.SelectNodes("//*[@layer=\"" + layer.ID + "\"]");
+                                XmlNodeList oldList = symbolDoc.SelectNodes("//*[@layer=\"" + layer2.ID + "\"]");
                                 for (int i = 0; i < oldList.Count; i++) {
                                     xml = xml + ((SvgElement)oldList[i]).OuterXml;
                                 }
@@ -1060,7 +1060,7 @@ namespace ItopVector.Tools {
                                 obj.IsSelect = "true";
                                 obj.XML = xml;
                                 Services.BaseService.Create<SVG_LAYER>(obj);
-                                addtotreelist(obj);
+                                //addtotreelist(obj);
                             }
                         }
                     }
