@@ -885,7 +885,7 @@ namespace ItopVector.Tools
                             lar.SetAttribute("layerType", progtype);
                             lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
                             //this.frmlar.checkedListBox1.SelectedIndex = -1;
-                            //this.frmlar.checkedListBox1.Items.Add(lar, true);
+                            frmlar.AddLayer(lar, true);
                         }
 
                         FrmSet f_set = new FrmSet();
@@ -3533,12 +3533,12 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                     lar.SetAttribute("layerType", progtype);
                     lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
                     //this.frmlar.checkedListBox1.SelectedIndex = -1;
-                    //this.frmlar.checkedListBox1.Items.Add(lar, true);
+                    frmlar.AddLayer(lar, true);
                     lar2 = Layer.CreateNew("临时显示层-公里数", tlVectorControl1.SVGDocument);
                     lar2.SetAttribute("layerType", progtype);
                     lar2.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
                     //this.frmlar.checkedListBox1.SelectedIndex = -1;
-                    //this.frmlar.checkedListBox1.Items.Add(lar2, true);
+                    frmlar.AddLayer(lar2, true);
                 }
                 string gt = ((XmlElement)e.SvgElement).GetAttribute("gt-info");
                 string _gtxh = ((XmlElement)e.SvgElement).GetAttribute("gtxh-info");
@@ -8751,7 +8751,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                     lar.SetAttribute("layerType", progtype);
                     lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
                     //this.frmlar.checkedListBox1.SelectedIndex = -1;
-                    //this.frmlar.checkedListBox1.Items.Add(lar, true);
+                    frmlar.AddLayer(lar, true);
                 }
                 int size = tlVectorControl1.ScaleRatio > 1 ? 12 : (int)(12 / tlVectorControl1.ScaleRatio);
                 XmlNodeList useList = tlVectorControl1.SVGDocument.SelectNodes("svg/use");
@@ -9136,7 +9136,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                     }
 
                 }
-                //this.frmlar.checkedListBox1.Items.Add(lar, true);
+                frmlar.AddLayer(lar, true);
                 //this.frmlar.checkedListBox1.SelectedIndex = -1;
                 MessageBox.Show("显示完成！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -11057,6 +11057,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                 }
             }
             frmlar.SymbolDoc = tlVectorControl1.SVGDocument;
+            SaveButton();
             frmlar.InitData();
             tlVectorControl1.Refresh();
 
@@ -12860,6 +12861,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                     tlVectorControl1.IsModified = true;
 
                     frmlar.SymbolDoc = tlVectorControl1.SVGDocument;
+                    SaveButton();
                     frmlar.InitData();
                     MessageBox.Show("图层已成功导入", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
