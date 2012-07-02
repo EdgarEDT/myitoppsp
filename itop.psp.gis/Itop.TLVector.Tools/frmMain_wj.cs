@@ -10992,7 +10992,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
             XmlElement t04 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
             t04.SetAttribute("x", Convert.ToString(Convert.ToDouble(dec_width) * 0.65));
             t04.SetAttribute("y", Convert.ToString(Convert.ToDouble(dec_height) + 500 * 0.8));
-            t04.InnerText = "伊 春 电 业 局";
+            t04.InnerText = "XXXX 电 业 局";
             t04.SetAttribute("font-size", "30");
             tlVectorControl1.SVGDocument.RootElement.AppendChild(t04);
 
