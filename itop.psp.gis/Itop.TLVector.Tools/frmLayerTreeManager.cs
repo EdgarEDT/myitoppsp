@@ -1475,6 +1475,7 @@ namespace ItopVector.Tools {
 
         internal void AddLayer(Layer lar, bool p) {
             SVG_LAYER _svg = new SVG_LAYER() { SUID = lar.ID, NAME = lar.Label };
+            _svg.layerType = lar.Attributes["layerType"].Value;
             if (treeList1.FocusedNode != null) {
                 _svg.YearID = ilist[0].ToString();
                 _svg.svgID = symbolDoc.SvgdataUid;
