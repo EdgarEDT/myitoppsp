@@ -167,18 +167,19 @@ namespace ItopVector.Tools {
         }
 
         public void Readonly() {
-            btAdd.Enabled = false;
-            btEdit.Enabled = false;
-            btDel.Enabled = false;
-            simpleButton3.Enabled = false;
-            simpleButton4.Enabled = false;
-            simpleButton1.Enabled = false;
-            simpleButton2.Enabled = false;
+            bbtaddlayer.Enabled = false;
+            bbteditlayer.Enabled = false;
+            bbtdellayer.Enabled = false;
+            bbtncopy.Enabled = false;
+            bbtnuion.Enabled = false;
+            bbtnup.Enabled = false;
+            bbtndown.Enabled = false;
             button1.Enabled = false;
             checkEdit1.Enabled = false;
             dateEdit1.Enabled = false;
             dateEdit2.Enabled = false;
             button2.Enabled = false;
+           
         }
         public void InitData() {
             checkedListBox1.Items.Clear();
@@ -1475,7 +1476,6 @@ namespace ItopVector.Tools {
 
         internal void AddLayer(Layer lar, bool p) {
             SVG_LAYER _svg = new SVG_LAYER() { SUID = lar.ID, NAME = lar.Label };
-            _svg.layerType = lar.Attributes["layerType"].Value;
             if (treeList1.FocusedNode != null) {
                 _svg.YearID = ilist[0].ToString();
                 _svg.svgID = symbolDoc.SvgdataUid;
@@ -1484,5 +1484,501 @@ namespace ItopVector.Tools {
             }
             addtotreelist(_svg);
         }
+
+        private void bbtnup_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Layer layer = getFocusLayer();
+            if (layer == null) return;
+            TreeListNode node = treeList1.FocusedNode;
+            if (node.PrevVisibleNode != null)
+            {
+                TreeListNode prevNode = node.PrevVisibleNode;
+                layer.GoUp();
+                var order = node["OrderID"];
+                node["OrderID"] = prevNode["OrderID"];
+                prevNode["OrderID"] = order;
+            }
+            (treeList1.DataSource as DataTable).Select("", "OrderID");
+            treeList1.Refresh();
+        }
+
+        private void bbtndown_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Layer layer = getFocusLayer();
+            if (layer == null) return;
+            TreeListNode node = treeList1.FocusedNode;
+            if (node.NextVisibleNode != null)
+            {
+                TreeListNode prevNode = node.NextVisibleNode;
+                layer.GoUp();
+                var order = node["OrderID"];
+                node["OrderID"] = prevNode["OrderID"];
+                prevNode["OrderID"] = order;
+            }
+            (treeList1.DataSource as DataTable).Select("", "OrderID");
+            treeList1.Refresh();
+        }
+
+       
+
+        private void bbrncopy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (checkedListBoxControl2.Visible == false)
+            {
+                //checkedListBoxControl2.
+                checkedListBoxControl2.Items[0].CheckState = CheckState.Unchecked;
+                checkedListBoxControl2.Items[1].CheckState = CheckState.Unchecked;
+                checkedListBoxControl2.Items[2].CheckState = CheckState.Unchecked;
+                checkedListBoxControl2.Visible = true;
+            }
+            else
+                checkedListBoxControl2.Visible = false;
+        }
+
+        private void bbtnuion_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Layer layer = getFocusLayer();
+            TreeListNode focusNode = treeList1.FocusedNode;
+            if (layer != null && focusNode.Checked && !focusNode.HasChildren)
+            {
+                ArrayList layerlist1 = this.SymbolDoc.getLayerList();
+                string str1 = null;
+                string str2 = null;
+                List<Layer> delLayers = new List<Layer>();
+                TreeListNode node1 = null;
+                foreach (Layer l in layerlist1)
+                {
+                    if (l.Visible)
+                    {
+                        node1 = treeList1.FindNodeByKeyID(l.ID);
+                        if (node1.ParentNode != focusNode.ParentNode) continue;
+                        str1 += l.Label;
+                        str2 += l.Label + "，";
+                        if (l.ID != layer.ID)
+                            delLayers.Add(l);
+                    }
+                }
+                if (str1 == null) return;
+                if (MessageBox.Show(this, "此操作将合并可见图层：" + str2 + "并且不可恢复，是否继续。", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    string str = layer.GetAttribute("layerType");
+                    Layer layer2 = layer;
+               
+                    foreach (Layer layer1 in delLayers)
+                    {
+                        if (layer1.Visible)
+                        {
+                            for (int i = layer1.GraphList.Count - 1; i >= 0; i--)
+                            {
+                                IGraph g = layer1.GraphList[i] as IGraph;
+                                g.Layer = layer2;
+                               
+                            }
+                        
+                        }
+                    }
+
+                 
+                    layer2.Visible = false;
+                    layer2.Visible = true;
+
+                    foreach (Layer layer3 in delLayers)
+                    {
+                        if (layer3.Visible)
+                        {
+                            DeleteLayer(layer3);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void bbtaddlayer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmInput dlg = new frmInput();
+            dlg.InputType = progtype;
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
+                if (Layer.CkLayerExist(dlg.InputString, this.SymbolDoc))
+                {
+                    MessageBox.Show("文档中已经存在同名图层。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                Layer lar = Layer.CreateNew(dlg.InputString, this.SymbolDoc);
+                lar.SetAttribute("layerType", dlg.InputType);
+                if (ilist.Count > 0)
+                {
+                    lar.SetAttribute("ParentID", ilist[0].ToString());
+                }
+                addflag = true;
+              
+                DataTable dt = treeList1.DataSource as DataTable;
+                SVG_LAYER _svg = new SVG_LAYER() { SUID = lar.ID, NAME = lar.Label };
+                if (treeList1.FocusedNode != null)
+                {
+                    _svg.ParentID = treeList1.FocusedNode["ParentID"].ToString();
+                    _svg.YearID = ilist[0].ToString();
+                    _svg.svgID = symbolDoc.SvgdataUid;
+                    _svg.OrderID = int.Parse(treeList1.FocusedNode["OrderID"].ToString()) + 1;
+                    _svg.MDATE = DateTime.Now;
+                    Services.BaseService.Create<SVG_LAYER>(_svg);
+                }
+                DataRow row = dt.NewRow();
+                dt.Rows.Add(DataConverter.ObjectToRow(_svg, row));
+
+
+            }
+        }
+
+        private void bbteditlayer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Layer layer = getFocusLayer();
+            if (layer != null)
+            {
+
+                if (!CkRight(layer))
+                {
+                    MessageBox.Show("基础图层不能改名或删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                frmInput dlg = new frmInput();
+                dlg.id = symbolDoc.SvgdataUid;
+                dlg.symbolDoc = symbolDoc;
+                dlg.InputString = layer.Label;
+                dlg.InputType = layer.GetAttribute("layerType");
+
+                DialogResult d = dlg.ShowDialog(this);
+                if (d == DialogResult.OK)
+                {
+                    layer.Label = dlg.InputString;
+                    layer.SetAttribute("layerType", dlg.InputType);
+                    treeList1.FocusedNode.SetValue("Name", dlg.InputString);
+                    treeList1.Refresh();
+                    //InitData();
+                }
+                if (d == DialogResult.Retry)
+                {
+                    if (dlg.list.Count > 1)
+                    {
+                        layer.SetAttribute("ParentID", dlg.list[1].ToString());
+                        SVG_LAYER temp = new SVG_LAYER();
+                        temp.SUID = layer.ID;
+                        temp.svgID = symbolDoc.SvgdataUid;
+                        SVG_LAYER lar = (SVG_LAYER)Services.BaseService.GetObject("SelectSVG_LAYERByKey", temp);
+                        lar.YearID = dlg.list[1].ToString();
+                        Services.BaseService.Update<SVG_LAYER>(lar);
+                    }
+                }
+
+            }
+        }
+
+        private void bbtdellayer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (treeList1.FocusedNode != null)
+            {
+                TreeListNode treenode = treeList1.FocusedNode;
+                if (treenode["SUID"].ToString().Contains("FA"))
+                {
+                    return;
+                }
+                if (treenode.HasChildren)
+                {
+                    MessageBox.Show("有子节点时不可删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                Layer layer = symbolDoc.Layers[treenode["SUID"].ToString()] as Layer;
+                if (!CkRight(layer))
+                {
+                    MessageBox.Show("基础图层不能改名或删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (MessageBox.Show("删除图层会使当前图层下所有数据丢失并且不可恢复，确定要删除吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    //    return;
+                    //}
+                    //if (MessageBox.Show(this, "是否删除图层：" + layer.Label + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    //{                 
+                    XmlNode node = this.SymbolDoc.SelectSingleNode("//*[@layer='" + layer.ID + "']");
+                    if (node != null)
+                    {
+
+                        if ((MessageBox.Show(this, "此图层下有图元,是否删除图层：" + layer.Label + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes))
+                        {
+                            //PSPDEV _line = new PSPDEV();
+                            //_line.LayerID = layer.ID;
+                            //Services.BaseService.Update("DeletePSPDEVbyLayerID", _line);
+                            glebeProperty gle = new glebeProperty();
+                            gle.LayerID = layer.ID;
+                            Services.BaseService.Update("DeleteglebePropertyByLayerID", gle);
+                            //PSP_Substation_Info _sub = new PSP_Substation_Info();
+                            //_sub.LayerID = layer.ID;
+                            //Services.BaseService.Update("DeletePSP_Substation_InfoByLayerID", _sub);
+
+                            SVG_LAYER lar = new SVG_LAYER();
+                            lar.SUID = layer.ID;
+                            Services.BaseService.Update("DeleteSVG_LAYER", lar);
+                            XmlNodeList list = this.SymbolDoc.SelectNodes("//*[@layer='" + layer.ID + "']");
+                            foreach (XmlNode elNode in list)
+                            {
+                                this.SymbolDoc.RootElement.RemoveChild(elNode);
+                            }
+                            // Services.BaseService.Update("UpdateGraPowerRelationByLayerID", layer.ID);
+                            //在文档中移除
+                            layer.Remove();
+                            //在列表中移除
+                            if (treenode.ParentNode != null)
+                                treenode.ParentNode.Nodes.Remove(treenode);
+                            else
+                                treeList1.Nodes.Remove(treenode);
+                            layer = null;
+                            LayerName = "";
+                        }
+                        //layer.Attributes.RemoveAll();
+                    }
+                    else
+                    {
+                        // Services.BaseService.Update("UpdateGraPowerRelationByLayerID", layer.ID);
+                        //在文档中移除
+                        SVG_LAYER lar = new SVG_LAYER();
+                        lar.SUID = layer.ID;
+                        Services.BaseService.Update("DeleteSVG_LAYER", lar);
+                        try
+                        {
+                            layer.Remove();
+                        }
+                        catch { }
+                        //在列表中移除
+                        if (treenode.ParentNode != null)
+                            treenode.ParentNode.Nodes.Remove(treenode);
+                        else
+                            treeList1.Nodes.Remove(treenode);
+                        layer = null;
+                        LayerName = "";
+                    }
+                }
+                //if(this.checkedListBox1.Items.Count<1){
+                if (OnDeleteLayer != null)
+                {
+                    OnDeleteLayer(sender);
+                }
+                //}
+            }
+        }
+
+        private void bbtaddfa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmInput dlg = new frmInput();
+            dlg.Text = "方案信息";
+            dlg.InputType = progtype;
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
+                if (Layer.CkLayerExist(dlg.InputString, this.SymbolDoc))
+                {
+                    MessageBox.Show("文档中已经存在同名方案。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                //Layer lar = Layer.CreateNew(dlg.InputString, this.SymbolDoc);
+                //lar.SetAttribute("layerType", dlg.InputType);
+                //if (ilist.Count > 0)
+                //{
+                //    lar.SetAttribute("ParentID", ilist[0].ToString());
+                //}
+                addflag = true;
+                //this.checkedListBox1.Items.Add(lar, true);
+                //checkedListBox1.SelectedIndex = checkedListBox1.Items.Count - 1;
+                DataTable dt = treeList1.DataSource as DataTable;
+                SVG_LAYER _svg = new SVG_LAYER() { SUID = Guid.NewGuid().ToString().Substring(0, 10) };
+                //if (treeList1.FocusedNode != null)
+                {
+                    _svg.NAME = dlg.InputString;
+                    _svg.SUID = "FA" + _svg.SUID;
+                    //_svg.ParentID = treeList1.FocusedNode["ParentID"].ToString();
+                    _svg.YearID = ilist[0].ToString();
+                    _svg.svgID = symbolDoc.SvgdataUid;
+                    //_svg.OrderID = int.Parse(treeList1.FocusedNode["OrderID"].ToString()) + 1;
+                    _svg.MDATE = DateTime.Now;
+                    Services.BaseService.Create<SVG_LAYER>(_svg);
+                    //创建计算方案
+                    PSP_ELCPROJECT pd = new PSP_ELCPROJECT();
+                    pd.ID = _svg.SUID;
+                    pd.Name = dlg.InputString;
+                    pd.FileType = "潮流";
+                    pd.Class = System.DateTime.Now.ToString();
+                    if (!string.IsNullOrEmpty(StrYear) && StrYear.Length == 4)
+                    {
+                        pd.BelongYear = StrYear;
+                    }
+
+                    pd.ProjectID = Itop.Client.MIS.ProgUID;
+                    Services.BaseService.Create<PSP_ELCPROJECT>(pd);
+                }
+                DataRow row = dt.NewRow();
+                dt.Rows.Add(DataConverter.ObjectToRow(_svg, row));
+            }
+        }
+
+        private void bbteditfa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            TreeListNode node = treeList1.FocusedNode;
+            if (node != null)
+            {
+                string suid = node["SUID"].ToString();
+                if (suid.Contains("FA"))
+                {
+                    frmInput dlg = new frmInput();
+                    dlg.Text = "方案信息";
+                    dlg.hide = true;
+                    dlg.id = symbolDoc.SvgdataUid;
+                    dlg.symbolDoc = symbolDoc;
+                    dlg.InputString = node["NAME"].ToString();
+                    // dlg.InputType = layer.GetAttribute("layerType");
+
+                    DialogResult d = dlg.ShowDialog(this);
+                    if (d == DialogResult.OK)
+                    {
+                        SVG_LAYER temp = new SVG_LAYER();
+                        temp.SUID = suid;
+                        temp.svgID = symbolDoc.SvgdataUid;
+                        SVG_LAYER lar = (SVG_LAYER)Services.BaseService.GetObject("SelectSVG_LAYERByKey", temp);
+                        // lar.YearID = dlg.list[1].ToString();
+                        lar.NAME = dlg.InputString;
+
+                        Services.BaseService.Update<SVG_LAYER>(lar);
+                        PSP_ELCPROJECT pe = new PSP_ELCPROJECT();
+                        pe.ID = lar.SUID;
+                        pe = Services.BaseService.GetOneByKey<PSP_ELCPROJECT>(pe);
+                        if (pe != null)
+                        {
+                            pe.Name = dlg.InputString;
+                            Services.BaseService.Update<PSP_ELCPROJECT>(pe);
+                        }
+                        treeList1.FocusedNode.SetValue("NAME", dlg.InputString);
+                        treeList1.Refresh();
+                        //InitData();
+                    }
+                    if (d == DialogResult.Retry)
+                    {
+                        if (dlg.list.Count > 1)
+                        {
+
+                            SVG_LAYER temp = new SVG_LAYER();
+                            temp.SUID = suid;
+                            temp.svgID = symbolDoc.SvgdataUid;
+                            SVG_LAYER lar = (SVG_LAYER)Services.BaseService.GetObject("SelectSVG_LAYERByKey", temp);
+                            lar.YearID = dlg.list[1].ToString();
+                            Services.BaseService.Update<SVG_LAYER>(lar);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("请选中方案。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+        }
+
+        private void bbtdelfa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (treeList1.FocusedNode != null)
+            {
+                TreeListNode treenode = treeList1.FocusedNode;
+                string suid = treenode["SUID"].ToString();
+                if (suid.Contains("FA"))
+                {
+                    if (treenode.HasChildren)
+                    {
+                        MessageBox.Show("有子节点时不可删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    Layer layer = getFocusLayer();
+                    if (!CkRight(layer))
+                    {
+                        MessageBox.Show("基础图层不能改名或删除。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    if (MessageBox.Show("删除图层会使当前图层下所有数据丢失并且不可恢复，确定要删除吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        //    return;
+                        //}
+                        //if (MessageBox.Show(this, "是否删除图层：" + layer.Label + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        //{                 
+                        XmlNode node = this.SymbolDoc.SelectSingleNode("//*[@layer='" + layer.ID + "']");
+                        if (node != null)
+                        {
+
+                            if ((MessageBox.Show(this, "此图层下有图元,是否删除图层：" + layer.Label + "?", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes))
+                            {
+                                //PSPDEV _line = new PSPDEV();
+                                //_line.LayerID = layer.ID;
+                                //Services.BaseService.Update("DeletePSPDEVbyLayerID", _line);
+                                glebeProperty gle = new glebeProperty();
+                                gle.LayerID = layer.ID;
+                                Services.BaseService.Update("DeleteglebePropertyByLayerID", gle);
+                                //PSP_Substation_Info _sub = new PSP_Substation_Info();
+                                //_sub.LayerID = layer.ID;
+                                //Services.BaseService.Update("DeletePSP_Substation_InfoByLayerID", _sub);
+
+                                SVG_LAYER lar = new SVG_LAYER();
+                                lar.SUID = layer.ID;
+                                Services.BaseService.Update("DeleteSVG_LAYER", lar);
+                                XmlNodeList list = this.SymbolDoc.SelectNodes("//*[@layer='" + layer.ID + "']");
+                                foreach (XmlNode elNode in list)
+                                {
+                                    this.SymbolDoc.RootElement.RemoveChild(elNode);
+                                }
+                                // Services.BaseService.Update("UpdateGraPowerRelationByLayerID", layer.ID);
+                                //在文档中移除
+                                layer.Remove();
+                                //在列表中移除
+                                if (treenode.ParentNode != null)
+                                    treenode.ParentNode.Nodes.Remove(treenode);
+                                else
+                                    treeList1.Nodes.Remove(treenode);
+                                layer = null;
+                                LayerName = "";
+                            }
+                            //layer.Attributes.RemoveAll();
+                        }
+                        else
+                        {
+                            // Services.BaseService.Update("UpdateGraPowerRelationByLayerID", layer.ID);
+                            //在文档中移除
+                            SVG_LAYER lar = new SVG_LAYER();
+                            lar.SUID = layer.ID;
+                            Services.BaseService.Update("DeleteSVG_LAYER", lar);
+                            try
+                            {
+                                layer.Remove();
+                            }
+                            catch { }
+                            //在列表中移除
+                            if (treenode.ParentNode != null)
+                                treenode.ParentNode.Nodes.Remove(treenode);
+                            else
+                                treeList1.Nodes.Remove(treenode);
+                            layer = null;
+                            LayerName = "";
+                        }
+                    }
+                    //if(this.checkedListBox1.Items.Count<1){
+                    if (OnDeleteLayer != null)
+                    {
+                        OnDeleteLayer(sender);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("请选中方案。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                //}
+            }
+        }
+
+      
     }
 }
