@@ -100,6 +100,7 @@ namespace ItopVector.Tools {
             if (lay1 == null) {
                 lay1 = Layer.CreateNew(name, tlVectorControl1.SVGDocument);
                 lay1.SetAttribute("layerType", "电网规划层");
+                frmlar.AddLayer(lay1, true);
             } else {
                 for (int i = lay1.GraphList.Count - 1; i > 0; i--)
                     lay1.GraphList.RemoveAt(i);
@@ -107,6 +108,7 @@ namespace ItopVector.Tools {
             if (lay2 == null) {
                 lay2 = Layer.CreateNew(name2, tlVectorControl1.SVGDocument);
                 lay2.SetAttribute("layerType", "电网规划层");
+                frmlar.AddLayer(lay1, true);
             } else {
                 for (int i = lay2.GraphList.Count - 1; i > 0; i--)
                     lay2.GraphList.RemoveAt(i);
@@ -123,7 +125,7 @@ namespace ItopVector.Tools {
             lay1.Visible = false;
             lay2.Visible = false;
             frmlar.SymbolDoc = tlVectorControl1.SVGDocument;
-            frmlar.InitData();
+            //frmlar.InitData();
             tlVectorControl1.Refresh();
         }
         private void createName(IGraph temp, Layer layer, string text) {

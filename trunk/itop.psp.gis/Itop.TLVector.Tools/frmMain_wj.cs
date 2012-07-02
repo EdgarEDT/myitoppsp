@@ -11033,6 +11033,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
 
             Layer zjLar = Layer.CreateNew("负荷标注", tlVectorControl1.SVGDocument);
             zjLar.SetAttribute("layerType", "城市规划层");
+            frmlar.AddLayer(zjLar, true);
             for (int i = 0; i < list.Count; i++)
             {
                 IGraph graph1 = (IGraph)list[i];
@@ -11057,8 +11058,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly,ref ArrayList a
                 }
             }
             frmlar.SymbolDoc = tlVectorControl1.SVGDocument;
-            SaveButton();
-            frmlar.InitData();
+            //SaveButton();
+            //frmlar.InitData();
             tlVectorControl1.Refresh();
 
         }
