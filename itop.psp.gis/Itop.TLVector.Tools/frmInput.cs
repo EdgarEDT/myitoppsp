@@ -20,6 +20,18 @@ namespace ItopVector.Tools
         {
             InitializeComponent();
         }
+        public bool hide
+        {
+            set
+            {
+                if (value)
+                {
+                    label2.Hide();
+                    radioGroup1.Hide();
+                }
+               
+            }
+        }
         public string InputString
         {
             get
@@ -90,6 +102,10 @@ namespace ItopVector.Tools
         {
             if( symbolDoc==null){
                 simpleButton3.Visible = false;
+            }
+            if (radioGroup1.Visible==false)
+            {
+                this.Size = new Size(this.Size.Width, 130);
             }
         }
     }
