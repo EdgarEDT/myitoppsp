@@ -131,6 +131,7 @@ namespace Itop.TLPSP.DEVICE
                 date2.Text = bdz.L29;
                 ucGraph1.Open(value.UID);
                 ucGraph2.Open(value.UID+Itop.Client.MIS.ProgUID.Substring(0,8));
+                ProjectID = Itop.Client.MIS.ProgUID;
                 freshxl();
                 if (!string.IsNullOrEmpty(StartYear))
                 {
