@@ -101,6 +101,7 @@ namespace Itop.TLPSP.DEVICE
                     frmBDZdlg dlg = new frmBDZdlg();
                     dlg.StartYear = StartYear;
                     dlg.DeviceMx = dev as PSP_Substation_Info;
+                
                     dlg.IsRead = isread;
                     if (dlg.ShowDialog() == DialogResult.OK && !isread)
                     {

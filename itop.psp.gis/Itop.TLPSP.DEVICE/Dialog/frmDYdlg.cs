@@ -53,6 +53,7 @@ namespace Itop.TLPSP.DEVICE
             set {
                 devObj = value;
                 textEdit1.Text = devObj.Title;
+                ProjectID = Itop.Client.MIS.ProgUID;
                 try { spinEdit1.Value = decimal.Parse(devObj.S1); } catch { }
                 try {spinEdit2.Value =decimal.Parse(devObj.S2);  } catch { }
                 comboBoxEdit1.Text = devObj.S3;
