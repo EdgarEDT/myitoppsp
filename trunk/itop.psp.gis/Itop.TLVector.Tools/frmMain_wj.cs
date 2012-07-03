@@ -769,7 +769,7 @@ namespace ItopVector.Tools {
                             lar = Layer.CreateNew(FileName, tlVectorControl1.SVGDocument);
 
                             lar.SetAttribute("layerType", progtype);
-                            lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
+                            lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("id"));
                             //this.frmlar.checkedListBox1.SelectedIndex = -1;
                             frmlar.AddLayer(lar, true);
                         }
@@ -1876,7 +1876,8 @@ namespace ItopVector.Tools {
         #endregion
         private void Extbdzreport(ArrayList extsublist) {
             ExcelAccess ex = new ExcelAccess();
-            try {
+            try
+            {
 
                 string fname = Application.StartupPath + "\\xls\\tempt.xls";
                 ex.Open(fname);
@@ -1900,21 +1901,25 @@ namespace ItopVector.Tools {
                 ex.CellsBackColor(3 + extsublist.Count, 1, 4 + extsublist.Count, 3, ExcelStyle.ColorIndex.黄色);
 
                 int rowcount = 0;
-                for (int i = 0; i < extsublist.Count; i++) {
+                for (int i = 0; i < extsublist.Count; i++)
+                {
                     XmlElement xe = extsublist[i] as XmlElement;
-                    if (!string.IsNullOrEmpty(xe.GetAttribute("subname"))) {
+                    if (!string.IsNullOrEmpty(xe.GetAttribute("subname")))
+                    {
                         ex.SetCellValue(xe.GetAttribute("subname"), 2 + i, 1);
                         ex.AlignmentCells(2 + i, 1, 2 + i, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
                         ex.SetFontStyle(2 + i, 1, 2 + i, 1, true, false, ExcelStyle.UnderlineStyle.无下划线);
                         ex.CellsBackColor(2 + i, 1, 2 + i, 1, ExcelStyle.ColorIndex.绿色);
                     }
-                    if (!string.IsNullOrEmpty(xe.GetAttribute("rl"))) {
+                    if (!string.IsNullOrEmpty(xe.GetAttribute("rl")))
+                    {
                         ex.SetCellValue(xe.GetAttribute("rl"), 2 + i, 2);
                         ex.AlignmentCells(2 + i, 2, 2 + i, 2, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
                         ex.SetFontStyle(2 + i, 2, 2 + i, 2, true, false, ExcelStyle.UnderlineStyle.无下划线);
 
                     }
-                    if (!string.IsNullOrEmpty(xe.GetAttribute("yfcrzb"))) {
+                    if (!string.IsNullOrEmpty(xe.GetAttribute("yfcrzb")))
+                    {
                         ex.SetCellValue(xe.GetAttribute("yfcrzb"), 2 + i, 3);
                         ex.AlignmentCells(2 + i, 3, 2 + i, 3, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
                         ex.SetFontStyle(2 + i, 3, 2 + i, 3, true, false, ExcelStyle.UnderlineStyle.无下划线);
@@ -1922,37 +1927,46 @@ namespace ItopVector.Tools {
                     }
                     //地块负荷供应情况
                     string fhdk = xe.GetAttribute("fhdk");
-                    string[] dkqk = (fhdk.Substring(0, fhdk.LastIndexOf(";"))).Split(';');
+                    if (!string.IsNullOrEmpty(fhdk))
+                    {
+                        string[] dkqk = (fhdk.Substring(0, fhdk.LastIndexOf(";"))).Split(';');
 
-                    for (int j = 0; j < dkqk.Length; j++) {
-                        string[] dk = dkqk[j].Split(',');
-                        if (!string.IsNullOrEmpty(xe.GetAttribute("subname"))) {
-                            ex.SetCellValue(xe.GetAttribute("subname"), 5 + extsublist.Count + rowcount, 1);
-                            ex.AlignmentCells(5 + extsublist.Count + rowcount, 1, 5 + extsublist.Count + rowcount, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
-                            ex.SetFontStyle(5 + extsublist.Count + rowcount, 1, 5 + extsublist.Count + rowcount, 1, true, false, ExcelStyle.UnderlineStyle.无下划线);
-                            ex.CellsBackColor(5 + extsublist.Count + rowcount, 1, 5 + extsublist.Count + rowcount, 1, ExcelStyle.ColorIndex.绿色);
+                        for (int j = 0; j < dkqk.Length; j++)
+                        {
+                            string[] dk = dkqk[j].Split(',');
+                            if (!string.IsNullOrEmpty(xe.GetAttribute("subname")))
+                            {
+                                ex.SetCellValue(xe.GetAttribute("subname"), 5 + extsublist.Count + rowcount, 1);
+                                ex.AlignmentCells(5 + extsublist.Count + rowcount, 1, 5 + extsublist.Count + rowcount, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                                ex.SetFontStyle(5 + extsublist.Count + rowcount, 1, 5 + extsublist.Count + rowcount, 1, true, false, ExcelStyle.UnderlineStyle.无下划线);
+                                ex.CellsBackColor(5 + extsublist.Count + rowcount, 1, 5 + extsublist.Count + rowcount, 1, ExcelStyle.ColorIndex.绿色);
 
+                            }
+
+                            if (dk.Length > 0)
+                            {
+                                glebeProperty pl = new glebeProperty();
+                                pl.EleID = dk[0];
+                                pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
+
+                                ex.SetCellValue(pl.UseID, 5 + extsublist.Count + rowcount, 2);
+                                ex.SetCellValue((Convert.ToDouble(dk[1]) / dbl_rzb).ToString("N2"), 5 + extsublist.Count + rowcount, 3);
+                                ex.AlignmentCells(5 + extsublist.Count + rowcount, 2, 5 + extsublist.Count + rowcount, 3, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                                ex.SetFontStyle(5 + extsublist.Count + rowcount, 2, 5 + extsublist.Count + rowcount, 3, true, false, ExcelStyle.UnderlineStyle.无下划线);
+                            }
+                            rowcount++;
                         }
-
-                        if (dk.Length > 0) {
-                            glebeProperty pl = new glebeProperty();
-                            pl.EleID = dk[0];
-                            pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                            pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
-
-                            ex.SetCellValue(pl.UseID, 5 + extsublist.Count + rowcount, 2);
-                            ex.SetCellValue((Convert.ToDouble(dk[1]) / dbl_rzb).ToString("N2"), 5 + extsublist.Count + rowcount, 3);
-                            ex.AlignmentCells(5 + extsublist.Count + rowcount, 2, 5 + extsublist.Count + rowcount, 3, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
-                            ex.SetFontStyle(5 + extsublist.Count + rowcount, 2, 5 + extsublist.Count + rowcount, 3, true, false, ExcelStyle.UnderlineStyle.无下划线);
-                        }
-                        rowcount++;
                     }
+
                 }
 
 
 
                 ex.ShowExcel();
-            } catch (System.Exception e) {
+            }
+            catch (System.Exception e)
+            {
                 ex.DisPoseExcel();
             }
 
@@ -3974,6 +3988,10 @@ namespace ItopVector.Tools {
                                         deviceid = ((PSP_Substation_Info)obj).UID;
                                         ((PSP_Substation_Info)obj).LayerID = tlVectorControl1.SVGDocument.CurrentLayer.ID;
                                         ((PSP_Substation_Info)obj).EleID = tlVectorControl1.SVGDocument.CurrentElement.ID;
+
+                                        ((PSP_Substation_Info)obj).AreaID = Itop.Client.MIS.ProgUID;
+
+
 
                                         Services.BaseService.Update<PSP_Substation_Info>(((PSP_Substation_Info)obj));
                                         xml1.SetAttribute("Deviceid", deviceid);
