@@ -232,6 +232,10 @@ namespace Itop.TLPSP.DEVICE
                 IList<string> capList = new List<string>();
                 for (int i = 0; i < curDevice.gridView1.Columns.Count; i++)
                 {
+                    if (curDevice.gridView1.Columns[i].Caption.Contains("²é¿´"))
+                    {
+                        continue;
+                    }
                     capList.Add(curDevice.gridView1.Columns[i].Caption);
                     filedList.Add(curDevice.gridView1.Columns[i].FieldName);
                 }
