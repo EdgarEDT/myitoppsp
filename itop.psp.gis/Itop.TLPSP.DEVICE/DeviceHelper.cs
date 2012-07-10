@@ -419,13 +419,17 @@ namespace Itop.TLPSP.DEVICE
 
 
             IList<string> fie = new List<string>();
+            IList<int> yxzl = new List<int>();//有效的那几列
 
             int m = 1;
 
             for (int j = 0; j < fpSpread1.Sheets[0].GetLastNonEmptyColumn(FarPoint.Win.Spread.NonEmptyItemFlag.Data) + 1; j++)
             {
                 if (capList.Contains(fpSpread1.Sheets[0].Cells[0, j].Text))
+                {
                     fie.Add(filedList[capList.IndexOf(fpSpread1.Sheets[0].Cells[0, j].Text)]);
+                    yxzl.Add(j);
+                }
             }
 
             for (int k = 0; k < fie.Count; k++)
@@ -436,9 +440,12 @@ namespace Itop.TLPSP.DEVICE
             {
 
                 DataRow dr = dt.NewRow();
-                for (int j = 0; j < fpSpread1.Sheets[0].GetLastNonEmptyColumn(FarPoint.Win.Spread.NonEmptyItemFlag.Data) + 1; j++)
+               // for (int j = 0; j < fpSpread1.Sheets[0].GetLastNonEmptyColumn(FarPoint.Win.Spread.NonEmptyItemFlag.Data) + 1; j++)
+                int n = 0;
+                foreach (int j in yxzl)
                 {
-                    dr[fie[j]] = fpSpread1.Sheets[0].Cells[i, j].Text;
+                    dr[fie[n]] = fpSpread1.Sheets[0].Cells[i, j].Text;
+                    n++;
                 }
                 dt.Rows.Add(dr);
             }
