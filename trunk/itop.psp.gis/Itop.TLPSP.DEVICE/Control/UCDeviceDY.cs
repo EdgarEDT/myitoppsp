@@ -231,7 +231,7 @@ namespace Itop.TLPSP.DEVICE
             column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
             column.Caption = "ÕÀ“€ƒÍ∑›";
-            column.FieldName = "data2";
+            column.FieldName = "Date2";
             column.Width = 100;
             column.VisibleIndex = 6;
             column.OptionsColumn.AllowEdit = false;

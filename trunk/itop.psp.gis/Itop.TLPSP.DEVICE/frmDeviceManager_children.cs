@@ -278,6 +278,7 @@ namespace Itop.TLPSP.DEVICE
                     try
                     {
                         DataTable table = DeviceHelper.GetExcel(op.FileName, filedList, capList);
+                        curDevice.ParentObj = ParentObj;
                         curDevice.UpdateIn(table);
                         
                     }
@@ -372,14 +373,17 @@ namespace Itop.TLPSP.DEVICE
                     if (ParentObj is PSP_Substation_Info)
                     {
                         curDevice.strCon = " where 1=1 and SvgUID='" + ((PSP_Substation_Info)ParentObj).UID + "'and";
+                        curDevice.ParentID = ((PSP_Substation_Info)ParentObj).UID;
                     }
                     else if (ParentObj is PSP_PowerSubstation_Info)
                     {
                         curDevice.strCon = " where 1=1 and SvgUID='" + ((PSP_PowerSubstation_Info)ParentObj).UID + "'and";
+                        curDevice.ParentID = ((PSP_PowerSubstation_Info)ParentObj).UID;
                     }
                     else if (ParentObj is PSPDEV)
                     {
                         curDevice.strCon = " where 1=1 and SvgUID='" + ((PSPDEV)ParentObj).SUID + "'and";
+                        curDevice.ParentID = ((PSPDEV)ParentObj).SUID;
                     }
                     curDevice.Init();
                 }

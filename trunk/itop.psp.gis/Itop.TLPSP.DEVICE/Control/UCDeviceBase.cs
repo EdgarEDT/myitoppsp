@@ -345,6 +345,10 @@ namespace Itop.TLPSP.DEVICE
                     }
                     catch { MessageBox.Show(string.Format("第{0}行{1}列插入有问题", i.ToString(), col.Caption)); }
                 }
+                if (!string.IsNullOrEmpty(ParentID))
+                {
+                    area.SvgUID = ParentID;
+                }
                 area.Type = GetType();
                 UCDeviceBase.DataService.Create<PSPDEV>(area);
                 
