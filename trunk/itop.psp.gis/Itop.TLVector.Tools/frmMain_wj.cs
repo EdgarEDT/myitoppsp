@@ -526,6 +526,7 @@ namespace ItopVector.Tools {
 
 
         #region 事件处理
+        List<SubandFHcollect> subandfhlist = new List<SubandFHcollect>();
         void tlVectorControl1_RightClick(object sender, ItopVector.DrawArea.SvgElementSelectedEventArgs e) {
             str_outjwd = "";
             str_djcl = "";
@@ -690,6 +691,7 @@ namespace ItopVector.Tools {
 
                     }
                     if (tlVectorControl1.Operation == ToolOperation.InterEnclosure && bdz_xz == "yes") {
+                        subandfhlist.Clear();
                         D_TIN.Clear();
                         ArrayList polylist = new ArrayList();
                         ArrayList useList = new ArrayList();
@@ -737,7 +739,9 @@ namespace ItopVector.Tools {
                             //将其加入一个规划和非规划的标志
                             _x.SetAttribute("xz", "0");
                             _x.SetAttribute("Burthen", pl.Burthen.ToString());
-                            _x.SetAttribute("glbdz", "");  //为 （_sub1.EleID，多少负荷）；
+                            _x.SetAttribute("glbdz", "");  //为 （_sub1.EleID，多少负荷）；   
+                            _x.SetAttribute("bdzandlenth","");
+                         
                         }
                         double sumSub = 0;
                         for (int m = 0; m < useList.Count; m++) {
@@ -787,6 +791,34 @@ namespace ItopVector.Tools {
                             if (!string.IsNullOrEmpty(f_set.Str_rl)) {
                                 dbl_rl = Convert.ToDouble(f_set.Str_rl);
                             }
+                            //判断地块的负荷是否超出了预想的范围值提示一下
+                            string super_dkname = "";
+                            for (int m = 0; m < polylist.Count; m++)
+                            {
+                                XmlElement _x = (XmlElement)polylist[m];
+
+                                string sid = _x.GetAttribute("id");
+                                glebeProperty pl = new glebeProperty();
+                                pl.EleID = sid;
+                                pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
+                                if (pl != null)
+                                {
+                                    if ((dbl_rl /Convert.ToDouble(pl.Burthen) ) < 0.8 )
+                                    {
+                                        super_dkname += pl.UseID+",";
+                                    }
+
+                                }
+                                
+                            }
+                            if (!string.IsNullOrEmpty(super_dkname)){
+                            
+                                super_dkname = super_dkname.TrimEnd(',');
+                                MessageBox.Show(super_dkname+"负荷地的负荷太大，请调整后再操作", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                              return;
+                            }
+                           
 
                             tlVectorControl1.SVGDocument.SelectCollection.Clear();
 
@@ -852,11 +884,12 @@ namespace ItopVector.Tools {
                                     n1.SetAttribute("cx", e0.GetAttribute("x").ToString());
                                     n1.SetAttribute("cy", e0.GetAttribute("y").ToString());
                                     n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
-
+                                    n1.SetAttribute("subname", "1号");
                                     n1.SetAttribute("layer", SvgDocument.currentLayer);
                                     n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                     SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e0);
-                                    CreateSubline1(sf, true, lar);
+                                    subandfhlist.Add(sf);
+                                    //CreateSubline1(sf, true, lar);
                                     extsublist.Add(e0);
                                     //
                                     XmlElement t0 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
@@ -901,11 +934,12 @@ namespace ItopVector.Tools {
                                         n1.SetAttribute("cx", e1.GetAttribute("x").ToString());
                                         n1.SetAttribute("cy", e1.GetAttribute("y").ToString());
                                         n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
-
+                                        n1.SetAttribute("subname", Convert.ToString(k) + "号");
                                         n1.SetAttribute("layer", SvgDocument.currentLayer);
                                         n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                         sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
-                                        CreateSubline1(sf, true, lar);
+                                        subandfhlist.Add(sf);
+                                       // CreateSubline1(sf, true, lar);
                                         extsublist.Add(e1);
                                         //
                                         PSP_SubstationSelect s2 = new PSP_SubstationSelect();
@@ -960,9 +994,14 @@ namespace ItopVector.Tools {
                                             n2.SetAttribute("rl", _sub1.L2.ToString());
                                         }
 
-                                        SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), n2);
-                                        CreateSubline1(sf1, false, lar);
+                                        SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n2, polylist), n2);
+                                        subandfhlist.Add(sf1);
+                                       // CreateSubline1(sf1, false, lar);
                                         extsublist.Add(n2);
+                                    }
+                                    for (int m = 0; m < subandfhlist.Count; m++)
+                                    {
+                                        CreateSubline1(subandfhlist[m], false, lar);
                                     }
                                     Extbdzreport(extsublist);
                                     return;
@@ -1009,11 +1048,12 @@ namespace ItopVector.Tools {
                                     n1.SetAttribute("cx", e0.GetAttribute("x").ToString());
                                     n1.SetAttribute("cy", e0.GetAttribute("y").ToString());
                                     n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
-
+                                    n1.SetAttribute("subname", "1号");
                                     n1.SetAttribute("layer", SvgDocument.currentLayer);
                                     n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                     SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e0);
-                                    CreateSubline1(sf, true, lar);
+                                    subandfhlist.Add(sf);
+                                    //CreateSubline1(sf, true, lar);
                                     extsublist.Add(e0);
                                     //
                                     XmlElement t0 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
@@ -1058,11 +1098,12 @@ namespace ItopVector.Tools {
                                         n1.SetAttribute("cx", e1.GetAttribute("x").ToString());
                                         n1.SetAttribute("cy", e1.GetAttribute("y").ToString());
                                         n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
-
+                                        n1.SetAttribute("subname", Convert.ToString(k) + "号");
                                         n1.SetAttribute("layer", SvgDocument.currentLayer);
                                         n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                         sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
-                                        CreateSubline1(sf, true, lar);
+                                        subandfhlist.Add(sf);
+                                       // CreateSubline1(sf, true, lar);
                                         extsublist.Add(e1);
                                         //
                                         PSP_SubstationSelect s2 = new PSP_SubstationSelect();
@@ -1117,9 +1158,14 @@ namespace ItopVector.Tools {
                                             n2.SetAttribute("rl", _sub1.L2.ToString());
                                         }
 
-                                        SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), n2);
-                                        CreateSubline1(sf1, false, lar);
+                                        SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n2, polylist), n2);
+                                        subandfhlist.Add(sf1);
+                                       // CreateSubline1(sf1, false, lar);
                                         extsublist.Add(n2);
+                                    }
+                                    for (int m = 0; m < subandfhlist.Count; m++)
+                                    {
+                                        CreateSubline1(subandfhlist[m], false, lar);
                                     }
                                     Extbdzreport(extsublist);
                                     return;
@@ -1151,7 +1197,7 @@ namespace ItopVector.Tools {
                                 n1.SetAttribute("r", D_TIN.DS.radius.ToString());
                                 n1.SetAttribute("r", D_TIN.DS.radius.ToString());
                                 n1.SetAttribute("layer", SvgDocument.currentLayer);
-                                ;
+                                n1.SetAttribute("subname","1号"); ;
                                 n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
 
@@ -1171,7 +1217,8 @@ namespace ItopVector.Tools {
                                 //获得此变电站的最小半径的圆 生成辐射线
 
                                 SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
-                                CreateSubline1(sf, true, lar);
+                                subandfhlist.Add(sf);
+                                //CreateSubline1(sf, true, lar);
                                 extsublist.Add(e1);
                                 //
                                 PSP_SubstationSelect s2 = new PSP_SubstationSelect();
@@ -1231,10 +1278,15 @@ namespace ItopVector.Tools {
                                         n2.SetAttribute("rl", _sub1.L2.ToString());
                                     }
 
-                                    SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), n2);
-                                    CreateSubline1(sf1, false, lar);
+                                    SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n2, polylist), n2);
+                                    subandfhlist.Add(sf1);
+                                   // CreateSubline1(sf1, false, lar);
                                     extsublist.Add(n2);
 
+                                }
+                                for (int m = 0; m < subandfhlist.Count; m++)
+                                {
+                                    CreateSubline1(subandfhlist[m], false, lar);
                                 }
                                 Extbdzreport(extsublist);
                                 return;
@@ -1274,8 +1326,13 @@ namespace ItopVector.Tools {
                                     }
 
                                     SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), n1);
-                                    CreateSubline1(sf, false, lar);
+                                    subandfhlist.Add(sf);
+                                    //CreateSubline1(sf, false, lar);
                                     extsublist.Add(n1);
+                                }
+                                for (int m = 0; m < subandfhlist.Count;m++ )
+                                {
+                                    CreateSubline1(subandfhlist[m], false, lar);
                                 }
                                 Extbdzreport(extsublist);
                                 return;
@@ -1773,6 +1830,7 @@ namespace ItopVector.Tools {
                 System.Collections.SortedList CtoFHlist = new SortedList();
                 decimal sum = 0;
                 for (int n = 0; n < CirList.Count; n++) {
+                    List<fhdkandcirsort> dkcol = new List<fhdkandcirsort>();
                     fhkcollect = new Dictionary<XmlElement, PointF>();
                     int k = 0;
                     Circle cir = (Circle)CirList[n];
@@ -1781,9 +1839,25 @@ namespace ItopVector.Tools {
                     gr1.CloseFigure();
                     for (int m = 0; m < _polylist.Count; m++) {
                         XmlElement _x = (XmlElement)_polylist[m];
+                        
                         PointF _f = TLMath.polyCentriod(_x);
                         if (gr1.IsVisible(_f))    //外接圆包括那些负荷中心点
-                    {
+                      {
+                          
+                            double lenth = Math.Sqrt(Math.Pow(_f.X - cir.CX, 2) + Math.Pow(_f.Y - cir.CY, 2));
+                            fhdkandcirsort ds = new fhdkandcirsort(_x, _f, lenth);
+                            dkcol.Add(ds);
+                            if (n<Convert.ToInt32(str_num))
+                            {
+                                if (!string.IsNullOrEmpty(_x.GetAttribute("bdzandlenth")))
+                                {
+                                    _x.SetAttribute("bdzandlenth", _x.GetAttribute("bdzandlenth") + (n + 1).ToString() + "号" + "," + (lenth).ToString() + ";");
+                                }
+                                else
+                                {
+                                    _x.SetAttribute("bdzandlenth", (n+ 1).ToString() + "号" + "," + (lenth).ToString() + ";");
+                                }
+                            }
                             k = k + 1;   //求和的过程
                             string sid = _x.GetAttribute("id");
                             glebeProperty pl = new glebeProperty();
@@ -1793,8 +1867,14 @@ namespace ItopVector.Tools {
                             if (pl != null) {
                                 sum = sum + pl.Burthen;
                             }
-                            fhkcollect.Add(_x, _f);//记录外包圆相交的负荷块
+                            //fhkcollect.Add(_x, _f);//记录外包圆相交的负荷块
                         }
+                      
+                    }
+                    dkcol.Sort();
+                    for (int m = 0; m < dkcol.Count; m++)
+                    {
+                        fhkcollect.Add(dkcol[m].DK, dkcol[m].DKZX);
                     }
                     clist.Add(sum + n, cir);
                     CtoFHlist.Add(sum + n, fhkcollect);
@@ -1839,6 +1919,7 @@ namespace ItopVector.Tools {
                     e1.SetAttribute("subname", Convert.ToString(k + 1) + "号");
                     e1.SetAttribute("rl", dbl_rl.ToString());
                     SubandFHcollect _subandfh = new SubandFHcollect(FHandPointF, e1);
+                    subandfhlist.Add(_subandfh);
                     tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
                     tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
 
@@ -1867,7 +1948,7 @@ namespace ItopVector.Tools {
                     s.col2 = XZ_bdz;
                     s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
                     Services.BaseService.Create<PSP_SubstationSelect>(s);
-                    CreateSubline1(_subandfh, true, lay);    //生成负荷中心与变电站的连接线
+                   // CreateSubline1(_subandfh, true, lay);    //生成负荷中心与变电站的连接线
                     arraylist.Add(e1);
                 }
             } catch (Exception e1) { }
@@ -2005,40 +2086,70 @@ namespace ItopVector.Tools {
                     dkrl = Convert.ToDouble(_x.GetAttribute("Burthen")) * dbl_rzb;
 
                 }
+                //查找此地块离所有变电站中是否离此变电站最近
+                 //地块负荷供应情况
+                    string bdzandlenth= _x.GetAttribute("bdzandlenth");
+                    if (!string.IsNullOrEmpty(bdzandlenth))
+                    {
+                        double minlenth = 1000000;
+                        string[] dkqk = (bdzandlenth.Substring(0, bdzandlenth.LastIndexOf(";"))).Split(';');
+                        int minnumber = 0;
+                        for (int j = 0; j < dkqk.Length; j++)
+                        {
+                            string[] dk = dkqk[j].Split(',');
+                            if (Convert.ToDouble(dk[1])<minlenth)
+                            {
+                                minlenth = Convert.ToDouble(dk[1]);
+                                minnumber = j;
+                            }
+                        }
+                        if (!dkqk[minnumber].Contains(sub.GetAttribute("subname")))
+                        {
+                            continue;
+                        }
+                    }
+                        
+
+                //
                 sumrl += dkrl;
+                //改进后的不能有部分剩余了 能供则供 不能供则选择其他的变电站来供
                 if (ygdflag == "0")  //说明还没有供给的
                 {
                     if (subrl * 1.15 >= sumrl) {
                         fhdk += _x.GetAttribute("id") + "," + dkrl.ToString() + ";";
                         _x.SetAttribute("ygdflag", "1");
                         yfcrl = sumrl;
-                    } else if (subrl * 1.15 < sumrl && subrl >= (sumrl - dkrl)) {
-                        double gyrl = ((subrl * 1.15 + dkrl) - sumrl);
-                        double syrl = sumrl - subrl * 1.15;
-                        fhdk += _x.GetAttribute("id") + "," + gyrl.ToString() + ";";
-                        _x.SetAttribute("ygdflag", "2");
-                        _x.SetAttribute("syrl", syrl.ToString());
-                        yfcrl = subrl * 1.15;
-                    }
-                } else if (ygdflag == "2")   //有一部分剩余的还需要来供
-                {
-                    double syrl = 0;
-                    if (!string.IsNullOrEmpty(_x.GetAttribute("syrl"))) {
-                        syrl = Convert.ToDouble(_x.GetAttribute("syrl"));
-                    }
-                    if ((subrl * 1.15 - yfcrl) > syrl) {
-                        fhdk += _x.GetAttribute("id") + "," + syrl.ToString() + ";";
-                        _x.SetAttribute("ygdflag", "1");
-                        _x.SetAttribute("syrl", "0");
-                        yfcrl = sumrl;
-                    } else {
-                        syrl = syrl - (subrl * 1.15 - yfcrl);
-                        fhdk += _x.GetAttribute("id") + "," + (subrl * 1.15 - yfcrl).ToString() + ";";
-                        _x.SetAttribute("ygdflag", "2");
-                        _x.SetAttribute("syrl", syrl.ToString());
-                        yfcrl = subrl * 1.15;
-                    }
-                } else if (ygdflag == "1")  //已经有供应的了
+                    } 
+                    //else if (subrl * 1.5< sumrl && subrl >= (sumrl - dkrl)) {
+                    //    double gyrl = ((subrl * 1.5 + dkrl) - sumrl);
+                    //    double syrl = sumrl - subrl * 1.5;
+                    //    fhdk += _x.GetAttribute("id") + "," + gyrl.ToString() + ";";
+                    //    _x.SetAttribute("ygdflag", "2");
+                    //    _x.SetAttribute("syrl", syrl.ToString());
+                    //    yfcrl = subrl * 1.5;
+
+                    //}
+                } 
+                //else if (ygdflag == "2")   //有一部分剩余的还需要来供
+                //{
+                //    double syrl = 0;
+                //    if (!string.IsNullOrEmpty(_x.GetAttribute("syrl"))) {
+                //        syrl = Convert.ToDouble(_x.GetAttribute("syrl"));
+                //    }
+                //    if ((subrl * 1.5- yfcrl) > syrl) {
+                //        fhdk += _x.GetAttribute("id") + "," + syrl.ToString() + ";";
+                //        _x.SetAttribute("ygdflag", "1");
+                //        _x.SetAttribute("syrl", "0");
+                //        yfcrl = sumrl;
+                //    } else {
+                //        syrl = syrl - (subrl * 1.5 - yfcrl);
+                //        fhdk += _x.GetAttribute("id") + "," + (subrl * 1.5 - yfcrl).ToString() + ";";
+                //        _x.SetAttribute("ygdflag", "2");
+                //        _x.SetAttribute("syrl", syrl.ToString());
+                //        yfcrl = subrl * 1.5;
+                //    }
+                //}
+                    else if (ygdflag == "1")  //已经有供应的了
                 {
                     continue;
                 }
@@ -2052,6 +2163,10 @@ namespace ItopVector.Tools {
                         //    pl.ObligateField7 = sname;
                         //    Services.BaseService.Update<glebeProperty>(pl);
                         //}
+                        if (sname.Contains("号"))         //为规划的变电站 自动为true
+                        {
+                            flag = true;
+                        }
                         if (string.IsNullOrEmpty(pl.ObligateField7)) {
                             pl.ObligateField7 = sname;
                         } else {
@@ -2208,11 +2323,22 @@ namespace ItopVector.Tools {
             GraphicsPath gr1 = new GraphicsPath();
             gr1.AddPath(cir.GPath, true);
             gr1.CloseFigure();
+            List<fhdkandcirsort> dkcol = new List<fhdkandcirsort>();
             for (int m = 0; m < _polylist.Count; m++) {
                 XmlElement _x = (XmlElement)_polylist[m];
                 PointF _f = TLMath.polyCentriod(_x);
                 if (gr1.IsVisible(_f))    //外接圆包括那些负荷中心点
                     {
+                        double lenth = Math.Sqrt(Math.Pow(_f.X - cir.CX, 2) + Math.Pow(_f.Y - cir.CY, 2));
+                        fhdkandcirsort ds = new fhdkandcirsort(_x, _f, lenth);
+                        if (!string.IsNullOrEmpty(_x.GetAttribute("bdzandlenth")))
+                        {
+                            _x.SetAttribute("bdzandlenth", _x.GetAttribute("bdzandlenth") + cir.GetAttribute("subname") + "," + (lenth).ToString() + ";");
+                        }
+                        else
+                        {
+                            _x.SetAttribute("bdzandlenth", cir.GetAttribute("subname") + "," + (lenth).ToString() + ";");
+                        }
                     //k = k + 1;   //求和的过程
                     //string sid = _x.GetAttribute("id");
                     //glebeProperty pl = new glebeProperty();
@@ -2222,15 +2348,22 @@ namespace ItopVector.Tools {
                     //if (pl != null) {
                     //    sum = sum + pl.Burthen;
                     //}
-                    fhkcollect.Add(_x, _f);//记录外包圆相交的负荷块
+                        dkcol.Add(ds);
+                    //fhkcollect.Add(_x, _f);//记录外包圆相交的负荷块
                 }
             }
             //clist.Add(sum + n, cir);
             //CtoFHlist.Add(sum + n, fhkcollect);
             //string aa = "";
+            dkcol.Sort();
+            for (int m = 0; m < dkcol.Count;m++ )
+            {
+                fhkcollect.Add(dkcol[m].DK, dkcol[m].DKZX);
+            }
             return fhkcollect;
 
         }
+      
         public void InputBDZFile(string filename, bool create) {
 
             Excel.Application ex = new Excel.Application();
