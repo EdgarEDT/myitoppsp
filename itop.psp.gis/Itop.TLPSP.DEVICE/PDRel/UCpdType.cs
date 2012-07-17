@@ -52,6 +52,7 @@ namespace Itop.TLPSP.DEVICE
             {
                 parentobj = value;
                 PDrelregion pd=new PDrelregion();
+                
                 pd.ID=parentobj.SUID;
                pd = Services.BaseService.GetOneByKey<PDrelregion>(pd);
                 if (pd==null)

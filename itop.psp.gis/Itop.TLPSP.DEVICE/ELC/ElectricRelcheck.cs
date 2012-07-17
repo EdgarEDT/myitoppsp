@@ -400,7 +400,7 @@ namespace Itop.TLPSP.DEVICE
                         //n1NL_DLL.ZYZ nl = new n1NL_DLL.ZYZ();
                         //nl.jianyan();
                         //GC.Collect();
-                        //wf.Close();
+                        wf.Close();
                         //int* busnumber;
 
                         //N1Test.NBcal kk = new N1Test.NBcal();

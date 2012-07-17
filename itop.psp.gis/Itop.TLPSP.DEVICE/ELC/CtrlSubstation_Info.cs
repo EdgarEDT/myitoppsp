@@ -178,12 +178,13 @@ namespace Itop.TLPSP.DEVICE
                 for (int i = 0; i < list.Count; i++)
                 {
                     Substation_Info sb = (Substation_Info)list[i];
-                    if (sb.L2 != 0 || sb.L2 != null)
+                    if (Convert.ToInt32(sb.L2) != 0 && sb.L2 != null)
                     {
                         sb.L10 = Convert.ToDouble(Convert.ToDouble(sb.L9) / sb.L2 * 100);
                         //sb.GetType().GetProperty("L10").SetValue(sb, LL10, null);
 
                     }
+                    else { sb.L10 = 0; }
 
                 }
                 if (xmlflag == "guihua")
@@ -223,11 +224,15 @@ namespace Itop.TLPSP.DEVICE
                 for (int i = 0; i < list.Count; i++)
                 {
                     Substation_Info sb = (Substation_Info)list[i];
-                    if (sb.L2 != 0 || sb.L2 != null)
+                    if (sb.L2 != 0 && sb.L2 != null)
                     {
                         sb.L10 = Convert.ToDouble(Convert.ToDouble(sb.L9) / sb.L2 * 100);
                         //sb.GetType().GetProperty("L10").SetValue(sb, LL10, null);
 
+                    }
+                    else
+                    {
+                        sb.L10 = 0;
                     }
 
                 }
