@@ -114,15 +114,16 @@ namespace Itop.TLPSP.DEVICE
               PDT.parentobj = ParentObj;
               PDrelcontent pdr = new PDrelcontent();
               pdr.ParentID = ParentObj.ID;
+              //pdr.TDdatetime
               PDT.RowData = pdr;
               if (PDT.ShowDialog() == DialogResult.OK) {
 
                   pdr = PDT.RowData;
-                  if (pdr.TDdatetime.Year!=ParentObj.Year)
-                  {
-                      Itop.Common.MsgBox.ShowYesNo("停电日期和年份不符！");
-                      return;
-                  }
+                  //if (pdr.TDdatetime.Year!=ParentObj.Year)
+                  //{
+                  //    Itop.Common.MsgBox.ShowYesNo("停电日期和年份不符！");
+                  //    return;
+                  //}
                   Itop.Client.Common.Services.BaseService.Create<PDrelcontent>(pdr);
                   
                   //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
@@ -141,10 +142,10 @@ namespace Itop.TLPSP.DEVICE
                   if (PDT.ShowDialog() == DialogResult.OK) {
 
                      PD = PDT.RowData;
-                     if (PD.TDdatetime.Year != ParentObj.Year) {
-                         Itop.Common.MsgBox.ShowYesNo("停电日期和年份不符！");
-                         return;
-                     }
+                     //if (PD.TDdatetime.Year != ParentObj.Year) {
+                     //    Itop.Common.MsgBox.ShowYesNo("停电日期和年份不符！");
+                     //    return;
+                     //}
                       Itop.Client.Common.Services.BaseService.Update<PDrelcontent>(PD);
                       ParentID = ParentObj.ID;
                       //datatable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(pdr, datatable.NewRow()));
