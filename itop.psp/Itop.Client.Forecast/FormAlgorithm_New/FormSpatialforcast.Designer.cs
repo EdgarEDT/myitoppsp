@@ -27,7 +27,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpatialforcast));
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.chart_user1 = new Itop.Client.Using.chart_user();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -49,6 +48,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.chart_user1 = new Itop.Client.Using.chart_userSH();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -63,7 +63,7 @@
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsView.AutoWidth = false;
-            this.treeList1.Size = new System.Drawing.Size(1096, 147);
+            this.treeList1.Size = new System.Drawing.Size(1096, 100);
             this.treeList1.TabIndex = 2;
             this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
             // 
@@ -76,18 +76,10 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.chart_user1);
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
             this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1096, 320);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1096, 367);
             this.splitContainerControl1.SplitterPosition = 0;
             this.splitContainerControl1.TabIndex = 8;
             this.splitContainerControl1.Text = "splitContainerControl1";
-            // 
-            // chart_user1
-            // 
-            this.chart_user1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart_user1.Location = new System.Drawing.Point(0, 0);
-            this.chart_user1.Name = "chart_user1";
-            this.chart_user1.Size = new System.Drawing.Size(1090, 320);
-            this.chart_user1.TabIndex = 0;
             // 
             // imageList1
             // 
@@ -133,7 +125,7 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.splitContainerControl1);
             this.splitContainerControl2.Panel2.Text = "splitContainerControl2_Panel2";
             this.splitContainerControl2.Size = new System.Drawing.Size(1096, 473);
-            this.splitContainerControl2.SplitterPosition = 320;
+            this.splitContainerControl2.SplitterPosition = 367;
             this.splitContainerControl2.TabIndex = 22;
             this.splitContainerControl2.Text = "splitContainerControl2";
             // 
@@ -274,6 +266,7 @@
             this.barButtonItem4.ImageIndex = 12;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem4.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // barButtonItem7
@@ -330,6 +323,14 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1096, 34);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 479);
             // 
+            // chart_user1
+            // 
+            this.chart_user1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chart_user1.Location = new System.Drawing.Point(0, 0);
+            this.chart_user1.Name = "chart_user1";
+            this.chart_user1.Size = new System.Drawing.Size(1090, 367);
+            this.chart_user1.TabIndex = 0;
+            // 
             // FormSpatialforcast
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -358,7 +359,6 @@
 
         private DevExpress.XtraTreeList.TreeList treeList1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private Itop.Client.Using.chart_user chart_user1;
         private System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
         private DevExpress.XtraBars.Bar bar1;
@@ -380,5 +380,6 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private Itop.Client.Using.chart_userSH chart_user1;
     }
 }

@@ -61,6 +61,17 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             barButtonItem7.Glyph = Itop.ICON.Resource.保存;
 
             barButtonItem6.Glyph = Itop.ICON.Resource.关闭;
+            chart_user1.SetColor += new chart_userSH.setcolor(chart_user1_SetColor);
+        }
+
+        void chart_user1_SetColor()
+        {
+            FormColor fc = new FormColor();
+            fc.DT = dataTable;
+            fc.ID = forecastReport.ID.ToString();
+            fc.For = type;
+            if (fc.ShowDialog() == DialogResult.OK)
+                RefreshChart();
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
@@ -118,7 +129,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
 
             
 
-            for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++) {
+            for (int i = forecastReport.StartYear; i <= forecastReport.YcEndYear; i++) {
                 AddColumn(i);
              
                 //foreach (Ps_Forecast_Math pm in listTypes)
