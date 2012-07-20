@@ -136,6 +136,44 @@ namespace ItopVector.Tools {
                 MessageBox.Show(err.Message);
             }
         }
+        public ArrayList GetSelectLayers()
+        {
+            ArrayList list = new ArrayList();
+            foreach (TreeListNode tn in treeList1.Nodes)
+            {
+                if (tn.Checked==true)
+                {
+                    if (symbolDoc.Layers[tn["SUID"].ToString()] != null)
+                    {
+                        list.Add((symbolDoc.Layers[tn["SUID"].ToString()] as Layer));
+                    }
+                }
+                selectchildrenlayer(tn, ref list);
+                
+            }
+            
+            return list;
+        }
+        private void selectchildrenlayer(TreeListNode tln, ref ArrayList list)
+        {
+            if (tln.HasChildren)
+            {
+                foreach (TreeListNode tn in tln.Nodes)
+                {
+                    if (tn.Checked == true)
+                    {
+                        if (symbolDoc.Layers[tn["SUID"].ToString()] != null)
+                        {
+                            list.Add((symbolDoc.Layers[tn["SUID"].ToString()] as Layer));
+                        }
+                    }
+                    selectchildrenlayer(tn, ref list);
+                }
+            }
+            else
+                return;
+        }
+
         private void SetCheckedParentNodes(TreeListNode node, CheckState check) {
             if (node.ParentNode != null) {
                 bool b = false;
@@ -555,7 +593,7 @@ namespace ItopVector.Tools {
         private void pictureBox5_Click(object sender, EventArgs e) {
             this.Hide();
         }
-
+     
         public string getSelectedLayer() {
             string strLayer = "";
             for (int i = 0; i < checkedListBox1.Items.Count; i++) {
@@ -1619,7 +1657,11 @@ namespace ItopVector.Tools {
                 if (treeList1.FocusedNode != null)
                 {
                     _svg.ParentID = treeList1.FocusedNode["ParentID"].ToString();
-                    _svg.YearID = ilist[0].ToString();
+                    if (ilist.Count!=0)
+                    {
+                        _svg.YearID = ilist[0].ToString();
+                    }
+                    
                     _svg.svgID = symbolDoc.SvgdataUid;
                     _svg.OrderID = int.Parse(treeList1.FocusedNode["OrderID"].ToString()) + 1;
                     _svg.MDATE = DateTime.Now;
