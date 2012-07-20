@@ -80,7 +80,8 @@ namespace ItopVector.Tools
         string bdz_xz = "";
         string str_dhx = "";
         ArrayList ChangeLayerList = new ArrayList();
-        frmLayerManager frmlar = new frmLayerManager();
+        //frmLayerManager frmlar = new frmLayerManager();
+        frmLayerTreeManager frmlar = new frmLayerTreeManager();
         private string SVGUID = "";
         private string SelUseArea = "";
         private string LineLen = "";
@@ -6160,10 +6161,11 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                     case "mFx":
                         SubPrint = false;
                         bool ck = false;
-                        CheckedListBox.CheckedItemCollection ckcol = frmlar.checkedListBox1.CheckedItems;
-                        for (int i = 0; i < ckcol.Count; i++)
+                        ArrayList listlayers = frmlar.GetSelectLayers();
+                        //CheckedListBox.CheckedItemCollection ckcol = frmlar.checkedListBox1.CheckedItems;
+                        for (int i = 0; i < listlayers.Count; i++)
                         {
-                            Layer _lar = ckcol[i] as Layer;
+                            Layer _lar = listlayers[i] as Layer;
                             if (_lar.GetAttribute("layerType") == "城市规划层")
                             {
                                 ck = true;
@@ -10312,6 +10314,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
         public void LayerManagerShow()
         {
             frmlar.SymbolDoc = tlVectorControl1.SVGDocument;
+            frmlar.YearID = yearID;
             if (MapType == "所内接线图")
             {
                 frmlar.Progtype = MapType;
@@ -10320,7 +10323,6 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             {
                 frmlar.Progtype = progtype;
             }
-            frmlar.spatialflag = false;
             frmlar.Owner = this;
             frmlar.OnClickLayer += new OnClickLayerhandler(frmlar_OnClickLayer);
             frmlar.OnDeleteLayer += new OnDeleteLayerhandler(frmlar_OnDeleteLayer);
@@ -10337,7 +10339,8 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                 LayerGrade lar = new LayerGrade();
                 lar.SUID = y[1];
                 lar = (LayerGrade)Services.BaseService.GetObject("SelectLayerGradeByKey", lar);
-                frmlar.StrYear = lar.Name.Substring(0, 4);
+               // startyear = frmlar.StrYear = lar.Name.Substring(0, 4);
+
             }
             frmlar.Show();
         }
@@ -10509,7 +10512,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                 svgFile = (SVGFILE)Services.BaseService.GetObject("SelectSVGFILEByKey", svgFile);
                 //SvgDocument document = CashSvgDocument;
                 //if (document == null) {
-                where += "and svgID='" + _SvgUID + "'";
+                where += "and svgID='" + _SvgUID + "' OR YearID = '' ";
                 string con = GetSpatiallayerid();
                 if (!string.IsNullOrEmpty(con))
                 {

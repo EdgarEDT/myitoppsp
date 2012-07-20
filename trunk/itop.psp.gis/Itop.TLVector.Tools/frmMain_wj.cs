@@ -9949,7 +9949,7 @@ namespace ItopVector.Tools {
             if (string.IsNullOrEmpty(_SvgUID)) return;
             try {
                 if (progtype == "城市规划层") {
-                    where = " (layerType = '城市规划层') OR (layerType = '地理信息层') ";
+                    where = " (layerType = '城市规划层') OR (layerType = '地理信息层')  OR(YearID = '') ";
                 } else {
                     where = " (layerType = '地理信息层') ";
                 }
