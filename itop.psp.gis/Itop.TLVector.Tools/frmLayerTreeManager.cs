@@ -203,7 +203,10 @@ namespace ItopVector.Tools {
                 this.SetCheckedChildNodes(node.Nodes[i], check);
             }
         }
-
+        public void dkghstate()
+        {
+            barSubItem1.Enabled = false;
+        }
         public void Readonly() {
             bbtaddlayer.Enabled = false;
             bbteditlayer.Enabled = false;
@@ -262,7 +265,7 @@ namespace ItopVector.Tools {
                                     node.Checked = true;
                             }
                         }
-
+                        barSubItem1.Enabled = false;
                     }
                     if (progtype == "µçÍø¹æ»®²ã") {
 
