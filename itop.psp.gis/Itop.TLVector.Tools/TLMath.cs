@@ -744,4 +744,54 @@ namespace ItopVector.Tools
         public Dictionary<XmlElement, PointF> FHcollect;
         public XmlElement Sub;
     }
+    public class fhdkandcirsort : IComparable
+    {
+        private XmlElement xl;
+        private PointF dkzx;
+        private double len;
+        public fhdkandcirsort(XmlElement _dk, PointF _dkzx, double _length)
+        {
+            xl = _dk;
+            dkzx = _dkzx;
+            len = _length;
+        }
+        public XmlElement DK
+        {
+            get { return xl; }
+            set { xl = value; }
+        }
+        public PointF DKZX
+        {
+            get { return dkzx; }
+            set { dkzx = value; }
+        }
+        public double Lenth
+        {
+            get { return len; }
+            set { len = value; }
+        }
+         public int CompareTo(object obj)
+        {
+            int res = 0;
+            try
+            {
+                fhdkandcirsort sObj = (fhdkandcirsort)obj;
+                if (this.Lenth >= sObj.Lenth)
+                {
+                    res = 1;
+                }
+                else if (this.Lenth < sObj.Lenth)
+                {
+                    res = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("±È½ÏÒì³£", ex.InnerException);
+            }
+            return res;
+
+        }
+
+    }
 }

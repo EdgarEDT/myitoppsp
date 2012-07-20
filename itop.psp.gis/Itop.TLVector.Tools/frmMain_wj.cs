@@ -6201,15 +6201,16 @@ namespace ItopVector.Tools {
                     case "mFx":
                         SubPrint = false;
                         bool ck = false;
+                        ArrayList listlayers = frmlar.GetSelectLayers();
                         //CheckedListBox.CheckedItemCollection ckcol = frmlar.checkedListBox1.CheckedItems;
-                        //for (int i = 0; i < ckcol.Count; i++)
-                        //{
-                        //    Layer _lar = ckcol[i] as Layer;
-                        //    if (_lar.GetAttribute("layerType") == "城市规划层")
-                        //    {
-                        //        ck = true;
-                        //    }
-                        //}
+                        for (int i = 0; i < listlayers.Count; i++)
+                        {
+                            Layer _lar = listlayers[i] as Layer;
+                            if (_lar.GetAttribute("layerType") == "城市规划层")
+                            {
+                                ck = true;
+                            }
+                        }
                         if (!ck) {
                             MessageBox.Show("请打开城市规划层。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
