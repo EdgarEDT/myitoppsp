@@ -10,6 +10,7 @@ using System.Collections;
 using Itop.Client.Projects;
 using Itop.Domain.Graphics;
 using Itop.Domain.Table;
+using DevExpress.XtraEditors.Repository;
 
 namespace Itop.TLPSP.DEVICE
 {
@@ -217,66 +218,6 @@ namespace Itop.TLPSP.DEVICE
             column.Width = 100;
             column.VisibleIndex = 6;
             column.OptionsColumn.AllowEdit = false;
-            //column = gridView1.Columns.Add();
-            //column.Caption = "导线型号";
-            //column.FieldName = "LineType";
-            //column.Width = 100;
-            //column.VisibleIndex = 8;
-            //column.OptionsColumn.AllowEdit = false;
-            //column = gridView1.Columns.Add();
-            //column.Caption = "电阻";
-            //column.FieldName = "LineR";
-            //column.Width = 100;
-            //column.VisibleIndex =9;
-            //column.OptionsColumn.AllowEdit = false;
-            //column = gridView1.Columns.Add();
-            //column.Caption = "电抗";
-            //column.FieldName = "LineTQ";
-            //column.Width = 100;
-            //column.VisibleIndex = 10;
-            //column.OptionsColumn.AllowEdit = false;
-            //column = gridView1.Columns.Add();
-            //column.Caption = "B/2";
-            //column.FieldName = "LineGNDC";
-            //column.Width = 100;
-            //column.VisibleIndex = 11;
-            //column.OptionsColumn.AllowEdit = false;
-            //column = gridView1.Columns.Add();
-            //column.Caption = "零序电阻";
-            //column.FieldName = "ZeroR";
-            //column.Width = 100;
-            //column.VisibleIndex = 12;
-            //column.OptionsColumn.AllowEdit = false;
-            //column = gridView1.Columns.Add();
-            //column.Caption = "零序电抗";
-            //column.FieldName = "ZeroTQ";
-            //column.Width = 100;
-            //column.VisibleIndex = 14;
-            //column.OptionsColumn.AllowEdit = false;
-            //column = gridView1.Columns.Add();
-            //column.Caption = "B0/2";
-            //column.FieldName = "ZeroGNDC";
-            //column.Width = 100;
-            //column.VisibleIndex = 15;
-            //column.OptionsColumn.AllowEdit = false;         
-            //column = gridView1.Columns.Add();
-            //column.Caption = "额定容量";
-            //column.FieldName = "Burthen";
-            //column.Width = 100;
-            //column.VisibleIndex = 16;
-            //column.OptionsColumn.AllowEdit = false;
-            //column = gridView1.Columns.Add();
-            //column.Caption = "运行状态";
-            //column.FieldName = "KSwitchStatus";
-            //column.Width = 100;
-            //column.VisibleIndex = 17;
-            //column.OptionsColumn.AllowEdit = false;
-            //column = gridView1.Columns.Add();
-            //column.Caption = "单位";
-            //column.FieldName = "UnitFlag";
-            //column.Width = 100;
-            //column.VisibleIndex = 18;
-            //column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
             column.Caption = "投产年份";
             column.FieldName = "OperationYear";
@@ -290,7 +231,82 @@ namespace Itop.TLPSP.DEVICE
             column.VisibleIndex = 8;
             column.OptionsColumn.AllowEdit = false;
 
+            column = gridView1.Columns.Add();
+            column.Caption = "查看";
+            column.FieldName = "ProjectID";
+            column.Width = 100;
+            column.VisibleIndex = 9;
+            // column.OptionsColumn.AllowEdit = false;
+            RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1 = new RepositoryItemHyperLinkEdit();
+            repositoryItemHyperLinkEdit1.AutoHeight = false;
+            repositoryItemHyperLinkEdit1.Caption = "详情";
+            repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
+            repositoryItemHyperLinkEdit1.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit1_Click);
+            column.ColumnEdit = repositoryItemHyperLinkEdit1;
 
+            column = gridView1.Columns.Add();
+            column.Caption = "导线型号";
+            column.FieldName = "LineType";
+            column.Width = 100;
+            column.VisibleIndex = 10;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "电阻";
+            column.FieldName = "LineR";
+            column.Width = 100;
+            column.VisibleIndex = 11;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "电抗";
+            column.FieldName = "LineTQ";
+            column.Width = 100;
+            column.VisibleIndex = 12;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "B/2";
+            column.FieldName = "LineGNDC";
+            column.Width = 100;
+            column.VisibleIndex = 13;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "零序电阻";
+            column.FieldName = "ZeroR";
+            column.Width = 100;
+            column.VisibleIndex = 14;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "零序电抗";
+            column.FieldName = "ZeroTQ";
+            column.Width = 100;
+            column.VisibleIndex = 15;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "B0/2";
+            column.FieldName = "ZeroGNDC";
+            column.Width = 100;
+            column.VisibleIndex = 16;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "额定容量";
+            column.FieldName = "Burthen";
+            column.Width = 100;
+            column.VisibleIndex = 17;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "运行状态";
+            column.FieldName = "KSwitchStatus";
+            column.Width = 100;
+            column.VisibleIndex = 18;
+            column.OptionsColumn.AllowEdit = false;
+            column = gridView1.Columns.Add();
+            column.Caption = "单位";
+            column.FieldName = "UnitFlag";
+            column.Width = 100;
+            column.VisibleIndex = 19;
+            column.OptionsColumn.AllowEdit = false;
+           
+
+    
             //column = gridView1.Columns.Add();
             //column.Caption = "一次侧连接开关";
             //column.FieldName = "ISwitch";
@@ -309,10 +325,99 @@ namespace Itop.TLPSP.DEVICE
             //column.Width = 100;
             //column.VisibleIndex = 22;
             //column.OptionsColumn.AllowEdit = false;
-          
+           
 
 
           
+        }
+        private void repositoryItemHyperLinkEdit1_Click(object sender, EventArgs e)
+        {
+            frmXLdlg dlg = new frmXLdlg();
+            DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            if (row != null)
+            {
+                PSPDEV dev = Itop.Common.DataConverter.RowToObject<PSPDEV>(row);
+                if (dev.NodeType == "平衡节点")
+                {
+                    dev.NodeType = "0";
+                }
+                else if (dev.NodeType == "PQ节点")
+                {
+                    dev.NodeType = "1";
+                }
+                else if (dev.NodeType == "PV节点")
+                {
+                    dev.NodeType = "2";
+                }
+                if (dev.KSwitchStatus == "退出运行")
+                {
+                    dev.KSwitchStatus = "1";
+                }
+                else
+                {
+                    dev.KSwitchStatus = "0";
+                }
+                if (dev.UnitFlag == "p.u.")
+                {
+                    dev.UnitFlag = "0";
+                }
+                else
+                {
+                    dev.UnitFlag = "1";
+
+                }
+                dlg.DeviceMx = dev;
+                dlg.ProjectSUID = dev.ProjectID;
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    //更新记录
+                    dev = dlg.DeviceMx;
+                    dev.ProjectID = this.ProjectID;
+                    UCDeviceBase.DataService.Update<PSPDEV>(dev);
+                    UpdateBDZ(dev);
+                    if (dev.NodeType == "0")
+                    {
+                        dev.NodeType = "平衡节点";
+                    }
+                    else if (dev.NodeType == "1")
+                    {
+                        dev.NodeType = "PQ节点";
+                    }
+                    else if (dev.NodeType == "2")
+                    {
+                        dev.NodeType = "PV节点";
+                    }
+                    else
+                    {
+                        dev.NodeType = null;
+                    }
+                    if (dev.KSwitchStatus == "1")
+                    {
+                        dev.KSwitchStatus = "退出运行";
+                    }
+                    else
+                    {
+                        dev.KSwitchStatus = "投入运行";
+                    }
+                    if (dev.UnitFlag == "0")
+                    {
+                        dev.UnitFlag = "p.u.";
+                    }
+                    else
+                    {
+                        if (dev.Type == "01" || dev.Type == "04" || dev.Type == "12")
+                        {
+                            dev.UnitFlag = "kV/MW/MVar";
+                        }
+                        else
+                        {
+                            dev.UnitFlag = "Ohm/10-6Siem";
+                        }
+                    }
+                    Itop.Common.DataConverter.ObjectToRow(dev, row);
+                }
+            }
+           
         }
         #endregion
         public override string GetClassName()

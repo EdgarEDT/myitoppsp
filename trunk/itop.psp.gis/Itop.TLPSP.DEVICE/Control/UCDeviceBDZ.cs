@@ -311,7 +311,7 @@ namespace Itop.TLPSP.DEVICE
             int bts = 0;
             frmDeviceManager_children frmc = new frmDeviceManager_children();
             frmc.ParentObj = pj;
-            string[] types = new string[] { "01", "03", "12" };
+            string[] types = new string[] { "01", "02","03", "12" };
             frmc.childrendevice(types);
             if (frmc.DialogResult == DialogResult.OK)
             {

@@ -534,13 +534,13 @@ namespace Itop.TLPSP.DEVICE
             int bts = 0;
             frmDeviceManager_children frmc = new frmDeviceManager_children();
             frmc.ParentObj = DeviceMx;
-            string[] types=new string[]{"01","03","12"};
+            string[] types=new string[]{"01","02","03","12"};
             frmc.childrendevice(types);
 
             if (frmc.DialogResult==DialogResult.OK)
             {
 
-                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='03'and SvgUID='"+DeviceMx.UID+"'";
+                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type in ('02','03')and SvgUID='"+DeviceMx.UID+"'";
                 IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
                 {
@@ -548,13 +548,30 @@ namespace Itop.TLPSP.DEVICE
                     {
                         if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(bdz.L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(bdz.L29))
                         {
-                            rl += pd.SiN;
-                            bts++;
+                            if (pd.Type == "03")
+                            {
+                                rl += pd.SiN;
+                            }
+                            else
+                            {
+                                rl += (double)pd.Burthen;
+                              }
+                           
+                                    bts++;
                         }
                     }
                     else
                     {
-                        rl += pd.SiN;
+                        if (pd.Type == "03")
+                        {
+                            rl += pd.SiN;
+                        }
+                        else
+                        {
+                            rl += (double)pd.Burthen;
+                        }
+
+                      
                         bts++;
                     }
                 }

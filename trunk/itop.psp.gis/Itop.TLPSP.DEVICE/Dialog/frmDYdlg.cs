@@ -257,7 +257,7 @@ namespace Itop.TLPSP.DEVICE
                 MessageBox.Show("请选择投产时间！");
                 return;
             }
-            if (Convert.ToDouble(devObj.S1) == 0)
+            if (Convert.ToDouble(spinEdit1.Value) == 0)
             {
                 MessageBox.Show("请填写电压等级！");
                 return;

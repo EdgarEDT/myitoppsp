@@ -28,6 +28,9 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.date2 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label4 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.date1 = new DevExpress.XtraEditors.DateEdit();
             this.label21 = new System.Windows.Forms.Label();
@@ -48,8 +51,6 @@
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.spinEdit8 = new DevExpress.XtraEditors.SpinEdit();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.label4 = new System.Windows.Forms.Label();
             this.spinEdit11 = new DevExpress.XtraEditors.SpinEdit();
             this.label16 = new System.Windows.Forms.Label();
             this.spinEdit5 = new DevExpress.XtraEditors.SpinEdit();
@@ -93,11 +94,44 @@
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
-            this.date2 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.date2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date1.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date1.Properties)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -114,7 +148,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit8.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
@@ -136,7 +169,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -168,6 +200,8 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.labelControl1);
+            this.groupBox10.Controls.Add(this.labelControl4);
             this.groupBox10.Controls.Add(this.date2);
             this.groupBox10.Controls.Add(this.comboBoxEdit1);
             this.groupBox10.Controls.Add(this.label4);
@@ -180,6 +214,34 @@
             this.groupBox10.TabIndex = 6;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "数据有效时间范围";
+            // 
+            // date2
+            // 
+            this.date2.Location = new System.Drawing.Point(105, 71);
+            this.date2.Name = "date2";
+            this.date2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.date2.Size = new System.Drawing.Size(181, 21);
+            this.date2.TabIndex = 5;
+            // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.Location = new System.Drawing.Point(105, 23);
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(181, 21);
+            this.comboBoxEdit1.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(15, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 14);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "投产年份";
             // 
             // label22
             // 
@@ -242,6 +304,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.labelControl5);
+            this.groupBox2.Controls.Add(this.labelControl3);
             this.groupBox2.Controls.Add(this.spinEdit6);
             this.groupBox2.Controls.Add(this.spinEdit7);
             this.groupBox2.Controls.Add(this.label7);
@@ -366,6 +430,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.labelControl6);
             this.groupBox4.Controls.Add(this.panelControl1);
             this.groupBox4.Controls.Add(this.radioGroup1);
             this.groupBox4.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -403,6 +468,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelControl2);
             this.groupBox1.Controls.Add(this.spinEdit8);
             this.groupBox1.Controls.Add(this.spinEdit11);
             this.groupBox1.Controls.Add(this.label16);
@@ -434,25 +500,6 @@
             this.spinEdit8.Properties.Mask.EditMask = "N00";
             this.spinEdit8.Size = new System.Drawing.Size(181, 21);
             this.spinEdit8.TabIndex = 2;
-            // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(105, 23);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(181, 21);
-            this.comboBoxEdit1.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(15, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 14);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "投产年份";
             // 
             // spinEdit11
             // 
@@ -495,7 +542,7 @@
             0,
             0,
             0});
-            this.spinEdit5.Location = new System.Drawing.Point(97, 104);
+            this.spinEdit5.Location = new System.Drawing.Point(97, 103);
             this.spinEdit5.Name = "spinEdit5";
             this.spinEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -560,6 +607,20 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.label35);
+            this.groupBox9.Controls.Add(this.label33);
+            this.groupBox9.Controls.Add(this.label34);
+            this.groupBox9.Controls.Add(this.label29);
+            this.groupBox9.Controls.Add(this.label37);
+            this.groupBox9.Controls.Add(this.label36);
+            this.groupBox9.Controls.Add(this.label31);
+            this.groupBox9.Controls.Add(this.labelControl19);
+            this.groupBox9.Controls.Add(this.labelControl18);
+            this.groupBox9.Controls.Add(this.labelControl17);
+            this.groupBox9.Controls.Add(this.labelControl16);
+            this.groupBox9.Controls.Add(this.labelControl15);
+            this.groupBox9.Controls.Add(this.labelControl14);
+            this.groupBox9.Controls.Add(this.labelControl13);
             this.groupBox9.Controls.Add(this.label19);
             this.groupBox9.Controls.Add(this.label20);
             this.groupBox9.Controls.Add(this.spinEdit16);
@@ -606,7 +667,7 @@
             0,
             0,
             0});
-            this.spinEdit16.Location = new System.Drawing.Point(166, 62);
+            this.spinEdit16.Location = new System.Drawing.Point(151, 62);
             this.spinEdit16.Name = "spinEdit16";
             this.spinEdit16.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -620,7 +681,7 @@
             0,
             0,
             0});
-            this.spinEdit17.Location = new System.Drawing.Point(166, 21);
+            this.spinEdit17.Location = new System.Drawing.Point(151, 21);
             this.spinEdit17.Name = "spinEdit17";
             this.spinEdit17.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -634,7 +695,7 @@
             0,
             0,
             0});
-            this.spinEdit15.Location = new System.Drawing.Point(166, 261);
+            this.spinEdit15.Location = new System.Drawing.Point(151, 261);
             this.spinEdit15.Name = "spinEdit15";
             this.spinEdit15.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -657,7 +718,7 @@
             0,
             0,
             0});
-            this.spinEdit9.Location = new System.Drawing.Point(166, 180);
+            this.spinEdit9.Location = new System.Drawing.Point(151, 180);
             this.spinEdit9.Name = "spinEdit9";
             this.spinEdit9.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -671,7 +732,7 @@
             0,
             0,
             0});
-            this.spinEdit12.Location = new System.Drawing.Point(166, 220);
+            this.spinEdit12.Location = new System.Drawing.Point(151, 220);
             this.spinEdit12.Name = "spinEdit12";
             this.spinEdit12.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -703,7 +764,7 @@
             0,
             0,
             0});
-            this.spinEdit13.Location = new System.Drawing.Point(166, 139);
+            this.spinEdit13.Location = new System.Drawing.Point(151, 135);
             this.spinEdit13.Name = "spinEdit13";
             this.spinEdit13.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -726,7 +787,7 @@
             0,
             0,
             0});
-            this.spinEdit14.Location = new System.Drawing.Point(166, 98);
+            this.spinEdit14.Location = new System.Drawing.Point(151, 98);
             this.spinEdit14.Name = "spinEdit14";
             this.spinEdit14.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -775,6 +836,18 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.label27);
+            this.groupBox7.Controls.Add(this.label28);
+            this.groupBox7.Controls.Add(this.label25);
+            this.groupBox7.Controls.Add(this.label26);
+            this.groupBox7.Controls.Add(this.label30);
+            this.groupBox7.Controls.Add(this.label32);
+            this.groupBox7.Controls.Add(this.labelControl12);
+            this.groupBox7.Controls.Add(this.labelControl11);
+            this.groupBox7.Controls.Add(this.labelControl10);
+            this.groupBox7.Controls.Add(this.labelControl9);
+            this.groupBox7.Controls.Add(this.labelControl8);
+            this.groupBox7.Controls.Add(this.labelControl7);
             this.groupBox7.Controls.Add(this.spinEdit19);
             this.groupBox7.Controls.Add(this.spinEdit3);
             this.groupBox7.Controls.Add(this.spinEdit18);
@@ -790,7 +863,7 @@
             this.groupBox7.ForeColor = System.Drawing.Color.RoyalBlue;
             this.groupBox7.Location = new System.Drawing.Point(26, 26);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(294, 218);
+            this.groupBox7.Size = new System.Drawing.Size(302, 218);
             this.groupBox7.TabIndex = 12;
             this.groupBox7.TabStop = false;
             // 
@@ -974,14 +1047,325 @@
             this.buttonEdit1.TabIndex = 9;
             this.buttonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
             // 
-            // date2
+            // labelControl4
             // 
-            this.date2.Location = new System.Drawing.Point(105, 71);
-            this.date2.Name = "date2";
-            this.date2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date2.Size = new System.Drawing.Size(181, 21);
-            this.date2.TabIndex = 5;
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl4.Appearance.Options.UseForeColor = true;
+            this.labelControl4.Location = new System.Drawing.Point(292, 31);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(7, 14);
+            this.labelControl4.TabIndex = 40;
+            this.labelControl4.Text = "*";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(292, 78);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(7, 14);
+            this.labelControl1.TabIndex = 41;
+            this.labelControl1.Text = "*";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(283, 107);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(7, 14);
+            this.labelControl2.TabIndex = 40;
+            this.labelControl2.Text = "*";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Location = new System.Drawing.Point(136, 27);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(7, 14);
+            this.labelControl3.TabIndex = 40;
+            this.labelControl3.Text = "*";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl5.Appearance.Options.UseForeColor = true;
+            this.labelControl5.Location = new System.Drawing.Point(136, 61);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(7, 14);
+            this.labelControl5.TabIndex = 41;
+            this.labelControl5.Text = "*";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl6.Appearance.Options.UseForeColor = true;
+            this.labelControl6.Location = new System.Drawing.Point(120, 44);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(7, 14);
+            this.labelControl6.TabIndex = 41;
+            this.labelControl6.Text = "*";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Location = new System.Drawing.Point(259, 31);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(7, 14);
+            this.labelControl7.TabIndex = 41;
+            this.labelControl7.Text = "*";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl8.Appearance.Options.UseForeColor = true;
+            this.labelControl8.Location = new System.Drawing.Point(259, 60);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(7, 14);
+            this.labelControl8.TabIndex = 42;
+            this.labelControl8.Text = "*";
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl9.Appearance.Options.UseForeColor = true;
+            this.labelControl9.Location = new System.Drawing.Point(259, 87);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(7, 14);
+            this.labelControl9.TabIndex = 43;
+            this.labelControl9.Text = "*";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl10.Appearance.Options.UseForeColor = true;
+            this.labelControl10.Location = new System.Drawing.Point(259, 118);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(7, 14);
+            this.labelControl10.TabIndex = 44;
+            this.labelControl10.Text = "*";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl11.Appearance.Options.UseForeColor = true;
+            this.labelControl11.Location = new System.Drawing.Point(259, 151);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(7, 14);
+            this.labelControl11.TabIndex = 45;
+            this.labelControl11.Text = "*";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl12.Appearance.Options.UseForeColor = true;
+            this.labelControl12.Location = new System.Drawing.Point(259, 181);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(7, 14);
+            this.labelControl12.TabIndex = 46;
+            this.labelControl12.Text = "*";
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl13.Appearance.Options.UseForeColor = true;
+            this.labelControl13.Location = new System.Drawing.Point(274, 24);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(7, 14);
+            this.labelControl13.TabIndex = 41;
+            this.labelControl13.Text = "*";
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl14.Appearance.Options.UseForeColor = true;
+            this.labelControl14.Location = new System.Drawing.Point(274, 69);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(7, 14);
+            this.labelControl14.TabIndex = 42;
+            this.labelControl14.Text = "*";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl15.Appearance.Options.UseForeColor = true;
+            this.labelControl15.Location = new System.Drawing.Point(274, 105);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(7, 14);
+            this.labelControl15.TabIndex = 43;
+            this.labelControl15.Text = "*";
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl16.Appearance.Options.UseForeColor = true;
+            this.labelControl16.Location = new System.Drawing.Point(272, 139);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(7, 14);
+            this.labelControl16.TabIndex = 44;
+            this.labelControl16.Text = "*";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl17.Appearance.Options.UseForeColor = true;
+            this.labelControl17.Location = new System.Drawing.Point(274, 187);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(7, 14);
+            this.labelControl17.TabIndex = 45;
+            this.labelControl17.Text = "*";
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl18.Appearance.Options.UseForeColor = true;
+            this.labelControl18.Location = new System.Drawing.Point(274, 227);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(7, 14);
+            this.labelControl18.TabIndex = 46;
+            this.labelControl18.Text = "*";
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl19.Appearance.Options.UseForeColor = true;
+            this.labelControl19.Location = new System.Drawing.Point(274, 264);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(7, 14);
+            this.labelControl19.TabIndex = 47;
+            this.labelControl19.Text = "*";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label32.Location = new System.Drawing.Point(268, 31);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(28, 14);
+            this.label32.TabIndex = 47;
+            this.label32.Text = "MW";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label30.Location = new System.Drawing.Point(268, 60);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(34, 14);
+            this.label30.TabIndex = 48;
+            this.label30.Text = "MVar";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label25.Location = new System.Drawing.Point(268, 118);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(34, 14);
+            this.label25.TabIndex = 50;
+            this.label25.Text = "MVar";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label26.Location = new System.Drawing.Point(268, 89);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(28, 14);
+            this.label26.TabIndex = 49;
+            this.label26.Text = "MW";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label27.Location = new System.Drawing.Point(268, 177);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(34, 14);
+            this.label27.TabIndex = 52;
+            this.label27.Text = "MVar";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label28.Location = new System.Drawing.Point(268, 148);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(28, 14);
+            this.label28.TabIndex = 51;
+            this.label28.Text = "MW";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label29.Location = new System.Drawing.Point(281, 138);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(34, 14);
+            this.label29.TabIndex = 50;
+            this.label29.Text = "MVar";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label31.Location = new System.Drawing.Point(285, 105);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(28, 14);
+            this.label31.TabIndex = 49;
+            this.label31.Text = "MW";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label33.Location = new System.Drawing.Point(285, 225);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(34, 14);
+            this.label33.TabIndex = 52;
+            this.label33.Text = "MVar";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label34.Location = new System.Drawing.Point(285, 187);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(28, 14);
+            this.label34.TabIndex = 51;
+            this.label34.Text = "MW";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label35.Location = new System.Drawing.Point(285, 263);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(34, 14);
+            this.label35.TabIndex = 53;
+            this.label35.Text = "MVar";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label36.Location = new System.Drawing.Point(281, 24);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(21, 14);
+            this.label36.TabIndex = 49;
+            this.label36.Text = "kV";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label37.Location = new System.Drawing.Point(287, 69);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(21, 14);
+            this.label37.TabIndex = 49;
+            this.label37.Text = "kV";
             // 
             // frmMXdlg
             // 
@@ -1004,6 +1388,8 @@
             this.xtraTabPage1.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.date2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date1.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date1.Properties)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -1018,12 +1404,12 @@
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit8.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
@@ -1048,7 +1434,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date2.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1125,5 +1510,37 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private DevExpress.XtraEditors.ComboBoxEdit date2;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label30;
     }
 }

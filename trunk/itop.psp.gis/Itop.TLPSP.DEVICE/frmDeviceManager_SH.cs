@@ -29,7 +29,7 @@ namespace Itop.TLPSP.DEVICE
         #region 初始化
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut, UpdateNumber, barButtonItemDel, AllDele, barImportPsasp, bardevicetemplate, bdzStatic, xlStatic, barButtonItemclose });
+            bar.AddItems(new DevExpress.XtraBars.BarItem[] { barButtonItemIn, barButtonItemOut, UpdateNumber, barButtonItemDel, AllDele, barImportPsasp, bardevicetemplate, bdzStatic, xlStatic,dycopy, barButtonItemclose });
             
             barQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             barPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -84,7 +84,8 @@ namespace Itop.TLPSP.DEVICE
             string[] type = new string[] { "30" };
             InitDeviceType(type);
            // bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
-            splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
+            dycopy.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+             splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
         }
         //线路入口
         public void xldevice()
@@ -314,6 +315,64 @@ namespace Itop.TLPSP.DEVICE
             }
 
         }
+        private void dycopy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            object obj = curDevice.SelectedDevice;
+            if (obj is PSP_PowerSubstation_Info)
+            {
+                FrmcopyDYtitle frmdy = new FrmcopyDYtitle();
+                if (frmdy.ShowDialog()==DialogResult.OK)
+                {
+                    PSP_PowerSubstation_Info obj1 = new PSP_PowerSubstation_Info();
+                    Itop.Common.DataConverter.CopyTo<PSP_PowerSubstation_Info>(obj as PSP_PowerSubstation_Info, obj1);
+                    obj1.UID = Guid.NewGuid().ToString().Substring(24);
+                    obj1.Title = frmdy.DYTitle;
+                    UCDeviceBase.DataService.Create<PSP_PowerSubstation_Info>(obj1);
+                    IList<PSPDEV> listmx = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", "where 1=1 and SvgUID='" + ((PSP_PowerSubstation_Info)obj).UID + "'and type='01'");
+                   int number=0;
+                    foreach (PSPDEV pd in listmx)
+                   {
+                        number++;
+                       PSPDEV pv = new PSPDEV();
+                       Itop.Common.DataConverter.CopyTo<PSPDEV>(pd, pv);
+                       pv.SUID = Guid.NewGuid().ToString();
+                       pv.Name = frmdy.DYTitle + "G" + number;
+                       pv.SvgUID = obj1.UID;
+                       UCDeviceBase.DataService.Create<PSPDEV>(pv);
+                   }
+                    number = 0;
+                    IList<PSPDEV> listbyq = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", "where 1=1 and SvgUID='" + ((PSP_PowerSubstation_Info)obj).UID + "'and type='02'");
+                    foreach (PSPDEV pd in listbyq)
+                    {
+                        number++;
+                        PSPDEV pv = new PSPDEV();
+                        Itop.Common.DataConverter.CopyTo<PSPDEV>(pd, pv);
+                        pv.SUID = Guid.NewGuid().ToString();
+                        pv.Name = frmdy.DYTitle + "-变压器" + number;
+                        pv.SvgUID = obj1.UID;
+                        pv.IName = "";
+                        pv.JName = "";
+                        UCDeviceBase.DataService.Create<PSPDEV>(pv);
+                    }
+                    number = 0;
+                    IList<PSPDEV> listfdj = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", "where 1=1 and SvgUID='" + ((PSP_PowerSubstation_Info)obj).UID + "'and type='04'");
+                    foreach (PSPDEV pd in listfdj)
+                    {
+                        number++;
+                        PSPDEV pv = new PSPDEV();
+                        Itop.Common.DataConverter.CopyTo<PSPDEV>(pd, pv);
+                        pv.SUID = Guid.NewGuid().ToString();
+                        pv.Name = frmdy.DYTitle + "-发电机" + number;
+                        pv.SvgUID = obj1.UID;
+                        pv.IName = "";
+                        UCDeviceBase.DataService.Create<PSPDEV>(pv);
+                    }
+                }
+               
+            }
+            curDevice.Init();
+        }
+
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             TreeListNode node = treeList1.FocusedNode;
