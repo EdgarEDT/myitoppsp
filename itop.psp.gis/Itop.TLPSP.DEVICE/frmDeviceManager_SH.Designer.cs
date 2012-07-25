@@ -39,6 +39,7 @@
             
             this.bdzStatic = new DevExpress.XtraBars.BarButtonItem();
             this.xlStatic = new DevExpress.XtraBars.BarButtonItem();
+            this.dycopy = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -182,6 +183,16 @@
             this.xlStatic.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.xlStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.xlStatic.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.xlStatic_ItemClick);
+             // 
+            // dycopy
+            // 
+            this.dycopy.Caption = "复制";
+            this.dycopy.Id = 10;
+            this.dycopy.ImageIndex = 1;
+            this.dycopy.Name = "dycopy";
+            this.dycopy.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.dycopy.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.dycopy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.dycopy_ItemClick);
             // 
             // frmDeviceManager_SH
             // 
@@ -214,5 +225,6 @@
        
         private DevExpress.XtraBars.BarButtonItem bdzStatic;
         private DevExpress.XtraBars.BarButtonItem xlStatic;
+        private DevExpress.XtraBars.BarButtonItem dycopy;
     }
 }

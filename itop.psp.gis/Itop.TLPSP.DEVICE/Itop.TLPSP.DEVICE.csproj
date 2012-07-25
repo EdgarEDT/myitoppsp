@@ -745,6 +745,12 @@
     <Compile Include="frmAutojxt.Designer.cs">
       <DependentUpon>frmAutojxt.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmcopyDYtitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmcopyDYtitle.Designer.cs">
+      <DependentUpon>FrmcopyDYtitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDeviceManagerView2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1452,6 +1458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAutofh.resx">
       <DependentUpon>FrmAutofh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmcopyDYtitle.resx">
+      <DependentUpon>FrmcopyDYtitle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProjectManager_oldSH.resx">
       <DependentUpon>frmProjectManager_oldSH.cs</DependentUpon>

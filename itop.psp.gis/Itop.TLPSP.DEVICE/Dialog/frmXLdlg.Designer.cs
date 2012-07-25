@@ -29,7 +29,11 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.date2 = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -43,6 +47,8 @@
             this.radioGroup3 = new DevExpress.XtraEditors.RadioGroup();
             this.comboBoxEdit8 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxEdit6 = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -52,9 +58,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit9 = new DevExpress.XtraEditors.LookUpEdit();
             this.textEdit1 = new DevExpress.XtraEditors.ButtonEdit();
             this.spinEdit18 = new DevExpress.XtraEditors.SpinEdit();
@@ -66,9 +80,7 @@
             this.label41 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.splength2 = new DevExpress.XtraEditors.SpinEdit();
             this.spinEdit6 = new DevExpress.XtraEditors.SpinEdit();
-            this.label42 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.spinEdit8 = new DevExpress.XtraEditors.SpinEdit();
             this.spinEdit11 = new DevExpress.XtraEditors.SpinEdit();
@@ -80,22 +92,33 @@
             this.label43 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.comllfs = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.splength2 = new DevExpress.XtraEditors.SpinEdit();
             this.label45 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.jkjy = new DevExpress.XtraEditors.SpinEdit();
             this.label44 = new System.Windows.Forms.Label();
             this.spkg = new DevExpress.XtraEditors.SpinEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.label35 = new System.Windows.Forms.Label();
             this.spinEdit21 = new DevExpress.XtraEditors.SpinEdit();
             this.spinEdit22 = new DevExpress.XtraEditors.SpinEdit();
             this.label39 = new System.Windows.Forms.Label();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.spinEdit17 = new DevExpress.XtraEditors.SpinEdit();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.label14 = new System.Windows.Forms.Label();
             this.spinEdit2 = new DevExpress.XtraEditors.SpinEdit();
             this.label31 = new System.Windows.Forms.Label();
@@ -109,6 +132,12 @@
             this.label40 = new System.Windows.Forms.Label();
             this.spinEdit16 = new DevExpress.XtraEditors.SpinEdit();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -192,12 +221,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.comlinetype2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit7.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splength2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comllfs.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splength2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jkjy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spkg.Properties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
@@ -235,13 +264,10 @@
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.xtraTabControl1.Location = new System.Drawing.Point(14, 14);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(674, 567);
+            this.xtraTabControl1.Size = new System.Drawing.Size(674, 484);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -251,6 +277,7 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.labelControl26);
             this.xtraTabPage1.Controls.Add(this.groupBox9);
             this.xtraTabPage1.Controls.Add(this.buttonEdit2);
             this.xtraTabPage1.Controls.Add(this.label47);
@@ -269,12 +296,25 @@
             this.xtraTabPage1.Controls.Add(this.label44);
             this.xtraTabPage1.Controls.Add(this.spkg);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(667, 537);
+            this.xtraTabPage1.Size = new System.Drawing.Size(667, 454);
             this.xtraTabPage1.Text = "基本信息";
             this.xtraTabPage1.Paint += new System.Windows.Forms.PaintEventHandler(this.xtraTabPage1_Paint);
             // 
+            // labelControl26
+            // 
+            this.labelControl26.Appearance.Font = new System.Drawing.Font("Tahoma", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl26.Appearance.Options.UseFont = true;
+            this.labelControl26.Location = new System.Drawing.Point(14, 381);
+            this.labelControl26.Name = "labelControl26";
+            this.labelControl26.Size = new System.Drawing.Size(193, 48);
+            this.labelControl26.TabIndex = 45;
+            this.labelControl26.Text = "注释：\r\n电力平衡、统计和建设项目用红色*表示\r\n电气计算用蓝色*表示\r\n短路计算用黄色*表示";
+            // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.labelControl2);
+            this.groupBox9.Controls.Add(this.labelControl1);
+            this.groupBox9.Controls.Add(this.labelControl6);
             this.groupBox9.Controls.Add(this.label49);
             this.groupBox9.Controls.Add(this.label48);
             this.groupBox9.Controls.Add(this.date2);
@@ -287,6 +327,36 @@
             this.groupBox9.TabIndex = 21;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "数据有效时间范围";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(287, 87);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(7, 14);
+            this.labelControl2.TabIndex = 25;
+            this.labelControl2.Text = "*";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(288, 58);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(7, 14);
+            this.labelControl1.TabIndex = 24;
+            this.labelControl1.Text = "*";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl6.Appearance.Options.UseForeColor = true;
+            this.labelControl6.Location = new System.Drawing.Point(287, 30);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(7, 14);
+            this.labelControl6.TabIndex = 23;
+            this.labelControl6.Text = "*";
             // 
             // label49
             // 
@@ -420,6 +490,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.labelControl10);
+            this.groupBox5.Controls.Add(this.labelControl9);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.comboBoxEdit6);
@@ -435,6 +507,26 @@
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "拓扑连接";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl10.Appearance.Options.UseForeColor = true;
+            this.labelControl10.Location = new System.Drawing.Point(178, 91);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(7, 14);
+            this.labelControl10.TabIndex = 29;
+            this.labelControl10.Text = "*";
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl9.Appearance.Options.UseForeColor = true;
+            this.labelControl9.Location = new System.Drawing.Point(178, 51);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(7, 14);
+            this.labelControl9.TabIndex = 28;
+            this.labelControl9.Text = "*";
             // 
             // label10
             // 
@@ -519,6 +611,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.labelControl11);
             this.groupBox4.Controls.Add(this.panelControl1);
             this.groupBox4.Controls.Add(this.radioGroup1);
             this.groupBox4.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -528,6 +621,16 @@
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "运行状态";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl11.Appearance.Options.UseForeColor = true;
+            this.labelControl11.Location = new System.Drawing.Point(120, 44);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(7, 14);
+            this.labelControl11.TabIndex = 28;
+            this.labelControl11.Text = "*";
             // 
             // panelControl1
             // 
@@ -556,6 +659,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelControl13);
+            this.groupBox1.Controls.Add(this.labelControl8);
+            this.groupBox1.Controls.Add(this.labelControl7);
+            this.groupBox1.Controls.Add(this.labelControl12);
+            this.groupBox1.Controls.Add(this.labelControl5);
+            this.groupBox1.Controls.Add(this.labelControl4);
+            this.groupBox1.Controls.Add(this.labelControl3);
             this.groupBox1.Controls.Add(this.comboBoxEdit9);
             this.groupBox1.Controls.Add(this.textEdit1);
             this.groupBox1.Controls.Add(this.spinEdit18);
@@ -583,6 +693,76 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "线路基本信息";
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl13.Appearance.Options.UseForeColor = true;
+            this.labelControl13.Location = new System.Drawing.Point(284, 225);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(7, 14);
+            this.labelControl13.TabIndex = 27;
+            this.labelControl13.Text = "*";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl8.Appearance.Options.UseForeColor = true;
+            this.labelControl8.Location = new System.Drawing.Point(284, 162);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(7, 14);
+            this.labelControl8.TabIndex = 27;
+            this.labelControl8.Text = "*";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Location = new System.Drawing.Point(284, 98);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(7, 14);
+            this.labelControl7.TabIndex = 26;
+            this.labelControl7.Text = "*";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl12.Appearance.Options.UseForeColor = true;
+            this.labelControl12.Location = new System.Drawing.Point(284, 196);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(7, 14);
+            this.labelControl12.TabIndex = 25;
+            this.labelControl12.Text = "*";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl5.Appearance.Options.UseForeColor = true;
+            this.labelControl5.Location = new System.Drawing.Point(284, 252);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(7, 14);
+            this.labelControl5.TabIndex = 25;
+            this.labelControl5.Text = "*";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl4.Appearance.Options.UseForeColor = true;
+            this.labelControl4.Location = new System.Drawing.Point(284, 317);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(7, 14);
+            this.labelControl4.TabIndex = 24;
+            this.labelControl4.Text = "*";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Location = new System.Drawing.Point(284, 288);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(7, 14);
+            this.labelControl3.TabIndex = 23;
+            this.labelControl3.Text = "*";
             // 
             // comboBoxEdit9
             // 
@@ -726,31 +906,6 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "导线型号";
             // 
-            // splength2
-            // 
-            this.splength2.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.splength2.Location = new System.Drawing.Point(101, 495);
-            this.splength2.Name = "splength2";
-            this.splength2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.splength2.Properties.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.splength2.Properties.MaxValue = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.splength2.Size = new System.Drawing.Size(181, 21);
-            this.splength2.TabIndex = 6;
-            this.splength2.Visible = false;
-            // 
             // spinEdit6
             // 
             this.spinEdit6.EditValue = new decimal(new int[] {
@@ -774,17 +929,6 @@
             0});
             this.spinEdit6.Size = new System.Drawing.Size(181, 21);
             this.spinEdit6.TabIndex = 5;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.ForeColor = System.Drawing.Color.Black;
-            this.label42.Location = new System.Drawing.Point(13, 501);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(67, 14);
-            this.label42.TabIndex = 7;
-            this.label42.Text = "电缆线长度";
-            this.label42.Visible = false;
             // 
             // label6
             // 
@@ -940,6 +1084,31 @@
             this.comllfs.Visible = false;
             this.comllfs.SelectedIndexChanged += new System.EventHandler(this.comboBoxEdit2_SelectedIndexChanged);
             // 
+            // splength2
+            // 
+            this.splength2.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.splength2.Location = new System.Drawing.Point(101, 495);
+            this.splength2.Name = "splength2";
+            this.splength2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.splength2.Properties.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.splength2.Properties.MaxValue = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.splength2.Size = new System.Drawing.Size(181, 21);
+            this.splength2.TabIndex = 6;
+            this.splength2.Visible = false;
+            // 
             // label45
             // 
             this.label45.AutoSize = true;
@@ -950,6 +1119,17 @@
             this.label45.TabIndex = 7;
             this.label45.Text = "架空线绝缘导线";
             this.label45.Visible = false;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.ForeColor = System.Drawing.Color.Black;
+            this.label42.Location = new System.Drawing.Point(13, 501);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(67, 14);
+            this.label42.TabIndex = 7;
+            this.label42.Text = "电缆线长度";
+            this.label42.Visible = false;
             // 
             // jkjy
             // 
@@ -1005,11 +1185,13 @@
             this.xtraTabPage2.Controls.Add(this.groupBox2);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.PageVisible = false;
-            this.xtraTabPage2.Size = new System.Drawing.Size(667, 537);
+            this.xtraTabPage2.Size = new System.Drawing.Size(667, 454);
             this.xtraTabPage2.Text = "阻抗及线路容量";
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.labelControl28);
+            this.groupBox8.Controls.Add(this.labelControl27);
             this.groupBox8.Controls.Add(this.label35);
             this.groupBox8.Controls.Add(this.spinEdit21);
             this.groupBox8.Controls.Add(this.spinEdit22);
@@ -1021,11 +1203,31 @@
             this.groupBox8.TabIndex = 26;
             this.groupBox8.TabStop = false;
             // 
+            // labelControl28
+            // 
+            this.labelControl28.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl28.Appearance.Options.UseForeColor = true;
+            this.labelControl28.Location = new System.Drawing.Point(458, 24);
+            this.labelControl28.Name = "labelControl28";
+            this.labelControl28.Size = new System.Drawing.Size(7, 14);
+            this.labelControl28.TabIndex = 29;
+            this.labelControl28.Text = "*";
+            // 
+            // labelControl27
+            // 
+            this.labelControl27.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl27.Appearance.Options.UseForeColor = true;
+            this.labelControl27.Location = new System.Drawing.Point(226, 22);
+            this.labelControl27.Name = "labelControl27";
+            this.labelControl27.Size = new System.Drawing.Size(7, 14);
+            this.labelControl27.TabIndex = 28;
+            this.labelControl27.Text = "*";
+            // 
             // label35
             // 
             this.label35.AutoSize = true;
             this.label35.ForeColor = System.Drawing.Color.Black;
-            this.label35.Location = new System.Drawing.Point(254, 24);
+            this.label35.Location = new System.Drawing.Point(254, 22);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(79, 14);
             this.label35.TabIndex = 14;
@@ -1072,7 +1274,7 @@
             // simpleButton3
             // 
             this.simpleButton3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.simpleButton3.Location = new System.Drawing.Point(568, 166);
+            this.simpleButton3.Location = new System.Drawing.Point(568, 125);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(87, 37);
             this.simpleButton3.TabIndex = 14;
@@ -1081,6 +1283,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.labelControl29);
             this.groupBox7.Controls.Add(this.label12);
             this.groupBox7.Controls.Add(this.label13);
             this.groupBox7.Controls.Add(this.spinEdit17);
@@ -1091,6 +1294,16 @@
             this.groupBox7.TabIndex = 25;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "线路容量";
+            // 
+            // labelControl29
+            // 
+            this.labelControl29.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl29.Appearance.Options.UseForeColor = true;
+            this.labelControl29.Location = new System.Drawing.Point(128, 58);
+            this.labelControl29.Name = "labelControl29";
+            this.labelControl29.Size = new System.Drawing.Size(7, 14);
+            this.labelControl29.TabIndex = 28;
+            this.labelControl29.Text = "*";
             // 
             // label12
             // 
@@ -1119,7 +1332,7 @@
             0,
             0,
             0});
-            this.spinEdit17.Location = new System.Drawing.Point(50, 51);
+            this.spinEdit17.Location = new System.Drawing.Point(48, 54);
             this.spinEdit17.Name = "spinEdit17";
             this.spinEdit17.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -1128,6 +1341,12 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.labelControl25);
+            this.groupBox6.Controls.Add(this.labelControl24);
+            this.groupBox6.Controls.Add(this.labelControl23);
+            this.groupBox6.Controls.Add(this.labelControl22);
+            this.groupBox6.Controls.Add(this.labelControl21);
+            this.groupBox6.Controls.Add(this.labelControl20);
             this.groupBox6.Controls.Add(this.label14);
             this.groupBox6.Controls.Add(this.spinEdit2);
             this.groupBox6.Controls.Add(this.label31);
@@ -1147,6 +1366,66 @@
             this.groupBox6.TabIndex = 13;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "阻抗信息";
+            // 
+            // labelControl25
+            // 
+            this.labelControl25.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl25.Appearance.Options.UseForeColor = true;
+            this.labelControl25.Location = new System.Drawing.Point(458, 83);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(7, 14);
+            this.labelControl25.TabIndex = 33;
+            this.labelControl25.Text = "*";
+            // 
+            // labelControl24
+            // 
+            this.labelControl24.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl24.Appearance.Options.UseForeColor = true;
+            this.labelControl24.Location = new System.Drawing.Point(296, 81);
+            this.labelControl24.Name = "labelControl24";
+            this.labelControl24.Size = new System.Drawing.Size(7, 14);
+            this.labelControl24.TabIndex = 32;
+            this.labelControl24.Text = "*";
+            // 
+            // labelControl23
+            // 
+            this.labelControl23.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl23.Appearance.Options.UseForeColor = true;
+            this.labelControl23.Location = new System.Drawing.Point(147, 83);
+            this.labelControl23.Name = "labelControl23";
+            this.labelControl23.Size = new System.Drawing.Size(7, 14);
+            this.labelControl23.TabIndex = 31;
+            this.labelControl23.Text = "*";
+            // 
+            // labelControl22
+            // 
+            this.labelControl22.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl22.Appearance.Options.UseForeColor = true;
+            this.labelControl22.Location = new System.Drawing.Point(458, 40);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(7, 14);
+            this.labelControl22.TabIndex = 30;
+            this.labelControl22.Text = "*";
+            // 
+            // labelControl21
+            // 
+            this.labelControl21.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl21.Appearance.Options.UseForeColor = true;
+            this.labelControl21.Location = new System.Drawing.Point(296, 33);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(7, 14);
+            this.labelControl21.TabIndex = 29;
+            this.labelControl21.Text = "*";
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl20.Appearance.Options.UseForeColor = true;
+            this.labelControl20.Location = new System.Drawing.Point(147, 37);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(7, 14);
+            this.labelControl20.TabIndex = 28;
+            this.labelControl20.Text = "*";
             // 
             // label14
             // 
@@ -1294,6 +1573,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.labelControl19);
+            this.groupBox2.Controls.Add(this.labelControl18);
+            this.groupBox2.Controls.Add(this.labelControl17);
+            this.groupBox2.Controls.Add(this.labelControl16);
+            this.groupBox2.Controls.Add(this.labelControl15);
+            this.groupBox2.Controls.Add(this.labelControl14);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.label25);
@@ -1321,6 +1606,66 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "单位长度阻抗信息";
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl19.Appearance.Options.UseForeColor = true;
+            this.labelControl19.Location = new System.Drawing.Point(548, 83);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(7, 14);
+            this.labelControl19.TabIndex = 33;
+            this.labelControl19.Text = "*";
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl18.Appearance.Options.UseForeColor = true;
+            this.labelControl18.Location = new System.Drawing.Point(351, 83);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(7, 14);
+            this.labelControl18.TabIndex = 32;
+            this.labelControl18.Text = "*";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl17.Appearance.Options.UseForeColor = true;
+            this.labelControl17.Location = new System.Drawing.Point(155, 83);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(7, 14);
+            this.labelControl17.TabIndex = 31;
+            this.labelControl17.Text = "*";
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl16.Appearance.Options.UseForeColor = true;
+            this.labelControl16.Location = new System.Drawing.Point(548, 37);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(7, 14);
+            this.labelControl16.TabIndex = 30;
+            this.labelControl16.Text = "*";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl15.Appearance.Options.UseForeColor = true;
+            this.labelControl15.Location = new System.Drawing.Point(351, 36);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(7, 14);
+            this.labelControl15.TabIndex = 29;
+            this.labelControl15.Text = "*";
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelControl14.Appearance.Options.UseForeColor = true;
+            this.labelControl14.Location = new System.Drawing.Point(156, 36);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(7, 14);
+            this.labelControl14.TabIndex = 28;
+            this.labelControl14.Text = "*";
             // 
             // label23
             // 
@@ -1777,7 +2122,7 @@
             this.xtraTabPage4.Controls.Add(this.gridControl1);
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.PageVisible = false;
-            this.xtraTabPage4.Size = new System.Drawing.Size(667, 537);
+            this.xtraTabPage4.Size = new System.Drawing.Size(667, 454);
             this.xtraTabPage4.Text = "线路经过地块";
             // 
             // gridControl1
@@ -1791,7 +2136,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView2;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(667, 537);
+            this.gridControl1.Size = new System.Drawing.Size(667, 454);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1925,34 +2270,31 @@
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton4.Location = new System.Drawing.Point(367, 587);
+            this.simpleButton4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.simpleButton4.Location = new System.Drawing.Point(367, 517);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(94, 27);
+            this.simpleButton4.Size = new System.Drawing.Size(94, 22);
             this.simpleButton4.TabIndex = 22;
             this.simpleButton4.Text = "详细信息";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton1.Location = new System.Drawing.Point(474, 588);
+            this.simpleButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.simpleButton1.Location = new System.Drawing.Point(474, 518);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(87, 27);
+            this.simpleButton1.Size = new System.Drawing.Size(87, 22);
             this.simpleButton1.TabIndex = 15;
             this.simpleButton1.Text = "确认";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.simpleButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(568, 588);
+            this.simpleButton2.Location = new System.Drawing.Point(568, 518);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(87, 27);
+            this.simpleButton2.Size = new System.Drawing.Size(87, 22);
             this.simpleButton2.TabIndex = 16;
             this.simpleButton2.Text = "取消";
             // 
@@ -1982,7 +2324,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 622);
+            this.ClientSize = new System.Drawing.Size(702, 547);
             this.Controls.Add(this.simpleButton4);
             this.Controls.Add(this.buttonEdit1);
             this.Controls.Add(this.label46);
@@ -2017,6 +2359,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -2027,12 +2370,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.comlinetype2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit7.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splength2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comllfs.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splength2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jkjy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spkg.Properties)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
@@ -2216,5 +2559,34 @@
         private DevExpress.XtraEditors.ComboBoxEdit date2;
         private DevExpress.XtraEditors.ComboBoxEdit date1;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.LabelControl labelControl26;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl28;
+        private DevExpress.XtraEditors.LabelControl labelControl27;
+        private DevExpress.XtraEditors.LabelControl labelControl29;
+        private DevExpress.XtraEditors.LabelControl labelControl25;
+        private DevExpress.XtraEditors.LabelControl labelControl24;
+        private DevExpress.XtraEditors.LabelControl labelControl23;
+        private DevExpress.XtraEditors.LabelControl labelControl22;
+        private DevExpress.XtraEditors.LabelControl labelControl21;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
     }  
 }

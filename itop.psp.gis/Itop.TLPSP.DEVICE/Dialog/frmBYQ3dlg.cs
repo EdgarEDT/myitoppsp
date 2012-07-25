@@ -541,16 +541,19 @@ namespace Itop.TLPSP.DEVICE
                     Vi = (Convert.ToDouble(DeviceMx.Vij) + Convert.ToDouble(DeviceMx.Vik) - Convert.ToDouble(DeviceMx.Vjk)) / 2;
                     Vj = (Convert.ToDouble(DeviceMx.Vij) + Convert.ToDouble(DeviceMx.Vjk) - Convert.ToDouble(DeviceMx.Vik)) / 2;
                     Vk = (Convert.ToDouble(DeviceMx.Vik) + Convert.ToDouble(DeviceMx.Vjk) - Convert.ToDouble(DeviceMx.Vij)) / 2;
-                    DeviceMx.HuganTQ4 = Vi * 100 / (100 * 100 * SN);
+                   DeviceMx.HuganTQ4 = Vi * 100 / (100 * 100 * SN);
                     DeviceMx.HuganTQ5 = Vj * 100 / (100 * 100 * SN);
                     DeviceMx.ZeroTQ = (Vk * 100 / (100 * 100 * SN));
+                    spinEdit60.Value  = (decimal)dev.HuganTQ4;
+                    spinEdit59.Value =(decimal)dev.HuganTQ5 ;
+                    spinEdit58.Value= (decimal)dev.ZeroTQ ;
                     DeviceMx.K = (Convert.ToDouble(DeviceMx.Vimax) - Convert.ToDouble(DeviceMx.Vi0) * Convert.ToDouble(DeviceMx.Vistep) * (Convert.ToDouble(DeviceMx.Vipos) - 1) / 100) / Convert.ToDouble(DeviceMx.Vib);
                     DeviceMx.StandardCurrent = (Convert.ToDouble(DeviceMx.Vjmax) - Convert.ToDouble(DeviceMx.Vj0) * Convert.ToDouble(DeviceMx.Vjstep) * (Convert.ToDouble(DeviceMx.Vjpos) - 1) / 100) / Convert.ToDouble(DeviceMx.Vjb);
                     DeviceMx.BigP = (Convert.ToDouble(DeviceMx.Vkmax) - Convert.ToDouble(DeviceMx.Vk0) * Convert.ToDouble(DeviceMx.Vkstep) * (Convert.ToDouble(DeviceMx.Vkpos) - 1) / 100) / Convert.ToDouble(DeviceMx.Vkb);
                 }
                 catch (System.Exception ex)
                 {
-                    MessageBox.Show("请填写相应抽头信息！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("请填写相应额定容量、抽头等信息！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }  
             }
         }

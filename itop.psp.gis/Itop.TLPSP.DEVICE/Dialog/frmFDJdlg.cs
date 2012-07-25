@@ -48,7 +48,8 @@ namespace Itop.TLPSP.DEVICE
                 dev.Vjmax = (double)spinEdit3.Value;
                 dev.Vjmin = (double)spinEdit4.Value;
                 dev.Vkb = (double)spinEdit21.Value;
-              
+                dev.HuganTQ1 = (double)spinEdit50.Value;
+                dev.HuganTQ2 = (double)spinEdit49.Value;
                 dev.ProjectID = ProjectSUID;
                 dev.LineType = textEdit2.Text;
                 dev.Date1 = date1.Text;
@@ -85,7 +86,8 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit3.Value = (decimal)dev.Vjmax;
                 spinEdit4.Value = (decimal)dev.Vjmin;
                 spinEdit21.Value = (decimal)dev.Vkb;
-              
+               spinEdit50.Value = (decimal)dev.HuganTQ1 ;
+               spinEdit49.Value = (decimal)dev.HuganTQ2 ;
                 textEdit2.Text = dev.LineType;
                 date1.Text = dev.Date1;
                 date2.Text = dev.Date2;
@@ -396,5 +398,22 @@ namespace Itop.TLPSP.DEVICE
             }
             this.DialogResult = DialogResult.OK;
         }
+
+        private void spinEdit9_EditValueChanged(object sender, EventArgs e)
+        {
+            if (spinEdit11.Value != 0)
+            {
+                spinEdit21.Value = (decimal)(spinEdit9.Value / spinEdit11.Value);
+            }
+        }
+
+        private void spinEdit11_EditValueChanged(object sender, EventArgs e)
+        {
+            if (spinEdit9.Value != 0)
+            {
+                spinEdit21.Value = (decimal)(spinEdit9.Value / spinEdit11.Value);
+            }
+        }
+
     }
 }
