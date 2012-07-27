@@ -524,9 +524,10 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
            // LoadImage = true;
             fmain.InitShape();
             fmain.Init(progtype);
-            fmain.InitScaleRatio();
-            fmain.OpenGHQYpropetty(TypeTitle);
+            fmain.InitScaleRatio(); 
             fmain.LayerManagerShow();
+            fmain.OpenGHQYpropetty(TypeTitle);
+         
             
             
             if (fmain.DialogResult==DialogResult.OK)
