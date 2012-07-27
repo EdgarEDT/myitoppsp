@@ -281,6 +281,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.radioGroup5 = new DevExpress.XtraEditors.RadioGroup();
             this.radioGroup6 = new DevExpress.XtraEditors.RadioGroup();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -430,7 +431,7 @@
             // 
             this.labelControl26.Appearance.Font = new System.Drawing.Font("Tahoma", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl26.Appearance.Options.UseFont = true;
-            this.labelControl26.Location = new System.Drawing.Point(338, 386);
+            this.labelControl26.Location = new System.Drawing.Point(338, 384);
             this.labelControl26.Name = "labelControl26";
             this.labelControl26.Size = new System.Drawing.Size(193, 48);
             this.labelControl26.TabIndex = 44;
@@ -710,12 +711,13 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.labelControl12);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.radioGroup3);
             this.groupBox3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.groupBox3.Location = new System.Drawing.Point(338, 188);
+            this.groupBox3.Location = new System.Drawing.Point(338, 190);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(310, 58);
+            this.groupBox3.Size = new System.Drawing.Size(310, 56);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "单位";
@@ -725,7 +727,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(226, 20);
+            this.label5.Location = new System.Drawing.Point(128, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 14);
             this.label5.TabIndex = 7;
@@ -734,7 +736,7 @@
             // radioGroup3
             // 
             this.radioGroup3.EditValue = "1";
-            this.radioGroup3.Location = new System.Drawing.Point(24, 16);
+            this.radioGroup3.Location = new System.Drawing.Point(16, 13);
             this.radioGroup3.Name = "radioGroup3";
             this.radioGroup3.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.radioGroup3.Properties.Appearance.Options.UseBackColor = true;
@@ -742,7 +744,7 @@
             this.radioGroup3.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "p.u."),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "Ohm/10     Siem")});
-            this.radioGroup3.Size = new System.Drawing.Size(260, 34);
+            this.radioGroup3.Size = new System.Drawing.Size(122, 45);
             this.radioGroup3.TabIndex = 1;
             // 
             // groupBox5
@@ -3565,6 +3567,18 @@
             this.radioGroup6.Size = new System.Drawing.Size(146, 27);
             this.radioGroup6.TabIndex = 4;
             // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl12.Appearance.Options.UseFont = true;
+            this.labelControl12.Appearance.Options.UseForeColor = true;
+            this.labelControl12.Location = new System.Drawing.Point(150, 13);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(144, 22);
+            this.labelControl12.TabIndex = 9;
+            this.labelControl12.Text = "影响：\r\n三绕组变压器的电阻、电抗、电纳！";
+            // 
             // frmBYQ3dlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -3980,5 +3994,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl43;
         private DevExpress.XtraEditors.LabelControl labelControl42;
         private DevExpress.XtraEditors.LabelControl labelControl41;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
     }
 }

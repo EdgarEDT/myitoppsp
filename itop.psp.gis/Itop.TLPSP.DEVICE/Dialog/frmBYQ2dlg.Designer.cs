@@ -224,6 +224,7 @@
             this.spinEdit43 = new DevExpress.XtraEditors.SpinEdit();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -502,6 +503,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.labelControl34);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.radioGroup3);
             this.groupBox3.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -517,7 +519,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(155, 44);
+            this.label5.Location = new System.Drawing.Point(133, 48);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 14);
             this.label5.TabIndex = 7;
@@ -526,7 +528,7 @@
             // radioGroup3
             // 
             this.radioGroup3.EditValue = "1";
-            this.radioGroup3.Location = new System.Drawing.Point(78, 15);
+            this.radioGroup3.Location = new System.Drawing.Point(20, 18);
             this.radioGroup3.Name = "radioGroup3";
             this.radioGroup3.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.radioGroup3.Properties.Appearance.Options.UseBackColor = true;
@@ -2794,6 +2796,18 @@
             this.labelControl9.TabIndex = 28;
             this.labelControl9.Text = "注释：\r\n电力平衡、统计和建设项目用红色*表示\r\n电气计算用蓝色*表示\r\n短路计算用黄色*表示";
             // 
+            // labelControl34
+            // 
+            this.labelControl34.Appearance.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl34.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl34.Appearance.Options.UseFont = true;
+            this.labelControl34.Appearance.Options.UseForeColor = true;
+            this.labelControl34.Location = new System.Drawing.Point(93, 21);
+            this.labelControl34.Name = "labelControl34";
+            this.labelControl34.Size = new System.Drawing.Size(144, 22);
+            this.labelControl34.TabIndex = 8;
+            this.labelControl34.Text = "影响：\r\n两绕组变压器的电阻、电抗、电纳！";
+            // 
             // frmBYQ2dlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -3119,5 +3133,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.LabelControl labelControl28;
         private DevExpress.XtraEditors.LabelControl labelControl27;
+        private DevExpress.XtraEditors.LabelControl labelControl34;
     }
 }

@@ -149,6 +149,25 @@ namespace Itop.TLPSP.DEVICE
                 spinEdit12.Value = (decimal)rc.ZeroTQ;
                 spinEdit10.Value = (decimal)rc.ZeroGNDC;
                 spinEdit17.Value = (decimal)rc.WireChange;
+
+                if (radioGroup3.SelectedIndex == 0)
+                {
+                    spinEdit16.Value = spinEdit1.Value * spinEdit6.Value * 100 / (spinEdit11.Value * spinEdit11.Value);
+                    spinEdit15.Value = spinEdit7.Value * spinEdit6.Value * 100 / (spinEdit11.Value * spinEdit11.Value);
+                    spinEdit14.Value = spinEdit9.Value * spinEdit6.Value * (spinEdit11.Value * spinEdit11.Value) / 100000000 / 2;
+                    spinEdit4.Value = spinEdit13.Value * spinEdit6.Value * 100 / (spinEdit11.Value * spinEdit11.Value);
+                    spinEdit3.Value = spinEdit12.Value * spinEdit6.Value * 100 / (spinEdit11.Value * spinEdit11.Value);
+                    spinEdit2.Value = spinEdit10.Value * spinEdit6.Value * (spinEdit11.Value * spinEdit11.Value) / 100000000 / 2;
+                }
+                else
+                {
+                    spinEdit16.Value = spinEdit1.Value * spinEdit6.Value;
+                    spinEdit15.Value = spinEdit7.Value * spinEdit6.Value;
+                    spinEdit14.Value = spinEdit9.Value * spinEdit6.Value / 2;
+                    spinEdit4.Value = spinEdit13.Value * spinEdit6.Value;
+                    spinEdit3.Value = spinEdit12.Value * spinEdit6.Value;
+                    spinEdit2.Value = spinEdit10.Value * spinEdit6.Value / 2;
+                }
             }
         }
         public frmXLdlg() {
@@ -850,11 +869,11 @@ namespace Itop.TLPSP.DEVICE
             date1.Text = comboBoxEdit1.Text;
             if (Convert.ToInt32(comboBoxEdit1.Text) <= DateTime.Now.Year)
             {
-                comboBoxEdit2.Text = "现状";
+                comboBoxEdit8.Text = "现状";
             }
             else
             {
-                comboBoxEdit2.Text = "规划";
+                comboBoxEdit8.Text = "规划";
             }
         }
 
@@ -883,6 +902,11 @@ namespace Itop.TLPSP.DEVICE
                         comboBoxEdit2.Properties.Items.Add(sub.WireType);
                     }
                 }
+        }
+
+        private void radioGroup3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label30.Visible = true;
         }
 
         /// <summary>

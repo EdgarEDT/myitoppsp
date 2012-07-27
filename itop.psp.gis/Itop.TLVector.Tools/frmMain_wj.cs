@@ -748,14 +748,28 @@ namespace ItopVector.Tools {
                             XmlElement _x = (XmlElement)useList[m];
 
                             string sid = _x.GetAttribute("Deviceid");
-                            PSP_Substation_Info pl = new PSP_Substation_Info();
-                            pl.UID = sid;
-                            //pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
-                            pl = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoByKey", pl);
-                            if (pl != null) {
-                                sumSub = sumSub + pl.L2;  //现有的容量
+                            if (!string.IsNullOrEmpty(sid))         //说明式变电站
+                            {
+                                PSP_Substation_Info pl = new PSP_Substation_Info();
+                                pl.UID = sid;
+                                //pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                pl = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoByKey", pl);
+                                if (pl != null)
+                                {
+                                    sumSub = sumSub + pl.L2;  //现有的容量
+                                    _x.SetAttribute("rl", pl.L2.ToString());
+                                }
                             }
-                            _x.SetAttribute("rl", pl.L2.ToString());
+                            else      //可能是第一次规划后的变电站
+                            {
+                                string rl = _x.GetAttribute("rl");
+                                if (!string.IsNullOrEmpty(rl))
+                                {
+                                    _x.SetAttribute("xzflag", "");
+                                    sumSub = sumSub + Convert.ToDouble(rl);  //现有的容量
+                                }
+                            }
+                           
                         }
                         ArrayList extsublist = new ArrayList();
                         //创建新的图层放置显示的链接线路

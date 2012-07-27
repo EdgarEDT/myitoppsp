@@ -544,7 +544,7 @@ namespace Itop.TLPSP.DEVICE
                 IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
                 {
-                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(bdz.L29))
+                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(bdz.L29) && !string.IsNullOrEmpty(bdz.L28))
                     {
                         if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(bdz.L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(bdz.L29))
                         {

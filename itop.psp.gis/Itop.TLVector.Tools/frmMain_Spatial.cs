@@ -10858,13 +10858,22 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                 {
                                     tlVectorControl1.SVGDocument.RootElement.RemoveChild(tlVectorControl1.SVGDocument.CurrentElement);
                                 }
-                                if (f.DialogResult==DialogResult.OK)
+                                if (f.DialogResult == DialogResult.OK)
                                 {
                                     //this.Close();
-                                    this.Visible = false;
                                     frmlar.Visible = false;
+                                    this.Visible = false;
+                                   
                                     this.DialogResult = DialogResult.OK;
                                 }
+                                else if (f.DialogResult == DialogResult.Cancel)
+                                {
+                                    frmlar.Visible = false; ;
+                                    this.Visible = false;
+                                    
+                                    this.DialogResult = DialogResult.OK;
+                                }
+                               
                                 //tlVectorControl1.Refresh();
                             }
                             else
@@ -10884,7 +10893,14 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                 f.Str = s1;
                                 f.ShowDialog();
                                 if (f.DialogResult == DialogResult.OK) {
-                                    this.Close();
+                                    frmlar.Visible = false; ;
+                                    this.Visible = false;
+                                    this.DialogResult = DialogResult.OK;
+                                }
+                                else if (f.DialogResult == DialogResult.Cancel)
+                                {
+                                    frmlar.Visible = false; ;
+                                    this.Visible = false;
                                     this.DialogResult = DialogResult.OK;
                                 }
                             }
