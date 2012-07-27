@@ -43,6 +43,7 @@
             this.buttonEdit2 = new DevExpress.XtraEditors.ButtonEdit();
             this.label47 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
             this.label5 = new System.Windows.Forms.Label();
             this.radioGroup3 = new DevExpress.XtraEditors.RadioGroup();
             this.comboBoxEdit8 = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -441,6 +442,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.labelControl30);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.radioGroup3);
             this.groupBox3.ForeColor = System.Drawing.Color.RoyalBlue;
@@ -451,12 +453,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "单位";
             // 
+            // labelControl30
+            // 
+            this.labelControl30.Appearance.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl30.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl30.Appearance.Options.UseFont = true;
+            this.labelControl30.Appearance.Options.UseForeColor = true;
+            this.labelControl30.Location = new System.Drawing.Point(152, 26);
+            this.labelControl30.Name = "labelControl30";
+            this.labelControl30.Size = new System.Drawing.Size(135, 33);
+            this.labelControl30.TabIndex = 2;
+            this.labelControl30.Text = "影响：\r\n线路的电阻、电抗、电纳、\r\n零序电阻、零序电抗和零序电纳！";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(155, 44);
+            this.label5.Location = new System.Drawing.Point(128, 41);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 14);
             this.label5.TabIndex = 1;
@@ -465,7 +479,7 @@
             // radioGroup3
             // 
             this.radioGroup3.EditValue = "1";
-            this.radioGroup3.Location = new System.Drawing.Point(78, 15);
+            this.radioGroup3.Location = new System.Drawing.Point(20, 16);
             this.radioGroup3.Name = "radioGroup3";
             this.radioGroup3.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.radioGroup3.Properties.Appearance.Options.UseBackColor = true;
@@ -475,6 +489,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "Ohm/10     Siem")});
             this.radioGroup3.Size = new System.Drawing.Size(147, 63);
             this.radioGroup3.TabIndex = 0;
+            this.radioGroup3.SelectedIndexChanged += new System.EventHandler(this.radioGroup3_SelectedIndexChanged);
             // 
             // comboBoxEdit8
             // 
@@ -1274,7 +1289,7 @@
             // simpleButton3
             // 
             this.simpleButton3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.simpleButton3.Location = new System.Drawing.Point(568, 125);
+            this.simpleButton3.Location = new System.Drawing.Point(533, 158);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(87, 37);
             this.simpleButton3.TabIndex = 14;
@@ -1898,7 +1913,7 @@
             this.xtraTabPage3.Controls.Add(this.gridControl);
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.PageVisible = false;
-            this.xtraTabPage3.Size = new System.Drawing.Size(667, 537);
+            this.xtraTabPage3.Size = new System.Drawing.Size(667, 454);
             this.xtraTabPage3.Text = "附件文档";
             // 
             // gridControl
@@ -1920,7 +1935,7 @@
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemMemoEdit1,
             this.repositoryItemMemoEdit2});
-            this.gridControl.Size = new System.Drawing.Size(667, 537);
+            this.gridControl.Size = new System.Drawing.Size(667, 454);
             this.gridControl.TabIndex = 2;
             this.gridControl.UseEmbeddedNavigator = true;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2588,5 +2603,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LabelControl labelControl30;
     }  
 }

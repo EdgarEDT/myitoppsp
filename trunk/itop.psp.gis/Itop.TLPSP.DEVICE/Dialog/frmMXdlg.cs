@@ -376,6 +376,11 @@ namespace Itop.TLPSP.DEVICE
             }
             this.DialogResult = DialogResult.OK;
         }
+
+        private void radioGroup3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            labelControl34.Visible = true;
+        }
  
     }
 }

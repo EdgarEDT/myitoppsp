@@ -353,5 +353,10 @@ namespace Itop.TLPSP.DEVICE
             this.panelControl1.Refresh();
         }
 
+        private void radioGroup3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            labelControl34.Visible = true;
+        }
+
     }
 }
