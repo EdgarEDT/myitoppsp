@@ -39,6 +39,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem25 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
@@ -55,6 +56,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.chart_user1 = new Itop.Client.Using.chart_userSH();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -63,7 +65,6 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -102,7 +103,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.barButtonItem4,
             this.barButtonItem5,
             this.barButtonItem7});
-            this.barManager1.MaxItemId = 53;
+            this.barManager1.MaxItemId = 54;
             // 
             // bar1
             // 
@@ -191,6 +192,14 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.barButtonItem21.Name = "barButtonItem21";
             this.barButtonItem21.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem21.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem21_ItemClick);
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "坏数据点";
+            this.barButtonItem7.Id = 52;
+            this.barButtonItem7.ImageIndex = 9;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // barButtonItem22
             // 
@@ -331,6 +340,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.chart_user1);
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton7);
             this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton6);
             this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton4);
             this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton2);
@@ -351,10 +361,20 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.chart_user1.Size = new System.Drawing.Size(924, 372);
             this.chart_user1.TabIndex = 0;
             // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton7.Location = new System.Drawing.Point(14, 60);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(117, 36);
+            this.simpleButton7.TabIndex = 6;
+            this.simpleButton7.Text = "设置GDP年增长率";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
+            // 
             // simpleButton6
             // 
             this.simpleButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton6.Location = new System.Drawing.Point(14, 110);
+            this.simpleButton6.Location = new System.Drawing.Point(14, 154);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(117, 36);
             this.simpleButton6.TabIndex = 5;
@@ -364,11 +384,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             // simpleButton4
             // 
             this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton4.Location = new System.Drawing.Point(14, 62);
+            this.simpleButton4.Location = new System.Drawing.Point(14, 105);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(117, 36);
             this.simpleButton4.TabIndex = 5;
-            this.simpleButton4.Text = "计算参数设置";
+            this.simpleButton4.Text = "弹性系数设置";
             this.simpleButton4.Click += new System.EventHandler(this.button3_Click);
             // 
             // simpleButton2
@@ -384,7 +404,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             // simpleButton5
             // 
             this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton5.Location = new System.Drawing.Point(14, 259);
+            this.simpleButton5.Location = new System.Drawing.Point(14, 303);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(117, 36);
             this.simpleButton5.TabIndex = 5;
@@ -394,7 +414,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             // simpleButton3
             // 
             this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.Location = new System.Drawing.Point(14, 209);
+            this.simpleButton3.Location = new System.Drawing.Point(14, 253);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(117, 36);
             this.simpleButton3.TabIndex = 5;
@@ -404,7 +424,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(14, 157);
+            this.simpleButton1.Location = new System.Drawing.Point(14, 201);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(117, 36);
             this.simpleButton1.TabIndex = 5;
@@ -439,14 +459,6 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.treeList1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeList1_MouseUp);
             this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
             this.treeList1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.treeList1_ShowingEditor);
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "坏数据点";
-            this.barButtonItem7.Id = 52;
-            this.barButtonItem7.ImageIndex = 9;
-            this.barButtonItem7.Name = "barButtonItem7";
-            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // FormCoefficientOfElasticitySH
             // 
@@ -514,6 +526,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private Itop.Client.Using.chart_userSH chart_user1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
 
     }
 }

@@ -122,7 +122,7 @@ namespace Itop.Client.Forecast
             frm.IsEdit = false;
             frm.ProjectUID = ProjectUID;
      //       frm.TypeFlag = typeFlag;
-            frm.Text = "添加新预测";
+            frm.Text = "添加新预测方案";
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
@@ -157,7 +157,7 @@ namespace Itop.Client.Forecast
             frm.IsEdit = true;
             frm.Psp_ForecastReport = report;
             frm.ProjectUID = ProjectUID;
-            frm.Text = "修改预测";
+            frm.Text = "修改预测方案";
 
             if (frm.ShowDialog() == DialogResult.OK)
             {

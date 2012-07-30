@@ -37,6 +37,7 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
@@ -48,7 +49,6 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -98,7 +98,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "新建预测";
+            this.barButtonItem1.Caption = "新建预测方案";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.ImageIndex = 11;
             this.barButtonItem1.Name = "barButtonItem1";
@@ -107,16 +107,24 @@
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "修改预测";
+            this.barButtonItem2.Caption = "修改预测方案";
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.ImageIndex = 12;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "开始预测";
+            this.barButtonItem6.Id = 6;
+            this.barButtonItem6.ImageIndex = 9;
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "删除预测";
+            this.barButtonItem3.Caption = "删除预测方案";
             this.barButtonItem3.Id = 2;
             this.barButtonItem3.ImageIndex = 2;
             this.barButtonItem3.Name = "barButtonItem3";
@@ -222,14 +230,6 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.FocusedColumnChanged += new DevExpress.XtraGrid.Views.Base.FocusedColumnChangedEventHandler(this.gridView1_FocusedColumnChanged);
             this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
-            // 
-            // barButtonItem6
-            // 
-            this.barButtonItem6.Caption = "开始预测";
-            this.barButtonItem6.Id = 6;
-            this.barButtonItem6.ImageIndex = 9;
-            this.barButtonItem6.Name = "barButtonItem6";
-            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // ForecastListFSH
             // 

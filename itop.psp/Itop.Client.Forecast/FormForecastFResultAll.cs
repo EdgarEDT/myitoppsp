@@ -203,7 +203,7 @@ namespace Itop.Client.Forecast
             {
                 AddColumn(i);
             }
-            string sql2 = " Col4='yes' and Forecast="+type+" and ParentID='' Order by Col3,Title";
+            string sql2 = " Col1 ='" + MIS.ProgUID + "'and Col4='yes' and Forecast=" + type + " and ParentID='' Order by Col3,Title";
             IList list = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByWhere", sql2);
             dataTable = Itop.Common.DataConverter.ToDataTable(list, typeof(Ps_Forecast_Math));
 

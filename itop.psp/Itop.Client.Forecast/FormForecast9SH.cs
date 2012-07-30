@@ -1426,7 +1426,7 @@ namespace Itop.Client.Forecast
             int nFYears = Convert.ToInt32(strFYears.Split('-')[1].ToString());
 
             int syear = Convert.ToInt32(strFYears.Split('-')[0].ToString()); ;
-            int eyear = forecastReport.EndYear;
+            int eyear = forecastReport.YcEndYear;
             TempData = new double[(ha.Count), (eyear - syear + 1)];
             //历史年份的起始年
             int histsyear = 0;
