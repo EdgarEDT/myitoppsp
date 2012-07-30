@@ -24,13 +24,13 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
     public partial class FormCoefficientOfElasticitySH : FormBase
     {
         int type = 4;
-        DataTable dataTable=new DataTable ();
+        DataTable dataTable = new DataTable();
         private Ps_forecast_list forecastReport = null;
         private PublicFunction m_pf = new PublicFunction();
         bool bLoadingData = false;
         bool _canEdit = true;
         string firstyear = "0";
-        string endyear ="0";
+        string endyear = "0";
         bool selectdral = true;
 
         public bool CanEdit
@@ -75,7 +75,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             }
             if (!AddRight)
             {
-              
+
             }
 
         }
@@ -129,12 +129,14 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             if (forecastReport.Col1 == "1")
             {
                 ht.Add("全社会最大负荷（MW）", 1);
+
             }
             else
             {
                 ht.Add("全社会用电量（亿kWh）", 1);
+                ht.Add("全地区GDP亿元", 2);
             }
-     
+
 
             Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
             psp_Type.ForecastID = forecastReport.ID;
@@ -336,7 +338,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 hs.Add(bc2.Color1);
             }
 
-           List<Ps_Forecast_Math> listValues = new List<Ps_Forecast_Math>();
+            List<Ps_Forecast_Math> listValues = new List<Ps_Forecast_Math>();
 
             for (int i = 0; i < treeList1.Nodes.Count; i++)
             {
@@ -384,7 +386,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             if (hs.Count == 0)
                 return;
             string id = Guid.NewGuid().ToString();
-           
+
             foreach (Ps_History de3 in hs.Values)
             {
                 if (OldHt.ContainsKey(de3.Title))
@@ -427,7 +429,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 }
             }
 
-           
+
 
             LoadData();
 
@@ -437,34 +439,34 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
 
 
-      
-       
+
+
 
         private void barButtonItem21_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SaveFileDialog sf=new SaveFileDialog();
+            SaveFileDialog sf = new SaveFileDialog();
             sf.Filter = "JPEG文件(*.jpg)|*.jpg|BMP文件(*.bmp)|*.bmp|PNG文件(*.png)|*.png";
-            if(sf.ShowDialog()!=DialogResult.OK)
+            if (sf.ShowDialog() != DialogResult.OK)
                 return;
 
             Dundas.Charting.WinControl.ChartImageFormat ci = new Dundas.Charting.WinControl.ChartImageFormat();
-            switch(sf.FilterIndex)
+            switch (sf.FilterIndex)
             {
                 case 0:
                     ci = Dundas.Charting.WinControl.ChartImageFormat.Jpeg;
                     break;
 
-                    case 1:
-                        ci = Dundas.Charting.WinControl.ChartImageFormat.Bmp;
+                case 1:
+                    ci = Dundas.Charting.WinControl.ChartImageFormat.Bmp;
                     break;
 
-                    case 2:
-                        ci = Dundas.Charting.WinControl.ChartImageFormat.Png;
+                case 2:
+                    ci = Dundas.Charting.WinControl.ChartImageFormat.Png;
                     break;
 
 
 
-            } 
+            }
             this.chart_user1.chart1.SaveAsImage(sf.FileName, ci);
         }
 
@@ -473,7 +475,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             FormColor fc = new FormColor();
             fc.DT = dataTable;
             fc.ID = forecastReport.ID.ToString();
-            fc.For =type;
+            fc.For = type;
             if (fc.ShowDialog() == DialogResult.OK)
                 RefreshChart();
         }
@@ -484,9 +486,9 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         }
 
 
-     
 
-       
+
+
 
 
         private void barButtonItem20_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -501,12 +503,12 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void FormAverageForecast_Resize(object sender, EventArgs e)
         {
-          
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+
             JS();
 
         }
@@ -521,14 +523,14 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             //{
 
             if (e.Column.FieldName.IndexOf("y") > -1 && firstyear != "Title" && endyear != "Title")
-                {
-                    if (Convert.ToInt32(e.Column.FieldName.Replace("y", "")) >= Convert.ToInt32(firstyear.Replace("y", "")) && Convert.ToInt32(endyear.Replace("y", "")) >= Convert.ToInt32(e.Column.FieldName.Replace("y", "")))
+            {
+                if (Convert.ToInt32(e.Column.FieldName.Replace("y", "")) >= Convert.ToInt32(firstyear.Replace("y", "")) && Convert.ToInt32(endyear.Replace("y", "")) >= Convert.ToInt32(e.Column.FieldName.Replace("y", "")))
                     brush = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, c3, c4, 180);
-                    if (brush != null)
-                    {
-                        e.Graphics.FillRectangle(brush, r);
-                    }
+                if (brush != null)
+                {
+                    e.Graphics.FillRectangle(brush, r);
                 }
+            }
         }
 
         private void barButtonItem26_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -584,8 +586,8 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void gridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            
-         
+
+
         }
 
         private void gridView1_MouseUp(object sender, MouseEventArgs e)
@@ -608,7 +610,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         {
 
             Save();
-            
+
         }
 
         private void Save()
@@ -637,7 +639,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                         }
                     }
                 }
-                  v.Col4 = "yes";
+                v.Col4 = "yes";
                 try
                 {
                     Services.BaseService.Update("UpdatePs_Forecast_MathByID", v);
@@ -710,7 +712,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             if (fc.ShowDialog() != DialogResult.OK)
                 return;
             JS();
-      
+
         }
 
 
@@ -729,37 +731,40 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
             foreach (DataRow dataRow in dataTable.Rows)
             {
+                if (dataRow["Title"].ToString().Contains("全地区GDP"))
+                {
+                    continue;
+                }
+                double[] yn = new double[eyear - syear];
 
-                 double[] yn = new double[eyear - syear];
-              
-                    if (fyear != 0 && syear != 0)
+                if (fyear != 0 && syear != 0)
+                {
+                    // Calculator.StartYear = fyear;
+                    Calculator.StartYear = syear;
+                    Calculator.Type = type.ToString();
+
+                    double[] historyValues = GenerateHistoryValue(dataRow, fyear, syear);
+                    yn = Calculator.SpringCoefficientMethod((double)dataRow["y" + (syear)], eyear - syear, forecastReport.ID);
+
+                    for (int i = 1; i <= eyear - syear; i++)
                     {
-                       // Calculator.StartYear = fyear;
-                        Calculator.StartYear = syear;
-                        Calculator.Type = type.ToString();
+                        dataRow["y" + (syear + i)] = yn[i - 1];
+                        commonhelp.ResetValue(dataRow["ID"].ToString(), "y" + (syear + i));
 
-                        double[] historyValues = GenerateHistoryValue(dataRow, fyear, syear);
-                        yn = Calculator.SpringCoefficientMethod((double)dataRow["y" + (syear )], eyear - syear, forecastReport.ID);
-                    
-                       for (int i = 1; i <= eyear - syear; i++)
-                        {
-                            dataRow["y" + (syear + i)] = yn[i - 1];
-                            commonhelp.ResetValue(dataRow["ID"].ToString(), "y" + (syear + i));
-
-                        }
                     }
                 }
+            }
 
-                ForecastClass fc = new ForecastClass();
-                fc.MaxForecast(forecastReport, dataTable);
+            ForecastClass fc = new ForecastClass();
+            fc.MaxForecast(forecastReport, dataTable);
             RefreshChart();
-        
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int syear=int.Parse(firstyear.Replace("y",""));
-            int eyear=int.Parse(endyear.Replace("y",""));
+            int syear = int.Parse(firstyear.Replace("y", ""));
+            int eyear = int.Parse(endyear.Replace("y", ""));
             if (eyear >= forecastReport.StartYear)
                 RefreshChart(syear, eyear);
         }
@@ -975,7 +980,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             RefreshChart();
         }
 
-       
+
         /// <summary>
         /// 添加分类名
         /// </summary>
@@ -1204,11 +1209,81 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             FormForecastMaxOrBad_SH frm = new FormForecastMaxOrBad_SH(forecastReport);
             frm.Type = type;
             frm.ShowDialog();
-            LoadData(); 
+            LoadData();
+        }
+        //设置GDP值
+      
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            FormSetGDP frm = new FormSetGDP();
+            frm.forecastReport = forecastReport;
+            frm.Text = "设置GDP值";
+            frm.type = type;
+            DataRow[] rowsoldGDP = dataTable.Select("Title like '全地区GDP%'");
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                if (frm.GetGDP)
+                {
+                    //读取GDP历史值
+                    if (rowsoldGDP.Length > 0)
+                    {
+                        DataRow oldrow = rowsoldGDP[0];
+                        //新经济数据
+                        Ps_History psp_Type = new Ps_History();
+                        psp_Type.Forecast = 5;
+                        psp_Type.Col4 = Itop.Client.MIS.ProgUID;
+                        IList<Ps_History> listTypes = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type);
+                        DataTable dataTable2 = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_History));
+                        DataRow[] rows1 = dataTable2.Select("Title like '全地区GDP%'");
+                        for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
+                        {
+                            double s1 = 0;
+                            try { s1 = Convert.ToDouble(rows1[0]["y" + i]); }
+                            catch
+                            { }
+                            oldrow["y" + i] = s1;
+                        }
+                        Ps_Forecast_Math pfm = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow);
+                        Services.BaseService.Update<Ps_Forecast_Math>(pfm);
+                    }
+                }
+
+                DataRow[] rowsgdp = dataTable.Select("Title like '全地区GDP%'");
+                if (rowsgdp.Length > 0)
+                {
+                    DataRow oldrow = rowsgdp[0];
+
+
+                    Ps_Calc pcs = new Ps_Calc();
+                    pcs.Forecast = type;
+                    pcs.ForecastID = forecastReport.ID;
+
+                    IList<Ps_Calc> list1 = Services.BaseService.GetList<Ps_Calc>("SelectPs_CalcByForecast", pcs);
+                    Hashtable hs = new Hashtable();
+                    foreach (Ps_Calc pcl1 in list1)
+                    {
+                        if (!hs.ContainsKey(pcl1.Year))
+                        {
+                            hs.Add(pcl1.Year, pcl1.Value2);
+                        }
+                    }
+                    for (int j = forecastReport.YcStartYear; j <= forecastReport.YcEndYear; j++)
+                    {
+                        double increasenum = double.Parse(hs[j].ToString());
+                        double basenum = double.Parse(oldrow["y" + (j - 1)].ToString());
+                        oldrow["y" + j] = basenum * (1 + increasenum);
+
+                    }
+                    Ps_Forecast_Math pfm = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow);
+                    Services.BaseService.Update<Ps_Forecast_Math>(pfm);
+                }
+                JS();
+            }
         }
 
-       
-        
+
+
 
     }
 }

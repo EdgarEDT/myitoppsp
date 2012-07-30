@@ -539,6 +539,7 @@ namespace Itop.Client.Forecast
                         }
                     }
                 }
+                v.Col1 = MIS.ProgUID;
                 v.Col2 = row["Col2"].ToString();
                 if (v.ParentID=="")
                 {

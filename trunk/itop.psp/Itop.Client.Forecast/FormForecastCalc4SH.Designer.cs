@@ -50,24 +50,23 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(527, 310);
+            this.panelControl1.Size = new System.Drawing.Size(615, 362);
             this.panelControl1.TabIndex = 0;
-            this.panelControl1.Text = "panelControl1";
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.vGridControl2);
-            this.groupBox3.Location = new System.Drawing.Point(25, 16);
+            this.groupBox3.Location = new System.Drawing.Point(29, 19);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(477, 245);
+            this.groupBox3.Size = new System.Drawing.Size(556, 286);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "弹性系数法";
             // 
             // vGridControl2
             // 
-            this.vGridControl2.Location = new System.Drawing.Point(25, 20);
+            this.vGridControl2.Location = new System.Drawing.Point(29, 23);
             this.vGridControl2.Name = "vGridControl2";
             this.vGridControl2.RecordWidth = 125;
             this.vGridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -75,8 +74,9 @@
             this.vGridControl2.RowHeaderWidth = 147;
             this.vGridControl2.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.editorRow1});
-            this.vGridControl2.Size = new System.Drawing.Size(432, 209);
+            this.vGridControl2.Size = new System.Drawing.Size(504, 244);
             this.vGridControl2.TabIndex = 0;
+            this.vGridControl2.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl2_CellValueChanged);
             this.vGridControl2.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.vGridControl2_ShowingEditor);
             // 
             // repositoryItemCalcEdit4
@@ -91,41 +91,40 @@
             // 
             this.editorRow1.Height = 20;
             this.editorRow1.Name = "editorRow1";
-            this.editorRow1.Properties.Caption = "年增长率";
+            this.editorRow1.Properties.Caption = "年份";
             this.editorRow1.Properties.FieldName = "Name";
             // 
             // simpleButton2
             // 
             this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(407, 267);
+            this.simpleButton2.Location = new System.Drawing.Point(475, 311);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(65, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(76, 27);
             this.simpleButton2.TabIndex = 3;
             this.simpleButton2.Text = "取消";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(318, 267);
+            this.simpleButton1.Location = new System.Drawing.Point(371, 311);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(65, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(76, 27);
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "确定";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
-            // FormForecastCalc4
+            // FormForecastCalc4SH
             // 
             this.AcceptButton = this.simpleButton1;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.simpleButton2;
-            this.ClientSize = new System.Drawing.Size(527, 310);
+            this.ClientSize = new System.Drawing.Size(615, 362);
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormForecastCalc4";
+            this.Name = "FormForecastCalc4SH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "预测参数";
             this.Load += new System.EventHandler(this.FormForecastCalc4_Load);

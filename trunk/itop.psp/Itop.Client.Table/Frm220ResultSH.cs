@@ -1379,7 +1379,7 @@ namespace Itop.Client.Table
 
             //更新220kV以下电源  更新 5、区内电源出力
             //
-            string conn1 = " AreaID='" + GetProjectID + "' and S9='" + AreaName + "' and cast(S1 as int)=220";
+            string conn1 = " AreaID='" + GetProjectID + "' and S9='" + AreaName + "' and cast(S1 as int)<220";
             IList<PSP_PowerSubstation_Info> list = Common.Services.BaseService.GetList<PSP_PowerSubstation_Info>("SelectPSP_PowerSubstation_InfoListByWhere", conn1);
 
             int startyear = yAnge.BeginYear;
@@ -1423,7 +1423,7 @@ namespace Itop.Client.Table
 
 
 
-                string connjz = " where SvgUID ='" + dyid + "' and (Type='02'  or Type='03')";
+                string connjz = " where SvgUID ='" + dyid + "' and Type='04'";
                 IList<PSPDEV> listatt = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", connjz);
                 for (int i = yAnge.BeginYear; i <= yAnge.EndYear; i++)
                 {
@@ -1448,44 +1448,21 @@ namespace Itop.Client.Table
                             {
                                 double dyf = double.Parse(newdy.GetType().GetProperty("yf" + i.ToString()).GetValue(newdy, null).ToString());
                                 double dyk = double.Parse(newdy.GetType().GetProperty("yk" + i.ToString()).GetValue(newdy, null).ToString());
+                                // 累计机组容量
 
-                                if (listatt[k].Type=="02")
-                                {
-                                    // 累计机组容量
+                                double tempdb = listatt[k].P0;
 
-                                    double tempdb = double.Parse(listatt[k].Burthen.ToString());
-
-                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
-                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
+                                newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
+                                newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
 
 
-                                    double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
-                                    double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
-                                    // 累计机组容量*丰期机组出力率  或枯期机组出力率
+                                double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
+                                double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
+                                // 累计机组容量*丰期机组出力率  或枯期机组出力率
 
 
-                                    col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + tempdb * listatt[k].HuganTQ1, 2), null);
-                                    col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + tempdb * listatt[k].HuganTQ2, 2), null);
-                                }
-                                else
-                                {
-                                    // 累计机组容量
-
-                                    double tempdb = listatt[k].SiN;
-
-                                    newdy.GetType().GetProperty("yf" + i.ToString()).SetValue(newdy, Math.Round(dyf + tempdb, 2), null);
-                                    newdy.GetType().GetProperty("yk" + i.ToString()).SetValue(newdy, Math.Round(dyk + tempdb, 2), null);
-
-
-                                    double d5f = double.Parse(col5.GetType().GetProperty("yf" + i.ToString()).GetValue(col5, null).ToString());
-                                    double d5k = double.Parse(col5.GetType().GetProperty("yk" + i.ToString()).GetValue(col5, null).ToString());
-                                    // 累计机组容量*丰期机组出力率  或枯期机组出力率
-
-
-                                    col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + tempdb * listatt[k].HuganTQ1, 2), null);
-                                    col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + tempdb * listatt[k].HuganTQ2, 2), null);
-                                }
-                                
+                                col5.GetType().GetProperty("yf" + i.ToString()).SetValue(col5, Math.Round(d5f + tempdb * listatt[k].HuganTQ1, 2), null);
+                                col5.GetType().GetProperty("yk" + i.ToString()).SetValue(col5, Math.Round(d5k + tempdb * listatt[k].HuganTQ2, 2), null);
 
                             }
 

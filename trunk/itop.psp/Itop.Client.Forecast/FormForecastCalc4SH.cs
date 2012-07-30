@@ -79,12 +79,24 @@ namespace Itop.Client.Forecast
                 endyear1 = li2[0].FinishYear;
             }
             //新经济数据
-            Ps_History psp_Type = new Ps_History();
-            psp_Type.Forecast = 5;
-            psp_Type.Col4 = Itop.Client.MIS.ProgUID;
-            IList<Ps_History> listTypes = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type);
-            DataTable dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_History));
+            //Ps_History psp_Type = new Ps_History();
+            //psp_Type.Forecast = 5;
+            //psp_Type.Col4 = Itop.Client.MIS.ProgUID;
+            //IList<Ps_History> listTypes = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type);
+            //DataTable dataTable = Itop.Common.DataConverter.ToDataTable((IList)listTypes, typeof(Ps_History));
+            //DataRow[] rows1 = dataTable.Select("Title like '全地区GDP%'");
+
+
+            Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
+            psp_Type.ForecastID = forecastReport.ID;
+            psp_Type.Forecast = type;
+            IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
+
+            dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Forecast_Math));
             DataRow[] rows1 = dataTable.Select("Title like '全地区GDP%'");
+
+
+
 
             //新电量数据
             Ps_History psp_Type2 = new Ps_History();
@@ -95,12 +107,17 @@ namespace Itop.Client.Forecast
             DataRow[] rows4 = dataTable2.Select("Title like '全社会用电量%'");
 
 
-
+            if (rows1.Length == 0 )
+            {
+                MessageBox.Show("缺少‘全地区GDP’数据！");
+                this.Close();
+                return;
+            }
             
 
-            if (rows1.Length==0||rows4.Length==0)
+            if (rows4.Length==0)
             {
-                MessageBox.Show("经济数据中缺少‘全地区GDP’或电量数据中缺少‘全社会用电量’数据！");
+                MessageBox.Show("电量数据中缺少‘全社会用电量’数据！");
                 this.Close();
                 return;
             }
@@ -141,8 +158,8 @@ namespace Itop.Client.Forecast
             newrow1 = dt.NewRow();
             newrow1["ID"] = "ID";
             newrow1["Name"] = "弹性系数";
-            newrow2 = dt.NewRow();
-            newrow2["Name"] = "GDP增长率";
+            //newrow2 = dt.NewRow();
+            //newrow2["Name"] = "GDP增长率";
           
             for (int i = firstyear; i <= forecastReport.YcEndYear; i++)
             {
@@ -182,7 +199,7 @@ namespace Itop.Client.Forecast
                     s7 = s6 / s5;
 
                 newrow1[i.ToString()] = Math.Round(s7,3);
-                newrow2[i.ToString()] =Math.Round( s5,3);
+                //newrow2[i.ToString()] =Math.Round( s5,3);
 
 
                 foreach (Ps_Calc pcs2 in list1)
@@ -190,7 +207,7 @@ namespace Itop.Client.Forecast
                     if (i == pcs2.Year)
                     {
                         newrow1[i.ToString()] = Math.Round(pcs2.Value1,3);
-                        newrow2[i.ToString()] = Math.Round(pcs2.Value2,3);
+                        //newrow2[i.ToString()] = Math.Round(pcs2.Value2,3);
 
                     }
                 }
@@ -199,7 +216,7 @@ namespace Itop.Client.Forecast
               
             }
             dt.Rows.Add(newrow1);
-            dt.Rows.Add(newrow2);
+            //dt.Rows.Add(newrow2);
      //       gridControl1.DataSource = dt;
 
             vGridControl2.DataSource = dt;
@@ -225,11 +242,11 @@ namespace Itop.Client.Forecast
                 if (dc.ColumnName == "Name" || dc.ColumnName == "ID" || Convert.ToInt32(dc.ColumnName)<=endyear)
                     continue;
                 double value1 = 0;
-                double value2 = 0;
+                //double value2 = 0;
                 try
                 {
                     value1 = (double)newrow1[dc.ColumnName];
-                    value2 = (double)newrow2[dc.ColumnName];
+                    //value2 = (double)newrow2[dc.ColumnName];
 
                 }
                 catch { }
@@ -242,7 +259,7 @@ namespace Itop.Client.Forecast
                     {
                         bl = true;
                         pc11.Value1 = value1;
-                        pc11.Value2 = value2;
+                        //pc11.Value2 = value2;
                         Services.BaseService.Update<Ps_Calc>(pc11);
                     }
                 }
@@ -254,7 +271,7 @@ namespace Itop.Client.Forecast
                     pcs.ForecastID = forecastReport.ID;
                     pcs.Year = Convert.ToInt32(dc.ColumnName);
                     pcs.Value1 = value1;
-                    pcs.Value2 = value2;
+                    //pcs.Value2 = value2;
                     Services.BaseService.Create<Ps_Calc>(pcs);
 
                 }
@@ -289,6 +306,32 @@ namespace Itop.Client.Forecast
         {
             if (Convert.ToInt32(vGridControl2.FocusedRow.Properties.FieldName)<=endyear)
             e.Cancel = true;
+            if (vGridControl2.FocusedRow.Properties.FieldName!=null)
+            {
+
+            }
+        }
+        bool edit = false;
+        private void vGridControl2_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
+        {
+            if (!edit)
+            {
+                int year = Convert.ToInt32(vGridControl2.FocusedRow.Properties.FieldName);
+                if (year < forecastReport.YcEndYear)
+                {
+                    ChnageNextValue(year, e.Value);
+                }
+            }
+
+        }
+        private void ChnageNextValue(int year, object value)
+        {
+            edit = true;
+            for (int i = year + 1; i <= forecastReport.YcEndYear; i++)
+            {
+                newrow1[i.ToString()] = value;
+            }
+            edit = false;
         }
 
 
