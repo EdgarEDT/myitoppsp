@@ -139,7 +139,7 @@ namespace Itop.Client
                 //É¾³ýÊý¾Ý¿â´úÂë£û£ý
 
                 
-                Services.BaseService.Delete<SysDataServer>(ds);
+                ServicesSys.BaseService.Delete<SysDataServer>(ds);
                 InitData();
 
             }
