@@ -368,6 +368,7 @@ namespace Itop.TLPSP.DEVICE
                 }
                 dlg.DeviceMx = dev;
                 dlg.ProjectSUID = dev.ProjectID;
+                dlg.ShowTabControl();
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     //¸üÐÂ¼ÇÂ¼

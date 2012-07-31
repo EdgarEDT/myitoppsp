@@ -442,6 +442,7 @@ namespace Itop.TLPSP.DEVICE
         {
             frmDYdlg dlg = new frmDYdlg();
             dlg.ProjectID = Itop.Client.MIS.ProgUID;
+            dlg.czButtonVisble(true);
             dlg.Name = "";
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -477,6 +478,7 @@ namespace Itop.TLPSP.DEVICE
         public override void Edit()
         {
             frmDYdlg dlg = new frmDYdlg();
+            dlg.czButtonVisble(true);
             DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
             if (row != null)
             {

@@ -106,6 +106,7 @@ namespace Itop.TLPSP.DEVICE
             {
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit1.Properties.Items.Add(o);
+                date2.Properties.Items.Add(o);
             }
             string con = "where Type='01'AND  ProjectID ='" + this.ProjectSUID + "' and SvgUID='" + dev.SvgUID + "' order by name";
 

@@ -5865,7 +5865,7 @@ namespace ItopVector.Tools {
                         lay.InitData(tlVectorControl1.SVGDocument.getLayerList(), "1");
                         if (lay.ShowDialog() == DialogResult.OK) {
                             frmglebePropertyList flist1 = new frmglebePropertyList();
-                            flist1.InitDataSub(tlVectorControl1.SVGDocument.SvgdataUid, lay.str_sid);
+                            flist1.InitDataSub(tlVectorControl1.SVGDocument.SvgdataUid, lay.str_sid,lay.str_sed);
                             flist1.Show();
                         }
                         break;
@@ -9702,21 +9702,27 @@ namespace ItopVector.Tools {
 
         public void Fhbz() {
             XmlNodeList list = tlVectorControl1.SVGDocument.SelectNodes("//*[@IsArea=\"1\"]");
-
+             Layer zjLar=null;
             Layer oldLar = getlayer("负荷标注", tlVectorControl1.SVGDocument.getLayerList());
-            if (oldLar != null) {
+            if (oldLar != null)
+            {
+                zjLar = oldLar;
                 XmlNodeList oldList = tlVectorControl1.SVGDocument.SelectNodes("//*[@layer=\"" + oldLar.ID + "\"]");
-                for (int i = 0; i < oldList.Count; i++) {
+                for (int i = 0; i < oldList.Count; i++)
+                {
                     tlVectorControl1.SVGDocument.RootElement.RemoveChild((SvgElement)oldList[i]);
                 }
-                tlVectorControl1.SVGDocument.GetElementsByTagName("defs")[0].RemoveChild(oldLar);
+                //tlVectorControl1.SVGDocument.GetElementsByTagName("defs")[0].RemoveChild(oldLar);
                 //tlVectorControl1.SVGDocument.RootElement.RemoveChild(oldLar);
             }
+            else
+            {
+                zjLar = Layer.CreateNew("负荷标注", tlVectorControl1.SVGDocument);
+                zjLar.SetAttribute("layerType", "城市规划层");
+                frmlar.AddLayer(zjLar, true);
+            }
 
-
-            Layer zjLar = Layer.CreateNew("负荷标注", tlVectorControl1.SVGDocument);
-            zjLar.SetAttribute("layerType", "城市规划层");
-            frmlar.AddLayer(zjLar, true);
+          
             for (int i = 0; i < list.Count; i++) {
                 IGraph graph1 = (IGraph)list[i];
                 //RectangleF rect = graph1.GetBounds();

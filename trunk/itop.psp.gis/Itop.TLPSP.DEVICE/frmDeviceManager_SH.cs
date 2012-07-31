@@ -257,6 +257,135 @@ namespace Itop.TLPSP.DEVICE
             else
                 MessageBox.Show("没有选择设备（如果没有请添加一个）", "导入EXCEL", MessageBoxButtons.OK);
         }
+        private void barButtonItemIn_ItemClick_sh(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           
+            if (this.treeList1.FocusedNode != null && curDevice != null)
+            {
+                IList<string> filedList = new List<string>();
+                IList<string> capList = new List<string>();
+                for (int i = 0; i < curDevice.gridView1.Columns.Count; i++)
+                {
+                    if (curDevice.gridView1.Columns[i].Caption.Contains("查看"))
+                    {
+                        continue;
+                    }
+                    capList.Add(curDevice.gridView1.Columns[i].Caption);
+                    filedList.Add(curDevice.gridView1.Columns[i].FieldName);
+                }
+                OpenFileDialog op = new OpenFileDialog();
+                op.Filter = "Excel文件(*.xls)|*.xls";
+                if (op.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        DataTable table = DeviceHelper.GetExcel(op.FileName, filedList, capList);
+                        curDevice.UpdateIn(table);
+
+                    }
+                    catch (Exception a) { MessageBox.Show(a.Message); }
+                    curDevice.Init();
+                    DataTable dt = curDevice.gridControl1.DataSource as DataTable;
+                    //如果是变电站
+                   if (curDevice.GetType()=="20")
+                   {
+                       UCDeviceBase ub = new UCDeviceMX();
+                       //母线
+                       filedList = new List<string>();
+                      capList = new List<string>();
+                       for (int i = 0; i < ub.gridView1.Columns.Count; i++)
+                       {
+
+                           capList.Add(ub.gridView1.Columns[i].Caption);
+                           filedList.Add(ub.gridView1.Columns[i].FieldName);
+                       }
+                       DataTable table = DeviceHelper.GetExcelmainandchildren(op.FileName, filedList, capList,"母线",dt);
+                       ub.UpdateInchildren(table);
+                       //两绕组变压器
+                      ub = new UCDeviceBYQ2();
+                     filedList = new List<string>();
+                      capList = new List<string>();
+                       for (int i = 0; i < ub.gridView1.Columns.Count; i++)
+                       {
+
+                           capList.Add(ub.gridView1.Columns[i].Caption);
+                           filedList.Add(ub.gridView1.Columns[i].FieldName);
+                       }
+                      table = DeviceHelper.GetExcelmainandchildren(op.FileName, filedList, capList, "两绕组变压器", dt);
+                       ub.UpdateInchildren(table);
+                       //三绕组变压器
+                       filedList = new List<string>();
+                       capList = new List<string>();
+                       ub = new UCDeviceBYQ3();
+
+                       for (int i = 0; i < ub.gridView1.Columns.Count; i++)
+                       {
+
+                           capList.Add(ub.gridView1.Columns[i].Caption);
+                           filedList.Add(ub.gridView1.Columns[i].FieldName);
+                       }
+                       table = DeviceHelper.GetExcelmainandchildren(op.FileName, filedList, capList, "三绕组变压器", dt);
+                       ub.UpdateInchildren(table);
+                       //负荷
+                       ub = new UCDeviceFH();
+                      filedList = new List<string>();
+                      capList = new List<string>();
+                       for (int i = 0; i < ub.gridView1.Columns.Count; i++)
+                       {
+
+                           capList.Add(ub.gridView1.Columns[i].Caption);
+                           filedList.Add(ub.gridView1.Columns[i].FieldName);
+                       }
+                       table = DeviceHelper.GetExcelmainandchildren(op.FileName, filedList, capList, "负荷", dt);
+                       ub.UpdateInchildren(table);
+                   }
+                   else if (curDevice.GetType() == "11")  //电源
+                   {
+                       UCDeviceBase ub = new UCDeviceMX();
+                       //母线
+                       filedList = new List<string>();
+                      capList = new List<string>();
+                       for (int i = 0; i < ub.gridView1.Columns.Count; i++)
+                       {
+
+                           capList.Add(ub.gridView1.Columns[i].Caption);
+                           filedList.Add(ub.gridView1.Columns[i].FieldName);
+                       }
+                       DataTable table = DeviceHelper.GetExcelmainandchildren(op.FileName, filedList, capList, "母线", dt);
+                       ub.UpdateInchildren(table);
+                       //两绕组变压器
+                       ub = new UCDeviceBYQ2();
+                      filedList = new List<string>();
+                       capList = new List<string>();
+                       for (int i = 0; i < ub.gridView1.Columns.Count; i++)
+                       {
+
+                           capList.Add(ub.gridView1.Columns[i].Caption);
+                           filedList.Add(ub.gridView1.Columns[i].FieldName);
+                       }
+                       table = DeviceHelper.GetExcelmainandchildren(op.FileName, filedList, capList, "两绕组变压器", dt);
+                       ub.UpdateInchildren(table);
+                      
+                       //发电机
+                       filedList = new List<string>();
+                       capList = new List<string>();
+                       ub = new UCDeviceFDJ();
+
+                       for (int i = 0; i < ub.gridView1.Columns.Count; i++)
+                       {
+
+                           capList.Add(ub.gridView1.Columns[i].Caption);
+                           filedList.Add(ub.gridView1.Columns[i].FieldName);
+                       }
+                       table = DeviceHelper.GetExcelmainandchildren(op.FileName, filedList, capList, "发电机", dt);
+                       ub.UpdateInchildren(table);
+                   }
+
+                }
+            }
+            else
+                MessageBox.Show("没有选择设备（如果没有请添加一个）", "导入EXCEL", MessageBoxButtons.OK);
+        }
         private void barButtonItemDel_ItemClick(object sender,DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Del();

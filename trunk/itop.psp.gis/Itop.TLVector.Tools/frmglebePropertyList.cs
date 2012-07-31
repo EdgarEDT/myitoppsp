@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Itop.Client.Base;
-
+using System.Collections;
 namespace ItopVector.Tools
 {
     public partial class frmglebePropertyList : FormModuleBase
@@ -23,6 +23,11 @@ namespace ItopVector.Tools
         {
             ctrlglebeProperty1.InitDataSub(svgUid,sid);
         }
+        public void InitDataSub(string svgUid, string sid,string tb)
+        {
+            ctrlglebeProperty1.InitDataSub(svgUid, sid,tb);
+        }
+
         protected override void Print()
         {
             ctrlglebeProperty1.PrintPreview();

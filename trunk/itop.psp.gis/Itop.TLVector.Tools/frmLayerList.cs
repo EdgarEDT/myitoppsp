@@ -8,13 +8,16 @@ using System.Collections;
 using System.Windows.Forms;
 using ItopVector.Core.Figure;
 using Itop.Client.Base;
+using System.Xml;
 namespace ItopVector.Tools
 {
     public partial class frmLayerList : FormBase
     {
         private ArrayList alist;
         public string str_sid = "";
+        public string str_sed = "";
         public Hashtable hs;
+        public Hashtable xzhs;
         public frmLayerList()
         {
             InitializeComponent();
@@ -36,6 +39,7 @@ namespace ItopVector.Tools
                     {
                         layerList.Items.Add(new DevExpress.XtraEditors.Controls.CheckedListBoxItem(layer.Label));
                         hs.Add(((Layer)list[i]).Label, list[i]);
+                       
                     }
                 }
             }
@@ -71,6 +75,12 @@ namespace ItopVector.Tools
             for(int i=0;i<layerList.Items.Count;i++){
                 if(layerList.GetItemChecked(i)){
                     str_sid = str_sid + "'" + ((Layer)hs[layerList.GetItemText(i)]).ID + "',";
+                    //xzhs.Add(layerList.GetItemText(i), hs[layerList.GetItemText(i)]);
+                    XmlNodeList nd = ((Layer)hs[layerList.GetItemText(i)]).SelectNodes("//*[@IsArea=\"1\" and @layer='" + ((Layer)hs[layerList.GetItemText(i)]).ID + "']");
+                    foreach (XmlNode xn in nd)
+                    {
+                        str_sed = str_sed + "'" + ((XmlElement)xn).GetAttribute("id") + "',";
+                    }
                 }
             }
             if (str_sid.Length > 0)
@@ -81,6 +91,9 @@ namespace ItopVector.Tools
             {
                 str_sid = "'xxx'";
             }
+            if (str_sed.Length > 0)
+                str_sed = str_sed.Substring(0, str_sed.Length - 1);
+            
         }
     }
 }

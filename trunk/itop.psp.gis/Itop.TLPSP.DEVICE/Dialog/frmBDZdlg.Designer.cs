@@ -1062,6 +1062,7 @@
             this.simpleButton5.Size = new System.Drawing.Size(87, 31);
             this.simpleButton5.TabIndex = 12;
             this.simpleButton5.Text = "设备参数";
+            this.simpleButton5.Visible = false;
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // labelControl9

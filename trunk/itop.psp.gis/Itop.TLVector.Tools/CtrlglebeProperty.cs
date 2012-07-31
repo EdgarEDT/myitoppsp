@@ -14,6 +14,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using Itop.Common;
 using Itop.Client.Common;
 using Itop.Domain.Graphics;
+using ItopVector.Core.Figure;
 #endregion
 
 namespace ItopVector.Tools
@@ -205,6 +206,29 @@ namespace ItopVector.Tools
             gridControl.DataSource = sondt;
             gridControl.Text = "地块列表";
         }
+        public void InitDataSub(string svgUid, string sid,string tb)
+        {
+
+            Hashtable hs = new Hashtable();
+            hs.Add("SvgUID", svgUid);
+            hs.Add("LayerID", sid);
+            DataTable sondt = Itop.Common.DataConverter.ToDataTable(Services.BaseService.GetList("SelectglebePropertParentIDSub", hs), typeof(glebeProperty));
+           DataRow[] drcol=sondt.Select("EleID in ("+tb+")");
+            DataTable dt=sondt.Clone();
+            for (int i=0;i<drcol.Length;i++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int j = 0; j < sondt.Columns.Count;j++ )
+                {
+                    dr[j] = drcol[i][j];
+                }
+                dt.Rows.Add(dr);
+            }
+            //gridControl.DataSource = sondt;
+            gridControl.DataSource = dt;
+            gridControl.Text = "地块列表";
+        }
+
         public void InitDataSub(string svgUid)
         {
             Hashtable hs = new Hashtable();

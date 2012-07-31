@@ -37,6 +37,7 @@
             this.date1 = new DevExpress.XtraEditors.DateEdit();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
             this.radioGroup3 = new DevExpress.XtraEditors.RadioGroup();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -126,7 +127,7 @@
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
-            this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -309,6 +310,19 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "单位";
+            // 
+            // labelControl34
+            // 
+            this.labelControl34.Appearance.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl34.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl34.Appearance.Options.UseFont = true;
+            this.labelControl34.Appearance.Options.UseForeColor = true;
+            this.labelControl34.Location = new System.Drawing.Point(86, 23);
+            this.labelControl34.Name = "labelControl34";
+            this.labelControl34.Size = new System.Drawing.Size(55, 20);
+            this.labelControl34.TabIndex = 13;
+            this.labelControl34.Text = "影响：\r\n有功和无功";
+            this.labelControl34.Visible = false;
             // 
             // radioGroup3
             // 
@@ -1134,7 +1148,7 @@
             // 
             this.labelControl12.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
             this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(259, 181);
+            this.labelControl12.Location = new System.Drawing.Point(259, 176);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(7, 14);
             this.labelControl12.TabIndex = 46;
@@ -1144,7 +1158,7 @@
             // 
             this.labelControl11.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
             this.labelControl11.Appearance.Options.UseForeColor = true;
-            this.labelControl11.Location = new System.Drawing.Point(259, 151);
+            this.labelControl11.Location = new System.Drawing.Point(259, 147);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(7, 14);
             this.labelControl11.TabIndex = 45;
@@ -1154,7 +1168,7 @@
             // 
             this.labelControl10.Appearance.ForeColor = System.Drawing.Color.DarkOrange;
             this.labelControl10.Appearance.Options.UseForeColor = true;
-            this.labelControl10.Location = new System.Drawing.Point(259, 118);
+            this.labelControl10.Location = new System.Drawing.Point(259, 113);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(7, 14);
             this.labelControl10.TabIndex = 44;
@@ -1362,7 +1376,7 @@
             // 
             // buttonEdit1
             // 
-            this.buttonEdit1.Location = new System.Drawing.Point(127, 402);
+            this.buttonEdit1.Location = new System.Drawing.Point(109, 404);
             this.buttonEdit1.Name = "buttonEdit1";
             this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -1370,24 +1384,22 @@
             this.buttonEdit1.TabIndex = 9;
             this.buttonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
             // 
-            // labelControl34
+            // labelControl26
             // 
-            this.labelControl34.Appearance.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl34.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl34.Appearance.Options.UseFont = true;
-            this.labelControl34.Appearance.Options.UseForeColor = true;
-            this.labelControl34.Location = new System.Drawing.Point(86, 23);
-            this.labelControl34.Name = "labelControl34";
-            this.labelControl34.Size = new System.Drawing.Size(45, 22);
-            this.labelControl34.TabIndex = 13;
-            this.labelControl34.Text = "影响：\r\n有功和无功";
-            this.labelControl34.Visible = false;
+            this.labelControl26.Appearance.Font = new System.Drawing.Font("Tahoma", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl26.Appearance.Options.UseFont = true;
+            this.labelControl26.Location = new System.Drawing.Point(299, 392);
+            this.labelControl26.Name = "labelControl26";
+            this.labelControl26.Size = new System.Drawing.Size(193, 48);
+            this.labelControl26.TabIndex = 45;
+            this.labelControl26.Text = "注释：\r\n电力平衡、统计和建设项目用红色*表示\r\n电气计算用蓝色*表示\r\n短路计算用黄色*表示";
             // 
             // frmMXdlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 457);
+            this.Controls.Add(this.labelControl26);
             this.Controls.Add(this.buttonEdit1);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
@@ -1560,5 +1572,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label30;
         private DevExpress.XtraEditors.LabelControl labelControl34;
+        private DevExpress.XtraEditors.LabelControl labelControl26;
     }
 }

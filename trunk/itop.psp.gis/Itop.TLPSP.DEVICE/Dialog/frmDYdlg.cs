@@ -202,7 +202,10 @@ namespace Itop.TLPSP.DEVICE
                 comboBoxEdit2.Text = "¹æ»®";
             }
         }
-
+        public void czButtonVisble(bool bl)
+        {
+            simpleButton5.Visible = bl;
+        }
         private void simpleButton4_Click(object sender, EventArgs e)
         {
             double rl = 0;
