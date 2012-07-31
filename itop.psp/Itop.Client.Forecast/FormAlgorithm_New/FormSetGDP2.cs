@@ -65,9 +65,9 @@ namespace Itop.Client.Forecast
             newrow3 = dt.NewRow();
          
             newrow1["ID"] = "ID";
-            newrow1["Name"] = "一产增长率";
-            newrow2["Name"] = "二产增长率";
-            newrow3["Name"] = "三产增长率";
+            newrow1["Name"] = "一产增长率(%)";
+            newrow2["Name"] = "二产增长率(%)";
+            newrow3["Name"] = "三产增长率(%)";
 
 
 
@@ -102,7 +102,7 @@ namespace Itop.Client.Forecast
                 catch { }
                 if (s2 != 0)
                     s3 = (s1 - s2) / s2;
-                newrow1[i.ToString()] =Math.Round( s3,3);
+                newrow1[i.ToString()] =Math.Round( s3*100,3);
 
 
                 try { s4 = Convert.ToDouble(rows1[0]["y" + i]); }
@@ -111,7 +111,7 @@ namespace Itop.Client.Forecast
                 catch { }
                 if (s5 != 0)
                     s6= (s4 - s5) / s5;
-                newrow2[i.ToString()] = Math.Round(s6, 3);
+                newrow2[i.ToString()] = Math.Round(s6 * 100, 3);
 
                 try { s7 = Convert.ToDouble(rows1[0]["y" + i]); }
                 catch { }
@@ -119,15 +119,15 @@ namespace Itop.Client.Forecast
                 catch { }
                 if (s8 != 0)
                     s9 = (s7 - s8) / s8;
-                newrow3[i.ToString()] = Math.Round(s9, 3);
+                newrow3[i.ToString()] = Math.Round(s9 * 100, 3);
 
                 foreach (Ps_Calc pcs1 in list1)
                 {
                     if (i == pcs1.Year)
                     {
-                        newrow1[i.ToString()] = Math.Round(pcs1.Value1,3);
-                        newrow2[i.ToString()] = Math.Round(pcs1.Value2, 3);
-                        newrow3[i.ToString()] = Math.Round(pcs1.Value3, 3);
+                        newrow1[i.ToString()] = Math.Round(pcs1.Value1 * 100, 3);
+                        newrow2[i.ToString()] = Math.Round(pcs1.Value2 * 100, 3);
+                        newrow3[i.ToString()] = Math.Round(pcs1.Value3 * 100, 3);
 
                     }
                 }
@@ -197,9 +197,9 @@ namespace Itop.Client.Forecast
                 double value3 = 0;
                 try
                 {
-                    value1= (double)newrow1[dc.ColumnName];
-                    value2 = (double)newrow2[dc.ColumnName];
-                    value3 = (double)newrow3[dc.ColumnName];
+                    value1= (double)newrow1[dc.ColumnName]/100;
+                    value2 = (double)newrow2[dc.ColumnName]/100;
+                    value3 = (double)newrow3[dc.ColumnName]/100;
  
                 }
                 catch { }

@@ -95,16 +95,16 @@ namespace Itop.Client.Forecast
             dataTable = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Forecast_Math));
             DataRow[] rows1 = dataTable.Select("Title like '全地区GDP%'");
 
-
+            DataRow[] rows4 = dataTable.Select("Title like '全社会用电量%'");
 
 
             //新电量数据
-            Ps_History psp_Type2 = new Ps_History();
-            psp_Type2.Forecast = 6;
-            psp_Type2.Col4 = Itop.Client.MIS.ProgUID;
-            IList<Ps_History> listTypes2 = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type2);
-            DataTable dataTable2 = Itop.Common.DataConverter.ToDataTable((IList)listTypes2, typeof(Ps_History));
-            DataRow[] rows4 = dataTable2.Select("Title like '全社会用电量%'");
+            //Ps_History psp_Type2 = new Ps_History();
+            //psp_Type2.Forecast = 6;
+            //psp_Type2.Col4 = Itop.Client.MIS.ProgUID;
+            //IList<Ps_History> listTypes2 = Common.Services.BaseService.GetList<Ps_History>("SelectPs_HistoryByForecast", psp_Type2);
+            //DataTable dataTable2 = Itop.Common.DataConverter.ToDataTable((IList)listTypes2, typeof(Ps_History));
+            //DataRow[] rows4 = dataTable2.Select("Title like '全社会用电量%'");
 
 
             if (rows1.Length == 0 )
@@ -201,17 +201,18 @@ namespace Itop.Client.Forecast
                 newrow1[i.ToString()] = Math.Round(s7,3);
                 //newrow2[i.ToString()] =Math.Round( s5,3);
 
-
-                foreach (Ps_Calc pcs2 in list1)
+                if (i>=forecastReport.YcStartYear)
                 {
-                    if (i == pcs2.Year)
+                    foreach (Ps_Calc pcs2 in list1)
                     {
-                        newrow1[i.ToString()] = Math.Round(pcs2.Value1,3);
-                        //newrow2[i.ToString()] = Math.Round(pcs2.Value2,3);
-
+                        if (i == pcs2.Year)
+                        {
+                            newrow1[i.ToString()] = Math.Round(pcs2.Value1, 3);
+                        }
                     }
-                }
 
+                }
+               
            
               
             }

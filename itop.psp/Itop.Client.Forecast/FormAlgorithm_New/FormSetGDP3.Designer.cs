@@ -74,6 +74,7 @@
             // 
             this.vGridControl1.Location = new System.Drawing.Point(16, 21);
             this.vGridControl1.Name = "vGridControl1";
+            this.vGridControl1.RecordWidth = 150;
             this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1});
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {

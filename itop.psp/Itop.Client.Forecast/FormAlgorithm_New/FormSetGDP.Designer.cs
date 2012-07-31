@@ -33,8 +33,8 @@
             this.checkGdp = new DevExpress.XtraEditors.CheckEdit();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.checkGdp.Properties)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
@@ -85,20 +85,15 @@
             // 
             this.vGridControl1.Location = new System.Drawing.Point(16, 46);
             this.vGridControl1.Name = "vGridControl1";
+            this.vGridControl1.RecordWidth = 120;
             this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1});
+            this.vGridControl1.RowHeaderWidth = 80;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.editorRow1});
             this.vGridControl1.Size = new System.Drawing.Size(297, 286);
             this.vGridControl1.TabIndex = 0;
             this.vGridControl1.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl1_CellValueChanged);
-            // 
-            // editorRow1
-            // 
-            this.editorRow1.Name = "editorRow1";
-            this.editorRow1.Properties.Caption = "年份";
-            this.editorRow1.Properties.FieldName = "Name";
-            this.editorRow1.Properties.RowEdit = this.repositoryItemCalcEdit1;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -107,6 +102,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            // 
+            // editorRow1
+            // 
+            this.editorRow1.Name = "editorRow1";
+            this.editorRow1.Properties.Caption = "年份";
+            this.editorRow1.Properties.FieldName = "Name";
+            this.editorRow1.Properties.RowEdit = this.repositoryItemCalcEdit1;
             // 
             // FormSetGDP
             // 

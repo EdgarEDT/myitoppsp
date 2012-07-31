@@ -34,6 +34,24 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         
         int unitdata = 10000;
 
+
+        DataRow[] gdprows = null;
+        DataRow[] gdprows01 = null;
+        DataRow[] gdprows02 = null;
+        DataRow[] gdprows03 = null;
+
+        DataRow[] dlrows = null;
+        DataRow[] dlrows01 = null;
+        DataRow[] dlrows02 = null;
+        DataRow[] dlrows03 = null;
+        DataRow[] dlrows04 = null;
+
+        DataRow[] dhrows = null;
+        DataRow[] dhrows01 = null;
+        DataRow[] dhrows02 = null;
+        DataRow[] dhrows03 = null;
+
+
         //生产总值(亿元）
         //用电量（亿kWh)
         //单耗（kWh/元）
@@ -181,38 +199,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         /// <param name="e"></param>
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-            //FormLoadForecastDataforMaxHour frm = new FormLoadForecastDataforMaxHour();
-            //frm.ProjectUID = Itop.Client.MIS.ProgUID;
-            //if (frm.ShowDialog() == DialogResult.OK)
-            //{
-            //    DataRow row = frm.ROW;
-            //    Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
-            //    psp_Type.ForecastID = forecastReport.ID;
-            //    psp_Type.Forecast = type;
-            //    IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
-            //    for (int j = 0; j < listTypes.Count; j++)
-            //    {
-            //         Ps_Forecast_Math currtenpfm=(Ps_Forecast_Math)listTypes[j];
-            //        //更新GDP数据
-            //        if (currtenpfm.Sort==1)
-            //        {
-            //            for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
-            //            {
-            //                currtenpfm.GetType().GetProperty("y" + i).SetValue(currtenpfm, Math.Round(double.Parse(row["y" + i.ToString()].ToString()), 1), null);
-            //            }
-            //            Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
-            //            break;
-            //        }
-                   
-            //    }
-            //}
-            //LoadData();
-            //this.chart_user1.All_Select(true);
-            //RefreshChart();
-
-
-            //FormForecastLoadDataforMaxHour ffs = new FormForecastLoadDataforMaxHour();
+            if (treeList1.Nodes.Count<0)
+            {
+                return;
+            }
+            MessageBox.Show("请选择GDP一产、二产、三产数据");
             FormForecastLoadData2 ffs = new FormForecastLoadData2();
             ffs.ISGDP = true;
             ffs.PID = MIS.ProgUID;
@@ -221,42 +212,211 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             if (ffs.ShowDialog() != DialogResult.OK)
                 return;
 
+            Hashtable hs = ffs.HS;
+
+            if (hs.Count == 0)
+                return;
+            DataRow gdprow = gdprows[0];
+            DataRow gdprow01 = gdprows01[0];
+            DataRow gdprow02 = gdprows02[0];
+            DataRow gdprow03 = gdprows03[0];
+
+            Ps_History gdph01 = null;
+            Ps_History gdph02 = null;
+            Ps_History gdph03 = null;
+            bool have = false;
+            foreach (Ps_History de3 in hs.Values)
+            {
+                if (de3.Title.Contains("一产"))
+                {
+                    gdph01 = de3;
+                    have = true;
+                    continue;
+                }
+                if (de3.Title.Contains("二产"))
+                {
+                    gdph02 = de3;
+                    have = true;
+                    continue;
+                }
+                if (de3.Title.Contains("三产"))
+                {
+                    gdph03 = de3;
+                    have = true;
+                    continue;
+                }
+            }
+
+            if (have)
+            {
+                double db01 = 0;
+                double db02 = 0;
+                double db03 = 0;
+                WaitDialogForm wait = new WaitDialogForm("", "正在载入数据，请稍后...");
+                treeList1.BeginInit();
+                int sum = forecastReport.EndYear - forecastReport.StartYear;
+                for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
+                {
+                    int per = (i - forecastReport.StartYear) * 100 / sum;
+                    wait.SetCaption(per + "%");
+                    if (gdph01!=null)
+                    {
+                        gdprow01["y" + i] = gdph01.GetType().GetProperty("y" + i).GetValue(gdph01, null);
+                        //commonhelp.ResetValue(gdprow01["ID"].ToString(), "y" + i);
+                    }
+                    if (gdph02 != null)
+                    {
+                        gdprow02["y" + i] = gdph02.GetType().GetProperty("y" + i).GetValue(gdph02, null);
+                        //commonhelp.ResetValue(gdprow02["ID"].ToString(), "y" + i);
+                    }
+                    if (gdph03 != null)
+                    {
+                        gdprow03["y" + i] = gdph03.GetType().GetProperty("y" + i).GetValue(gdph03, null);
+                        //commonhelp.ResetValue(gdprow03["ID"].ToString(), "y" + i);
+                    }
+
+                    db01 = double.Parse(gdprow01["y" + i].ToString());
+                    db02 = double.Parse(gdprow02["y" + i].ToString());
+                    db03 = double.Parse(gdprow03["y" + i].ToString());
+
+                    gdprow["y" + i] = db01 + db02 + db03;
+                }
+
+                Ps_Forecast_Math gdppfm01 = DataConverter.RowToObject<Ps_Forecast_Math>(gdprow01);
+                Ps_Forecast_Math gdppfm02 = DataConverter.RowToObject<Ps_Forecast_Math>(gdprow02);
+                Ps_Forecast_Math gdppfm03 = DataConverter.RowToObject<Ps_Forecast_Math>(gdprow03);
+                Ps_Forecast_Math gdppfm = DataConverter.RowToObject<Ps_Forecast_Math>(gdprow);
+
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(gdppfm01);
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(gdppfm02);
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(gdppfm03);
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(gdppfm);
+                treeList1.EndInit();
+                wait.Close();
+                GDPIncrease();
+            }
+            RefreshChart();
+
+        }
+        //加载电量数据
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+
+            if (treeList1.Nodes.Count < 0)
+            {
+                return;
+            }
+            MessageBox.Show("请选择电量一产、二产、三产、居民数据");
+            FormForecastLoadData2 ffs = new FormForecastLoadData2();
+            ffs.ISGDP = false;
+            ffs.PID = MIS.ProgUID;
+            ffs.StartYear = forecastReport.StartYear;
+            ffs.EndYear = forecastReport.EndYear;
+            if (ffs.ShowDialog() != DialogResult.OK)
+                return;
 
             Hashtable hs = ffs.HS;
 
             if (hs.Count == 0)
                 return;
-            string id = Guid.NewGuid().ToString();
+            DataRow dlrow = dlrows[0];
+            DataRow dlrow01 = dlrows01[0];
+            DataRow dlrow02 = dlrows02[0];
+            DataRow dlrow03 = dlrows03[0];
+            DataRow dlrow04 = dlrows04[0];
+
+            Ps_History dlh01 = null;
+            Ps_History dlh02 = null;
+            Ps_History dlh03 = null;
+            Ps_History dlh04 = null;
+            bool have = false;
             foreach (Ps_History de3 in hs.Values)
             {
-                Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
-                psp_Type.ForecastID = forecastReport.ID;
-                psp_Type.Forecast = type;
-                IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
-                for (int j = 0; j < listTypes.Count; j++)
+                if (de3.Title.Contains("一产"))
                 {
-                    Ps_Forecast_Math currtenpfm = (Ps_Forecast_Math)listTypes[j];
-                    //更新用电量数据
-                    if (currtenpfm.Sort == 1)
-                    {
-                        for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
-                        {
-                            currtenpfm.GetType().GetProperty("y" + i).SetValue(currtenpfm, de3.GetType().GetProperty("y" + i).GetValue(de3, null), null);
-                            commonhelp.ResetValue(currtenpfm.ID, "y" + i);
-                        }
-                        Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
-                        break;
-                    }
-
+                    dlh01 = de3;
+                    have = true;
+                    continue;
                 }
-
+                if (de3.Title.Contains("二产"))
+                {
+                    dlh02 = de3;
+                    have = true;
+                    continue;
+                }
+                if (de3.Title.Contains("三产"))
+                {
+                    dlh03 = de3;
+                    have = true;
+                    continue;
+                }
+                if (de3.Title.Contains("居民"))
+                {
+                    dlh04 = de3;
+                    have = true;
+                    continue;
+                }
             }
 
-            LoadData();
+            if (have)
+            {
+                double db01 = 0;
+                double db02 = 0;
+                double db03 = 0;
+                double db04 = 0;
+                 WaitDialogForm wait = new WaitDialogForm("", "正在载入数据，请稍后...");
+                 treeList1.BeginInit();
+                int sum = forecastReport.EndYear - forecastReport.StartYear;
+                for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
+                {
+                    int per = (i - forecastReport.StartYear) * 100 / sum;
+                    wait.SetCaption(per + "%");
+              
+                    if (dlh01 != null)
+                    {
+                        dlrow01["y" + i] = dlh01.GetType().GetProperty("y" + i).GetValue(dlh01, null);
+                        //commonhelp.ResetValue(dlrow01["ID"].ToString(), "y" + i);
+                    }
+                    if (dlh02 != null)
+                    {
+                        dlrow02["y" + i] = dlh02.GetType().GetProperty("y" + i).GetValue(dlh02, null);
+                        //commonhelp.ResetValue(dlrow02["ID"].ToString(), "y" + i);
+                    }
+                    if (dlh03 != null)
+                    {
+                        dlrow03["y" + i] = dlh03.GetType().GetProperty("y" + i).GetValue(dlh03, null);
+                        //commonhelp.ResetValue(dlrow03["ID"].ToString(), "y" + i);
+                    }
+                    if (dlh04 != null)
+                    {
+                        dlrow04["y" + i] = dlh04.GetType().GetProperty("y" + i).GetValue(dlh04, null);
+                        //commonhelp.ResetValue(dlrow04["ID"].ToString(), "y" + i);
+                    }
 
-            this.chart_user1.All_Select(true);
+                    db01 = double.Parse(dlrow01["y" + i].ToString());
+                    db02 = double.Parse(dlrow02["y" + i].ToString());
+                    db03 = double.Parse(dlrow03["y" + i].ToString());
+
+                    dlrow["y" + i] = db01 + db02 + db03+db04;
+                }
+
+                Ps_Forecast_Math dlpfm01 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow01);
+                Ps_Forecast_Math dlpfm02 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow02);
+                Ps_Forecast_Math dlpfm03 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow03);
+                Ps_Forecast_Math dlpfm04 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow04);
+                Ps_Forecast_Math dlpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow);
+
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm01);
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm02);
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm03);
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm04);
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm);
+                treeList1.EndInit();
+                wait.Close();
+                DLIncrease();
+            }
             RefreshChart();
-
         }
         /// <summary>
         /// 开始截取数据
@@ -276,8 +436,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 firstyear = "0";
                 endyear = "0";
                 selectdral = false;
-                this.simpleButton8.Enabled = false;
-                this.simpleButton9.Enabled = false;
+                this.simpleButton2.Enabled = false;
                 this.barButtonItem2.Enabled = false;
                 this.simpleButton4.Enabled = false;
 
@@ -290,8 +449,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             {
                 barButtonItem3.Caption = "开始截取历史数据";
                 selectdral = true;
-                this.simpleButton8.Enabled = true;
-                this.simpleButton9.Enabled = true;
+                this.simpleButton2.Enabled = true;
                 this.barButtonItem2.Enabled = true;
                 this.simpleButton4.Enabled = true;
                 if (firstyear != "Title")
@@ -497,10 +655,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-            Calc2();
-        }
+       
         /// <summary>
         /// 计算参数设置
         /// </summary>
@@ -528,34 +683,25 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 {
                     isyqwh = fmhs.isdhkw;
 
-                    Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
-                    psp_Type.ForecastID = forecastReport.ID;
-                    psp_Type.Forecast = type;
-                    IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
-                    for (int j = 0; j < listTypes.Count; j++)
+                    DataRow dhrow = dhrows[0];
+
+                    if (isyqwh)
                     {
-                        Ps_Forecast_Math currtenpfm = (Ps_Forecast_Math)listTypes[j];
-                        //更新电量单位
-                        if (currtenpfm.Sort == 3)
-                        {
-                            if (isyqwh)
-                            {
-                                currtenpfm.Title = "单耗（kWh/万元）";
-                            }
-                            else
-                            {
-                                currtenpfm.Title = "单耗（Wh/元）";
-                            }
-                            Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
-                            break;
-                        }
-                       
+                        dhrow["Title"] = "单耗（kWh/万元）";
                     }
+                    else
+                    {
+                        dhrow["Title"] = "单耗（Wh/元）";
+                    }
+                    Ps_Forecast_Math dhpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow);
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
+
                     
                 }
-                LoadData();
+                CheckUnit(dhrows[0]["Title"].ToString());
+                ReChangeValue();
             }
-            CalcAll();
+           
           
         }
 
@@ -594,8 +740,6 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             psp_Type.Forecast = type;
             IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
 
-
-
             if (listTypes.Count != 13 || ((Ps_Forecast_Math)listTypes[0]).Col1!="dc")
             {
 
@@ -623,6 +767,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 psp_Type1.Title = "生产总值（亿元）";
                 psp_Type1.Sort = 1;
                 psp_Type1.Col1 = "dc";
+                psp_Type1.y1990 = 1;
                 Common.Services.BaseService.Create<Ps_Forecast_Math>(psp_Type1);
                 newlist.Add(psp_Type1);
 
@@ -790,9 +935,37 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                       
                     }
 
+             }
+             gdprows = dataTable.Select("Title like '生产总值%'");
+             gdprows01 = dataTable.Select("Title ='一产' and Col2='GDP'");
+             gdprows02 = dataTable.Select("Title ='二产' and Col2='GDP'");
+             gdprows03 = dataTable.Select("Title ='三产' and Col2='GDP'");
+
+             dlrows = dataTable.Select("Title like '全社会用电量%'");
+             dlrows01 = dataTable.Select("Title ='一产' and Col2='DL'");
+             dlrows02 = dataTable.Select("Title ='二产' and Col2='DL'");
+             dlrows03 = dataTable.Select("Title ='三产' and Col2='DL'");
+             dlrows04 = dataTable.Select("Title ='居民' and Col2='DL'");
+
+             dhrows = dataTable.Select("Title like '单耗%'");
+             dhrows01 = dataTable.Select("Title ='一产' and Col2='DH'");
+             dhrows02 = dataTable.Select("Title ='二产' and Col2='DH'");
+             dhrows03 = dataTable.Select("Title ='三产' and Col2='DH'");
+
+            if (gdprows.Length>0)
+            {
+                double tempdb = double.Parse(gdprows[0]["y1990"].ToString());
+                if (tempdb>0)
+                {
+                    radioGroup1.SelectedIndex = 0;
                 }
-                
-              this.treeList1.DataSource = dataTable;
+                else
+                {
+                    radioGroup1.SelectedIndex = 1;
+                }
+            }
+            
+            this.treeList1.DataSource = dataTable;
 
               Application.DoEvents();
 
@@ -1091,14 +1264,14 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             if (e.Column.FieldName.Substring(0, 1) != "y") return;
             double d = 0;
             if (!double.TryParse(e.Value.ToString(), out d)) return;
-            //treeList1.BeginInit();
+            treeList1.BeginInit();
             try
             {
                 CalculateSum(e.Node, e.Column);
             }
             catch 
             { }
-            //treeList1.EndInit();
+            treeList1.EndInit();
             RefreshChart();
         }
         private void CalculateSum(TreeListNode node, TreeListColumn column)
@@ -1107,10 +1280,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             Ps_Forecast_Math v = DataConverter.RowToObject<Ps_Forecast_Math>(row);
             Common.Services.BaseService.Update<Ps_Forecast_Math>(v);
 
-            commonhelp.SetValue(v.ID, column.FieldName, 1);
+            //commonhelp.SetValue(v.ID, column.FieldName, 1);
 
             if (v.Col2=="DH")
             {
+                ChangeValueByColumn(column.FieldName.Replace("y",""));
                 return;
             }
 
@@ -1150,7 +1324,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 parentNode.SetValue(column.FieldName, null);
             }
             CalculateSum(parentNode, column);
-            //Calc2();
+            ChangeValueByColumn(column.FieldName.Replace("y", ""));
         }
         private void Save()
         {
@@ -1196,73 +1370,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             }
             MsgBox.Show("保存成功！");
         }
-        /// <summary>
-        /// 计算2
-        /// </summary>
-        private void Calc2()
-        {
-            if (firstyear == "0" || endyear == "0")
-            {
-                MsgBox.Show("请设置历史数据起始年结束年后再点参数设置");
-                return;
-            }
-            Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
-            psp_Type.ForecastID = forecastReport.ID;
-            psp_Type.Forecast = type;
-            IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
-
-            Ps_Forecast_Math gdppfm = null;//生产总值(亿元）
-            Ps_Forecast_Math dlpfm = null;//用电量（亿kWh)
-            Ps_Forecast_Math dhpfm = null;//单耗（kW/万元）
-            for (int j = 0; j < listTypes.Count; j++)
-            {
-                Ps_Forecast_Math currtenpfm = (Ps_Forecast_Math)listTypes[j];
-                
-                if (currtenpfm.Sort == 1)
-                {
-                    gdppfm = (Ps_Forecast_Math)listTypes[j];
-                }
-                if (currtenpfm.Sort == 2)
-                {
-                    dlpfm = (Ps_Forecast_Math)listTypes[j];
-                }
-                if (currtenpfm.Sort == 3)
-                {
-                    dhpfm = (Ps_Forecast_Math)listTypes[j];
-                }
-            }
-            //计算数据
-            
-            for (int i = forecastReport.StartYear; i <= eyear; i++)
-            {
-                double gdp = double.Parse(gdppfm.GetType().GetProperty("y" + i).GetValue(gdppfm, null).ToString());
-                double dl = double.Parse(dlpfm.GetType().GetProperty("y" + i).GetValue(dlpfm, null).ToString());
-                double dh = double.Parse(dhpfm.GetType().GetProperty("y" + i).GetValue(dhpfm, null).ToString());
-                if (gdp != 0)
-	            {
-                    dh = dl * unitdata / gdp;
-	            }
-                else
-                {
-                    dh = 0;
-                }
-
-                dhpfm.GetType().GetProperty("y" + i).SetValue(dhpfm, Math.Round(dh, 4), null);
-            }
-            Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
-
-            for (int i = eyear + 1; i <= forecastReport.YcEndYear; i++)
-            {
-                double gdp = double.Parse(gdppfm.GetType().GetProperty("y" + i).GetValue(gdppfm, null).ToString());
-                double dl = double.Parse(dlpfm.GetType().GetProperty("y" + i).GetValue(dlpfm, null).ToString());
-                double dh = double.Parse(dhpfm.GetType().GetProperty("y" + i).GetValue(dhpfm, null).ToString());
-                dl = dh * gdp /unitdata ;
-                dlpfm.GetType().GetProperty("y" + i).SetValue(dlpfm, Math.Round(dl, 4), null);
-            }
-            dlpfm.Col4 = "yes";
-            Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm);
-            LoadData();
-        }
+       
 
         private void treeList1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -1301,10 +1409,10 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 if (Convert.ToInt32(e.Column.FieldName.Replace("y", "")) >= Convert.ToInt32(firstyear.Replace("y", "")) && Convert.ToInt32(endyear.Replace("y", "")) >= Convert.ToInt32(e.Column.FieldName.Replace("y", "")))
 
                     e.Appearance.BackColor = Color.FromArgb(152, 122, 254);
-                if (commonhelp.HasValue(e.Node["ID"].ToString(), e.Column.FieldName))
-                {
-                    e.Appearance.ForeColor = Color.Salmon;
-                }
+                //if (//commonhelp.HasValue(e.Node["ID"].ToString(), e.Column.FieldName))
+                //{
+                //    e.Appearance.ForeColor = Color.Salmon;
+                //}
             }
         }
 
@@ -1327,7 +1435,10 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
              {
                  CanEdit = true;
              }
-
+             if (treeList1.FocusedNode["Sort"].ToString() == "3" )
+             {
+                 CanEdit = true;
+             }
 
             if (!CanEdit)
             {
@@ -1642,55 +1753,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 RefreshChart();
             }
         }
-        //加载电量数据
-        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-            //FormForecastLoadDataforMaxHour ffs = new FormForecastLoadDataforMaxHour();
-            FormForecastLoadData2 ffs = new FormForecastLoadData2();
-            ffs.maxhour = false;
-            ffs.PID = MIS.ProgUID;
-            ffs.StartYear = forecastReport.StartYear;
-            ffs.EndYear = forecastReport.EndYear;
-            if (ffs.ShowDialog() != DialogResult.OK)
-                return;
-
-
-            Hashtable hs = ffs.HS;
-
-            if (hs.Count == 0)
-                return;
-            string id = Guid.NewGuid().ToString();
-            foreach (Ps_History de3 in hs.Values)
-            {
-                Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
-                psp_Type.ForecastID = forecastReport.ID;
-                psp_Type.Forecast = type;
-                IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
-                for (int j = 0; j < listTypes.Count; j++)
-                {
-                    Ps_Forecast_Math currtenpfm = (Ps_Forecast_Math)listTypes[j];
-                    //更新用电量数据
-                    if (currtenpfm.Sort == 2)
-                    {
-                        for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
-                        {
-                            currtenpfm.GetType().GetProperty("y" + i).SetValue(currtenpfm, de3.GetType().GetProperty("y" + i).GetValue(de3, null), null);
-                            commonhelp.ResetValue(currtenpfm.ID, "y" + i);
-                        }
-                        Common.Services.BaseService.Update<Ps_Forecast_Math>(currtenpfm);
-                        break;
-                    }
-                    
-                }
-               
-            }
-
-            LoadData();
-
-            this.chart_user1.All_Select(true);
-            RefreshChart();
-        }
+       
 
         private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -1710,61 +1773,70 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                Ps_Calc pcs = new Ps_Calc();
-                pcs.Forecast = type;
-                pcs.ForecastID = forecastReport.ID;
-
-                IList<Ps_Calc> list1 = Services.BaseService.GetList<Ps_Calc>("SelectPs_CalcByForecast", pcs);
-                Hashtable hs = new Hashtable();
-                foreach (Ps_Calc pcl1 in list1)
-                {
-                    if (!hs.ContainsKey(pcl1.Year))
-                    {
-                        hs.Add(pcl1.Year, pcl1);
-                    }
-                }
-                DataRow[] rows1 = dataTable.Select("Title like '一产' and Col2='GDP'");
-                DataRow[] rows2 = dataTable.Select("Title like '二产' and Col2='GDP'");
-                DataRow[] rows3 = dataTable.Select("Title like '三产' and Col2='GDP'");
-                DataRow[] rowsparent = dataTable.Select("Title like '生产总值%' ");
-
-                if (rows1.Length > 0 && rows2.Length > 0 && rows3.Length>0 && rowsparent.Length > 0)
-                {
-                    DataRow oldrow1 = rows1[0];
-                    DataRow oldrow2 = rows2[0];
-                    DataRow oldrow3 = rows3[0];
-                    DataRow oldrowall = rowsparent[0];
-                    for (int j = forecastReport.YcStartYear; j <= forecastReport.YcEndYear; j++)
-                    {
-                        double increasenum1 = ((Ps_Calc)hs[j]).Value1;
-                        double basenum1 = double.Parse(oldrow1["y" + (j - 1)].ToString());
-                        oldrow1["y" + j] = basenum1 * (1 + increasenum1);
-
-
-                        double increasenum2 = ((Ps_Calc)hs[j]).Value2;
-                        double basenum2 = double.Parse(oldrow2["y" + (j - 1)].ToString());
-                        oldrow2["y" + j] = basenum2 * (1 + increasenum2);
-
-                        double increasenum3 = ((Ps_Calc)hs[j]).Value3;
-                        double basenum3 = double.Parse(oldrow3["y" + (j - 1)].ToString());
-                        oldrow1["y" + j] = basenum3 * (1 + increasenum3);
-
-
-                        oldrowall["y" + j] = basenum1 * (1 + increasenum1) + basenum2 * (1 + increasenum2)+basenum3 * (1 + increasenum3);
-
-                    }
-                    Ps_Forecast_Math pfm1 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow1);
-                    Services.BaseService.Update<Ps_Forecast_Math>(pfm1);
-                    Ps_Forecast_Math pfm2 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow2);
-                    Services.BaseService.Update<Ps_Forecast_Math>(pfm2);
-                    Ps_Forecast_Math pfm3 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow3);
-                    Services.BaseService.Update<Ps_Forecast_Math>(pfm3);
-                    Ps_Forecast_Math pfmall = DataConverter.RowToObject<Ps_Forecast_Math>(oldrowall);
-                    Services.BaseService.Update<Ps_Forecast_Math>(pfmall);
-
-                }
-             
+                GDPIncrease();
             }
+        }
+        private void GDPIncrease()
+        {
+            Ps_Calc pcs = new Ps_Calc();
+            pcs.Forecast = type;
+            pcs.ForecastID = forecastReport.ID;
+
+            IList<Ps_Calc> list1 = Services.BaseService.GetList<Ps_Calc>("SelectPs_CalcByForecast", pcs);
+            if (list1.Count==0)
+            {
+                return;
+            }
+            Hashtable hs = new Hashtable();
+            foreach (Ps_Calc pcl1 in list1)
+            {
+                if (!hs.ContainsKey(pcl1.Year))
+                {
+                    hs.Add(pcl1.Year, pcl1);
+                }
+            }
+            DataRow[] rows1 = dataTable.Select("Title like '一产' and Col2='GDP'");
+            DataRow[] rows2 = dataTable.Select("Title like '二产' and Col2='GDP'");
+            DataRow[] rows3 = dataTable.Select("Title like '三产' and Col2='GDP'");
+            DataRow[] rowsparent = dataTable.Select("Title like '生产总值%' ");
+
+            if (rows1.Length > 0 && rows2.Length > 0 && rows3.Length > 0 && rowsparent.Length > 0)
+            {
+                DataRow oldrow1 = rows1[0];
+                DataRow oldrow2 = rows2[0];
+                DataRow oldrow3 = rows3[0];
+                DataRow oldrowall = rowsparent[0];
+                treeList1.BeginInit();
+                for (int j = forecastReport.YcStartYear; j <= forecastReport.YcEndYear; j++)
+                {
+                    double increasenum1 = ((Ps_Calc)hs[j]).Value1;
+                    double basenum1 = double.Parse(oldrow1["y" + (j - 1)].ToString());
+                    oldrow1["y" + j] = basenum1 * (1 + increasenum1);
+
+
+                    double increasenum2 = ((Ps_Calc)hs[j]).Value2;
+                    double basenum2 = double.Parse(oldrow2["y" + (j - 1)].ToString());
+                    oldrow2["y" + j] = basenum2 * (1 + increasenum2);
+
+                    double increasenum3 = ((Ps_Calc)hs[j]).Value3;
+                    double basenum3 = double.Parse(oldrow3["y" + (j - 1)].ToString());
+                    oldrow3["y" + j] = basenum3 * (1 + increasenum3);
+
+
+                    oldrowall["y" + j] = basenum1 * (1 + increasenum1) + basenum2 * (1 + increasenum2) + basenum3 * (1 + increasenum3);
+
+                }
+                Ps_Forecast_Math pfm1 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow1);
+                Services.BaseService.Update<Ps_Forecast_Math>(pfm1);
+                Ps_Forecast_Math pfm2 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow2);
+                Services.BaseService.Update<Ps_Forecast_Math>(pfm2);
+                Ps_Forecast_Math pfm3 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow3);
+                Services.BaseService.Update<Ps_Forecast_Math>(pfm3);
+                Ps_Forecast_Math pfmall = DataConverter.RowToObject<Ps_Forecast_Math>(oldrowall);
+                Services.BaseService.Update<Ps_Forecast_Math>(pfmall);
+                treeList1.EndInit();
+            }
+            ReChangeValue();
         }
         //居民用电设置
         private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1775,56 +1847,66 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             frm.forecastReport = forecastReport;
             if (frm.ShowDialog()==DialogResult.OK)
             {
-                Ps_Calc pcs = new Ps_Calc();
-                pcs.Forecast = type;
-                pcs.ForecastID = forecastReport.ID;
 
-                IList<Ps_Calc> list1 = Services.BaseService.GetList<Ps_Calc>("SelectPs_CalcByForecast", pcs);
-                Hashtable hs = new Hashtable();
-                foreach (Ps_Calc pcl1 in list1)
-                {
-                    if (!hs.ContainsKey(pcl1.Year))
-                    {
-                        hs.Add(pcl1.Year, pcl1);
-                    }
-                }
-                DataRow[] rows1 = dataTable.Select("Title like '一产' and Col2='DL'");
-                DataRow[] rows2 = dataTable.Select("Title like '二产' and Col2='DL'");
-                DataRow[] rows3 = dataTable.Select("Title like '三产' and Col2='DL'");
-                DataRow[] rows4 = dataTable.Select("Title like '居民%' and Col2='DL'");
-                DataRow[] rows5 = dataTable.Select("Title like '全社会用电量%' ");
-
-                if (rows1.Length > 0 && rows2.Length > 0 && rows3.Length > 0 && rows4.Length > 0 && rows5.Length > 0)
-                {
-                    DataRow oldrow1 = rows1[0];
-                    DataRow oldrow2 = rows2[0];
-                    DataRow oldrow3 = rows3[0];
-                    DataRow oldrow4 = rows4[0];
-                    DataRow oldrow5 = rows5[0];
-
-                    for (int j = forecastReport.YcStartYear; j <= forecastReport.YcEndYear; j++)
-                    {
-                        double increasenum1 = ((Ps_Calc)hs[j]).Value4;
-                        double basenum1 = double.Parse(oldrow4["y" + (j - 1)].ToString());
-                        oldrow4["y" + j] = basenum1 * (1 + increasenum1);
-
-                        oldrow5["y" + j] = double.Parse(oldrow1["y" + j].ToString()) + double.Parse(oldrow2["y" + j].ToString())+ double.Parse(oldrow3["y" + j].ToString()) + double.Parse(oldrow4["y" + j].ToString());
-
-                    }
-                    Ps_Forecast_Math pfm4 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow4);
-                    Services.BaseService.Update<Ps_Forecast_Math>(pfm4);
-                    Ps_Forecast_Math pfm5 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow5);
-                    Services.BaseService.Update<Ps_Forecast_Math>(pfm5);
-                }
-                
-
+                DLIncrease();
             }
         }
+        private void DLIncrease()
+        {
+            Ps_Calc pcs = new Ps_Calc();
+            pcs.Forecast = type;
+            pcs.ForecastID = forecastReport.ID;
 
+            IList<Ps_Calc> list1 = Services.BaseService.GetList<Ps_Calc>("SelectPs_CalcByForecast", pcs);
+            if (list1.Count == 0)
+            {
+                return;
+            }
+            Hashtable hs = new Hashtable();
+            foreach (Ps_Calc pcl1 in list1)
+            {
+                if (!hs.ContainsKey(pcl1.Year))
+                {
+                    hs.Add(pcl1.Year, pcl1);
+                }
+            }
+            DataRow[] rows1 = dataTable.Select("Title like '一产' and Col2='DL'");
+            DataRow[] rows2 = dataTable.Select("Title like '二产' and Col2='DL'");
+            DataRow[] rows3 = dataTable.Select("Title like '三产' and Col2='DL'");
+            DataRow[] rows4 = dataTable.Select("Title like '居民%' and Col2='DL'");
+            DataRow[] rows5 = dataTable.Select("Title like '全社会用电量%' ");
+
+            if (rows1.Length > 0 && rows2.Length > 0 && rows3.Length > 0 && rows4.Length > 0 && rows5.Length > 0)
+            {
+                DataRow oldrow1 = rows1[0];
+                DataRow oldrow2 = rows2[0];
+                DataRow oldrow3 = rows3[0];
+                DataRow oldrow4 = rows4[0];
+                DataRow oldrow5 = rows5[0];
+                treeList1.BeginInit();
+                for (int j = forecastReport.YcStartYear; j <= forecastReport.YcEndYear; j++)
+                {
+                    double increasenum1 = ((Ps_Calc)hs[j]).Value4;
+                    double basenum1 = double.Parse(oldrow4["y" + (j - 1)].ToString());
+                    oldrow4["y" + j] = basenum1 * (1 + increasenum1);
+
+                    oldrow5["y" + j] = double.Parse(oldrow1["y" + j].ToString()) + double.Parse(oldrow2["y" + j].ToString()) + double.Parse(oldrow3["y" + j].ToString()) + double.Parse(oldrow4["y" + j].ToString());
+
+                }
+                Ps_Forecast_Math pfm4 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow4);
+                Services.BaseService.Update<Ps_Forecast_Math>(pfm4);
+                Ps_Forecast_Math pfm5 = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow5);
+                Services.BaseService.Update<Ps_Forecast_Math>(pfm5);
+                treeList1.EndInit();
+            }
+            ReChangeValue();
+        }
         private void simpleButton8_Click(object sender, EventArgs e)
         {
             CalcAll();
         }
+
+        //按总值计算
         private void CalcAll()
         {
             if (firstyear == "0" || endyear == "0")
@@ -1832,178 +1914,96 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 MsgBox.Show("请设置历史数据起始年结束年后再点参数设置");
                 return;
             }
-            Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
-            psp_Type.ForecastID = forecastReport.ID;
-            psp_Type.Forecast = type;
-            IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
+            treeList1.BeginInit();
+            WaitDialogForm wait = new WaitDialogForm("", "正在重新计算，请稍后...");
 
-            Ps_Forecast_Math gdppfm = null;//生产总值(亿元）
-            Ps_Forecast_Math dlpfm = null;//用电量（亿kWh)
-            Ps_Forecast_Math dhpfm = null;//单耗（kW/万元）
-            for (int j = 0; j < listTypes.Count; j++)
+            int allsum = forecastReport.YcEndYear - forecastReport.StartYear;
+
+            if (gdprows.Length>0&&dlrows.Length>0&&dhrows.Length>0)
             {
-                Ps_Forecast_Math currtenpfm = (Ps_Forecast_Math)listTypes[j];
+                DataRow gdprow = gdprows[0];
+                DataRow dlrow = dlrows[0];
+                DataRow dhrow = dhrows[0];
 
-                if (currtenpfm.Sort == 1)
+                for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
                 {
-                    gdppfm = (Ps_Forecast_Math)listTypes[j];
+                    wait.SetCaption((i - forecastReport.StartYear) * 100 / allsum + "%");
+                    double gdp = double.Parse(gdprow["y" + i].ToString());
+                    double dl = double.Parse(dlrow["y" + i].ToString());
+                    double dh = double.Parse(dhrow["y" + i].ToString());
+                    if (gdp != 0)
+                    {
+                        dh = dl * unitdata / gdp;
+                    }
+                    else
+                    {
+                        dh = 0;
+                    }
+
+                    dhrow["y" + i]= Math.Round(dh, 4);
+                    //commonhelp.ResetValue(dhrow["ID"].ToString(), "y" + i);
                 }
-                if (currtenpfm.Sort == 2)
+                Ps_Forecast_Math dhpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow);
+
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
+
+                for (int i = forecastReport.YcStartYear; i <= forecastReport.YcEndYear; i++)
                 {
-                    dlpfm = (Ps_Forecast_Math)listTypes[j];
+                    wait.SetCaption((i - forecastReport.StartYear) * 100 / allsum + "%");
+                    double gdp = double.Parse(gdprow["y" + i].ToString());
+                    double dl = double.Parse(dlrow["y" + i].ToString());
+                    double dh = double.Parse(dhrow["y" + i].ToString());
+                    dl = dh * gdp / unitdata;
+                    dlrow["y" + i] = Math.Round(dl, 4);
+                    //commonhelp.ResetValue(dlrow["ID"].ToString(), "y" + i);
                 }
-                if (currtenpfm.Sort == 3)
-                {
-                    dhpfm = (Ps_Forecast_Math)listTypes[j];
-                }
+                dlrow["Col4"] = "yes";
+                Ps_Forecast_Math dlpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow);
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm);
+               
             }
-            //计算数据
-
-            for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
+            else
             {
-                double gdp = double.Parse(gdppfm.GetType().GetProperty("y" + i).GetValue(gdppfm, null).ToString());
-                double dl = double.Parse(dlpfm.GetType().GetProperty("y" + i).GetValue(dlpfm, null).ToString());
-                double dh = double.Parse(dhpfm.GetType().GetProperty("y" + i).GetValue(dhpfm, null).ToString());
-                if (gdp != 0)
-                {
-                    dh = dl * unitdata / gdp;
-                }
-                else
-                {
-                    dh = 0;
-                }
-
-                dhpfm.GetType().GetProperty("y" + i).SetValue(dhpfm, Math.Round(dh, 4), null);
+                MessageBox.Show("记录不正确，无法计算！");
             }
-            Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
-
-            for (int i = forecastReport.YcStartYear; i <= forecastReport.YcEndYear; i++)
-            {
-                double gdp = double.Parse(gdppfm.GetType().GetProperty("y" + i).GetValue(gdppfm, null).ToString());
-                double dl = double.Parse(dlpfm.GetType().GetProperty("y" + i).GetValue(dlpfm, null).ToString());
-                double dh = double.Parse(dhpfm.GetType().GetProperty("y" + i).GetValue(dhpfm, null).ToString());
-                dl = dh * gdp / unitdata;
-                dlpfm.GetType().GetProperty("y" + i).SetValue(dlpfm, Math.Round(dl, 4), null);
-            }
-            dlpfm.Col4 = "yes";
-            Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm);
-            LoadData();
+            treeList1.EndInit();
+            wait.Close();
         }
         //按三产单耗计算
-        private void simpleButton9_Click(object sender, EventArgs e)
+        private void CalcPer()
         {
-            Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
-            psp_Type.ForecastID = forecastReport.ID;
-            psp_Type.Forecast = type;
-            IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
 
-            Ps_Forecast_Math gdppfm = null;//生产总值(亿元）
-            Ps_Forecast_Math dlpfm = null;//用电量（亿kWh)
-            Ps_Forecast_Math dhpfm = null;//单耗（kW/万元）
-
-
-            Ps_Forecast_Math gdppfm01 = null;//生产总值(亿元）
-            Ps_Forecast_Math gdppfm02 = null;//生产总值(亿元）
-            Ps_Forecast_Math gdppfm03 = null;//生产总值(亿元）
-
-
-            Ps_Forecast_Math dlpfm01 = null;//用电量（亿kWh)
-            Ps_Forecast_Math dlpfm02 = null;//用电量（亿kWh)
-            Ps_Forecast_Math dlpfm03 = null;//用电量（亿kWh)
-            Ps_Forecast_Math dlpfm04 = null;//用电量（亿kWh)
-
-
-            Ps_Forecast_Math dhpfm01 = null;//单耗（kW/万元）
-            Ps_Forecast_Math dhpfm02 = null;//单耗（kW/万元）
-            Ps_Forecast_Math dhpfm03 = null;//单耗（kW/万元）
- 
-
-
-
-            for (int j = 0; j < listTypes.Count; j++)
-            {
-                Ps_Forecast_Math currtenpfm = (Ps_Forecast_Math)listTypes[j];
-                if (currtenpfm.Sort == 1)
-                {
-                    gdppfm = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Sort == 2)
-                {
-                    dlpfm = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Sort == 3)
-                {
-                    dhpfm = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Title == "一产" && currtenpfm.Col2=="GDP")
-                {
-                    gdppfm01 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Title == "二产" && currtenpfm.Col2 == "GDP")
-                {
-                    gdppfm02 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Title == "三产" && currtenpfm.Col2 == "GDP")
-                {
-                    gdppfm03 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-
-
-
-                if (currtenpfm.Title == "一产" && currtenpfm.Col2 == "DL")
-                {
-                    dlpfm01 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Title == "二产" && currtenpfm.Col2 == "DL")
-                {
-                    dlpfm02 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Title == "三产" && currtenpfm.Col2 == "DL")
-                {
-                    dlpfm03 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Title == "居民" && currtenpfm.Col2 == "DL")
-                {
-                    dlpfm04 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-
-                if (currtenpfm.Title == "一产" && currtenpfm.Col2 == "DH")
-                {
-                    dhpfm01 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Title == "二产" && currtenpfm.Col2 == "DH")
-                {
-                    dhpfm02 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-                if (currtenpfm.Title == "三产" && currtenpfm.Col2 == "DH")
-                {
-                    dhpfm03 = (Ps_Forecast_Math)listTypes[j];
-                    continue;
-                }
-
-
-
-            }
+            //生产总值(亿元）
+            //用电量（亿kWh)
+            //单耗（kW/万元）
             //计算数据
+            DataRow gdprow = gdprows[0];
+            DataRow gdprow01 = gdprows01[0];
+            DataRow gdprow02 = gdprows02[0];
+            DataRow gdprow03 = gdprows03[0];
 
+            DataRow dlrow = dlrows[0];
+            DataRow dlrow01 = dlrows01[0];
+            DataRow dlrow02 = dlrows02[0];
+            DataRow dlrow03 = dlrows03[0];
+            DataRow dlrow04 = dlrows04[0];
+
+            DataRow dhrow = dhrows[0];
+            DataRow dhrow01 = dhrows01[0];
+            DataRow dhrow02 = dhrows02[0];
+            DataRow dhrow03 = dhrows03[0];
+
+            WaitDialogForm wait = new WaitDialogForm("","正在重新计算，请稍后...");
+            treeList1.BeginInit();
+            int allsum = forecastReport.YcEndYear - forecastReport.StartYear;
+            
             for (int i = forecastReport.StartYear; i <= forecastReport.EndYear; i++)
             {
+                wait.SetCaption ((i - forecastReport.StartYear) * 100 / allsum + "%");
                 //总单耗
-                double gdp = double.Parse(gdppfm.GetType().GetProperty("y" + i).GetValue(gdppfm, null).ToString());
-                double dl = double.Parse(dlpfm.GetType().GetProperty("y" + i).GetValue(dlpfm, null).ToString());
-                double dh = double.Parse(dhpfm.GetType().GetProperty("y" + i).GetValue(dhpfm, null).ToString());
+                double gdp = double.Parse(gdprow["y" + i].ToString());
+                double dl = double.Parse(dlrow["y" + i].ToString());
+                double dh = double.Parse(dhrow["y" + i].ToString());
                 if (gdp != 0)
                 {
                     dh = dl * unitdata / gdp;
@@ -2012,15 +2012,12 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 {
                     dh = 0;
                 }
-
-                dhpfm.GetType().GetProperty("y" + i).SetValue(dhpfm, Math.Round(dh, 4), null);
-
-
-
+                dhrow["y" + i] = Math.Round(dh, 4);
+                //commonhelp.ResetValue(dhrow["ID"].ToString(), "y" + i);
                 //分单耗01
-                double gdp01 = double.Parse(gdppfm01.GetType().GetProperty("y" + i).GetValue(gdppfm01, null).ToString());
-                double dl01 = double.Parse(dlpfm01.GetType().GetProperty("y" + i).GetValue(dlpfm01, null).ToString());
-                double dh01 = double.Parse(dhpfm01.GetType().GetProperty("y" + i).GetValue(dhpfm01, null).ToString());
+                double gdp01 = double.Parse(gdprow01["y" + i].ToString());
+                double dl01 = double.Parse(dlrow01["y" + i].ToString());
+                double dh01 = double.Parse(dhrow01["y" + i].ToString());
                 if (gdp01 != 0)
                 {
                     dh01 = dl01 * unitdata / gdp01;
@@ -2029,13 +2026,14 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 {
                     dh01 = 0;
                 }
-                dhpfm01.GetType().GetProperty("y" + i).SetValue(dhpfm01, Math.Round(dh01, 4), null);
-
+                dhrow01["y" + i] = Math.Round(dh01, 4);
+                //commonhelp.ResetValue(dhrow01["ID"].ToString(), "y" + i);
 
                 //分单耗02
-                double gdp02 = double.Parse(gdppfm02.GetType().GetProperty("y" + i).GetValue(gdppfm02, null).ToString());
-                double dl02 = double.Parse(dlpfm02.GetType().GetProperty("y" + i).GetValue(dlpfm02, null).ToString());
-                double dh02 = double.Parse(dhpfm02.GetType().GetProperty("y" + i).GetValue(dhpfm02, null).ToString());
+
+                double gdp02 = double.Parse(gdprow02["y" + i].ToString());
+                double dl02 = double.Parse(dlrow02["y" + i].ToString());
+                double dh02 = double.Parse(dhrow02["y" + i].ToString());
                 if (gdp02 != 0)
                 {
                     dh02 = dl02 * unitdata / gdp02;
@@ -2044,12 +2042,13 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 {
                     dh02 = 0;
                 }
-                dhpfm02.GetType().GetProperty("y" + i).SetValue(dhpfm02, Math.Round(dh02, 4), null);
-
+                dhrow02["y" + i] = Math.Round(dh02, 4);
+                //commonhelp.ResetValue(dhrow02["ID"].ToString(), "y" + i);
                 //分单耗03
-                double gdp03 = double.Parse(gdppfm03.GetType().GetProperty("y" + i).GetValue(gdppfm03, null).ToString());
-                double dl03 = double.Parse(dlpfm03.GetType().GetProperty("y" + i).GetValue(dlpfm03, null).ToString());
-                double dh03 = double.Parse(dhpfm03.GetType().GetProperty("y" + i).GetValue(dhpfm03, null).ToString());
+
+                double gdp03 = double.Parse(gdprow03["y" + i].ToString());
+                double dl03 = double.Parse(dlrow03["y" + i].ToString());
+                double dh03 = double.Parse(dhrow03["y" + i].ToString());
                 if (gdp03 != 0)
                 {
                     dh03 = dl03 * unitdata / gdp03;
@@ -2058,9 +2057,14 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 {
                     dh03 = 0;
                 }
-                dhpfm03.GetType().GetProperty("y" + i).SetValue(dhpfm03, Math.Round(dh03, 4), null);
-
+                dhrow03["y" + i] = Math.Round(dh03, 4);
+                //commonhelp.ResetValue(dhrow03["ID"].ToString(), "y" + i);
             }
+            Ps_Forecast_Math dhpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow);
+            Ps_Forecast_Math dhpfm01 = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow01);
+            Ps_Forecast_Math dhpfm02 = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow02);
+            Ps_Forecast_Math dhpfm03 = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow03);
+
             Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
             Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm01);
             Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm02);
@@ -2069,46 +2073,343 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
             for (int i = forecastReport.YcStartYear; i <= forecastReport.YcEndYear; i++)
             {
-                double gdp = double.Parse(gdppfm.GetType().GetProperty("y" + i).GetValue(gdppfm, null).ToString());
-                double dl = double.Parse(dlpfm.GetType().GetProperty("y" + i).GetValue(dlpfm, null).ToString());
-                double dh = double.Parse(dhpfm.GetType().GetProperty("y" + i).GetValue(dhpfm, null).ToString());
+                wait.SetCaption((i - forecastReport.StartYear) * 100 / allsum + "%");
+                double gdp = double.Parse(gdprow["y" + i].ToString());
+                double dl = double.Parse(dlrow["y" + i].ToString());
+                double dh = double.Parse(dhrow["y" + i].ToString());
                 dl = dh * gdp / unitdata;
-                dlpfm.GetType().GetProperty("y" + i).SetValue(dlpfm, Math.Round(dl, 4), null);
-
+                dlrow["y" + i] = Math.Round(dl, 4);
+                //commonhelp.ResetValue(dlrow["ID"].ToString(), "y" + i);
                 //分电量01
-                double gdp01 = double.Parse(gdppfm01.GetType().GetProperty("y" + i).GetValue(gdppfm01, null).ToString());
-                double dl01 = double.Parse(dlpfm01.GetType().GetProperty("y" + i).GetValue(dlpfm01, null).ToString());
-                double dh01 = double.Parse(dhpfm01.GetType().GetProperty("y" + i).GetValue(dhpfm01, null).ToString());
+                double gdp01 = double.Parse(gdprow01["y" + i].ToString());
+                double dl01 = double.Parse(dlrow01["y" + i].ToString());
+                double dh01 = double.Parse(dhrow01["y" + i].ToString());
+
                 dl01 = dh01 * gdp01 / unitdata;
-                dlpfm01.GetType().GetProperty("y" + i).SetValue(dlpfm01, Math.Round(dl01, 4), null);
+                dlrow01["y" + i] = Math.Round(dl01, 4);
+                //commonhelp.ResetValue(dlrow01["ID"].ToString(), "y" + i);
 
                 //分电量02
-                double gdp02 = double.Parse(gdppfm02.GetType().GetProperty("y" + i).GetValue(gdppfm02, null).ToString());
-                double dl02 = double.Parse(dlpfm02.GetType().GetProperty("y" + i).GetValue(dlpfm02, null).ToString());
-                double dh02 = double.Parse(dhpfm02.GetType().GetProperty("y" + i).GetValue(dhpfm02, null).ToString());
+
+
+                double gdp02 = double.Parse(gdprow02["y" + i].ToString());
+                double dl02 = double.Parse(dlrow02["y" + i].ToString());
+                double dh02 = double.Parse(dhrow02["y" + i].ToString());
+
                 dl02 = dh02 * gdp02 / unitdata;
-                dlpfm02.GetType().GetProperty("y" + i).SetValue(dlpfm02, Math.Round(dl02, 4), null);
+                dlrow02["y" + i] = Math.Round(dl02, 4);
+                //commonhelp.ResetValue(dlrow02["ID"].ToString(), "y" + i);
 
                 //分电量03
-                double gdp03 = double.Parse(gdppfm03.GetType().GetProperty("y" + i).GetValue(gdppfm03, null).ToString());
-                double dl03 = double.Parse(dlpfm03.GetType().GetProperty("y" + i).GetValue(dlpfm03, null).ToString());
-                double dh03 = double.Parse(dhpfm03.GetType().GetProperty("y" + i).GetValue(dhpfm03, null).ToString());
+                double gdp03 = double.Parse(gdprow03["y" + i].ToString());
+                double dl03 = double.Parse(dlrow03["y" + i].ToString());
+                double dh03 = double.Parse(dhrow03["y" + i].ToString());
+
                 dl03 = dh03 * gdp03 / unitdata;
-                dlpfm03.GetType().GetProperty("y" + i).SetValue(dlpfm03, Math.Round(dl03, 4), null);
+                dlrow03["y" + i] = Math.Round(dl03, 4);
+                //commonhelp.ResetValue(dlrow03["ID"].ToString(), "y" + i);
 
+                double dl04 = double.Parse(dlrow04["y" + i].ToString());
 
-                double dl04 = double.Parse(dlpfm04.GetType().GetProperty("y" + i).GetValue(dlpfm04, null).ToString());
+                dlrow["y" + i] = Math.Round((dl01 + dl02 + dl03 + dl04), 4);
+                //commonhelp.ResetValue(dlrow["ID"].ToString(), "y" + i);
 
-                dlpfm.GetType().GetProperty("y" + i).SetValue(dlpfm, Math.Round((dl01+dl02+dl03+dl04), 4), null);
+                dl = double.Parse(dlrow["y" + i].ToString());
+
+               
+                if (gdp != 0)
+                {
+                    dh = dl * unitdata / gdp;
+                }
+                else
+                {
+                    dh = 0;
+                }
+
+                dhrow["y" + i] = Math.Round(dh, 4);
+                //commonhelp.ResetValue(dhrow["ID"].ToString(), "y" + i);
+
 
             }
-            dlpfm.Col4 = "yes";
+            dlrow["Col4"] = "yes";
+
+             dhpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow);
+            Ps_Forecast_Math dlpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow);
+            Ps_Forecast_Math dlpfm01 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow01);
+            Ps_Forecast_Math dlpfm02 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow02);
+            Ps_Forecast_Math dlpfm03 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow03);
+
+
+            Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
             Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm);
             Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm01);
             Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm02);
             Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm03);
 
-            LoadData();
+            treeList1.EndInit();
+            wait.Close();
+        }
+
+     
+        //计算
+        private void simpleButton2_Click_1(object sender, EventArgs e)
+        {
+            ReChangeValue();
+        }
+
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (gdprows.Length > 0)
+            {
+                DataRow gdprow = gdprows[0];
+                if (radioGroup1.SelectedIndex>0)
+                {
+                    gdprow["y1990"] = 0;
+                }
+                else
+                {
+                    gdprow["y1990"] = 1;
+                }
+                Ps_Forecast_Math gdppfm = DataConverter.RowToObject<Ps_Forecast_Math>(gdprow);
+                Services.BaseService.Update<Ps_Forecast_Math>(gdppfm);
+                ReChangeValue();
+               
+            }
+        }
+        private void ReChangeValue()
+        {
+            if (radioGroup1.SelectedIndex>0)
+            {
+                CalcPer();
+            }
+            else
+            {
+                CalcAll();
+            }
+        }
+        private void ChangeValueByColumn(string column)
+        {
+            int year = int.Parse(column);
+            if (radioGroup1.SelectedIndex > 0)
+            {
+                
+                //生产总值(亿元）
+                //用电量（亿kWh)
+                //单耗（kW/万元）
+                //计算数据
+                DataRow gdprow = gdprows[0];
+                DataRow gdprow01 = gdprows01[0];
+                DataRow gdprow02 = gdprows02[0];
+                DataRow gdprow03 = gdprows03[0];
+
+                DataRow dlrow = dlrows[0];
+                DataRow dlrow01 = dlrows01[0];
+                DataRow dlrow02 = dlrows02[0];
+                DataRow dlrow03 = dlrows03[0];
+                DataRow dlrow04 = dlrows04[0];
+
+                DataRow dhrow = dhrows[0];
+                DataRow dhrow01 = dhrows01[0];
+                DataRow dhrow02 = dhrows02[0];
+                DataRow dhrow03 = dhrows03[0];
+                int i = year;
+                if (forecastReport.StartYear<year&&year<=forecastReport.EndYear)
+                {
+                  
+                    //总单耗
+                    double gdp = double.Parse(gdprow["y" + i].ToString());
+                    double dl = double.Parse(dlrow["y" + i].ToString());
+                    double dh = double.Parse(dhrow["y" + i].ToString());
+                    if (gdp != 0)
+                    {
+                        dh = dl * unitdata / gdp;
+                    }
+                    else
+                    {
+                        dh = 0;
+                    }
+                    dhrow["y" + i] = Math.Round(dh, 4);
+                    //commonhelp.ResetValue(dhrow["ID"].ToString(), "y" + i);
+                    //分单耗01
+                    double gdp01 = double.Parse(gdprow01["y" + i].ToString());
+                    double dl01 = double.Parse(dlrow01["y" + i].ToString());
+                    double dh01 = double.Parse(dhrow01["y" + i].ToString());
+                    if (gdp01 != 0)
+                    {
+                        dh01 = dl01 * unitdata / gdp01;
+                    }
+                    else
+                    {
+                        dh01 = 0;
+                    }
+                    dhrow01["y" + i] = Math.Round(dh01, 4);
+
+                    //commonhelp.ResetValue(dhrow01["ID"].ToString(), "y" + i);
+
+                    //分单耗02
+
+                    double gdp02 = double.Parse(gdprow02["y" + i].ToString());
+                    double dl02 = double.Parse(dlrow02["y" + i].ToString());
+                    double dh02 = double.Parse(dhrow02["y" + i].ToString());
+                    if (gdp02 != 0)
+                    {
+                        dh02 = dl02 * unitdata / gdp02;
+                    }
+                    else
+                    {
+                        dh02 = 0;
+                    }
+                    dhrow02["y" + i] = Math.Round(dh02, 4);
+                    //commonhelp.ResetValue(dhrow02["ID"].ToString(), "y" + i);
+
+                    //分单耗03
+
+                    double gdp03 = double.Parse(gdprow03["y" + i].ToString());
+                    double dl03 = double.Parse(dlrow03["y" + i].ToString());
+                    double dh03 = double.Parse(dhrow03["y" + i].ToString());
+                    if (gdp03 != 0)
+                    {
+                        dh03 = dl03 * unitdata / gdp03;
+                    }
+                    else
+                    {
+                        dh03 = 0;
+                    }
+                    dhrow03["y" + i] = Math.Round(dh03, 4);
+                    //commonhelp.ResetValue(dhrow03["ID"].ToString(), "y" + i);
+
+
+                   
+
+
+                    Ps_Forecast_Math dhpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow);
+                    Ps_Forecast_Math dhpfm01 = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow01);
+                    Ps_Forecast_Math dhpfm02 = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow02);
+                    Ps_Forecast_Math dhpfm03 = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow03);
+
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm01);
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm02);
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm03);
+                }
+                else
+                {
+                    double gdp = double.Parse(gdprow["y" + i].ToString());
+                    double dl = double.Parse(dlrow["y" + i].ToString());
+                    double dh = double.Parse(dhrow["y" + i].ToString());
+                    dl = dh * gdp / unitdata;
+                    dlrow["y" + i] = Math.Round(dl, 4);
+                    //commonhelp.ResetValue(dlrow["ID"].ToString(), "y" + i);
+                    //分电量01
+                    double gdp01 = double.Parse(gdprow01["y" + i].ToString());
+                    double dl01 = double.Parse(dlrow01["y" + i].ToString());
+                    double dh01 = double.Parse(dhrow01["y" + i].ToString());
+
+                    dl01 = dh01 * gdp01 / unitdata;
+                    dlrow01["y" + i] = Math.Round(dl01, 4);
+                    //commonhelp.ResetValue(dlrow01["ID"].ToString(), "y" + i);
+
+                    //分电量02
+
+
+                    double gdp02 = double.Parse(gdprow02["y" + i].ToString());
+                    double dl02 = double.Parse(dlrow02["y" + i].ToString());
+                    double dh02 = double.Parse(dhrow02["y" + i].ToString());
+
+                    dl02 = dh02 * gdp02 / unitdata;
+                    dlrow02["y" + i] = Math.Round(dl02, 4);
+                    //commonhelp.ResetValue(dlrow02["ID"].ToString(), "y" + i);
+
+                    //分电量03
+                    double gdp03 = double.Parse(gdprow03["y" + i].ToString());
+                    double dl03 = double.Parse(dlrow03["y" + i].ToString());
+                    double dh03 = double.Parse(dhrow03["y" + i].ToString());
+
+                    dl03 = dh03 * gdp03 / unitdata;
+                    dlrow03["y" + i] = Math.Round(dl03, 4);
+                    //commonhelp.ResetValue(dlrow02["ID"].ToString(), "y" + i);
+
+                    double dl04 = double.Parse(dlrow03["y" + i].ToString());
+
+                    dlrow["y" + i] = Math.Round((dl01 + dl02 + dl03 + dl04), 4);
+                    dlrow["Col4"] = "yes";
+                    //commonhelp.ResetValue(dlrow["ID"].ToString(), "y" + i);
+
+
+                    dl = double.Parse(dlrow["y" + i].ToString());
+
+                    if (gdp != 0)
+                    {
+                        dh = dl * unitdata / gdp;
+                    }
+                    else
+                    {
+                        dh = 0;
+                    }
+
+                    dhrow["y" + i] = Math.Round(dh, 4);
+                    //commonhelp.ResetValue(dhrow["ID"].ToString(), "y" + i);
+
+                    Ps_Forecast_Math dhpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow);
+
+
+                    Ps_Forecast_Math dlpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow);
+                    Ps_Forecast_Math dlpfm01 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow01);
+                    Ps_Forecast_Math dlpfm02 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow02);
+                    Ps_Forecast_Math dlpfm03 = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow03);
+
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm);
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm01);
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm02);
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm03);
+                }
+                
+
+
+               
+            }
+            else
+            {
+                DataRow gdprow = gdprows[0];
+                DataRow dlrow = dlrows[0];
+                DataRow dhrow = dhrows[0];
+                 int i = year;
+                 if (forecastReport.StartYear < year && year <= forecastReport.EndYear)
+                 {
+                     double gdp = double.Parse(gdprow["y" + i].ToString());
+                     double dl = double.Parse(dlrow["y" + i].ToString());
+                     double dh = double.Parse(dhrow["y" + i].ToString());
+                     if (gdp != 0)
+                     {
+                         dh = dl * unitdata / gdp;
+                     }
+                     else
+                     {
+                         dh = 0;
+                     }
+
+                     dhrow["y" + i] = Math.Round(dh, 4);
+                     //commonhelp.ResetValue(dhrow["ID"].ToString(), "y" + i);
+                     Ps_Forecast_Math dhpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dhrow);
+
+                     Common.Services.BaseService.Update<Ps_Forecast_Math>(dhpfm);
+                 }
+                 else
+                 {
+                     double gdp = double.Parse(gdprow["y" + i].ToString());
+                     double dl = double.Parse(dlrow["y" + i].ToString());
+                     double dh = double.Parse(dhrow["y" + i].ToString());
+                     dl = dh * gdp / unitdata;
+                     dlrow["y" + i] = Math.Round(dl, 4);
+                     //commonhelp.ResetValue(dlrow["ID"].ToString(), "y" + i);
+                     dlrow["Col4"] = "yes";
+                     Ps_Forecast_Math dlpfm = DataConverter.RowToObject<Ps_Forecast_Math>(dlrow);
+                     Common.Services.BaseService.Update<Ps_Forecast_Math>(dlpfm);
+                     
+                 }
+               
+            }
         }
     }
 }

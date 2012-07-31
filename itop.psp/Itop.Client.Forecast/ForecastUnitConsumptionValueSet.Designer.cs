@@ -68,6 +68,7 @@
             this.simpleButton6.Size = new System.Drawing.Size(76, 26);
             this.simpleButton6.TabIndex = 5;
             this.simpleButton6.Text = "取消";
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // groupBox3
             // 
