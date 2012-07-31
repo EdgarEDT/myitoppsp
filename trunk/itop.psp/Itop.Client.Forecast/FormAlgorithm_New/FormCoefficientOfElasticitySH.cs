@@ -65,7 +65,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         {
             if (!CanEdit)
             {
-                barButtonItem17.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+               
                 barButtonItem14.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem22.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem26.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -134,7 +134,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             else
             {
                 ht.Add("全社会用电量（亿kWh）", 1);
-                ht.Add("全地区GDP亿元", 2);
+                ht.Add("全地区GDP（亿元）", 2);
             }
 
 
@@ -547,7 +547,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 endyear = "0";
                 selectdral = false;
                 this.simpleButton2.Enabled = false;
-                this.barButtonItem17.Enabled = false;
+                
                 this.simpleButton4.Enabled = false;
 
 
@@ -560,7 +560,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 barButtonItem26.Caption = "开始截取历史数据";
                 selectdral = true;
                 this.simpleButton2.Enabled = true;
-                this.barButtonItem17.Enabled = true;
+               
                 this.simpleButton4.Enabled = true;
                 if (firstyear != "Title")
                 {
@@ -1243,6 +1243,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                             catch
                             { }
                             oldrow["y" + i] = s1;
+                            commonhelp.ResetValue(oldrow["ID"].ToString(), "y" + i);
                         }
                         Ps_Forecast_Math pfm = DataConverter.RowToObject<Ps_Forecast_Math>(oldrow);
                         Services.BaseService.Update<Ps_Forecast_Math>(pfm);

@@ -34,7 +34,6 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem26 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
@@ -88,7 +87,6 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.barManager1.Images = this.imageList1;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem14,
-            this.barButtonItem17,
             this.barSubItem3,
             this.barButtonItem20,
             this.barButtonItem21,
@@ -114,7 +112,6 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem5, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem26, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3, true),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem7, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -144,15 +141,6 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.barButtonItem14.Name = "barButtonItem14";
             this.barButtonItem14.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
-            // 
-            // barButtonItem17
-            // 
-            this.barButtonItem17.Caption = "≤Œ ˝…Ë÷√";
-            this.barButtonItem17.Id = 26;
-            this.barButtonItem17.ImageIndex = 14;
-            this.barButtonItem17.Name = "barButtonItem17";
-            this.barButtonItem17.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
             // 
             // barButtonItem26
             // 
@@ -502,7 +490,6 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem14;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem17;
         private DevExpress.XtraBars.BarButtonItem barButtonItem20;
         private DevExpress.XtraBars.BarButtonItem barButtonItem21;
         private DevExpress.XtraBars.BarButtonItem barButtonItem22;

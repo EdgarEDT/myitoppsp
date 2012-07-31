@@ -26,7 +26,7 @@ namespace Itop.Client.Forecast
 
         public bool maxhour = false;
         public bool ISGDP = false;
-      private string Flag = "2";
+         private string Flag = "2";
 
         DataTable dataTable;
 

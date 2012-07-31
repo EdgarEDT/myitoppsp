@@ -62,7 +62,7 @@ namespace Itop.Client.Forecast
             newrow1 =  dt.NewRow();
          
             newrow1["ID"] = "ID";
-            newrow1["Name"] = "居民用电增长率";
+            newrow1["Name"] = "居民用电增长率(%)";
 
             for (int i = forecastReport.YcStartYear; i <= forecastReport.YcEndYear; i++)
             {
@@ -85,14 +85,14 @@ namespace Itop.Client.Forecast
 
                 if (s2 != 0)
                     s5 = (s1 - s2) / s2;
-                newrow1[i.ToString()] =Math.Round( s5,3);
+                newrow1[i.ToString()] =Math.Round( s5*100,3);
 
 
                 foreach (Ps_Calc pcs2 in list1)
                 {
                     if (i == pcs2.Year)
                     {
-                        newrow1[i.ToString()] = Math.Round(pcs2.Value4,3);
+                        newrow1[i.ToString()] = Math.Round(pcs2.Value4 * 100, 3);
 
                     }
                 }
@@ -139,7 +139,7 @@ namespace Itop.Client.Forecast
                 double value2 = 0;
                 try
                 {
-                    value2= (double)newrow1[dc.ColumnName];
+                    value2= (double)newrow1[dc.ColumnName]/100;
  
                 }
                 catch { }

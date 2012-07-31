@@ -38,12 +38,8 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.chart_user1 = new Itop.Client.Using.chart_userSH();
-            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -67,12 +63,20 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // treeList1
@@ -146,8 +150,7 @@
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.chart_user1);
             this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton9);
-            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton8);
+            this.splitContainerControl1.Panel2.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton7);
             this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton6);
             this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton4);
@@ -168,92 +171,28 @@
             this.chart_user1.Size = new System.Drawing.Size(957, 427);
             this.chart_user1.TabIndex = 0;
             // 
-            // simpleButton9
+            // groupControl1
             // 
-            this.simpleButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton9.Location = new System.Drawing.Point(18, 67);
-            this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(122, 37);
-            this.simpleButton9.TabIndex = 8;
-            this.simpleButton9.Text = "按三产单耗计算";
-            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
+            this.groupControl1.Controls.Add(this.radioGroup1);
+            this.groupControl1.Controls.Add(this.simpleButton2);
+            this.groupControl1.Location = new System.Drawing.Point(9, 9);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(137, 100);
+            this.groupControl1.TabIndex = 9;
+            this.groupControl1.Text = "计算设置";
             // 
-            // simpleButton8
+            // radioGroup1
             // 
-            this.simpleButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton8.Location = new System.Drawing.Point(17, 19);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(122, 37);
-            this.simpleButton8.TabIndex = 7;
-            this.simpleButton8.Text = "按总GDP单耗计算";
-            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
-            // 
-            // simpleButton7
-            // 
-            this.simpleButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton7.Location = new System.Drawing.Point(18, 115);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(122, 37);
-            this.simpleButton7.TabIndex = 6;
-            this.simpleButton7.Text = "设置GDP年增长率";
-            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
-            // 
-            // splitContainerControl2
-            // 
-            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
-            this.splitContainerControl2.Horizontal = false;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 40);
-            this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.treeList1);
-            this.splitContainerControl2.Panel1.Text = "splitContainerControl2_Panel1";
-            this.splitContainerControl2.Panel2.Controls.Add(this.splitContainerControl1);
-            this.splitContainerControl2.Panel2.Text = "splitContainerControl2_Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1115, 562);
-            this.splitContainerControl2.SplitterPosition = 427;
-            this.splitContainerControl2.TabIndex = 16;
-            this.splitContainerControl2.Text = "splitContainerControl2";
-            // 
-            // splitterControl1
-            // 
-            this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitterControl1.Location = new System.Drawing.Point(0, 34);
-            this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1115, 6);
-            this.splitterControl1.TabIndex = 15;
-            this.splitterControl1.TabStop = false;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "保存.ico");
-            this.imageList1.Images.SetKeyName(1, "布局.ico");
-            this.imageList1.Images.SetKeyName(2, "查询.ico");
-            this.imageList1.Images.SetKeyName(3, "打回重新编.ico");
-            this.imageList1.Images.SetKeyName(4, "打印.ico");
-            this.imageList1.Images.SetKeyName(5, "发送.ico");
-            this.imageList1.Images.SetKeyName(6, "关闭1.ico");
-            this.imageList1.Images.SetKeyName(7, "关闭.ico");
-            this.imageList1.Images.SetKeyName(8, "角色.ico");
-            this.imageList1.Images.SetKeyName(9, "三等功发1.ico");
-            this.imageList1.Images.SetKeyName(10, "删除.ico");
-            this.imageList1.Images.SetKeyName(11, "审核.ico");
-            this.imageList1.Images.SetKeyName(12, "审批.ico");
-            this.imageList1.Images.SetKeyName(13, "授权.ico");
-            this.imageList1.Images.SetKeyName(14, "刷新.ico");
-            this.imageList1.Images.SetKeyName(15, "添加同级.ico");
-            this.imageList1.Images.SetKeyName(16, "添加下级.ico");
-            this.imageList1.Images.SetKeyName(17, "新建.ico");
-            this.imageList1.Images.SetKeyName(18, "修改.ico");
-            this.imageList1.Images.SetKeyName(19, "作废.ico");
-            this.imageList1.Images.SetKeyName(20, "031.ico");
-            this.imageList1.Images.SetKeyName(21, "46.ico");
-            this.imageList1.Images.SetKeyName(22, "CD2.ico");
-            this.imageList1.Images.SetKeyName(23, "globo.ico");
-            this.imageList1.Images.SetKeyName(24, "10 Desktop.ico");
-            this.imageList1.Images.SetKeyName(25, "15 ICQ.ico");
-            this.imageList1.Images.SetKeyName(26, "06 Picture.ico");
+            this.radioGroup1.EditValue = true;
+            this.radioGroup1.Location = new System.Drawing.Point(11, 26);
+            this.radioGroup1.MenuManager = this.barManager1;
+            this.radioGroup1.Name = "radioGroup1";
+            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "按总值计算"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(false, "按三产计算")});
+            this.radioGroup1.Size = new System.Drawing.Size(119, 41);
+            this.radioGroup1.TabIndex = 1;
+            this.radioGroup1.SelectedIndexChanged += new System.EventHandler(this.radioGroup1_SelectedIndexChanged);
             // 
             // barManager1
             // 
@@ -329,7 +268,7 @@
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "参数设置";
+            this.barButtonItem2.Caption = "计算单位设置";
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.ImageIndex = 14;
             this.barButtonItem2.Name = "barButtonItem2";
@@ -485,6 +424,82 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1115, 34);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 568);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "保存.ico");
+            this.imageList1.Images.SetKeyName(1, "布局.ico");
+            this.imageList1.Images.SetKeyName(2, "查询.ico");
+            this.imageList1.Images.SetKeyName(3, "打回重新编.ico");
+            this.imageList1.Images.SetKeyName(4, "打印.ico");
+            this.imageList1.Images.SetKeyName(5, "发送.ico");
+            this.imageList1.Images.SetKeyName(6, "关闭1.ico");
+            this.imageList1.Images.SetKeyName(7, "关闭.ico");
+            this.imageList1.Images.SetKeyName(8, "角色.ico");
+            this.imageList1.Images.SetKeyName(9, "三等功发1.ico");
+            this.imageList1.Images.SetKeyName(10, "删除.ico");
+            this.imageList1.Images.SetKeyName(11, "审核.ico");
+            this.imageList1.Images.SetKeyName(12, "审批.ico");
+            this.imageList1.Images.SetKeyName(13, "授权.ico");
+            this.imageList1.Images.SetKeyName(14, "刷新.ico");
+            this.imageList1.Images.SetKeyName(15, "添加同级.ico");
+            this.imageList1.Images.SetKeyName(16, "添加下级.ico");
+            this.imageList1.Images.SetKeyName(17, "新建.ico");
+            this.imageList1.Images.SetKeyName(18, "修改.ico");
+            this.imageList1.Images.SetKeyName(19, "作废.ico");
+            this.imageList1.Images.SetKeyName(20, "031.ico");
+            this.imageList1.Images.SetKeyName(21, "46.ico");
+            this.imageList1.Images.SetKeyName(22, "CD2.ico");
+            this.imageList1.Images.SetKeyName(23, "globo.ico");
+            this.imageList1.Images.SetKeyName(24, "10 Desktop.ico");
+            this.imageList1.Images.SetKeyName(25, "15 ICQ.ico");
+            this.imageList1.Images.SetKeyName(26, "06 Picture.ico");
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(24, 70);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(94, 23);
+            this.simpleButton2.TabIndex = 0;
+            this.simpleButton2.Text = "重新计算";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click_1);
+            // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton7.Location = new System.Drawing.Point(18, 115);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(122, 37);
+            this.simpleButton7.TabIndex = 6;
+            this.simpleButton7.Text = "设置GDP年增长率";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
+            // 
+            // splitContainerControl2
+            // 
+            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
+            this.splitContainerControl2.Horizontal = false;
+            this.splitContainerControl2.Location = new System.Drawing.Point(0, 40);
+            this.splitContainerControl2.Name = "splitContainerControl2";
+            this.splitContainerControl2.Panel1.Controls.Add(this.treeList1);
+            this.splitContainerControl2.Panel1.Text = "splitContainerControl2_Panel1";
+            this.splitContainerControl2.Panel2.Controls.Add(this.splitContainerControl1);
+            this.splitContainerControl2.Panel2.Text = "splitContainerControl2_Panel2";
+            this.splitContainerControl2.Size = new System.Drawing.Size(1115, 562);
+            this.splitContainerControl2.SplitterPosition = 427;
+            this.splitContainerControl2.TabIndex = 16;
+            this.splitContainerControl2.Text = "splitContainerControl2";
+            // 
+            // splitterControl1
+            // 
+            this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitterControl1.Location = new System.Drawing.Point(0, 34);
+            this.splitterControl1.Name = "splitterControl1";
+            this.splitterControl1.Size = new System.Drawing.Size(1115, 6);
+            this.splitterControl1.TabIndex = 15;
+            this.splitterControl1.TabStop = false;
+            // 
             // FormUnitConsumptionValueSH
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -504,9 +519,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -548,7 +566,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem14;
         private DevExpress.XtraEditors.SimpleButton simpleButton7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem15;
-        private DevExpress.XtraEditors.SimpleButton simpleButton8;
-        private DevExpress.XtraEditors.SimpleButton simpleButton9;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.RadioGroup radioGroup1;
     }
 }
