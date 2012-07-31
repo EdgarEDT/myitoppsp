@@ -48,7 +48,10 @@ namespace Itop.TLPSP.DEVICE
             Init();
                
         }
-
+        public void CsbuttonVisble(bool lj)
+        {
+            simpleButton5.Visible = lj;
+        }
         void EmbeddedNavigator_ButtonClick(object sender, DevExpress.XtraEditors.NavigatorButtonClickEventArgs e)
         {
             if(e.Button.Tag.ToString()=="Ôö¼Ó"){

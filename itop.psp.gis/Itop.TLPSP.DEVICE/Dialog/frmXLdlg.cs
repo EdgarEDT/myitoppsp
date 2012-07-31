@@ -884,7 +884,14 @@ namespace Itop.TLPSP.DEVICE
             this.xtraTabPage4.PageVisible = true;
             xtraTabControl1.SelectedTabPageIndex = 1;
         }
-
+        public void ShowTabControl()
+        {
+            this.xtraTabPage2.PageVisible = true;
+            this.xtraTabPage3.PageVisible = true;
+            this.xtraTabPage4.PageVisible = true;
+            this.simpleButton4.Visible = false;
+            xtraTabControl1.SelectedTabPageIndex = 1;
+        }
         private void spinEdit5_EditValueChanged(object sender, EventArgs e)
         {
             comboBoxEdit2.Properties.Items.Clear();

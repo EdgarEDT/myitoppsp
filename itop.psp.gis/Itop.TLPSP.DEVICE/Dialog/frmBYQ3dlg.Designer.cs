@@ -29,6 +29,9 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelControl45 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -53,9 +56,13 @@
             this.label89 = new System.Windows.Forms.Label();
             this.label91 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.label5 = new System.Windows.Forms.Label();
             this.radioGroup3 = new DevExpress.XtraEditors.RadioGroup();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.labelControl48 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl47 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl46 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -116,6 +123,12 @@
             this.label34 = new System.Windows.Forms.Label();
             this.spinEdit53 = new DevExpress.XtraEditors.SpinEdit();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl53 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl52 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl51 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl50 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl49 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl40 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl39 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl38 = new DevExpress.XtraEditors.LabelControl();
@@ -189,6 +202,10 @@
             this.label25 = new System.Windows.Forms.Label();
             this.spinEdit7 = new DevExpress.XtraEditors.SpinEdit();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.labelControl58 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl57 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl56 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl55 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
@@ -281,7 +298,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.radioGroup5 = new DevExpress.XtraEditors.RadioGroup();
             this.radioGroup6 = new DevExpress.XtraEditors.RadioGroup();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -439,6 +455,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.labelControl45);
+            this.groupBox2.Controls.Add(this.labelControl14);
+            this.groupBox2.Controls.Add(this.labelControl13);
             this.groupBox2.Controls.Add(this.labelControl10);
             this.groupBox2.Controls.Add(this.labelControl9);
             this.groupBox2.Controls.Add(this.labelControl8);
@@ -458,6 +477,36 @@
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "容量";
+            // 
+            // labelControl45
+            // 
+            this.labelControl45.Appearance.ForeColor = System.Drawing.Color.Orange;
+            this.labelControl45.Appearance.Options.UseForeColor = true;
+            this.labelControl45.Location = new System.Drawing.Point(287, 87);
+            this.labelControl45.Name = "labelControl45";
+            this.labelControl45.Size = new System.Drawing.Size(7, 14);
+            this.labelControl45.TabIndex = 56;
+            this.labelControl45.Text = "*";
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.ForeColor = System.Drawing.Color.Orange;
+            this.labelControl14.Appearance.Options.UseForeColor = true;
+            this.labelControl14.Location = new System.Drawing.Point(287, 56);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(7, 14);
+            this.labelControl14.TabIndex = 55;
+            this.labelControl14.Text = "*";
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.Orange;
+            this.labelControl13.Appearance.Options.UseForeColor = true;
+            this.labelControl13.Location = new System.Drawing.Point(287, 23);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(7, 14);
+            this.labelControl13.TabIndex = 54;
+            this.labelControl13.Text = "*";
             // 
             // labelControl10
             // 
@@ -722,12 +771,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "单位";
             // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl12.Appearance.Options.UseFont = true;
+            this.labelControl12.Appearance.Options.UseForeColor = true;
+            this.labelControl12.Location = new System.Drawing.Point(142, 13);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(176, 20);
+            this.labelControl12.TabIndex = 9;
+            this.labelControl12.Text = "影响：\r\n三绕组变压器的电阻、电抗、电纳！";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(128, 18);
+            this.label5.Location = new System.Drawing.Point(128, 31);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 14);
             this.label5.TabIndex = 7;
@@ -749,6 +810,9 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.labelControl48);
+            this.groupBox5.Controls.Add(this.labelControl47);
+            this.groupBox5.Controls.Add(this.labelControl46);
             this.groupBox5.Controls.Add(this.labelControl2);
             this.groupBox5.Controls.Add(this.labelControl1);
             this.groupBox5.Controls.Add(this.labelControl5);
@@ -771,6 +835,36 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "拓扑连接";
             this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
+            // 
+            // labelControl48
+            // 
+            this.labelControl48.Appearance.ForeColor = System.Drawing.Color.Orange;
+            this.labelControl48.Appearance.Options.UseForeColor = true;
+            this.labelControl48.Location = new System.Drawing.Point(268, 98);
+            this.labelControl48.Name = "labelControl48";
+            this.labelControl48.Size = new System.Drawing.Size(7, 14);
+            this.labelControl48.TabIndex = 59;
+            this.labelControl48.Text = "*";
+            // 
+            // labelControl47
+            // 
+            this.labelControl47.Appearance.ForeColor = System.Drawing.Color.Orange;
+            this.labelControl47.Appearance.Options.UseForeColor = true;
+            this.labelControl47.Location = new System.Drawing.Point(268, 72);
+            this.labelControl47.Name = "labelControl47";
+            this.labelControl47.Size = new System.Drawing.Size(7, 14);
+            this.labelControl47.TabIndex = 58;
+            this.labelControl47.Text = "*";
+            // 
+            // labelControl46
+            // 
+            this.labelControl46.Appearance.ForeColor = System.Drawing.Color.Orange;
+            this.labelControl46.Appearance.Options.UseForeColor = true;
+            this.labelControl46.Location = new System.Drawing.Point(268, 38);
+            this.labelControl46.Name = "labelControl46";
+            this.labelControl46.Size = new System.Drawing.Size(7, 14);
+            this.labelControl46.TabIndex = 57;
+            this.labelControl46.Text = "*";
             // 
             // labelControl2
             // 
@@ -1477,6 +1571,12 @@
             // 
             // groupBox19
             // 
+            this.groupBox19.Controls.Add(this.labelControl54);
+            this.groupBox19.Controls.Add(this.labelControl53);
+            this.groupBox19.Controls.Add(this.labelControl52);
+            this.groupBox19.Controls.Add(this.labelControl51);
+            this.groupBox19.Controls.Add(this.labelControl50);
+            this.groupBox19.Controls.Add(this.labelControl49);
             this.groupBox19.Controls.Add(this.labelControl40);
             this.groupBox19.Controls.Add(this.labelControl39);
             this.groupBox19.Controls.Add(this.labelControl38);
@@ -1508,6 +1608,66 @@
             this.groupBox19.TabIndex = 32;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "阻抗";
+            // 
+            // labelControl54
+            // 
+            this.labelControl54.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl54.Appearance.Options.UseForeColor = true;
+            this.labelControl54.Location = new System.Drawing.Point(225, 80);
+            this.labelControl54.Name = "labelControl54";
+            this.labelControl54.Size = new System.Drawing.Size(7, 14);
+            this.labelControl54.TabIndex = 63;
+            this.labelControl54.Text = "*";
+            // 
+            // labelControl53
+            // 
+            this.labelControl53.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl53.Appearance.Options.UseForeColor = true;
+            this.labelControl53.Location = new System.Drawing.Point(225, 51);
+            this.labelControl53.Name = "labelControl53";
+            this.labelControl53.Size = new System.Drawing.Size(7, 14);
+            this.labelControl53.TabIndex = 62;
+            this.labelControl53.Text = "*";
+            // 
+            // labelControl52
+            // 
+            this.labelControl52.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl52.Appearance.Options.UseForeColor = true;
+            this.labelControl52.Location = new System.Drawing.Point(225, 27);
+            this.labelControl52.Name = "labelControl52";
+            this.labelControl52.Size = new System.Drawing.Size(7, 14);
+            this.labelControl52.TabIndex = 61;
+            this.labelControl52.Text = "*";
+            // 
+            // labelControl51
+            // 
+            this.labelControl51.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl51.Appearance.Options.UseForeColor = true;
+            this.labelControl51.Location = new System.Drawing.Point(112, 81);
+            this.labelControl51.Name = "labelControl51";
+            this.labelControl51.Size = new System.Drawing.Size(7, 14);
+            this.labelControl51.TabIndex = 60;
+            this.labelControl51.Text = "*";
+            // 
+            // labelControl50
+            // 
+            this.labelControl50.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl50.Appearance.Options.UseForeColor = true;
+            this.labelControl50.Location = new System.Drawing.Point(112, 52);
+            this.labelControl50.Name = "labelControl50";
+            this.labelControl50.Size = new System.Drawing.Size(7, 14);
+            this.labelControl50.TabIndex = 59;
+            this.labelControl50.Text = "*";
+            // 
+            // labelControl49
+            // 
+            this.labelControl49.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl49.Appearance.Options.UseForeColor = true;
+            this.labelControl49.Location = new System.Drawing.Point(112, 23);
+            this.labelControl49.Name = "labelControl49";
+            this.labelControl49.Size = new System.Drawing.Size(7, 14);
+            this.labelControl49.TabIndex = 58;
+            this.labelControl49.Text = "*";
             // 
             // labelControl40
             // 
@@ -1593,7 +1753,7 @@
             // 
             this.label85.AutoSize = true;
             this.label85.ForeColor = System.Drawing.Color.Black;
-            this.label85.Location = new System.Drawing.Point(227, 58);
+            this.label85.Location = new System.Drawing.Point(233, 58);
             this.label85.Name = "label85";
             this.label85.Size = new System.Drawing.Size(24, 14);
             this.label85.TabIndex = 45;
@@ -1603,7 +1763,7 @@
             // 
             this.label87.AutoSize = true;
             this.label87.ForeColor = System.Drawing.Color.Black;
-            this.label87.Location = new System.Drawing.Point(227, 28);
+            this.label87.Location = new System.Drawing.Point(232, 28);
             this.label87.Name = "label87";
             this.label87.Size = new System.Drawing.Size(25, 14);
             this.label87.TabIndex = 43;
@@ -1688,7 +1848,7 @@
             0,
             0,
             0});
-            this.spinEdit59.Location = new System.Drawing.Point(150, 38);
+            this.spinEdit59.Location = new System.Drawing.Point(150, 37);
             this.spinEdit59.Name = "spinEdit59";
             this.spinEdit59.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -2115,7 +2275,7 @@
             // 
             this.labelControl44.Appearance.ForeColor = System.Drawing.Color.Orange;
             this.labelControl44.Appearance.Options.UseForeColor = true;
-            this.labelControl44.Location = new System.Drawing.Point(91, 117);
+            this.labelControl44.Location = new System.Drawing.Point(89, 117);
             this.labelControl44.Name = "labelControl44";
             this.labelControl44.Size = new System.Drawing.Size(7, 14);
             this.labelControl44.TabIndex = 61;
@@ -2125,7 +2285,7 @@
             // 
             this.labelControl43.Appearance.ForeColor = System.Drawing.Color.Orange;
             this.labelControl43.Appearance.Options.UseForeColor = true;
-            this.labelControl43.Location = new System.Drawing.Point(89, 89);
+            this.labelControl43.Location = new System.Drawing.Point(87, 89);
             this.labelControl43.Name = "labelControl43";
             this.labelControl43.Size = new System.Drawing.Size(7, 14);
             this.labelControl43.TabIndex = 60;
@@ -2297,7 +2457,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(13, 115);
+            this.label26.Location = new System.Drawing.Point(11, 115);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(79, 14);
             this.label26.TabIndex = 30;
@@ -2321,7 +2481,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(13, 87);
+            this.label22.Location = new System.Drawing.Point(11, 87);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(79, 14);
             this.label22.TabIndex = 28;
@@ -2391,6 +2551,10 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.labelControl58);
+            this.groupBox9.Controls.Add(this.labelControl57);
+            this.groupBox9.Controls.Add(this.labelControl56);
+            this.groupBox9.Controls.Add(this.labelControl55);
             this.groupBox9.Controls.Add(this.labelControl23);
             this.groupBox9.Controls.Add(this.labelControl22);
             this.groupBox9.Controls.Add(this.labelControl21);
@@ -2426,6 +2590,46 @@
             this.groupBox9.TabIndex = 26;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "电压";
+            // 
+            // labelControl58
+            // 
+            this.labelControl58.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl58.Appearance.Options.UseForeColor = true;
+            this.labelControl58.Location = new System.Drawing.Point(44, 97);
+            this.labelControl58.Name = "labelControl58";
+            this.labelControl58.Size = new System.Drawing.Size(7, 14);
+            this.labelControl58.TabIndex = 67;
+            this.labelControl58.Text = "*";
+            // 
+            // labelControl57
+            // 
+            this.labelControl57.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl57.Appearance.Options.UseForeColor = true;
+            this.labelControl57.Location = new System.Drawing.Point(41, 65);
+            this.labelControl57.Name = "labelControl57";
+            this.labelControl57.Size = new System.Drawing.Size(7, 14);
+            this.labelControl57.TabIndex = 66;
+            this.labelControl57.Text = "*";
+            // 
+            // labelControl56
+            // 
+            this.labelControl56.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl56.Appearance.Options.UseForeColor = true;
+            this.labelControl56.Location = new System.Drawing.Point(41, 37);
+            this.labelControl56.Name = "labelControl56";
+            this.labelControl56.Size = new System.Drawing.Size(7, 14);
+            this.labelControl56.TabIndex = 65;
+            this.labelControl56.Text = "*";
+            // 
+            // labelControl55
+            // 
+            this.labelControl55.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelControl55.Appearance.Options.UseForeColor = true;
+            this.labelControl55.Location = new System.Drawing.Point(31, 166);
+            this.labelControl55.Name = "labelControl55";
+            this.labelControl55.Size = new System.Drawing.Size(7, 14);
+            this.labelControl55.TabIndex = 64;
+            this.labelControl55.Text = "*";
             // 
             // labelControl23
             // 
@@ -2784,7 +2988,7 @@
             this.simpleButton3.Size = new System.Drawing.Size(87, 29);
             this.simpleButton3.TabIndex = 14;
             this.simpleButton3.Text = "阻抗计算";
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click_1);
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // simpleButton1
             // 
@@ -3567,18 +3771,6 @@
             this.radioGroup6.Size = new System.Drawing.Size(146, 27);
             this.radioGroup6.TabIndex = 4;
             // 
-            // labelControl12
-            // 
-            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl12.Appearance.Options.UseFont = true;
-            this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(150, 13);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(144, 22);
-            this.labelControl12.TabIndex = 9;
-            this.labelControl12.Text = "影响：\r\n三绕组变压器的电阻、电抗、电纳！";
-            // 
             // frmBYQ3dlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -3995,5 +4187,21 @@
         private DevExpress.XtraEditors.LabelControl labelControl42;
         private DevExpress.XtraEditors.LabelControl labelControl41;
         private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl45;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl labelControl48;
+        private DevExpress.XtraEditors.LabelControl labelControl47;
+        private DevExpress.XtraEditors.LabelControl labelControl46;
+        private DevExpress.XtraEditors.LabelControl labelControl54;
+        private DevExpress.XtraEditors.LabelControl labelControl53;
+        private DevExpress.XtraEditors.LabelControl labelControl52;
+        private DevExpress.XtraEditors.LabelControl labelControl51;
+        private DevExpress.XtraEditors.LabelControl labelControl50;
+        private DevExpress.XtraEditors.LabelControl labelControl49;
+        private DevExpress.XtraEditors.LabelControl labelControl58;
+        private DevExpress.XtraEditors.LabelControl labelControl57;
+        private DevExpress.XtraEditors.LabelControl labelControl56;
+        private DevExpress.XtraEditors.LabelControl labelControl55;
     }
 }

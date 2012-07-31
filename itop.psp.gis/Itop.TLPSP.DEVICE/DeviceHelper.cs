@@ -451,6 +451,79 @@ namespace Itop.TLPSP.DEVICE
             }
             return dt;
         }
+       
+        /// <summary>
+        /// 导入EXCEL
+        /// </summary>
+        /// <param name="filepach"></param>
+        /// <param name="filedList"></param>
+        /// <param name="capList"></param>
+        /// <returns></returns>
+        public static DataTable GetExcelmainandchildren(string filepach, IList<string> filedList, IList<string> capList,string sheetname,DataTable dt1)
+        {
+
+            string str;
+            FarPoint.Win.Spread.FpSpread fpSpread1 = new FarPoint.Win.Spread.FpSpread();
+
+            try
+            {
+                fpSpread1.OpenExcel(filepach);
+            }
+            catch
+            {
+                string filepath1 = Path.GetTempPath() + "\\" + Path.GetFileName(filepach);
+                File.Copy(filepach, filepath1);
+                fpSpread1.OpenExcel(filepath1);
+                File.Delete(filepath1);
+            }
+            DataTable dt = new DataTable();
+
+
+            IList<string> fie = new List<string>();
+            IList<int> yxzl = new List<int>();//有效的那几列
+            SheetView sheetview = fpSpread1.Sheets.Find(sheetname);
+            if (sheetview==null)
+            {
+                return dt;
+            }
+            int m = 1;
+
+            for (int j = 1; j < sheetview.GetLastNonEmptyColumn(FarPoint.Win.Spread.NonEmptyItemFlag.Data) + 1; j++)
+            {
+                if (capList.Contains(sheetview.Cells[0, j].Text))
+                {
+                    fie.Add(filedList[capList.IndexOf(sheetview.Cells[0, j].Text)]);
+                    yxzl.Add(j);
+                }
+            }
+            
+            for (int k = 0; k < fie.Count; k++)
+            {
+                dt.Columns.Add(fie[k]);
+            }
+            dt.Columns.Add("SvgUID");
+            for (int i = m; i <= sheetview.GetLastNonEmptyRow(FarPoint.Win.Spread.NonEmptyItemFlag.Data); i++)
+            {
+                string datsourctitle = sheetview.Cells[i, 0].Text;
+                DataRow dr = dt.NewRow();
+                // for (int j = 0; j < fpSpread1.Sheets[0].GetLastNonEmptyColumn(FarPoint.Win.Spread.NonEmptyItemFlag.Data) + 1; j++)
+                DataRow[] drsource = dt1.Select("Title='" + datsourctitle + "'");
+                if (drsource.Length!=1)
+                {
+                    continue;
+                }
+                dr["SvgUID"] = drsource[0]["UID"];
+                int n = 0;
+                foreach (int j in yxzl)
+                {
+                    dr[fie[n]] = sheetview.Cells[i, j].Text;
+                    n++;
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
+
         /// <summary>
         /// 导出EXCEL
         /// </summary>

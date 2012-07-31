@@ -354,6 +354,83 @@ namespace Itop.TLPSP.DEVICE
                 
             }
         }
+
+        public virtual void UpdateInchildren(DataTable table)
+        {
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                if (table.Rows[i][0].ToString().IndexOf("合计") > 0 || table.Rows[i][1].ToString().IndexOf("合计") > 0)
+                    continue;
+                PSPDEV area = new PSPDEV();
+                area.ProjectID = Itop.Client.MIS.ProgUID;
+                foreach (DataColumn col in table.Columns)
+                {
+                    try
+                    {
+                        if (table.Rows[i][col] != null)
+                        {
+                            string inserted = table.Rows[i][col].ToString();
+                            Type type = area.GetType().GetProperty(col.ColumnName).PropertyType;//.GetValue(area, null).GetType();
+                            if (type == typeof(int))
+                                area.GetType().GetProperty(col.ColumnName).SetValue(area, int.Parse(inserted == "" ? "0" : inserted), null);
+                            else if (type == typeof(string))
+                            {
+                                if (inserted == "投入运行")
+                                {
+                                    inserted = "0";
+                                }
+                                if (inserted == "退出运行")
+                                {
+                                    inserted = "1";
+                                }
+                                if (inserted == "平衡节点")
+                                {
+                                    inserted = "0";
+                                }
+                                if (inserted == "PQ节点")
+                                {
+                                    inserted = "1";
+                                }
+                                if (inserted == "PV节点")
+                                {
+                                    inserted = "2";
+                                }
+                                if (inserted == "kV/MW/MVar" || inserted == "Ohm/10-6Siem")
+                                {
+                                    inserted = "1";
+                                }
+                                if (inserted == "p.u.")
+                                {
+                                    inserted = "0";
+                                }
+                                if (inserted == "投入")
+                                {
+                                    inserted = "0";
+                                }
+                                if (inserted == "退出")
+                                {
+                                    inserted = "1";
+                                }
+                                area.GetType().GetProperty(col.ColumnName).SetValue(area, inserted, null);
+                            }
+
+                            else if (type == typeof(decimal))
+                                area.GetType().GetProperty(col.ColumnName).SetValue(area, decimal.Parse(inserted == "" ? "0" : inserted), null);
+                            else if (type == typeof(double))
+                                area.GetType().GetProperty(col.ColumnName).SetValue(area, double.Parse(inserted == "" ? "0.0" : inserted), null);
+                        }
+                    }
+                    catch { MessageBox.Show(string.Format("第{0}行{1}列插入有问题", i.ToString(), col.Caption)); }
+                }
+                //if (!string.IsNullOrEmpty(ParentID))
+                //{
+                //    area.SvgUID = ParentID;
+                //}
+                area.Type = GetType();
+                UCDeviceBase.DataService.Create<PSPDEV>(area);
+
+            }
+        }
         #endregion 
         #region 记录操作
         public virtual object SelectedDevice {

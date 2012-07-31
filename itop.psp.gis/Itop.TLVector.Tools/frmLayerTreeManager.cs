@@ -1518,6 +1518,7 @@ namespace ItopVector.Tools {
         internal void AddLayer(Layer lar, bool p) {
             SVG_LAYER _svg = new SVG_LAYER() { SUID = lar.ID, NAME = lar.Label };
             if (treeList1.FocusedNode != null) {
+                if(ilist.Count>0)
                 _svg.YearID = ilist[0].ToString();
                 _svg.svgID = symbolDoc.SvgdataUid;
                 _svg.OrderID = int.Parse(treeList1.Nodes[treeList1.Nodes.Count-1]["OrderID"].ToString()) + 1;

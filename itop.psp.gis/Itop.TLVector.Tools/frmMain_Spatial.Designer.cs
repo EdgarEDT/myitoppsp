@@ -362,6 +362,7 @@
             this.bk1.Properties.Appearance.Options.UseBackColor = true;
             this.bk1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
             this.bk1.Properties.Caption = "显示背景图";
+            this.bk1.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.bk1.Size = new System.Drawing.Size(106, 23);
             this.bk1.TabIndex = 9;
             this.bk1.CheckedChanged += new System.EventHandler(this.bk1_CheckedChanged);

@@ -95,7 +95,8 @@
             this.barButtonItemIn.ImageIndex = 1;
             this.barButtonItemIn.Name = "barButtonItemIn";
             this.barButtonItemIn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItemIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemIn_ItemClick);
+            //this.barButtonItemIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemIn_ItemClick);
+            this.barButtonItemIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemIn_ItemClick_sh);
             // 
             // barButtonItemOut
             // 

@@ -319,7 +319,7 @@ namespace Itop.TLPSP.DEVICE
                 IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
                 {
-                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(pj.L29))
+                    if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(pj.L29) && !string.IsNullOrEmpty(pj.L28))
                     {
                         if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(pj.L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(pj.L29))
                         {
@@ -429,6 +429,7 @@ namespace Itop.TLPSP.DEVICE
             frmBDZdlg dlg = new frmBDZdlg();
             dlg.ProjectID = Itop.Client.MIS.ProgUID;
             dlg.Name = "";
+            dlg.CsbuttonVisble(true);
             dlg.IsRead = false;
             if (dlg.ShowDialog() == DialogResult.OK) {
                 //Ôö¼Ó¼ÇÂ¼ 
@@ -459,6 +460,7 @@ namespace Itop.TLPSP.DEVICE
         }
         public override void Edit() {
             frmBDZdlg dlg = new frmBDZdlg();
+            dlg.CsbuttonVisble(true);
             DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
             if (row != null) {
                 PSP_Substation_Info dev = Itop.Common.DataConverter.RowToObject<PSP_Substation_Info>(row);
