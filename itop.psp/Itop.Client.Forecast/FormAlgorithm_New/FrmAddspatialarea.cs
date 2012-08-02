@@ -23,8 +23,8 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
         }
         public void init()
         {
-            string DQ = "市区";
-            string conn = "ProjectID='" + Itop.Client.MIS.ProgUID + "' and Col1='" + DQ + "' order by Sort";
+          
+            string conn = "ProjectID='" + Itop.Client.MIS.ProgUID + "' order by Sort";
             IList<PS_Table_AreaWH> list = Services.BaseService.GetList<PS_Table_AreaWH>("SelectPS_Table_AreaWHByConn", conn);
             foreach (PS_Table_AreaWH area in list) {
                 this.comboBoxEdit1.Properties.Items.Add(area.Title);
