@@ -159,6 +159,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             column.Caption = "区域";
             column.VisibleIndex = 0;
             column.Width = 180;
+            column.OptionsColumn.AllowEdit = false;
             this.treeList1.Columns.AddRange(new TreeListColumn[] {
             column});
             column = new TreeListColumn();
