@@ -31,38 +31,21 @@ namespace Itop.Client.Table
 		{
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.gridBand19 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colS3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colAreaName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colTitle = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand12 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colL1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ColL15 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colL2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand14 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colL3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colL4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand15 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colL9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colL10 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand9 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.ColL14 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand47 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colS6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand13 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colL5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand8 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colL6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand11 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colS2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand18 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.DQ = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colS7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colS8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -117,6 +100,23 @@ namespace Itop.Client.Table
             this.gridBand43 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand48 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand10 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand19 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand12 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand14 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand15 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand9 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand47 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand13 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand8 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand11 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand18 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
             this.SuspendLayout();
@@ -129,7 +129,6 @@ namespace Itop.Client.Table
             this.gridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.gridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.gridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControl.EmbeddedNavigator.Name = "";
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.bandedGridView1;
             this.gridControl.Name = "gridControl";
@@ -196,14 +195,6 @@ namespace Itop.Client.Table
             this.bandedGridView1.OptionsView.ShowGroupPanel = false;
             this.bandedGridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.bandedGridView1_CustomDrawCell);
             // 
-            // gridBand19
-            // 
-            this.gridBand19.Caption = "序号";
-            this.gridBand19.Columns.Add(this.colS3);
-            this.gridBand19.MinWidth = 20;
-            this.gridBand19.Name = "gridBand19";
-            this.gridBand19.Width = 60;
-            // 
             // colS3
             // 
             this.colS3.AppearanceHeader.Options.UseTextOptions = true;
@@ -213,14 +204,6 @@ namespace Itop.Client.Table
             this.colS3.Name = "colS3";
             this.colS3.Visible = true;
             this.colS3.Width = 60;
-            // 
-            // gridBand3
-            // 
-            this.gridBand3.Caption = "区域";
-            this.gridBand3.Columns.Add(this.colAreaName);
-            this.gridBand3.MinWidth = 20;
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.Width = 86;
             // 
             // colAreaName
             // 
@@ -233,14 +216,6 @@ namespace Itop.Client.Table
             this.colAreaName.Visible = true;
             this.colAreaName.Width = 86;
             // 
-            // gridBand4
-            // 
-            this.gridBand4.Caption = "变电站名称";
-            this.gridBand4.Columns.Add(this.colTitle);
-            this.gridBand4.MinWidth = 20;
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.Width = 106;
-            // 
             // colTitle
             // 
             this.colTitle.AppearanceHeader.Options.UseTextOptions = true;
@@ -250,15 +225,6 @@ namespace Itop.Client.Table
             this.colTitle.Name = "colTitle";
             this.colTitle.Visible = true;
             this.colTitle.Width = 106;
-            // 
-            // gridBand12
-            // 
-            this.gridBand12.Caption = "电压等级";
-            this.gridBand12.Columns.Add(this.colL1);
-            this.gridBand12.Columns.Add(this.ColL15);
-            this.gridBand12.MinWidth = 20;
-            this.gridBand12.Name = "gridBand12";
-            this.gridBand12.Width = 110;
             // 
             // colL1
             // 
@@ -277,14 +243,6 @@ namespace Itop.Client.Table
             this.ColL15.Name = "ColL15";
             this.ColL15.Width = 73;
             // 
-            // gridBand6
-            // 
-            this.gridBand6.Caption = "容量(MVA)";
-            this.gridBand6.Columns.Add(this.colL2);
-            this.gridBand6.MinWidth = 20;
-            this.gridBand6.Name = "gridBand6";
-            this.gridBand6.Width = 109;
-            // 
             // colL2
             // 
             this.colL2.AppearanceHeader.Options.UseTextOptions = true;
@@ -297,14 +255,6 @@ namespace Itop.Client.Table
             this.colL2.Visible = true;
             this.colL2.Width = 109;
             // 
-            // gridBand14
-            // 
-            this.gridBand14.Caption = "主变台数(台)";
-            this.gridBand14.Columns.Add(this.colL3);
-            this.gridBand14.MinWidth = 20;
-            this.gridBand14.Name = "gridBand14";
-            this.gridBand14.Width = 71;
-            // 
             // colL3
             // 
             this.colL3.AppearanceHeader.Options.UseTextOptions = true;
@@ -315,14 +265,6 @@ namespace Itop.Client.Table
             this.colL3.Visible = true;
             this.colL3.Width = 71;
             // 
-            // gridBand7
-            // 
-            this.gridBand7.Caption = "容量构成";
-            this.gridBand7.Columns.Add(this.colL4);
-            this.gridBand7.MinWidth = 20;
-            this.gridBand7.Name = "gridBand7";
-            this.gridBand7.Width = 67;
-            // 
             // colL4
             // 
             this.colL4.AppearanceHeader.Options.UseTextOptions = true;
@@ -330,16 +272,7 @@ namespace Itop.Client.Table
             this.colL4.Caption = "容量构成";
             this.colL4.FieldName = "L4";
             this.colL4.Name = "colL4";
-            this.colL4.Visible = true;
             this.colL4.Width = 67;
-            // 
-            // gridBand15
-            // 
-            this.gridBand15.Caption = "最大负荷(MW)";
-            this.gridBand15.Columns.Add(this.colL9);
-            this.gridBand15.MinWidth = 20;
-            this.gridBand15.Name = "gridBand15";
-            this.gridBand15.Width = 111;
             // 
             // colL9
             // 
@@ -353,14 +286,6 @@ namespace Itop.Client.Table
             this.colL9.Visible = true;
             this.colL9.Width = 111;
             // 
-            // gridBand16
-            // 
-            this.gridBand16.Caption = "负载率(%)";
-            this.gridBand16.Columns.Add(this.colL10);
-            this.gridBand16.MinWidth = 20;
-            this.gridBand16.Name = "gridBand16";
-            this.gridBand16.Width = 88;
-            // 
             // colL10
             // 
             this.colL10.AppearanceHeader.Options.UseTextOptions = true;
@@ -373,43 +298,11 @@ namespace Itop.Client.Table
             this.colL10.Visible = true;
             this.colL10.Width = 88;
             // 
-            // gridBand17
-            // 
-            this.gridBand17.Caption = "10（6）kV出线间隔";
-            this.gridBand17.Children.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand9,
-            this.gridBand1,
-            this.gridBand47});
-            this.gridBand17.MinWidth = 20;
-            this.gridBand17.Name = "gridBand17";
-            this.gridBand17.Visible = false;
-            this.gridBand17.Width = 233;
-            // 
-            // gridBand9
-            // 
-            this.gridBand9.Caption = "总数（个）";
-            this.gridBand9.Name = "gridBand9";
-            this.gridBand9.Width = 75;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "已用（个）";
-            this.gridBand1.Columns.Add(this.ColL14);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.Width = 75;
-            // 
             // ColL14
             // 
             this.ColL14.Caption = "已用（个）";
             this.ColL14.FieldName = "L14";
             this.ColL14.Name = "ColL14";
-            // 
-            // gridBand47
-            // 
-            this.gridBand47.Caption = "利用率（%）";
-            this.gridBand47.Columns.Add(this.colS6);
-            this.gridBand47.Name = "gridBand47";
-            this.gridBand47.Width = 83;
             // 
             // colS6
             // 
@@ -419,14 +312,6 @@ namespace Itop.Client.Table
             this.colS6.FieldName = "S6";
             this.colS6.Name = "colS6";
             this.colS6.Width = 83;
-            // 
-            // gridBand13
-            // 
-            this.gridBand13.Caption = "无功总容量(Mvar)";
-            this.gridBand13.Columns.Add(this.colL5);
-            this.gridBand13.MinWidth = 20;
-            this.gridBand13.Name = "gridBand13";
-            this.gridBand13.Width = 115;
             // 
             // colL5
             // 
@@ -438,14 +323,6 @@ namespace Itop.Client.Table
             this.colL5.Visible = true;
             this.colL5.Width = 115;
             // 
-            // gridBand8
-            // 
-            this.gridBand8.Caption = "无功补偿容量构成(Mvar)";
-            this.gridBand8.Columns.Add(this.colL6);
-            this.gridBand8.MinWidth = 20;
-            this.gridBand8.Name = "gridBand8";
-            this.gridBand8.Width = 153;
-            // 
             // colL6
             // 
             this.colL6.AppearanceHeader.Options.UseTextOptions = true;
@@ -456,14 +333,6 @@ namespace Itop.Client.Table
             this.colL6.Visible = true;
             this.colL6.Width = 153;
             // 
-            // gridBand11
-            // 
-            this.gridBand11.Caption = "投产时间及备注";
-            this.gridBand11.Columns.Add(this.colS2);
-            this.gridBand11.MinWidth = 20;
-            this.gridBand11.Name = "gridBand11";
-            this.gridBand11.Width = 134;
-            // 
             // colS2
             // 
             this.colS2.AppearanceHeader.Options.UseTextOptions = true;
@@ -473,14 +342,6 @@ namespace Itop.Client.Table
             this.colS2.Name = "colS2";
             this.colS2.Visible = true;
             this.colS2.Width = 134;
-            // 
-            // gridBand18
-            // 
-            this.gridBand18.Caption = "电网类型";
-            this.gridBand18.Columns.Add(this.DQ);
-            this.gridBand18.MinWidth = 20;
-            this.gridBand18.Name = "gridBand18";
-            this.gridBand18.Width = 71;
             // 
             // DQ
             // 
@@ -746,6 +607,144 @@ namespace Itop.Client.Table
             // 
             this.gridBand10.Name = "gridBand10";
             // 
+            // gridBand19
+            // 
+            this.gridBand19.Caption = "序号";
+            this.gridBand19.Columns.Add(this.colS3);
+            this.gridBand19.MinWidth = 20;
+            this.gridBand19.Name = "gridBand19";
+            this.gridBand19.Width = 60;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.Caption = "区域";
+            this.gridBand3.Columns.Add(this.colAreaName);
+            this.gridBand3.MinWidth = 20;
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.Width = 86;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.Caption = "变电站名称";
+            this.gridBand4.Columns.Add(this.colTitle);
+            this.gridBand4.MinWidth = 20;
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.Width = 106;
+            // 
+            // gridBand12
+            // 
+            this.gridBand12.Caption = "电压等级";
+            this.gridBand12.Columns.Add(this.colL1);
+            this.gridBand12.Columns.Add(this.ColL15);
+            this.gridBand12.MinWidth = 20;
+            this.gridBand12.Name = "gridBand12";
+            this.gridBand12.Width = 110;
+            // 
+            // gridBand6
+            // 
+            this.gridBand6.Caption = "容量(MVA)";
+            this.gridBand6.Columns.Add(this.colL2);
+            this.gridBand6.MinWidth = 20;
+            this.gridBand6.Name = "gridBand6";
+            this.gridBand6.Width = 109;
+            // 
+            // gridBand14
+            // 
+            this.gridBand14.Caption = "主变台数(台)";
+            this.gridBand14.Columns.Add(this.colL3);
+            this.gridBand14.MinWidth = 20;
+            this.gridBand14.Name = "gridBand14";
+            this.gridBand14.Width = 71;
+            // 
+            // gridBand7
+            // 
+            this.gridBand7.Caption = "容量构成";
+            this.gridBand7.Columns.Add(this.colL4);
+            this.gridBand7.MinWidth = 20;
+            this.gridBand7.Name = "gridBand7";
+            this.gridBand7.Visible = false;
+            this.gridBand7.Width = 67;
+            // 
+            // gridBand15
+            // 
+            this.gridBand15.Caption = "最大负荷(MW)";
+            this.gridBand15.Columns.Add(this.colL9);
+            this.gridBand15.MinWidth = 20;
+            this.gridBand15.Name = "gridBand15";
+            this.gridBand15.Width = 111;
+            // 
+            // gridBand16
+            // 
+            this.gridBand16.Caption = "负载率(%)";
+            this.gridBand16.Columns.Add(this.colL10);
+            this.gridBand16.MinWidth = 20;
+            this.gridBand16.Name = "gridBand16";
+            this.gridBand16.Width = 88;
+            // 
+            // gridBand17
+            // 
+            this.gridBand17.Caption = "10（6）kV出线间隔";
+            this.gridBand17.Children.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand9,
+            this.gridBand1,
+            this.gridBand47});
+            this.gridBand17.MinWidth = 20;
+            this.gridBand17.Name = "gridBand17";
+            this.gridBand17.Visible = false;
+            this.gridBand17.Width = 233;
+            // 
+            // gridBand9
+            // 
+            this.gridBand9.Caption = "总数（个）";
+            this.gridBand9.Name = "gridBand9";
+            this.gridBand9.Width = 75;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "已用（个）";
+            this.gridBand1.Columns.Add(this.ColL14);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.Width = 75;
+            // 
+            // gridBand47
+            // 
+            this.gridBand47.Caption = "利用率（%）";
+            this.gridBand47.Columns.Add(this.colS6);
+            this.gridBand47.Name = "gridBand47";
+            this.gridBand47.Width = 83;
+            // 
+            // gridBand13
+            // 
+            this.gridBand13.Caption = "无功总容量(Mvar)";
+            this.gridBand13.Columns.Add(this.colL5);
+            this.gridBand13.MinWidth = 20;
+            this.gridBand13.Name = "gridBand13";
+            this.gridBand13.Width = 115;
+            // 
+            // gridBand8
+            // 
+            this.gridBand8.Caption = "无功补偿容量构成(Mvar)";
+            this.gridBand8.Columns.Add(this.colL6);
+            this.gridBand8.MinWidth = 20;
+            this.gridBand8.Name = "gridBand8";
+            this.gridBand8.Width = 153;
+            // 
+            // gridBand11
+            // 
+            this.gridBand11.Caption = "投产时间及备注";
+            this.gridBand11.Columns.Add(this.colS2);
+            this.gridBand11.MinWidth = 20;
+            this.gridBand11.Name = "gridBand11";
+            this.gridBand11.Width = 134;
+            // 
+            // gridBand18
+            // 
+            this.gridBand18.Caption = "电网类型";
+            this.gridBand18.Columns.Add(this.DQ);
+            this.gridBand18.MinWidth = 20;
+            this.gridBand18.Name = "gridBand18";
+            this.gridBand18.Width = 71;
+            // 
             // CtrlSubstation_Info_AHTL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -823,31 +822,31 @@ namespace Itop.Client.Table
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand42;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand43;
         public DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand8;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand13;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand14;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand19;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn23;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand45;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand46;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand47;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand49;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand48;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn ColL14;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand9;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand10;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand11;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand12;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn ColL15;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn DQ;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand19;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand12;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand14;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand9;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand47;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand13;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand8;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand11;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand18;
     }
 }
