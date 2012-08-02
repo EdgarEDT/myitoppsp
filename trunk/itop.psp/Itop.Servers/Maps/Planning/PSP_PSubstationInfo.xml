@@ -47,6 +47,10 @@
       <result property='S30' column='S30' />
       <result property='LayerID' column='LayerID' />
     </resultMap>
+    <resultMap id='PSP_PowerSubstation_InfoResult2' class='PSP_PowerSubstation_Info'>
+      <result property='S2' column='S2' />
+     
+    </resultMap>
   </resultMaps>
   <statements>
     <insert id='InsertPSP_PowerSubstation_Info' parameterClass='PSP_PowerSubstation_Info'>
@@ -402,6 +406,13 @@
     <select id='SelectPSP_PowerSubstationFDJOfName'  parameterClass='string'>
       select c.LineType from psp_PowersubstationInfo a inner join PSPDEV b on a.UID=b.svgUID inner join pspdev c on c.IName=b.Name
       where $value$
+    </select>
+    <select id='SelectSumPSP_PowerSubstation_InfoByConn' resultMap='PSP_PowerSubstation_InfoResult2' parameterClass='string'>
+      SELECT
+      Cast(Sum(Cast(S2 as float)) as nvarchar) as "S2"
+      FROM PSP_PowerSubstationInfo
+      WHERE
+      $value$
     </select>
   </statements>
 </sqlMap>
