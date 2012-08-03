@@ -38,6 +38,8 @@ using Itop.Domain.RightManager;
 using TinVoronoi;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
+using System.Reflection;
+using System.Globalization;
 
 
 namespace ItopVector.Tools
@@ -3341,6 +3343,7 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
             }
             MessageBox.Show("更新完成。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }*/
+    
         private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             try
@@ -3475,6 +3478,28 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                 {
                                     tlVectorControl1.SVGDocument.RootElement.RemoveChild(tlVectorControl1.SVGDocument.CurrentElement);
                                 }
+                      
+                                 if (this.Owner!=null)
+                                 {
+                                    MethodInfo method = this.Owner.GetType().GetMethod("UpdateSpatataldata");
+                                    if (method != null)
+                                    {
+                                        string[] paramValues = new string[] { f.glebeProp.ObligateField16 };
+                                        ParameterInfo[] paramInfos = method.GetParameters();
+                                        if (paramInfos.Length == paramValues.Length)
+                                        {
+                                            // 参数个数相同才会执行
+                                            object[] methodParams = new object[paramValues.Length];
+                                            for (int i = 0; i < paramValues.Length; i++)
+                                                methodParams[i] = Convert.ChangeType(paramValues[i], paramInfos[i].ParameterType, CultureInfo.InvariantCulture);
+
+                                            //object instance = (method.IsStatic) ? null : Activator.CreateInstance(this.Owner.GetType());
+                                            object result = method.Invoke(this.Owner, methodParams);
+                                        }
+
+                                    }
+                                    this.Close();
+                                 }
                                 //tlVectorControl1.Refresh();
                             }
                             else
@@ -3493,7 +3518,29 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                                 }
                                 f.Str = s1;
                                 f.ShowDialog();
+                                if (this.Owner != null)
+                                {
+                                    MethodInfo method = this.Owner.GetType().GetMethod("UpdateSpatataldata");
+                                    if (method != null)
+                                    {
+                                        string[] paramValues = new string[] { f.glebeProp.ObligateField16 };
+                                        ParameterInfo[] paramInfos = method.GetParameters();
+                                        if (paramInfos.Length == paramValues.Length)
+                                        {
+                                            // 参数个数相同才会执行
+                                            object[] methodParams = new object[paramValues.Length];
+                                            for (int i = 0; i < paramValues.Length; i++)
+                                                methodParams[i] = Convert.ChangeType(paramValues[i], paramInfos[i].ParameterType, CultureInfo.InvariantCulture);
+
+                                           // object instance = (method.IsStatic) ? null : Activator.CreateInstance(this.Owner.GetType());
+                                            object result = method.Invoke(this.Owner, methodParams);
+                                        }
+
+                                    }
+                                    this.Close();
+                                }
                             }
+                            
                             //}
                         }
 
@@ -10742,180 +10789,185 @@ private void ShowTriangle1(ArrayList _polylist, XmlElement _poly)
                 gp.SvgUID = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
                 gp.ObligateField16 = areatitle;
                 IList<glebeProperty> svglist = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByObligateField16", gp);
-                if (svglist.Count>0)
+                if (svglist.Count > 0)
                 {
                     XmlElement temp = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@id='" + svglist[0].EleID + "']") as XmlElement;
-                    Layer lar = getlayer1(temp.GetAttribute("layer"),"电网规划层", tlVectorControl1.SVGDocument.getLayerList());
-                    if (lar!=null)
+                    Layer lar = getlayer1(temp.GetAttribute("layer"), "电网规划层", tlVectorControl1.SVGDocument.getLayerList());
+                    if (lar != null)
                     {
-                         SvgDocument.currentLayer = lar.ID;
-                    lar.Visible = true;
-                    tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)temp);
-#region //显示属性数据
-                     XmlNodeList n1 = tlVectorControl1.SVGDocument.GetElementsByTagName("use");
-                            PointF[] tfArray1 = TLMath.getPolygonPoints(temp);
-                            string str220 = "";
-                            string str110 = "";
-                            string str66 = "";
+                        SvgDocument.currentLayer = lar.ID;
+                        lar.Visible = true;
+                        tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)temp);
+                        #region //显示属性数据
+                        XmlNodeList n1 = tlVectorControl1.SVGDocument.GetElementsByTagName("use");
+                        PointF[] tfArray1 = TLMath.getPolygonPoints(temp);
+                        string str220 = "";
+                        string str110 = "";
+                        string str66 = "";
 
-                            string str_id = "";
-                            GraphicsPath selectAreaPath = new GraphicsPath();
-                            selectAreaPath.AddLines(tfArray1);
-                            selectAreaPath.CloseFigure();
-                            //Matrix x=new Matrix(
-                            //Region region1 = new Region(selectAreaPath);
-                            for (int i = 0; i < n1.Count; i++)
+                        string str_id = "";
+                        GraphicsPath selectAreaPath = new GraphicsPath();
+                        selectAreaPath.AddLines(tfArray1);
+                        selectAreaPath.CloseFigure();
+                        //Matrix x=new Matrix(
+                        //Region region1 = new Region(selectAreaPath);
+                        for (int i = 0; i < n1.Count; i++)
+                        {
+                            float OffX = 0f;
+                            float OffY = 0f;
+                            bool ck = false;
+                            Use use = (Use)n1[i];
+                            if (use.GetAttribute("xlink:href").Contains("byq") || use.GetAttribute("xlink:href").Contains("pds"))
                             {
-                                float OffX = 0f;
-                                float OffY = 0f;
-                                bool ck = false;
-                                Use use = (Use)n1[i];
-                                if (use.GetAttribute("xlink:href").Contains("byq") || use.GetAttribute("xlink:href").Contains("pds"))
+                                if (selectAreaPath.IsVisible(use.CenterPoint))
                                 {
-                                    if (selectAreaPath.IsVisible(use.CenterPoint))
+                                    if (use.GetAttribute("Deviceid") != "")
                                     {
-                                        if (use.GetAttribute("Deviceid") != "")
-                                        {
-                                            str_id = str_id + "'" + use.GetAttribute("Deviceid") + "',";
-                                        }
-                                    }
-                                }
-                                if (use.GetAttribute("xlink:href").Contains("Substation"))
-                                {
-                                    //string strMatrix = use.GetAttribute("transform");
-                                    //if (strMatrix != "")
-                                    //{
-                                    //    strMatrix = strMatrix.Replace("matrix(", "");
-                                    //    strMatrix = strMatrix.Replace(")", "");
-                                    //    string[] mat = strMatrix.Split(',');
-                                    //    if (mat.Length > 5)
-                                    //    {
-                                    //        OffX = Convert.ToSingle(mat[4]);
-                                    //        OffY = Convert.ToSingle(mat[5]);
-                                    //    }
-                                    //}
-                                    if (frmlar.getSelectedLayer().Contains(use.GetAttribute("layer")))
-                                    {
-                                        ck = true;
-                                    }
-                                    PointF TempPoint = TLMath.getUseOffset(use.GetAttribute("xlink:href"));
-                                    //if (selectAreaPath.IsVisible(use.X + TempPoint.X + OffX, use.Y + TempPoint.Y + OffY) && ck)
-                                    if (selectAreaPath.IsVisible(use.CenterPoint) && ck)
-                                    {
-                                        if (use.GetAttribute("xlink:href").Contains("220"))
-                                        {
-                                            str220 = str220 + "'" + use.GetAttribute("Deviceid") + "',";
-                                        }
-                                        if (use.GetAttribute("xlink:href").Contains("110"))
-                                        {
-                                            str110 = str110 + "'" + use.GetAttribute("Deviceid") + "',";
-                                        }
-                                        if (use.GetAttribute("xlink:href").Contains("66"))
-                                        {
-                                            str66 = str66 + "'" + use.GetAttribute("Deviceid") + "',";
-                                        }
+                                        str_id = str_id + "'" + use.GetAttribute("Deviceid") + "',";
                                     }
                                 }
                             }
-                            if (str220.Length > 1)
+                            if (use.GetAttribute("xlink:href").Contains("Substation"))
                             {
-                                str220 = str220.Substring(0, str220.Length - 1);
-                            }
-                            if (str110.Length > 1)
-                            {
-                                str110 = str110.Substring(0, str110.Length - 1);
-                            }
-                            if (str66.Length > 1)
-                            {
-                                str66 = str66.Substring(0, str66.Length - 1);
-                            }
-                            if (str_id.Length > 1)
-                            {
-                                str_id = str_id.Substring(0, str_id.Length - 1);
-                            }
-                            glebeProperty _gle = new glebeProperty();
-                            _gle.EleID = tlVectorControl1.SVGDocument.CurrentElement.ID;
-                            _gle.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
-
-                            IList<glebeProperty> UseProList = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByEleID", _gle);
-                            if (UseProList.Count > 0)
-                            {
-                                _gle = UseProList[0];
-                                _gle.LayerID = SvgDocument.currentLayer;
-                                frmMainProperty f = new frmMainProperty();
-                                f.strID = str_id;
-                                f.InitData(_gle, str220, str110, str66);
-                                PointF[] pn = (PointF[])((Polygon)temp).Points.Clone();
-                                ((Polygon)temp).Transform.Matrix.TransformPoints(pn);
-                                string s1 = "";
-                                for (int p = 0; p < pn.Length; p++)
+                                //string strMatrix = use.GetAttribute("transform");
+                                //if (strMatrix != "")
+                                //{
+                                //    strMatrix = strMatrix.Replace("matrix(", "");
+                                //    strMatrix = strMatrix.Replace(")", "");
+                                //    string[] mat = strMatrix.Split(',');
+                                //    if (mat.Length > 5)
+                                //    {
+                                //        OffX = Convert.ToSingle(mat[4]);
+                                //        OffY = Convert.ToSingle(mat[5]);
+                                //    }
+                                //}
+                                if (frmlar.getSelectedLayer().Contains(use.GetAttribute("layer")))
                                 {
-                                    s1 = s1 + pn[p].X.ToString() + " " + pn[p].Y.ToString() + ",";
+                                    ck = true;
                                 }
-                                f.Str = s1;
-                                f.ShowDialog();
-                                if (f.checkBox1.Checked == false)
+                                PointF TempPoint = TLMath.getUseOffset(use.GetAttribute("xlink:href"));
+                                //if (selectAreaPath.IsVisible(use.X + TempPoint.X + OffX, use.Y + TempPoint.Y + OffY) && ck)
+                                if (selectAreaPath.IsVisible(use.CenterPoint) && ck)
                                 {
-                                    tlVectorControl1.SVGDocument.RootElement.RemoveChild(tlVectorControl1.SVGDocument.CurrentElement);
-                                }
-                                if (f.DialogResult == DialogResult.OK)
-                                {
-                                    //this.Close();
-                                    frmlar.Visible = false;
-                                    this.Visible = false;
-                                   
-                                    this.DialogResult = DialogResult.OK;
-                                }
-                                else if (f.DialogResult == DialogResult.Cancel)
-                                {
-                                    frmlar.Visible = false; ;
-                                    this.Visible = false;
-                                    
-                                    this.DialogResult = DialogResult.OK;
-                                }
-                               
-                                //tlVectorControl1.Refresh();
-                            }
-                            else
-                            {
-                                _gle = new glebeProperty();
-                                _gle.LayerID = SvgDocument.currentLayer;
-                                frmMainProperty f = new frmMainProperty();
-                                f.strID = str_id;
-                                f.InitData(_gle, str220, str110, str66);
-                                PointF[] pn = (PointF[])((Polygon)temp).Points.Clone();
-                                ((Polygon)temp).Transform.Matrix.TransformPoints(pn);
-                                string s1 = "";
-                                for (int p = 0; p < pn.Length; p++)
-                                {
-                                    s1 = s1 + pn[p].X.ToString() + " " + pn[p].Y.ToString() + ",";
-                                }
-                                f.Str = s1;
-                                f.ShowDialog();
-                                if (f.DialogResult == DialogResult.OK) {
-                                    frmlar.Visible = false; ;
-                                    this.Visible = false;
-                                    this.DialogResult = DialogResult.OK;
-                                }
-                                else if (f.DialogResult == DialogResult.Cancel)
-                                {
-                                    frmlar.Visible = false; ;
-                                    this.Visible = false;
-                                    this.DialogResult = DialogResult.OK;
+                                    if (use.GetAttribute("xlink:href").Contains("220"))
+                                    {
+                                        str220 = str220 + "'" + use.GetAttribute("Deviceid") + "',";
+                                    }
+                                    if (use.GetAttribute("xlink:href").Contains("110"))
+                                    {
+                                        str110 = str110 + "'" + use.GetAttribute("Deviceid") + "',";
+                                    }
+                                    if (use.GetAttribute("xlink:href").Contains("66"))
+                                    {
+                                        str66 = str66 + "'" + use.GetAttribute("Deviceid") + "',";
+                                    }
                                 }
                             }
-                            //}
                         }
-                   
-#endregion       
+                        if (str220.Length > 1)
+                        {
+                            str220 = str220.Substring(0, str220.Length - 1);
+                        }
+                        if (str110.Length > 1)
+                        {
+                            str110 = str110.Substring(0, str110.Length - 1);
+                        }
+                        if (str66.Length > 1)
+                        {
+                            str66 = str66.Substring(0, str66.Length - 1);
+                        }
+                        if (str_id.Length > 1)
+                        {
+                            str_id = str_id.Substring(0, str_id.Length - 1);
+                        }
+                        glebeProperty _gle = new glebeProperty();
+                        _gle.EleID = tlVectorControl1.SVGDocument.CurrentElement.ID;
+                        _gle.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
+
+                        IList<glebeProperty> UseProList = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByEleID", _gle);
+                        if (UseProList.Count > 0)
+                        {
+                            _gle = UseProList[0];
+                            _gle.LayerID = SvgDocument.currentLayer;
+                            frmMainProperty f = new frmMainProperty();
+                            f.strID = str_id;
+                            f.InitData(_gle, str220, str110, str66);
+                            PointF[] pn = (PointF[])((Polygon)temp).Points.Clone();
+                            ((Polygon)temp).Transform.Matrix.TransformPoints(pn);
+                            string s1 = "";
+                            for (int p = 0; p < pn.Length; p++)
+                            {
+                                s1 = s1 + pn[p].X.ToString() + " " + pn[p].Y.ToString() + ",";
+                            }
+                            f.Str = s1;
+                            f.ShowDialog();
+                            if (f.checkBox1.Checked == false)
+                            {
+                                tlVectorControl1.SVGDocument.RootElement.RemoveChild(tlVectorControl1.SVGDocument.CurrentElement);
+                            }
+                            if (f.DialogResult == DialogResult.OK)
+                            {
+                                //this.Close();
+                                frmlar.Visible = false;
+                                this.Visible = false;
+
+                                this.DialogResult = DialogResult.OK;
+                               
+                            }
+                            else if (f.DialogResult == DialogResult.Cancel)
+                            {
+                                frmlar.Visible = false; ;
+                                this.Visible = false;
+
+                                this.DialogResult = DialogResult.OK;
+                              
+                            }
+
+                            //tlVectorControl1.Refresh();
+                        }
+                        else
+                        {
+                            _gle = new glebeProperty();
+                            _gle.LayerID = SvgDocument.currentLayer;
+                            frmMainProperty f = new frmMainProperty();
+                            f.strID = str_id;
+                            f.InitData(_gle, str220, str110, str66);
+                            PointF[] pn = (PointF[])((Polygon)temp).Points.Clone();
+                            ((Polygon)temp).Transform.Matrix.TransformPoints(pn);
+                            string s1 = "";
+                            for (int p = 0; p < pn.Length; p++)
+                            {
+                                s1 = s1 + pn[p].X.ToString() + " " + pn[p].Y.ToString() + ",";
+                            }
+                            f.Str = s1;
+                            f.ShowDialog();
+                            if (f.DialogResult == DialogResult.OK)
+                            {
+                                frmlar.Visible = false; ;
+                                this.Visible = false;
+                                this.DialogResult = DialogResult.OK;
+                            }
+                            else if (f.DialogResult == DialogResult.Cancel)
+                            {
+                                frmlar.Visible = false; ;
+                                this.Visible = false;
+                                this.DialogResult = DialogResult.OK;
+                            }
+                        }
+                        //}
+                    }
+
+                        #endregion
                     else
                     {
                         MessageBox.Show("没有找到对应的图层，请检查数据后再进行此操作！");
                     }
 
-                    }
+                }
+               
                    
                 }
+      
 
         public void Init(string stype)
         {

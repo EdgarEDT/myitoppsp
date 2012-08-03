@@ -73,6 +73,7 @@ namespace ItopVector.Tools
                 return;
             }
             this.InputString = this.tbName.Text;
+         
             this.inputType = this.radioGroup1.Properties.Items[this.radioGroup1.SelectedIndex].Description;
             this.DialogResult = DialogResult.OK;
             this.Close();

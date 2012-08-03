@@ -175,6 +175,10 @@ namespace ItopVector.Tools {
                     ///XmlElement element = node as XmlElement;
                     //XmlNode text = tlVectorControl1.SVGDocument.SelectSingleNode("svg/*[@ParentID='" + element.GetAttribute("id") + "']");
                     string deviceid = (element).GetAttribute("Deviceid");
+                    if (string.IsNullOrEmpty(deviceid))
+                    {
+                        continue;
+                    }
                     if (devicSUID == deviceid) continue;
                     string strCon1 = string.Format(" where Type = '01' and projectid='{0}' and svguid='{1}'", projectid, deviceid); //" where projectid='" + projectid + "' AND SvgUID = '" + (element).GetAttribute("Deviceid") + "' AND Type = '01'";
                     string label = element.GetAttribute("info-name");
@@ -189,6 +193,12 @@ namespace ItopVector.Tools {
                             IList list5 = Services.BaseService.GetList("SelectPSPDEVByCondition", strCon3);
                             float width = ((IGraph)element).GetBounds().Width / 3;
                             for (int i = 0; i < list4.Count; i++) {
+                                //判断次图上是否已经有此线路
+                                XmlNodeList xnl = tlVectorControl1.SVGDocument.SelectNodes("svg/polyline [@Deviceid='" + ((PSPDEV)list4[i]).SUID + "']");
+                                if (xnl.Count>0)
+                                {
+                                    continue;
+                                }
                                 PointF[] t2 = new PointF[] { ((IGraph)device).CenterPoint, ((IGraph)element).CenterPoint };
                                 float angel = 0f;
 
@@ -240,6 +250,7 @@ namespace ItopVector.Tools {
                                 n1.SetAttribute("FirstNode", device.GetAttribute("id"));
                                 n1.SetAttribute("LastNode", element.GetAttribute("id"));
                                 n1.SetAttribute("Deviceid", ((PSPDEV)list4[i]).SUID);
+                                SetPolyLineType(n1, (PSPDEV)list4[i]);
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
                                 tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
                                 tlVectorControl1.ChangeLevel(LevelType.Bottom);
@@ -252,6 +263,12 @@ namespace ItopVector.Tools {
                                 j = list4.Count;
                             }
                             for (int i = j; i < j + list5.Count; i++) {
+                                //判断次图上是否已经有此线路
+                                XmlNodeList xnl = tlVectorControl1.SVGDocument.SelectNodes("svg/polyline [@Deviceid='" + ((PSPDEV)list5[i - j]).SUID + "']");
+                                if (xnl.Count > 0)
+                                {
+                                    continue;
+                                }
                                 PointF[] t2 = new PointF[] { ((IGraph)element).CenterPoint, ((IGraph)device).CenterPoint };
                                 float angel = 0f;
                                 angel = (float)(180 * Math.Atan2((t2[1].Y - t2[0].Y), (t2[1].X - t2[0].X)) / Math.PI);
@@ -296,6 +313,7 @@ namespace ItopVector.Tools {
                                 n1.SetAttribute("FirstNode", element.GetAttribute("id"));
                                 n1.SetAttribute("LastNode", device.GetAttribute("id"));
                                 n1.SetAttribute("Deviceid", ((PSPDEV)list5[i - j]).SUID);
+                                SetPolyLineType(n1, (PSPDEV)list5[i - j]);
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
                                 tlVectorControl1.SVGDocument.CurrentElement = n1 as SvgElement;
                                 tlVectorControl1.ChangeLevel(LevelType.Bottom);
@@ -307,7 +325,41 @@ namespace ItopVector.Tools {
                     }
                 }
             }
-        }/*
+
+        }
+        private void SetPolyLineType(XmlElement xml,PSPDEV dev)
+        {
+            LineType lt = new LineType();
+            lt.TypeName = dev.RateVolt.ToString("###") + "kV";
+            lt = (LineType)Services.BaseService.GetObject("SelectLineTypeByTypeName", lt);
+            string styleValue = "";
+            if (lt != null)
+            {
+                if (string.IsNullOrEmpty(dev.OperationYear))
+                {
+                    styleValue = "stroke-dasharray:" + ghType + ";stroke-width:" + lt.ObligateField1 + ";";
+                }
+                else
+                {
+                    if (Convert.ToInt32(dev.OperationYear) > DateTime.Now.Year)
+                    {
+                        styleValue = "stroke-dasharray:" + ghType + ";stroke-width:" + lt.ObligateField1 + ";";
+                    }
+                    else
+                    {
+                        styleValue = "stroke-width:" + lt.ObligateField1 + ";";
+                    }
+                }
+
+                //string aa= ColorTranslator.ToHtml(Color.Black);
+                styleValue = styleValue + "stroke:" + ColorTranslator.ToHtml(Color.FromArgb(Convert.ToInt32(lt.Color)));
+                //SvgElement se = DeviceHelper.xml1;
+                  xml.RemoveAttribute("style");
+                  xml.SetAttribute("style", styleValue);
+                  xml.SetAttribute("info-name", dev.Name);
+            }
+        }
+        /*
         public void Open(string _SvgUID) {
             string id = "''";
             frmLayerGrade fgrade = new frmLayerGrade();

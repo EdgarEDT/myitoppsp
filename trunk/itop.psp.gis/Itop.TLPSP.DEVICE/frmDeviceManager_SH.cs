@@ -84,6 +84,8 @@ namespace Itop.TLPSP.DEVICE
             string[] type = new string[] { "30" };
             InitDeviceType(type);
            // bardevicetemplate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            bdzStatic.Caption = "电源统计";
+            bdzStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             dycopy.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
              splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
         }
@@ -91,7 +93,7 @@ namespace Itop.TLPSP.DEVICE
         public void xldevice()
         {
             this.Show();
-            this.Text = "电源参数管理";
+            this.Text = "线路参数管理";
             this.WindowState = FormWindowState.Maximized;
             if (!string.IsNullOrEmpty(this.smmprog.ProgName))
                 this.Text = this.smmprog.ProgName;
@@ -110,6 +112,8 @@ namespace Itop.TLPSP.DEVICE
                 this.Text = this.smmprog.ProgName;
             string[] type = new string[] { "06","08","09","10","11","13","14","15","40" };
             InitDeviceType(type);
+            bdzStatic.Caption = "无功参数统计";
+            bdzStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             //splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
             treeList1.FocusedNode = null;
         }
@@ -117,12 +121,14 @@ namespace Itop.TLPSP.DEVICE
         public void pddevice()
         {
             this.Show();
-            this.Text = "电源参数管理";
+            this.Text = "配电参数管理";
             this.WindowState = FormWindowState.Maximized;
             if (!string.IsNullOrEmpty(this.smmprog.ProgName))
                 this.Text = this.smmprog.ProgName;
             string[] type = new string[] { "73","55","74","75","80","70"};
             InitDeviceType(type);
+            bdzStatic.Caption = "配电参数统计";
+            bdzStatic.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             //splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
             treeList1.FocusedNode = null;
         }
@@ -168,7 +174,6 @@ namespace Itop.TLPSP.DEVICE
         UCDeviceBase curDevice;
         Dictionary<string, UCDeviceBase> devicTypes = new Dictionary<string, UCDeviceBase>();
 
-        #endregion
 
 
         private void treeList1_MouseClick(object sender, MouseEventArgs e) {
@@ -213,9 +218,9 @@ namespace Itop.TLPSP.DEVICE
             //    curDevice.strCon = " where 1=1 and";
             //    curDevice.Init();
             //}
-            
-        }
 
+        }
+        #endregion
         private void barButtonItemOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
@@ -430,8 +435,23 @@ namespace Itop.TLPSP.DEVICE
             FrmyearSel fs = new FrmyearSel();
             if (fs.ShowDialog()==DialogResult.OK)
             {
-                FrmLayoutSubstationInfo_AHTL fa = new FrmLayoutSubstationInfo_AHTL();
-                fa.BiandianzhanSH(fs.Year);
+                if (curDevice is UCDeviceBDZ)
+                {
+                    FrmLayoutSubstationInfo_AHTL fa = new FrmLayoutSubstationInfo_AHTL();
+                    fa.BiandianzhanSH(fs.Year);
+                }
+                else if (curDevice is UCDeviceDY)
+                {
+                    FrmLayoutPowerSubstationInfo_SH fa = new FrmLayoutPowerSubstationInfo_SH();
+                    fa.BiandianzhanSH(fs.Year);
+                }
+                if (curDevice.GetType() != "20" && curDevice.GetType() != "30" && curDevice.GetType() != "15")
+                {
+                    string[] array=new string[]{curDevice.GetType()};
+                    FrmDeviceStatic fsd = new FrmDeviceStatic();
+                    fsd.Init(array, fs.Year);
+                    fsd.ShowDialog();
+                }
             }
         }
         private void xlStatic_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

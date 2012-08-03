@@ -775,6 +775,12 @@
     <Compile Include="Dialog\frmMXdlg.Designer.cs">
       <DependentUpon>frmMXdlg.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDeviceStatic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeviceStatic.Designer.cs">
+      <DependentUpon>FrmDeviceStatic.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1461,6 +1467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmcopyDYtitle.resx">
       <DependentUpon>FrmcopyDYtitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeviceStatic.resx">
+      <DependentUpon>FrmDeviceStatic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProjectManager_oldSH.resx">
       <DependentUpon>frmProjectManager_oldSH.cs</DependentUpon>

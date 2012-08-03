@@ -372,7 +372,10 @@ namespace Itop.TLPSP.DEVICE
                     {
                         PSP_Substation_Info dev = Itop.Common.DataConverter.RowToObject<PSP_Substation_Info>(dr);
                         UCDeviceBase.DataService.Delete<PSP_Substation_Info>(dev);
+                        //删除第二层数据
 
+                        string delcon = "SvgUID='" + dr["UID"].ToString() + "'and ProjectID = '" + Itop.Client.MIS.ProgUID + "'";
+                        DataService.Update("DeletePSPDEVbywhere", delcon);
                     }
                 }
                 dat.Clear();
@@ -455,6 +458,10 @@ namespace Itop.TLPSP.DEVICE
                 if (dr == DialogResult.Yes) {
                     DataService.Delete<PSP_Substation_Info>(dev);
                     ((DataTable)gridControl1.DataSource).Rows.Remove(row);
+                    //删除第二层数据
+
+                    string delcon = "SvgUID='" + dev.UID + "'and ProjectID = '" + Itop.Client.MIS.ProgUID + "'";
+                    DataService.Update("DeletePSPDEVbywhere", delcon);
                 }
             }
         }
