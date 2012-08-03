@@ -128,6 +128,11 @@
       WHERE
       SvgUID= #SvgUID# and   ObligateField16=#ObligateField16#
     </delete>
+    <delete id='DeleteglebePropertyByCon' parameterClass='glebeProperty'>
+      DELETE FROM glebeProperty
+      WHERE
+      $value$
+    </delete>
     <update id='UpdateglebeProperty' parameterClass='glebeProperty'>
       UPDATE glebeProperty
       SET
