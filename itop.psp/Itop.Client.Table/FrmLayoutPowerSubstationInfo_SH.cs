@@ -216,6 +216,7 @@ namespace Itop.Client.Table
             ctrlSubstation_Info1.xmlflag = "guihua";
             this.ctrlSubstation_Info1.ProjectID = ProjectUID;
             this.ctrlSubstation_Info1.RefreshData1();
+
             //this.ctrlSubstation_Info1.GridView.Bands[0].Visible = true;
             //this.ctrlSubstation_Info1.GridView.Bands[0].Columns[0].Visible = true; 
             this.ctrlSubstation_Info1.CalcTotal();
