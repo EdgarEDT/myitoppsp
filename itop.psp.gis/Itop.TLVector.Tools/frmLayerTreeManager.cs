@@ -1389,7 +1389,7 @@ namespace ItopVector.Tools {
                     dlg.id = symbolDoc.SvgdataUid;
                     dlg.symbolDoc = symbolDoc;
                     dlg.InputString = node["NAME"].ToString();
-                    // dlg.InputType = layer.GetAttribute("layerType");
+                    dlg.InputType = progtype;
 
                     DialogResult d = dlg.ShowDialog(this);
                     if (d == DialogResult.OK) {
@@ -1880,7 +1880,7 @@ namespace ItopVector.Tools {
                     dlg.id = symbolDoc.SvgdataUid;
                     dlg.symbolDoc = symbolDoc;
                     dlg.InputString = node["NAME"].ToString();
-                    // dlg.InputType = layer.GetAttribute("layerType");
+                    dlg.InputType = progtype;
 
                     DialogResult d = dlg.ShowDialog(this);
                     if (d == DialogResult.OK)

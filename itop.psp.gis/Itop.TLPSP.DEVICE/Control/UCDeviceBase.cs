@@ -204,6 +204,183 @@ namespace Itop.TLPSP.DEVICE
         }
         public virtual void proInit(string year)
         {}
+        IList<PSPDEV> valuelist = null;
+  
+        private IList<double> DY(string yearandtype)
+        {
+            string constr = "   ProjectID='" + ProjectID + "' and "+yearandtype+"  order by RateVolt desc";
+            return UCDeviceBase.DataService.GetList<double>("SelectPSPDEV_RateVolt_distinct", constr);
+
+        }
+        //public IList<string> GetAreaID(double tempdb)
+        //{
+
+        //    string constr = "  ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<" + nowyear + "  and Type='05'  and RateVolt=" + tempdb + " order by AreaID ";
+        //    return UCDeviceBase.DataService.GetList<string>("SelectPSPDEV_GroupAreaID_DIs", constr);
+        //}
+        string[] que = new string[60] { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", 
+            "十一","十二","十三","十四","十五","十六","十七","十八","十九","二十","二十一","二十二","二十三","二十四","二十五","二十六","二十七",
+            "二十八","二十九","三十","三十一","三十二","三十三","三十四","三十五","三十六","三十七","三十八","三十九","四十","四十一","四十二","四十三","四十四",
+            "四十五","四十六","四十七","四十八","四十九","五十","五十一","五十二","五十三","五十四","五十五","五十六","五十七","五十八","五十九","六十"};
+        public virtual void Statictable(string yearandtype)
+        {
+            //string constrvalue = " where  ProjectID='@@@@@#@@'";
+            //valuelist = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", constrvalue);
+            gridView1.CustomDrawCell+=new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(gridView1_CustomDrawCell);
+            int m = 1;
+            IList<double> templist = DY(yearandtype);
+            valuelist = new List<PSPDEV>();
+            if (templist.Count != 0)
+            {
+                for (int i = 0; i < templist.Count; i++)
+                {
+                    PSPDEV tempdev = new PSPDEV();
+                    // tempdev.ProjectID = que[i];
+                    tempdev.Name = templist[i] + "设备";
+                    tempdev.RateVolt = templist[i];
+                    tempdev.Type = "T";
+                    m = 1;
+
+
+                    valuelist.Add(tempdev);
+                    string constr = " where  ProjectID='" + ProjectID + "' and  " + yearandtype + " and RateVolt=" + templist[i] + "   order by Name";
+                    IList<PSPDEV> linelist = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", constr);
+                    for (int k = 0; k < linelist.Count; k++)
+                    {
+                        valuelist.Add(linelist[k]);
+                    }
+                }
+            }
+            else
+            {
+                PSPDEV tempdev = new PSPDEV();
+                // tempdev.ProjectID = que[i];
+                tempdev.Name = "设备";
+                
+                tempdev.Type = "T";
+                m = 1;
+                string constr = " where  ProjectID='" + ProjectID + "' and  " + yearandtype + " order by Name";
+                IList<PSPDEV> linelist = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", constr);
+                for (int k = 0; k < linelist.Count; k++)
+                {
+                    valuelist.Add(linelist[k]);
+                }
+            }
+            IList listNew = new List<PSPDEV>();
+            foreach (PSPDEV dev in valuelist)
+            {
+                if (dev.Type == "01")
+                {
+                    if (dev.NodeType == "0")
+                    {
+                        dev.NodeType = "平衡节点";
+                    }
+                    else if (dev.NodeType == "1")
+                    {
+                        dev.NodeType = "PQ节点";
+                    }
+                    else if (dev.NodeType == "2")
+                    {
+                        dev.NodeType = "PV节点";
+                    }
+                }
+
+                if (dev.KSwitchStatus == "1")
+                {
+                    dev.KSwitchStatus = "退出运行";
+                }
+                else
+                {
+                    dev.KSwitchStatus = "投入运行";
+                }
+                if (dev.UnitFlag == "0")
+                {
+                    dev.UnitFlag = "p.u.";
+                }
+                else
+                {
+                    if (dev.Type == "01" || dev.Type == "04" || dev.Type == "12")
+                    {
+                        dev.UnitFlag = "kV/MW/MVar";
+                    }
+                    else
+                    {
+                        dev.UnitFlag = "Ohm/10-6Siem";
+                    }
+                }
+                if (dev.Type == "01")
+                {
+                    object obj = DeviceHelper.GetDevice<PSP_PowerSubstation_Info>(dev.SvgUID);
+                    if (obj != null)
+                    {
+                        dev.SubstationName = ((PSP_PowerSubstation_Info)obj).Title;
+                    }
+                    obj = DeviceHelper.GetDevice<PSP_Substation_Info>(dev.SvgUID);
+                    if (obj != null)
+                    {
+                        dev.SubstationName = ((PSP_Substation_Info)obj).Title;
+
+                    }
+
+                }
+                else if (dev.Type == "12")
+                {
+                    if (dev.NodeType == "0")
+                    {
+                        dev.NodeType = "恒阻抗模型";
+                    }
+                    else
+                    {
+                        dev.NodeType = "综合负荷";
+                    }
+                }
+
+
+
+                listNew.Add(dev);
+            }
+            datatable1 = Itop.Common.DataConverter.ToDataTable(listNew, typeof(PSPDEV));
+            gridControl1.DataSource = datatable1;
+           
+          
+
+        }
+      
+        private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            //if (gridView1.GetRowCellValue(e.RowHandle,"Type")=="T")
+            //{
+            //    e.r
+
+            //}
+
+            object dr = this.gridView1.GetRow(e.RowHandle);
+            Brush brush = null;
+            Rectangle r = e.Bounds;
+            Color c1 = Color.FromArgb(175, 238, 238);
+            Color c2 = Color.FromArgb(175, 238, 238);
+            Color c3 = Color.FromArgb(245, 222, 180);
+            Color c4 = Color.FromArgb(245, 222, 180);
+
+            if (dr == null)
+                return;
+            int tempsum = 0;
+            if (gridView1.GetRowCellValue(e.RowHandle, "Type") != null)
+            {
+                if (gridView1.GetRowCellValue(e.RowHandle, "Type") == "T")
+                {
+                    brush = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, c1, c2, 180);
+                    e.Graphics.FillRectangle(brush, r);
+                }
+                else if (gridView1.GetRowCellValue(e.RowHandle, "Type") == "A" && e.Column.Name == "NUM")
+                {
+                    brush = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, c3, c4, 180);
+                    e.Graphics.FillRectangle(brush, r);
+                }
+            }
+
+        }
+     
         /// <summary>
         /// 专门用于网架优化显示
         /// </summary>

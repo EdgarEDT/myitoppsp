@@ -3151,7 +3151,7 @@ namespace ItopVector.Tools {
                     fInfo.Top = e.Mouse.Y;
                     fInfo.Left = e.Mouse.X;
                     fInfo.Width = (fInfo.Info.Length) * 20;
-                    fInfo.Show();
+                    fInfo.Show(this);
 
                 }
             }
@@ -3178,7 +3178,7 @@ namespace ItopVector.Tools {
                     fInfo.Left = e.Mouse.X;
                     fInfo.Width = (fInfo.Info.Length) * 12;
                     if (SelUseArea != "") {
-                        fInfo.Show();
+                        fInfo.Show(this);
 
                     }
                     //tip.ShowToolTip();
@@ -3216,7 +3216,7 @@ namespace ItopVector.Tools {
                     fInfo.Width = (fInfo.Info.Length) * 7;
                     fInfo.Height = 50;
                     if (len != "") {
-                        fInfo.Show();
+                        fInfo.Show(this);
 
                     }
 
@@ -3385,7 +3385,7 @@ namespace ItopVector.Tools {
                     fInfo.Height = 50;
                     //fInfo.Right = fInfo.Left+fInfo.Info.Length*10;
                     if (len != "") {
-                        fInfo.Show();
+                        fInfo.Show(this);
                     }
                 }
             }
@@ -3414,7 +3414,7 @@ namespace ItopVector.Tools {
                     fInfo.Left = e.Mouse.X;
                     fInfo.Width = (fInfo.Info.Length) * 5;
                     fInfo.Height = 60;
-                    fInfo.Show();
+                    fInfo.Show(this);
                 }
                 if (aaa.Contains("kbs") || aaa.Contains("fjx") || aaa.Contains("pds") || aaa.Contains("byq") || aaa.Contains("hwg") || aaa.Contains("kg")) {
                     string deviceid = ((XmlElement)e.SvgElement).GetAttribute("Deviceid");
@@ -3454,7 +3454,7 @@ namespace ItopVector.Tools {
                     fInfo.Left = e.Mouse.X;
                     fInfo.Width = (fInfo.Info.Length) * 15;
                     fInfo.Height = 60;
-                    fInfo.Show();
+                    fInfo.Show(this);
                 }
             }
             if (e.SvgElement.GetType().ToString() == "ItopVector.Core.Figure.ConnectLine") {
@@ -10019,12 +10019,38 @@ namespace ItopVector.Tools {
                 tlVectorControl1.DocumentbgColor = Color.White;
                 tlVectorControl1.BackColor = Color.White;
                 //tlVectorControl1.ForeColor = Color.White;
+                //删除地图上没有地块 而有属性数据的数据
+                NotDKbutProperty();
                 CreateComboBox();
                 xltProcessor = new XLTProcessor(tlVectorControl1);
                 xltProcessor.MapView = mapview;
                 xltProcessor.OnNewLine += new NewLineDelegate(xltProcessor_OnNewLine);
             } catch (Exception e) {
                 MessageBox.Show(e.Message);
+            }
+        }
+        public void NotDKbutProperty()
+        {
+            ArrayList list = tlVectorControl1.SVGDocument.getLayerList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                string str_sed="";
+                Layer layer = (Layer)list[i];
+                if (layer.GetAttribute("layerType") == "城市规划层")
+                {
+
+                    XmlNodeList nd = layer.SelectNodes("//*[@IsArea=\"1\" and @layer='" +layer.ID+ "']");
+                    foreach (XmlNode xn in nd)
+                    {
+                        str_sed = str_sed + "'" + ((XmlElement)xn).GetAttribute("id") + "',";
+                    }
+                    if (str_sed.Length>0)
+                    {
+                         str_sed = str_sed.Substring(0, str_sed.Length - 1);
+                         Services.BaseService.Update("DeleteglebePropertyByCon", "LayerID='" + layer.ID + "'and EleID NOT IN(" + str_sed + ")");
+                    }
+
+                }
             }
         }
         public void InitGroup() {
