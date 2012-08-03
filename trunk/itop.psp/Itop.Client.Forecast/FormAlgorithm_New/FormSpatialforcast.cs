@@ -512,7 +512,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             frmMain_Spatial.progtype = "城市规划层";
             string pid = "";
             fmain.Show();
-            fmain.Owner = this;
+           
             string progtype = "城市规划层";
             //if (progtype == "地理信息层") {
             //    fmain.ViewMenu();
@@ -528,43 +528,91 @@ namespace Itop.Client.Forecast.FormAlgorithm_New {
             fmain.InitScaleRatio(); 
             fmain.LayerManagerShow();
             fmain.OpenGHQYpropetty(TypeTitle);
-         
-            
-            
-            if (fmain.DialogResult==DialogResult.OK)
+
+
+            if (fmain.DialogResult == DialogResult.OK)
             {
+               
                 glebeProperty gp = new glebeProperty();
                 gp.ParentEleID = "0";
                 gp.SvgUID = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
                 gp.ObligateField16 = TypeTitle;
                 IList<glebeProperty> svglist = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByObligateField16", gp);
                 //重新对选中的数据进行更新
-                 Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
-                 ForecastClass1.TreeNodeToDataObject<Ps_Forecast_Math>(psp_Type, row);
-                      
-                        IList<glebeYearValue> yearlist = Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", "ParentID='" + svglist[0].UID + "'");
-                        for (int i = 0; i < yearlist.Count;i++ ) {
-                            string y = "y" + yearlist[i].Year.ToString();
-                            psp_Type.GetType().GetProperty(y).SetValue(psp_Type, yearlist[i].Burthen, null);
-                            
-                        }
-                       
+                Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
+                ForecastClass1.TreeNodeToDataObject<Ps_Forecast_Math>(psp_Type, row);
 
-                        try {
-                            Common.Services.BaseService.Update<Ps_Forecast_Math>(psp_Type);
-                            //psp_Type.ID = (int)Common.Services.BaseService.Create("InsertPSP_P_Types", psp_Type);
-                            //dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(psp_Type, dataTable.NewRow()));
-                            LoadData();
-                            //treeList1.EndUpdate();
-                            RefreshChart();
-                        }
-                catch(Exception ex)
-                        {
+                IList<glebeYearValue> yearlist = Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", "ParentID='" + svglist[0].UID + "'");
+                for (int i = 0; i < yearlist.Count; i++)
+                {
+                    string y = "y" + yearlist[i].Year.ToString();
+                    psp_Type.GetType().GetProperty(y).SetValue(psp_Type, yearlist[i].Burthen, null);
+
+                }
+
+
+                try
+                {
+                    Common.Services.BaseService.Update<Ps_Forecast_Math>(psp_Type);
+                    //psp_Type.ID = (int)Common.Services.BaseService.Create("InsertPSP_P_Types", psp_Type);
+                    //dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(psp_Type, dataTable.NewRow()));
+                    LoadData();
+                    //treeList1.EndUpdate();
+                    RefreshChart();
+                }
+                catch (Exception ex)
+                {
 
                 }
             }
-        }
+            else
+            {
 
+                //MsgBox.Show("在规划地块中，没有圈选此区域，请在规划地块模块中圈选此地块再点击编辑！");
+                fmain.Owner = this;
+            }
+          
+        }
+        public void UpdateSpatataldata(string TypeTitle)
+        {
+            TreeListNode row = this.treeList1.FocusedNode;
+            if (row == null)
+            {
+                return;
+            }
+
+            glebeProperty gp = new glebeProperty();
+            gp.ParentEleID = "0";
+            gp.SvgUID = "c5ec3bc7-9706-4cbd-9b8b-632d3606f933";
+            gp.ObligateField16 = TypeTitle;
+            IList<glebeProperty> svglist = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByObligateField16", gp);
+            //重新对选中的数据进行更新
+            Ps_Forecast_Math psp_Type = new Ps_Forecast_Math();
+            ForecastClass1.TreeNodeToDataObject<Ps_Forecast_Math>(psp_Type, row);
+
+            IList<glebeYearValue> yearlist = Services.BaseService.GetList<glebeYearValue>("SelectglebeYearValueBywhere", "ParentID='" + svglist[0].UID + "'");
+            for (int i = 0; i < yearlist.Count; i++)
+            {
+                string y = "y" + yearlist[i].Year.ToString();
+                psp_Type.GetType().GetProperty(y).SetValue(psp_Type, yearlist[i].Burthen, null);
+
+            }
+
+
+            try
+            {
+                Common.Services.BaseService.Update<Ps_Forecast_Math>(psp_Type);
+                //psp_Type.ID = (int)Common.Services.BaseService.Create("InsertPSP_P_Types", psp_Type);
+                //dataTable.Rows.Add(Itop.Common.DataConverter.ObjectToRow(psp_Type, dataTable.NewRow()));
+                LoadData();
+                //treeList1.EndUpdate();
+                RefreshChart();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         private void treeList1_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e) {
             TreeListNode row = this.treeList1.FocusedNode;
             if (row == null)
