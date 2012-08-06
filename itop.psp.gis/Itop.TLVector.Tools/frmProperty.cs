@@ -105,15 +105,15 @@ namespace ItopVector.Tools
 
             if (IsCreate)
             {
-                glebeProperty gle = new glebeProperty();
-                gle.UseID = gPro.UseID;
-                gle.SvgUID = gPro.SvgUID;
-                IList list = Services.BaseService.GetList("SelectglebePropertyByUseIDCK", gle);
-                if (list.Count > 0)
-                {
-                    MessageBox.Show("地块编号重复。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                //glebeProperty gle = new glebeProperty();
+                //gle.UseID = gPro.UseID;
+                //gle.SvgUID = gPro.SvgUID;
+                //IList list = Services.BaseService.GetList("SelectglebePropertyByUseIDCK", gle);
+                //if (list.Count > 0)
+                //{
+                //    MessageBox.Show("地块编号重复。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    return;
+                //}
 
                 gPro.ParentEleID = "1";
                 Services.BaseService.Create<glebeProperty>(gPro);
