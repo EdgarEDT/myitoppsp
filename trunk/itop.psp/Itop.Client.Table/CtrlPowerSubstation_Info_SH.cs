@@ -362,19 +362,23 @@ namespace Itop.Client.Table
                     IList<PSPDEV> list1 = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                     foreach (PSPDEV pd in list1)
                     {
-                        if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(((PSP_PowerSubstation_Info)list[i]).S29) && !string.IsNullOrEmpty(((PSP_PowerSubstation_Info)list[i]).S30))
+                        if (!string.IsNullOrEmpty(pd.OperationYear) && Convert.ToInt32(pd.OperationYear) <= Convert.ToDouble(addConn))
                         {
-                            if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(((PSP_PowerSubstation_Info)list[i]).S29) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(((PSP_PowerSubstation_Info)list[i]).S30))
+                            if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(((PSP_PowerSubstation_Info)list[i]).S29) && !string.IsNullOrEmpty(((PSP_PowerSubstation_Info)list[i]).S30))
+                            {
+                                if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(((PSP_PowerSubstation_Info)list[i]).S29) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(((PSP_PowerSubstation_Info)list[i]).S30))
+                                {
+                                    rl += (double)pd.Burthen;
+                                    bts++;
+                                }
+                            }
+                            else
                             {
                                 rl += (double)pd.Burthen;
                                 bts++;
                             }
                         }
-                        else
-                        {
-                            rl += (double)pd.Burthen;
-                            bts++;
-                        }
+                      
                     }
                     ((PSP_PowerSubstation_Info)list[i]).S2 = rl.ToString();
                   
