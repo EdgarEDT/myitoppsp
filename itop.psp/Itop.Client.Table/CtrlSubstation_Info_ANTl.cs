@@ -245,15 +245,33 @@ namespace Itop.Client.Table
                 for (int i = 0; i < list.Count;i++ )
                 {
                     double rl=0; int bts=0;
+                 
                     string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type in ('02','03')and SvgUID='" + ((Substation_Info)list[i]).UID + "'";
                     IList<PSPDEV> list1 = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+
                     foreach (PSPDEV pd in list1)
                     {
-                        
-                        if (!string.IsNullOrEmpty(pd.OperationYear) && !string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(((Substation_Info)list[i]).L29) && !string.IsNullOrEmpty(((Substation_Info)list[i]).L28))
+                        if (!string.IsNullOrEmpty(pd.OperationYear) && Convert.ToInt32(pd.OperationYear) <= Convert.ToDouble(addConn))
                         {
-                            if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(((Substation_Info)list[i]).L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(((Substation_Info)list[i]).L29))
+                            if (!string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(((Substation_Info)list[i]).L29) && !string.IsNullOrEmpty(((Substation_Info)list[i]).L28))
                             {
+                                if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(((Substation_Info)list[i]).L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(((Substation_Info)list[i]).L29))
+                                {
+                                    if (pd.Type == "03")
+                                    {
+                                        rl += pd.SiN;
+                                    }
+                                    else
+                                    {
+                                        rl += (double)pd.Burthen;
+                                    }
+
+                                    bts++;
+                                }
+                            }
+                            else
+                            {
+
                                 if (pd.Type == "03")
                                 {
                                     rl += pd.SiN;
@@ -263,23 +281,12 @@ namespace Itop.Client.Table
                                     rl += (double)pd.Burthen;
                                 }
 
+
                                 bts++;
                             }
                         }
-                        else
-                        {
-                            if (pd.Type == "03")
-                            {
-                                rl += pd.SiN;
-                            }
-                            else
-                            {
-                                rl += (double)pd.Burthen;
-                            }
-
-
-                            bts++;
-                        }
+                        
+                       
 
                     }
                     ((Substation_Info)list[i]).L2 = rl;
