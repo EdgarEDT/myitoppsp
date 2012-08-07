@@ -792,32 +792,32 @@ namespace Itop.TLPSP.DEVICE
         }
         private void setBdzName()
         {
-            //显示所在位置的名称
-            object obj = DeviceHelper.GetDevice<PSP_Substation_Info>(dev.SvgUID);
+            ////显示所在位置的名称
+            //object obj = DeviceHelper.GetDevice<PSP_Substation_Info>(dev.SvgUID);
 
-            if (obj != null)
-            {
-                buttonEdit2.Text = ((PSP_Substation_Info)obj).Title;
-                return;
-            }
-            obj = DeviceHelper.GetDevice<PSP_PowerSubstation_Info>(dev.SvgUID);
-            if (obj != null)
-            {
-                buttonEdit2.Text = ((PSP_PowerSubstation_Info)obj).Title;
-                return;
-            }
+            //if (obj != null)
+            //{
+            //    buttonEdit2.Text = ((PSP_Substation_Info)obj).Title;
+            //    return;
+            //}
+            //obj = DeviceHelper.GetDevice<PSP_PowerSubstation_Info>(dev.SvgUID);
+            //if (obj != null)
+            //{
+            //    buttonEdit2.Text = ((PSP_PowerSubstation_Info)obj).Title;
+            //    return;
+            //}
 
         }
         private void setLineName()
         {
             //显示所在位置的名称
-            object obj = DeviceHelper.GetDevice<PSPDEV>(dev.Lable);
+            //object obj = DeviceHelper.GetDevice<PSPDEV>(dev.Lable);
 
-            if (obj != null)
-            {
-                buttonEdit1.Text = ((PSPDEV)obj).Name;
-                return;
-            }
+            //if (obj != null)
+            //{
+            //    buttonEdit1.Text = ((PSPDEV)obj).Name;
+            //    return;
+            //}
 
         }
         private void buttonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

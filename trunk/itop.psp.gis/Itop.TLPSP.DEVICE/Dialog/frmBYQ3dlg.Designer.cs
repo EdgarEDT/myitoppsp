@@ -777,11 +777,11 @@
             this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Red;
             this.labelControl12.Appearance.Options.UseFont = true;
             this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(142, 13);
+            this.labelControl12.Location = new System.Drawing.Point(67, 12);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(176, 20);
+            this.labelControl12.Size = new System.Drawing.Size(242, 20);
             this.labelControl12.TabIndex = 9;
-            this.labelControl12.Text = "影响：\r\n三绕组变压器的电阻、电抗、电纳！";
+            this.labelControl12.Text = "影响：\r\n三绕组变压器的电阻、电抗、电纳、分接头、电压";
             // 
             // label5
             // 

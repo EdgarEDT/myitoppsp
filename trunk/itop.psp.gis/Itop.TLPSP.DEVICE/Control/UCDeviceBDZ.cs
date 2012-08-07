@@ -434,7 +434,8 @@ namespace Itop.TLPSP.DEVICE
             dlg.Name = "";
             dlg.CsbuttonVisble(true);
             dlg.IsRead = false;
-            if (dlg.ShowDialog() == DialogResult.OK) {
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
                 //Ôö¼Ó¼ÇÂ¼ 
                 PSP_Substation_Info dev = dlg.DeviceMx;
                 dev.AreaID = Itop.Client.MIS.ProgUID;
@@ -443,10 +444,22 @@ namespace Itop.TLPSP.DEVICE
                     DataService.Update<PSP_Substation_Info>(dev);
                 }
                 else
-                DataService.Create<PSP_Substation_Info>(dev);
+                    DataService.Create<PSP_Substation_Info>(dev);
                 DataRow row = datatable1.NewRow();
                 Itop.Common.DataConverter.ObjectToRow(dev, row);
                 datatable1.Rows.Add(row);
+            }
+            else
+            {
+                if (dlg.bcflag)
+                {
+                    PSP_Substation_Info dev = dlg.DeviceMx;
+                    dev.AreaID = Itop.Client.MIS.ProgUID;
+                    DataService.Update<PSP_Substation_Info>(dev);
+                    DataRow row = datatable1.NewRow();
+                    Itop.Common.DataConverter.ObjectToRow(dev, row);
+                    datatable1.Rows.Add(row);
+                }
             }
         }
         public override void Delete() {

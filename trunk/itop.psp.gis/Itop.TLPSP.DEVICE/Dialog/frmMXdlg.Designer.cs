@@ -317,17 +317,17 @@
             this.labelControl34.Appearance.ForeColor = System.Drawing.Color.Red;
             this.labelControl34.Appearance.Options.UseFont = true;
             this.labelControl34.Appearance.Options.UseForeColor = true;
-            this.labelControl34.Location = new System.Drawing.Point(86, 23);
+            this.labelControl34.Location = new System.Drawing.Point(34, 18);
             this.labelControl34.Name = "labelControl34";
-            this.labelControl34.Size = new System.Drawing.Size(55, 20);
+            this.labelControl34.Size = new System.Drawing.Size(121, 20);
             this.labelControl34.TabIndex = 13;
-            this.labelControl34.Text = "影响：\r\n有功和无功";
+            this.labelControl34.Text = "影响：电压幅值、相角、\r\n有功和无功";
             this.labelControl34.Visible = false;
             // 
             // radioGroup3
             // 
             this.radioGroup3.EditValue = "1";
-            this.radioGroup3.Location = new System.Drawing.Point(21, 21);
+            this.radioGroup3.Location = new System.Drawing.Point(5, 27);
             this.radioGroup3.Name = "radioGroup3";
             this.radioGroup3.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.radioGroup3.Properties.Appearance.Options.UseBackColor = true;

@@ -457,10 +457,19 @@ namespace Itop.TLPSP.DEVICE
                     DataService.Update<PSP_PowerSubstation_Info>(dev);
                 }
                 else
-                DataService.Create<PSP_PowerSubstation_Info>(dev);
+                    DataService.Create<PSP_PowerSubstation_Info>(dev);
                 DataRow row = datatable1.NewRow();
                 Itop.Common.DataConverter.ObjectToRow(dev, row);
                 datatable1.Rows.Add(row);
+            }
+            else { 
+            if (dlg.bcflag)
+            {
+                //Ôö¼Ó¼ÇÂ¼ 
+                PSP_PowerSubstation_Info dev = dlg.DeviceMx;
+                dev.AreaID = Itop.Client.MIS.ProgUID;
+
+            }
             }
         }
         public override void Delete()
