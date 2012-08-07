@@ -1960,9 +1960,9 @@ namespace Itop.TLPSP.DEVICE
                 {
                     if (dev.Number <= 0)
                     {
-                        wait.Close();
-                        MessageBox.Show("线路" + dev.Name + "编号不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return false;
+                        //wait.Close();
+                        //MessageBox.Show("线路" + dev.Name + "编号不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //return false;
                     }
                     else
                     {
@@ -5428,8 +5428,8 @@ namespace Itop.TLPSP.DEVICE
                             }
                             else
                             {
-                                strBranch += dev.FirstNode.ToString() + " " + dev.LastNode.ToString() + " " + dev.Name.ToString() + " " + "2" + " " + (dev.LineR * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.LineTQ * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.LineGNDC * 2 * dev.ReferenceVolt * dev.ReferenceVolt / (ratedCapacity * 1000000)).ToString() + " " + dev.K.ToString() + " " + dev.G.ToString();
-                                strData += (dev.FirstNode.ToString() + " " + dev.LastNode.ToString() + " " + "1" + " " + (dev.LineR * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.LineTQ * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.K.ToString()).ToString() + " " + dev.G.ToString() + " " + dev.Name.ToString());
+                                strBranch += dev.FirstNode.ToString() + " " + dev.LastNode.ToString() + " " + dev.Name.ToString() + " " + "2" + " " + (dev.LineR * ratedCapacity / (dev.Vib * dev.Vib)).ToString() + " " + (dev.LineTQ * ratedCapacity / (dev.Vib * dev.Vib)).ToString() + " " + (dev.LineGNDC * 2 * dev.Vib * dev.Vib / (ratedCapacity * 1000000)).ToString() + " " + dev.K.ToString() + " " + dev.G.ToString();
+                                strData += (dev.FirstNode.ToString() + " " + dev.LastNode.ToString() + " " + "1" + " " + (dev.LineR * ratedCapacity / (dev.Vib * dev.Vib)).ToString() + " " + (dev.LineTQ * ratedCapacity / (dev.Vib * dev.Vib)).ToString() + " " + (dev.K.ToString()).ToString() + " " + dev.G.ToString() + " " + dev.Name.ToString());
                             }
                         }
                     }
@@ -5483,8 +5483,8 @@ namespace Itop.TLPSP.DEVICE
                                 {
                                     strData += "\r\n";
                                 }
-                                strBranch += dev.FirstNode.ToString() + " " + dev.LastNode.ToString() + " " + dev.Name.ToString() + " " + "2" + " " + (dev.HuganTQ1 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.HuganTQ4 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + "0" + " " + dev.K.ToString() + " " + "0";
-                                strData += (dev.FirstNode.ToString() + " " + dev.LastNode.ToString() + " " + "1" + " " + (dev.HuganTQ1 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.HuganTQ4 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.K).ToString() + " " + "0" + " " + dev.Name.ToString());
+                                strBranch += dev.FirstNode.ToString() + " " + dev.LastNode.ToString() + " " + dev.Name.ToString() + " " + "2" + " " + (dev.HuganTQ1 * ratedCapacity / (dev.Vib * dev.Vib)).ToString() + " " + (dev.HuganTQ4 * ratedCapacity / (dev.Vib * dev.Vib)).ToString() + " " + "0" + " " + dev.K.ToString() + " " + "0";
+                                strData += (dev.FirstNode.ToString() + " " + dev.LastNode.ToString() + " " + "1" + " " + (dev.HuganTQ1 * ratedCapacity / (dev.Vib * dev.Vib)).ToString() + " " + (dev.HuganTQ4 * ratedCapacity / (dev.Vib * dev.Vib)).ToString() + " " + (dev.K).ToString() + " " + "0" + " " + dev.Name.ToString());
                                 if (strBranch != null)
                                 {
                                     strBranch += "\r\n";
@@ -5493,8 +5493,8 @@ namespace Itop.TLPSP.DEVICE
                                 {
                                     strData += "\r\n";
                                 }
-                                strBranch += dev.LastNode.ToString() + " " + dev.Flag.ToString() + " " + dev.Name.ToString() + " " + "2" + " " + (dev.HuganTQ2 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.HuganTQ5 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + "0" + " " + dev.StandardCurrent.ToString() + " " + "0";
-                                strData += (dev.LastNode.ToString() + " " + dev.Flag.ToString() + " " + "1" + " " + (dev.HuganTQ2 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.HuganTQ5 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.StandardCurrent).ToString() + " " + "0" + " " + dev.Name.ToString());
+                                strBranch += dev.LastNode.ToString() + " " + dev.Flag.ToString() + " " + dev.Name.ToString() + " " + "2" + " " + (dev.HuganTQ2 * ratedCapacity / (dev.Vjb * dev.Vjb)).ToString() + " " + (dev.HuganTQ5 * ratedCapacity / (dev.Vjb * dev.Vjb)).ToString() + " " + "0" + " " + dev.StandardCurrent.ToString() + " " + "0";
+                                strData += (dev.LastNode.ToString() + " " + dev.Flag.ToString() + " " + "1" + " " + (dev.HuganTQ2 * ratedCapacity / (dev.Vjb * dev.Vjb)).ToString() + " " + (dev.HuganTQ5 * ratedCapacity / (dev.Vjb * dev.Vjb)).ToString() + " " + (dev.StandardCurrent).ToString() + " " + "0" + " " + dev.Name.ToString());
                                 if (strBranch != null)
                                 {
                                     strBranch += "\r\n";
@@ -5503,8 +5503,8 @@ namespace Itop.TLPSP.DEVICE
                                 {
                                     strData += "\r\n";
                                 }
-                                strBranch += dev.FirstNode.ToString() + " " + dev.Flag.ToString() + " " + dev.Name.ToString() + " " + "2" + " " + (dev.HuganTQ3 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.ZeroTQ * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + "0" + " " + dev.BigP.ToString() + " " + "0";
-                                strData += (dev.FirstNode.ToString() + " " + dev.Flag.ToString() + " " + "1" + " " + (dev.HuganTQ3 * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.ZeroTQ * ratedCapacity / (dev.ReferenceVolt * dev.ReferenceVolt)).ToString() + " " + (dev.BigP).ToString() + " " + "0" + " " + dev.Name.ToString());
+                                strBranch += dev.FirstNode.ToString() + " " + dev.Flag.ToString() + " " + dev.Name.ToString() + " " + "2" + " " + (dev.HuganTQ3 * ratedCapacity / (dev.Vkb * dev.Vkb)).ToString() + " " + (dev.ZeroTQ * ratedCapacity / (dev.Vkb * dev.Vkb)).ToString() + " " + "0" + " " + dev.BigP.ToString() + " " + "0";
+                                strData += (dev.FirstNode.ToString() + " " + dev.Flag.ToString() + " " + "1" + " " + (dev.HuganTQ3 * ratedCapacity / (dev.Vkb * dev.Vkb)).ToString() + " " + (dev.ZeroTQ * ratedCapacity / (dev.Vkb * dev.Vkb)).ToString() + " " + (dev.BigP).ToString() + " " + "0" + " " + dev.Name.ToString());
                             }
                         }
                     }

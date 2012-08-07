@@ -128,9 +128,9 @@ namespace Itop.TLPSP.DEVICE
                                 continue;
                             }
                         }
-                        if (!string.IsNullOrEmpty((list1[i]).S29) && (list1[i]).S29.Length == 4 && belongyear.Length == 4)
+                        if (!string.IsNullOrEmpty((list1[i]).S30) && (list1[i]).S29.Length == 4 && belongyear.Length == 4)
                         {
-                            if (Convert.ToInt32((list1[i]).S29) < Convert.ToInt32(belongyear))
+                            if (Convert.ToInt32((list1[i]).S30) < Convert.ToInt32(belongyear))
                             {
                                 list1.RemoveAt(i);
                                 i--;
@@ -181,7 +181,7 @@ namespace Itop.TLPSP.DEVICE
                switch (devcetype)
                {
                case 0 :
-                       if (((XmlElement)node).GetAttribute("id") == "01" || ((XmlElement)node).GetAttribute("id") == "03" || ((XmlElement)node).GetAttribute("id") == "12")
+                       if (((XmlElement)node).GetAttribute("id") == "01" || ((XmlElement)node).GetAttribute("id") == "02" || ((XmlElement)node).GetAttribute("id") == "03" || ((XmlElement)node).GetAttribute("id") == "12")
                        {
                            DataRow row = table.NewRow();
                            row["id"] = node.Attributes["id"].Value;
