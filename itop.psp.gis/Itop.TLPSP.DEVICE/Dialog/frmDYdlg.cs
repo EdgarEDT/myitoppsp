@@ -71,26 +71,26 @@ namespace Itop.TLPSP.DEVICE
                 date1.Text = devObj.S29;
                 date2.Text = devObj.S30;
 
-                if (!string.IsNullOrEmpty(StartYear))
-                {
-                    string sql = "RelatetableID='" + DeviceMx.UID + "' order by startYear";
-                    IList<Psp_Attachtable> pl = Itop.Client.Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", sql);
-                    if (pl.Count > 0)
-                    {
-                        double rl = 0;
-                        int ts = 0;
-                        foreach (Psp_Attachtable pa in pl)
-                        {
-                            if (Convert.ToInt32(pa.startYear) <= Convert.ToInt32(StartYear) && Convert.ToInt32(pa.endYear) >= Convert.ToInt32(StartYear))
-                            {
-                                rl += Convert.ToDouble(pa.ZHI);
-                                ts++;
-                            }
-                        }
-                        spinEdit2.Value = (decimal)rl;
+                //if (!string.IsNullOrEmpty(StartYear))
+                //{
+                //    string sql = "RelatetableID='" + DeviceMx.UID + "' order by startYear";
+                //    IList<Psp_Attachtable> pl = Itop.Client.Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", sql);
+                //    if (pl.Count > 0)
+                //    {
+                //        double rl = 0;
+                //        int ts = 0;
+                //        foreach (Psp_Attachtable pa in pl)
+                //        {
+                //            if (Convert.ToInt32(pa.startYear) <= Convert.ToInt32(StartYear) && Convert.ToInt32(pa.endYear) >= Convert.ToInt32(StartYear))
+                //            {
+                //                rl += Convert.ToDouble(pa.ZHI);
+                //                ts++;
+                //            }
+                //        }
+                //        spinEdit2.Value = (decimal)rl;
                         
-                    }
-                }
+                //    }
+                //}
             }
         }
         protected void Init()

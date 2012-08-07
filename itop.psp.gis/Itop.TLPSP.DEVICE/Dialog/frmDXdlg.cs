@@ -125,9 +125,9 @@ namespace Itop.TLPSP.DEVICE
                 //创建节点信息
                 ucjd1.ParentObj = dev;
                 setXL();
-                setLineName();
+               // setLineName();
                 lookUpEdit1.EditValue = dev.HuganLine1;
-                setBdzName();
+                //setBdzName();
                 //NodeType = f;    
             }
         }

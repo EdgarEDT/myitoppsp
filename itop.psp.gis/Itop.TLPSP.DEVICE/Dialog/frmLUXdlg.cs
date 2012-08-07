@@ -126,8 +126,8 @@ namespace Itop.TLPSP.DEVICE
                 lookUpEdit1.EditValue = dev.HuganLine1;
                 lookUpEdit2.EditValue = dev.HuganLine2;
                 setXL();
-                setLineName();
-                setBdzName();
+                //setLineName();
+                //setBdzName();
 
                 //NodeType = f;    
             }

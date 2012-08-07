@@ -604,6 +604,174 @@ namespace Itop.TLPSP.DEVICE
                 }
             }
         }
+        /// <summary>
+        /// 导出EXCEL
+        /// </summary>
+        /// <param name="gridControl"></param>
+        /// <param name="title"></param>
+        /// <param name="dw"></param>
+        public static void ExportToExcelandchildren(GridControl gridControl, string title, string dw)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            string fname = "";
+            saveFileDialog1.Filter = "Microsoft Excel (*.xls)|*.xls";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                fname = saveFileDialog1.FileName;
+                try
+                {
+                    gridControl.ExportToExcelOld(fname);
+
+
+                    FarPoint.Win.Spread.FpSpread fps = new FarPoint.Win.Spread.FpSpread();
+                    fps.OpenExcel(fname);
+                    SheetView sv = fps.Sheets[0];
+                    
+                    //for (int j = 1; j < sv.NonEmptyColumnCount; j++)
+                    //{
+                    //    for (int k = 0; k < sv.NonEmptyRowCount; k++)
+                    //    {
+                    //        sv.Cells[k, j].CellType = new FarPoint.Win.Spread.CellType.NumberCellType();
+                    //    }
+
+                    //}
+                    //输出子表的数据
+                    //输出母线
+                    ExportChildEXCEL(gridControl.DataSource as DataTable,new UCDeviceMX(),fps,"母线","01");
+
+                    //输出两绕组
+                    ExportChildEXCEL(gridControl.DataSource as DataTable, new UCDeviceBYQ2(), fps, "两绕组变压器", "02");
+                    //输出三绕组变压器
+                    ExportChildEXCEL(gridControl.DataSource as DataTable, new UCDeviceBYQ3(), fps, "三绕组变压器", "03");
+                    //输出负荷
+                    ExportChildEXCEL(gridControl.DataSource as DataTable, new UCDeviceFH(), fps, "负荷", "12");
+                    //输出发电机
+                    ExportChildEXCEL(gridControl.DataSource as DataTable, new UCDeviceFDJ(), fps, "发电机", "04");
+
+                    fps.SaveExcel(fname);
+                    //// 定义要使用的Excel 组件接口
+                    //// 定义Application 对象,此对象表示整个Excel 程序
+                    //Microsoft.Office.Interop.Excel.Application excelApp = null;
+                    //// 定义Workbook对象,此对象代表工作薄
+                    //Microsoft.Office.Interop.Excel.Workbook workBook;
+                    //// 定义Worksheet 对象,此对象表示Execel 中的一张工作表
+                    //Microsoft.Office.Interop.Excel.Worksheet ws = null;
+                    //Microsoft.Office.Interop.Excel.Range range = null;
+                    //excelApp = new Microsoft.Office.Interop.Excel.Application();
+
+                    //workBook = excelApp.Workbooks.Open(fname, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value);
+                    //for (int i = 1; i <= workBook.Worksheets.Count; i++)
+                    //{
+
+                    //    ws = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets[i];
+                    //    //取消保护工作表
+                    //    ws.Unprotect(Missing.Value);
+                    //    //有数据的行数
+                    //    int row = ws.UsedRange.Rows.Count;
+                    //    //有数据的列数
+                    //    int col = ws.UsedRange.Columns.Count;
+                    //    //创建一个区域
+                    //    range = ws.get_Range(ws.Cells[1, 1], ws.Cells[row, col]);
+                    //    //设区域内的单元格自动换行
+                    //    range.Select();
+                    //    range.NumberFormatLocal = "G/通用格式";
+
+                    //    //保护工作表
+                    //    ws.Protect(Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value);
+
+                    //}
+                    ////保存工作簿
+                    //workBook.Save();
+                    ////关闭工作簿
+                    //excelApp.Workbooks.Close();
+                    // CreateTitle(fname, title, dw);
+                    if (MsgBox.ShowYesNo("导出成功，是否打开该文档？") != DialogResult.Yes)
+                        return;
+
+                    System.Diagnostics.Process.Start(fname);
+
+                }
+                catch (Exception ee)
+                {
+                    MsgBox.Show("无法保存" + fname + "。请用其他文件名保存文件，或将文件存至其他位置。");
+                    return;
+                }
+            }
+        }
+        public static void ExportChildEXCEL(DataTable dt, UCDeviceBase ub,FarPoint.Win.Spread.FpSpread fpSpread1, string sheetname,string type)
+        {
+            IList<string> filedList = new List<string>();
+            IList<string> capList = new List<string>();
+           
+          
+           
+            Dictionary<string, IList<PSPDEV>> bdzandchidren = new Dictionary<string, IList<PSPDEV>>();
+            List<PSPDEV> zsjcol = new List<PSPDEV>();
+            for (int i = 0; i < ub.gridView1.Columns.Count; i++)
+            {
+
+                capList.Add(ub.gridView1.Columns[i].Caption);
+                filedList.Add(ub.gridView1.Columns[i].FieldName);
+            }
+            FarPoint.Win.Spread.SheetView sheetview = fpSpread1.Sheets.Find(sheetname);
+            if (sheetview == null)
+            {
+                sheetview = new FarPoint.Win.Spread.SheetView();
+                sheetview.SheetName = sheetname;
+                fpSpread1.Sheets.Add(sheetview);
+            }
+            else
+            {
+                sheetview.RowCount = 0;
+                sheetview.ColumnCount = 0;
+            }
+            sheetview.ColumnCount = capList.Count + 1;
+            sheetview.RowCount = 1000;
+           fpSpread1.ActiveSheet = sheetview;
+            //读取数据
+            int cn = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                cn++;
+              string  strCon = " where 1=1 and SvgUID='" + dr["UID"].ToString() + "'and Type='"+type+"'";
+              IList<PSPDEV> list1 = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", strCon);
+
+
+              if (!bdzandchidren.ContainsKey(dr["Title"].ToString()))
+              {
+                  bdzandchidren.Add(dr["Title"].ToString(), list1);
+              }
+              else
+              {
+                  bdzandchidren.Add(dr["Title"].ToString()+cn.ToString(), list1);
+              }
+            }
+            //加表头
+            sheetview.Cells[0, 0].Text = "变电站";
+            for (int i = 0; i < capList.Count;i++ )
+            {
+                sheetview.Cells[0, i + 1].Text = capList[i];
+            }
+            int m = 1;
+            //添加内容
+            foreach (KeyValuePair<string,IList<PSPDEV>> kv in bdzandchidren )
+            {
+                foreach (PSPDEV pd in kv.Value)
+                {
+                    sheetview.Cells[m, 0].Text = kv.Key;
+                    for (int i = 0; i < filedList.Count;i++ )
+                    {
+                        if (pd.GetType().GetProperty(filedList[i]).GetValue(pd, null)!=null)
+                        {
+                            sheetview.Cells[m, i + 1].Text = pd.GetType().GetProperty(filedList[i]).GetValue(pd, null).ToString();
+                        }
+                       
+                    }
+                    m++;
+                }
+            }
+        }
+
         public static void CopyTemplate(Template_PSPDEV source,PSPDEV target)
         {
             Type t = typeof(PSPDEV);

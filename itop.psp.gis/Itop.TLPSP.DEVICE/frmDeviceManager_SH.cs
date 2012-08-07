@@ -225,7 +225,13 @@ namespace Itop.TLPSP.DEVICE
         {
             try
             {
+                if (curDevice.GetType()=="20"||curDevice.GetType()=="30")
+                {
+                    DeviceHelper.ExportToExcelandchildren(curDevice.gridControl1,"","");
+                }
+                else
                 DeviceHelper.ExportToExcelOld(curDevice.gridControl1, "", "");
+                
             }
             catch { }
         }
@@ -344,7 +350,7 @@ namespace Itop.TLPSP.DEVICE
                        table = DeviceHelper.GetExcelmainandchildren(op.FileName, filedList, capList, "负荷", dt);
                        ub.UpdateInchildren(table);
                    }
-                   else if (curDevice.GetType() == "11")  //电源
+                   else if (curDevice.GetType() == "30")  //电源
                    {
                        UCDeviceBase ub = new UCDeviceMX();
                        //母线

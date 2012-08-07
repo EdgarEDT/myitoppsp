@@ -136,35 +136,35 @@ namespace Itop.TLPSP.DEVICE
                 ucGraph2.Open(value.UID+Itop.Client.MIS.ProgUID.Substring(0,8));
                 ProjectID = Itop.Client.MIS.ProgUID;
                 freshxl();
-                if (!string.IsNullOrEmpty(StartYear))
-                {
-                    string sql = "RelatetableID='" + bdz.UID + "' order by startYear";
-                    IList<Psp_Attachtable> pl = Itop.Client.Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", sql);
-                    if (pl.Count > 0)
-                    {
-                        double rl = 0;
-                        int ts = 0;
-                        foreach (Psp_Attachtable pa in pl)
-                        {
-                            if (!string.IsNullOrEmpty(pa.startYear) && !string.IsNullOrEmpty(pa.endYear))
-                            {
-                                if (Convert.ToInt32(pa.startYear) <= Convert.ToInt32(StartYear) && Convert.ToInt32(pa.endYear) >= Convert.ToInt32(StartYear))
-                                {
-                                    rl += Convert.ToDouble(pa.ZHI);
-                                    ts++;
-                                }
-                            }
-                            else
-                            {
-                                rl += Convert.ToDouble(pa.ZHI);
-                                ts++;
-                            }
+                //if (!string.IsNullOrEmpty(StartYear))
+                //{
+                //    string sql = "RelatetableID='" + bdz.UID + "' order by startYear";
+                //    IList<Psp_Attachtable> pl = Itop.Client.Common.Services.BaseService.GetList<Psp_Attachtable>("SelectPsp_AttachtableByCont", sql);
+                //    if (pl.Count > 0)
+                //    {
+                //        double rl = 0;
+                //        int ts = 0;
+                //        foreach (Psp_Attachtable pa in pl)
+                //        {
+                //            if (!string.IsNullOrEmpty(pa.startYear) && !string.IsNullOrEmpty(pa.endYear))
+                //            {
+                //                if (Convert.ToInt32(pa.startYear) <= Convert.ToInt32(StartYear) && Convert.ToInt32(pa.endYear) >= Convert.ToInt32(StartYear))
+                //                {
+                //                    rl += Convert.ToDouble(pa.ZHI);
+                //                    ts++;
+                //                }
+                //            }
+                //            else
+                //            {
+                //                rl += Convert.ToDouble(pa.ZHI);
+                //                ts++;
+                //            }
                             
-                        }
-                        spinEdit2.Value = (decimal)rl;
-                        spinEdit4.Value=(decimal)ts;
-                    }
-                }
+                //        }
+                //        spinEdit2.Value = (decimal)rl;
+                //        spinEdit4.Value=(decimal)ts;
+                //    }
+                //}
             }
         }
         /// <summary>
