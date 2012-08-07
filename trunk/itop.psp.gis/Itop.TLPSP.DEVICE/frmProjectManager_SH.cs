@@ -892,8 +892,10 @@ namespace Itop.TLPSP.DEVICE {
             con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID + "' and pspdev.Type='05'";
 
            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+           i = 0;
             foreach (PSPDEV dev in list)
             {
+                i++;
                 string iname = dev.IName;
                 if (iname != null)
                 {
@@ -917,14 +919,16 @@ namespace Itop.TLPSP.DEVICE {
                         dev.LastNode = psp.Number;
                     }
                 }
+                dev.Number = i;
                 UCDeviceBase.DataService.Update<PSPDEV>(dev);
             }
             //更新负荷
             con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='12'";
-
+            i = 0;
             list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
             foreach (PSPDEV dev in list)
             {
+                i++;
                 string iname = dev.IName;
                 if (iname != null)
                 {
@@ -937,14 +941,16 @@ namespace Itop.TLPSP.DEVICE {
                         dev.ReferenceVolt = psp.ReferenceVolt;
                     }
                 }
+                dev.Number = i;
                 UCDeviceBase.DataService.Update<PSPDEV>(dev);
             }
             //更新两绕组 和三绕组
             con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='02'";
-
+            i = 0;
            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
             foreach (PSPDEV dev in list)
             {
+                i++;
                 string iname = dev.IName;
                 if (iname != null)
                 {
@@ -970,14 +976,16 @@ namespace Itop.TLPSP.DEVICE {
                         dev.Vjb = psp.ReferenceVolt;
                     }
                 }
+                dev.Number = i;
                 UCDeviceBase.DataService.Update<PSPDEV>(dev);
             }
 
             con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='03'";
-
+            i = 0;
              list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
             foreach (PSPDEV dev in list)
             {
+                i++;
                 string iname = dev.IName;
                 if (iname != null)
                 {
@@ -1016,15 +1024,17 @@ namespace Itop.TLPSP.DEVICE {
                         dev.Vkb = psp.ReferenceVolt;
                     }
                 }
+                dev.Number = i;
                 UCDeviceBase.DataService.Update<PSPDEV>(dev);
             }
 
             //更新发电机
             con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='04'";
-
+            i = 0;
            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
             foreach (PSPDEV dev in list)
             {
+                i++;
                 string iname = dev.IName;
                 if (iname != null)
                 {
@@ -1037,15 +1047,17 @@ namespace Itop.TLPSP.DEVICE {
                         dev.ReferenceVolt = psp.ReferenceVolt;
                     }
                 }
+                dev.Number = i;
                 UCDeviceBase.DataService.Update<PSPDEV>(dev);
             }
 
             //更新无功设备
             con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='11'";
-
+            i = 0;
            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
             foreach (PSPDEV dev in list)
             {
+                i++;
                 string iname = dev.IName;
                 if (iname != null)
                 {
@@ -1058,13 +1070,15 @@ namespace Itop.TLPSP.DEVICE {
                         dev.RateVolt = psp.RateVolt;
                     }
                 }
+                dev.Number = i;
                 UCDeviceBase.DataService.Update<PSPDEV>(dev);
             }
             con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='09'";
-
+            i=0;
            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
             foreach (PSPDEV dev in list)
             {
+                i++;
                 string iname = dev.IName;
                 if (iname != null)
                 {
@@ -1077,13 +1091,16 @@ namespace Itop.TLPSP.DEVICE {
                         dev.ReferenceVolt = psp.ReferenceVolt;
                     }
                 }
+                dev.Number = i;
                 UCDeviceBase.DataService.Update<PSPDEV>(dev);
             }
             con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='10'";
 
            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
+           i = 0;
             foreach (PSPDEV dev in list)
             {
+                i++;
                 string iname = dev.IName;
                 if (iname != null)
                 {
@@ -1097,13 +1114,15 @@ namespace Itop.TLPSP.DEVICE {
                         dev.ReferenceVolt = psp.ReferenceVolt;
                     }
                 }
+                dev.Number = i;
                 UCDeviceBase.DataService.Update<PSPDEV>(dev);
             }
             con = ",psp_elcdevice where psp_elcdevice.devicesuid = pspdev.suid and psp_elcdevice.projectsuid = '" + strID  + "' and pspdev.Type='08'";
-
+            i = 0;
            list = UCDeviceBase.DataService.GetList("SelectPSPDEVByCondition", con);
             foreach (PSPDEV dev in list)
             {
+                i++;
                 string iname = dev.IName;
                 if (iname != null)
                 {
@@ -1117,6 +1136,7 @@ namespace Itop.TLPSP.DEVICE {
                         dev.ReferenceVolt = psp.ReferenceVolt;
                     }
                 }
+                dev.Number = i;
                 UCDeviceBase.DataService.Update<PSPDEV>(dev);
             }
 
