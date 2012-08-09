@@ -158,6 +158,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.barButtonItem17.ImageIndex = 14;
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem17.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
             // 
             // barSubItem3
@@ -464,6 +465,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.simpleButton4.Size = new System.Drawing.Size(117, 29);
             this.simpleButton4.TabIndex = 5;
             this.simpleButton4.Text = "计算参数设置";
+            this.simpleButton4.Visible = false;
             this.simpleButton4.Click += new System.EventHandler(this.button3_Click);
             // 
             // simpleButton2

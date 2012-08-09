@@ -345,7 +345,7 @@ namespace Itop.Client.Forecast
         Hashtable resulttable = new Hashtable();
         private void GetResult()
         {
-            string sql = " Col4='yes' and (Forecast=1 or Forecast=2 or Forecast=4 or Forecast=5 or Forecast=6 or Forecast=12 or Forecast=17 or Forecast=20) and ParentID=''";
+            string sql = " Col4='yes' and (Forecast=1 or Forecast=2 or Forecast=4 or Forecast=5 or Forecast=6 or Forecast=7  or Forecast=12 or Forecast=17 or Forecast=20) and ParentID=''";
             sql += "  and ForecastID='" + forecastReport.ID + "'";
 
             htable.Clear();
@@ -368,7 +368,7 @@ namespace Itop.Client.Forecast
                 pfm.ForecastID = forecastReport.ID;
                 Common.Services.BaseService.Create<Ps_Forecast_Math>(pfm);
 
-                string sqlr=  " Col4='yes' and (Forecast=1 or Forecast=2 or Forecast=4 or Forecast=5 or Forecast=6 or Forecast=12 or Forecast=17 or Forecast=20) and ParentID=''";
+                string sqlr = " Col4='yes' and (Forecast=1 or Forecast=2 or Forecast=4 or Forecast=5 or Forecast=6 or Forecast=7   or Forecast=12 or Forecast=17 or Forecast=20) and ParentID=''";
                 sqlr += "  and ForecastID='" + forecastReport.ID + "'  and Title='" + key.ToString() + "'";
                 IList<Ps_Forecast_Math> listresult = Common.Services.BaseService.GetList<Ps_Forecast_Math>("SelectPs_Forecast_MathByWhere", sqlr);
                 foreach (Ps_Forecast_Math pfmr in listresult)
