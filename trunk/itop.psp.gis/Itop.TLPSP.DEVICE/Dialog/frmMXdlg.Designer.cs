@@ -1373,6 +1373,7 @@
             this.label5.Size = new System.Drawing.Size(55, 14);
             this.label5.TabIndex = 4;
             this.label5.Text = "所在位置";
+            this.label5.Visible = false;
             // 
             // buttonEdit1
             // 
@@ -1382,13 +1383,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.buttonEdit1.Size = new System.Drawing.Size(181, 21);
             this.buttonEdit1.TabIndex = 9;
+            this.buttonEdit1.Visible = false;
             this.buttonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
             // 
             // labelControl26
             // 
             this.labelControl26.Appearance.Font = new System.Drawing.Font("Tahoma", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl26.Appearance.Options.UseFont = true;
-            this.labelControl26.Location = new System.Drawing.Point(299, 392);
+            this.labelControl26.Location = new System.Drawing.Point(30, 392);
             this.labelControl26.Name = "labelControl26";
             this.labelControl26.Size = new System.Drawing.Size(193, 48);
             this.labelControl26.TabIndex = 45;
