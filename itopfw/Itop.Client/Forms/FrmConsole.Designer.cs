@@ -625,7 +625,7 @@
             this.splitContainer2.Panel2.Resize += new System.EventHandler(this.splitContainer2_Panel2_Resize);
             this.splitContainer2.Panel2MinSize = 0;
             this.splitContainer2.Size = new System.Drawing.Size(989, 536);
-            this.splitContainer2.SplitterDistance = 535;
+            this.splitContainer2.SplitterDistance = 523;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 110;
             this.splitContainer2.TabStop = false;
@@ -637,7 +637,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 25);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(10);
-            this.panel6.Size = new System.Drawing.Size(535, 511);
+            this.panel6.Size = new System.Drawing.Size(523, 511);
             this.panel6.TabIndex = 0;
             // 
             // listViewdown
@@ -651,7 +651,7 @@
             this.listViewdown.Location = new System.Drawing.Point(10, 10);
             this.listViewdown.Name = "listViewdown";
             this.listViewdown.ShowItemToolTips = true;
-            this.listViewdown.Size = new System.Drawing.Size(515, 491);
+            this.listViewdown.Size = new System.Drawing.Size(503, 491);
             this.listViewdown.TabIndex = 0;
             this.listViewdown.UseCompatibleStateImageBehavior = false;
             this.listViewdown.ItemActivate += new System.EventHandler(this.listViewdown_ItemActivate);
@@ -666,7 +666,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(535, 25);
+            this.panel5.Size = new System.Drawing.Size(523, 25);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -810,9 +810,10 @@
             this.treeList1.OptionsView.EnableAppearanceEvenRow = true;
             this.treeList1.OptionsView.EnableAppearanceOddRow = true;
             this.treeList1.ParentFieldName = "ProjectManager";
-            this.treeList1.Size = new System.Drawing.Size(435, 511);
+            this.treeList1.Size = new System.Drawing.Size(447, 511);
             this.treeList1.StateImageList = this.imageList4;
             this.treeList1.TabIndex = 0;
+            this.treeList1.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.treeList1_CustomDrawNodeCell_1);
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
             this.treeList1.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.treeList1_GetStateImage);
             // 
