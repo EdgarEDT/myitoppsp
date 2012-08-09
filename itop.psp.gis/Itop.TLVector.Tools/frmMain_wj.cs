@@ -787,7 +787,7 @@ namespace ItopVector.Tools {
                             lar = Layer.CreateNew(FileName, tlVectorControl1.SVGDocument);
 
                             lar.SetAttribute("layerType", progtype);
-                            lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("id"));
+                            lar.SetAttribute("ParentID", SaveID[0].ToString());
                             //this.frmlar.checkedListBox1.SelectedIndex = -1;
                             frmlar.AddLayer(lar, true);
                         }
@@ -7768,7 +7768,7 @@ namespace ItopVector.Tools {
                     lar = Layer.CreateNew(FileName, tlVectorControl1.SVGDocument);
 
                     lar.SetAttribute("layerType", progtype);
-                    lar.SetAttribute("ParentID", tlVectorControl1.SVGDocument.CurrentLayer.GetAttribute("ParentID"));
+                    lar.SetAttribute("ParentID", SaveID[0].ToString());
                     //this.frmlar.checkedListBox1.SelectedIndex = -1;
                     frmlar.AddLayer(lar, true);
                 }
@@ -9719,6 +9719,7 @@ namespace ItopVector.Tools {
             {
                 zjLar = Layer.CreateNew("负荷标注", tlVectorControl1.SVGDocument);
                 zjLar.SetAttribute("layerType", "城市规划层");
+                zjLar.SetAttribute("ParentID", SaveID[0].ToString());
                 frmlar.AddLayer(zjLar, true);
             }
 
@@ -11024,7 +11025,7 @@ namespace ItopVector.Tools {
             dotNetBarManager1.GetItem("ButtonItem7").Enabled = b;
             dotNetBarManager1.GetItem("ghwj").Enabled = b;
             dotNetBarManager1.GetItem("m_ld").Enabled = b;
-            dotNetBarManager1.GetItem("m_fz").Enabled = b;
+            dotNetBarManager1.GetItem("m_fz").Enabled = false;
             dotNetBarManager1.GetItem("m_bxz").Enabled = b;
             dotNetBarManager1.GetItem("ButtonJXT").Enabled = b;
 
@@ -11091,7 +11092,7 @@ namespace ItopVector.Tools {
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_bxz"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_outxljwd"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_outsubjwd"].Visible = b;
-            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_fz"].Visible = b;
+            dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_fz"].Visible = false;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["mReCompute"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_tp"].Visible = b;
             dotNetBarManager1.GetItem("ButtonItem7").SubItems["m_reDraw"].Visible = b;

@@ -100,6 +100,7 @@ namespace ItopVector.Tools {
             if (lay1 == null) {
                 lay1 = Layer.CreateNew(name, tlVectorControl1.SVGDocument);
                 lay1.SetAttribute("layerType", "电网规划层");
+                lay1.SetAttribute("ParentID", SaveID[0].ToString());
                 frmlar.AddLayer(lay1, true);
             } else {
                 for (int i = lay1.GraphList.Count - 1; i > 0; i--)
@@ -108,6 +109,7 @@ namespace ItopVector.Tools {
             if (lay2 == null) {
                 lay2 = Layer.CreateNew(name2, tlVectorControl1.SVGDocument);
                 lay2.SetAttribute("layerType", "电网规划层");
+                lay2.SetAttribute("ParentID", SaveID[0].ToString());
                 frmlar.AddLayer(lay1, true);
             } else {
                 for (int i = lay2.GraphList.Count - 1; i > 0; i--)
