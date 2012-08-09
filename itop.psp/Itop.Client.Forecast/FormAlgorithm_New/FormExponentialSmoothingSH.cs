@@ -742,6 +742,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             FormForecastCalc1 fc = new FormForecastCalc1();
             fc.DTable = dataTable;
             fc.ISEdit = EditRight;
+            fc.type = type;
             fc.PForecastReports = forecastReport;
             if (fc.ShowDialog() != DialogResult.OK)
                 return;

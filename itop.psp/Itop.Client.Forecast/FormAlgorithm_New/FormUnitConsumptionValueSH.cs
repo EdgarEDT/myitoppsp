@@ -397,6 +397,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                     db01 = double.Parse(dlrow01["y" + i].ToString());
                     db02 = double.Parse(dlrow02["y" + i].ToString());
                     db03 = double.Parse(dlrow03["y" + i].ToString());
+                    db04 = double.Parse(dlrow04["y" + i].ToString());
 
                     dlrow["y" + i] = db01 + db02 + db03+db04;
                 }
@@ -1263,7 +1264,17 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             //表格数据发生变化
             if (e.Column.FieldName.Substring(0, 1) != "y") return;
             double d = 0;
-            if (!double.TryParse(e.Value.ToString(), out d)) return;
+            if (e.Value==null)
+            {
+                e.Value = 0;
+                return;
+            }
+            if (!double.TryParse(e.Value.ToString(), out d))
+            {
+                e.Value = 0;
+                return;
+            }
+               
             treeList1.BeginInit();
             try
             {

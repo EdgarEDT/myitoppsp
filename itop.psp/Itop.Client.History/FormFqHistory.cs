@@ -891,8 +891,7 @@ namespace Itop.Client.History
             psp_Type2.Forecast = type;
             psp_Type2.Col4 = ProjectUID;
             Services.BaseService.Update("DeletePs_HistoryBy", psp_Type2);
-            LoadData();
-            b();
+            dataTable.Clear();
         }
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

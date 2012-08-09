@@ -27,7 +27,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         int type = 7;//专家指定法
         DataTable dataTable2 = new DataTable();
         DataTable dataTable1 = new DataTable();
-       
+
         private Ps_forecast_list forecastReport = null;
         private PublicFunction m_pf = new PublicFunction();
         bool bLoadingData = false;
@@ -49,7 +49,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private bool EditRight = false;
         public FormExpertSH(Ps_forecast_list fr)
         {
-        
+
             forecastReport = fr;
             InitializeComponent();
             chart_user1.SetColor += new chart_userSH.setcolor(chart_user1_SetColor);
@@ -74,9 +74,9 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 barButtonItem3.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
                 barButtonItem5.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-              
+
             }
-          
+
 
         }
 
@@ -148,7 +148,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 dataTable2.Columns.Clear();
                 treeList2.Columns.Clear();
                 treeList1.Columns.Clear();
-               
+
             }
             if (dataTable1 != null)
             {
@@ -160,7 +160,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             {
                 AddColumn(i);
             }
-            for (int i = forecastReport.StartYear; i <forecastReport.YcEndYear; i++)
+            for (int i = forecastReport.StartYear; i < forecastReport.YcEndYear; i++)
             {
                 AddColumn2(i);
             }
@@ -169,7 +169,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             psp_Type.Forecast = type;
             IList listTypes = Common.Services.BaseService.GetList("SelectPs_Forecast_MathByForecastIDAndForecast", psp_Type);
 
-      
+
             dataTable2 = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Forecast_Math));
             dataTable1 = Itop.Common.DataConverter.ToDataTable(listTypes, typeof(Ps_Forecast_Math));
             treeList2.DataSource = dataTable2;
@@ -190,37 +190,49 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             bLoadingData = false;
         }
         private void Calculatordata1()
-          {
+        {
 
-           foreach (DataRow row in dataTable1.Rows)
-           {
-               for (int i = forecastReport.StartYear; i < forecastReport.EndYear; i++)
-               {
-                   
-                   
-                       double firstvalue=0;
-                     double secvalue=0;
-                     if (DBNull.Value != row["y" + i.ToString()] && row["y" + i.ToString()].ToString() != "")
-                         firstvalue = Convert.ToDouble(row["y" + i.ToString()]);
-                           else
-                               firstvalue=0;
-                           if (DBNull.Value != row["y" + i.ToString()] && row["y" + ((int)(i + 1)).ToString()].ToString() != "")
-                               secvalue = Convert.ToDouble(row["y" + (i + 1)]);
-                           else
-                               secvalue=0;
-                           //if (secvalue != 0 || firstvalue != 0)
-                           if (secvalue != 0 && firstvalue != 0)
-                               row["y" + i.ToString()] = Math.Round((secvalue - firstvalue)  / firstvalue,2);
-                           else
-                           {
-                              
-                               row["y" + i.ToString()] = 0;
-                           }
-                   
-               }
-          
-           }
-          }
+            foreach (DataRow row in dataTable1.Rows)
+            {
+                for (int i = forecastReport.StartYear; i < forecastReport.YcEndYear; i++)
+                {
+
+
+                    double firstvalue = 0;
+                    double secvalue = 0;
+                    if (DBNull.Value != row["y" + i.ToString()] && row["y" + i.ToString()].ToString() != "")
+                    {
+                        firstvalue = Convert.ToDouble(row["y" + i.ToString()]);
+                    }
+                    else
+                    {
+                        firstvalue = 0;
+
+                    }
+
+                    if (DBNull.Value != row["y" + ((int)(i + 1)).ToString()] && row["y" + ((int)(i + 1)).ToString()].ToString() != "")
+                    {
+                        secvalue = Convert.ToDouble(row["y" + (i + 1)]);
+                    }
+                    else
+                    {
+                        secvalue = 0;
+                    }
+                       
+                    //if (secvalue != 0 || firstvalue != 0)
+                    if ( firstvalue != 0)
+                    {
+                        row["y" + i.ToString()] = Math.Round((secvalue - firstvalue) / firstvalue, 2);
+                    }
+                    else
+                    {
+                        row["y" + i.ToString()] = 0;
+                    }
+
+                }
+
+            }
+        }
 
         //添加固定列
         private void AddFixColumn()
@@ -267,7 +279,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
             this.treeList2.Columns.AddRange(new TreeListColumn[] {
             column});
-           
+
         }
         private void AddFixColumn2()
         {
@@ -316,7 +328,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
             column.FieldName = "y" + year;
             column.Tag = year;
-            column.Caption =year + "年";
+            column.Caption = year + "年";
             column.Name = year.ToString();
             column.Width = 70;
             //column.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
@@ -339,7 +351,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
             this.treeList2.Columns.AddRange(new TreeListColumn[] {
             column});
-           
+
 
         }
         //添加年份后，新增一列
@@ -362,7 +374,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             repositoryItemTextEdit1.AutoHeight = false;
             repositoryItemTextEdit1.DisplayFormat.FormatString = "n2";
             repositoryItemTextEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-           // repositoryItemTextEdit1.Mask.EditMask = "n2";
+            // repositoryItemTextEdit1.Mask.EditMask = "n2";
             repositoryItemTextEdit1.Mask.EditMask = "#####################0.00%";
             repositoryItemTextEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
 
@@ -475,7 +487,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                             Ps_Forecast_Math v = new Ps_Forecast_Math();
                             v.ForecastID = forecastReport.ID;
                             v.ID = (string)row["ID"];
-                            v.Title =  row["Title"].ToString();
+                            v.Title = row["Title"].ToString();
                             v.Sort = Convert.ToInt32(col.FieldName.Replace("y", ""));
                             v.y1990 = (double)row[col.FieldName];
 
@@ -489,16 +501,16 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             this.chart_user1.RefreshChart(listValues, "Title", "Sort", "y1990", hs);
         }
 
-       private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //this.DialogResult = DialogResult.OK;
-        
+
 
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          //  this.DialogResult = DialogResult.Cancel;
+            //  this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
         /// <summary>
@@ -628,7 +640,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-           
+
         }
 
         //////////private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -638,7 +650,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         //////////  {
         //////////             double firstvalue=0;
         //////////             double secvalue=0;
-          
+
         //////////             if (DBNull.Value != dataTable2.Rows[e.RowHandle][e.Column.FieldName] && dataTable2.Rows[e.RowHandle][e.Column.FieldName].ToString() != "")
         //////////                 firstvalue = Convert.ToDouble(dataTable2.Rows[e.RowHandle][e.Column.FieldName]);
         //////////                   else
@@ -647,7 +659,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         //////////                       secvalue = Convert.ToDouble(e.Value)*0.01;
         //////////                   else
         //////////                       secvalue=0;
-                     
+
         //////////                       dataTable2.Rows[e.RowHandle]["y" + (int.Parse(e.Column.FieldName.Replace("y", "")) + 1)] = Math.Round(firstvalue * (1 + secvalue), 2);
         //////////      firstvalue= Math.Round(firstvalue * (1 + secvalue), 3);
         //////////        for (int i =int.Parse( e.Column.FieldName.Replace("y",""))+1; i < forecastReport.EndYear; i++)
@@ -674,7 +686,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
 
         //////////    }
-          
+
         //////////}
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -718,7 +730,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                         }
                     }
                 }
-
+                v.Col4 = "yes";
                 try
                 {
                     Services.BaseService.Update("UpdatePs_Forecast_MathByID", v);
@@ -754,9 +766,9 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         //////////                dataTable1.Rows[e.RowHandle]["y" + (i - 1)] = 0;
         //////////            }
-                   
+
         //////////        }
-               
+
         //////////        for (int i =int.Parse( e.Column.FieldName.Replace("y","")); i < forecastReport.EndYear; i++)
         //////////        {
 
@@ -822,12 +834,12 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void treeList1_CellValueChanging(object sender, CellValueChangedEventArgs e)
         {
-            
+
         }
 
         private void treeList2_CellValueChanging(object sender, CellValueChangedEventArgs e)
         {
-            
+
         }
 
         private void treeList2_CellValueChanged(object sender, CellValueChangedEventArgs e)
@@ -901,7 +913,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 else
                     firstvalue = 0;
                 if (DBNull.Value != e.Value && e.Value.ToString() != "")
-                   // secvalue = Convert.ToDouble(e.Value) * 0.01;
+                    // secvalue = Convert.ToDouble(e.Value) * 0.01;
                     secvalue = Convert.ToDouble(e.Value);
                 else
                     secvalue = 0;
@@ -948,7 +960,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             RefreshChart();
         }
 
-       
+
         /// <summary>
         /// 添加分类名
         /// </summary>
@@ -999,12 +1011,12 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TreeListNode row = null;
-            if (intFocuses == 1) 
+            if (intFocuses == 1)
             {
                 row = this.treeList1.FocusedNode;
                 intFocuses = 0;
             }
-            else if (intFocuses==2)
+            else if (intFocuses == 2)
             {
                 row = this.treeList2.FocusedNode;
                 intFocuses = 0;
@@ -1059,12 +1071,12 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TreeListNode row = null;
-            if(intFocuses==1)
+            if (intFocuses == 1)
             {
                 row = this.treeList1.FocusedNode;
                 intFocuses = 0;
             }
-            else if(intFocuses==2)
+            else if (intFocuses == 2)
             {
                 row = this.treeList2.FocusedNode;
                 intFocuses = 0;
@@ -1102,7 +1114,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
                 }
                 LoadData();
                 RefreshChart();
-                
+
             }
         }
         /// <summary>
@@ -1113,12 +1125,12 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             TreeListNode row = null;
-            if (intFocuses==1)
+            if (intFocuses == 1)
             {
                 row = this.treeList1.FocusedNode;
                 intFocuses = 0;
             }
-            else if(intFocuses ==2)
+            else if (intFocuses == 2)
             {
                 row = this.treeList2.FocusedNode;
                 intFocuses = 0;
@@ -1175,7 +1187,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         /// <param name="e"></param>
         private void treeList1_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
-            if(e.Node!=null)
+            if (e.Node != null)
             {
                 treeList2.Selection.Clear();
                 this.treeList2.SetFocusedNode(this.treeList2.FindNodeByKeyID(e.Node["ID"]));
@@ -1189,7 +1201,7 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
         /// <param name="e"></param>
         private void treeList2_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
-            if(e.Node!=null)
+            if (e.Node != null)
             {
                 treeList1.Selection.Clear();
                 this.treeList1.SetFocusedNode(this.treeList1.FindNodeByKeyID(e.Node["ID"]));
@@ -1199,13 +1211,13 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void treeList1_AfterExpand(object sender, NodeEventArgs e)
         {
-            if(ExpandOrCollpase)
+            if (ExpandOrCollpase)
             {
                 return;
             }
             ExpandOrCollpase = true;
             TreeListNode node = this.treeList2.FindNodeByKeyID(e.Node["ID"]);
-            if(node!=null)
+            if (node != null)
             {
                 node.Expanded = e.Node.Expanded;
             }
@@ -1214,13 +1226,13 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void treeList1_AfterCollapse(object sender, NodeEventArgs e)
         {
-            if(ExpandOrCollpase)
+            if (ExpandOrCollpase)
             {
                 return;
             }
             ExpandOrCollpase = true;
             TreeListNode node = this.treeList2.FindNodeByKeyID(e.Node["ID"]);
-            if(node!=null)
+            if (node != null)
             {
                 node.Expanded = e.Node.Expanded;
             }
@@ -1229,13 +1241,13 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void treeList2_AfterCollapse(object sender, NodeEventArgs e)
         {
-            if(ExpandOrCollpase)
+            if (ExpandOrCollpase)
             {
                 return;
             }
             ExpandOrCollpase = true;
             TreeListNode node = this.treeList1.FindNodeByKeyID(e.Node["ID"]);
-            if(node!=null)
+            if (node != null)
             {
                 node.Expanded = e.Node.Expanded;
             }
@@ -1244,13 +1256,13 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
 
         private void treeList2_AfterExpand(object sender, NodeEventArgs e)
         {
-            if(ExpandOrCollpase)
+            if (ExpandOrCollpase)
             {
                 return;
             }
             ExpandOrCollpase = true;
             TreeListNode node = treeList1.FindNodeByKeyID(e.Node["ID"]);
-            if(node!=null)
+            if (node != null)
             {
                 node.Expanded = e.Node.Expanded;
             }
@@ -1303,11 +1315,11 @@ namespace Itop.Client.Forecast.FormAlgorithm_New
             RefreshChart();
         }
 
-       
 
 
 
- 
+
+
 
 
     }
