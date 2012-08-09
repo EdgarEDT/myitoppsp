@@ -315,7 +315,8 @@ namespace Itop.TLPSP.DEVICE
             frmc.childrendevice(types);
             if (frmc.DialogResult == DialogResult.OK)
             {
-                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='03'and SvgUID='" + pj.UID + "'";
+                string rlgc = "";
+                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type in ('02','03')and SvgUID='" + pj.UID + "'";
                 IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
                 {
@@ -323,20 +324,52 @@ namespace Itop.TLPSP.DEVICE
                     {
                         if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(pj.L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(pj.L29))
                         {
-                            rl += pd.SiN;
+                            if (pd.Type == "03")
+                            {
+                                rl += pd.SiN;
+                                rlgc += pd.SiN.ToString() + "+";
+                            }
+                            else
+                            {
+                                rl += (double)pd.Burthen;
+                                rlgc += pd.Burthen.ToString() + "+";
+                            }
+
                             bts++;
                         }
                     }
                     else
                     {
-                        rl += pd.SiN;
+                        if (pd.Type == "03")
+                        {
+                            rl += pd.SiN;
+                            rlgc += pd.SiN.ToString() + "+";
+                        }
+                        else
+                        {
+                            rl += (double)pd.Burthen;
+                            rlgc += pd.Burthen.ToString() + "+";
+                        }
+
+
                         bts++;
                     }
                 }
-                pj.L2 = rl;
-                pj.L3 = bts;
-                dr["L2"] = rl;
-                dr["L3"] = bts;
+                if (rlgc.Length > 0)
+                {
+                    pj.L4 = rlgc.Substring(0, rlgc.Length - 1);
+                    dr["L4"] = rlgc;
+                }
+                if (rl!=0)
+                {
+                    pj.L2 = rl;
+                    pj.L3 = bts;
+
+                    dr["L2"] = rl;
+                    dr["L3"] = bts;
+                }
+              
+                
                 UCDeviceBase.DataService.Update<PSP_Substation_Info>(pj);
             }
         }

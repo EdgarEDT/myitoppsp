@@ -347,8 +347,12 @@ namespace Itop.TLPSP.DEVICE
                         bts++;
                     }
                 }
-                pj.S2 = rl.ToString();
-                dr["S2"] = rl.ToString();
+                if (rl!=0)
+                {
+                    pj.S2 = rl.ToString();
+                    dr["S2"] = rl.ToString();
+                }
+              
                 UCDeviceBase.DataService.Update<PSP_PowerSubstation_Info>(pj);
             }
         }
@@ -359,7 +363,7 @@ namespace Itop.TLPSP.DEVICE
         }
         public override string GetType()
         {
-            return "11";
+            return "30";
         }
         public override void UpdateIn(DataTable table)
         {
