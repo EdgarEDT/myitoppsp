@@ -509,7 +509,7 @@ namespace Itop.Client
                 }
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    if (dt.Rows[i]["ProjectManager"].ToString() != "" && dt.Rows[i]["GuiDangName"].ToString() != MIS.UserNumber && !hasproj.ContainsKey(dt.Rows[i]["UID"].ToString()))
+                    if (dt.Rows[i]["ProjectManager"].ToString() != "" && dt.Rows[i]["GuiDangName"].ToString() != MIS.UserNumber )
                     {
                         dt.Rows.Remove(dt.Rows[i]);
                         i--;

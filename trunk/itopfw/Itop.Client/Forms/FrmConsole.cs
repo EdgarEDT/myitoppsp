@@ -635,8 +635,17 @@ namespace Itop.Client.Forms
             }
             if (!IsSystemUser())
             {
-                MsgBox.Show("您无权删除目录！");
-                return;
+                if (tln.ParentNode==null)
+                {
+                    MsgBox.Show("您无权删除目录！");
+                    return;
+                }
+                else
+                {
+                    MsgBox.Show("您无权删除项目！");
+                    return;
+                }
+               
             }
             if (tln.Nodes.Count>0)
             {
@@ -648,9 +657,6 @@ namespace Itop.Client.Forms
             {
                 return;
             }
-
-            
-
 
             //执行删除操作
             try
@@ -1638,6 +1644,11 @@ namespace Itop.Client.Forms
         private void labExit_MouseLeave(object sender, EventArgs e)
         {
             labExit.BackColor = Color.Transparent;
+        }
+
+        private void treeList1_CustomDrawNodeCell_1(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
+        {
+
         }
         
 
