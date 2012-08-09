@@ -327,12 +327,12 @@ namespace Itop.TLPSP.DEVICE
                             if (pd.Type == "03")
                             {
                                 rl += pd.SiN;
-                                rlgc += pd.SiN.ToString() + "+";
+                                rlgc += pd.SiN.ToString("G") + "+";
                             }
                             else
                             {
                                 rl += (double)pd.Burthen;
-                                rlgc += pd.Burthen.ToString() + "+";
+                                rlgc += ((double)pd.Burthen).ToString("G") + "+";
                             }
 
                             bts++;
@@ -343,12 +343,12 @@ namespace Itop.TLPSP.DEVICE
                         if (pd.Type == "03")
                         {
                             rl += pd.SiN;
-                            rlgc += pd.SiN.ToString() + "+";
+                            rlgc += pd.SiN.ToString("G") + "+";
                         }
                         else
                         {
                             rl += (double)pd.Burthen;
-                            rlgc += pd.Burthen.ToString() + "+";
+                            rlgc += ((double)pd.Burthen).ToString("G") + "+";
                         }
 
 
@@ -358,7 +358,7 @@ namespace Itop.TLPSP.DEVICE
                 if (rlgc.Length > 0)
                 {
                     pj.L4 = rlgc.Substring(0, rlgc.Length - 1);
-                    dr["L4"] = rlgc;
+                    dr["L4"] = pj.L4;
                 }
                 if (rl!=0)
                 {

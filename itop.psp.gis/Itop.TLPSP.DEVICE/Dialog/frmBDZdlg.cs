@@ -559,7 +559,7 @@ namespace Itop.TLPSP.DEVICE
                             else
                             {
                                 rl += (double)pd.Burthen;
-                                rlgc += pd.Burthen.ToString() + "+";
+                                rlgc += ((double)pd.Burthen).ToString() + "+";
                               }
                            
                                     bts++;
@@ -575,7 +575,7 @@ namespace Itop.TLPSP.DEVICE
                         else
                         {
                             rl += (double)pd.Burthen;
-                            rlgc += pd.Burthen.ToString() + "+";
+                            rlgc += ((double)pd.Burthen).ToString() + "+";
                         }
 
                       

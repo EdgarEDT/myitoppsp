@@ -144,12 +144,12 @@ namespace Itop.TLPSP.DEVICE
             column.Width = 100;
             column.VisibleIndex = 16;
             column.OptionsColumn.AllowEdit = false;
-            column = gridView1.Columns.Add();
-            column.Caption = "所属电站、电厂";
-            column.FieldName = "SubstationName";
-            column.Width = 100;
-            column.VisibleIndex = 17;
-            column.OptionsColumn.AllowEdit = false;
+            //column = gridView1.Columns.Add();
+            //column.Caption = "所属电站、电厂";
+            //column.FieldName = "SubstationName";
+            //column.Width = 100;
+            //column.VisibleIndex = 17;
+            //column.OptionsColumn.AllowEdit = false;
 
             //隐藏内容
             column = gridView1.Columns.Add();
