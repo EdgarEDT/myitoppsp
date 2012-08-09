@@ -393,39 +393,39 @@
             this.修改方案ToolStripMenuItem,
             this.删除方案ToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 120);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(119, 98);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Enabled = false;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(118, 22);
             this.toolStripMenuItem3.Text = "清除关联";
             this.toolStripMenuItem3.Visible = false;
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(115, 6);
             // 
             // 增加方案ToolStripMenuItem
             // 
             this.增加方案ToolStripMenuItem.Name = "增加方案ToolStripMenuItem";
-            this.增加方案ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.增加方案ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.增加方案ToolStripMenuItem.Text = "增加方案";
             this.增加方案ToolStripMenuItem.Click += new System.EventHandler(this.增加方案ToolStripMenuItem_Click);
             // 
             // 修改方案ToolStripMenuItem
             // 
             this.修改方案ToolStripMenuItem.Name = "修改方案ToolStripMenuItem";
-            this.修改方案ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.修改方案ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.修改方案ToolStripMenuItem.Text = "修改方案";
             this.修改方案ToolStripMenuItem.Click += new System.EventHandler(this.修改方案ToolStripMenuItem_Click);
             // 
             // 删除方案ToolStripMenuItem
             // 
             this.删除方案ToolStripMenuItem.Name = "删除方案ToolStripMenuItem";
-            this.删除方案ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除方案ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.删除方案ToolStripMenuItem.Text = "删除方案";
             this.删除方案ToolStripMenuItem.Click += new System.EventHandler(this.删除方案ToolStripMenuItem_Click);
             // 
@@ -471,9 +471,9 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtncopy),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtncopy),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnuion),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnup),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtndown)});
