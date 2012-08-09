@@ -108,6 +108,69 @@ namespace Itop.TLPSP.DEVICE
                     else
                         areaname = " AreaID='" + Itop.Client.MIS.ProgUID + "' and AreaName='" + item.Value.ToString() + "' and L1=220 and S4 not in('专变') and cast(S2 as int)<= " + Convert.ToInt32(BelongYear);
                     IList<PSP_Substation_Info> list2 = UCDeviceBase.DataService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", areaname);
+                    for (int i = 0; i < list2.Count;i++ )
+                    {
+                        double rl = 0; int bts = 0;
+
+                        string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type in ('02','03')and SvgUID='" + ((PSP_Substation_Info)list2[i]).UID + "'";
+                        IList<PSPDEV> list4 = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+                        string rlgc = "";
+                        foreach (PSPDEV pd in list4)
+                        {
+                            if (!string.IsNullOrEmpty(pd.OperationYear) && Convert.ToInt32(pd.OperationYear) <= Convert.ToDouble(belongyear))
+                            {
+                                if (!string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(((PSP_Substation_Info)list2[i]).L29) && !string.IsNullOrEmpty(((PSP_Substation_Info)list2[i]).L28))
+                                {
+                                    if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(((PSP_Substation_Info)list2[i]).L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(((PSP_Substation_Info)list2[i]).L29))
+                                    {
+                                        if (pd.Type == "03")
+                                        {
+                                            rl += pd.SiN;
+                                            rlgc += pd.SiN.ToString() + "+";
+                                        }
+                                        else
+                                        {
+                                            rl += (double)pd.Burthen;
+                                            rlgc += pd.Burthen.ToString() + "+";
+                                        }
+
+                                        bts++;
+                                    }
+                                }
+                                else
+                                {
+
+                                    if (pd.Type == "03")
+                                    {
+                                        rl += pd.SiN;
+                                        rlgc += pd.SiN.ToString() + "+";
+                                    }
+                                    else
+                                    {
+                                        rl += (double)pd.Burthen;
+                                        rlgc += pd.Burthen.ToString() + "+";
+                                    }
+
+
+                                    bts++;
+                                }
+                            }
+
+
+
+                        }
+                        if (rlgc.Length > 0)
+                        {
+                            rlgc = rlgc.Substring(0, rlgc.Length - 1);
+                        }
+                        if (rl!=0)
+                        {
+                            ((PSP_Substation_Info)list2[i]).L2 = rl;
+                            ((PSP_Substation_Info)list2[i]).L3 = bts;
+                            ((PSP_Substation_Info)list2[i]).L4 = rlgc;
+                        }
+                       
+                    }
                     if (list2.Count>0)
                     {
                         Sub220list.Add(item.Value.ToString(), list2);
@@ -119,6 +182,70 @@ namespace Itop.TLPSP.DEVICE
                     else
                         areaname = " AreaID='" + Itop.Client.MIS.ProgUID + "' and AreaName='" + item.Value.ToString() + "' and L1=110 and S4 not in('专变') and cast(S2 as int)<= " + Convert.ToInt32(BelongYear);
                     IList<PSP_Substation_Info> list3 = UCDeviceBase.DataService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", areaname);
+                    for (int i = 0; i < list3.Count;i++ )
+                    {
+                        double rl = 0; int bts = 0;
+
+                        string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type in ('02','03')and SvgUID='" + ((PSP_Substation_Info)list3[i]).UID + "'";
+                        IList<PSPDEV> list4 = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
+                        string rlgc = "";
+                        foreach (PSPDEV pd in list4)
+                        {
+                            if (!string.IsNullOrEmpty(pd.OperationYear) && Convert.ToInt32(pd.OperationYear) <= Convert.ToDouble(belongyear))
+                            {
+                                if (!string.IsNullOrEmpty(pd.Date2) && pd.Date2.Length == 4 && !string.IsNullOrEmpty(((PSP_Substation_Info)list3[i]).L29) && !string.IsNullOrEmpty(((PSP_Substation_Info)list3[i]).L28))
+                                {
+                                    if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(((PSP_Substation_Info)list3[i]).L28) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(((PSP_Substation_Info)list3[i]).L29))
+                                    {
+                                        if (pd.Type == "03")
+                                        {
+                                            rl += pd.SiN;
+                                            rlgc += pd.SiN.ToString() + "+";
+                                        }
+                                        else
+                                        {
+                                            rl += (double)pd.Burthen;
+                                            rlgc += pd.Burthen.ToString() + "+";
+                                        }
+
+                                        bts++;
+                                    }
+                                }
+                                else
+                                {
+
+                                    if (pd.Type == "03")
+                                    {
+                                        rl+= pd.SiN;
+                                        rlgc += pd.SiN.ToString() + "+";
+                                    }
+                                    else
+                                    {
+                                        rl += (double)pd.Burthen;
+                                        rlgc += pd.Burthen.ToString() + "+";
+                                    }
+
+
+                                    bts++;
+                                }
+                            }
+
+
+
+                        }
+                        if (rlgc.Length > 0)
+                        {
+                            rlgc = rlgc.Substring(0, rlgc.Length - 1);
+                            ((PSP_Substation_Info)list3[i]).L4 = rlgc;
+                        }
+                        if (rl!=0)
+                        {
+                            ((PSP_Substation_Info)list3[i]).L2 = rl;
+                            ((PSP_Substation_Info)list3[i]).L3 = bts;
+                        }
+                       
+                        
+                    }
                     if (list3.Count > 0)
                     {
                         Sub110list.Add(item.Value.ToString(), list2);

@@ -1255,6 +1255,7 @@ namespace Itop.TLPSP.DEVICE {
                 {
                     obj.InPutP = 0;
                     obj.InPutQ = 0;
+                    obj.UnitFlag ="1";
                     UCDeviceBase.DataService.Update<PSPDEV>(obj);
                 }
             }
@@ -1374,6 +1375,7 @@ namespace Itop.TLPSP.DEVICE {
                                         {
                                             fh.InPutP = fpl / fhsum;
                                             fh.InPutQ = Math.Round(Convert.ToDouble(fpl / (3 * fhsum)),4) ;
+                                            fh.UnitFlag = "1";
                                             UCDeviceBase.DataService.Update<PSPDEV>(fh);
                                         }
                                     }
@@ -1433,6 +1435,7 @@ namespace Itop.TLPSP.DEVICE {
                                    
                                     fh.InPutP = fpl / fhsum;
                                     fh.InPutQ = Math.Round(fpl / (3 * fhsum),4);
+                                    fh.UnitFlag = "1";
                                     UCDeviceBase.DataService.Update<PSPDEV>(fh);
                                 }
                             }
@@ -1487,6 +1490,7 @@ namespace Itop.TLPSP.DEVICE {
                                     {
                                         fh.InPutP = fpl / fhsum;
                                         fh.InPutQ =Math.Round(fpl / (3 * fhsum),4) ;
+                                        fh.UnitFlag = "1";
                                         UCDeviceBase.DataService.Update<PSPDEV>(fh);
                                     }
                                 }

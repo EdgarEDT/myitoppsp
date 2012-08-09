@@ -542,7 +542,7 @@ namespace Itop.TLPSP.DEVICE
 
             if (frmc.DialogResult==DialogResult.OK)
             {
-
+                string rlgc = "";
                 string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type in ('02','03')and SvgUID='"+DeviceMx.UID+"'";
                 IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
@@ -554,10 +554,12 @@ namespace Itop.TLPSP.DEVICE
                             if (pd.Type == "03")
                             {
                                 rl += pd.SiN;
+                                rlgc += pd.SiN.ToString() + "+";
                             }
                             else
                             {
                                 rl += (double)pd.Burthen;
+                                rlgc += pd.Burthen.ToString() + "+";
                               }
                            
                                     bts++;
@@ -568,10 +570,12 @@ namespace Itop.TLPSP.DEVICE
                         if (pd.Type == "03")
                         {
                             rl += pd.SiN;
+                            rlgc += pd.SiN.ToString() + "+";
                         }
                         else
                         {
                             rl += (double)pd.Burthen;
+                            rlgc += pd.Burthen.ToString() + "+";
                         }
 
                       
@@ -580,8 +584,17 @@ namespace Itop.TLPSP.DEVICE
                 }
                 if (list.Count>0)
                 {
-                    spinEdit2.Value = (decimal)rl;
-                    spinEdit4.Value = (decimal)bts;
+                    if (rlgc.Length>0)
+                    {
+                        textEdit2.Text = rlgc.Substring(0, rlgc.Length - 1);
+                    }
+                    if (rl!=0)
+                    {
+                        spinEdit2.Value = (decimal)rl;
+                        spinEdit4.Value = (decimal)bts;
+                    }
+                   
+
                 }
               
             }

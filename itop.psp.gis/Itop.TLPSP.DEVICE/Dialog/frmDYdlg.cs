@@ -243,7 +243,11 @@ namespace Itop.TLPSP.DEVICE
                     }
 
                 }
-                spinEdit2.Value = (decimal)rl;
+                if (rl!=0)
+                {
+                    spinEdit2.Value = (decimal)rl;
+                }
+               
                
             }
         }

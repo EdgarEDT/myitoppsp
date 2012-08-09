@@ -103,7 +103,7 @@ namespace Itop.TLPSP.DEVICE
             column.VisibleIndex = 9;
             column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
-            column.Caption = "短路容量";
+            column.Caption = "额定容量";
             column.FieldName = "Burthen";
             column.Width = 100;
             column.VisibleIndex = 10;
