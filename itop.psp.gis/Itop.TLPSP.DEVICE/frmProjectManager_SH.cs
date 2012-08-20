@@ -1373,8 +1373,8 @@ namespace Itop.TLPSP.DEVICE {
                                         int fhsum = dicfh[sub220list[listarea[i]][j]].Count;
                                         foreach (PSPDEV fh in dicfh[sub220list[listarea[i]][j]])
                                         {
-                                            fh.InPutP = fpl / fhsum;
-                                            fh.InPutQ = Math.Round(Convert.ToDouble(fpl / (3 * fhsum)),4) ;
+                                            fh.InPutP = Math.Round(fpl / fhsum,2);
+                                            fh.InPutQ = Math.Round(Convert.ToDouble(fpl / (3 * fhsum)),2) ;
                                             fh.UnitFlag = "1";
                                             UCDeviceBase.DataService.Update<PSPDEV>(fh);
                                         }
@@ -1433,8 +1433,8 @@ namespace Itop.TLPSP.DEVICE {
                                 foreach (PSPDEV fh in dicfh[sub110list[listarea[i]][j]])
                                 {
                                    
-                                    fh.InPutP = fpl / fhsum;
-                                    fh.InPutQ = Math.Round(fpl / (3 * fhsum),4);
+                                    fh.InPutP =Math.Round( fpl / fhsum,2);
+                                    fh.InPutQ = Math.Round(fpl / (3 * fhsum),2);
                                     fh.UnitFlag = "1";
                                     UCDeviceBase.DataService.Update<PSPDEV>(fh);
                                 }
@@ -1488,7 +1488,7 @@ namespace Itop.TLPSP.DEVICE {
                                     int fhsum = dicfh[sub220list[listarea[i]][j]].Count;
                                     foreach (PSPDEV fh in dicfh[sub220list[listarea[i]][j]])
                                     {
-                                        fh.InPutP = fpl / fhsum;
+                                        fh.InPutP =Math.Round( fpl / fhsum,2);
                                         fh.InPutQ =Math.Round(fpl / (3 * fhsum),4) ;
                                         fh.UnitFlag = "1";
                                         UCDeviceBase.DataService.Update<PSPDEV>(fh);

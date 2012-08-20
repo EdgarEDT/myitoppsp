@@ -312,6 +312,23 @@ namespace ItopVector.Tools {
                     }
                 }
                 Layerlist = symbolDoc.getLayerList();
+                //É¾³ýÈßÓàµÄÍ¼²ã
+                for (int m = 0; m < table.Rows.Count; m++)
+                {
+                    if (!table.Rows[m]["SUID"].ToString().Contains("FA") && !table.Rows[m]["NAME"].ToString().Contains("±³¾°²ã"))
+                    {
+                        XmlNode node = this.SymbolDoc.SelectSingleNode("//*[@layer='" + table.Rows[m]["SUID"].ToString() + "']");
+                        if (node == null)
+                        {
+                            SVG_LAYER SL = new SVG_LAYER();
+                            SL.SUID = table.Rows[m]["SUID"].ToString();
+                            Services.BaseService.Delete<SVG_LAYER>(SL);
+                            table.Rows.RemoveAt(m);
+                            m--;
+                        }
+                    }
+                }
+               
             }
         }
         protected override void OnLoad(EventArgs e) {
