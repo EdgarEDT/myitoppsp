@@ -131,7 +131,7 @@ namespace Itop.TLPSP.DEVICE
                                         else
                                         {
                                             rl += (double)pd.Burthen;
-                                            rlgc += pd.Burthen.ToString() + "+";
+                                            rlgc += ((double)pd.Burthen).ToString() + "+";
                                         }
 
                                         bts++;
@@ -148,7 +148,7 @@ namespace Itop.TLPSP.DEVICE
                                     else
                                     {
                                         rl += (double)pd.Burthen;
-                                        rlgc += pd.Burthen.ToString() + "+";
+                                        rlgc += ((double)pd.Burthen).ToString() + "+";
                                     }
 
 
@@ -205,7 +205,7 @@ namespace Itop.TLPSP.DEVICE
                                         else
                                         {
                                             rl += (double)pd.Burthen;
-                                            rlgc += pd.Burthen.ToString() + "+";
+                                            rlgc += ((double)pd.Burthen).ToString() + "+";
                                         }
 
                                         bts++;
@@ -222,7 +222,7 @@ namespace Itop.TLPSP.DEVICE
                                     else
                                     {
                                         rl += (double)pd.Burthen;
-                                        rlgc += pd.Burthen.ToString() + "+";
+                                        rlgc += ((double)pd.Burthen).ToString() + "+";
                                     }
 
 
@@ -248,7 +248,7 @@ namespace Itop.TLPSP.DEVICE
                     }
                     if (list3.Count > 0)
                     {
-                        Sub110list.Add(item.Value.ToString(), list2);
+                        Sub110list.Add(item.Value.ToString(), list3);
                     }
                     listarea.Add(item.Value.ToString());
                 }

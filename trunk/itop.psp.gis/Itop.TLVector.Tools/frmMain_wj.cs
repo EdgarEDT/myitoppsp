@@ -731,6 +731,7 @@ namespace ItopVector.Tools {
                             pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
                             pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
                             if (pl != null) {
+                                 _x.SetAttribute("name", pl.UseID);
                                 sumss = sumss + pl.Burthen;//区域负荷
                                 pl.ObligateField7 = "";  //将区域内的地块顺序全部清空
                                 Services.BaseService.Update<glebeProperty>(pl);
@@ -738,9 +739,11 @@ namespace ItopVector.Tools {
                             }
                             //将其加入一个规划和非规划的标志
                             _x.SetAttribute("xz", "0");
+                           
                             _x.SetAttribute("Burthen", pl.Burthen.ToString());
                             _x.SetAttribute("glbdz", "");  //为 （_sub1.EleID，多少负荷）；   
                             _x.SetAttribute("bdzandlenth","");
+                            _x.SetAttribute("ygdflag", "0");
                          
                         }
                         double sumSub = 0;
@@ -999,9 +1002,10 @@ namespace ItopVector.Tools {
 
                                         n2.SetAttribute("layer", SvgDocument.currentLayer);
                                         n2.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
-                                        _sub1.EleID = e2.GetAttribute("id"); ;
-                                        _sub1.AreaID = tlVectorControl1.SVGDocument.SvgdataUid;
-                                        _sub1 = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoListByEleID", _sub1);
+                                        _sub1.UID = e2.GetAttribute("Deviceid");
+
+                                        _sub1 = Services.BaseService.GetOneByKey<PSP_Substation_Info>(_sub1);
+                                       
                                         if (_sub1 != null) {
                                             n2.SetAttribute("subname", _sub1.Title);
                                             n2.SetAttribute("id", _sub1.EleID);
@@ -1016,6 +1020,19 @@ namespace ItopVector.Tools {
                                     for (int m = 0; m < subandfhlist.Count; m++)
                                     {
                                         CreateSubline1(subandfhlist[m], false, lar);
+                                    }
+                                    string wgydik = "";
+                                    for (int m = 0; m < polylist.Count;m++ )
+                                    {
+                                        string ygflag = ((XmlElement)polylist[m]).GetAttribute("ygdflag");
+                                        if (ygflag=="0")
+                                        {
+                                            wgydik+=((XmlElement)polylist[m]).GetAttribute("name")+",";
+                                        }
+                                    }
+                                    if (wgydik.Length>0)
+                                    {
+                                        MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
                                     }
                                     Extbdzreport(extsublist);
                                     return;
@@ -1163,9 +1180,8 @@ namespace ItopVector.Tools {
 
                                         n2.SetAttribute("layer", SvgDocument.currentLayer);
                                         n2.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
-                                        _sub1.EleID = e2.GetAttribute("id"); ;
-                                        _sub1.AreaID = tlVectorControl1.SVGDocument.SvgdataUid;
-                                        _sub1 = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoListByEleID", _sub1);
+                                        _sub1.UID = e2.GetAttribute("Deviceid");
+                                        _sub1 = Services.BaseService.GetOneByKey<PSP_Substation_Info>(_sub1);
                                         if (_sub1 != null) {
                                             n2.SetAttribute("subname", _sub1.Title);
                                             n2.SetAttribute("id", _sub1.EleID);
@@ -1180,6 +1196,19 @@ namespace ItopVector.Tools {
                                     for (int m = 0; m < subandfhlist.Count; m++)
                                     {
                                         CreateSubline1(subandfhlist[m], false, lar);
+                                    }
+                                      string wgydik = "";
+                                    for (int m = 0; m < polylist.Count;m++ )
+                                    {
+                                        string ygflag = ((XmlElement)polylist[m]).GetAttribute("ygdflag");
+                                        if (ygflag=="0")
+                                        {
+                                            wgydik+=((XmlElement)polylist[m]).GetAttribute("name")+",";
+                                        }
+                                    }
+                                    if (wgydik.Length>0)
+                                    {
+                                        MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
                                     }
                                     Extbdzreport(extsublist);
                                     return;
@@ -1283,9 +1312,9 @@ namespace ItopVector.Tools {
 
                                     n2.SetAttribute("layer", SvgDocument.currentLayer);
                                     n2.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
-                                    _sub1.EleID = e2.GetAttribute("id"); ;
-                                    _sub1.AreaID = tlVectorControl1.SVGDocument.SvgdataUid;
-                                    _sub1 = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoListByEleID", _sub1);
+                                    _sub1.UID = e2.GetAttribute("Deviceid");
+
+                                    _sub1 = Services.BaseService.GetOneByKey<PSP_Substation_Info>(_sub1);
                                     if (_sub1 != null) {
                                         n2.SetAttribute("subname", _sub1.Title);
                                         n2.SetAttribute("id", _sub1.EleID);
@@ -1302,6 +1331,19 @@ namespace ItopVector.Tools {
                                 {
                                     CreateSubline1(subandfhlist[m], false, lar);
                                 }
+                                  string wgydik = "";
+                                    for (int m = 0; m < polylist.Count;m++ )
+                                    {
+                                        string ygflag = ((XmlElement)polylist[m]).GetAttribute("ygdflag");
+                                        if (ygflag=="0")
+                                        {
+                                            wgydik+=((XmlElement)polylist[m]).GetAttribute("name")+",";
+                                        }
+                                    }
+                                    if (wgydik.Length>0)
+                                    {
+                                        MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
+                                    }
                                 Extbdzreport(extsublist);
                                 return;
                             } else {
@@ -1330,9 +1372,9 @@ namespace ItopVector.Tools {
 
                                     n1.SetAttribute("layer", SvgDocument.currentLayer);
                                     n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
-                                    _sub1.EleID = e1.GetAttribute("id"); ;
-                                    _sub1.AreaID = tlVectorControl1.SVGDocument.SvgdataUid;
-                                    _sub1 = (PSP_Substation_Info)Services.BaseService.GetObject("SelectPSP_Substation_InfoListByEleID", _sub1);
+                                    _sub1.UID= e1.GetAttribute("Deviceid"); 
+                                   
+                                    _sub1 = Services.BaseService.GetOneByKey<PSP_Substation_Info>(_sub1);
                                     if (_sub1 != null) {
                                         n1.SetAttribute("subname", _sub1.Title);
                                         n1.SetAttribute("id", _sub1.EleID);
@@ -1348,6 +1390,19 @@ namespace ItopVector.Tools {
                                 {
                                     CreateSubline1(subandfhlist[m], false, lar);
                                 }
+                                  string wgydik = "";
+                                    for (int m = 0; m < polylist.Count;m++ )
+                                    {
+                                        string ygflag = ((XmlElement)polylist[m]).GetAttribute("ygdflag");
+                                        if (ygflag=="0")
+                                        {
+                                            wgydik+=((XmlElement)polylist[m]).GetAttribute("name")+",";
+                                        }
+                                    }
+                                    if (wgydik.Length>0)
+                                    {
+                                        MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
+                                    }
                                 Extbdzreport(extsublist);
                                 return;
                             }
@@ -2243,7 +2298,7 @@ namespace ItopVector.Tools {
             }
 
         }
-
+     
         private void CreateSubline(SubandFHcollect _subandfh, bool flag) {
 
             XmlElement sub = _subandfh.Sub;
