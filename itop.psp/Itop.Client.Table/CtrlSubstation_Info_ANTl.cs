@@ -248,7 +248,7 @@ namespace Itop.Client.Table
                  
                     string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type in ('02','03')and SvgUID='" + ((Substation_Info)list[i]).UID + "'";
                     IList<PSPDEV> list1 = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
-
+                    string rlgc = "";
                     foreach (PSPDEV pd in list1)
                     {
                         if (!string.IsNullOrEmpty(pd.OperationYear) && Convert.ToInt32(pd.OperationYear) <= Convert.ToDouble(addConn))
@@ -260,10 +260,12 @@ namespace Itop.Client.Table
                                     if (pd.Type == "03")
                                     {
                                         rl += pd.SiN;
+                                        rlgc += pd.SiN.ToString()+"+";
                                     }
                                     else
                                     {
                                         rl += (double)pd.Burthen;
+                                        rlgc += pd.Burthen.ToString()+"+";
                                     }
 
                                     bts++;
@@ -274,11 +276,12 @@ namespace Itop.Client.Table
 
                                 if (pd.Type == "03")
                                 {
-                                    rl += pd.SiN;
+                                    rlgc += pd.SiN.ToString() + "+";
                                 }
                                 else
                                 {
                                     rl += (double)pd.Burthen;
+                                    rlgc += pd.Burthen.ToString() + "+";
                                 }
 
 
@@ -289,8 +292,13 @@ namespace Itop.Client.Table
                        
 
                     }
+                    if (rlgc.Length>0)
+                    {
+                        rlgc = rlgc.Substring(0, rlgc.Length - 1);
+                    }
                     ((Substation_Info)list[i]).L2 = rl;
                     ((Substation_Info)list[i]).L3 = bts;
+                    ((Substation_Info)list[i]).L4 = rlgc;
                 }
             }
             string conn = "L1=110";

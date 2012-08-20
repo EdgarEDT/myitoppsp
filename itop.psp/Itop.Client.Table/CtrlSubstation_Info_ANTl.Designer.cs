@@ -105,8 +105,8 @@ namespace Itop.Client.Table
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand12 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand14 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand14 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand15 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand16 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand17 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -150,8 +150,8 @@ namespace Itop.Client.Table
             this.gridBand4,
             this.gridBand12,
             this.gridBand6,
-            this.gridBand14,
             this.gridBand7,
+            this.gridBand14,
             this.gridBand15,
             this.gridBand16,
             this.gridBand17,
@@ -272,6 +272,7 @@ namespace Itop.Client.Table
             this.colL4.Caption = "容量构成";
             this.colL4.FieldName = "L4";
             this.colL4.Name = "colL4";
+            this.colL4.Visible = true;
             this.colL4.Width = 67;
             // 
             // colL9
@@ -648,6 +649,14 @@ namespace Itop.Client.Table
             this.gridBand6.Name = "gridBand6";
             this.gridBand6.Width = 109;
             // 
+            // gridBand7
+            // 
+            this.gridBand7.Caption = "容量构成";
+            this.gridBand7.Columns.Add(this.colL4);
+            this.gridBand7.MinWidth = 20;
+            this.gridBand7.Name = "gridBand7";
+            this.gridBand7.Width = 67;
+            // 
             // gridBand14
             // 
             this.gridBand14.Caption = "主变台数(台)";
@@ -655,15 +664,6 @@ namespace Itop.Client.Table
             this.gridBand14.MinWidth = 20;
             this.gridBand14.Name = "gridBand14";
             this.gridBand14.Width = 71;
-            // 
-            // gridBand7
-            // 
-            this.gridBand7.Caption = "容量构成";
-            this.gridBand7.Columns.Add(this.colL4);
-            this.gridBand7.MinWidth = 20;
-            this.gridBand7.Name = "gridBand7";
-            this.gridBand7.Visible = false;
-            this.gridBand7.Width = 67;
             // 
             // gridBand15
             // 
@@ -836,8 +836,8 @@ namespace Itop.Client.Table
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand12;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand14;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand14;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
