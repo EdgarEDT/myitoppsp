@@ -697,6 +697,7 @@ namespace ItopVector.Tools {
                         ArrayList useList = new ArrayList();
                         System.Collections.SortedList list = new SortedList();
                         ItopVector.Core.SvgElementCollection selCol = tlVectorControl1.SVGDocument.SelectCollection;
+                      
                         int t = 0;
                     Lab009:
                         t = t + 1;
@@ -1408,6 +1409,7 @@ namespace ItopVector.Tools {
                             }
 
                         } else {
+                            tlVectorControl1.SVGDocument.SelectCollection.Clear();
                             bdz_xz = "";
                             return;
                         }
@@ -9876,6 +9878,7 @@ namespace ItopVector.Tools {
                 startyear = frmlar.StrYear = lar.Name.Substring(0, 4);
 
             }
+           
             frmlar.Show();
         }
 
@@ -10103,6 +10106,8 @@ namespace ItopVector.Tools {
                     if (str_sed.Length>0)
                     {
                          str_sed = str_sed.Substring(0, str_sed.Length - 1);
+                         IList<glebeProperty> list1 = Services.BaseService.GetList<glebeProperty>("SelectglebePropertyByWhere", "LayerID='" + layer.ID + "'and EleID NOT IN(" + str_sed + ")");
+                        if(list1.Count>0)
                          Services.BaseService.Update("DeleteglebePropertyByCon", "LayerID='" + layer.ID + "'and EleID NOT IN(" + str_sed + ")");
                     }
 

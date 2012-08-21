@@ -220,7 +220,7 @@ namespace ItopVector.Tools {
             dateEdit1.Enabled = false;
             dateEdit2.Enabled = false;
             button2.Enabled = false;
-           
+            barSubItem2.Enabled = false;
         }
         public void InitData() {
             checkedListBox1.Items.Clear();
@@ -229,8 +229,22 @@ namespace ItopVector.Tools {
                 SVG_LAYER lar = new SVG_LAYER();
                 lar.svgID = symbolDoc.SvgdataUid;
                 lar.YearID = YearID;
-                if (lar.YearID == "") lar.YearID = "''";
-                IList<SVG_LAYER> larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByYearID", lar);
+                 IList<SVG_LAYER> larlist=null;
+                 if (lar.YearID != "")
+                     larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByYearID", lar);
+                 else
+                 {
+                     if (progtype == "城市规划层")
+                     {
+                        lar.YearID  = " (layerType = '城市规划层' OR layerType = '地理信息层' OR YearID = '') ";
+                     }
+                     else
+                     {
+                         lar.YearID = " (layerType = '地理信息层') ";
+                     }
+                    
+                     larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByWhere", lar);
+                 }
                 DataTable table = Itop.Common.DataConverter.ToDataTable((IList)larlist, typeof(SVG_LAYER));
                 treeList1.DataSource = table;
                 XmlNodeList list1 = symbolDoc.GetElementsByTagName("layer");
@@ -313,22 +327,22 @@ namespace ItopVector.Tools {
                 }
                 Layerlist = symbolDoc.getLayerList();
                 //删除冗余的图层
-                for (int m = 0; m < table.Rows.Count; m++)
-                {
-                    if (!table.Rows[m]["SUID"].ToString().Contains("FA") && !table.Rows[m]["NAME"].ToString().Contains("背景层"))
-                    {
-                        XmlNode node = this.SymbolDoc.SelectSingleNode("//*[@layer='" + table.Rows[m]["SUID"].ToString() + "']");
-                        if (node == null)
-                        {
-                            SVG_LAYER SL = new SVG_LAYER();
-                            SL.SUID = table.Rows[m]["SUID"].ToString();
-                            Services.BaseService.Delete<SVG_LAYER>(SL);
-                            table.Rows.RemoveAt(m);
-                            m--;
-                        }
-                    }
-                }
-               
+                //for (int m = 0; m < table.Rows.Count; m++)
+                //{
+                //    if (!table.Rows[m]["SUID"].ToString().Contains("FA") && !table.Rows[m]["NAME"].ToString().Contains("背景层"))
+                //    {
+                //        XmlNode node = this.SymbolDoc.SelectSingleNode("//*[@layer='" + table.Rows[m]["SUID"].ToString() + "']");
+                //        if (node == null)
+                //        {
+                //            SVG_LAYER SL = new SVG_LAYER();
+                //            SL.SUID = table.Rows[m]["SUID"].ToString();
+                //            Services.BaseService.Delete<SVG_LAYER>(SL);
+                //            table.Rows.RemoveAt(m);
+                //            m--;
+                //        }
+                //    }
+                //}
+
             }
         }
         protected override void OnLoad(EventArgs e) {
