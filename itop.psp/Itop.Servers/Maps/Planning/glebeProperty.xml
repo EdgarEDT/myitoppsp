@@ -131,7 +131,7 @@
     <delete id='DeleteglebePropertyByCon' parameterClass='glebeProperty'>
       DELETE FROM glebeProperty
       WHERE
-      $value$
+     $value$
     </delete>
     <update id='UpdateglebeProperty' parameterClass='glebeProperty'>
       UPDATE glebeProperty
@@ -262,6 +262,41 @@
       FROM glebeProperty
       WHERE
       UID = #UID#
+    </select>
+    <select id='SelectglebePropertyByWhere' resultMap='glebePropertyResult' parameterClass='glebeProperty'>
+      SELECT
+      "UID",
+      "EleID",
+      "UseID",
+      "TypeUID",
+      "Area",
+      "Burthen",
+      "Number",
+      "Remark",
+      "SonUid",
+      "SelSonArea",
+      "SvgUID",
+      "ParentEleID",
+      "LayerID",
+      "ObligateField1",
+      "ObligateField2",
+      "ObligateField3",
+      "ObligateField4",
+      "ObligateField5",
+      "ObligateField6",
+      "ObligateField7",
+      "ObligateField8",
+      "ObligateField9",
+      "ObligateField10",
+      "ObligateField11",
+      "ObligateField12",
+      "ObligateField13",
+      "ObligateField14",
+      "ObligateField15",
+      "ObligateField16"
+      FROM glebeProperty
+      WHERE
+     $value$
     </select>
     <select id='SelectglebePropertyByEleID' resultMap='glebePropertyResult' parameterClass='glebeProperty'>
       SELECT
