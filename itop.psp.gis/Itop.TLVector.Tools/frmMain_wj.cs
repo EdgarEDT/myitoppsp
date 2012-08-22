@@ -75,6 +75,7 @@ namespace ItopVector.Tools {
         string strd2 = "";
         string sel_sym = "";
         string sel_start_point = "";
+        string xzwcflag = "";
         string bdz_xz = "";
         string str_dhx = "";
         ArrayList ChangeLayerList = new ArrayList();
@@ -527,6 +528,8 @@ namespace ItopVector.Tools {
 
         #region 事件处理
         List<SubandFHcollect> subandfhlist = new List<SubandFHcollect>();
+        ArrayList extsublist = new ArrayList();
+        ArrayList polylist = new ArrayList();
         void tlVectorControl1_RightClick(object sender, ItopVector.DrawArea.SvgElementSelectedEventArgs e) {
             str_outjwd = "";
             str_djcl = "";
@@ -693,7 +696,7 @@ namespace ItopVector.Tools {
                     if (tlVectorControl1.Operation == ToolOperation.InterEnclosure && bdz_xz == "yes") {
                         subandfhlist.Clear();
                         D_TIN.Clear();
-                        ArrayList polylist = new ArrayList();
+                        polylist = new ArrayList();
                         ArrayList useList = new ArrayList();
                         System.Collections.SortedList list = new SortedList();
                         ItopVector.Core.SvgElementCollection selCol = tlVectorControl1.SVGDocument.SelectCollection;
@@ -740,8 +743,10 @@ namespace ItopVector.Tools {
                             }
                             //将其加入一个规划和非规划的标志
                             _x.SetAttribute("xz", "0");
-                           
+                           if(pl!=null)
                             _x.SetAttribute("Burthen", pl.Burthen.ToString());
+                            else
+                               _x.SetAttribute("Burthen","0");
                             _x.SetAttribute("glbdz", "");  //为 （_sub1.EleID，多少负荷）；   
                             _x.SetAttribute("bdzandlenth","");
                             _x.SetAttribute("ygdflag", "0");
@@ -775,7 +780,7 @@ namespace ItopVector.Tools {
                             }
                            
                         }
-                        ArrayList extsublist = new ArrayList();
+                         extsublist = new ArrayList();
                         //创建新的图层放置显示的链接线路
                         Layer lar = null;
                         string FileName = "变电站地块连接线";
@@ -834,11 +839,12 @@ namespace ItopVector.Tools {
                             
                                 super_dkname = super_dkname.TrimEnd(',');
                                 MessageBox.Show(super_dkname+"负荷地的负荷太大，请调整后再操作", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                tlVectorControl1.SVGDocument.SelectCollection.Clear();
                               return;
                             }
-                           
 
                             tlVectorControl1.SVGDocument.SelectCollection.Clear();
+                    
 
                             if (Convert.ToDecimal(str_num) < 0) {
                                 MessageBox.Show("区域内供电满足要求，不需要新建变电站。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -939,6 +945,8 @@ namespace ItopVector.Tools {
                                         XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                         e1.SetAttribute("x", Convert.ToString(Convert.ToSingle(x) - pf.X));
                                         e1.SetAttribute("y", Convert.ToString(Convert.ToSingle(y) - pf.Y));
+                                        e1.SetAttribute("cx", Convert.ToString(Convert.ToSingle(x) - pf.X));
+                                        e1.SetAttribute("cy", Convert.ToString(Convert.ToSingle(y) - pf.Y));
                                         e1.SetAttribute("xzflag", "1");
                                         e1.SetAttribute("xlink:href", str_sub);
                                         e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
@@ -1035,6 +1043,7 @@ namespace ItopVector.Tools {
                                     {
                                         MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
                                     }
+                                    xzwcflag = "1";
                                     Extbdzreport(extsublist);
                                     return;
                                 }
@@ -1067,6 +1076,8 @@ namespace ItopVector.Tools {
                                     XmlElement e0 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                     e0.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
                                     e0.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
+                                      e0.SetAttribute("cx", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
+                                    e0.SetAttribute("cy", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
                                     e0.SetAttribute("xzflag", "1");
                                     e0.SetAttribute("xlink:href", str_sub);
                                     e0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
@@ -1117,6 +1128,8 @@ namespace ItopVector.Tools {
                                         XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                         e1.SetAttribute("x", Convert.ToString(Convert.ToSingle(x) - pf.X));
                                         e1.SetAttribute("y", Convert.ToString(Convert.ToSingle(y) - pf.Y));
+                                        e1.SetAttribute("cx", Convert.ToString(Convert.ToSingle(x) - pf.X));
+                                        e1.SetAttribute("cy",  Convert.ToString(Convert.ToSingle(y) - pf.Y));
                                         e1.SetAttribute("xzflag", "1");
                                         e1.SetAttribute("xlink:href", str_sub);
                                         e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
@@ -1192,6 +1205,7 @@ namespace ItopVector.Tools {
                                         SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n2, polylist), n2);
                                         subandfhlist.Add(sf1);
                                        // CreateSubline1(sf1, false, lar);
+                                     
                                         extsublist.Add(n2);
                                     }
                                     for (int m = 0; m < subandfhlist.Count; m++)
@@ -1212,6 +1226,7 @@ namespace ItopVector.Tools {
                                         MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
                                     }
                                     Extbdzreport(extsublist);
+                                    xzwcflag = "1";
                                     return;
                                 } else {
                                     bdz_xz = "";
@@ -1250,6 +1265,8 @@ namespace ItopVector.Tools {
                                 XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
                                 e1.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
                                 e1.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
+                                e1.SetAttribute("cx", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
+                                e1.SetAttribute("cy", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
                                 e1.SetAttribute("xzflag", "1");
                                 e1.SetAttribute("xlink:href", str_sub);
                                 e1.SetAttribute("rl", dbl_rl.ToString());
@@ -1345,6 +1362,7 @@ namespace ItopVector.Tools {
                                     {
                                         MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
                                     }
+                                    xzwcflag = "1";
                                 Extbdzreport(extsublist);
                                 return;
                             } else {
@@ -1404,16 +1422,17 @@ namespace ItopVector.Tools {
                                     {
                                         MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
                                     }
+                                    xzwcflag = "1";
                                 Extbdzreport(extsublist);
                                 return;
                             }
-
+                          
                         } else {
                             tlVectorControl1.SVGDocument.SelectCollection.Clear();
                             bdz_xz = "";
                             return;
                         }
-
+                 
                     }
                     if (tlVectorControl1.Operation == ToolOperation.InterEnclosure && !SubPrint) {
 
@@ -2026,7 +2045,7 @@ namespace ItopVector.Tools {
 
         }
         #endregion
-        private void Extbdzreport(ArrayList extsublist) {
+        private void Extbdzreport(ArrayList extsublist1) {
             ExcelAccess ex = new ExcelAccess();
             try
             {
@@ -2043,19 +2062,19 @@ namespace ItopVector.Tools {
                 ex.CellsBackColor(1, 1, 1, 3, ExcelStyle.ColorIndex.黄色);
 
                 //输出地块负荷情况
-                ex.SetCellValue("变电站供应负荷情况", 3 + extsublist.Count, 1);
-                ex.UnitCells(3 + extsublist.Count, 1, 3 + extsublist.Count, 3);
-                ex.SetCellValue("变电站名称", 4 + extsublist.Count, 1);
-                ex.SetCellValue("地块编号", 4 + extsublist.Count, 2);
-                ex.SetCellValue("供应负荷", 4 + extsublist.Count, 3);
-                ex.AlignmentCells(3 + extsublist.Count, 1, 4 + extsublist.Count, 3, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
-                ex.SetFontStyle(3 + extsublist.Count, 1, 4 + extsublist.Count, 3, true, false, ExcelStyle.UnderlineStyle.无下划线);
-                ex.CellsBackColor(3 + extsublist.Count, 1, 4 + extsublist.Count, 3, ExcelStyle.ColorIndex.黄色);
+                ex.SetCellValue("变电站供应负荷情况", 3 + extsublist1.Count, 1);
+                ex.UnitCells(3 + extsublist.Count, 1, 3 + extsublist1.Count, 3);
+                ex.SetCellValue("变电站名称", 4 + extsublist1.Count, 1);
+                ex.SetCellValue("地块编号", 4 + extsublist1.Count, 2);
+                ex.SetCellValue("供应负荷", 4 + extsublist1.Count, 3);
+                ex.AlignmentCells(3 + extsublist1.Count, 1, 4 + extsublist.Count, 3, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                ex.SetFontStyle(3 + extsublist1.Count, 1, 4 + extsublist.Count, 3, true, false, ExcelStyle.UnderlineStyle.无下划线);
+                ex.CellsBackColor(3 + extsublist1.Count, 1, 4 + extsublist.Count, 3, ExcelStyle.ColorIndex.黄色);
 
                 int rowcount = 0;
-                for (int i = 0; i < extsublist.Count; i++)
+                for (int i = 0; i < extsublist1.Count; i++)
                 {
-                    XmlElement xe = extsublist[i] as XmlElement;
+                    XmlElement xe = extsublist1[i] as XmlElement;
                     if (!string.IsNullOrEmpty(xe.GetAttribute("subname")))
                     {
                         ex.SetCellValue(xe.GetAttribute("subname"), 2 + i, 1);
@@ -2088,10 +2107,10 @@ namespace ItopVector.Tools {
                             string[] dk = dkqk[j].Split(',');
                             if (!string.IsNullOrEmpty(xe.GetAttribute("subname")))
                             {
-                                ex.SetCellValue(xe.GetAttribute("subname"), 5 + extsublist.Count + rowcount, 1);
-                                ex.AlignmentCells(5 + extsublist.Count + rowcount, 1, 5 + extsublist.Count + rowcount, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
-                                ex.SetFontStyle(5 + extsublist.Count + rowcount, 1, 5 + extsublist.Count + rowcount, 1, true, false, ExcelStyle.UnderlineStyle.无下划线);
-                                ex.CellsBackColor(5 + extsublist.Count + rowcount, 1, 5 + extsublist.Count + rowcount, 1, ExcelStyle.ColorIndex.绿色);
+                                ex.SetCellValue(xe.GetAttribute("subname"), 5 + extsublist1.Count + rowcount, 1);
+                                ex.AlignmentCells(5 + extsublist1.Count + rowcount, 1, 5 + extsublist1.Count + rowcount, 1, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                                ex.SetFontStyle(5 + extsublist1.Count + rowcount, 1, 5 + extsublist1.Count + rowcount, 1, true, false, ExcelStyle.UnderlineStyle.无下划线);
+                                ex.CellsBackColor(5 + extsublist1.Count + rowcount, 1, 5 + extsublist1.Count + rowcount, 1, ExcelStyle.ColorIndex.绿色);
 
                             }
 
@@ -2102,10 +2121,10 @@ namespace ItopVector.Tools {
                                 pl.SvgUID = tlVectorControl1.SVGDocument.SvgdataUid;
                                 pl = (glebeProperty)Services.BaseService.GetObject("SelectglebePropertyByEleID", pl);
 
-                                ex.SetCellValue(pl.UseID, 5 + extsublist.Count + rowcount, 2);
-                                ex.SetCellValue((Convert.ToDouble(dk[1]) / dbl_rzb).ToString("N2"), 5 + extsublist.Count + rowcount, 3);
-                                ex.AlignmentCells(5 + extsublist.Count + rowcount, 2, 5 + extsublist.Count + rowcount, 3, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
-                                ex.SetFontStyle(5 + extsublist.Count + rowcount, 2, 5 + extsublist.Count + rowcount, 3, true, false, ExcelStyle.UnderlineStyle.无下划线);
+                                ex.SetCellValue(pl.UseID, 5 + extsublist1.Count + rowcount, 2);
+                                ex.SetCellValue((Convert.ToDouble(dk[1]) / dbl_rzb).ToString("N2"), 5 + extsublist1.Count + rowcount, 3);
+                                ex.AlignmentCells(5 + extsublist1.Count + rowcount, 2, 5 + extsublist1.Count + rowcount, 3, ExcelStyle.ExcelHAlign.居中, ExcelStyle.ExcelVAlign.居中);
+                                ex.SetFontStyle(5 + extsublist1.Count + rowcount, 2, 5 + extsublist1.Count + rowcount, 3, true, false, ExcelStyle.UnderlineStyle.无下划线);
                             }
                             rowcount++;
                         }
@@ -2121,6 +2140,124 @@ namespace ItopVector.Tools {
             {
                 ex.DisPoseExcel();
             }
+
+        }
+        private void RebdzxzResult(List<SubandFHcollect> subandfhlist1, ArrayList extsublist1, glebeProperty gp, string befordbzname)
+        { 
+            //寻找选址的图层
+               Layer lar = null;
+                string FileName = "变电站地块连接线";
+                if (Layer.CkLayerExist(FileName, tlVectorControl1.SVGDocument)) {
+                    ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
+                    for (int i = 0; i < layercol.Count; i++) {
+                        if (FileName == (layercol[i] as Layer).GetAttribute("label")) {
+                            lar = (Layer)layercol[i];
+                            break;
+                        }
+                    }
+                } else {
+                    lar = Layer.CreateNew(FileName, tlVectorControl1.SVGDocument);
+
+                    lar.SetAttribute("layerType", progtype);
+                    lar.SetAttribute("ParentID", SaveID[0].ToString());
+                    //this.frmlar.checkedListBox1.SelectedIndex = -1;
+                    frmlar.AddLayer(lar, true);
+                }
+
+            //判断选择变电站是否在选择的变电站内
+            bool flag=false;
+             string newfhdk="";
+              string dkrl="";
+            for(int i=0;i<extsublist.Count;i++)
+            {
+                XmlElement _x=extsublist[i] as XmlElement;
+                string subname=_x.GetAttribute("subname");
+                string yfcrzb=_x.GetAttribute("yfcrzb");
+                double subrl=subrl = Convert.ToDouble(_x.GetAttribute("rl"));
+                string fhdk=_x.GetAttribute("fhdk");
+               
+                if(!string.IsNullOrEmpty(fhdk))
+                {
+                    if(fhdk.Contains(gp.UID))
+                    {
+                        double newyfcrzb=dbl_rzb;
+                        //找到原来的线路删掉
+                        XmlNode xnode = tlVectorControl1.SVGDocument.SelectSingleNode("svg/polyline[@xz='1' and FirstNode='" + _x.GetAttribute("id").ToString() + "'and LastNode='" + gp.UID + "']");
+                        if (xnode != null) {
+                            tlVectorControl1.SVGDocument.RootElement.RemoveChild(xnode);
+                        }
+                           string[] dkqk = (fhdk.Substring(0, fhdk.LastIndexOf(";"))).Split(';');
+
+                        for (int j = 0; j < dkqk.Length; j++)
+                        {
+                            string[] dk = dkqk[j].Split(',');
+                            if(dk[0]==gp.UID)
+                            {
+                                dkrl=dk[1];
+                                newyfcrzb= subrl /((((subrl/Convert.ToDouble(yfcrzb))*dbl_rzb-Convert.ToDouble(dkrl))/dbl_rzb));
+                                continue;
+                            }
+                            newfhdk+=dkqk[j]+";";
+                        }
+                        _x.SetAttribute("fhdk", newfhdk);
+                         _x.SetAttribute("yfcrzb", newyfcrzb.ToString());
+                    }
+                   
+                 
+                }
+                //对新的变电站进行改造
+                if (subname == gp.ObligateField7)
+                {
+                    //添加线路
+                    XmlElement dk = (XmlElement)tlVectorControl1.SVGDocument.SelectSingleNode("svg/polygon [@IsArea='1'and @id='" + gp.EleID + "']");
+                    if (dk != null)
+                    {
+                        PointF _f = TLMath.polyCentriod(dk);
+                        string temp = _x.GetAttribute("cx").ToString() + " " + _x.GetAttribute("cy").ToString() + "," + _f.X.ToString() + " " + _f.Y.ToString();
+                        XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
+
+                        n1.SetAttribute("points", temp);
+                        //如果是规划
+                        if (flag)
+                        {
+                            _x.SetAttribute("xz", "1");
+                            n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#990033;stroke-opacity:1;");
+
+                        }
+                        else
+                        {
+                            if (_x.GetAttribute("xz") != "1")
+                            {
+                                _x.SetAttribute("xz", "0");
+                            }
+
+                            n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#330099;stroke-opacity:1;");
+
+                        }
+                        n1.SetAttribute("layer", lar.ID);
+                        n1.SetAttribute("IsLead", "1");
+                        n1.SetAttribute("FirstNode", _x.GetAttribute("id").ToString());
+                        n1.SetAttribute("LastNode", dk.GetAttribute("id").ToString());
+                        n1.SetAttribute("xz", "1");
+                        tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+
+                        fhdk += gp.UID + "," + (Convert.ToDouble(gp.Burthen) * dbl_rzb).ToString() + ";";
+                        _x.SetAttribute("yfcrzb", (subrl / ((subrl / Convert.ToDouble(yfcrzb)) + Convert.ToDouble(gp.Burthen))).ToString());
+                 
+                    }
+                   
+                    flag = true;
+
+                }
+            
+            }
+            if(!flag)
+            {
+                MessageBox.Show("选择的变电站不在选址范围内 请重新操作！");
+               return;
+            }
+            Extbdzreport(extsublist);
+            //首先找出原来变电站和地块的关系
 
         }
         //flag 为false时为已有变电站
@@ -2300,7 +2437,7 @@ namespace ItopVector.Tools {
             }
 
         }
-     
+      
         private void CreateSubline(SubandFHcollect _subandfh, bool flag) {
 
             XmlElement sub = _subandfh.Sub;
@@ -3859,7 +3996,43 @@ namespace ItopVector.Tools {
                                         ((XmlElement)tlVectorControl1.SVGDocument.CurrentElement).SetAttribute("style", color1);
                                         tlVectorControl1.UpdateProperty();
                                     }
+                                    if (xzwcflag == "1" && f.bdzflag)
+                                   {
+                                      if ((MessageBox.Show(this, "是否调整变电站选址内容", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes))
+                                      {
+                                          if (extsublist.Count > 0 && subandfhlist.Count > 0)
+                                          {
+                                              bool sfsflag=false;
+                                              for(int m=0;m<polylist.Count;m++)
+                                              {
+                                               if((polylist[m] as XmlElement).GetAttribute("id")==f.gPro.EleID)
+                                               {
+                                                   sfsflag=true;
+                                                   break;
+                                               }
 
+                                              }
+                                              if (!sfsflag)
+                                              {
+                                                  MessageBox.Show("地块非选址的地块中 请重新选址！");
+                                                  return;
+                                              }
+                                              RebdzxzResult(subandfhlist,extsublist,f.gPro,f.bdzzqname);
+                                          }
+                                          else
+                                          {
+                                              MessageBox.Show("选址变电站没有数据 请重新选址！");
+                                              return;
+                                          }
+                                      }
+                                      
+                                  }
+                                 else
+                                  {
+                                      MessageBox.Show("请重新选址！");
+                                     return;
+                                  }
+                           
                                 }
                             }
                         }
@@ -9907,8 +10080,8 @@ namespace ItopVector.Tools {
                 if (string.IsNullOrEmpty(_SvgUID)) return;
                 SVG_LAYER lar = new SVG_LAYER();
                 lar.svgID = _SvgUID;
-                lar.YearID = yearID;
-                IList<SVG_LAYER> larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByYearID", lar);
+                lar.YearID = "Yearid in(" + yearID + ") or layerType='城市规划层'";
+                IList<SVG_LAYER> larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByWhere", lar);
                 foreach (SVG_LAYER _lar in larlist) {
                     layertxt = layertxt + "<layer id=\"" + _lar.SUID + "\" label=\"" + _lar.NAME + "\" layerType=\"" + _lar.layerType + "\" visibility=\"" + _lar.visibility + "\" ParentID=\"" + _lar.YearID + "\" IsSelect=\"" + _lar.IsSelect + "\" />";
                     content.Append(_lar.XML);

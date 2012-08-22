@@ -228,21 +228,24 @@ namespace ItopVector.Tools {
                 symbolDoc2 = symbolDoc;
                 SVG_LAYER lar = new SVG_LAYER();
                 lar.svgID = symbolDoc.SvgdataUid;
-                lar.YearID = YearID;
+               
                  IList<SVG_LAYER> larlist=null;
-                 if (lar.YearID != "")
-                     larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByYearID", lar);
+                 if (YearID != "")
+                 {
+                     lar.YearID = "YearID in (" + YearID + ") or layerType='城市规划层'";
+                     larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByWhere", lar);
+                 }
                  else
                  {
                      if (progtype == "城市规划层")
                      {
-                        lar.YearID  = " (layerType = '城市规划层' OR layerType = '地理信息层' OR YearID = '') ";
+                         lar.YearID = " (layerType = '城市规划层' OR layerType = '地理信息层' OR YearID = '') ";
                      }
                      else
                      {
                          lar.YearID = " (layerType = '地理信息层') ";
                      }
-                    
+
                      larlist = Services.BaseService.GetList<SVG_LAYER>("SelectSVG_LAYERByWhere", lar);
                  }
                 DataTable table = Itop.Common.DataConverter.ToDataTable((IList)larlist, typeof(SVG_LAYER));
