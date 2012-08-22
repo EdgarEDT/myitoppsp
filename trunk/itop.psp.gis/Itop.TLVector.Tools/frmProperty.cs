@@ -81,9 +81,9 @@ namespace ItopVector.Tools
                    else
                         checkEdit1.Checked = false;
                 }
-               comboBoxEdit1.DataBindings.Add("EditValue", gPro, "ObligateField7");
-               // comboBoxEdit1.DataBindings.Add("Text", gPro, "ObligateField12");
-               //comboBoxEdit2.DataBindings.Add("Text", gPro, "ObligateField13");
+                comboBoxEdit1.EditValue = gPro.ObligateField7;
+              // comboBoxEdit1.DataBindings.Add("EditValue", gPro, "ObligateField7");
+              
             }
             catch(Exception e){
                 MessageBox.Show(e.Message);
@@ -93,16 +93,23 @@ namespace ItopVector.Tools
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if(gPro.UseID==""){
-                MessageBox.Show("地块编号不能为空。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            if (gPro.UseID == "")
+            {
+                MessageBox.Show("地块编号不能为空。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if(lx.Text==""){
+            if (lx.Text == "")
+            {
                 MessageBox.Show("地块类型不能为空。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             gPro.ObligateField16 = checkEdit1.Checked.ToString();
-
+            if (gPro.ObligateField7 != comboBoxEdit1.EditValue.ToString()) 
+            {
+                bdzzqname = gPro.ObligateField7;
+                bdzflag = true;
+                gPro.ObligateField7 = comboBoxEdit1.EditValue.ToString();
+            }
             if (IsCreate)
             {
                 //glebeProperty gle = new glebeProperty();
@@ -120,8 +127,9 @@ namespace ItopVector.Tools
             }
             else
             {
-                gPro.Area =Convert.ToDecimal( mj.Text);
+                gPro.Area = Convert.ToDecimal(mj.Text);
                 gPro.LayerID = layerID;
+
                 Services.BaseService.Update<glebeProperty>(gPro);
             }
             this.DialogResult = DialogResult.OK;
@@ -132,7 +140,8 @@ namespace ItopVector.Tools
         {
           
         }
-
+        public bool bdzflag = false;
+        public string bdzzqname = "";
         private void frmProperty_Load(object sender, EventArgs e)
         {
             dt = Itop.Common.DataConverter.ToDataTable(Services.BaseService.GetList("SelectglebeTypeList", gType), typeof(glebeType));
@@ -177,9 +186,9 @@ namespace ItopVector.Tools
                 dl.Properties.ReadOnly = true;
                 xyxs.Properties.ReadOnly = true;
                 remark.Properties.ReadOnly = true;
-                comboBoxEdit1.Properties.ReadOnly = true;
+               // comboBoxEdit1.Properties.ReadOnly = true;
                 checkEdit1.Properties.ReadOnly = true;
-                simpleButton1.Visible = false;
+                simpleButton1.Visible =true;
                 simpleButton2.Text = "关闭";
             }
         }
