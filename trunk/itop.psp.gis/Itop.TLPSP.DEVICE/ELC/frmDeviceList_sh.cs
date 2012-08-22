@@ -448,7 +448,7 @@ namespace Itop.TLPSP.DEVICE
         private void simpleButton3_Click(object sender, EventArgs e)
         {
 
-            if (comboBox1.Text == null)
+            if (string.IsNullOrEmpty(comboBox1.Text))
             {
                 MessageBox.Show("请选择设备类型以后再进行检索", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -744,6 +744,11 @@ namespace Itop.TLPSP.DEVICE
               }
           }
           gridControl1.DataSource = dt;            
+      }
+
+      private void panelControl1_Paint(object sender, PaintEventArgs e)
+      {
+
       }
     }
 }
