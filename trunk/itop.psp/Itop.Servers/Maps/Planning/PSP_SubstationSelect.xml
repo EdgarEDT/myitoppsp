@@ -100,6 +100,22 @@
 		WHERE
 			UID = #UID#
 	</select>
+  <select id='SelectPSP_SubstationSelectByKey1' resultMap='PSP_SubstationSelectResult' parameterClass='PSP_SubstationSelect'>
+    SELECT
+    "UID",
+    "SName",
+    "EleID",
+    "SvgID",
+    "Remark",
+    "col1",
+    "col2",
+    "col3",
+    "col4",
+    "col5"
+    FROM PSP_SubstationSelect
+    WHERE
+    EleID = #UID# and col2=#col2#
+  </select>
   <select id='SelectPSP_SubstationSelectByName' resultMap='PSP_SubstationSelectResult' parameterClass='PSP_SubstationSelect'>
     SELECT
     "UID",
@@ -117,7 +133,7 @@
     SName = #SName# and 
     SvgID= #SvgID#
   </select>
-   <select id='SelectPSP_SubstationSelectByEleID' resultMap='PSP_SubstationSelectResult' parameterClass='PSP_SubstationSelect'>
+  <select id='SelectPSP_SubstationSelectByEleID' resultMap='PSP_SubstationSelectResult' parameterClass='PSP_SubstationSelect'>
     SELECT
     "UID",
     "SName",
@@ -133,6 +149,22 @@
     WHERE
     EleID = #EleID# and
     SvgID= #SvgID#
+  </select>
+  <select id='SelectPSP_SubstationSelectByWhere' resultMap='PSP_SubstationSelectResult' parameterClass='PSP_SubstationSelect'>
+    SELECT
+    "UID",
+    "SName",
+    "EleID",
+    "SvgID",
+    "Remark",
+    "col1",
+    "col2",
+    "col3",
+    "col4",
+    "col5"
+    FROM PSP_SubstationSelect
+    WHERE
+   $value$
   </select>
 </statements>
 </sqlMap>
