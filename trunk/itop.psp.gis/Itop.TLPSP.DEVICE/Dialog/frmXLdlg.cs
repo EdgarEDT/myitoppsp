@@ -208,8 +208,8 @@ namespace Itop.TLPSP.DEVICE
                 o = System.DateTime.Now.Year + i;
                 date2.Properties.Items.Add(o);
             }
-            comboBoxEdit1.Text = DateTime.Today.Year.ToString();
-            date1.Text = DateTime.Today.Year.ToString();
+            //comboBoxEdit1.Text = DateTime.Today.Year.ToString();
+           // date1.Text = DateTime.Today.Year.ToString();
             WireCategory wirewire = new WireCategory();
 
             wirewire.Type = "40";

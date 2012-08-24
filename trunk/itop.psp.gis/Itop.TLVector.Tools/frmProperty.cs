@@ -142,17 +142,27 @@ namespace ItopVector.Tools
         }
         public bool bdzflag = false;
         public string bdzzqname = "";
+        public string XZ_bdz = "";
         private void frmProperty_Load(object sender, EventArgs e)
         {
             dt = Itop.Common.DataConverter.ToDataTable(Services.BaseService.GetList("SelectglebeTypeList", gType), typeof(glebeType));
             lx.Properties.DataSource = dt;
             bh.Focus();
             string DQ = "市区";
-           string con = "AreaID = '" + Itop.Client.MIS.ProgUID + "'";
+            string con = "AreaID = '" + Itop.Client.MIS.ProgUID + "'order by Title";
            IList<PSP_Substation_Info> list = Services.BaseService.GetList<PSP_Substation_Info>("SelectPSP_Substation_InfoListByWhere", con);
             foreach (PSP_Substation_Info psu in list)
             {
                 comboBoxEdit1.Properties.Items.Add(psu.Title);
+            }
+            if (IsReadonly&&!string.IsNullOrEmpty(XZ_bdz))
+            {
+              con="col2='"+XZ_bdz+"'";
+                IList<PSP_SubstationSelect> list1=Services.BaseService.GetList<PSP_SubstationSelect>("SelectPSP_SubstationSelectByWhere",con);
+                foreach (PSP_SubstationSelect ps in list1)
+                {
+                     comboBoxEdit1.Properties.Items.Add(ps.SName);
+                }
             }
             if (string.IsNullOrEmpty(gPro.ObligateField16))
             {

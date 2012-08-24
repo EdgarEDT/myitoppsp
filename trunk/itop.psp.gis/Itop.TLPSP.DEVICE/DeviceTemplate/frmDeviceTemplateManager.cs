@@ -37,7 +37,7 @@ namespace Itop.TLPSP.DEVICE
             barEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             barDel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             UpdateNumber.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            barButtonItemIn.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            //barButtonItemIn.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             barClose.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             barImportPsasp.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             AllDele.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;

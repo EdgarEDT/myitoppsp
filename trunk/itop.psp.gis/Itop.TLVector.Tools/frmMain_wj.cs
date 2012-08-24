@@ -1999,7 +1999,8 @@ namespace ItopVector.Tools {
                         oy = ((PointF)polyCentriodList[k]).Y;
                     }
                     XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
-
+                    e1.SetAttribute("cx", Convert.ToString(X));
+                    e1.SetAttribute("cy", Convert.ToString(Y));
                     e1.SetAttribute("x", Convert.ToString(X));
                     e1.SetAttribute("y", Convert.ToString(Y));
                     e1.SetAttribute("xzflag", "1");
@@ -2178,11 +2179,11 @@ namespace ItopVector.Tools {
                
                 if(!string.IsNullOrEmpty(fhdk))
                 {
-                    if(fhdk.Contains(gp.UID))
+                    if(fhdk.Contains(gp.EleID))
                     {
                         double newyfcrzb=dbl_rzb;
                         //找到原来的线路删掉
-                        XmlNode xnode = tlVectorControl1.SVGDocument.SelectSingleNode("svg/polyline[@xz='1' and FirstNode='" + _x.GetAttribute("id").ToString() + "'and LastNode='" + gp.UID + "']");
+                        XmlNode xnode = tlVectorControl1.SVGDocument.SelectSingleNode("svg/polyline[@FirstNode='" + _x.GetAttribute("id").ToString() + "'and @LastNode='" + gp.EleID + "']");
                         if (xnode != null) {
                             tlVectorControl1.SVGDocument.RootElement.RemoveChild(xnode);
                         }
@@ -2275,7 +2276,7 @@ namespace ItopVector.Tools {
                 XmlElement _x = kv.Key;
                 PointF pf = kv.Value;
                 PointF _f = TLMath.polyCentriod(_x);
-                XmlNode xnode = tlVectorControl1.SVGDocument.SelectSingleNode("svg/polyline[@xz='1' and FirstNode='" + sub.GetAttribute("id").ToString() + "'and LastNode='" + _x.GetAttribute("id").ToString() + "']");
+                XmlNode xnode = tlVectorControl1.SVGDocument.SelectSingleNode("svg/polyline[@FirstNode='" + sub.GetAttribute("id").ToString() + "'and @LastNode='" + _x.GetAttribute("id").ToString() + "']");
                 if (xnode != null) {
                     tlVectorControl1.SVGDocument.RootElement.RemoveChild(xnode);
                 }
@@ -3206,11 +3207,11 @@ namespace ItopVector.Tools {
 
                     Point pt = new Point(e.Mouse.X, e.Mouse.Y);
                     pt = PointToClient(tlVectorControl1.PointToScreen(pt));
-                    //tlVectorControl1.SetToolTip(label1.Text);
+                    tlVectorControl1.SetToolTip(label1.Text);
                     label1.Left = pt.X;
                     label1.Top = pt.Y;
 
-                    label1.Visible = true;
+                    //label1.Visible = true;
                 }
                 return;
             }
@@ -3870,8 +3871,15 @@ namespace ItopVector.Tools {
                                     //        OffY = Convert.ToSingle(mat[5]);
                                     //    }
                                     //}
-                                    if (frmlar.getSelectedLayer().Contains(use.GetAttribute("layer"))) {
-                                        ck = true;
+                                    //if (frmlar.getSelectedLayer().Contains(use.GetAttribute("layer"))) {
+                                    //    ck = true;
+                                    //}
+                                    for (int j= 0; j< frmlar.GetSelectLayers().Count;j++ )
+                                    {
+                                        if ((frmlar.GetSelectLayers()[j] as Layer).ID==use.GetAttribute("layer"))
+                                        {
+                                            ck = true;
+                                        }
                                     }
                                     PointF TempPoint = TLMath.getUseOffset(use.GetAttribute("xlink:href"));
                                     //if (selectAreaPath.IsVisible(use.X + TempPoint.X + OffX, use.Y + TempPoint.Y + OffY) && ck)
@@ -3960,6 +3968,7 @@ namespace ItopVector.Tools {
 
                                 frmProperty f = new frmProperty();//地块属性
                                 if (SelUseArea == "") { SelUseArea = "0"; }
+                                f.XZ_bdz = XZ_bdz;
                                 f.InitData(xml1.GetAttribute("id"), tlVectorControl1.SVGDocument.SvgdataUid, SelUseArea, rzb, SvgDocument.currentLayer);
                                 //f.ShowDialog();
 #if(!CITY)
@@ -3998,8 +4007,7 @@ namespace ItopVector.Tools {
                                     }
                                     if (xzwcflag == "1" && f.bdzflag)
                                    {
-                                      if ((MessageBox.Show(this, "是否调整变电站选址内容", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes))
-                                      {
+                                    
                                           if (extsublist.Count > 0 && subandfhlist.Count > 0)
                                           {
                                               bool sfsflag=false;
@@ -4017,14 +4025,23 @@ namespace ItopVector.Tools {
                                                   MessageBox.Show("地块非选址的地块中 请重新选址！");
                                                   return;
                                               }
-                                              RebdzxzResult(subandfhlist,extsublist,f.gPro,f.bdzzqname);
+                                              try
+                                              {
+                                                  RebdzxzResult(subandfhlist, extsublist, f.gPro, f.bdzzqname);
+                                              }
+                                              catch (System.Exception ex)
+                                              {
+                                                  MessageBox.Show("请计算有问题 请重新计算！");
+                                                  return;
+                                              }
+                                              
                                           }
                                           else
                                           {
                                               MessageBox.Show("选址变电站没有数据 请重新选址！");
                                               return;
                                           }
-                                      }
+                                     
                                       
                                   }
                                  else
