@@ -110,7 +110,7 @@ namespace ItopVector.Tools {
                 lay2 = Layer.CreateNew(name2, tlVectorControl1.SVGDocument);
                 lay2.SetAttribute("layerType", "µçÍø¹æ»®²ã");
                 lay2.SetAttribute("ParentID", SaveID[0].ToString());
-                frmlar.AddLayer(lay1, true);
+                frmlar.AddLayer(lay2, true);
             } else {
                 for (int i = lay2.GraphList.Count - 1; i > 0; i--)
                     lay2.GraphList.RemoveAt(i);

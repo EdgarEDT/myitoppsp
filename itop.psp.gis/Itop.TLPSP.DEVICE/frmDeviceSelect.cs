@@ -397,19 +397,50 @@ namespace Itop.TLPSP.DEVICE
                     {
                         if (selecfrm.getselecindex == 0)
                         {
-                            GetDevice.strCon = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND Title like'%" + selecfrm.DeviceName + "%'";
-                            GetDevice.SelDevices();
+                            DataTable dt = GetDevice.gridControl1.DataSource as DataTable;
+                            DataRow[] dtcol = dt.Select(" AreaID = '" + Itop.Client.MIS.ProgUID + "' AND Title like'%" + selecfrm.DeviceName + "%'");
+                            DataTable dt1 = new DataTable();
+                           List<PSP_Substation_Info> list=new List<PSP_Substation_Info>();
+                            foreach (DataRow dr in dtcol)
+                            {
+                                list.Add(Itop.Common.DataConverter.RowToObject<PSP_Substation_Info>(dr));
+                            }
+                            GetDevice.gridControl1.DataSource =list;
+                            
+                            //GetDevice.strCon = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND Title like'%" + selecfrm.DeviceName + "%'";
+                            //GetDevice.SelDevices();
                         }
                         else if (selecfrm.getselecindex == 1)
                         {
-                            GetDevice.strCon = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND L1 ='" + selecfrm.devicevolt + "'";
-                            GetDevice.SelDevices();
+                            DataTable dt = GetDevice.gridControl1.DataSource as DataTable;
+                            DataRow[] dtcol = dt.Select(" AreaID = '" + Itop.Client.MIS.ProgUID + "' AND L1 ='" + selecfrm.devicevolt + "'");
+                            List<PSP_Substation_Info> list = new List<PSP_Substation_Info>();
+                            foreach (DataRow dr in dtcol)
+                            {
+                                list.Add(Itop.Common.DataConverter.RowToObject<PSP_Substation_Info>(dr));
+                            }
+                            GetDevice.gridControl1.DataSource = list;
+                            //GetDevice.strCon = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND L1 ='" + selecfrm.devicevolt + "'";
+                            //GetDevice.SelDevices();
                         }
                         else if (selecfrm.getselecindex == 2)
                         {
+                            DataTable dt = GetDevice.gridControl1.DataSource as DataTable;
                             DataTable datatable = new DataTable();
                             datatable = Itop.Common.DataConverter.ToDataTable(convertdirecttolist<PSP_Substation_Info>(selecfrm.vistsubstationflag), typeof(PSP_Substation_Info));
-                            GetDevice.gridControl1.DataSource = datatable;
+                            List<PSP_Substation_Info> list = new List<PSP_Substation_Info>();
+                            foreach (DataRow dr in datatable.Rows)
+                            {
+                                foreach (DataRow dr1 in dt.Rows)
+                                {
+                                    if (dr["UID"].ToString().Equals(dr1["UID"].ToString()))
+                                    {
+                                        list.Add(Itop.Common.DataConverter.RowToObject<PSP_Substation_Info>(dr));
+                                    }
+                                }
+                            }
+                            
+                            GetDevice.gridControl1.DataSource = list;
                         }
 
                     }
@@ -417,19 +448,48 @@ namespace Itop.TLPSP.DEVICE
                     {
                         if (selecfrm.getselecindex == 0)
                         {
-                            GetDevice.strCon = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND Title like'%" + selecfrm.DeviceName + "%'";
-                            GetDevice.SelDevices();
+                            DataTable dt = GetDevice.gridControl1.DataSource as DataTable;
+                            DataRow[] dtcol = dt.Select(" AreaID = '" + Itop.Client.MIS.ProgUID + "' AND Title like'%" + selecfrm.DeviceName + "%'");
+                            List<PSP_PowerSubstation_Info> list = new List<PSP_PowerSubstation_Info>();
+                            foreach (DataRow dr in dtcol)
+                            {
+                                list.Add(Itop.Common.DataConverter.RowToObject<PSP_PowerSubstation_Info>(dr));
+                            }
+                            GetDevice.gridControl1.DataSource = list;
+                            //GetDevice.strCon = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND Title like'%" + selecfrm.DeviceName + "%'";
+                            //GetDevice.SelDevices();
                         }
                         else if (selecfrm.getselecindex == 1)
                         {
-                            GetDevice.strCon = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND S1 ='" + selecfrm.devicevolt + "'";
-                            GetDevice.SelDevices();
+                            DataTable dt = GetDevice.gridControl1.DataSource as DataTable;
+                            DataRow[] dtcol = dt.Select(" AreaID = '" + Itop.Client.MIS.ProgUID + "' AND S1 ='" + selecfrm.devicevolt + "'");
+                           List<PSP_PowerSubstation_Info> list = new List<PSP_PowerSubstation_Info>();
+                            foreach (DataRow dr in dtcol)
+                            {
+                                list.Add(Itop.Common.DataConverter.RowToObject<PSP_PowerSubstation_Info>(dr));
+                            }
+                            GetDevice.gridControl1.DataSource = list;
+                        //        GetDevice.strCon = " AreaID = '" + Itop.Client.MIS.ProgUID + "' AND S1 ='" + selecfrm.devicevolt + "'";
+                        //        GetDevice.SelDevices();
                         }
                         else if (selecfrm.getselecindex == 2)
                         {
+                            DataTable dt = GetDevice.gridControl1.DataSource as DataTable;
                             DataTable datatable = new DataTable();
                             datatable = Itop.Common.DataConverter.ToDataTable(convertdirecttolist<PSP_PowerSubstation_Info>(selecfrm.vistpowerflag), typeof(PSP_PowerSubstation_Info));
-                            GetDevice.gridControl1.DataSource = datatable;
+                            List<PSP_PowerSubstation_Info> list = new List<PSP_PowerSubstation_Info>();
+                            foreach (DataRow dr in datatable.Rows)
+                            {
+                                foreach (DataRow dr1 in dt.Rows)
+                                {
+                                    if (dr["UID"].ToString().Equals(dr1["UID"].ToString()))
+                                    {
+                                        list.Add(Itop.Common.DataConverter.RowToObject<PSP_PowerSubstation_Info>(dr));
+                                    }
+                                }
+                            }
+                            
+                            GetDevice.gridControl1.DataSource = list;
                         }
                     }
                     else
