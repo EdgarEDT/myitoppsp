@@ -103,6 +103,7 @@ namespace Itop.TLPSP.DEVICE
                     dlg.DeviceMx = dev as PSP_Substation_Info;
                 
                     dlg.IsRead = isread;
+                    dlg.IsonlyRead = true;
                     if (dlg.ShowDialog() == DialogResult.OK && !isread)
                     {
                         UCDeviceBase.DataService.Update<PSP_Substation_Info>(dlg.DeviceMx);
@@ -118,6 +119,7 @@ namespace Itop.TLPSP.DEVICE
                     frmDYdlg dlg21 = new frmDYdlg();
                     dlg21.DeviceMx = dev as PSP_PowerSubstation_Info;
                     dlg21.IsRead = isread;
+                    dlg21.IsonlyRead = true;
                     dlg21.StartYear = StartYear;
                     if (dlg21.ShowDialog() == DialogResult.OK && !isread)
                     {
@@ -133,6 +135,7 @@ namespace Itop.TLPSP.DEVICE
                 case "01":
                     frmMXdlg dlg1 = new frmMXdlg();
                     dlg1.DeviceMx = dev as PSPDEV;
+                    
                     // dlg1.ShowDialog();
                     if (dlg1.ShowDialog() == DialogResult.OK && !isread)
                     {
@@ -158,6 +161,7 @@ namespace Itop.TLPSP.DEVICE
                     frmXLdlg dlg5 = new frmXLdlg();
                     dlg5.DeviceMx = dev as PSPDEV;
                     dlg5.glist = glist;
+                    dlg5.isread = true;
                     DialogResult rst = dlg5.ShowDialog();
                     if (rst == DialogResult.OK && !isread)
                     {
@@ -255,11 +259,13 @@ namespace Itop.TLPSP.DEVICE
                 case "73":
                     frmDXdlg DX = new frmDXdlg();
                     DX.DeviceMx = dev as PSPDEV;
+                    DX.isread = true;
                     DX.ShowDialog();
                     break;
                 case "75":
                     frmLUXdlg LUX = new frmLUXdlg();
                     LUX.DeviceMx = dev as PSPDEV;
+                    LUX.isread = true;
                    LUX.ShowDialog();
                     break;
                 case "71":

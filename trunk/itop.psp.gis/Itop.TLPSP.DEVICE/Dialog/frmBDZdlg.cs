@@ -248,12 +248,39 @@ namespace Itop.TLPSP.DEVICE
             StartYear = "";
             //spinEdit3.Text = burthen.ToString();
             spinEdit3.Text =DeviceMx.L9.ToString();
+            if (IsonlyRead)
+            {
+                textEdit1.Properties.ReadOnly = true;
+                try { spinEdit1.Properties.ReadOnly = true; }
+                catch { }
+                try { spinEdit2.Properties.ReadOnly = true; }
+                catch { }
+                textEdit2.Properties.ReadOnly = true; ;
+                try { spinEdit3.Properties.ReadOnly = true; }
+                catch { }
+                try { spinEdit4.Properties.ReadOnly = true; }
+                catch { }
+                try { spinEdit5.Properties.ReadOnly = true; }
+                catch { }
+                try { spinEdit6.Properties.ReadOnly = true; }
+                catch { }
+                try { textEdit3.Properties.ReadOnly = true; }
+                catch { }
+                comboBoxEdit1.Properties.ReadOnly = true;
+                comboBoxEdit2.Properties.ReadOnly = true;
+                comboBoxEdit8.Properties.ReadOnly = true;
+                comboBoxEdit9.Properties.ReadOnly = true;
+                comboBoxEdit3.Properties.ReadOnly = true;
+                date1.Properties.ReadOnly = true;
+                date2.Properties.ReadOnly = true;
+            }
         }
         string projectid;
         public string ProjectID {
             get { return projectid; }
             set { projectid = value; }
         }
+        public bool IsonlyRead = false;
         bool isread = true;
         /// <summary>
         /// 是否只读，为true时图形不能保存
@@ -456,7 +483,7 @@ namespace Itop.TLPSP.DEVICE
 
         private void comboBoxEdit1_SelectedValueChanged(object sender, EventArgs e)
         {
-            date1.Text = comboBoxEdit1.Text;
+            //date1.Text = comboBoxEdit1.Text;
             if (Convert.ToInt32(comboBoxEdit1.Text)<=DateTime.Now.Year)
             {
                 comboBoxEdit2.Text = "现状";

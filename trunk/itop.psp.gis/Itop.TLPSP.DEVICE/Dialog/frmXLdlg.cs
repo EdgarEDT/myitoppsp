@@ -847,7 +847,7 @@ namespace Itop.TLPSP.DEVICE
                 dev.SvgUID = dic["id"].ToString();
             }
         }
-
+        public bool isread = false;
         private void frmXLdlg_Load(object sender, EventArgs e)
         {
            // this.Activate();
@@ -856,7 +856,43 @@ namespace Itop.TLPSP.DEVICE
            // this.groupBox1.Focus();
            //bool flag= textEdit1.Focus();
            //textEdit1.SelectAll();
-
+            if (isread)
+            {
+                comboBoxEdit2.Properties.ReadOnly = isread;
+                spinEdit6.Properties.ReadOnly = isread;
+                comboBoxEdit3.Properties.ReadOnly = isread;
+                comboBoxEdit4.Properties.ReadOnly = isread;
+                comboBoxEdit5.Properties.ReadOnly = isread;
+                comboBoxEdit6.Properties.ReadOnly = isread;
+                spinEdit16.Properties.ReadOnly = isread;
+                spinEdit15.Properties.ReadOnly = isread;
+                spinEdit14.Properties.ReadOnly = isread;
+                spinEdit4.Properties.ReadOnly = isread;
+                spinEdit3.Properties.ReadOnly = isread;
+                spinEdit2.Properties.ReadOnly = isread;
+                spinEdit17.Properties.ReadOnly = isread;
+                spinEdit21.Properties.ReadOnly = isread;
+                spinEdit22.Properties.ReadOnly = isread;
+                spinEdit18.Properties.ReadOnly = isread;
+                comboBoxEdit7.Properties.ReadOnly = isread;
+                comboBoxEdit8.Properties.ReadOnly = isread;
+                comboBoxEdit9.Properties.ReadOnly = isread;
+                comlinetype2.Properties.ReadOnly = isread;
+                splength2.Properties.ReadOnly = isread; 
+                comllfs.Properties.ReadOnly = isread; 
+                date1.Properties.ReadOnly = isread; 
+                date2.Properties.ReadOnly = isread; 
+                spkg.Properties.ReadOnly = isread;
+                simpleButton4.Visible = false;
+                textEdit1.Properties.ReadOnly = isread;
+                radioGroup1.Properties.ReadOnly = isread;
+                radioGroup3.Properties.ReadOnly = isread;
+                spinEdit5.Properties.ReadOnly = isread;
+                spinEdit8.Properties.ReadOnly = isread;
+                 spinEdit11.Properties.ReadOnly = isread;
+                 comboBoxEdit1.Properties.ReadOnly = isread;
+            }
+          
         }
 
         private void comboBoxEdit1_Properties_SelectedValueChanged(object sender, EventArgs e)
