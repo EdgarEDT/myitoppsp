@@ -137,6 +137,28 @@ namespace Itop.TLPSP.DEVICE
         {
             base.OnLoad(e);
             freshxl();
+            if (IsonlyRead)
+            {
+
+                try { spinEdit1.Properties.ReadOnly = true; }
+                catch { }
+                try { spinEdit2.Properties.ReadOnly = true; }
+                catch { }
+                comboBoxEdit1.Properties.ReadOnly = true;
+                comboBoxEdit2.Properties.ReadOnly = true;
+                dq.Properties.ReadOnly = true;
+
+                Area.Properties.ReadOnly = true;
+                nylx.Properties.ReadOnly = true;
+                fdl.Properties.ReadOnly = true;
+                fdxss.Properties.ReadOnly = true;
+                cyd.Properties.ReadOnly = true;
+                td.Properties.ReadOnly = true;
+                textEdit2.Properties.ReadOnly = true;
+                type2.Properties.ReadOnly = true;
+                date1.Properties.ReadOnly = true;
+                date2.Properties.ReadOnly = true;
+            }
         }
         string projectid;
         public string ProjectID {
@@ -151,7 +173,7 @@ namespace Itop.TLPSP.DEVICE
             get { return isread; }
             set { isread = value; }
         }
-
+        public bool IsonlyRead = false;
        
 
         private void simpleButton3_Click(object sender, EventArgs e) {

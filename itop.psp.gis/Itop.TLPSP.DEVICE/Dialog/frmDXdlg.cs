@@ -152,6 +152,7 @@ namespace Itop.TLPSP.DEVICE
 
             }
         }
+        public bool isread = false;
         public frmDXdlg() {
             InitializeComponent();           
             radioGroup1.SelectedIndexChanged += new EventHandler(radioGroup1_SelectedIndexChanged);
@@ -241,6 +242,44 @@ namespace Itop.TLPSP.DEVICE
             base.OnLoad(e);
             Init();
             RefreshData(dev.SUID);
+            if (isread)
+            {
+                comboBoxEdit2.Properties.ReadOnly = isread;
+                spinEdit6.Properties.ReadOnly = isread;
+                // comboBoxEdit3.Text = dev.IName;
+                // comboBoxEdit4.Text = dev.JName;
+                comboBoxEdit5.Properties.ReadOnly = isread;
+                comboBoxEdit6.Properties.ReadOnly = isread;
+                spinEdit16.Properties.ReadOnly = isread;
+                spinEdit15.Properties.ReadOnly = isread;
+                spinEdit14.Properties.ReadOnly = isread;
+                spinEdit4.Properties.ReadOnly = isread;
+                spinEdit3.Properties.ReadOnly = isread;
+                spinEdit2.Properties.ReadOnly = isread;
+                spinEdit17.Properties.ReadOnly = isread;
+                spinEdit21.Properties.ReadOnly = isread;
+                spinEdit22.Properties.ReadOnly = isread;
+                spinEdit18.Properties.ReadOnly = isread;
+                spinEdit19.Properties.ReadOnly = isread;
+                spinEdit20.Properties.ReadOnly = isread;
+                spinEdit23.Properties.ReadOnly = isread;
+                spinEdit24.Properties.ReadOnly = isread;
+                comboBoxEdit7.Properties.ReadOnly = isread;
+                comboBoxEdit8.Properties.ReadOnly = isread;
+                comboBoxEdit9.Properties.ReadOnly = isread;
+              
+                splength2.Properties.ReadOnly = isread;
+                comllfs.Properties.ReadOnly = isread;
+                comboBoxEdit10.Properties.ReadOnly = isread;
+                comboBoxEdit11.Properties.ReadOnly = isread;
+                spkg.Properties.ReadOnly = isread;
+            
+              lookUpEdit1.Properties.ReadOnly = isread;
+              textEdit1.Properties.ReadOnly = isread;
+              spinEdit8.Properties.ReadOnly = isread;
+              spinEdit5.Properties.ReadOnly = isread;
+             spinEdit11.Properties.ReadOnly = isread;
+            }
         }
 
         void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
