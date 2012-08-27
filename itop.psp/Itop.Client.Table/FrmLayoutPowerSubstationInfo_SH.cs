@@ -94,10 +94,10 @@ namespace Itop.Client.Table
             //this.ctrlSubstation_Info1.GridView.Columns["L11"].Visible = false;
             //this.ctrlSubstation_Info1.GridView.Columns["L12"].Visible = false;
             selectid = "1";
-            selectname = "变电站数据表";
+            selectname = "电源数据表";
             leixing = "运行";
             InitGridDataSH(con);
-            this.Text = "变电站统计";
+            this.Text = "电源统计";
             this.ShowDialog();
             
         }
