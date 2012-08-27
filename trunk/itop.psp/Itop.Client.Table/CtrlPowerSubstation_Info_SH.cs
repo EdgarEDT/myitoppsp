@@ -437,7 +437,7 @@ namespace Itop.Client.Table
                     }
                     if (twoz)
                     { index2z = i; twoz = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x2z.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20 = x2z.ToString();
                     h2z +=Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2) ;
                     //try
                     //{
@@ -468,7 +468,7 @@ namespace Itop.Client.Table
                     }
                     if (two)
                     { index2 = i; two = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x2.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20 = x2.ToString();
                     h2 += Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2);
                     //try
                     //{
@@ -499,7 +499,7 @@ namespace Itop.Client.Table
                     }
                     if (onez)
                     { index1z = i; onez = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x1z.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20 = x1z.ToString();
                     h1z +=Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2) ;
                     //try
                     //{
@@ -531,7 +531,7 @@ namespace Itop.Client.Table
                    
                     if (one)
                     { index1 = i; one = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x1.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20 = x1.ToString();
                     h1 += Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2);
                     //try
                     //{
@@ -561,7 +561,7 @@ namespace Itop.Client.Table
                     }
                     if (threez)
                     { index35z = i; threez = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x35z.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20 = x35z.ToString();
                     h35z += Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2);
                     //try
                     //{
@@ -591,7 +591,7 @@ namespace Itop.Client.Table
                     }
                     if (three)
                     { index35 = i; three = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x35.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20 = x35.ToString();
                     h35 +=Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2) ;
                     //try
                     //{
@@ -621,7 +621,7 @@ namespace Itop.Client.Table
                     }
                     if (tenz)
                     { index10z = i; tenz = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x10z.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20= x10z.ToString();
                     h10z += Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2);
                     //try
                     //{
@@ -651,7 +651,7 @@ namespace Itop.Client.Table
                     }
                     if (ten)
                     { index10 = i; ten = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x10.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20 = x10.ToString();
                     h10 += Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2);
                     //try
                     //{
@@ -681,7 +681,7 @@ namespace Itop.Client.Table
                     }
                     if (sixz)
                     { index6z = i; sixz = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x6z.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20 = x6z.ToString();
                     h6z += Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2);
                     //try
                     //{
@@ -711,7 +711,7 @@ namespace Itop.Client.Table
                     }
                     if (six)
                     { index6 = i; six = false; }
-                    ((PSP_PowerSubstation_Info)list[i]).S3 = x6.ToString();
+                    ((PSP_PowerSubstation_Info)list[i]).S20 = x6.ToString();
                     h6 += Convert.ToDouble(((PSP_PowerSubstation_Info)list[i]).S2);
                     //try
                     //{
