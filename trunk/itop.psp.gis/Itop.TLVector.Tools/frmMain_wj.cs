@@ -9966,7 +9966,12 @@ namespace ItopVector.Tools {
             {
                 zjLar = Layer.CreateNew("负荷标注", tlVectorControl1.SVGDocument);
                 zjLar.SetAttribute("layerType", "城市规划层");
-                zjLar.SetAttribute("ParentID", SaveID[0].ToString());
+                if (SaveID.Count>0)
+                {
+                    zjLar.SetAttribute("ParentID", SaveID[0].ToString());
+                }
+                else
+                    zjLar.SetAttribute("ParentID", "");
                 frmlar.AddLayer(zjLar, true);
             }
 
@@ -9986,7 +9991,7 @@ namespace ItopVector.Tools {
                     n1.SetAttribute("x", pf1.X.ToString());// Convert.ToString(rect.X + rect.Width / 2));
                     n1.SetAttribute("y", pf1.Y.ToString());// Convert.ToString(rect.Y + rect.Height / 2));
                     n1.SetAttribute("font-famliy", "宋体");
-                    n1.SetAttribute("font-size", "14");
+                    n1.SetAttribute("font-size", "96");
                     n1.InnerText = gle.Burthen.ToString();
                     n1.SetAttribute("layer", zjLar.ID);
                     tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);

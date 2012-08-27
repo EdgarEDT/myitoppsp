@@ -2261,7 +2261,7 @@ namespace Itop.TLPsp.Graphical {
                                 n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                                 n1.SetAttribute("x", Convert.ToString(bound.X));
                                 n1.SetAttribute("y", Convert.ToString(bound.Y - (i + 1) * 10 * tlVectorControl1.ScaleRatio));
-                                n1.SetAttribute("font-size", "6");
+                                n1.SetAttribute("font-size", "10");
                                 n1.SetAttribute("font-family", "楷体_GB2312");
                                 n1.SetAttribute("layer", SvgDocument.currentLayer);
                                 //MessageBox.Show(Convert.ToString(n1.InnerText));
@@ -2290,7 +2290,7 @@ namespace Itop.TLPsp.Graphical {
                                     n2.SetAttribute("y", Convert.ToString(bound.Y + bound.Height + 20));
                                     n2.SetAttribute("layer", SvgDocument.currentLayer);
                                     n2.SetAttribute("flag", "1");
-                                    n2.SetAttribute("font-size", "6");
+                                    n2.SetAttribute("font-size", "10");
                                     n2.SetAttribute("font-family", "楷体_GB2312");
                                     n2.SetAttribute("textn2id", element.GetAttribute("Deviceid"));
                                     tlVectorControl1.SVGDocument.RootElement.AppendChild(n2);
@@ -2407,7 +2407,7 @@ namespace Itop.TLPsp.Graphical {
                             n1.SetAttribute("y", Convert.ToString(pStart.Y));
                             n1.SetAttribute("layer", SvgDocument.currentLayer);
                             n1.SetAttribute("flag", "1");
-                            n1.SetAttribute("font-size", "6");
+                            n1.SetAttribute("font-size", "10");
                             n1.SetAttribute("font-family", "楷体_GB2312");
                             n1.SetAttribute("textn1id", element.GetAttribute("Deviceid"));
                             tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
@@ -2464,7 +2464,7 @@ namespace Itop.TLPsp.Graphical {
                         n2.SetAttribute("fill-opacity", "1");
                         n2.SetAttribute("layer", la.ID);
                         n2.SetAttribute("flag", "1");
-                        n2.SetAttribute("font-size", "6");
+                        n2.SetAttribute("font-size", "10");
                         n1.SetAttribute("font-family", "楷体_GB2312");
                         n2.SetAttribute("style", "fill:#000000");
                         tlVectorControl1.SVGDocument.RootElement.AppendChild(n2);
@@ -2596,7 +2596,7 @@ namespace Itop.TLPsp.Graphical {
                                 n1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
                                 n1.SetAttribute("x", Convert.ToString(bound.X));
                                 n1.SetAttribute("y", Convert.ToString(bound.Y - (0 + 1) * 10 * tlVectorControl1.ScaleRatio));
-                                n1.SetAttribute("font-size", "6");
+                                n1.SetAttribute("font-size", "10");
                                 n1.SetAttribute("font-family", "楷体_GB2312");
                                 n1.SetAttribute("layer", SvgDocument.currentLayer);
                                 //MessageBox.Show(Convert.ToString(n1.InnerText));
@@ -2627,7 +2627,7 @@ namespace Itop.TLPsp.Graphical {
                                     n2.SetAttribute("y", Convert.ToString(bound.Y + bound.Height + 20));
                                     n2.SetAttribute("layer", SvgDocument.currentLayer);
                                     n2.SetAttribute("flag", "1");
-                                    n2.SetAttribute("font-size", "6");
+                                    n2.SetAttribute("font-size", "10");
                                     n2.SetAttribute("font-family", "楷体_GB2312");
                                     n2.SetAttribute("textn2id", element.GetAttribute("Deviceid"));
                                     tlVectorControl1.SVGDocument.RootElement.AppendChild(n2);
@@ -2745,7 +2745,7 @@ namespace Itop.TLPsp.Graphical {
                             n1.SetAttribute("y", Convert.ToString(pStart.Y));
                             n1.SetAttribute("layer", SvgDocument.currentLayer);
                             n1.SetAttribute("flag", "1");
-                            n1.SetAttribute("font-size", "6");
+                            n1.SetAttribute("font-size", "10");
                             n1.SetAttribute("font-family", "楷体_GB2312");
                             n1.SetAttribute("textn1id", element.GetAttribute("Deviceid"));
                             tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
@@ -2788,7 +2788,7 @@ namespace Itop.TLPsp.Graphical {
                             n2.SetAttribute("fill-opacity", "1");
                             n2.SetAttribute("layer", la.ID);
                             n2.SetAttribute("flag", "1");
-                            n2.SetAttribute("font-size", "6");
+                            n2.SetAttribute("font-size", "10");
                             n2.SetAttribute("style", "fill:#000000");
                             tlVectorControl1.SVGDocument.RootElement.AppendChild(n2);
                             tlVectorControl1.SVGDocument.CurrentElement = n2 as SvgElement;
@@ -2996,7 +2996,7 @@ namespace Itop.TLPsp.Graphical {
                             n1.SetAttribute("y", Convert.ToString(pStart.Y));
                             n1.SetAttribute("layer", SvgDocument.currentLayer);
                             n1.SetAttribute("flag", "1");
-                            n1.SetAttribute("font-size", "6");
+                            n1.SetAttribute("font-size", "10");
                             n1.SetAttribute("textn1id", element.GetAttribute("Deviceid"));
                             tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
                             tlVectorControl1.Operation = ToolOperation.Select;
@@ -3041,7 +3041,7 @@ namespace Itop.TLPsp.Graphical {
                         n2.SetAttribute("fill-opacity", "1");
                         n2.SetAttribute("layer", SvgDocument.currentLayer);
                         n2.SetAttribute("flag", "1");
-                        n2.SetAttribute("font-size", "6");
+                        n2.SetAttribute("font-size", "10");
                         n2.SetAttribute("style", "fill:#000000");
                         tlVectorControl1.SVGDocument.RootElement.AppendChild(n2);
                         tlVectorControl1.SVGDocument.CurrentElement = n2 as SvgElement;
