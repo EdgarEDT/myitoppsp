@@ -388,6 +388,11 @@ namespace Itop.TLPSP.DEVICE
             }
             else
             {
+                if (GetDevice==null)
+                {
+                    MessageBox.Show("请选择设备类型以后再进行检索", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 XtraSelectfrm selecfrm = new XtraSelectfrm();
                 selecfrm.type = GetDevice.GetType();
                 selecfrm.ShowDialog();
