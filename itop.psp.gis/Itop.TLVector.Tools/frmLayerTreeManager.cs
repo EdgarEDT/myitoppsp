@@ -221,6 +221,7 @@ namespace ItopVector.Tools {
             dateEdit2.Enabled = false;
             button2.Enabled = false;
             barSubItem2.Enabled = false;
+            barSubItem1.Enabled = false;
         }
         public void InitData() {
             checkedListBox1.Items.Clear();
@@ -1703,6 +1704,7 @@ namespace ItopVector.Tools {
                     _svg.svgID = symbolDoc.SvgdataUid;
                     _svg.OrderID = int.Parse(treeList1.FocusedNode["OrderID"].ToString()) + 1;
                     _svg.MDATE = DateTime.Now;
+                    _svg.layerType = progtype;
                     Services.BaseService.Create<SVG_LAYER>(_svg);
                 }
                 DataRow row = dt.NewRow();
