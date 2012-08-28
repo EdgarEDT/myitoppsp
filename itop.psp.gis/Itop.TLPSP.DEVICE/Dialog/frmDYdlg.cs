@@ -304,7 +304,7 @@ namespace Itop.TLPSP.DEVICE
             frmc.childrendevice(types);
             if (frmc.DialogResult==DialogResult.OK)
             {
-                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='02'and SvgUID='" + DeviceMx.UID + "'";
+                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='04'and SvgUID='" + DeviceMx.UID + "'";
                 IList<PSPDEV> list = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
                 {
@@ -312,13 +312,13 @@ namespace Itop.TLPSP.DEVICE
                     {
                         if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(DeviceMx.S29) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(DeviceMx.S30))
                         {
-                            rl +=(double) pd.Burthen;
+                            rl +=pd.P0;
                             bts++;
                         }
                     }
                     else
                     {
-                        rl += (double)pd.Burthen;
+                        rl += pd.P0;
                         bts++;
                     }
                 }

@@ -52,7 +52,7 @@ namespace Itop.TLPSP.DEVICE
                 dev.HuganTQ2 = (double)spinEdit49.Value;
                 dev.ProjectID = ProjectSUID;
                 dev.LineType = textEdit2.Text;
-                dev.Date1 = date1.Text;
+                dev.Date1 = comboBoxEdit2.Text;
                 dev.Date2 = date2.Text;
                 return dev;
             }
@@ -89,7 +89,7 @@ namespace Itop.TLPSP.DEVICE
                spinEdit50.Value = (decimal)dev.HuganTQ1 ;
                spinEdit49.Value = (decimal)dev.HuganTQ2 ;
                 textEdit2.Text = dev.LineType;
-                date1.Text = dev.Date1;
+                comboBoxEdit2.Text = dev.Date1;
                 date2.Text = dev.Date2;
                 ProjectSUID = dev.ProjectID;
             }
@@ -106,6 +106,7 @@ namespace Itop.TLPSP.DEVICE
             {
                 o = System.DateTime.Now.Year + i;
                 comboBoxEdit1.Properties.Items.Add(o);
+                comboBoxEdit2.Properties.Items.Add(o);
                 date2.Properties.Items.Add(o);
             }
             string con = "where Type='01'AND  ProjectID ='" + this.ProjectSUID + "' and SvgUID='" + dev.SvgUID + "' order by name";
@@ -414,6 +415,11 @@ namespace Itop.TLPSP.DEVICE
             {
                 spinEdit21.Value = (decimal)(spinEdit9.Value / spinEdit11.Value);
             }
+        }
+
+        private void date2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

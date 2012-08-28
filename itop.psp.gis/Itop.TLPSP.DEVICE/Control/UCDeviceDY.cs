@@ -224,6 +224,13 @@ namespace Itop.TLPSP.DEVICE
             column.OptionsColumn.AllowEdit = false;
 
             column = gridView1.Columns.Add();
+            column.Caption = "开工年份";
+            column.FieldName = "S29";
+            column.Width = 100;
+            column.VisibleIndex = 5;
+            column.OptionsColumn.AllowEdit = false;
+
+            column = gridView1.Columns.Add();
             column.Caption = "投产年份";
             column.FieldName = "S3";
             column.Width = 100;
@@ -329,7 +336,7 @@ namespace Itop.TLPSP.DEVICE
             frmc.childrendevice(types);
             if (frmc.DialogResult == DialogResult.OK)
             {
-                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='02'and SvgUID='" + pj.UID + "'";
+                string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='04'and SvgUID='" + pj.UID + "'";
                 IList<PSPDEV> list = UCDeviceBase.DataService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                 foreach (PSPDEV pd in list)
                 {
@@ -337,13 +344,13 @@ namespace Itop.TLPSP.DEVICE
                     {
                         if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(pj.S29) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(pj.S30))
                         {
-                            rl += (double)pd.Burthen;
+                            rl += pd.P0;
                             bts++;
                         }
                     }
                     else
                     {
-                        rl += (double)pd.Burthen;
+                        rl += pd.P0;
                         bts++;
                     }
                 }

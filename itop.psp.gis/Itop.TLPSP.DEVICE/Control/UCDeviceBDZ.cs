@@ -241,7 +241,12 @@ namespace Itop.TLPSP.DEVICE
             column.Width = 100;
             column.VisibleIndex = 7;
             column.OptionsColumn.AllowEdit = false;
-           
+            column = gridView1.Columns.Add();
+            column.Caption = "开工年份";
+            column.FieldName = "L28";
+            column.Width = 100;
+            column.VisibleIndex = 8;
+            column.OptionsColumn.AllowEdit = false;
             column = gridView1.Columns.Add();
             column.Caption = "投产年份";
             column.FieldName = "S2";

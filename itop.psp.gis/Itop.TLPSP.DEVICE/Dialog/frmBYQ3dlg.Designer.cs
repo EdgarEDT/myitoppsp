@@ -2982,7 +2982,6 @@
             // 
             this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton3.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton3.Location = new System.Drawing.Point(263, 486);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(87, 29);
