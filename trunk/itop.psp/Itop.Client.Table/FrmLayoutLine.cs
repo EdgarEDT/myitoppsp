@@ -106,14 +106,14 @@ namespace Itop.Client.Table
         }
         public IList<double> DY()
         {
-            string constr ="   ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<" + nowyear+" and Type='05'  order by RateVolt desc";
+            string constr ="   ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<=" + nowyear+" and Type='05'  order by RateVolt desc";
             return Common.Services.BaseService.GetList<double>("SelectPSPDEV_RateVolt_distinct", constr);
             
         }
         public IList<string> GetAreaID(double tempdb)
         {
 
-            string constr = "  ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<" + nowyear + "  and Type='05'  and RateVolt=" + tempdb + " order by AreaID ";
+            string constr = "  ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<=" + nowyear + "  and Type='05'  and RateVolt=" + tempdb + " order by AreaID ";
             return Common.Services.BaseService.GetList<string>("SelectPSPDEV_GroupAreaID_DIs", constr);
         }
         public void InitData()
@@ -134,7 +134,7 @@ namespace Itop.Client.Table
                     tempdev.Type = "T";
                     m = 1;
 
-                    string lenthstr = "  ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<" + nowyear + "  and Type='05'  and RateVolt=" + templist[i];
+                    string lenthstr = "  ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<=" + nowyear + "  and Type='05'  and RateVolt=" + templist[i];
                     double linelength =(double)Common.Services.BaseService.GetObject("SelectPSPDEV_SUMLineLength", lenthstr);
                     double length2 = (double)Common.Services.BaseService.GetObject("SelectPSPDEV_SUMLength2", lenthstr);
                     tempdev.LineLength = linelength;
@@ -146,7 +146,7 @@ namespace Itop.Client.Table
                         tempdev1.ProjectID = Convert.ToChar(j + 65).ToString().ToLower(); ;
                         tempdev1.RateVolt = templist[i];
                         tempdev1.AreaID = GetAreaID(templist[i])[j];
-                        string lenthstra = "  ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<" + nowyear + "  and Type='05'  and RateVolt=" + templist[i] + "  and AreaID='" + GetAreaID(templist[i])[j] + "'";
+                        string lenthstra = "  ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<=" + nowyear + "  and Type='05'  and RateVolt=" + templist[i] + "  and AreaID='" + GetAreaID(templist[i])[j] + "'";
                         double linelengtha = (double)Common.Services.BaseService.GetObject("SelectPSPDEV_SUMLineLength", lenthstra);
                         double length2a = (double)Common.Services.BaseService.GetObject("SelectPSPDEV_SUMLength2", lenthstra);
                         tempdev1.LineLength = linelengtha;
@@ -154,7 +154,7 @@ namespace Itop.Client.Table
                         tempdev1.Type = "A";
                         valuelist.Add(tempdev1);
 
-                        string constr = " where  ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<" + nowyear + "   and Type='05' and RateVolt=" + templist[i] + " and AreaID='" + GetAreaID(templist[i])[j] + "'  order by Name";
+                        string constr = " where  ProjectID='" + ProjectID + "' and  year(cast(OperationYear as datetime))<=" + nowyear + "   and Type='05' and RateVolt=" + templist[i] + " and AreaID='" + GetAreaID(templist[i])[j] + "'  order by Name";
                           IList<PSPDEV> linelist = Common.Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", constr);
                           for (int k = 0; k < linelist.Count; k++)
                           {

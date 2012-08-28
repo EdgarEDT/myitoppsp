@@ -358,7 +358,7 @@ namespace Itop.Client.Table
                 for (int i = 0; i < list.Count;i++ )
                 {
                     double rl=0; int bts=0;
-                    string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='02'and SvgUID='" + ((PSP_PowerSubstation_Info)list[i]).UID + "'";
+                    string where = "where projectid='" + Itop.Client.MIS.ProgUID + "'and type='04'and SvgUID='" + ((PSP_PowerSubstation_Info)list[i]).UID + "'";
                     IList<PSPDEV> list1 = Services.BaseService.GetList<PSPDEV>("SelectPSPDEVByCondition", where);
                     foreach (PSPDEV pd in list1)
                     {
@@ -368,13 +368,13 @@ namespace Itop.Client.Table
                             {
                                 if (Convert.ToInt32(pd.OperationYear) >= Convert.ToInt32(((PSP_PowerSubstation_Info)list[i]).S29) && Convert.ToInt32(pd.Date2) <= Convert.ToInt32(((PSP_PowerSubstation_Info)list[i]).S30))
                                 {
-                                    rl += (double)pd.Burthen;
+                                    rl += pd.P0;
                                     bts++;
                                 }
                             }
                             else
                             {
-                                rl += (double)pd.Burthen;
+                                rl += (double)pd.P0;
                                 bts++;
                             }
                         }
