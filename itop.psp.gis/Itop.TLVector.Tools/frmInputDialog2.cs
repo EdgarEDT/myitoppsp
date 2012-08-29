@@ -12,6 +12,7 @@ namespace ItopVector.Tools
     {
         public string InputStr = "";
         public string strRemark = "";
+        public string rl = "";
         public frmInputDialog2()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace ItopVector.Tools
             }
             InputStr = textEdit1.Text;
             strRemark = nl1.Text;
+            rl = spinEdit1.Value.ToString();
             this.DialogResult = DialogResult.OK;
         }
      

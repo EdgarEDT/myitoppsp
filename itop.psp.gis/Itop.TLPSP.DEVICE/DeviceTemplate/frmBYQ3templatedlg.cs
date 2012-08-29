@@ -596,7 +596,56 @@ namespace Itop.TLPSP.DEVICE
 
         private void simpleButton3_Click_1(object sender, EventArgs e)
         {
+            if (radioGroup3.SelectedIndex == 0)
+            {
 
+            }
+            else
+            {
+                try
+                {
+                    double VPij = 0, VPjk = 0, VPik = 0, Pi = 0, Pj = 0, Pk = 0;
+                    VPij = Convert.ToDouble(DeviceMx.Pij) * (Convert.ToDouble(DeviceMx.SiN) / Convert.ToDouble(DeviceMx.SjN)) * (Convert.ToDouble(DeviceMx.SiN) / Convert.ToDouble(DeviceMx.SjN));
+                    VPjk = Convert.ToDouble(DeviceMx.Pjk) * (Convert.ToDouble(DeviceMx.SiN) / Math.Min(Convert.ToDouble(DeviceMx.SjN), Convert.ToDouble(DeviceMx.SkN))) * (Convert.ToDouble(DeviceMx.SiN) / Math.Min(Convert.ToDouble(DeviceMx.SjN), Convert.ToDouble(DeviceMx.SkN)));
+                    VPik = Convert.ToDouble(DeviceMx.Pik) * (Convert.ToDouble(DeviceMx.SiN) / Convert.ToDouble(DeviceMx.SkN)) * (Convert.ToDouble(DeviceMx.SiN) / Convert.ToDouble(DeviceMx.SkN));
+                    Pi = (VPij + VPik - VPjk) / 2;
+                    Pj = (VPij + VPjk - VPik) / 2;
+                    Pk = (VPjk + VPik - VPij) / 2;
+                    double SN = Convert.ToDouble(DeviceMx.SiN);
+                    double V = Convert.ToDouble(DeviceMx.Vi0);
+                    if (Convert.ToDouble(DeviceMx.Vj0) > V)
+                    {
+                        V = Convert.ToDouble(DeviceMx.Vj0);
+                        SN = Convert.ToDouble(DeviceMx.SjN);
+                    }
+                    if (Convert.ToDouble(DeviceMx.Vk0) > V)
+                    {
+                        V = Convert.ToDouble(DeviceMx.Vk0);
+                        SN = Convert.ToDouble(DeviceMx.SkN);
+                    }
+                    spinEdit63.Value = Convert.ToDecimal((Pi * 100 / (1000 * SN * SN)));
+                    spinEdit62.Value = Convert.ToDecimal((Pj * 100 / (1000 * SN * SN)));
+                    spinEdit61.Value = Convert.ToDecimal((Pk * 100 / (1000 * SN * SN)));
+                    double Vi = 0, Vj = 0, Vk = 0;
+                    Vi = (Convert.ToDouble(DeviceMx.Vij) + Convert.ToDouble(DeviceMx.Vik) - Convert.ToDouble(DeviceMx.Vjk)) / 2;
+                    Vj = (Convert.ToDouble(DeviceMx.Vij) + Convert.ToDouble(DeviceMx.Vjk) - Convert.ToDouble(DeviceMx.Vik)) / 2;
+                    Vk = (Convert.ToDouble(DeviceMx.Vik) + Convert.ToDouble(DeviceMx.Vjk) - Convert.ToDouble(DeviceMx.Vij)) / 2;
+                    dev.HuganTQ4 = Vi * 100 / (100 * 100 * SN);
+                    dev.HuganTQ5 = Vj * 100 / (100 * 100 * SN);
+                    dev.ZeroTQ = (Vk * 100 / (100 * 100 * SN));
+                    spinEdit60.Value = (decimal)dev.HuganTQ4;
+                    spinEdit59.Value = (decimal)dev.HuganTQ5;
+                    spinEdit58.Value = (decimal)dev.ZeroTQ;
+                   
+                    dev.K = (Convert.ToDouble(DeviceMx.Vimax) - Convert.ToDouble(DeviceMx.Vi0) * Convert.ToDouble(DeviceMx.Vistep) * (Convert.ToDouble(DeviceMx.Vipos) - 1) / 100) / Convert.ToDouble(DeviceMx.Vib);
+                    dev.StandardCurrent = (Convert.ToDouble(DeviceMx.Vjmax) - Convert.ToDouble(DeviceMx.Vj0) * Convert.ToDouble(DeviceMx.Vjstep) * (Convert.ToDouble(DeviceMx.Vjpos) - 1) / 100) / Convert.ToDouble(DeviceMx.Vjb);
+                    dev.BigP = (Convert.ToDouble(DeviceMx.Vkmax) - Convert.ToDouble(DeviceMx.Vk0) * Convert.ToDouble(DeviceMx.Vkstep) * (Convert.ToDouble(DeviceMx.Vkpos) - 1) / 100) / Convert.ToDouble(DeviceMx.Vkb);
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("请填写相应额定容量、抽头等信息！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void comboBoxEdit7_SelectedIndexChanged(object sender, EventArgs e)
