@@ -275,37 +275,38 @@ namespace ItopVector.Tools {
                 ChangeLayerList.Add(larid);
             }
             //MessageBox.Show(e.SvgElement.ID);
-            if (XZ_bdz.Length > 5) {
-            lb11:
+            //if (XZ_bdz.Length > 5) {
+            //lb11:
 
-                frmInputDialog2 input = new frmInputDialog2();
-                if (input.ShowDialog() == DialogResult.OK) {
+            //    frmInputDialog2 input = new frmInputDialog2();
+            //    if (input.ShowDialog() == DialogResult.OK) {
 
-                    PSP_SubstationSelect s = new PSP_SubstationSelect();
-                    s.SName = input.InputStr;
-                    s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
-                    PSP_SubstationSelect ss1 = (PSP_SubstationSelect)Services.BaseService.GetObject("SelectPSP_SubstationSelectByName", s);
-                    if (ss1 != null) {
-                        MessageBox.Show("名称重复。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        goto lb11;
-                    } else {
-                        s.UID = Guid.NewGuid().ToString();
-                        s.EleID = e.SvgElement.ID;
-                        s.SName = input.InputStr;
-                        s.Remark = input.strRemark;
-                        s.col2 = XZ_bdz;
-                        s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
-                        Services.BaseService.Create<PSP_SubstationSelect>(s);
-                    }
-                } else {
-                    tlVectorControl1.Delete();
-                }
-                if (MessageBox.Show("是否继续选择新的变电站址？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) {
+            //        PSP_SubstationSelect s = new PSP_SubstationSelect();
+            //        s.SName = input.InputStr;
+            //        s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
+            //        PSP_SubstationSelect ss1 = (PSP_SubstationSelect)Services.BaseService.GetObject("SelectPSP_SubstationSelectByName", s);
+            //        if (ss1 != null) {
+            //            MessageBox.Show("名称重复。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            goto lb11;
+            //        } else {
+            //            s.UID = Guid.NewGuid().ToString();
+            //            s.EleID = e.SvgElement.ID;
+            //            s.SName = input.InputStr;
+            //            s.Remark = input.strRemark;
+            //            s.col1 = input.rl;
+            //            s.col2 = XZ_bdz;
+            //            s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
+            //            Services.BaseService.Create<PSP_SubstationSelect>(s);
+            //        }
+            //    } else {
+            //        tlVectorControl1.Delete();
+            //    }
+            //    if (MessageBox.Show("是否继续选择新的变电站址？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) {
 
-                } else {
-                    XZ_bdz = "";
-                }
-            }
+            //    } else {
+            //        XZ_bdz = "";
+            //    }
+            //}
         }
 
         void DrawArea_BeforeAddSvgElement(object sender, AddSvgElementEventArgs e) {
@@ -1041,7 +1042,7 @@ namespace ItopVector.Tools {
                                     }
                                     if (wgydik.Length>0)
                                     {
-                                        MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
+                                        MessageBox.Show(wgydik.Substring(0, wgydik.Length) + "离已有和规划变电站都超出了最小供电半径或者附近的变电站超出了最大的供电能力！");
                                     }
                                     xzwcflag = "1";
                                     Extbdzreport(extsublist);
@@ -1223,7 +1224,7 @@ namespace ItopVector.Tools {
                                     }
                                     if (wgydik.Length>0)
                                     {
-                                        MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
+                                        MessageBox.Show(wgydik.Substring(0, wgydik.Length) + "离已有和规划变电站都超出了最小供电半径或者附近的变电站超出了最大的供电能力！");
                                     }
                                     Extbdzreport(extsublist);
                                     xzwcflag = "1";
@@ -1360,7 +1361,7 @@ namespace ItopVector.Tools {
                                     }
                                     if (wgydik.Length>0)
                                     {
-                                        MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
+                                        MessageBox.Show(wgydik.Substring(0, wgydik.Length) + "离已有和规划变电站都超出了最小供电半径或者附近的变电站超出了最大的供电能力！");
                                     }
                                     xzwcflag = "1";
                                 Extbdzreport(extsublist);
@@ -1420,7 +1421,7 @@ namespace ItopVector.Tools {
                                     }
                                     if (wgydik.Length>0)
                                     {
-                                        MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径！");
+                                        MessageBox.Show(wgydik.Substring(0,wgydik.Length)+"离已有和规划变电站都超出了最小供电半径或者附近的变电站超出了最大的供电能力！");
                                     }
                                     xzwcflag = "1";
                                 Extbdzreport(extsublist);
@@ -2192,7 +2193,7 @@ namespace ItopVector.Tools {
                         for (int j = 0; j < dkqk.Length; j++)
                         {
                             string[] dk = dkqk[j].Split(',');
-                            if(dk[0]==gp.UID)
+                            if(dk[0]==gp.EleID)
                             {
                                 dkrl=dk[1];
                                 newyfcrzb= subrl /((((subrl/Convert.ToDouble(yfcrzb))*dbl_rzb-Convert.ToDouble(dkrl))/dbl_rzb));
@@ -2242,9 +2243,10 @@ namespace ItopVector.Tools {
                         n1.SetAttribute("xz", "1");
                         tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
 
-                        fhdk += gp.UID + "," + (Convert.ToDouble(gp.Burthen) * dbl_rzb).ToString() + ";";
+                        fhdk += gp.EleID + "," + (Convert.ToDouble(gp.Burthen) * dbl_rzb).ToString() + ";";
+                        _x.SetAttribute("fhdk", fhdk);
                         _x.SetAttribute("yfcrzb", (subrl / ((subrl / Convert.ToDouble(yfcrzb)) + Convert.ToDouble(gp.Burthen))).ToString());
-                 
+                        
                     }
                    
                     flag = true;
@@ -2298,11 +2300,13 @@ namespace ItopVector.Tools {
                 //查找此地块离所有变电站中是否离此变电站最近
                  //地块负荷供应情况
                     string bdzandlenth= _x.GetAttribute("bdzandlenth");
+                   string[] dkqk=null;
+                   int minnumber = 0;
                     if (!string.IsNullOrEmpty(bdzandlenth))
                     {
                         double minlenth = 1000000;
-                        string[] dkqk = (bdzandlenth.Substring(0, bdzandlenth.LastIndexOf(";"))).Split(';');
-                        int minnumber = 0;
+                        dkqk = (bdzandlenth.Substring(0, bdzandlenth.LastIndexOf(";"))).Split(';');
+                       
                         for (int j = 0; j < dkqk.Length; j++)
                         {
                             string[] dk = dkqk[j].Split(',');
@@ -2324,11 +2328,26 @@ namespace ItopVector.Tools {
                 //改进后的不能有部分剩余了 能供则供 不能供则选择其他的变电站来供
                 if (ygdflag == "0")  //说明还没有供给的
                 {
-                    if (subrl * 1.15 >= sumrl) {
+                    if (subrl * 1.5 >= sumrl)
+                    {
                         fhdk += _x.GetAttribute("id") + "," + dkrl.ToString() + ";";
                         _x.SetAttribute("ygdflag", "1");
                         yfcrl = sumrl;
-                    } 
+                    }
+                    else
+                    {
+                        //去掉此地块的信息 在其他变电站重新寻找供给
+                        bdzandlenth = "";
+                         for (int j = 0; j < dkqk.Length; j++)
+                         {
+                             if (j!=minnumber)
+                             {
+                                 bdzandlenth += dkqk[j] + ";";
+                             }
+                         }
+                         _x.SetAttribute("bdzandlenth",bdzandlenth);
+                        continue;
+                    }
                     //else if (subrl * 1.5< sumrl && subrl >= (sumrl - dkrl)) {
                     //    double gyrl = ((subrl * 1.5 + dkrl) - sumrl);
                     //    double syrl = sumrl - subrl * 1.5;
@@ -6321,7 +6340,8 @@ namespace ItopVector.Tools {
                         DialogResult dia = mng.ShowDialog();
                         if (dia == DialogResult.OK) {
                             XZ_bdz = mng.code;
-                            MessageBox.Show("请选择变电站拖放置到希望的位置或者进行变电站自动选址。");
+                            //MessageBox.Show("请选择变电站拖放置到希望的位置或者进行变电站自动选址。");
+                            MessageBox.Show("请圈选区域，进行变电站自动选址。");
                             PSP_SubstationSelect sel = new PSP_SubstationSelect();
                             sel.col2 = XZ_bdz;
                             IList<PSP_SubstationSelect> _plist = Services.BaseService.GetList<PSP_SubstationSelect>("SelectPSP_SubstationSelectList", sel);

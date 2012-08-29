@@ -534,9 +534,9 @@ namespace Itop.TLPSP.DEVICE
                         V = Convert.ToDouble(DeviceMx.Vk0);
                         SN = Convert.ToDouble(DeviceMx.SkN);
                     }
-                   dev.HuganTQ1=Convert.ToDouble(Pi * 100 / (1000 * SN * SN));
-                    dev.HuganTQ2 =Convert.ToDouble(Pj * 100 / (1000 * SN * SN));
-                    dev.HuganTQ3 =Convert.ToDouble(Pk * 100 / (1000 * SN * SN));
+                    spinEdit63.Value = Convert.ToDecimal((Pi * 100 / (1000 * SN * SN)));
+                   spinEdit62.Value=Convert.ToDecimal((Pj * 100 / (1000 * SN * SN)));
+                   spinEdit61.Value=Convert.ToDecimal((Pk * 100 / (1000 * SN * SN)));
                     double Vi = 0, Vj = 0, Vk = 0;
                     Vi = (Convert.ToDouble(DeviceMx.Vij) + Convert.ToDouble(DeviceMx.Vik) - Convert.ToDouble(DeviceMx.Vjk)) / 2;
                     Vj = (Convert.ToDouble(DeviceMx.Vij) + Convert.ToDouble(DeviceMx.Vjk) - Convert.ToDouble(DeviceMx.Vik)) / 2;
@@ -547,6 +547,7 @@ namespace Itop.TLPSP.DEVICE
                     spinEdit60.Value = (decimal)dev.HuganTQ4;
                     spinEdit59.Value = (decimal)dev.HuganTQ5;
                     spinEdit58.Value = (decimal)dev.ZeroTQ;
+                    
                     dev.K = (Convert.ToDouble(DeviceMx.Vimax) - Convert.ToDouble(DeviceMx.Vi0) * Convert.ToDouble(DeviceMx.Vistep) * (Convert.ToDouble(DeviceMx.Vipos) - 1) / 100) / Convert.ToDouble(DeviceMx.Vib);
                     dev.StandardCurrent = (Convert.ToDouble(DeviceMx.Vjmax) - Convert.ToDouble(DeviceMx.Vj0) * Convert.ToDouble(DeviceMx.Vjstep) * (Convert.ToDouble(DeviceMx.Vjpos) - 1) / 100) / Convert.ToDouble(DeviceMx.Vjb);
                     dev.BigP = (Convert.ToDouble(DeviceMx.Vkmax) - Convert.ToDouble(DeviceMx.Vk0) * Convert.ToDouble(DeviceMx.Vkstep) * (Convert.ToDouble(DeviceMx.Vkpos) - 1) / 100) / Convert.ToDouble(DeviceMx.Vkb);
