@@ -438,6 +438,12 @@
     <Compile Include="frmSelLayer.Designer.cs">
       <DependentUpon>frmSelLayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSelxzlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelxzlayer.Designer.cs">
+      <DependentUpon>FrmSelxzlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1391,6 +1397,9 @@
     <EmbeddedResource Include="frmOpenProject.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmOpenProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelxzlayer.resx">
+      <DependentUpon>FrmSelxzlayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSet.resx">
       <SubType>Designer</SubType>
