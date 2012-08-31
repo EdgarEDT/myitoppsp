@@ -783,9 +783,14 @@ namespace ItopVector.Tools {
                         }
                          extsublist = new ArrayList();
                         //创建新的图层放置显示的链接线路
+                     
                         Layer lar = null;
                         string FileName = "变电站地块连接线";
-                        if (Layer.CkLayerExist(FileName, tlVectorControl1.SVGDocument)) {
+                        Layer sellar=getsellayer(SvgDocument.currentLayer, "电网规划层", tlVectorControl1.SVGDocument.getLayerList());
+                        if (sellar!=null)
+                        {
+                            FileName=sellar.Label+"-"+FileName;
+                                if (Layer.CkLayerExist(FileName, tlVectorControl1.SVGDocument)) {
                             ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
                             for (int i = 0; i < layercol.Count; i++) {
                                 if (FileName == (layercol[i] as Layer).GetAttribute("label")) {
@@ -798,9 +803,14 @@ namespace ItopVector.Tools {
 
                             lar.SetAttribute("layerType", progtype);
                             lar.SetAttribute("ParentID", SaveID[0].ToString());
+                            lar.SetAttribute("type","xz");
+                           lar.SetAttribute("xzlayerid",sellar.ID);
                             //this.frmlar.checkedListBox1.SelectedIndex = -1;
                             frmlar.AddLayer(lar, true);
                         }
+
+                        }
+                    
 
                         FrmSet f_set = new FrmSet();
                         f_set.s = sumss;
@@ -880,7 +890,9 @@ namespace ItopVector.Tools {
                                 }
                             }
                             if ((Convert.ToInt32(str_num) > 1) && (sumss == 0) && (useList.Count > Convert.ToInt32(str_num) + 2)) {
-                                if ((MessageBox.Show("区域内负荷为0，无法进行负荷分布自动选址。\r\n 是否进行最小覆盖圆自动选址？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)) == DialogResult.Yes) {
+                                if ((MessageBox.Show("区域内负荷为0，无法进行负荷分布自动选址。\r\n 是否进行最小覆盖圆自动选址？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)) == DialogResult.Yes)
+                                
+                                {
 
                                     int n = D_TIN.DS.VerticesNum;
                                     D_TIN.DS.set_cnt = D_TIN.DS.VerticesNum; D_TIN.DS.pos_cnt = 0;
@@ -924,7 +936,7 @@ namespace ItopVector.Tools {
                                     t0.SetAttribute("layer", SvgDocument.currentLayer);
                                     t0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                     t0.SetAttribute("font-famliy", "宋体");
-                                    t0.SetAttribute("font-size", "48");
+                                    t0.SetAttribute("font-size", "118");
                                     t0.InnerText = "1号";
                                     tlVectorControl1.SVGDocument.RootElement.AppendChild(t0);
 
@@ -986,7 +998,7 @@ namespace ItopVector.Tools {
                                         t1.SetAttribute("layer", SvgDocument.currentLayer);
                                         t1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                         t1.SetAttribute("font-famliy", "宋体");
-                                        t1.SetAttribute("font-size", "54");
+                                        t1.SetAttribute("font-size", "118");
                                         t1.InnerText = Convert.ToString((k)) + "号";
                                         tlVectorControl1.SVGDocument.RootElement.AppendChild(t1);
                                     }
@@ -1050,189 +1062,189 @@ namespace ItopVector.Tools {
                                 }
                             }
                             if ((Convert.ToInt32(str_num) > 1) && (useList.Count < Convert.ToInt32(str_num) + 2)) {
-                                if ((MessageBox.Show("当自动选址变电站个数等于" + str_num + "时，区域内必须至少有" + Convert.ToString(Convert.ToInt32(str_num) + 2) + "座已有变电站，否则无法进行负荷分布自动选址。\r\n 是否进行最小覆盖圆自动选址？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)) == DialogResult.Yes) {
+                                if ((MessageBox.Show("当自动选址变电站个数等于" + str_num + "时，区域内必须至少有" + Convert.ToString(Convert.ToInt32(str_num) + 2) + "座已有变电站，否则无法进行负荷分布自动选址。\r\n 请拖入至少"+(Convert.ToInt32(str_num) -2).ToString()+"个变电站！", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)) == DialogResult.Yes) {
 
-                                    int n = D_TIN.DS.VerticesNum;
-                                    D_TIN.DS.set_cnt = D_TIN.DS.VerticesNum; D_TIN.DS.pos_cnt = 0;
-                                    for (int i = 0; i < n; i++)
-                                        D_TIN.DS.curset[i] = i;
+                                //    int n = D_TIN.DS.VerticesNum;
+                                //    D_TIN.DS.set_cnt = D_TIN.DS.VerticesNum; D_TIN.DS.pos_cnt = 0;
+                                //    for (int i = 0; i < n; i++)
+                                //        D_TIN.DS.curset[i] = i;
 
-                                    D_TIN.mindisk();
-                                    Pen p2 = new Pen(Color.Red, 2);
-                                    Rectangle rec = new Rectangle((int)(D_TIN.DS.maxcic.x - D_TIN.DS.radius), (int)(D_TIN.DS.maxcic.y - D_TIN.DS.radius), (int)(2 * D_TIN.DS.radius), (int)(2 * D_TIN.DS.radius));
-                                    string str_sub = getSubName(str_dy);
+                                //    D_TIN.mindisk();
+                                //    Pen p2 = new Pen(Color.Red, 2);
+                                //    Rectangle rec = new Rectangle((int)(D_TIN.DS.maxcic.x - D_TIN.DS.radius), (int)(D_TIN.DS.maxcic.y - D_TIN.DS.radius), (int)(2 * D_TIN.DS.radius), (int)(2 * D_TIN.DS.radius));
+                                //    string str_sub = getSubName(str_dy);
 
-                                    //XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
-                                    //// Point point1 = tlVectorControl1.PointToView(new Point((int)D_TIN.DS.maxcic.x, (int)D_TIN.DS.maxcic.y));
-                                    //n1.SetAttribute("cx", D_TIN.DS.maxcic.x.ToString());
-                                    //n1.SetAttribute("cy", D_TIN.DS.maxcic.y.ToString());
-                                    //n1.SetAttribute("r", D_TIN.DS.radius.ToString());
-                                    //n1.SetAttribute("r", D_TIN.DS.radius.ToString());
-                                    //n1.SetAttribute("layer", SvgDocument.currentLayer);
-                                    //n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
-                                    //tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
-                                    //str_sub = getSubName(str_dy);
-                                    PointF pf = getOff(str_dy);
+                                //    //XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                //    //// Point point1 = tlVectorControl1.PointToView(new Point((int)D_TIN.DS.maxcic.x, (int)D_TIN.DS.maxcic.y));
+                                //    //n1.SetAttribute("cx", D_TIN.DS.maxcic.x.ToString());
+                                //    //n1.SetAttribute("cy", D_TIN.DS.maxcic.y.ToString());
+                                //    //n1.SetAttribute("r", D_TIN.DS.radius.ToString());
+                                //    //n1.SetAttribute("r", D_TIN.DS.radius.ToString());
+                                //    //n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                //    //n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                //    //tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+                                //    //str_sub = getSubName(str_dy);
+                                //    PointF pf = getOff(str_dy);
 
-                                    XmlElement e0 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
-                                    e0.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
-                                    e0.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
-                                      e0.SetAttribute("cx", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
-                                    e0.SetAttribute("cy", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
-                                    e0.SetAttribute("xzflag", "1");
-                                    e0.SetAttribute("xlink:href", str_sub);
-                                    e0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
-                                    e0.SetAttribute("layer", SvgDocument.currentLayer);
-                                    e0.SetAttribute("subname", "1号");
-                                    e0.SetAttribute("rl", dbl_rl.ToString());
-                                    tlVectorControl1.SVGDocument.RootElement.AppendChild(e0);
-                                    tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e0);
-                                    //获得此变电站的最小半径的圆 生成辐射线
-                                    XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
-                                    n1.SetAttribute("cx", e0.GetAttribute("x").ToString());
-                                    n1.SetAttribute("cy", e0.GetAttribute("y").ToString());
-                                    n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
-                                    n1.SetAttribute("subname", "1号");
-                                    n1.SetAttribute("layer", SvgDocument.currentLayer);
-                                    n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
-                                    SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e0);
-                                    subandfhlist.Add(sf);
-                                    //CreateSubline1(sf, true, lar);
-                                    extsublist.Add(e0);
-                                    //
-                                    XmlElement t0 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
-                                    t0.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x));
-                                    t0.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y));
+                                //    XmlElement e0 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
+                                //    e0.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
+                                //    e0.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
+                                //      e0.SetAttribute("cx", Convert.ToString(D_TIN.DS.maxcic.x - pf.X));
+                                //    e0.SetAttribute("cy", Convert.ToString(D_TIN.DS.maxcic.y - pf.Y));
+                                //    e0.SetAttribute("xzflag", "1");
+                                //    e0.SetAttribute("xlink:href", str_sub);
+                                //    e0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
+                                //    e0.SetAttribute("layer", SvgDocument.currentLayer);
+                                //    e0.SetAttribute("subname", "1号");
+                                //    e0.SetAttribute("rl", dbl_rl.ToString());
+                                //    tlVectorControl1.SVGDocument.RootElement.AppendChild(e0);
+                                //    tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e0);
+                                //    //获得此变电站的最小半径的圆 生成辐射线
+                                //    XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                //    n1.SetAttribute("cx", e0.GetAttribute("x").ToString());
+                                //    n1.SetAttribute("cy", e0.GetAttribute("y").ToString());
+                                //    n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
+                                //    n1.SetAttribute("subname", "1号");
+                                //    n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                //    n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                //    SubandFHcollect sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e0);
+                                //    subandfhlist.Add(sf);
+                                //    //CreateSubline1(sf, true, lar);
+                                //    extsublist.Add(e0);
+                                //    //
+                                //    XmlElement t0 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
+                                //    t0.SetAttribute("x", Convert.ToString(D_TIN.DS.maxcic.x));
+                                //    t0.SetAttribute("y", Convert.ToString(D_TIN.DS.maxcic.y));
 
-                                    t0.SetAttribute("layer", SvgDocument.currentLayer);
-                                    t0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
-                                    t0.SetAttribute("font-famliy", "宋体");
-                                    t0.SetAttribute("font-size", "48");
-                                    t0.InnerText = "1号";
-                                    tlVectorControl1.SVGDocument.RootElement.AppendChild(t0);
+                                //    t0.SetAttribute("layer", SvgDocument.currentLayer);
+                                //    t0.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
+                                //    t0.SetAttribute("font-famliy", "宋体");
+                                //    t0.SetAttribute("font-size", "118");
+                                //    t0.InnerText = "1号";
+                                //    tlVectorControl1.SVGDocument.RootElement.AppendChild(t0);
 
-                                    PSP_SubstationSelect s = new PSP_SubstationSelect();
-                                    s.UID = Guid.NewGuid().ToString();
-                                    s.EleID = e0.GetAttribute("id");
-                                    s.SName = "1号";
-                                    s.Remark = "";
-                                    s.col2 = XZ_bdz;
-                                    s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
-                                    Services.BaseService.Create<PSP_SubstationSelect>(s);
+                                //    PSP_SubstationSelect s = new PSP_SubstationSelect();
+                                //    s.UID = Guid.NewGuid().ToString();
+                                //    s.EleID = e0.GetAttribute("id");
+                                //    s.SName = "1号";
+                                //    s.Remark = "";
+                                //    s.col2 = XZ_bdz;
+                                //    s.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                //    Services.BaseService.Create<PSP_SubstationSelect>(s);
 
-                                    decimal c = 360 / (Convert.ToInt32(str_num));
-                                    for (int k = 2; k <= Convert.ToInt32(str_num); k++) {
+                                //    decimal c = 360 / (Convert.ToInt32(str_num));
+                                //    for (int k = 2; k <= Convert.ToInt32(str_num); k++) {
 
-                                        decimal x = Convert.ToDecimal(D_TIN.DS.maxcic.x + D_TIN.DS.radius * Math.Cos(Convert.ToDouble(c * k) * Math.PI / 180));
-                                        decimal y = Convert.ToDecimal(D_TIN.DS.maxcic.y + D_TIN.DS.radius * Math.Sin(Convert.ToDouble(c * k) * Math.PI / 180));
+                                //        decimal x = Convert.ToDecimal(D_TIN.DS.maxcic.x + D_TIN.DS.radius * Math.Cos(Convert.ToDouble(c * k) * Math.PI / 180));
+                                //        decimal y = Convert.ToDecimal(D_TIN.DS.maxcic.y + D_TIN.DS.radius * Math.Sin(Convert.ToDouble(c * k) * Math.PI / 180));
 
-                                        XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
-                                        e1.SetAttribute("x", Convert.ToString(Convert.ToSingle(x) - pf.X));
-                                        e1.SetAttribute("y", Convert.ToString(Convert.ToSingle(y) - pf.Y));
-                                        e1.SetAttribute("cx", Convert.ToString(Convert.ToSingle(x) - pf.X));
-                                        e1.SetAttribute("cy",  Convert.ToString(Convert.ToSingle(y) - pf.Y));
-                                        e1.SetAttribute("xzflag", "1");
-                                        e1.SetAttribute("xlink:href", str_sub);
-                                        e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
-                                        e1.SetAttribute("layer", SvgDocument.currentLayer);
-                                        e1.SetAttribute("subname", Convert.ToString(k) + "号");
-                                        e1.SetAttribute("rl", dbl_rl.ToString());
-                                        tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
-                                        tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
-                                        //获得此变电站的最小半径的圆 生成辐射线
-                                        n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
-                                        n1.SetAttribute("cx", e1.GetAttribute("x").ToString());
-                                        n1.SetAttribute("cy", e1.GetAttribute("y").ToString());
-                                        n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
-                                        n1.SetAttribute("subname", Convert.ToString(k) + "号");
-                                        n1.SetAttribute("layer", SvgDocument.currentLayer);
-                                        n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
-                                        sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
-                                        subandfhlist.Add(sf);
-                                       // CreateSubline1(sf, true, lar);
-                                        extsublist.Add(e1);
-                                        //
-                                        PSP_SubstationSelect s2 = new PSP_SubstationSelect();
-                                        s2.UID = Guid.NewGuid().ToString();
-                                        s2.EleID = e1.GetAttribute("id");
-                                        s2.SName = Convert.ToString((k)) + "号";
-                                        s2.Remark = "";
-                                        s2.col2 = XZ_bdz;
-                                        s2.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
-                                        Services.BaseService.Create<PSP_SubstationSelect>(s2);
-
-
-                                        XmlElement t1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
-                                        t1.SetAttribute("x", Convert.ToString(x));
-                                        t1.SetAttribute("y", Convert.ToString(y));
-
-                                        t1.SetAttribute("layer", SvgDocument.currentLayer);
-                                        t1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
-                                        t1.SetAttribute("font-famliy", "宋体");
-                                        t1.SetAttribute("font-size", "54");
-                                        t1.InnerText = Convert.ToString((k)) + "号";
-                                        tlVectorControl1.SVGDocument.RootElement.AppendChild(t1);
-                                    }
-                                    //给已有变电站创建
-                                    for (int m = 0; m < useList.Count; m++) {
-                                        Use _p = useList[m] as Use;
-                                        (useList[m] as XmlElement).SetAttribute("ghyk", "1");
-                                        string str_t = _p.GetAttribute("xlink:href");
-
-                                        PointF of = TLMath.getUseOffset(str_t);
-                                        PointF p1 = new PointF(_p.X, _p.Y);
-                                        PointF[] pnt = new PointF[1];
-                                        pnt[0] = p1;
-                                        _p.Transform.Matrix.TransformPoints(pnt);
-                                        XmlElement e2 = (XmlElement)useList[m];
-                                        PSP_Substation_Info _sub1 = new PSP_Substation_Info();
+                                //        XmlElement e1 = tlVectorControl1.SVGDocument.CreateElement("use") as XmlElement;
+                                //        e1.SetAttribute("x", Convert.ToString(Convert.ToSingle(x) - pf.X));
+                                //        e1.SetAttribute("y", Convert.ToString(Convert.ToSingle(y) - pf.Y));
+                                //        e1.SetAttribute("cx", Convert.ToString(Convert.ToSingle(x) - pf.X));
+                                //        e1.SetAttribute("cy",  Convert.ToString(Convert.ToSingle(y) - pf.Y));
+                                //        e1.SetAttribute("xzflag", "1");
+                                //        e1.SetAttribute("xlink:href", str_sub);
+                                //        e1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
+                                //        e1.SetAttribute("layer", SvgDocument.currentLayer);
+                                //        e1.SetAttribute("subname", Convert.ToString(k) + "号");
+                                //        e1.SetAttribute("rl", dbl_rl.ToString());
+                                //        tlVectorControl1.SVGDocument.RootElement.AppendChild(e1);
+                                //        tlVectorControl1.SVGDocument.SelectCollection.Add((SvgElement)e1);
+                                //        //获得此变电站的最小半径的圆 生成辐射线
+                                //        n1 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                //        n1.SetAttribute("cx", e1.GetAttribute("x").ToString());
+                                //        n1.SetAttribute("cy", e1.GetAttribute("y").ToString());
+                                //        n1.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
+                                //        n1.SetAttribute("subname", Convert.ToString(k) + "号");
+                                //        n1.SetAttribute("layer", SvgDocument.currentLayer);
+                                //        n1.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                //        sf = new SubandFHcollect(GetsubFhk((Circle)n1, polylist), e1);
+                                //        subandfhlist.Add(sf);
+                                //       // CreateSubline1(sf, true, lar);
+                                //        extsublist.Add(e1);
+                                //        //
+                                //        PSP_SubstationSelect s2 = new PSP_SubstationSelect();
+                                //        s2.UID = Guid.NewGuid().ToString();
+                                //        s2.EleID = e1.GetAttribute("id");
+                                //        s2.SName = Convert.ToString((k)) + "号";
+                                //        s2.Remark = "";
+                                //        s2.col2 = XZ_bdz;
+                                //        s2.SvgID = tlVectorControl1.SVGDocument.SvgdataUid;
+                                //        Services.BaseService.Create<PSP_SubstationSelect>(s2);
 
 
-                                        XmlElement n2 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
-                                        n2.SetAttribute("cx", ((long)pnt[0].X + (long)of.X).ToString());
-                                        n2.SetAttribute("cy", ((long)pnt[0].Y + (long)of.Y).ToString());
-                                        n2.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
+                                //        XmlElement t1 = tlVectorControl1.SVGDocument.CreateElement("text") as Text;
+                                //        t1.SetAttribute("x", Convert.ToString(x));
+                                //        t1.SetAttribute("y", Convert.ToString(y));
 
-                                        n2.SetAttribute("layer", SvgDocument.currentLayer);
-                                        n2.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
-                                        _sub1.UID = e2.GetAttribute("Deviceid");
-                                        _sub1 = Services.BaseService.GetOneByKey<PSP_Substation_Info>(_sub1);
-                                        if (_sub1 != null) {
-                                            n2.SetAttribute("subname", _sub1.Title);
-                                            n2.SetAttribute("id", _sub1.EleID);
-                                            n2.SetAttribute("rl", _sub1.L2.ToString());
-                                        }
+                                //        t1.SetAttribute("layer", SvgDocument.currentLayer);
+                                //        t1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
+                                //        t1.SetAttribute("font-famliy", "宋体");
+                                //        t1.SetAttribute("font-size", "118");
+                                //        t1.InnerText = Convert.ToString((k)) + "号";
+                                //        tlVectorControl1.SVGDocument.RootElement.AppendChild(t1);
+                                //    }
+                                //    //给已有变电站创建
+                                //    for (int m = 0; m < useList.Count; m++) {
+                                //        Use _p = useList[m] as Use;
+                                //        (useList[m] as XmlElement).SetAttribute("ghyk", "1");
+                                //        string str_t = _p.GetAttribute("xlink:href");
 
-                                        SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n2, polylist), n2);
-                                        subandfhlist.Add(sf1);
-                                       // CreateSubline1(sf1, false, lar);
+                                //        PointF of = TLMath.getUseOffset(str_t);
+                                //        PointF p1 = new PointF(_p.X, _p.Y);
+                                //        PointF[] pnt = new PointF[1];
+                                //        pnt[0] = p1;
+                                //        _p.Transform.Matrix.TransformPoints(pnt);
+                                //        XmlElement e2 = (XmlElement)useList[m];
+                                //        PSP_Substation_Info _sub1 = new PSP_Substation_Info();
+
+
+                                //        XmlElement n2 = tlVectorControl1.SVGDocument.CreateElement("circle") as Circle;
+                                //        n2.SetAttribute("cx", ((long)pnt[0].X + (long)of.X).ToString());
+                                //        n2.SetAttribute("cy", ((long)pnt[0].Y + (long)of.Y).ToString());
+                                //        n2.SetAttribute("r", (TLMath.getdcNumber(Convert.ToDecimal(str_jj), tlVectorControl1.ScaleRatio)).ToString());
+
+                                //        n2.SetAttribute("layer", SvgDocument.currentLayer);
+                                //        n2.SetAttribute("style", "fill:#FFFFC0;fill-opacity:0.5;stroke:#000000;stroke-opacity:1;");
+                                //        _sub1.UID = e2.GetAttribute("Deviceid");
+                                //        _sub1 = Services.BaseService.GetOneByKey<PSP_Substation_Info>(_sub1);
+                                //        if (_sub1 != null) {
+                                //            n2.SetAttribute("subname", _sub1.Title);
+                                //            n2.SetAttribute("id", _sub1.EleID);
+                                //            n2.SetAttribute("rl", _sub1.L2.ToString());
+                                //        }
+
+                                //        SubandFHcollect sf1 = new SubandFHcollect(GetsubFhk((Circle)n2, polylist), n2);
+                                //        subandfhlist.Add(sf1);
+                                //       // CreateSubline1(sf1, false, lar);
                                      
-                                        extsublist.Add(n2);
-                                    }
-                                    for (int m = 0; m < subandfhlist.Count; m++)
-                                    {
-                                        CreateSubline1(subandfhlist[m], false, lar);
-                                    }
-                                      string wgydik = "";
-                                    for (int m = 0; m < polylist.Count;m++ )
-                                    {
-                                        string ygflag = ((XmlElement)polylist[m]).GetAttribute("ygdflag");
-                                        if (ygflag=="0")
-                                        {
-                                            wgydik+=((XmlElement)polylist[m]).GetAttribute("name")+",";
-                                        }
-                                    }
-                                    if (wgydik.Length>0)
-                                    {
-                                        MessageBox.Show(wgydik.Substring(0, wgydik.Length) + "离已有和规划变电站都超出了最小供电半径或者附近的变电站超出了最大的供电能力！");
-                                    }
-                                    Extbdzreport(extsublist);
-                                    xzwcflag = "1";
-                                    return;
-                                } else {
-                                    bdz_xz = "";
-                                    return;
-                                }
+                                //        extsublist.Add(n2);
+                                //    }
+                                //    for (int m = 0; m < subandfhlist.Count; m++)
+                                //    {
+                                //        CreateSubline1(subandfhlist[m], false, lar);
+                                //    }
+                                //      string wgydik = "";
+                                //    for (int m = 0; m < polylist.Count;m++ )
+                                //    {
+                                //        string ygflag = ((XmlElement)polylist[m]).GetAttribute("ygdflag");
+                                //        if (ygflag=="0")
+                                //        {
+                                //            wgydik+=((XmlElement)polylist[m]).GetAttribute("name")+",";
+                                //        }
+                                //    }
+                                //    if (wgydik.Length>0)
+                                //    {
+                                //        MessageBox.Show(wgydik.Substring(0, wgydik.Length) + "离已有和规划变电站都超出了最小供电半径或者附近的变电站超出了最大的供电能力！");
+                                //    }
+                                //    Extbdzreport(extsublist);
+                                //    xzwcflag = "1";
+                                //    return;
+                                //} else {
+                                //    bdz_xz = "";
+                                //    return;
+                               }
                             }
 
 
@@ -1303,7 +1315,7 @@ namespace ItopVector.Tools {
                                 t1.SetAttribute("layer", SvgDocument.currentLayer);
                                 t1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                                 t1.SetAttribute("font-famliy", "宋体");
-                                t1.SetAttribute("font-size", "54");
+                                t1.SetAttribute("font-size", "118");
                                 t1.InnerText = "1号";
                                 tlVectorControl1.SVGDocument.RootElement.AppendChild(t1);
 
@@ -2022,7 +2034,7 @@ namespace ItopVector.Tools {
                     t1.SetAttribute("layer", SvgDocument.currentLayer);
                     t1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#000000;stroke-opacity:1;");
                     t1.SetAttribute("font-famliy", "宋体");
-                    t1.SetAttribute("font-size", "54");
+                    t1.SetAttribute("font-size", "118");
                     t1.InnerText = Convert.ToString(k + 1) + "号";
                     tlVectorControl1.SVGDocument.RootElement.AppendChild(t1);
 
@@ -2144,6 +2156,125 @@ namespace ItopVector.Tools {
             }
 
         }
+       private void  RebdzxzResult1(List<SubandFHcollect> subandfhlist1, ArrayList extsublist1, glebeProperty gp, string befordbzname,string layid)
+       {
+           
+            ////寻找选址的图层
+            //   Layer lar = null;
+            //    string FileName = "变电站地块连接线";
+            //    if (Layer.CkLayerExist(FileName, tlVectorControl1.SVGDocument)) {
+            //        ArrayList layercol = tlVectorControl1.SVGDocument.getLayerList();
+            //        for (int i = 0; i < layercol.Count; i++) {
+            //            if (FileName == (layercol[i] as Layer).GetAttribute("label")) {
+            //                lar = (Layer)layercol[i];
+            //                break;
+            //            }
+            //        }
+            //    } else {
+            //        lar = Layer.CreateNew(FileName, tlVectorControl1.SVGDocument);
+
+            //        lar.SetAttribute("layerType", progtype);
+            //        lar.SetAttribute("ParentID", SaveID[0].ToString());
+            //        //this.frmlar.checkedListBox1.SelectedIndex = -1;
+            //        frmlar.AddLayer(lar, true);
+            //    }
+
+            //判断选择变电站是否在选择的变电站内
+            bool flag=false;
+             string newfhdk="";
+              string dkrl="";
+            for(int i=0;i<extsublist.Count;i++)
+            {
+                XmlElement _x=extsublist[i] as XmlElement;
+                string subname=_x.GetAttribute("subname");
+                string yfcrzb=_x.GetAttribute("yfcrzb");
+                double subrl=subrl = Convert.ToDouble(_x.GetAttribute("rl"));
+                string fhdk=_x.GetAttribute("fhdk");
+               
+                if(!string.IsNullOrEmpty(fhdk))
+                {
+                    if(fhdk.Contains(gp.EleID))
+                    {
+                        double newyfcrzb=dbl_rzb;
+                        //找到原来的线路删掉
+                        XmlNode xnode = tlVectorControl1.SVGDocument.SelectSingleNode("svg/polyline[@layer='"+layid+"'and @FirstNode='" + _x.GetAttribute("id").ToString() + "'and @LastNode='" + gp.EleID + "']");
+                        if (xnode != null) {
+                            tlVectorControl1.SVGDocument.RootElement.RemoveChild(xnode);
+                        }
+                           string[] dkqk = (fhdk.Substring(0, fhdk.LastIndexOf(";"))).Split(';');
+
+                        for (int j = 0; j < dkqk.Length; j++)
+                        {
+                            string[] dk = dkqk[j].Split(',');
+                            if(dk[0]==gp.EleID)
+                            {
+                                dkrl=dk[1];
+                                newyfcrzb= subrl /((((subrl/Convert.ToDouble(yfcrzb))*dbl_rzb-Convert.ToDouble(dkrl))/dbl_rzb));
+                                continue;
+                            }
+                            newfhdk+=dkqk[j]+";";
+                        }
+                        _x.SetAttribute("fhdk", newfhdk);
+                         _x.SetAttribute("yfcrzb", newyfcrzb.ToString());
+                    }
+                   
+                 
+                }
+                //对新的变电站进行改造
+                if (subname == gp.ObligateField7)
+                {
+                    //添加线路
+                    XmlElement dk = (XmlElement)tlVectorControl1.SVGDocument.SelectSingleNode("svg/polygon [@IsArea='1'and @id='" + gp.EleID + "']");
+                    if (dk != null)
+                    {
+                        PointF _f = TLMath.polyCentriod(dk);
+                        string temp = _x.GetAttribute("cx").ToString() + " " + _x.GetAttribute("cy").ToString() + "," + _f.X.ToString() + " " + _f.Y.ToString();
+                        XmlElement n1 = tlVectorControl1.SVGDocument.CreateElement("polyline") as Polyline;
+
+                        n1.SetAttribute("points", temp);
+                        //如果是规划
+                        if (flag)
+                        {
+                            _x.SetAttribute("xz", "1");
+                            n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#990033;stroke-opacity:1;");
+
+                        }
+                        else
+                        {
+                            if (_x.GetAttribute("xz") != "1")
+                            {
+                                _x.SetAttribute("xz", "0");
+                            }
+
+                            n1.SetAttribute("style", "fill:#FFFFFF;fill-opacity:1;stroke:#330099;stroke-opacity:1;");
+
+                        }
+                        n1.SetAttribute("layer", layid);
+                        n1.SetAttribute("IsLead", "1");
+                        n1.SetAttribute("FirstNode", _x.GetAttribute("id").ToString());
+                        n1.SetAttribute("LastNode", dk.GetAttribute("id").ToString());
+                        n1.SetAttribute("xz", "1");
+                        tlVectorControl1.SVGDocument.RootElement.AppendChild(n1);
+
+                        fhdk += gp.EleID + "," + (Convert.ToDouble(gp.Burthen) * dbl_rzb).ToString() + ";";
+                        _x.SetAttribute("fhdk", fhdk);
+                        _x.SetAttribute("yfcrzb", (subrl / ((subrl / Convert.ToDouble(yfcrzb)) + Convert.ToDouble(gp.Burthen))).ToString());
+                        
+                    }
+                   
+                    flag = true;
+
+                }
+            
+            }
+            if(!flag)
+            {
+                MessageBox.Show("选择的变电站不在选址范围内 请重新操作！");
+               return;
+            }
+            Extbdzreport(extsublist);
+            //首先找出原来变电站和地块的关系
+       }
         private void RebdzxzResult(List<SubandFHcollect> subandfhlist1, ArrayList extsublist1, glebeProperty gp, string befordbzname)
         { 
             //寻找选址的图层
@@ -4046,7 +4177,20 @@ namespace ItopVector.Tools {
                                               }
                                               try
                                               {
-                                                  RebdzxzResult(subandfhlist, extsublist, f.gPro, f.bdzzqname);
+                                                List<Layer> layercol=  getxzxllayers(tlVectorControl1.SVGDocument.getLayerList());
+                                                  if (layercol.Count>0)
+                                                  {
+                                                      FrmSelxzlayer frm=new FrmSelxzlayer();
+                                                      frm.Layercol=layercol;
+                                                      if (frm.ShowDialog()==DialogResult.OK)
+                                                      {
+                                                          string layerid=frm.sellayerid;
+                                                           RebdzxzResult1(subandfhlist, extsublist, f.gPro, f.bdzzqname,layerid);
+                                                      }
+                                                      else
+                                                        RebdzxzResult(subandfhlist, extsublist, f.gPro, f.bdzzqname);
+                                                  }
+                                                 // RebdzxzResult(subandfhlist, extsublist, f.gPro, f.bdzzqname);
                                               }
                                               catch (System.Exception ex)
                                               {
@@ -10940,7 +11084,36 @@ namespace ItopVector.Tools {
             }
             return false;
         }
-
+          public Layer getsellayer(string CurrLayerID, string LayerName, ArrayList LayerList) {
+            Layer layer = null;
+            string layerType = "";
+            for (int i = 0; i < LayerList.Count; i++) {
+                if (CurrLayerID == ((Layer)LayerList[i]).ID) {
+                    layer = (Layer)LayerList[i];
+                    layerType = layer.GetAttribute("layerType");
+                    if (layerType == LayerName) {
+                        return layer;
+                    }
+                }
+            }
+            return layer;
+        }
+        public List<Layer> getxzxllayers(ArrayList LayerList)
+        {
+            List<Layer> layercol=new List<Layer>();
+            for (int i = 0; i < LayerList.Count; i++)
+            {
+                string xztype=((Layer)LayerList[i]).GetAttribute("type");
+                if (!string.IsNullOrEmpty(xztype))
+                {
+                    if (xztype=="xz")
+                    {
+                        layercol.Add((Layer)LayerList[i]);
+                    }
+                }
+            }
+            return layercol;
+        }
         private void ImportDxf() {
             string strGUID = tlVectorControl1.SVGDocument.SvgdataUid;
             openFileDialog1.Filter = "AUTOCAD DXF文件 (*.dxf)(*.dwg)|*.dxf;*.dwg";
