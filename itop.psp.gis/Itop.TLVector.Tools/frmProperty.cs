@@ -12,6 +12,7 @@ using Itop.Domain.Graphics;
 
 using Itop.Client.Base;
 using Itop.Domain.Table;
+using System.Xml;
 namespace ItopVector.Tools
 {
     public partial class frmProperty : FormBase
@@ -140,6 +141,7 @@ namespace ItopVector.Tools
         {
           
         }
+        public ArrayList extsublist;
         public bool bdzflag = false;
         public string bdzzqname = "";
         public string XZ_bdz = "";
@@ -163,6 +165,16 @@ namespace ItopVector.Tools
                 {
                      comboBoxEdit1.Properties.Items.Add(ps.SName);
                 }
+                if (extsublist.Count>0)
+                {
+                    comboBoxEdit1.Properties.Items.Clear();
+                    for (int i = 0; i < extsublist.Count; i++)
+                    {
+                        XmlElement _x = extsublist[i] as XmlElement;
+                        string subname = _x.GetAttribute("subname");
+                        comboBoxEdit1.Properties.Items.Add(subname);
+                    }
+              }
             }
             if (string.IsNullOrEmpty(gPro.ObligateField16))
             {
