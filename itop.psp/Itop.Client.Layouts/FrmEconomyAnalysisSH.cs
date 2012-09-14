@@ -1998,7 +1998,7 @@ namespace Itop.Client.Layouts
                     catch { ed.S1 = 0; }
                     try
                     {
-                        ed.S2 = int.Parse(fpSpread1.Sheets[8].GetValue(16, 1 + i).ToString());
+                        ed.S2 = double.Parse(fpSpread1.Sheets[8].GetValue(16, 1 + i).ToString());
                     }
 
                     catch { ed.S2 = 0; }
