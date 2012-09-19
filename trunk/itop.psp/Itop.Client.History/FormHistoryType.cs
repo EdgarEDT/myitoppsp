@@ -62,25 +62,61 @@ namespace Itop.Client.History
             get { return _flag; }
             set { _flag = value; }
         }
+        //public string Title
+        //{
+        //    get
+        //    {
+        //        if (Flag=="1")
+        //        {
+        //                _title = "电力发展实绩默认类别管理";
+        //        }
+        //        else if (Flag=="2")
+        //        {
+        //            _title = "分区县供电实绩默认类别管理";
+        //        }
+        //        else if (Flag=="3")
+        //        {
+        //            _title = "分区 "+AreaName+" 用电情况默认类别管理";
+        //        }
+        //        else if (Flag == "4")
+        //        {
+        //            _title = "经济数据绩默认类别管理";
+        //        }
+        //        else if (Flag == "5")
+        //        {
+        //            _title = "电量数据绩默认类别管理";
+        //        }
+        //        else if (Flag == "6")
+        //        {
+        //            _title = "负荷数据绩默认类别管理";
+        //        }
+        //        else
+        //        {
+        //            _title = "类别管理";
+        //        }
+        //        return _title;
+        //    }
+        //    set { _title = value; }
+        //}
         public string Title
         {
             get
             {
-                if (Flag=="1")
+                if (Flag == "1")
                 {
-                        _title = "电力发展实绩默认类别管理";
+                    _title = "电力发展实绩默认类别管理";
                 }
-                else if (Flag=="2")
+                else if (Flag == "2")
                 {
-                    _title = "分区县供电实绩默认类别管理";
+                    _title = "分区域电力数据默认类别管理";
                 }
-                else if (Flag=="3")
+                else if (Flag == "3")
                 {
-                    _title = "分区 "+AreaName+" 用电情况默认类别管理";
+                    _title =  AreaName + " 大用户数据默认类别管理";
                 }
                 else if (Flag == "4")
                 {
-                    _title = "经济数据绩默认类别管理";
+                    _title = "经济人口数据默认类别管理";
                 }
                 else if (Flag == "5")
                 {
@@ -108,7 +144,8 @@ namespace Itop.Client.History
             get { return _flagvalue; }
             set { _flagvalue = value; }
         }
-        private string[] str ={ "电力发展实绩", "分区供电实绩","分区用电情况" ,"经济数据","电力数据","负荷数据"};
+       // private string[] str ={ "电力发展实绩", "分区供电实绩","分区用电情况" ,"经济数据","电力数据","负荷数据"};
+        private string[] str = { "分区域电力数据", "大用户数据", "经济人口数据", "电量数据", "负荷数据" };
         public FormHistoryType()
         {
           
@@ -405,31 +442,61 @@ namespace Itop.Client.History
                 }
             }
         }
+        ////模块列表发生改变时修改对应的值
+        //private void combtype_EditValueChanged(object sender, EventArgs e)
+        //{
+        //    if (combtype.EditValue == str[0].ToString())
+        //    {
+        //        FlagValue = "1";
+
+        //    }
+        //    else if (combtype.EditValue == str[1].ToString())
+        //    {
+        //        FlagValue = "2";
+        //    }
+        //    else if (combtype.EditValue == str[2].ToString())
+        //    {
+        //        FlagValue = "3";
+        //    }
+        //    else if (combtype.EditValue == str[3].ToString())
+        //    {
+        //        FlagValue = "4";
+        //    }
+        //    else if (combtype.EditValue == str[4].ToString())
+        //    {
+        //        FlagValue = "5";
+        //    }
+        //    else if (combtype.EditValue == str[5].ToString())
+        //    {
+        //        FlagValue = "6";
+        //    }
+        //    else
+        //    {
+        //        FlagValue = "";
+        //    }
+        //    LoadData();
+        //}
         //模块列表发生改变时修改对应的值
         private void combtype_EditValueChanged(object sender, EventArgs e)
         {
+            
             if (combtype.EditValue == str[0].ToString())
-            {
-                FlagValue = "1";
-
-            }
-            else if (combtype.EditValue == str[1].ToString())
             {
                 FlagValue = "2";
             }
-            else if (combtype.EditValue == str[2].ToString())
+            else if (combtype.EditValue == str[1].ToString())
             {
                 FlagValue = "3";
             }
-            else if (combtype.EditValue == str[3].ToString())
+            else if (combtype.EditValue == str[2].ToString())
             {
                 FlagValue = "4";
             }
-            else if (combtype.EditValue == str[4].ToString())
+            else if (combtype.EditValue == str[3].ToString())
             {
                 FlagValue = "5";
             }
-            else if (combtype.EditValue == str[5].ToString())
+            else if (combtype.EditValue == str[4].ToString())
             {
                 FlagValue = "6";
             }
