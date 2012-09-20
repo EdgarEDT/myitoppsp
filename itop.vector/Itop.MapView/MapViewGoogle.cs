@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using MapLib;
 using System.Threading;
 using System.Configuration;
+using Itop.Client;
 
 namespace Itop.MapView
 {
@@ -70,8 +71,12 @@ namespace Itop.MapView
             dataHelpers.Add(TileType.Terrain, dataHelper4);
             try
             {
-                double d1 = double.Parse(ConfigurationManager.AppSettings["offsizejd"]);
-                double d2 = double.Parse(ConfigurationManager.AppSettings["offsizewd"]);
+                //lgm 2012年9月20日改
+                //double d1 = double.Parse(ConfigurationManager.AppSettings["offsizejd"]);
+                //double d2 = double.Parse(ConfigurationManager.AppSettings["offsizewd"]);
+
+                double d1 = MIS.PYJD;
+                double d2 = MIS.PYWD;
                 Offsize = new LongLat(d1, d2);
             }
             catch { }

@@ -88,6 +88,10 @@
       <HintPath>Db4objects.Db4o.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Itop.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\client\Itop.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Itop.MapView.Tables, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\bin\Itop.MapView.Tables.dll</HintPath>
