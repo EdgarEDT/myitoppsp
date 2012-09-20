@@ -35,6 +35,9 @@ namespace Itop.Client {
         private static string cityName = "";
         private static double jd = 0;
         private static double wd = 0;
+        private static double pyjd = 0;
+        private static double pywd = 0;
+        private static double area = 0;
         static private Dictionary<string, string> m_props = new Dictionary<string, string>();
 
         static private string GetUserName() {
@@ -194,6 +197,39 @@ namespace Itop.Client {
             get
             {
                 return wd;
+            }
+        }
+        public static Double PYJD
+        {
+            set
+            {
+                pyjd = value;
+            }
+            get
+            {
+                return pyjd;
+            }
+        }
+        public static Double PYWD
+        {
+            set
+            {
+                pywd = value;
+            }
+            get
+            {
+                return pywd;
+            }
+        }
+        public static Double CityArea
+        {
+            set
+            {
+                area = value;
+            }
+            get
+            {
+                return area;
             }
         }
         public static SysDataServer DataServer
