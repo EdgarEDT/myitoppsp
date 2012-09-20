@@ -155,8 +155,12 @@ namespace ItopVector.Tools
             tlVectorControl1.FullDrawMode = true;
             tlVectorControl1.DrawArea.ViewMargin = new Size(50000, 50000);
             tlVectorControl1.DrawMode = DrawModeType.MemoryImage;
-            jd = Convert.ToDouble(ConfigurationSettings.AppSettings.Get("jd"));
-            wd = Convert.ToDouble(ConfigurationSettings.AppSettings.Get("wd"));
+            //lgm 修改
+            //jd = Convert.ToDouble(ConfigurationSettings.AppSettings.Get("jd"));
+            //wd = Convert.ToDouble(ConfigurationSettings.AppSettings.Get("wd"));
+            jd = MIS.JD;
+            wd = MIS.WD;
+
             ghType = ConfigurationSettings.AppSettings.Get("ghType");
             //mapview.ZeroLongLat = new LongLat(117.6787m, 31.0568m);
             //mapview.ZeroLongLat = new LongLat(108.1m, 24.75m);

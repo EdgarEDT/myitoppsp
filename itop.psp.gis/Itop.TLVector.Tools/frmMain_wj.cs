@@ -167,8 +167,12 @@ namespace ItopVector.Tools {
             if (ViewMargin < 1000) ViewMargin = 50000;
             tlVectorControl1.DrawArea.ViewMargin = new Size(ViewMargin, ViewMargin);
             tlVectorControl1.DrawMode = DrawModeType.MemoryImage;
-            jd = Convert.ToDecimal(ConfigurationSettings.AppSettings.Get("jd"));
-            wd = Convert.ToDecimal(ConfigurationSettings.AppSettings.Get("wd"));
+           
+            //lgm 修改
+            //jd = Convert.ToDouble(ConfigurationSettings.AppSettings.Get("jd"));
+            //wd = Convert.ToDouble(ConfigurationSettings.AppSettings.Get("wd"));
+            jd = (decimal)MIS.JD;
+            wd = (decimal)MIS.WD;
             ghType = ConfigurationSettings.AppSettings.Get("ghType");
             //mapview.ZeroLongLat = new LongLat(117.6787m, 31.0568m);
             //mapview.ZeroLongLat = new LongLat(108.1m, 24.75m);
@@ -176,7 +180,9 @@ namespace ItopVector.Tools {
             show3d = Convert.ToInt32(ConfigurationSettings.AppSettings.Get("show3d"));
 
             try {
-                areaoption = Convert.ToDecimal(ConfigurationSettings.AppSettings.Get("AreaOption"));
+                //lgm 修改
+                //areaoption = Convert.ToDecimal(ConfigurationSettings.AppSettings.Get("AreaOption"));
+                areaoption = (decimal)MIS.CityArea;
             } catch { }
             if (areaoption < 1) { areaoption = 1; }
 
