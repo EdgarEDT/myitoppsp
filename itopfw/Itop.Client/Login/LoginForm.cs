@@ -306,6 +306,10 @@ namespace Itop.Client.Login {
                 CreateDir(ds.CityName);
                 MIS.JD = ds.CityJD;
                 MIS.WD = ds.CityWD;
+                MIS.PYJD = ds.CityPYJD;
+                MIS.PYWD = ds.CityPYWD;
+                MIS.CityArea = ds.CityPYWD;
+
                 Itop.Client.Option.Settings.SetJWDvalue(ds.CityJD, ds.CityWD);
                 Itop.Client.Option.Settings.SetCityName(ds.CityName);
                 Itop.Client.Option.Settings.SetPYJWDvalue(ds.CityPYJD, ds.CityPYWD);
@@ -324,6 +328,7 @@ namespace Itop.Client.Login {
                 RemotingHelper.ServerPort = ServerSettings.RemotingPort;
                 RemotingHelper.ServerProtocol = ServerSettings.RemotingProtocol;
                
+
                 try
                 {
                     ProcessStartInfo sysserver = new ProcessStartInfo(Application.StartupPath + "\\Server\\Itop.Server.exe");
